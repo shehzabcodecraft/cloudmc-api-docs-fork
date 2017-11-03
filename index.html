@@ -1343,7 +1343,7 @@ curl <span class="s2">"https://cloudmc_endpoint/v1/organizations"</span> <span c
 </tr>
 <tr>
 <td><code>billableStartDate</code><br/><em>string</em></td>
-<td>The billable start date in <a href="#https://en.wikipedia.org/wiki/ISO_8601">ISO 8601</a> of the organization</td>
+<td>The billable start date in <a href="https://en.wikipedia.org/wiki/ISO_8601">ISO 8601</a> of the organization</td>
 </tr>
 <tr>
 <td><code>isBillable</code><br/><em>boolean</em></td>
@@ -1442,7 +1442,7 @@ curl <span class="s2">"https://cloudmc_endpoint/v1/organizations/[id]"</span> <s
 </tr>
 <tr>
 <td><code>billableStartDate</code><br/><em>string</em></td>
-<td>The billable start date in <a href="#https://en.wikipedia.org/wiki/ISO_8601">ISO 8601</a> of the organization</td>
+<td>The billable start date in <a href="https://en.wikipedia.org/wiki/ISO_8601">ISO 8601</a> of the organization</td>
 </tr>
 <tr>
 <td><code>isBillable</code><br/><em>boolean</em></td>
@@ -1666,7 +1666,7 @@ curl <span class="s2">"https://cloudmc_endpoint/v1/users"</span> <span class="se
 </tr>
 <tr>
 <td><code>creationDate</code><br/><em>string</em></td>
-<td>The date in <a href="#https://en.wikipedia.org/wiki/ISO_8601">ISO 8601</a> that the user was created</td>
+<td>The date in <a href="https://en.wikipedia.org/wiki/ISO_8601">ISO 8601</a> that the user was created</td>
 </tr>
 <tr>
 <td><code>status</code><br/><em>string</em></td>
@@ -1754,7 +1754,7 @@ curl <span class="s2">"https://cloudmc_endpoint/v1/users/[user-id]"</span> <span
 </tr>
 <tr>
 <td><code>creationDate</code><br/><em>string</em></td>
-<td>The date in <a href="#https://en.wikipedia.org/wiki/ISO_8601">ISO 8601</a> that the user was created</td>
+<td>The date in <a href="https://en.wikipedia.org/wiki/ISO_8601">ISO 8601</a> that the user was created</td>
 </tr>
 <tr>
 <td><code>status</code><br/><em>string</em></td>
@@ -1985,7 +1985,7 @@ curl <span class="s2">"https://cloudmc_endpoint/v1/environments"</span> <span cl
 </tr>
 <tr>
 <td><code>creationDate</code><br/><em>string</em></td>
-<td>The date in <a href="#https://en.wikipedia.org/wiki/ISO_8601">ISO 8601</a> that the environment was created</td>
+<td>The date in <a href="https://en.wikipedia.org/wiki/ISO_8601">ISO 8601</a> that the environment was created</td>
 </tr>
 <tr>
 <td><code>organization</code><br/><em><a href="#administration-organizations">Organization</a></em></td>
@@ -2068,7 +2068,7 @@ curl <span class="s2">"https://cloudmc_endpoint/v1/environment/[environment-id]"
 </tr>
 <tr>
 <td><code>creationDate</code><br/><em>string</em></td>
-<td>The date in <a href="#https://en.wikipedia.org/wiki/ISO_8601">ISO 8601</a> that the environment was created</td>
+<td>The date in <a href="https://en.wikipedia.org/wiki/ISO_8601">ISO 8601</a> that the environment was created</td>
 </tr>
 <tr>
 <td><code>organization</code><br/><em><a href="#administration-organizations">Organization</a></em></td>
@@ -2285,11 +2285,11 @@ organizationId,serviceConnectionId,startDate,endDate,usageType,secondaryType,ser
 </tr>
 <tr>
 <td><code>startDate</code><br/><em>string</em></td>
-<td>Start date of the record in <a href="#https://en.wikipedia.org/wiki/ISO_8601">ISO 8601</a></td>
+<td>Start date of the record in <a href="https://en.wikipedia.org/wiki/ISO_8601">ISO 8601</a></td>
 </tr>
 <tr>
 <td><code>endDate</code><br/><em>string</em></td>
-<td>End date of the record in <a href="#https://en.wikipedia.org/wiki/ISO_8601">ISO 8601</a></td>
+<td>End date of the record in <a href="https://en.wikipedia.org/wiki/ISO_8601">ISO 8601</a></td>
 </tr>
 <tr>
 <td><code>usageType</code><br/><em>string</em></td>
@@ -3750,7 +3750,7 @@ curl -X POST <span class="se">\</span>
 
 <p>Restart the router of a VPC.</p>
 <h3 id='cloudstack-networks'>Networks</h3>
-<p>A network is an isolated network with its own VLANs and CIDR list, where you can place groups of resources, such as <a href="#cloudstack-instances">instances</a>.</p>
+<p>A network is an isolated network with its own VLANs and CIDR list, where you can place groups of resources, such as <a href="#cloudstack-instances">instances</a>. They can exist as VPC subnets, or as simple isolated networks, provided the appropriate network offerings exist.</p>
 
 <!-------------------- LIST NETWORK -------------------->
 <h4 id='cloudstack-list-networks'>List networks</h4><pre class="highlight shell tab-shell"><code>curl -X GET <span class="se">\</span>
@@ -4000,6 +4000,8 @@ curl -X POST <span class="se">\</span>
 
 <p>Create a network in an <a href="#administration-environments">environment</a></p>
 
+<p>If the network offering is a VPC subnet offering (indicated by the <code>vpcOnly</code> flag on the offering), the vpcId and networkAclId are required fields.</p>
+
 <table><thead>
 <tr>
 <th>Required</th>
@@ -4015,12 +4017,20 @@ curl -X POST <span class="se">\</span>
 <td>The description of the new network</td>
 </tr>
 <tr>
-<td><code>vpcId</code><br/><em>UUID</em></td>
-<td>The id of the VPC where to create the network</td>
-</tr>
-<tr>
 <td><code>networkOfferingId</code><br/><em>UUID</em></td>
 <td>The id of the <a href="#cloudstack-network-offerings">network offering</a> to use for the network</td>
+</tr>
+</tbody></table>
+
+<table><thead>
+<tr>
+<th>Required (if VPC subnet)</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>vpcId</code><br/><em>UUID</em></td>
+<td>The id of the VPC where to create the network</td>
 </tr>
 <tr>
 <td><code>networkAclId</code><br/><em>UUID</em></td>
@@ -4094,7 +4104,10 @@ curl -X POST <span class="se">\</span>
 </span></code></pre>
 <p><code>POST /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/networks/9572d2ea-a60d-478a-a75e-8ed31f2641f1?operation=replace</code></p>
 
-<p>Replace the <a href="#cloudstack-network-acls">network ACL</a>.</p>
+<p>Replace the <a href="#cloudstack-network-acls">network ACL</a> for a VPC subnet.
+<aside class="caution">
+  This operation is not allowed on isolated networks.
+</aside></p>
 
 <table><thead>
 <tr>
@@ -4109,7 +4122,7 @@ curl -X POST <span class="se">\</span>
 </tbody></table>
 <!-- ACLs -->
 <h3 id='cloudstack-network-acls'>Network ACLs</h3>
-<p>Manage access control lists and their rules. To apply an ACL to a network, <a href="#cloudstack-replace-the-network-acl-of-a-network">replace the ACL of a network</a>.</p>
+<p>Manage access control lists and their rules. To apply an ACL to a VPC subnet, <a href="#cloudstack-replace-the-network-acl-of-a-network">replace the ACL of a network</a>.</p>
 <h4 id='cloudstack-list-network-acls'>List network ACLs</h4><pre class="highlight shell tab-shell"><code>curl -X GET <span class="se">\</span>
    -H <span class="s2">"MC-Api-Key: your_api_key"</span> <span class="se">\</span>
    <span class="s2">"https://cloudmc_endpoint/v1/services/compute-on/test_area/networkacls?vpc_id=eb763d03-9935-4cd4-8a42-99134e242ccb"</span>
@@ -6968,6 +6981,7 @@ curl -X DELETE <span class="se">\</span>
         </span><span class="p">{</span><span class="w">
             </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"89724d35-b69c-418c-be81-7d83fcfc9da9"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Load Balanced Tier"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"vpcOnly"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
             </span><span class="s2">"services"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
                 </span><span class="s2">"PortForwarding"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"Vpn"</span><span class="p">,</span><span class="w">
@@ -6984,6 +6998,7 @@ curl -X DELETE <span class="se">\</span>
         </span><span class="p">{</span><span class="w">
             </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"087502ea-cb42-421b-9bd9-9cf9ae5d1b89"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Standard Tier"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"vpcOnly"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
             </span><span class="s2">"services"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
                 </span><span class="s2">"PortForwarding"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"Vpn"</span><span class="p">,</span><span class="w">
@@ -6995,10 +7010,24 @@ curl -X DELETE <span class="se">\</span>
                 </span><span class="s2">"StaticNat"</span><span class="w">
             </span><span class="p">],</span><span class="w">
             </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ENABLED"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0f1b9d72-b842-11e7-abc4-cec278b6b50a"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Isolated network"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"vpcOnly"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"services"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="s2">"PortForwarding"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"SourceNat"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"Dhcp"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"Dns"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"UserData"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"StaticNat"</span><span class="w">
+            </span><span class="p">],</span><span class="w">
+            </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ENABLED"</span><span class="w">
         </span><span class="p">}</span><span class="w">
     </span><span class="p">],</span><span class="w">
     </span><span class="s2">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"recordCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w">
+        </span><span class="s2">"recordCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
@@ -7021,6 +7050,10 @@ curl -X DELETE <span class="se">\</span>
 <td>The name of the network offering</td>
 </tr>
 <tr>
+<td><code>vpcOnly</code><br/><em>boolean</em></td>
+<td>Whether or not the offering is for VPC subnets</td>
+</tr>
+<tr>
 <td><code>services</code><br/><em>Array[string]</em></td>
 <td>The services provided by the offering</td>
 </tr>
@@ -7038,6 +7071,7 @@ curl -X DELETE <span class="se">\</span>
     </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"89724d35-b69c-418c-be81-7d83fcfc9da9"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Load Balanced Tier"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"vpcOnly"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
         </span><span class="s2">"services"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
             </span><span class="s2">"PortForwarding"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"Lb"</span><span class="p">,</span><span class="w">
@@ -7070,6 +7104,10 @@ curl -X DELETE <span class="se">\</span>
 <tr>
 <td><code>name</code><br/><em>string</em></td>
 <td>The name of the network offering</td>
+</tr>
+<tr>
+<td><code>vpcOnly</code><br/><em>boolean</em></td>
+<td>Whether or not the offering is for VPC subnets</td>
 </tr>
 <tr>
 <td><code>services</code><br/><em>Array[string]</em></td>
@@ -7681,7 +7719,7 @@ curl -X DELETE <span class="se">\</span>
 
 <p>Delete an instance.</p>
 <h3 id='openstack-networks'>Networks</h3>
-<p>Networks are privisioned to be able to control data flow to instances. To communicate with the external network, the network must be connected to a <a href="#openstack-routers">router</a></p>
+<p>Networks are provisioned to be able to control data flow to instances. To communicate with the external network, the network must be connected to a <a href="#openstack-routers">router</a></p>
 <h4 id='openstack-list-networks'>List networks</h4><pre class="highlight shell tab-shell"><code>curl -H <span class="s2">"MC-Api-Key: your_api_key"</span> <span class="se">\</span>
     <span class="s2">"https://api.your.cloudmc/v1/services/compute-os/devel/networks"</span>
 </code></pre><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -7820,6 +7858,14 @@ curl -X DELETE <span class="se">\</span>
 <tr>
 <td><code>dhcpEnabled</code><br/><em>boolean</em></td>
 <td>If DHCP should be enabled for the network or if it will be handled by the user</td>
+</tr>
+<tr>
+<td><code>routerId</code><br/><em>string</em></td>
+<td>The id of an existing router. If provided, it will create an interface on that router for the created network. It may not be provided with <code>externalNetworkId</code></td>
+</tr>
+<tr>
+<td><code>externalNetworkId</code><br/><em>string</em></td>
+<td>The id of the external network. If provided, it will create a router connected to that external network and add an interface on that router for the created network. It may not be provided with <code>routerId</code></td>
 </tr>
 </tbody></table>
 
@@ -8952,6 +8998,18 @@ Response body:
 <tr>
 <td><code>sizeInGB</code><br/><em>integer</em></td>
 <td>The volume&#39;s size in GB</td>
+</tr>
+</tbody></table>
+
+<table><thead>
+<tr>
+<th>Optional</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>volume</code><br/><em>Volume</em></td>
+<td>A volume object containing either <code>id</code> or <code>sizeInGB</code>. If an <code>id</code> is provided, it will attach the existing volume to the instance after creation. If the <code>sizeInGB</code> is provided, it will create a new volume and attach it to the instance after creation.</td>
 </tr>
 </tbody></table>
 <h4 id='openstack-delete-a-volume'>Delete a volume</h4><pre class="highlight shell tab-shell"><code>curl -X DELETE <span class="se">\</span>
