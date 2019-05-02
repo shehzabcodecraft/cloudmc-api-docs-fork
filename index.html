@@ -302,6 +302,17 @@
                       </ul>
                   </li>
                   <li>
+                    <a href="#administration-roles" class="toc-h2 toc-link" data-title="Administration">Roles</a>
+                      <ul class="toc-list-h3">
+                          <li>
+                            <a href="#administration-list-roles" class="toc-h3 toc-link" data-title="Administration">List Roles</a>
+                          </li>
+                          <li>
+                            <a href="#administration-scopequalifier" class="toc-h3 toc-link" data-title="Administration">ScopeQualifier</a>
+                          </li>
+                      </ul>
+                  </li>
+                  <li>
                     <a href="#administration-environments" class="toc-h2 toc-link" data-title="Administration">Environments</a>
                       <ul class="toc-list-h3">
                           <li>
@@ -325,7 +336,10 @@
                     <a href="#administration-usage" class="toc-h2 toc-link" data-title="Administration">Usage</a>
                       <ul class="toc-list-h3">
                           <li>
-                            <a href="#administration-list-usage-summary" class="toc-h3 toc-link" data-title="Administration">List usage summary</a>
+                            <a href="#administration-list-organization-usage-summary" class="toc-h3 toc-link" data-title="Administration">List organization usage summary</a>
+                          </li>
+                          <li>
+                            <a href="#administration-list-top-level-organization-usage-summary" class="toc-h3 toc-link" data-title="Administration">List top level organization usage summary</a>
                           </li>
                       </ul>
                   </li>
@@ -393,6 +407,12 @@
                                   <li>
                                     <a href="#cloudstack-associate-an-ssh-key-to-an-instance" class="toc-h4 toc-link" data-title="CloudStack plugin">Associate an SSH key to an instance</a>
                                   </li>
+                                  <li>
+                                    <a href="#cloudstack-attach-an-iso-to-an-instance" class="toc-h4 toc-link" data-title="CloudStack plugin">Attach an ISO to an instance</a>
+                                  </li>
+                                  <li>
+                                    <a href="#cloudstack-detach-the-iso-from-an-instance" class="toc-h4 toc-link" data-title="CloudStack plugin">Detach the ISO from an instance</a>
+                                  </li>
                               </ul>
                           </li>
                           <li>
@@ -403,6 +423,41 @@
                                   </li>
                                   <li>
                                     <a href="#cloudstack-retrieve-a-template" class="toc-h4 toc-link" data-title="CloudStack plugin">Retrieve a template</a>
+                                  </li>
+                                  <li>
+                                    <a href="#cloudstack-import-a-template" class="toc-h4 toc-link" data-title="CloudStack plugin">Import a template</a>
+                                  </li>
+                                  <li>
+                                    <a href="#cloudstack-update-a-template" class="toc-h4 toc-link" data-title="CloudStack plugin">Update a template</a>
+                                  </li>
+                                  <li>
+                                    <a href="#cloudstack-delete-a-template" class="toc-h4 toc-link" data-title="CloudStack plugin">Delete a template</a>
+                                  </li>
+                              </ul>
+                          </li>
+                          <li>
+                            <a href="#cloudstack-isos" class="toc-h3 toc-link" data-title="CloudStack plugin">ISOs</a>
+                              <ul class="toc-list-h4">
+                                  <li>
+                                    <a href="#cloudstack-list-isos" class="toc-h4 toc-link" data-title="CloudStack plugin">List ISOs</a>
+                                  </li>
+                                  <li>
+                                    <a href="#cloudstack-retrieve-a-iso" class="toc-h4 toc-link" data-title="CloudStack plugin">Retrieve a ISO</a>
+                                  </li>
+                                  <li>
+                                    <a href="#cloudstack-import-iso" class="toc-h4 toc-link" data-title="CloudStack plugin">Import ISO</a>
+                                  </li>
+                                  <li>
+                                    <a href="#cloudstack-attach-an-iso-to-an-instance" class="toc-h4 toc-link" data-title="CloudStack plugin">Attach an ISO to an instance</a>
+                                  </li>
+                                  <li>
+                                    <a href="#cloudstack-detach-the-iso-from-an-instance" class="toc-h4 toc-link" data-title="CloudStack plugin">Detach the ISO from an instance</a>
+                                  </li>
+                                  <li>
+                                    <a href="#cloudstack-generate-a-download-url-for-an-iso" class="toc-h4 toc-link" data-title="CloudStack plugin">Generate a download URL for an ISO</a>
+                                  </li>
+                                  <li>
+                                    <a href="#cloudstack-delete-an-iso" class="toc-h4 toc-link" data-title="CloudStack plugin">Delete an ISO</a>
                                   </li>
                               </ul>
                           </li>
@@ -587,6 +642,40 @@
                               </ul>
                           </li>
                           <li>
+                            <a href="#cloudstack-ingress-rules" class="toc-h3 toc-link" data-title="CloudStack plugin">Ingress rules</a>
+                              <ul class="toc-list-h4">
+                                  <li>
+                                    <a href="#cloudstack-list-ingress-rules" class="toc-h4 toc-link" data-title="CloudStack plugin">List ingress rules</a>
+                                  </li>
+                                  <li>
+                                    <a href="#cloudstack-retrieve-a-specific-ingress-rule" class="toc-h4 toc-link" data-title="CloudStack plugin">Retrieve a specific ingress rule</a>
+                                  </li>
+                                  <li>
+                                    <a href="#cloudstack-create-an-ingress-rule" class="toc-h4 toc-link" data-title="CloudStack plugin">Create an ingress rule</a>
+                                  </li>
+                                  <li>
+                                    <a href="#cloudstack-delete-an-ingress-rule" class="toc-h4 toc-link" data-title="CloudStack plugin">Delete an ingress rule</a>
+                                  </li>
+                              </ul>
+                          </li>
+                          <li>
+                            <a href="#cloudstack-egress-rules" class="toc-h3 toc-link" data-title="CloudStack plugin">Egress rules</a>
+                              <ul class="toc-list-h4">
+                                  <li>
+                                    <a href="#cloudstack-list-egress-rules" class="toc-h4 toc-link" data-title="CloudStack plugin">List egress rules</a>
+                                  </li>
+                                  <li>
+                                    <a href="#cloudstack-retrieve-an-egress-rule" class="toc-h4 toc-link" data-title="CloudStack plugin">Retrieve an egress rule</a>
+                                  </li>
+                                  <li>
+                                    <a href="#cloudstack-create-an-egress-rule" class="toc-h4 toc-link" data-title="CloudStack plugin">Create an egress rule</a>
+                                  </li>
+                                  <li>
+                                    <a href="#cloudstack-delete-an-egress-rule" class="toc-h4 toc-link" data-title="CloudStack plugin">Delete an egress rule</a>
+                                  </li>
+                              </ul>
+                          </li>
+                          <li>
                             <a href="#cloudstack-nics" class="toc-h3 toc-link" data-title="CloudStack plugin">NICs</a>
                               <ul class="toc-list-h4">
                                   <li>
@@ -677,6 +766,9 @@
                                   <li>
                                     <a href="#cloudstack-detach-a-volume-from-an-instance" class="toc-h4 toc-link" data-title="CloudStack plugin">Detach a volume from an instance</a>
                                   </li>
+                                  <li>
+                                    <a href="#cloudstack-create-a-volume-snapshot" class="toc-h4 toc-link" data-title="CloudStack plugin">Create a volume snapshot</a>
+                                  </li>
                               </ul>
                           </li>
                           <li>
@@ -687,6 +779,9 @@
                                   </li>
                                   <li>
                                     <a href="#cloudstack-retrieve-a-snapshot" class="toc-h4 toc-link" data-title="CloudStack plugin">Retrieve a snapshot</a>
+                                  </li>
+                                  <li>
+                                    <a href="#cloudstack-create-a-snapshot" class="toc-h4 toc-link" data-title="CloudStack plugin">Create a snapshot</a>
                                   </li>
                               </ul>
                           </li>
@@ -1920,6 +2015,92 @@ curl <span class="s2">"https://cloudmc_endpoint/v1/users/[user-id]/unlock"</span
 
 </code></pre>
 <p>A user with 10 consecutive unsuccessful logins will be automatically locked by our system. This API can be used to unlock a user in this situation. You will need the <code>Unlock user</code> permission to execute this operation.</p>
+<h2 id='administration-roles'>Roles</h2>
+<p>Roles have a number of permissions associated with them and are bound to users with a given scope. They are associated to users through role bindings.</p>
+<h3 id='administration-list-roles'>List Roles</h3>
+<p><code>GET /roles</code></p>
+
+<p>Retrieves a list of roles visible to the caller. The user does not have to have explicit access to that role for it to be returned. If a user&#39;s permissions on a given context context include all cumulative permissions for all roles a user is bound to that role will be returned in the roles api call. </p>
+
+<p>Example: If a user has a role with <code>env:&lt;entity&gt;:read</code> and <code>env:&lt;entity&gt;:create</code> and another role exists with just <code>env:&lt;entity&gt;:read</code> it will be returned in the API call. </p>
+<pre class="highlight shell tab-shell"><code><span class="c"># Retrieve all env-scoped roles applicable to this environment </span>
+curl <span class="s2">"https://cloudmc_endpoint/rest/roles?v=v2&amp;environment_id=4865a023-1dd5-45a3-a23d-e952ceb7a44a&amp;filter_scope=ENV"</span> <span class="se">\</span>
+   -H <span class="s2">"MC-Api-Key: your_api_key"</span>
+
+<span class="c"># Response body example</span>
+</code></pre><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+</span><span class="p">{</span><span class="w">
+   </span><span class="s2">"data"</span><span class="p">:[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+         </span><span class="s2">"creationDate"</span><span class="p">:</span><span class="s2">"2019-03-11T22:16:15.000Z"</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"version"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"isSystem"</span><span class="p">:</span><span class="kc">false</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"isDefault"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"deleted"</span><span class="p">:</span><span class="kc">false</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"permissions"</span><span class="p">:[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+               </span><span class="s2">"name"</span><span class="p">:</span><span class="s2">"env:*:*"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+         </span><span class="p">],</span><span class="w">
+         </span><span class="s2">"name"</span><span class="p">:</span><span class="s2">"editor"</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"alias"</span><span class="p">:</span><span class="s2">"editor"</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"id"</span><span class="p">:</span><span class="s2">"b230cc47-3fad-4759-8ad2-de80bc6ac7e8"</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"isFixed"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"defaultScope"</span><span class="p">:</span><span class="s2">"ENV"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+         </span><span class="s2">"creationDate"</span><span class="p">:</span><span class="s2">"2019-03-11T22:16:12.000Z"</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"version"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"isSystem"</span><span class="p">:</span><span class="kc">false</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"isDefault"</span><span class="p">:</span><span class="kc">false</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"deleted"</span><span class="p">:</span><span class="kc">false</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"permissions"</span><span class="p">:[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+               </span><span class="s2">"name"</span><span class="p">:</span><span class="s2">"env:*:read"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+         </span><span class="p">],</span><span class="w">
+         </span><span class="s2">"name"</span><span class="p">:</span><span class="s2">"viewer"</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"alias"</span><span class="p">:</span><span class="s2">"viewer"</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"id"</span><span class="p">:</span><span class="s2">"f405a594-56c7-43d4-b790-ab8c616253fc"</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"isFixed"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"defaultScope"</span><span class="p">:</span><span class="s2">"ENV"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+   </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<table><thead>
+<tr>
+<th>Query Params</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>filter_scope</code><br/><em><a href="#administration-scopequalifier">ScopeQualifier</a></em></td>
+<td>Return only roles with this as the default scope</td>
+</tr>
+<tr>
+<td><code>system_only</code><br/><em>boolean</em></td>
+<td>Return only system roles</td>
+</tr>
+<tr>
+<td><code>organization_id</code><br/><em>UUID</em></td>
+<td>Return only roles requesting user can assign on this organization</td>
+</tr>
+<tr>
+<td><code>environment_id</code><br/><em>UUID</em></td>
+<td>Filters out env-scoped roles applicated to this environment. If an environment is of a plugin type that has custom plugin roles it only returns the plugin&#39;s roles, if the environment has no plugin defined roles it returns only the default environment-scoped roles</td>
+</tr>
+</tbody></table>
+<h3 id='administration-scopequalifier'>ScopeQualifier</h3>
+<ul>
+<li><code>ENV</code></li>
+<li><code>ORG_BASE</code> </li>
+<li><code>ORG_TREE</code> </li>
+<li><code>ORG_SUB</code> </li>
+<li><code>ORG_TOPLEVEL</code></li>
+<li><code>TAG_ANYMATCH</code></li>
+<li><code>GLOBAL</code></li>
+</ul>
 <h2 id='administration-environments'>Environments</h2>
 <p>Environments allow you to manage resources of a specific service and to manage your <a href="#administration-users">users&#39;</a> access to them. With <a href="#administration-roles">environment roles</a>, you have tight control of what a user is allowed to do in your environment. A general use case of environments is to split your resources into different <a href="https://en.wikipedia.org/wiki/Deployment_environment">deployment environments</a> (e.g. dev, staging and production). The advantage is that resources of different deployments are isolated from each other and you can restrict user access to your most critical resources.</p>
 
@@ -2225,7 +2406,7 @@ curl <span class="s2">"https://cloudmc_endpoint/v1/environments/[environment-id]
 </aside>
 <h2 id='administration-usage'>Usage</h2>
 <!-------------------- LIST USAGE SUMMARY -------------------->
-<h3 id='administration-list-usage-summary'>List usage summary</h3>
+<h3 id='administration-list-organization-usage-summary'>List organization usage summary</h3>
 <p><code>GET /usage_summary/organizations/:id</code></p>
 <pre class="highlight shell tab-shell"><code><span class="c"># Retrieve usage summary in JSON</span>
 curl <span class="s2">"https://cloudmc_endpoint/v1/usage_summary/organizations/03bc22bd-adc4-46b8-988d-afddc24c0cb5?start_date=2017-05-01&amp;end_date=2017-05-15&amp;format=json"</span> <span class="se">\</span>
@@ -2301,6 +2482,8 @@ organizationId,serviceConnectionId,startDate,endDate,usageType,secondaryType,ser
 </tr>
 </tbody></table>
 
+<p><em>Note</em>: The <code>utilityUsage</code> reported by this API is the total usage recorded for the specified period. The resource commitment is not taken into account for this endpoint but is outlined in the endpoint <code>/top_level/organizations/{org_id}</code> below.</p>
+
 <table><thead>
 <tr>
 <th>Query Parameters (<em>required</em>)</th>
@@ -2341,7 +2524,7 @@ organizationId,serviceConnectionId,startDate,endDate,usageType,secondaryType,ser
 </tr>
 <tr>
 <td><code>combine_usage_types</code><br/><em>boolean</em></td>
-<td>Sums up all the utility cost per organization and service connection. The following fields are removed from the output: <code>serviceConnectionPricingId</code>, <code>usageType</code>, <code>secondaryType</code>, <code>utilityUsage</code></td>
+<td>Sums up the utility cost per organization and service connection. The following fields are removed from the output: <code>serviceConnectionPricingId</code>, <code>usageType</code>, <code>secondaryType</code>, <code>utilityUsage</code></td>
 </tr>
 <tr>
 <td><code>period</code><br/><em>String</em></td>
@@ -2350,6 +2533,143 @@ organizationId,serviceConnectionId,startDate,endDate,usageType,secondaryType,ser
 <tr>
 <td><code>format</code><br/><em>String</em></td>
 <td>JSON or CSV. Defaults to JSON.</td>
+</tr>
+<tr>
+<td><code>include_deleted</code><br/><em>boolean</em></td>
+<td>Will find usage of an organization that may have been deleted</td>
+</tr>
+</tbody></table>
+<h3 id='administration-list-top-level-organization-usage-summary'>List top level organization usage summary</h3>
+<p><code>GET /usage_summary/top_level/organizations/:id</code><br/></p>
+<pre class="highlight shell tab-shell"><code><span class="c"># Retrieve usage summary in JSON</span>
+curl --request GET <span class="se">\</span>
+  --url <span class="s1">'https://cloudmc_endpoint/rest/usage_summary/top_level/organizations/52fd201e-aa82-4a27-86b3-ea9650a7fb1e?start_date=2019-03-12&amp;end_date=2019-03-13'</span> <span class="se">\</span>
+  --header <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
+  --header <span class="s1">'mc-api-key: your_api_key'</span> <span class="se">\</span>
+
+<span class="c"># Response body example</span>
+</code></pre><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+   </span><span class="p">{</span><span class="w">
+     </span><span class="s2">"organizationId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"52fd201e-aa82-4a27-86b3-ea9650a7fb1e"</span><span class="p">,</span><span class="w">
+     </span><span class="s2">"serviceConnectionId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"818fa22d-1621-4cf3-87c3-4c10b146524c"</span><span class="p">,</span><span class="w">
+     </span><span class="s2">"serviceConnectionPricingId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c2e38b0d-9b6e-4e79-959f-731cf3d00b1a"</span><span class="p">,</span><span class="w">
+     </span><span class="s2">"usageType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+     </span><span class="s2">"secondaryType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RAM"</span><span class="p">,</span><span class="w">
+     </span><span class="s2">"utilityCost"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.480000</span><span class="p">,</span><span class="w">
+     </span><span class="s2">"utilityUsage"</span><span class="p">:</span><span class="w"> </span><span class="mf">3.99999910</span><span class="p">,</span><span class="w">
+     </span><span class="s2">"resourceCommitmentUsage"</span><span class="p">:</span><span class="w"> </span><span class="mf">1.0000000</span><span class="p">,</span><span class="w">
+     </span><span class="s2">"startDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-03-12T00:00:00Z"</span><span class="p">,</span><span class="w">
+     </span><span class="s2">"endDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-03-12T01:00:00Z"</span><span class="w">
+   </span><span class="p">}]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>Retrieves the usage summary records for top level organization and it&#39;s sub-organizations for a specific period ensuring that usage is split between two buckets, resource commitment usage and utility usage. The response format will be in the JSON format</p>
+<h5 id='administration-resource-commitment-usage'>Resource Commitment Usage:</h5>
+<p>The usage that is counted toward a pre assigned pool of resources defined by the Resource Commitment of the organization on a specified service connection. The resource commitment usage is capped by the resource commitment capacity which is the total amount of resource allocated to the organization.</p>
+<h5 id='administration-utility-usage'>Utility Usage:</h5>
+<p>Usage that bursts outside of the allocated resource commitment if one exists. Note that utility usage will only appear in the response when the <code>actualUsage</code> &gt; <code>resourceCommitmentsUsage</code>. Note that the <code>resourceCommitmentUsage</code> will always be less than or equal to the <code>resourceCommitmentCapacity</code> which is defined by the commitment.</p>
+
+<p>The following will always hold:
+<code>utilityUsage + resourceCommitmentUsage = actualUsage</code></p>
+
+<table><thead>
+<tr>
+<th>Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>organizationId</code><br/><em>UUID</em></td>
+<td>Id of the <a href="#administration-organizations">organization</a></td>
+</tr>
+<tr>
+<td><code>serviceConnectionId</code><br/><em>UUID</em></td>
+<td>Id of the <a href="#administration-service-connections">service connection</a></td>
+</tr>
+<tr>
+<td><code>serviceConnectionPricingId</code><br/><em>UUID</em></td>
+<td>Id of the service connection pricing</td>
+</tr>
+<tr>
+<td><code>utilityCost</code><br/><em>string</em></td>
+<td>Utility cost of the record (aggregated per the period)</td>
+</tr>
+<tr>
+<td><code>utilityUsage</code><br/><em>string</em></td>
+<td>Utility usage of the record</td>
+</tr>
+<tr>
+<td><code>resourceCommitmentUsage</code><br/><em>string</em></td>
+<td>The amount of usage that was counted toward the commitment capacity defined by the resource commitment.</td>
+</tr>
+<tr>
+<td><code>startDate</code><br/><em>string</em></td>
+<td>Start date of the record in <a href="https://en.wikipedia.org/wiki/ISO_8601">ISO 8601</a></td>
+</tr>
+<tr>
+<td><code>endDate</code><br/><em>string</em></td>
+<td>End date of the record in <a href="https://en.wikipedia.org/wiki/ISO_8601">ISO 8601</a></td>
+</tr>
+<tr>
+<td><code>usageType</code><br/><em>string</em></td>
+<td>Usage type of the record.</td>
+</tr>
+<tr>
+<td><code>secondaryType</code><br/><em>string</em></td>
+<td>Secondary type of the record.</td>
+</tr>
+</tbody></table>
+
+<table><thead>
+<tr>
+<th>Query Parameters (<em>required</em>)</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>start_date</code><br/><em>String</em></td>
+<td>Start date (inclusive). Should have the following format YYYY-MM-DD.</td>
+</tr>
+<tr>
+<td><code>end_date</code><br/><em>String</em></td>
+<td>End date (exclusive). Should have the following format YYYY-MM-DD.</td>
+</tr>
+</tbody></table>
+
+<table><thead>
+<tr>
+<th>Query Parameters</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>service_connection_id</code><br/><em>UUID</em></td>
+<td>Show usage summary for this service connection</td>
+</tr>
+<tr>
+<td><code>include_sub_orgs</code><br/><em>boolean</em></td>
+<td>Include usage summary of all its sub-organizations. Defaults to false.</td>
+</tr>
+<tr>
+<td><code>include_cost</code><br/><em>boolean</em></td>
+<td>Include the utility cost and service connection pricing id fields. Defaults to true.</td>
+</tr>
+<tr>
+<td><code>include_free_usage</code><br/><em>boolean</em></td>
+<td>Include all summary records that has no cost associated to it (i.e. utilityCost == 0). Defaults to true.</td>
+</tr>
+<tr>
+<td><code>combine_usage_types</code><br/><em>boolean</em></td>
+<td>Sums up the utility cost per organization and service connection. The following fields are removed from the output: <code>serviceConnectionPricingId</code>, <code>usageType</code>, <code>secondaryType</code>, <code>utilityUsage</code></td>
+</tr>
+<tr>
+<td><code>period</code><br/><em>String</em></td>
+<td>The period on which the aggregation is made. HOUR, DAY or PERIOD. The default is HOUR.</td>
+</tr>
+<tr>
+<td><code>include_deleted</code><br/><em>boolean</em></td>
+<td>Will find usage of an organization that may have been deleted</td>
 </tr>
 </tbody></table>
 <h1 id='cloudstack-plugin'>CloudStack plugin</h1>
@@ -2407,8 +2727,8 @@ An easy way to remember the structure of API endpoints is that going from left t
       </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Running"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"zoneId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"04afdbd1-e32d-4999-86d0-96703736dded"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"zoneName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"QC-1"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"templateId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5f968ad6-56d0-4d0d-ad7e-f8f4a5b5d986"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"templateName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CentOS 6.8 PV"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"imageId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5f968ad6-56d0-4d0d-ad7e-f8f4a5b5d986"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"imageName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CentOS 6.8 PV"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"computeOfferingId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3caab5ed-b5a2-4d8a-82e4-51c46168ee6c"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"computeOfferingName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1vCPU.512MB"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"networkId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d5a68379-a9ee-404f-9492-a1964b374d6f"</span><span class="p">,</span><span class="w">
@@ -2453,12 +2773,12 @@ An easy way to remember the structure of API endpoints is that going from left t
 <td>The current state of the instance</td>
 </tr>
 <tr>
-<td><code>templateId</code><br/><em>UUID</em></td>
-<td>The <a href="#cloudstack-templates">template</a> id of the instance</td>
+<td><code>imageId</code><br/><em>UUID</em></td>
+<td>The <a href="#cloudstack-images">image</a> id of the instance</td>
 </tr>
 <tr>
-<td><code>templateName</code><br/><em>string</em></td>
-<td>The <a href="#cloudstack-templates">template</a> name of the instance</td>
+<td><code>imageName</code><br/><em>string</em></td>
+<td>The <a href="#cloudstack-images">image</a> name of the instance</td>
 </tr>
 <tr>
 <td><code>computeOfferingId</code><br/><em>UUID</em></td>
@@ -2540,8 +2860,8 @@ An easy way to remember the structure of API endpoints is that going from left t
     </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Running"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"zoneId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"04afdbd1-e32d-4999-86d0-96703736dded"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"zoneName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"QC-1"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"templateId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5f968ad6-56d0-4d0d-ad7e-f8f4a5b5d986"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"templateName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CentOS 6.8 PV"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"imageId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5f968ad6-56d0-4d0d-ad7e-f8f4a5b5d986"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"imageName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CentOS 6.8 PV"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"computeOfferingId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3caab5ed-b5a2-4d8a-82e4-51c46168ee6c"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"computeOfferingName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1vCPU.512MB"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"networkId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d5a68379-a9ee-404f-9492-a1964b374d6f"</span><span class="p">,</span><span class="w">
@@ -2598,12 +2918,12 @@ An easy way to remember the structure of API endpoints is that going from left t
 <td>The current state of the instance</td>
 </tr>
 <tr>
-<td><code>templateId</code><br/><em>UUID</em></td>
-<td>The <a href="#cloudstack-templates">template</a> id of the instance</td>
+<td><code>imageId</code><br/><em>UUID</em></td>
+<td>The image id of the instance</td>
 </tr>
 <tr>
-<td><code>templateName</code><br/><em>string</em></td>
-<td>The <a href="#cloudstack-templates">template</a> name of the instance</td>
+<td><code>imageName</code><br/><em>string</em></td>
+<td>The image name of the instance</td>
 </tr>
 <tr>
 <td><code>computeOfferingId</code><br/><em>UUID</em></td>
@@ -2792,6 +3112,10 @@ curl -X POST <span class="se">\</span>
 <td><code>memoryInMB</code><br/><em>int</em></td>
 <td>If the <a href="#cloudstack-compute-offerings">compute offering</a> requires custom values (i.e. <code>&quot;custom&quot;: true</code>), this value must be provided.</td>
 </tr>
+<tr>
+<td><code>ipAddress</code><br/><em>string</em></td>
+<td>Private IPv4 address of this instance, must be within network&#39;s CIDR and not collide with other instances on the network.</td>
+</tr>
 </tbody></table>
 
 <!-------------------- UPDATE AN INSTANCE -------------------->
@@ -2900,10 +3224,27 @@ curl -X POST <span class="se">\</span>
    -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
    -H <span class="s2">"MC-Api-Key: your_api_key"</span> <span class="se">\</span>
    <span class="s2">"https://cloudmc_endpoint/v1/services/compute-on/test_area/instances/5951c2b8-e901-4c01-8ae0-cb8d7c508d29?operation=stop"</span>
-</code></pre>
+
+<span class="c"># Request example:</span>
+</code></pre><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+   </span><span class="s2">"forceStop"</span><span class="p">:</span><span class="kc">true</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
 <p><code>POST /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/instances/:id?operation=stop</code></p>
 
-<p>Stop an existing instance. The instance must be in the <em>Running</em> state for this operation to work.</p>
+<p>Stop an existing instance. The instance must be in either the <em>Running</em> or <em>Stopping</em> state for this operation to work. The default behavior is that the instance (denote by <strong>id</strong>) will be stopped gracefully. An <em>additional</em> parameter can be passed with the call to <em>force stop</em> an instance. If the API is invoked on an instance that is already in the <em>Stopping</em> state, then a <em>force stop</em> is enforced regardless of whether this <em>optional</em> parameter was provided or not.</p>
+
+<table><thead>
+<tr>
+<th>Optional</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>forceStop</code><br/><em>boolean</em></td>
+<td>Setting it to <strong>true</strong> will force stop an instance that is either <em>Running</em> or in the process of <em>Stopping</em></td>
+</tr>
+</tbody></table>
 
 <!-------------------- REBOOT AN INSTANCE -------------------->
 <h4 id='cloudstack-reboot-an-instance'>Reboot an instance</h4><pre class="highlight shell tab-shell"><code>
@@ -3056,6 +3397,42 @@ curl -X POST <span class="se">\</span>
 <td>The name of the <a href="#cloudstack-ssh-keys">SSH key</a> to associate to the instance</td>
 </tr>
 </tbody></table>
+<h4 id='cloudstack-attach-an-iso-to-an-instance'>Attach an ISO to an instance</h4><pre class="highlight shell tab-shell"><code>curl -X POST <span class="se">\</span>
+   -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+   -H <span class="s2">"MC-Api-Key: your_api_key"</span> <span class="se">\</span>
+   -d <span class="s2">"request_body"</span> <span class="se">\</span>
+   <span class="s2">"https://cloudmc_endpoint/v1/services/compute-on/testing/instances/5951c2b8-e901-4c01-8ae0-cb8d7c508d29?operation=attachIso"</span>
+
+<span class="c"># Request should look like this</span>
+</code></pre><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+   </span><span class="s2">"isoId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"f092a051-8b3f-4941-b47f-5ecb77f3423b"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><code>POST /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/instances/:id?operation=attachIso</code></p>
+
+<p>Attach an existing, non-bootable <a href="#cloudstack-isos">ISO</a> to an instance. Each instance may have only one ISO attached at a time.</p>
+
+<table><thead>
+<tr>
+<th>Required</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>isoId</code><br/><em>UUID</em></td>
+<td>The id of the ISO to attach</td>
+</tr>
+</tbody></table>
+<h4 id='cloudstack-detach-the-iso-from-an-instance'>Detach the ISO from an instance</h4><pre class="highlight shell tab-shell"><code>curl -X POST <span class="se">\</span>
+   -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+   -H <span class="s2">"MC-Api-Key: your_api_key"</span> <span class="se">\</span>
+   <span class="s2">"https://cloudmc_endpoint/v1/services/compute-on/testing/instances/e922e5fc-8fee-4688-ad93-c9ef5d7eb685?operation=detachIso"</span>
+
+<span class="c"># No parameters required</span>
+</code></pre>
+<p><code>POST /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/instances/:id?operation=detachIso</code></p>
+
+<p>Detach the currently attached <a href="#cloudstack-isos">ISO</a> from an instance.</p>
 <h3 id='cloudstack-templates'>Templates</h3>
 <p>A template is a virtual disk image that can be used on the creation of an <a href="#cloudstack-instances">instance</a>. It contains the operating system which can contain some predefined configuration, files and software.</p>
 <h4 id='cloudstack-list-templates'>List templates</h4><pre class="highlight shell tab-shell"><code>curl -X GET <span class="se">\</span>
@@ -3068,16 +3445,26 @@ curl -X POST <span class="se">\</span>
     </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0b3fea04-b1ed-48cf-921d-96795dfe9a81"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ubuntu"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Example template"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"defaultUsername"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cmc-user"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"size"</span><span class="p">:</span><span class="w"> </span><span class="mi">52428800</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"isPublic"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"isReady"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"isDynamicallyScalable"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"availablePublicly"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"ready"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"dynamicallyScalable"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"extractable"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
     </span><span class="s2">"sshKeyEnabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
     </span><span class="s2">"created"</span><span class="p">:</span><span class="s2">"2016-10-24 2:40:29 PM EDT"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"osType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Other (64-bit)"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"zoneId"</span><span class="p">:</span><span class="s2">"ea901007-056b-4c50-bb3a-2dd635fce2ab"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"zoneName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"zone1"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"osTypeId"</span><span class="p">:</span><span class="s2">"d38dc1d9-dd34-4fdd-8f51-a973f8fe5f3b"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"osTypeName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Other (64-bit)"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"availableInZones"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
        </span><span class="s2">"ea901007-056b-4c50-bb3a-2dd635fce2ab"</span><span class="w">
-    </span><span class="p">]</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"hypervisor"</span><span class="p">:</span><span class="w"> </span><span class="s2">"VMware"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"format"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OVA"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"nicAdapter"</span><span class="p">:</span><span class="w"> </span><span class="s2">"e1000"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"rootDiskController"</span><span class="p">:</span><span class="w"> </span><span class="s2">"scsi"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"keyboard"</span><span class="p">:</span><span class="w"> </span><span class="s2">"uk"</span><span class="w">
   </span><span class="p">}],</span><span class="w">
   </span><span class="s2">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"recordCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
@@ -3107,32 +3494,76 @@ curl -X POST <span class="se">\</span>
 <td>The description of the template</td>
 </tr>
 <tr>
+<td><code>defaultUsername</code><br/><em>string</em></td>
+<td>The default username of the template</td>
+</tr>
+<tr>
 <td><code>size</code><br/><em>long</em></td>
 <td>The size of the template in bytes</td>
 </tr>
 <tr>
-<td><code>isPublic</code><br/><em>boolean</em></td>
-<td>true if public to everyone. Your custom templates will always be private</td>
+<td><code>availablePublicly</code><br/><em>boolean</em></td>
+<td><strong>true</strong> if public to everyone. Your custom templates will always be private</td>
 </tr>
 <tr>
-<td><code>isReady</code><br/><em>boolean</em></td>
-<td>true if the template is ready to be used for a new <a href="#cloudstack-instances">instance</a></td>
+<td><code>ready</code><br/><em>boolean</em></td>
+<td><strong>true</strong> if the template is ready to be used for a new <a href="#cloudstack-instances">instance</a></td>
 </tr>
 <tr>
-<td><code>isDynamicallyScalable</code><br/><em>boolean</em></td>
-<td>true if you can dynamically scale an <a href="#cloudstack-instances">instance</a> with this template</td>
+<td><code>dynamicallyScalable</code><br/><em>boolean</em></td>
+<td><strong>true</strong> if you can dynamically scale an <a href="#cloudstack-instances">instance</a> with this template</td>
+</tr>
+<tr>
+<td><code>extractable</code><br/><em>boolean</em></td>
+<td><strong>true</strong> if you want the template to be downloadable from a generated URL</td>
 </tr>
 <tr>
 <td><code>created</code><br/><em>string</em></td>
 <td>The creation date of the template</td>
 </tr>
 <tr>
-<td><code>osType</code><br/><em>string</em></td>
+<td><code>osTypeId</code><br/><em>UUID</em></td>
+<td>Id of the OS type</td>
+</tr>
+<tr>
+<td><code>osTypeName</code><br/><em>string</em></td>
 <td>The OS type of the template (e.g. Ubuntu, CentOS...)</td>
+</tr>
+<tr>
+<td><code>sshEnabled</code><br/><em>boolean</em></td>
+<td><strong>false</strong> if you want to enable sshKey for the template</td>
+</tr>
+<tr>
+<td><code>zoneId</code><br/><em>UUID</em></td>
+<td>The <a href="#cloudstack-zones">zone id</a> that the template is available in. Empty if available in multiple zones</td>
+</tr>
+<tr>
+<td><code>zoneName</code><br/><em>string</em></td>
+<td>The <a href="#cloudstack-zones">zone id</a> that the template is available in. Empty if available in multiple zones</td>
 </tr>
 <tr>
 <td><code>availableInZones</code><br/><em>array[UUID]</em></td>
 <td>List of all <a href="#cloudstack-zones">zone ids</a> that the template is available in</td>
+</tr>
+<tr>
+<td><code>hypervisor</code><br><em>string</em></td>
+<td>The name of the hypervisor</td>
+</tr>
+<tr>
+<td><code>format</code><br><em>string</em></td>
+<td>The template format for the chosen hypervisor</td>
+</tr>
+<tr>
+<td><code>nicAdapter</code><br><em>string</em></td>
+<td><code>VMWare only</code> The network interface controller name. Empty if not selected.<br><em>Values</em>: e1000, pcnet32, vmxnet2 or vmxnet3.</td>
+</tr>
+<tr>
+<td><code>rootDiskController</code><br><em>string</em></td>
+<td><code>VMWare only</code> The root disk controller name. Empty if not selected.<br><em>Values</em>: ide, scsi for CloudStack version up to 4.4.<br><em>Values</em>: ide, scsi, osdefault, pvscsi, lsilogic, lsisas1068, buslogic for CloudStack version 4.5 and up.</td>
+</tr>
+<tr>
+<td><code>keyboard</code><br><em>string</em></td>
+<td><code>VMWare only</code> The keyboard type name. Empty if not selected.<br><em>Values</em>: us, uk, jp, sc.</td>
 </tr>
 </tbody></table>
 <h4 id='cloudstack-retrieve-a-template'>Retrieve a template</h4><pre class="highlight shell tab-shell"><code>curl -X GET <span class="se">\</span>
@@ -3145,16 +3576,26 @@ curl -X POST <span class="se">\</span>
     </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0b3fea04-b1ed-48cf-921d-96795dfe9a81"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ubuntu"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Example template"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"defaultUsername"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cmc-user"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"size"</span><span class="p">:</span><span class="w"> </span><span class="mi">52428800</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"isPublic"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"isReady"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"isDynamicallyScalable"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"availablePublicly"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"ready"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"dynamicallyScalable"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"extractable"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
     </span><span class="s2">"sshKeyEnabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
     </span><span class="s2">"created"</span><span class="p">:</span><span class="s2">"2016-10-24 2:40:29 PM EDT"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"osType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Other (64-bit)"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"zoneId"</span><span class="p">:</span><span class="s2">"ea901007-056b-4c50-bb3a-2dd635fce2ab"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"zoneName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"zone1"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"osTypeId"</span><span class="p">:</span><span class="s2">"d38dc1d9-dd34-4fdd-8f51-a973f8fe5f3b"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"osTypeName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Other (64-bit)"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"availableInZones"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
        </span><span class="s2">"ea901007-056b-4c50-bb3a-2dd635fce2ab"</span><span class="w">
-    </span><span class="p">]</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"hypervisor"</span><span class="p">:</span><span class="w"> </span><span class="s2">"VMware"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"format"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OVA"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"nicAdapter"</span><span class="p">:</span><span class="w"> </span><span class="s2">"e1000"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"rootDiskController"</span><span class="p">:</span><span class="w"> </span><span class="s2">"scsi"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"keyboard"</span><span class="p">:</span><span class="w"> </span><span class="s2">"uk"</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
@@ -3181,34 +3622,557 @@ curl -X POST <span class="se">\</span>
 <td>The description of the template</td>
 </tr>
 <tr>
+<td><code>defaultUsername</code><br/><em>string</em></td>
+<td>The default username of the template</td>
+</tr>
+<tr>
 <td><code>size</code><br/><em>long</em></td>
 <td>The size of the template in bytes</td>
 </tr>
 <tr>
-<td><code>isPublic</code><br/><em>boolean</em></td>
-<td>true if public to everyone. Your custom templates will always be private</td>
+<td><code>availablePublicly</code><br/><em>boolean</em></td>
+<td><strong>true</strong> if public to everyone. Your custom templates will always be private</td>
 </tr>
 <tr>
-<td><code>isReady</code><br/><em>boolean</em></td>
-<td>true if the template is ready to be used for a new <a href="#cloudstack-instances">instance</a></td>
+<td><code>ready</code><br/><em>boolean</em></td>
+<td><strong>true</strong> if the template is ready to be used for a new <a href="#cloudstack-instances">instance</a></td>
 </tr>
 <tr>
-<td><code>isDynamicallyScalable</code><br/><em>boolean</em></td>
-<td>true if you can dynamically scale an <a href="#cloudstack-instances">instance</a> with this template</td>
+<td><code>dynamicallyScalable</code><br/><em>boolean</em></td>
+<td><strong>true</strong> if you can dynamically scale an <a href="#cloudstack-instances">instance</a> with this template</td>
+</tr>
+<tr>
+<td><code>extractable</code><br/><em>boolean</em></td>
+<td><strong>true</strong> if you want the template to be downloadable from a generated URL</td>
 </tr>
 <tr>
 <td><code>created</code><br/><em>string</em></td>
 <td>The creation date of the template</td>
 </tr>
 <tr>
-<td><code>osType</code><br/><em>string</em></td>
+<td><code>osTypeId</code><br/><em>UUID</em></td>
+<td>Id of the OS type</td>
+</tr>
+<tr>
+<td><code>osTypeName</code><br/><em>string</em></td>
 <td>The OS type of the template (e.g. Ubuntu, CentOS...)</td>
+</tr>
+<tr>
+<td><code>sshEnabled</code><br/><em>boolean</em></td>
+<td><strong>false</strong> if you want to enable sshKey for the template</td>
+</tr>
+<tr>
+<td><code>zoneId</code><br/><em>UUID</em></td>
+<td>The <a href="#cloudstack-zones">zone id</a> that the template is available in. Empty if available in multiple zones</td>
+</tr>
+<tr>
+<td><code>zoneName</code><br/><em>string</em></td>
+<td>The <a href="#cloudstack-zones">zone id</a> that the template is available in. Empty if available in multiple zones</td>
 </tr>
 <tr>
 <td><code>availableInZones</code><br/><em>array[UUID]</em></td>
 <td>List of all <a href="#cloudstack-zones">zone ids</a> that the template is available in</td>
 </tr>
+<tr>
+<td><code>hypervisor</code><br><em>string</em></td>
+<td>The name of the hypervisor</td>
+</tr>
+<tr>
+<td><code>format</code><br><em>string</em></td>
+<td>The template format for the chosen hypervisor</td>
+</tr>
+<tr>
+<td><code>nicAdapter</code><br><em>string</em></td>
+<td><code>VMWare only</code> The network interface controller name. Empty if not selected.<br><em>Values</em>: e1000, pcnet32, vmxnet2 or vmxnet3</td>
+</tr>
+<tr>
+<td><code>rootDiskController</code><br><em>string</em></td>
+<td><code>VMWare only</code> The root disk controller name. Empty if not selected.<br><em>Values</em>: ide, scsi for CloudStack version up to 4.4.<br><em>Values</em>: ide, scsi, osdefault, pvscsi, lsilogic, lsisas1068, buslogic for CloudStack version 4.5 and up</td>
+</tr>
+<tr>
+<td><code>keyboard</code><br><em>string</em></td>
+<td><code>VMWare only</code> The keyboard type name. Empty if not selected.<br><em>Values</em>: us, uk, jp, sc</td>
+</tr>
 </tbody></table>
+<h4 id='cloudstack-import-a-template'>Import a template</h4><pre class="highlight shell tab-shell"><code>curl -X POST <span class="se">\</span>
+   -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+   -H <span class="s2">"MC-Api-Key: your_api_key"</span> <span class="se">\</span>
+   -d <span class="s2">"request_body"</span> <span class="se">\</span>
+   <span class="s2">"https://cloudmc_endpoint/v1/services/compute-on/test_area/templates"</span>
+
+<span class="c"># Request should look like this</span>
+</code></pre><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"debian"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"description"</span><span class="p">:</span><span class="s2">"This is my template"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"url"</span><span class="p">:</span><span class="s2">"http://somewhere.com/template-vmware.ova"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"hypervisor"</span><span class="p">:</span><span class="s2">"VMWare"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"format"</span><span class="p">:</span><span class="s2">"OVA"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"keyboard"</span><span class="p">:</span><span class="s2">"us"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"nicAdapter"</span><span class="p">:</span><span class="s2">"vmxnet3"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"osTypeId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"53161a9c-6019-11e7-914a-0200246f00c5"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"osTypeName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Debian GNU/Linux 7(64-bit)"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"zoneId"</span><span class="p">:</span><span class="s2">"e2cf7fa0-c3c2-4a39-9f8d-ee01ac3546cd"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><code>POST /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/templates</code></p>
+
+<p>Import a template</p>
+
+<table><thead>
+<tr>
+<th>Required</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>name</code><br/><em>string</em></td>
+<td>The name of the template</td>
+</tr>
+<tr>
+<td><code>description</code><br/><em>string</em></td>
+<td>The description of the template</td>
+</tr>
+<tr>
+<td><code>url</code><br/><em>string</em></td>
+<td>The URL where the template is hosted. Both <code>http</code> and <code>https</code> URLs are supported</td>
+</tr>
+<tr>
+<td><code>zoneId</code><br/><em>UUID</em></td>
+<td>The zone where it will be available. If there is only 1 zone, the field is optional</td>
+</tr>
+<tr>
+<td><code>hypervisor</code><br><em>string</em></td>
+<td>The name of the hypervisor</td>
+</tr>
+<tr>
+<td><code>format</code><br><em>string</em></td>
+<td>The template format for the chosen hypervisor</td>
+</tr>
+<tr>
+<td><code>osTypeId</code><br/><em>UUID</em></td>
+<td>Id of the OS type</td>
+</tr>
+<tr>
+<td><code>osTypeName</code><br/><em>string</em></td>
+<td>The OS type of the template (e.g. Ubuntu, CentOS...)</td>
+</tr>
+</tbody></table>
+
+<table><thead>
+<tr>
+<th>Optional</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>defaultUsername</code><br/><em>string</em></td>
+<td>The default username of the template</td>
+</tr>
+<tr>
+<td><code>size</code><br/><em>long</em></td>
+<td>The size of the template in bytes</td>
+</tr>
+<tr>
+<td><code>availablePublicly</code><br/><em>boolean</em></td>
+<td><strong>true</strong> if public to everyone. Your custom templates will always be private</td>
+</tr>
+<tr>
+<td><code>dynamicallyScalable</code><br/><em>boolean</em></td>
+<td><strong>true</strong> if you can dynamically scale an <a href="#cloudstack-instances">instance</a> with this template</td>
+</tr>
+<tr>
+<td><code>extractable</code><br/><em>boolean</em></td>
+<td><strong>true</strong> if you want the template to be downloadable from a generated URL</td>
+</tr>
+<tr>
+<td><code>nicAdapter</code><br><em>string</em></td>
+<td><code>VMWare only</code> The network interface controller name. Empty if not selected.<br><em>Values</em>: e1000, pcnet32, vmxnet2 or vmxnet3</td>
+</tr>
+<tr>
+<td><code>rootDiskController</code><br><em>string</em></td>
+<td><code>VMWare only</code> The root disk controller name. Empty if not selected.<br><em>Values</em>: ide, scsi for CloudStack version up to 4.4.<br><em>Values</em>: ide, scsi, osdefault, pvscsi, lsilogic, lsisas1068, buslogic for CloudStack version 4.5 and up</td>
+</tr>
+<tr>
+<td><code>keyboard</code><br><em>string</em></td>
+<td><code>VMWare only</code> The keyboard type name. Empty if not selected.<br><em>Values</em>: us, uk, jp, sc</td>
+</tr>
+<tr>
+<td><code>passwordEnabled</code><br/><em>boolean</em></td>
+<td><strong>false</strong> if want to set the reset password feature</td>
+</tr>
+<tr>
+<td><code>sshEnabled</code><br/><em>boolean</em></td>
+<td><strong>false</strong> if you want to enable sshKey for the template</td>
+</tr>
+</tbody></table>
+<h4 id='cloudstack-update-a-template'>Update a template</h4><pre class="highlight shell tab-shell"><code>curl -X POST <span class="se">\</span>
+   -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+   -H <span class="s2">"MC-Api-Key: your_api_key"</span> <span class="se">\</span>
+   -d <span class="s2">"request_body"</span> <span class="se">\</span>
+   <span class="s2">"https://cloudmc_endpoint/v1/services/compute-on/test_area/templates/162cdfcb-45e5-4aa6-81c4-124c94621bdb?operation=update"</span>
+
+<span class="c"># Request should look like this</span>
+</code></pre><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"description"</span><span class="p">:</span><span class="s2">"This is my updated template description"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><code>POST /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/templates/:id/operation=update</code></p>
+
+<p>Update a template</p>
+
+<table><thead>
+<tr>
+<th>Required</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>name</code><br/><em>string</em></td>
+<td>The name of the template</td>
+</tr>
+<tr>
+<td><code>description</code><br/><em>string</em></td>
+<td>The description of the template</td>
+</tr>
+</tbody></table>
+
+<table><thead>
+<tr>
+<th>Optional</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>format</code><br><em>string</em></td>
+<td>The template format for the chosen hypervisor</td>
+</tr>
+<tr>
+<td><code>osTypeId</code><br/><em>UUID</em></td>
+<td>Id of the OS type</td>
+</tr>
+<tr>
+<td><code>passwordEnabled</code><br/><em>boolean</em></td>
+<td><strong>false</strong> if want to set the reset password feature</td>
+</tr>
+<tr>
+<td><code>sshEnabled</code><br/><em>boolean</em></td>
+<td><strong>false</strong> if you want to enable sshKey for the template</td>
+</tr>
+<tr>
+<td><code>defaultUsername</code><br/><em>string</em></td>
+<td>The default username of the template</td>
+</tr>
+<tr>
+<td><code>dynamicallyScalable</code><br/><em>boolean</em></td>
+<td><strong>true</strong> if you can dynamically scale an <a href="#cloudstack-instances">instance</a> with this template</td>
+</tr>
+<tr>
+<td><code>nicAdapter</code><br><em>string</em></td>
+<td><code>VMWare only</code> The network interface controller name. Empty if not selected.<br><em>Values</em>: e1000, pcnet32, vmxnet2 or vmxnet3</td>
+</tr>
+<tr>
+<td><code>rootDiskController</code><br><em>string</em></td>
+<td><code>VMWare only</code> The root disk controller name. Empty if not selected.<br><em>Values</em>: ide, scsi for CloudStack version up to 4.4.<br><em>Values</em>: ide, scsi, osdefault, pvscsi, lsilogic, lsisas1068, buslogic for CloudStack version 4.5 and up</td>
+</tr>
+<tr>
+<td><code>keyboard</code><br><em>string</em></td>
+<td><code>VMWare only</code> The keyboard type name. Empty if not selected.<br><em>Values</em>: us, uk, jp, sc</td>
+</tr>
+</tbody></table>
+<h4 id='cloudstack-delete-a-template'>Delete a template</h4><pre class="highlight shell tab-shell"><code>curl -X DELETE <span class="se">\</span>
+   -H <span class="s2">"MC-Api-Key: your_api_key"</span> <span class="se">\</span>
+<span class="s2">"https://cloudmc_endpoint/v1/services/compute-on/test_area/templates/162cdfcb-45e5-4aa6-81c4-124c94621bdb"</span>
+</code></pre>
+<p><code>DELETE /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/templates/:id</code></p>
+
+<p>Delete a private template</p>
+<h3 id='cloudstack-isos'>ISOs</h3>
+<p>An ISO is a disk image that is a copy of a file system. A bootable ISO can be used to create an <a href="#cloudstack-instances">instance</a>. Otherwise, an ISO may be attached to an existing instance.</p>
+<h4 id='cloudstack-list-isos'>List ISOs</h4><pre class="highlight shell tab-shell"><code>curl -X GET <span class="se">\</span>
+   -H <span class="s2">"MC-Api-Key: your_api_key"</span> <span class="se">\</span>
+   <span class="s2">"https://cloudmc_endpoint/v1/services/compute-on/test_area/isos"</span>
+
+<span class="c"># Example:</span>
+</code></pre><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0b3fea04-b1ed-48cf-921d-96795dfe9a81"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ubuntu"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Example ISO"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"architectureWidth"</span><span class="p">:</span><span class="w"> </span><span class="mi">64</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"size"</span><span class="p">:</span><span class="w"> </span><span class="mi">52428800</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"ready"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"bootable"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"availablePublicly"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"extractable"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"osTypeId"</span><span class="p">:</span><span class="s2">"d38dc1d9-dd34-4fdd-8f51-a973f8fe5f3b"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"osTypeName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Other (64-bit)"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"zoneId"</span><span class="p">:</span><span class="s2">"ea901007-056b-4c50-bb3a-2dd635fce2ab"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"zoneName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"zone1"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-12-21 4:41:33 PM Z"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"availableInZones"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"ea901007-056b-4c50-bb3a-2dd635fce2ab"</span><span class="p">]</span><span class="w">
+  </span><span class="p">}],</span><span class="w">
+  </span><span class="s2">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"recordCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><code>GET /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/isos</code></p>
+
+<p>Retrieve a list of all ISOs of an <a href="#administration-environments">environment</a></p>
+
+<table><thead>
+<tr>
+<th>Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code><br/><em>UUID</em></td>
+<td>The id of the ISO</td>
+</tr>
+<tr>
+<td><code>name</code><br/><em>string</em></td>
+<td>The name of the ISO</td>
+</tr>
+<tr>
+<td><code>description</code><br/><em>string</em></td>
+<td>The description of the ISO</td>
+</tr>
+<tr>
+<td><code>architectureWidth</code><br/><em>string</em></td>
+<td>Number of bits</td>
+</tr>
+<tr>
+<td><code>size</code><br/><em>long</em></td>
+<td>The size of the ISO in bytes</td>
+</tr>
+<tr>
+<td><code>ready</code><br/><em>boolean</em></td>
+<td>true if the ISO is ready to be used</td>
+</tr>
+<tr>
+<td><code>bootable</code><br/><em>boolean</em></td>
+<td>true if the ISO can be used for a new <a href="#cloudstack-instances">instance</a></td>
+</tr>
+<tr>
+<td><code>osTypeId</code><br/><em>UUID</em></td>
+<td>Id of th OS type</td>
+</tr>
+<tr>
+<td><code>osTypeName</code><br/><em>string</em></td>
+<td>The OS type of the ISO (e.g. Ubuntu, CentOS...)</td>
+</tr>
+<tr>
+<td><code>zoneId</code><br/><em>UUID</em></td>
+<td>The <a href="#cloudstack-zones">zone id</a> that the ISO is available in. Empty if available in multiple zones</td>
+</tr>
+<tr>
+<td><code>zoneName</code><br/><em>string</em></td>
+<td>The <a href="#cloudstack-zones">zone id</a> that the ISO is available in. Empty if available in multiple zones</td>
+</tr>
+<tr>
+<td><code>created</code><br/><em>string</em></td>
+<td>The date the template was created</td>
+</tr>
+<tr>
+<td><code>availableInZones</code><br/><em>List[String]</em></td>
+<td>The list of <a href="#cloudstack-zones">zone ids</a>  that the ISO is available in</td>
+</tr>
+</tbody></table>
+<h4 id='cloudstack-retrieve-a-iso'>Retrieve a ISO</h4><pre class="highlight shell tab-shell"><code>curl -X GET <span class="se">\</span>
+   -H <span class="s2">"MC-Api-Key: your_api_key"</span> <span class="se">\</span>
+<span class="s2">"https://cloudmc_endpoint/v1/services/compute-on/test_area/isos/162cdfcb-45e5-4aa6-81c4-124c94621bdb"</span>
+
+<span class="c"># Example:</span>
+</code></pre><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0b3fea04-b1ed-48cf-921d-96795dfe9a81"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ubuntu"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Example ISO"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"architectureWidth"</span><span class="p">:</span><span class="w"> </span><span class="mi">64</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"size"</span><span class="p">:</span><span class="w"> </span><span class="mi">52428800</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"ready"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"bootable"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"availablePublicly"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"extractable"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"osTypeId"</span><span class="p">:</span><span class="s2">"d38dc1d9-dd34-4fdd-8f51-a973f8fe5f3b"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"osTypeName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Other (64-bit)"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"zoneId"</span><span class="p">:</span><span class="s2">"ea901007-056b-4c50-bb3a-2dd635fce2ab"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"zoneName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"zone1"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-12-21 4:41:33 PM Z"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"availableInZones"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"ea901007-056b-4c50-bb3a-2dd635fce2ab"</span><span class="p">]</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><code>GET /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/isos/:id</code></p>
+
+<p>Retrieve information about a public or private ISO of an <a href="#administration-environments">environment</a></p>
+
+<table><thead>
+<tr>
+<th>Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code><br/><em>UUID</em></td>
+<td>The id of the ISO</td>
+</tr>
+<tr>
+<td><code>name</code><br/><em>string</em></td>
+<td>The name of the ISO</td>
+</tr>
+<tr>
+<td><code>description</code><br/><em>string</em></td>
+<td>The description of the ISO</td>
+</tr>
+<tr>
+<td><code>architectureWidth</code><br/><em>string</em></td>
+<td>Number of bits</td>
+</tr>
+<tr>
+<td><code>size</code><br/><em>long</em></td>
+<td>The size of the ISO in bytes</td>
+</tr>
+<tr>
+<td><code>ready</code><br/><em>boolean</em></td>
+<td>true if the ISO is ready to be used</td>
+</tr>
+<tr>
+<td><code>bootable</code><br/><em>boolean</em></td>
+<td>true if the ISO can be used for a new <a href="#cloudstack-instances">instance</a></td>
+</tr>
+<tr>
+<td><code>extractable</code><br/><em>boolean</em></td>
+<td>true if the template allows download from a generated URL</td>
+</tr>
+<tr>
+<td><code>osTypeId</code><br/><em>UUID</em></td>
+<td>Id of th OS type</td>
+</tr>
+<tr>
+<td><code>osTypeName</code><br/><em>string</em></td>
+<td>The OS type of the ISO (e.g. Ubuntu, CentOS...)</td>
+</tr>
+<tr>
+<td><code>zoneId</code><br/><em>UUID</em></td>
+<td>The <a href="#cloudstack-zones">zone id</a> that the ISO is available in. Empty if available in multiple zones</td>
+</tr>
+<tr>
+<td><code>zoneName</code><br/><em>string</em></td>
+<td>The <a href="#cloudstack-zones">zone id</a> that the ISO is available in. Empty if available in multiple zones</td>
+</tr>
+<tr>
+<td><code>created</code><br/><em>string</em></td>
+<td>The date the template was created</td>
+</tr>
+<tr>
+<td><code>availableInZones</code><br/><em>List[String]</em></td>
+<td>The list of <a href="#cloudstack-zones">zone ids</a>  that the ISO is available in</td>
+</tr>
+</tbody></table>
+<h4 id='cloudstack-import-iso'>Import ISO</h4><pre class="highlight shell tab-shell"><code>curl -X POST <span class="se">\</span>
+   -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+   -H <span class="s2">"MC-Api-Key: your_api_key"</span> <span class="se">\</span>
+   -d <span class="s2">"request_body"</span> <span class="se">\</span>
+   <span class="s2">"https://cloudmc_endpoint/v1/services/compute-on/test_area/isos"</span>
+
+<span class="c"># Request should look like this</span>
+</code></pre><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+   </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"windows"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"description"</span><span class="p">:</span><span class="s2">"This is my ISO"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"url"</span><span class="p">:</span><span class="s2">"http://somewhere.com/somefile.iso"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"zoneId"</span><span class="p">:</span><span class="s2">"d342520b-94aa-4e44-b066-6c18c9e4d65b"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><code>POST /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/isos</code></p>
+
+<p>Import an ISO</p>
+
+<table><thead>
+<tr>
+<th>Required</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>name</code><br/><em>string</em></td>
+<td>The name of the ISO</td>
+</tr>
+<tr>
+<td><code>description</code><br/><em>string</em></td>
+<td>The description of the ISO</td>
+</tr>
+<tr>
+<td><code>url</code><br/><em>string</em></td>
+<td>The URL where the ISO is hosted. N.B. only <code>http</code> protocol is supported</td>
+</tr>
+<tr>
+<td><code>zoneId</code><br/><em>UUID</em></td>
+<td>The zone where it will be available. If there is only 1 zone, the field is optional</td>
+</tr>
+</tbody></table>
+
+<table><thead>
+<tr>
+<th>Optional</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>bootable</code><br/><em>boolean</em></td>
+<td>Indicates if the ISO is bootable or not. If provided, the <code>osTypeId</code> must be provided.</td>
+</tr>
+<tr>
+<td><code>osTypeId</code><br/><em>UUID</em></td>
+<td>The OS type of the image. Must only be provided if <code>bootable</code> is <code>true</code>.</td>
+</tr>
+</tbody></table>
+<h4 id='cloudstack-attach-an-iso-to-an-instance'>Attach an ISO to an instance</h4><pre class="highlight shell tab-shell"><code>curl -X POST <span class="se">\</span>
+   -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+   -H <span class="s2">"MC-Api-Key: your_api_key"</span> <span class="se">\</span>
+   -d <span class="s2">"request_body"</span> <span class="se">\</span>
+   <span class="s2">"https://cloudmc_endpoint/v1/services/compute-on/testing/isos/e922e5fc-8fee-4688-ad93-c9ef5d7eb685?operation=attach"</span>
+
+<span class="c"># Request should look like this</span>
+</code></pre><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+   </span><span class="s2">"instanceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c043e651-8b3f-4941-b47f-5ecb77f3423b"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><code>POST /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/isos/:id?operation=attach</code></p>
+
+<p>Attach an existing, non-bootable ISO to an <a href="#cloudstack-instances">instance</a>. Each instance may have only one ISO attached at a time.</p>
+
+<table><thead>
+<tr>
+<th>Required</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>instanceId</code><br/><em>UUID</em></td>
+<td>The id of the instance to which the ISO will be attached</td>
+</tr>
+</tbody></table>
+<h4 id='cloudstack-detach-the-iso-from-an-instance'>Detach the ISO from an instance</h4>
+<p>See the <a href="#cloudstack-instances-detach-iso-from-instance"><em>Detach the ISO from an instance</em> endpoint</a> under <em>Instances</em>.</p>
+<h4 id='cloudstack-generate-a-download-url-for-an-iso'>Generate a download URL for an ISO</h4><pre class="highlight shell tab-shell"><code>curl -X POST <span class="se">\</span>
+   -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+   -H <span class="s2">"MC-Api-Key: your_api_key"</span> <span class="se">\</span>
+   <span class="s2">"https://cloudmc_endpoint/v1/services/compute-on/testing/isos/e922e5fc-8fee-4688-ad93-c9ef5d7eb685?operation=generateDownloadUrl"</span>
+
+<span class="c"># No parameters required</span>
+</code></pre>
+<p><code>POST /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/isos/:id?operation=generateDownloadUrl</code></p>
+
+<p>Generate a URL that can be used to download an extractable ISO. The URL may also be used to import the ISO into another region. To be able to generate the download URL, the ISO must have been imported with the <code>extractable</code> flag set to <code>true</code>. The download URL will be placed in the <code>url</code> field of the task result.</p>
+<h4 id='cloudstack-delete-an-iso'>Delete an ISO</h4><pre class="highlight shell tab-shell"><code>curl -X DELETE <span class="se">\</span>
+   -H <span class="s2">"MC-Api-Key: your_api_key"</span> <span class="se">\</span>
+   <span class="s2">"https://cloudmc_endpoint/v1/services/compute-on/test_area/isos/84fc07a8-c6a3-4538-b493-11ce69ea3c88"</span>
+</code></pre>
+<p><code>DELETE /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/isos/:id</code></p>
+
+<p>Delete an ISO</p>
 <h3 id='cloudstack-ssh-keys'>SSH keys</h3>
 <p>SSH keys can be assigned to default users of instances by using the <a href="#cloudstack-associate-an-ssh-key-to-an-instance">associate SSH key</a> operation.</p>
 
@@ -4038,6 +5002,26 @@ curl -X POST <span class="se">\</span>
 </tr>
 </tbody></table>
 
+<table><thead>
+<tr>
+<th>For isolated networks</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>netmask</code><br/><em>string</em></td>
+<td>The netmask to use for this network. e.g. 255.255.255.0</td>
+</tr>
+<tr>
+<td><code>gateway</code><br/><em>string</em></td>
+<td>The network&#39;s gateway. e.g. 10.0.0.1</td>
+</tr>
+</tbody></table>
+
+<aside class="notice">
+  Note that netmask and gateway are optional, but they must either both be omitted, or both be provided.
+</aside>
+
 <!-------------------- UPDATE A NETWORK -------------------->
 <h4 id='cloudstack-update-a-network'>Update a network</h4><pre class="highlight shell tab-shell"><code>
 <span class="c"># Example:</span>
@@ -4275,6 +5259,7 @@ curl -X POST <span class="se">\</span>
       </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3247167a-e7e7-11e3-9187-06669c0000ad"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"networkAclId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3246de94-e7e7-11e3-9187-06669c0000ad"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"ruleNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"description"</span><span class="p">:</span><span class="s2">"Allow all egress"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"cidr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0.0.0/0"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"action"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Allow"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"protocol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ALL"</span><span class="p">,</span><span class="w">
@@ -4285,6 +5270,7 @@ curl -X POST <span class="se">\</span>
       </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3246fdb6-e7e7-11e3-9187-06669c0000ad"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"networkAclId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3246de94-e7e7-11e3-9187-06669c0000ad"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"ruleNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"description"</span><span class="p">:</span><span class="s2">"Allow all ingress"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"cidr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0.0.0/0"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"action"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Allow"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"protocol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ALL"</span><span class="p">,</span><span class="w">
@@ -4339,6 +5325,10 @@ curl -X POST <span class="se">\</span>
 <td><code>state</code><br/><em>string</em></td>
 <td>The state of this rule. Either Active or Inactive</td>
 </tr>
+<tr>
+<td><code>description</code><br/><em>string</em></td>
+<td>The description of the rule</td>
+</tr>
 </tbody></table>
 
 <table><thead>
@@ -4360,6 +5350,7 @@ curl -X POST <span class="se">\</span>
     </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3247167a-e7e7-11e3-9187-06669c0000ad"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"networkAclId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3246de94-e7e7-11e3-9187-06669c0000ad"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"ruleNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"description"</span><span class="p">:</span><span class="s2">"Allow all egress"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"cidr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0.0.0/0"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"action"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Allow"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"protocol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ALL"</span><span class="p">,</span><span class="w">
@@ -4407,6 +5398,10 @@ curl -X POST <span class="se">\</span>
 <tr>
 <td><code>state</code><br/><em>string</em></td>
 <td>The state of this rule. Either Active or Inactive</td>
+</tr>
+<tr>
+<td><code>description</code><br/><em>string</em></td>
+<td>The description of the rule</td>
 </tr>
 </tbody></table>
 <h4 id='cloudstack-create-a-network-acl-rule'>Create a network ACL rule</h4><pre class="highlight shell tab-shell"><code>curl -X POST <span class="se">\</span>
@@ -4476,6 +5471,18 @@ For rules with protocol <code>ALL</code>, no protocol-specific information is re
 <td>ICMP message error code. Required if the protocol is ICMP</td>
 </tr>
 </tbody></table>
+
+<table><thead>
+<tr>
+<th>Optional</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>description</code><br/><em>string</em></td>
+<td>The description of the rule</td>
+</tr>
+</tbody></table>
 <h4 id='cloudstack-update-a-network-acl-rule'>Update a network ACL rule</h4><pre class="highlight shell tab-shell"><code>curl -X PUT <span class="se">\</span>
    -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
    -H <span class="s2">"MC-Api-Key: your_api_key"</span> <span class="se">\</span>
@@ -4503,6 +5510,10 @@ A rule's protocol can only be changed from TCP to UDP or vice versa.
 <tr>
 <td><code>cidr</code><br/><em>CIDR</em></td>
 <td>The network addresses targeted by this rule</td>
+</tr>
+<tr>
+<td><code>description</code><br/><em>string</em></td>
+<td>The description of the rule</td>
 </tr>
 <tr>
 <td><code>action</code><br/><em>string</em></td>
@@ -5562,6 +6573,521 @@ curl -X DELETE <span class="se">\</span>
 <p><code>DELETE /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/loadbalancerrules/:id</code></p>
 
 <p>Delete a load balancer rule.</p>
+<h3 id='cloudstack-ingress-rules'>Ingress rules</h3>
+<p>Manage inbound traffic rules for isolated networks.</p>
+<h4 id='cloudstack-list-ingress-rules'>List ingress rules</h4><pre class="highlight shell tab-shell"><code>curl -H <span class="s2">"MC-Api-Key: your_api_key"</span> <span class="se">\</span>
+   <span class="s2">"https://cloudmc_endpoint/v1/services/compute-on/test_area/ingressrules"</span>
+
+<span class="c"># Response example:</span>
+</code></pre><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+       </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"f6c7f86f-1e28-42fd-804f-0416a201a778"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"networkId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"858d3ab6-04c9-43ef-9e83-07f28df59323"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"publicIp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"172.31.3.202"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"publicIpId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"44ebac5d-18cc-4eea-ab59-7a2af0691c88"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"sourceCidr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10.2.1.0/25"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"protocol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TCP"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"startPort"</span><span class="p">:</span><span class="w"> </span><span class="s2">"80"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"endPort"</span><span class="p">:</span><span class="w"> </span><span class="s2">"90"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Active"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"f1863d10-e7ec-4f17-8cdd-0e4046643b0b"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"networkId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"858d3ab6-04c9-43ef-9e83-07f28df59323"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"publicIp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"172.31.3.202"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"publicIpId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"44ebac5d-18cc-4eea-ab59-7a2af0691c88"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"sourceCidr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10.2.1.0/24"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"protocol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"UDP"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"startPort"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"endPort"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Active"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d860f2e7-ad15-4cb0-8477-6aa439245d1f"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"networkId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"858d3ab6-04c9-43ef-9e83-07f28df59323"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"publicIp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"172.31.3.202"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"publicIpId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"44ebac5d-18cc-4eea-ab59-7a2af0691c88"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"sourceCidr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10.2.1.0/24"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"protocol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ICMP"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"icmpType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"icmpCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Active"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"recordCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><code>GET /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/ingressrules</code></p>
+
+<p>List ingress rules.</p>
+
+<table><thead>
+<tr>
+<th>Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code><br/><em>UUID</em></td>
+<td>The id of the ingress rule</td>
+</tr>
+<tr>
+<td><code>networkId</code><br/><em>string</em></td>
+<td>The id of the isolated network the rule applies to</td>
+</tr>
+<tr>
+<td><code>publicIp</code><br/><em>string</em></td>
+<td>The <a href="#cloudstack-public-ips">public IP</a> of this ingress rule</td>
+</tr>
+<tr>
+<td><code>publicIpId</code><br/><em>UUID</em></td>
+<td>The id of the <a href="#cloudstack-public-ips">public IP</a> of this ingress rule</td>
+</tr>
+<tr>
+<td><code>sourceCidr</code><br/><em>string</em></td>
+<td>The source cidr</td>
+</tr>
+<tr>
+<td><code>protocol</code><br/><em>string</em></td>
+<td>The protocol the rule applies to. <br/><em>Possible values:</em> <code>TCP</code>, <code>UDP</code>, <code>ICMP</code></td>
+</tr>
+<tr>
+<td><code>startPort</code><br/><em>string</em></td>
+<td>The start port (for TCP/UDP protocols only). Can be empty for all ports.</td>
+</tr>
+<tr>
+<td><code>endPort</code><br/><em>string</em></td>
+<td>The end port (for TCP/UDP protocols only). Can be empty to match the start port value.</td>
+</tr>
+<tr>
+<td><code>icmpType</code><br/><em>string</em></td>
+<td>The ICMP type (for ICMP protocol only)</td>
+</tr>
+<tr>
+<td><code>icmpCode</code><br/><em>string</em></td>
+<td>The ICMP code (for ICMP protocol only)</td>
+</tr>
+<tr>
+<td><code>state</code><br/><em>string</em></td>
+<td>The state.<br/><em>Possible values:</em> <code>Active</code>, <code>Inactive</code></td>
+</tr>
+</tbody></table>
+
+<table><thead>
+<tr>
+<th>Query Parameters</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>network_id</code><br/><em>UUID</em></td>
+<td>Filter the list to only retrieve the ingress rules of a specific <a href="#cloudstack-networks">Network</a></td>
+</tr>
+<tr>
+<td><code>public_ip_id</code><br/><em>UUID</em></td>
+<td>Filter the list to only retrieve the ingress rules of a specific <a href="#cloudstack-public-ips">public IP</a></td>
+</tr>
+</tbody></table>
+<h4 id='cloudstack-retrieve-a-specific-ingress-rule'>Retrieve a specific ingress rule</h4><pre class="highlight shell tab-shell"><code>curl -H <span class="s2">"MC-Api-Key: your_api_key"</span> <span class="se">\</span>
+   <span class="s2">"https://cloudmc_endpoint/v1/services/compute-on/test_area/ingressrules/f1863d10-e7ec-4f17-8cdd-0e4046643b0b"</span>
+
+<span class="c"># Response example:</span>
+</code></pre><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"f1863d10-e7ec-4f17-8cdd-0e4046643b0b"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"networkId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"858d3ab6-04c9-43ef-9e83-07f28df59323"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"publicIp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"172.31.3.202"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"publicIpId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"44ebac5d-18cc-4eea-ab59-7a2af0691c88"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"sourceCidr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10.2.1.0/24"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"protocol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"UDP"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"startPort"</span><span class="p">:</span><span class="w"> </span><span class="s2">"80"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"endPort"</span><span class="p">:</span><span class="w"> </span><span class="s2">"80"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Active"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><code>GET /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/ingressrules/:id</code></p>
+
+<p>Retrieve an ingress rule by its id.</p>
+
+<table><thead>
+<tr>
+<th>Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code><br/><em>UUID</em></td>
+<td>The id of the ingress rule</td>
+</tr>
+<tr>
+<td><code>networkId</code><br/><em>string</em></td>
+<td>The id of the isolated network the rule applies to</td>
+</tr>
+<tr>
+<td><code>publicIp</code><br/><em>string</em></td>
+<td>The <a href="#cloudstack-public-ips">public IP</a> of this ingress rule</td>
+</tr>
+<tr>
+<td><code>publicIpId</code><br/><em>UUID</em></td>
+<td>The id of the <a href="#cloudstack-public-ips">public IP</a> of this ingress rule</td>
+</tr>
+<tr>
+<td><code>sourceCidr</code><br/><em>string</em></td>
+<td>The source cidr</td>
+</tr>
+<tr>
+<td><code>protocol</code><br/><em>string</em></td>
+<td>The protocol the rule applies to. <br/><em>Possible values:</em> <code>TCP</code>, <code>UDP</code>, <code>ICMP</code></td>
+</tr>
+<tr>
+<td><code>startPort</code><br/><em>string</em></td>
+<td>The start port (for TCP/UDP protocols only). Can be empty for all ports.</td>
+</tr>
+<tr>
+<td><code>endPort</code><br/><em>string</em></td>
+<td>The end port (for TCP/UDP protocols only). Can be empty to match the start port value.</td>
+</tr>
+<tr>
+<td><code>icmpType</code><br/><em>string</em></td>
+<td>The ICMP type (for ICMP protocol only)</td>
+</tr>
+<tr>
+<td><code>icmpCode</code><br/><em>string</em></td>
+<td>The ICMP code (for ICMP protocol only)</td>
+</tr>
+<tr>
+<td><code>state</code><br/><em>string</em></td>
+<td>The state.<br/><em>Possible values:</em> <code>Active</code>, <code>Inactive</code></td>
+</tr>
+</tbody></table>
+<h4 id='cloudstack-create-an-ingress-rule'>Create an ingress rule</h4><pre class="highlight shell tab-shell"><code>curl -X POST <span class="se">\</span>
+   -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+   -H <span class="s2">"MC-Api-Key: your_api_key"</span> <span class="se">\</span>
+   -d <span class="s2">"request_body"</span> <span class="se">\</span>
+   <span class="s2">"https://cloudmc_endpoint/v1/services/compute-on/test_area/ingressrules"</span>
+</code></pre>
+<p><code>POST /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/ingressrules</code></p>
+
+<table><thead>
+<tr>
+<th>Required</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>networkId</code><br/><em>string</em></td>
+<td>The id of the isolated network the rule applies to</td>
+</tr>
+<tr>
+<td><code>sourceCidr</code><br/><em>string</em></td>
+<td>The source cidr</td>
+</tr>
+<tr>
+<td><code>protocol</code><br/><em>string</em></td>
+<td>The protocols targeted by this rule (TCP, UDP, ICMP).</td>
+</tr>
+</tbody></table>
+
+<table><thead>
+<tr>
+<th>Protocol-specific</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>publicIpId</code><br/><em>UUID</em></td>
+<td>The id of the <a href="#cloudstack-public-ips">public IP</a> where the ingress be applied. If not provided, a new public IP will be acquired.</td>
+</tr>
+<tr>
+<td><code>startPort</code><br/><em>string</em></td>
+<td>The start of the port range targeted by this rule. Required if the protocol is TCP or UDP. If left empty, all ports will be opened.</td>
+</tr>
+<tr>
+<td><code>endPort</code><br/><em>string</em></td>
+<td>The end of the port range targeted by this rule. Only valid if the protocol is TCP or UDP. If left empty, it will match the startPort value.</td>
+</tr>
+<tr>
+<td><code>icmpType</code><br/><em>string</em></td>
+<td>ICMP message type. Required if the protocol is ICMP</td>
+</tr>
+<tr>
+<td><code>icmpCode</code><br/><em>string</em></td>
+<td>ICMP message error code. Required if the protocol is ICMP</td>
+</tr>
+</tbody></table>
+<h4 id='cloudstack-delete-an-ingress-rule'>Delete an ingress rule</h4><pre class="highlight shell tab-shell"><code>curl -X DELETE <span class="se">\</span>
+   -H <span class="s2">"MC-Api-Key: your_api_key"</span> <span class="se">\</span>
+   <span class="s2">"https://cloudmc_endpoint/v1/services/compute-on/test_area/ingressrules/3247167a-e7e7-11e3-9187-06669c0000ad"</span>
+</code></pre>
+<p><code>DELETE /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/ingressrules/:id</code></p>
+
+<p>Delete a specific ingress rule.</p>
+<h3 id='cloudstack-egress-rules'>Egress rules</h3>
+<p>Manage outbound traffic rules for isolated networks</p>
+<h4 id='cloudstack-list-egress-rules'>List egress rules</h4><pre class="highlight shell tab-shell"><code>curl -H <span class="s2">"MC-Api-Key: your_api_key"</span> <span class="se">\</span>
+   <span class="s2">"https://cloudmc_endpoint/v1/services/compute-on/test_area/egressrules"</span>
+
+<span class="c"># Response example:</span>
+</code></pre><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+       </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"f6c7f86f-1e28-42fd-804f-0416a201a778"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"networkId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"858d3ab6-04c9-43ef-9e83-07f28df59323"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"sourceCidr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10.2.1.0/25"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"destinationCidr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0.0.0/0"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"protocol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ALL"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Active"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d860f2e7-ad15-4cb0-8477-6aa439245d1f"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"networkId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"858d3ab6-04c9-43ef-9e83-07f28df59323"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"sourceCidr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10.2.1.0/24"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"destinationCidr"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"protocol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ICMP"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"icmpType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"icmpCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Active"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"allPortsAllowed"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"f1863d10-e7ec-4f17-8cdd-0e4046643b0b"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"networkId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"858d3ab6-04c9-43ef-9e83-07f28df59323"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"sourceCidr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10.2.1.0/24"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"destinationCidr"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"protocol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"UDP"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"startPort"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"endPort"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Active"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"allPortsAllowed"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"recordCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><code>GET /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/egressrules</code></p>
+
+<p>List egress rules.</p>
+
+<table><thead>
+<tr>
+<th>Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code><br/><em>UUID</em></td>
+<td>The id of the egress rule</td>
+</tr>
+<tr>
+<td><code>networkId</code><br/><em>string</em></td>
+<td>The id of the network the rule applies to</td>
+</tr>
+<tr>
+<td><code>sourceCidr</code><br/><em>string</em></td>
+<td>The source cidr</td>
+</tr>
+<tr>
+<td><code>destinationCidr</code><br/><em>string</em></td>
+<td>The destination cidr</td>
+</tr>
+<tr>
+<td><code>protocol</code><br/><em>string</em></td>
+<td>The protocol the rule applies to. <br/><em>Possible values:</em> <code>TCP</code>, <code>UDP</code>, <code>ICMP</code>, <code>ALL</code></td>
+</tr>
+<tr>
+<td><code>startPort</code><br/><em>string</em></td>
+<td>The start port (for TCP/UDP protocols only)</td>
+</tr>
+<tr>
+<td><code>endPort</code><br/><em>string</em></td>
+<td>The end port (for TCP/UDP protocols only)</td>
+</tr>
+<tr>
+<td><code>allPortsAllowed</code><br/><em>boolean</em></td>
+<td>The flag indicating all the port range selection (for TCP/UDP protocols only)</td>
+</tr>
+<tr>
+<td><code>icmpType</code><br/><em>string</em></td>
+<td>The ICMP type (for ICMP protocol only)</td>
+</tr>
+<tr>
+<td><code>icmpCode</code><br/><em>string</em></td>
+<td>The ICMP code (for ICMP protocol only)</td>
+</tr>
+<tr>
+<td><code>state</code><br/><em>string</em></td>
+<td>The state.<br/><em>Possible values:</em> <code>Active</code>, <code>Inactive</code></td>
+</tr>
+</tbody></table>
+
+<table><thead>
+<tr>
+<th>Query Parameters</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>network_id</code><br/><em>UUID</em></td>
+<td>Filter the list to only retrieve the egress rules of a specific <a href="#cloudstack-networks">Network</a></td>
+</tr>
+</tbody></table>
+<h4 id='cloudstack-retrieve-an-egress-rule'>Retrieve an egress rule</h4><pre class="highlight shell tab-shell"><code>curl -H <span class="s2">"MC-Api-Key: your_api_key"</span> <span class="se">\</span>
+   <span class="s2">"https://cloudmc_endpoint/v1/services/compute-on/test_area/egressrules/f1863d10-e7ec-4f17-8cdd-0e4046643b0b"</span>
+
+<span class="c"># Response example:</span>
+</code></pre><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"f1863d10-e7ec-4f17-8cdd-0e4046643b0b"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"networkId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"858d3ab6-04c9-43ef-9e83-07f28df59323"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"sourceCidr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10.2.1.0/24"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"destinationCidr"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"protocol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"UDP"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"startPort"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"endPort"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Active"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"allPortsAllowed"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><code>GET /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/egressrules/:id</code></p>
+
+<p>Retrieve an egress rule by its id.</p>
+
+<table><thead>
+<tr>
+<th>Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code><br/><em>UUID</em></td>
+<td>The id of the egress rule</td>
+</tr>
+<tr>
+<td><code>networkId</code><br/><em>string</em></td>
+<td>The id of the network the rule applies to</td>
+</tr>
+<tr>
+<td><code>sourceCidr</code><br/><em>string</em></td>
+<td>The source cidr</td>
+</tr>
+<tr>
+<td><code>destinationCidr</code><br/><em>string</em></td>
+<td>The destination cidr</td>
+</tr>
+<tr>
+<td><code>protocol</code><br/><em>string</em></td>
+<td>The protocol the rule applies to</td>
+</tr>
+<tr>
+<td><code>startPort</code><br/><em>string</em></td>
+<td>The start port (for TCP/UDP protocols only)</td>
+</tr>
+<tr>
+<td><code>endPort</code><br/><em>string</em></td>
+<td>The end port (for TCP/UDP protocols only)</td>
+</tr>
+<tr>
+<td><code>allPortsAllowed</code><br/><em>boolean</em></td>
+<td>The flag indicating all the port range selection (for TCP/UDP protocols only)</td>
+</tr>
+<tr>
+<td><code>icmpType</code><br/><em>string</em></td>
+<td>The ICMP message type (for ICMP protocol only)</td>
+</tr>
+<tr>
+<td><code>icmpCode</code><br/><em>string</em></td>
+<td>The ICMP message error code (for ICMP protocol only)</td>
+</tr>
+<tr>
+<td><code>state</code><br/><em>string</em></td>
+<td>The state.<br/><em>Possible values:</em> <code>Active</code>, <code>Inactive</code></td>
+</tr>
+</tbody></table>
+<h4 id='cloudstack-create-an-egress-rule'>Create an egress rule</h4><pre class="highlight shell tab-shell"><code>curl -X POST <span class="se">\</span>
+   -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+   -H <span class="s2">"MC-Api-Key: your_api_key"</span> <span class="se">\</span>
+   -d <span class="s2">"request_body"</span> <span class="se">\</span>
+   <span class="s2">"https://cloudmc_endpoint/v1/services/compute-on/test_area/egressrules"</span>
+</code></pre>
+<p><code>POST /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/egressrules</code></p>
+
+<table><thead>
+<tr>
+<th>Required</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>networkId</code><br/><em>string</em></td>
+<td>The id of the network the rule applies to</td>
+</tr>
+<tr>
+<td><code>sourceCidr</code><br/><em>string</em></td>
+<td>The source cidr</td>
+</tr>
+<tr>
+<td><code>protocol</code><br/><em>string</em></td>
+<td>The protocols targeted by this rule. TCP, UDP, ICMP, or ALL</td>
+</tr>
+</tbody></table>
+
+<table><thead>
+<tr>
+<th>Optional</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>destinationCidr</code><br/><em>string</em></td>
+<td>The destination cidr</td>
+</tr>
+</tbody></table>
+
+<aside class="notice">
+For rules with protocol <code>ALL</code>, no protocol-specific information is required. For all other protocols, see the protocol-specific fields below.
+</aside>
+
+<table><thead>
+<tr>
+<th>Protocol-specific</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>startPort</code><br/><em>string</em></td>
+<td>The start of the port range targeted by this rule. Required if the protocol is TCP or UDP</td>
+</tr>
+<tr>
+<td><code>endPort</code><br/><em>string</em></td>
+<td>The end of the port range targeted by this rule. Required if the protocol is TCP or UDP</td>
+</tr>
+<tr>
+<td><code>allPortsAllowed</code><br/><em>boolean</em></td>
+<td>The flag indicating the selection of all the port range, i.e. 1-65535. Required if the protocol is TCP or UDP. <br/><em>Default value:</em> <code>false</code></td>
+</tr>
+<tr>
+<td><code>icmpType</code><br/><em>string</em></td>
+<td>ICMP message type. Required if the protocol is ICMP</td>
+</tr>
+<tr>
+<td><code>icmpCode</code><br/><em>string</em></td>
+<td>ICMP message error code. Required if the protocol is ICMP</td>
+</tr>
+</tbody></table>
+<h4 id='cloudstack-delete-an-egress-rule'>Delete an egress rule</h4><pre class="highlight shell tab-shell"><code>curl -X DELETE <span class="se">\</span>
+   -H <span class="s2">"MC-Api-Key: your_api_key"</span> <span class="se">\</span>
+   <span class="s2">"https://cloudmc_endpoint/v1/services/compute-on/test_area/egressrules/3247167a-e7e7-11e3-9187-06669c0000ad"</span>
+</code></pre>
+<p><code>DELETE /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/egressrules/:id</code></p>
+
+<p>Delete a specific egress rule.</p>
 <h3 id='cloudstack-nics'>NICs</h3>
 <!-------------------- LIST NICS -------------------->
 <h4 id='cloudstack-list-nics'>List NICs</h4><pre class="highlight shell tab-shell"><code>curl -X GET <span class="se">\</span>
@@ -5885,6 +7411,10 @@ curl -X POST <span class="se">\</span>
 <tr>
 <td><code>vpc_id</code><br/><em>UUID</em></td>
 <td>Filter the list to only retrieve the VPN information of a specific <a href="#cloudstack-vpcs">VPC</a></td>
+</tr>
+<tr>
+<td><code>network_id</code><br/><em>UUID</em></td>
+<td>Filter the list to only retrieve the VPN information of a specific <a href="#cloudstack-networks">Network</a></td>
 </tr>
 </tbody></table>
 <h4 id='cloudstack-retrieve-a-remote-access-vpn'>Retrieve a remote access VPN</h4><pre class="highlight shell tab-shell"><code>curl -H <span class="s2">"MC-Api-Key: your_api_key"</span> <span class="se">\</span>
@@ -6723,6 +8253,41 @@ curl -X DELETE <span class="se">\</span>
 <p><code>POST /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/volumes/:id?operation=detachFromInstance</code></p>
 
 <p>Detach a data volume from an <a href="#cloudstack-instances">instance</a>.</p>
+
+<!-------------------- CREATE A SNAPSHOT OF A VOLUME -------------------->
+<h4 id='cloudstack-create-a-volume-snapshot'>Create a volume snapshot</h4><pre class="highlight shell tab-shell"><code>curl -X POST <span class="se">\</span>
+   -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+   -H <span class="s2">"MC-Api-Key: your_api_key"</span> <span class="se">\</span>
+   -d <span class="s2">"request_body"</span> <span class="se">\</span>
+   <span class="s2">"https://cloudmc_endpoint/v1/services/compute-on/testing/volumes/4fe54594-a788-442c-b7a8-0237f7a4f70d?operation=createSnapshotFromVolume"</span>
+
+<span class="c"># Request should look like this</span>
+</code></pre><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+   </span><span class="s2">"snapshot"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PreMigrationState"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"rapid"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+   </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><code>POST /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/volumes/:id?operation=createSnapshotFromVolume</code></p>
+
+<p>Create a snapshot of an existing <a href="#cloudstack-storage">volume</a>. Note that the volume must be in its <em>READY</em> state to be able to take a snapshot of it. </p>
+
+<table><thead>
+<tr>
+<th>Optional</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>name</code><br/><em>string</em></td>
+<td>A <strong><em>unique name</em></strong> to be given to the newly created <strong>snapshot</strong>. If this parameter is not provided then by default the concatenation of the <em>instance name</em>, <em>volume name</em> and the <em>current timestamp</em> is used. <br/><br/><em>Eg:</em><br/>&nbsp;&nbsp;&nbsp;&nbsp;<em>[instance.name]_[volume.name]_[timestamp]</em><br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><em>i-root-6E7_RapidVol_20190117153537</em></strong></td>
+</tr>
+<tr>
+<td><code>rapid</code><br/><em>boolean</em></td>
+<td>Indicates the <strong><em>location</em></strong> as to where the snapshot is supposed to be made. <br/><br/>Setting this to <strong>true</strong> will ensure that the snapshot is created in the same primary storage as where the volume is. If <strong>false</strong>, then the snapshot is created in a secondary storage. <br/><br/><em>Note: Rapid snapshots enable much faster volume and template creation than from regular snapshots, but at a higher expense. Not all volumes support the</em> <strong>rapid</strong> <em>snapshot option.</em></td>
+</tr>
+</tbody></table>
 <h3 id='cloudstack-snapshots'>Snapshots</h3>
 <p>A volume snapshot is a full image of a volume. They are often considered as backups, but in reality this is not 100% true since you have only the data written on disk. Volume Snapshots are typically used to derive new templates out of a running instance.</p>
 
@@ -6856,6 +8421,52 @@ curl -X DELETE <span class="se">\</span>
 <tr>
 <td><code>volumeType</code><br/><em>string</em></td>
 <td>The type of the <a href="#cloudstack-volumes">volume</a> that was snapshotted</td>
+</tr>
+</tbody></table>
+
+<!-------------------- CREATE A SNAPSHOT OF A VOLUME -------------------->
+<h4 id='cloudstack-create-a-snapshot'>Create a snapshot</h4><pre class="highlight shell tab-shell"><code>curl -X POST <span class="se">\</span>
+   -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+   -H <span class="s2">"MC-Api-Key: your_api_key"</span> <span class="se">\</span>
+   -d <span class="s2">"request_body"</span> <span class="se">\</span>
+   <span class="s2">"https://cloudmc_endpoint/v1/services/compute-on/testing/snapshots?operation=create"</span>
+
+<span class="c"># Request should look like this</span>
+</code></pre><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"volumeId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4fe54594-a788-442c-b7a8-0237f7a4f70d"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BeforeUpgradeToV2"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"rapid"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><code>POST /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/snapshots?operation=create</code></p>
+
+<p>Create a snapshot of an existing <a href="#cloudstack-storage">volume</a>. Note that the volume must be in its <em>READY</em> state to be able to take a snapshot of it. You can get a list of volumes using <a href="#cloudstack-list-volumes">this</a> API.</p>
+
+<table><thead>
+<tr>
+<th>Required</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>volumeId</code><br/><em>UUID</em></td>
+<td>The id of the <a href="#cloudstack-storage">volume</a> on which the snapshot is to be taken.</td>
+</tr>
+</tbody></table>
+
+<table><thead>
+<tr>
+<th>Optional</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>name</code><br/><em>string</em></td>
+<td>A <strong><em>unique name</em></strong> to be given to the newly created <strong>snapshot</strong>. If this parameter is not provided then by default the concatenation of the <em>instance name</em>, <em>volume name</em> and the <em>current timestamp</em> is used. <br/><br/><em>Eg:</em><br/>&nbsp;&nbsp;&nbsp;&nbsp;<em>[instance.name]_[volume.name]_[timestamp]</em><br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><em>i-root-6E7_RapidVol_20190117153537</em></strong></td>
+</tr>
+<tr>
+<td><code>rapid</code><br/><em>boolean</em></td>
+<td>Indicates the <strong><em>location</em></strong> as to where the snapshot is supposed to be created. <br/><br/>Setting this to <strong>true</strong> will ensure that the snapshot is created in the same primary storage as where the volume is. If <strong>false</strong>, then the snapshot is created in a secondary storage.</td>
 </tr>
 </tbody></table>
 <h2 id='cloudstack-offerings'>Offerings</h2>
