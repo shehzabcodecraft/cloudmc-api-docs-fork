@@ -715,6 +715,9 @@
                                   <li>
                                     <a href="#cloudstack-retrieve-a-vpn-user" class="toc-h4 toc-link" data-title="CloudStack plugin">Retrieve a VPN user</a>
                                   </li>
+                                  <li>
+                                    <a href="#cloudstack-delete-a-vpn-user" class="toc-h4 toc-link" data-title="CloudStack plugin">Delete a VPN user</a>
+                                  </li>
                               </ul>
                           </li>
                           <li>
@@ -1053,6 +1056,22 @@
                           </li>
                           <li>
                             <a href="#openstack-delete-a-snapshot" class="toc-h3 toc-link" data-title="OpenStack plugin">Delete a snapshot</a>
+                          </li>
+                      </ul>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#google-compute-platform-gcp-plugin" class="toc-h1 toc-link" data-title="Google Compute Platform (GCP) plugin">Google Compute Platform (GCP) plugin</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#gcp-instances" class="toc-h2 toc-link" data-title="Google Compute Platform (GCP) plugin">Instances</a>
+                      <ul class="toc-list-h3">
+                          <li>
+                            <a href="#gcp-list-instances" class="toc-h3 toc-link" data-title="Google Compute Platform (GCP) plugin">List instances</a>
+                          </li>
+                          <li>
+                            <a href="#gcp-change-machine-type" class="toc-h3 toc-link" data-title="Google Compute Platform (GCP) plugin">Change machine type</a>
                           </li>
                       </ul>
                   </li>
@@ -7530,6 +7549,13 @@ curl -X POST <span class="se">\</span>
 <td>The VPN user&#39;s username</td>
 </tr>
 </tbody></table>
+<h4 id='cloudstack-delete-a-vpn-user'>Delete a VPN user</h4><pre class="highlight shell tab-shell"><code>curl -X DELETE <span class="se">\</span>
+   -H <span class="s2">"MC-Api-Key: your_api_key"</span> <span class="se">\</span>
+   <span class="s2">"https://cloudmc_endpoint/v1/services/compute-on/test_area/vpnusers/5de76bf5-9f61-487a-a989-042b52882da4"</span>
+</code></pre>
+<p><code>DELETE /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/vpnusers/:id</code></p>
+
+<p>Delete an existing remote access VPN user.</p>
 <h3 id='cloudstack-site-to-site-vpns'>Site-to-site VPNs</h3>
 <p>A site-to-site VPN allows multiple sites to establish a secure connection over the public network. In our case, we are talking about a secure connection between your VPC and another network (e.g. VPC, offices).</p>
 
@@ -10776,6 +10802,291 @@ Response body:
 <p><code>DELETE /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/snapshots/:id</code></p>
 
 <p>Delete a snapshot.</p>
+<h1 id='google-compute-platform-gcp-plugin'>Google Compute Platform (GCP) plugin</h1>
+<p>The Google Compute Platform plugin provides endpoints for carrying out operations on CloudMC compute and networking entities. It also enforces CloudMC&#39;s environment-centric multi-tenancy model and RBAC over top of GCP.</p>
+<h3 id='gcp-instances'>Instances</h3>
+<p>Deploy and manage your instances.</p>
+
+<!-------------------- LIST INSTANCES -------------------->
+<h4 id='gcp-list-instances'>List instances</h4><pre class="highlight shell tab-shell"><code>curl -X GET <span class="se">\</span>
+   -H <span class="s2">"MC-Api-Key: your_api_key"</span> <span class="se">\</span>
+   <span class="s2">"https://cloudmc_endpoint/v1/services/gcp/test-area/instances"</span>
+
+<span class="c"># The above command returns JSON structured like this:</span>
+</code></pre><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RUNNING"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"zone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.googleapis.com/compute/v1/projects/test-area-oox/zones/northamerica-northeast1-a"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"machineType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.googleapis.com/compute/v1/projects/test-area-oox/zones/northamerica-northeast1-a/machineTypes/f1-micro"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"cpuPlatform"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Intel Skylake"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"creationTimestamp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-04-19T12:12:30.756-07:00"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"deletionProtection"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"disks"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"autoDelete"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"boot"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"deviceName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"i-test-kkn"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"guestOsFeatures"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"VIRTIO_SCSI_MULTIQUEUE"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+          </span><span class="p">],</span><span class="w">
+          </span><span class="s2">"index"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"interface"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SCSI"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"kind"</span><span class="p">:</span><span class="w"> </span><span class="s2">"compute#attachedDisk"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"licenses"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="s2">"https://www.googleapis.com/compute/v1/projects/debian-cloud/global/licenses/debian-9-stretch"</span><span class="w">
+          </span><span class="p">],</span><span class="w">
+          </span><span class="s2">"mode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"READ_WRITE"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"source"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.googleapis.com/compute/v1/projects/test-area-oox/zones/northamerica-northeast1-a/disks/i-test-kkn"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PERSISTENT"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="s2">"kind"</span><span class="p">:</span><span class="w"> </span><span class="s2">"compute#instance"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"labelFingerprint"</span><span class="p">:</span><span class="w"> </span><span class="s2">"42WmSpB8rSM="</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"fingerprint"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WFshDDge4fM="</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"kind"</span><span class="p">:</span><span class="w"> </span><span class="s2">"compute#metadata"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"networkInterfaces"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"accessConfigs"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"kind"</span><span class="p">:</span><span class="w"> </span><span class="s2">"compute#accessConfig"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"external-nat"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"natIP"</span><span class="p">:</span><span class="w"> </span><span class="s2">"35.203.99.102"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"networkTier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PREMIUM"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ONE_TO_ONE_NAT"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+          </span><span class="p">],</span><span class="w">
+          </span><span class="s2">"fingerprint"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NG6-4Cdf0KA="</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"kind"</span><span class="p">:</span><span class="w"> </span><span class="s2">"compute#networkInterface"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"nic0"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"network"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.googleapis.com/compute/v1/projects/test-area-oox/global/networks/default"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"networkIP"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10.162.0.7"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"subnetwork"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.googleapis.com/compute/v1/projects/test-area-oox/regions/northamerica-northeast1/subnetworks/default"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="s2">"scheduling"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"automaticRestart"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"onHostMaintenance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MIGRATE"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"preemptible"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"selfLink"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.googleapis.com/compute/v1/projects/test-area-oox/zones/northamerica-northeast1-a/instances/i-test-kkn"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"startRestricted"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"fingerprint"</span><span class="p">:</span><span class="w"> </span><span class="s2">"42WmSpB8rSM="</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"shortMachineType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"custom-2-2048"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"project"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test-area-oox"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"internalIp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10.162.0.7"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"externalIp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"35.203.99.102"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"networkName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"default"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"subnetworkName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"default"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"iconUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/rest/services/assets/gcp/os_logo/debian.png"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"osImageName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"debian-9-stretch"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"osImageSizeInGb"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"bootDiskSizeInGb"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"cpuCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"memoryInGB"</span><span class="p">:</span><span class="w"> </span><span class="mf">2.000000</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5611478403377505138"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"i-test-kkn"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"shortZone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"northamerica-northeast1-a"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"shortRegion"</span><span class="p">:</span><span class="w"> </span><span class="s2">"northamerica-northeast1"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="s2">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"recordCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><code>GET /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/instances</code></p>
+
+<p>Retrieve a list of all instances in a given <a href="#administration-environments">environment</a></p>
+
+<table><thead>
+<tr>
+<th>Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>status</code><br/><em>string</em></td>
+<td>The status of the instance. One of the following values: PROVISIONING, STAGING, RUNNING, STOPPING, STOPPED, SUSPENDING, SUSPENDED, and TERMINATED.</td>
+</tr>
+<tr>
+<td><code>zone</code><br/><em>string</em></td>
+<td>URL of the zone where the instance resides.</td>
+</tr>
+<tr>
+<td><code>machineType</code><br/><em>string</em></td>
+<td>URL of the machine type resource used by this instance</td>
+</tr>
+<tr>
+<td><code>cpuPlatform</code><br/><em>string</em></td>
+<td>The CPU platform used by this instance</td>
+</tr>
+<tr>
+<td><code>creationTimestamp</code><br/><em>string</em></td>
+<td>Creation timestamp in RFC3339 text format</td>
+</tr>
+<tr>
+<td><code>deletionProtection</code><br/><em>string</em></td>
+<td>Whether the resource should be protected against deletion</td>
+</tr>
+<tr>
+<td><code>disks</code><br/><em>Array[Disk]</em></td>
+<td>Array of disks associated with this instance</td>
+</tr>
+<tr>
+<td><code>kind</code><br/><em>string</em></td>
+<td>Type of the resource</td>
+</tr>
+<tr>
+<td><code>labelFingerprint</code><br/><em>string</em></td>
+<td>A base64-encoded string. A hash of the label&#39;s contents and used for optimistic locking</td>
+</tr>
+<tr>
+<td><code>metadata</code><br/><em>object</em></td>
+<td>The metadata key/value pairs assigned to this instance</td>
+</tr>
+<tr>
+<td><code>networkInterfaces</code><br/><em>Array[object]</em></td>
+<td>An array of network configurations for this instance</td>
+</tr>
+<tr>
+<td><code>scheduling</code><br/><em>object</em></td>
+<td>Sets the scheduling options for this instance</td>
+</tr>
+<tr>
+<td><code>selfLink</code><br/><em>string</em></td>
+<td>Server-defined URL for this resource</td>
+</tr>
+<tr>
+<td><code>startRestricted</code><br/><em>boolean</em></td>
+<td>Whether a VM has been restricted for start because Compute Engine has detected suspicious activity.</td>
+</tr>
+<tr>
+<td><code>tags</code><br/><em>object</em></td>
+<td>Tags to apply to this instance. Tags are used to identify valid sources or targets for network firewalls and are specified by the client during instance creation</td>
+</tr>
+<tr>
+<td><code>shortMachineType</code><br/><em>string</em></td>
+<td>A short version of the machineType name</td>
+</tr>
+<tr>
+<td><code>project</code><br/><em>string</em></td>
+<td>The project where the instance resides</td>
+</tr>
+<tr>
+<td><code>internalIp</code><br/><em>string</em></td>
+<td>The instance&#39;s internal IP</td>
+</tr>
+<tr>
+<td><code>networkName</code><br/><em>string</em></td>
+<td>The network to which the instance is connected to</td>
+</tr>
+<tr>
+<td><code>subnetworkName</code><br/><em>string</em></td>
+<td>The sub-network within the network the instance is connected to</td>
+</tr>
+<tr>
+<td><code>iconUrl</code><br/><em>string</em></td>
+<td>Icon representing the OS installed on the instance&#39;s boot disk</td>
+</tr>
+<tr>
+<td><code>osImageName</code><br/><em>string</em></td>
+<td>The name of the OS image installed on the instance&#39;s boot disk</td>
+</tr>
+<tr>
+<td><code>osImageSizeInGb</code><br/><em>string</em></td>
+<td>The size of the OS image</td>
+</tr>
+<tr>
+<td><code>bootDiskSizeInGb</code><br/><em>string</em></td>
+<td>The size of the instance&#39;s boot disk</td>
+</tr>
+<tr>
+<td><code>cpuCount</code><br/><em>string</em></td>
+<td>The number of vCPUs for the machine type</td>
+</tr>
+<tr>
+<td><code>memoryInGB</code><br/><em>string</em></td>
+<td>The memory size for the machine name</td>
+</tr>
+<tr>
+<td><code>id</code><br/><em>UUID</em></td>
+<td>The id of the instance</td>
+</tr>
+<tr>
+<td><code>name</code><br/><em>string</em></td>
+<td>The display name of the instance</td>
+</tr>
+<tr>
+<td><code>shortZone</code><br/><em>string</em></td>
+<td>A short version of the zone name</td>
+</tr>
+<tr>
+<td><code>shortRegion</code><br/><em>string</em></td>
+<td>A short version of the region name</td>
+</tr>
+</tbody></table>
+
+<!-------------------- CHANGE MACHINE TYPE -------------------->
+<h4 id='gcp-change-machine-type'>Change machine type</h4>
+<p>A machine type determine the number of vCPUs and the size of the memory allocated to new <a href="#gcp-instances">instances</a>.</p>
+<pre class="highlight plaintext"><code>curl -X POST \
+   -H "Content-Type: application/json" \
+   -H "MC-Api-Key: your_api_key" \
+   -d "request_body" \
+   "https://cloudmc_endpoint/v1/services/gcp/test-area/instances/6564997542943928188?operation=resize"
+
+# Request example:
+</code></pre><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+   </span><span class="s2">"cpuCount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"memoryInGB"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4.5"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><pre class="highlight plaintext"><code># Response body example
+</code></pre><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"taskId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c92b6fa5-d32a-4484-a433-31ca90c2ed8b"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"taskStatus"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PENDING"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><code>POST /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/instances/:id?operation=resize</code></p>
+
+<p>Update the number of vCPUs and memory of an existing instance.</p>
+
+<aside class="notice">
+The maximum number of vCPUs allowed for a machine type is determined by the zone where the instance will be hosted.
+Above 1, the instance vCPU count must be even, such as 2, 4, 6, 8, 10, and so on.
+This number is enforced by the 'CPUS' Quota.
+</aside>
+
+<aside class="notice">
+The memory per vCPU of a machine type must be between 0.9 GB and 6.5 GB per vCPU, inclusive.
+The total memory for a machine type must be a multiple of 256 MB. For example, 6.9 GB is not acceptable, but 6.75 GB and 7 GB are acceptable.
+</aside>
+
+<aside class="warning">
+  Changing the number of vCPUs and memory of a running instance will force a reboot of that instance.
+</aside>
+
+<table><thead>
+<tr>
+<th>Optional</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>cpuCount</code><br/><em>string</em></td>
+<td>Updated number of vCPUs of instance</td>
+</tr>
+<tr>
+<td><code>memoryInGB</code><br/><em>string</em></td>
+<td>Updated memory of instance.</td>
+</tr>
+</tbody></table>
 
       </div>
       <div class="dark-box">
