@@ -171,3 +171,24 @@ Associate a public IP address in a given [environment](#administration-environme
 Required | &nbsp;
 ------- | -----------
 `networkInterfaceId` <br/>*string* | Id of the network interface associated to an instance. Th network interface must be in the same region as the public IP address. 
+
+<!-------------------- DISSOCIATE A PUBLIC IP -------------------->
+
+#### Dissociate a public ip address
+
+```shell
+curl -X POST \
+   -H "MC-Api-Key: your_api_key" \
+   -d "request_body"
+   "https://cloudmc_endpoint/v1/services/azure/example/publicipaddresses/some-public-ip?operation=dissociate"
+
+# Request Example:
+```
+
+```json
+{}
+```
+
+<code>POST /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/publicipaddresses?operation=dissociate</code>
+
+Dissociate a public IP address in a given [environment](#administration-environments) from its network interface.
