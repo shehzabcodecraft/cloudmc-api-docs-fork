@@ -372,6 +372,33 @@
                           </li>
                       </ul>
                   </li>
+                  <li>
+                    <a href="#administration-monetization" class="toc-h2 toc-link" data-title="Administration">Monetization</a>
+                      <ul class="toc-list-h3">
+                          <li>
+                            <a href="#administration-product-catalogs" class="toc-h3 toc-link" data-title="Administration">Product Catalogs</a>
+                              <ul class="toc-list-h4">
+                                  <li>
+                                    <a href="#administration-list-product-catalogs" class="toc-h4 toc-link" data-title="Administration">List product catalogs</a>
+                                  </li>
+                                  <li>
+                                    <a href="#administration-retrieve-a-product-catalog" class="toc-h4 toc-link" data-title="Administration">Retrieve a product catalog</a>
+                                  </li>
+                              </ul>
+                          </li>
+                          <li>
+                            <a href="#administration-pricings" class="toc-h3 toc-link" data-title="Administration">Pricings</a>
+                              <ul class="toc-list-h4">
+                                  <li>
+                                    <a href="#administration-list-pricings" class="toc-h4 toc-link" data-title="Administration">List pricings</a>
+                                  </li>
+                                  <li>
+                                    <a href="#administration-retrieve-a-pricing" class="toc-h4 toc-link" data-title="Administration">Retrieve a pricing</a>
+                                  </li>
+                              </ul>
+                          </li>
+                      </ul>
+                  </li>
               </ul>
           </li>
           <li>
@@ -4025,6 +4052,704 @@ curl -X GET <span class="se">\</span>
 <tr>
 <td><code>include_deleted</code><br/><em>boolean</em></td>
 <td>Will find usage of an organization that may have been deleted</td>
+</tr>
+</tbody></table>
+<h2 id='administration-monetization'>Monetization</h2><h3 id='administration-product-catalogs'>Product Catalogs</h3>
+<p>The product catalogs determine the product configured for a service type and optionally for specific connections.</p>
+
+<!-------------------- LIST PRODUCT CATALOGS -------------------->
+<h4 id='administration-list-product-catalogs'>List product catalogs</h4>
+<p>`GET /product_catalogs</p>
+
+<p>Retrieves a list of product catalogs configured in the system.</p>
+<pre class="highlight shell tab-shell"><code><span class="c"># Retrieve product catalog list</span>
+curl <span class="s2">"https://cloudmc_endpoint/rest/product_catalogs"</span> <span class="se">\</span>
+   -H <span class="s2">"MC-Api-Key: your_api_key"</span>
+<span class="sb">```</span>s
+<span class="gp">&gt; </span>The above <span class="nb">command </span>returns JSON structured like this:
+
+<span class="sb">```</span>json
+<span class="o">{</span>
+  <span class="s2">"data"</span>: <span class="o">[</span>
+    <span class="o">{</span>
+      <span class="s2">"mode"</span>: <span class="s2">"ALL_CONNECTIONS_OF_TYPE"</span>,
+      <span class="s2">"serviceType"</span>: <span class="s2">"cloudca"</span>,
+      <span class="s2">"connectionIds"</span>: <span class="o">[]</span>,
+      <span class="s2">"name"</span>: <span class="o">{</span>
+        <span class="s2">"en"</span>: <span class="s2">"fgsfdg"</span>,
+        <span class="s2">"fr"</span>: <span class="s2">"sfdg"</span>
+      <span class="o">}</span>,
+      <span class="s2">"changes"</span>: <span class="o">[]</span>,
+      <span class="s2">"description"</span>: <span class="o">{</span>
+        <span class="s2">"en"</span>: <span class="s2">"sdfg"</span>,
+        <span class="s2">"fr"</span>: <span class="s2">"sdg"</span>
+      <span class="o">}</span>,
+      <span class="s2">"id"</span>: <span class="s2">"5ba5df7c-1e60-4d99-869d-dd3d97826b2e"</span>,
+      <span class="s2">"categories"</span>: <span class="o">[</span>
+        <span class="o">{</span>
+          <span class="s2">"name"</span>: <span class="o">{</span>
+            <span class="s2">"en"</span>: <span class="s2">"sdfg"</span>,
+            <span class="s2">"fr"</span>: <span class="s2">"sdfg"</span>
+          <span class="o">}</span>,
+          <span class="s2">"id"</span>: <span class="s2">"fcd8908d-e1a0-41f2-9c38-fed1d1f77f18"</span>
+        <span class="o">}</span>
+      <span class="o">]</span>,
+      <span class="s2">"products"</span>: <span class="o">[</span>
+        <span class="o">{</span>
+          <span class="s2">"metricType"</span>: <span class="s2">"GAUGE"</span>,
+          <span class="s2">"unit"</span>: <span class="o">{</span>
+            <span class="s2">"unit"</span>: <span class="s2">"HOUR"</span>,
+            <span class="s2">"name"</span>: <span class="o">{}</span>
+          <span class="o">}</span>,
+          <span class="s2">"period"</span>: <span class="s2">"HOUR"</span>,
+          <span class="s2">"name"</span>: <span class="o">{</span>
+            <span class="s2">"en"</span>: <span class="s2">"vCPU"</span>,
+            <span class="s2">"fr"</span>: <span class="s2">"vCPU"</span>
+          <span class="o">}</span>,
+          <span class="s2">"transformer"</span>: <span class="o">{</span>
+            <span class="s2">"type"</span>: <span class="s2">"PROPORTIONAL_TO_TIME"</span>
+          <span class="o">}</span>,
+          <span class="s2">"id"</span>: <span class="s2">"342f0d9b-3c3c-456d-b853-31d713b79e72"</span>,
+          <span class="s2">"attribute"</span>: <span class="s2">"RAWUSAGE"</span>,
+          <span class="s2">"source"</span>: <span class="s2">"1"</span>,
+          <span class="s2">"filters"</span>: <span class="o">[]</span>,
+          <span class="s2">"sku"</span>: <span class="s2">"vCPU"</span>,
+          <span class="s2">"categoryId"</span>: <span class="s2">"fcd8908d-e1a0-41f2-9c38-fed1d1f77f18"</span>
+        <span class="o">}</span>
+      <span class="o">]</span>
+    <span class="o">}</span>
+  <span class="o">]</span>
+<span class="o">}</span>
+</code></pre>
+<table><thead>
+<tr>
+<th>Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code><br/><em>UUID</em></td>
+<td>The UUID of the product catalog.</td>
+</tr>
+<tr>
+<td><code>name</code><br/><em>Object</em></td>
+<td>The name object in each language for the product catalog.</td>
+</tr>
+<tr>
+<td><code>description</code><br/><em>string</em></td>
+<td>The description object in each language for the product catalog.</td>
+</tr>
+<tr>
+<td><code>mode</code><br/><em>string</em></td>
+<td>Identify the mode if it is for all service type or specific connections. Possible values: ALL_CONNECTIONS_OF_TYPE, SPECIFIC_CONNECTIONS.</td>
+</tr>
+<tr>
+<td><code>serviceType</code><br/><em>Object</em></td>
+<td>The service connection type the product catalog is bound to.</td>
+</tr>
+<tr>
+<td><code>connectionIds</code><br/><em>Array[UUID]</em></td>
+<td>Array of the UUID service connection the catalog is bound to.</td>
+</tr>
+<tr>
+<td><code>changes</code><br/><em>Array[Object]</em></td>
+<td>Array of all changes done on the product catalog.</td>
+</tr>
+<tr>
+<td><code>categories</code><br/><em>Array[Object]</em></td>
+<td>The list of product categories object.</td>
+</tr>
+<tr>
+<td><code>categories.id</code><br/><em>string</em></td>
+<td>The id of product category object.</td>
+</tr>
+<tr>
+<td><code>categories.name</code><br/><em>Object</em></td>
+<td>The name object in each language for the category.</td>
+</tr>
+<tr>
+<td><code>products</code><br/><em>Array[Object]</em></td>
+<td>The list of products assigned to the catalog.</td>
+</tr>
+<tr>
+<td><code>products.metricType</code><br/><em>string</em></td>
+<td>The type of metrics taken. Possible values: COUNTER, GAUGE.</td>
+</tr>
+<tr>
+<td><code>products.unit</code><br/><em>Object</em></td>
+<td>The unit object of the product.</td>
+</tr>
+<tr>
+<td><code>products.unit.unit</code><br/><em>string</em></td>
+<td>The unit value of the product.</td>
+</tr>
+<tr>
+<td><code>products.unit.name</code><br/><em>Object</em></td>
+<td>The name of the unit of the product in the required language. Only present when defining custom unit.</td>
+</tr>
+<tr>
+<td><code>products.period</code><br/><em>string</em></td>
+<td>The period for the product capture. Possible values: HOURS, MONTH.</td>
+</tr>
+<tr>
+<td><code>products.name</code><br/><em>Object</em></td>
+<td>The name object in each language for the product name.</td>
+</tr>
+<tr>
+<td><code>products.transformer</code><br/><em>Object</em></td>
+<td>The object representing the transformation to do on the product usage.</td>
+</tr>
+<tr>
+<td><code>products.transformer.type</code><br/><em>string</em></td>
+<td>The type of transformation to apply. Possible values: PROPORTIONAL_TO_TIME, EXPRESSION, NONE.</td>
+</tr>
+<tr>
+<td><code>products.transformer.expression</code><br/><em>string</em></td>
+<td>The transformation expression to apply. Only required if the type is EXPRESSION.</td>
+</tr>
+<tr>
+<td><code>products.id</code><br/><em>UUID</em></td>
+<td>The ID of the product.</td>
+</tr>
+<tr>
+<td><code>products.attribute</code><br/><em>string</em></td>
+<td>The attribute that will be used to compute usage from the service type usage.</td>
+</tr>
+<tr>
+<td><code>products.source</code><br/><em>strubg</em></td>
+<td>The source of the usage to get from the service type.</td>
+</tr>
+<tr>
+<td><code>products.filters</code><br/><em>Array[Object]</em></td>
+<td>The list of products assigned to the catalog.</td>
+</tr>
+<tr>
+<td><code>products.filters.type</code><br/><em>string</em></td>
+<td>The type of the filter. Possible values: EXPRESSION, SIMPLE.</td>
+</tr>
+<tr>
+<td><code>products.filters.expression</code><br/><em>string</em></td>
+<td>The expression to filter the product in the usage generation. Only required when the type is EXPRESSION.</td>
+</tr>
+<tr>
+<td><code>products.filters.field</code><br/><em>string</em></td>
+<td>The field to filter. This is only required when type is SIMPLE.</td>
+</tr>
+<tr>
+<td><code>products.filters.operator</code><br/><em>string</em></td>
+<td>The operation to check on the selected field. This is only required when type is SIMPLE. Possible values: EQUAL, NOT_EQUAL, CONTAINS, STARTS_WITH, ENDS_WITH, MATCHES_REGEX, LESS_THAN, LESS_OR_EQUAL_THAN, BIGGER_THAN, BIGGER_OR_EQUAL_THAN.</td>
+</tr>
+<tr>
+<td><code>products.filters.value</code><br/><em>string</em></td>
+<td>The value to use in the field combined with the operation. This is only required when type is SIMPLE.</td>
+</tr>
+<tr>
+<td><code>products.sku</code><br/><em>string</em></td>
+<td>The SKU of the product information.</td>
+</tr>
+<tr>
+<td><code>products.categoryId</code><br/><em>UUID</em></td>
+<td>The UUID of the category to which belongs the product.</td>
+</tr>
+</tbody></table>
+
+<!-------------------- GET PRODUCT CATALOG -------------------->
+<h4 id='administration-retrieve-a-product-catalog'>Retrieve a product catalog</h4>
+<p><code>GET /product_catalogs/:id</code></p>
+
+<p>Retrieve a product catalog&#39;s details.</p>
+<pre class="highlight shell tab-shell"><code><span class="c"># Retrieve an organization</span>
+curl <span class="s2">"https://cloudmc_endpoint/rest/product_catalogs/03bc22bd-adc4-46b8-988d-afddc24c0cb5"</span> <span class="se">\</span>
+   -H <span class="s2">"MC-Api-Key: your_api_key"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"mode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ALL_CONNECTIONS_OF_TYPE"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"serviceType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cloudca"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"connectionIds"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"en"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fgsfdg"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"fr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sfdg"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"changes"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+    </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"en"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sdfg"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"fr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sdg"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5ba5df7c-1e60-4d99-869d-dd3d97826b2e"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"categories"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"en"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sdfg"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"fr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sdfg"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fcd8908d-e1a0-41f2-9c38-fed1d1f77f18"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"products"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"metricType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GAUGE"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"unit"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"unit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HOUR"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"period"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HOUR"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"en"</span><span class="p">:</span><span class="w"> </span><span class="s2">"vCPU"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"fr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"vCPU"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"transformer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PROPORTIONAL_TO_TIME"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"342f0d9b-3c3c-456d-b853-31d713b79e72"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"attribute"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RAWUSAGE"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"source"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"filters"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+        </span><span class="s2">"sku"</span><span class="p">:</span><span class="w"> </span><span class="s2">"vCPU"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"categoryId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fcd8908d-e1a0-41f2-9c38-fed1d1f77f18"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+<table><thead>
+<tr>
+<th>Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code><br/><em>UUID</em></td>
+<td>The UUID of the product catalog.</td>
+</tr>
+<tr>
+<td><code>name</code><br/><em>Object</em></td>
+<td>The name object in each language for the product catalog.</td>
+</tr>
+<tr>
+<td><code>description</code><br/><em>string</em></td>
+<td>The description object in each language for the product catalog.</td>
+</tr>
+<tr>
+<td><code>mode</code><br/><em>string</em></td>
+<td>Identify the mode if it is for all service type or specific connections. Possible values: ALL_CONNECTIONS_OF_TYPE, SPECIFIC_CONNECTIONS.</td>
+</tr>
+<tr>
+<td><code>serviceType</code><br/><em>Object</em></td>
+<td>The service connection type the product catalog is bound to.</td>
+</tr>
+<tr>
+<td><code>connectionIds</code><br/><em>Array[UUID]</em></td>
+<td>Array of the UUID service connection the catalog is bound to.</td>
+</tr>
+<tr>
+<td><code>changes</code><br/><em>Array[Object]</em></td>
+<td>Array of all changes done on the product catalog.</td>
+</tr>
+<tr>
+<td><code>categories</code><br/><em>Array[Object]</em></td>
+<td>The list of product categories object.</td>
+</tr>
+<tr>
+<td><code>categories.id</code><br/><em>string</em></td>
+<td>The id of product category object.</td>
+</tr>
+<tr>
+<td><code>categories.name</code><br/><em>Object</em></td>
+<td>The name object in each language for the category.</td>
+</tr>
+<tr>
+<td><code>products</code><br/><em>Array[Object]</em></td>
+<td>The list of products assigned to the catalog.</td>
+</tr>
+<tr>
+<td><code>products.metricType</code><br/><em>string</em></td>
+<td>The type of metrics taken. Possible values: COUNTER, GAUGE.</td>
+</tr>
+<tr>
+<td><code>products.unit</code><br/><em>Object</em></td>
+<td>The unit object of the product.</td>
+</tr>
+<tr>
+<td><code>products.unit.unit</code><br/><em>string</em></td>
+<td>The unit value of the product.</td>
+</tr>
+<tr>
+<td><code>products.unit.name</code><br/><em>Object</em></td>
+<td>The name of the unit of the product in the required language. Only present when defining custom unit.</td>
+</tr>
+<tr>
+<td><code>products.period</code><br/><em>string</em></td>
+<td>The period for the product capture. Possible values: HOURS, MONTH.</td>
+</tr>
+<tr>
+<td><code>products.name</code><br/><em>Object</em></td>
+<td>The name object in each language for the product name.</td>
+</tr>
+<tr>
+<td><code>products.transformer</code><br/><em>Object</em></td>
+<td>The object representing the transformation to do on the product usage.</td>
+</tr>
+<tr>
+<td><code>products.transformer.type</code><br/><em>string</em></td>
+<td>The type of transformation to apply. Possible values: PROPORTIONAL_TO_TIME, EXPRESSION, NONE.</td>
+</tr>
+<tr>
+<td><code>products.transformer.expression</code><br/><em>string</em></td>
+<td>The transformation expression to apply. Only required if the type is EXPRESSION.</td>
+</tr>
+<tr>
+<td><code>products.id</code><br/><em>UUID</em></td>
+<td>The ID of the product.</td>
+</tr>
+<tr>
+<td><code>products.attribute</code><br/><em>string</em></td>
+<td>The attribute that will be used to compute usage from the service type usage.</td>
+</tr>
+<tr>
+<td><code>products.source</code><br/><em>strubg</em></td>
+<td>The source of the usage to get from the service type.</td>
+</tr>
+<tr>
+<td><code>products.filters</code><br/><em>Array[Object]</em></td>
+<td>The list of products assigned to the catalog.</td>
+</tr>
+<tr>
+<td><code>products.filters.type</code><br/><em>string</em></td>
+<td>The type of the filter. Possible values: EXPRESSION, SIMPLE.</td>
+</tr>
+<tr>
+<td><code>products.filters.expression</code><br/><em>string</em></td>
+<td>The expression to filter the product in the usage generation. Only required when the type is EXPRESSION.</td>
+</tr>
+<tr>
+<td><code>products.filters.field</code><br/><em>string</em></td>
+<td>The field to filter. This is only required when type is SIMPLE.</td>
+</tr>
+<tr>
+<td><code>products.filters.operator</code><br/><em>string</em></td>
+<td>The operation to check on the selected field. This is only required when type is SIMPLE. Possible values: EQUAL, NOT_EQUAL, CONTAINS, STARTS_WITH, ENDS_WITH, MATCHES_REGEX, LESS_THAN, LESS_OR_EQUAL_THAN, BIGGER_THAN, BIGGER_OR_EQUAL_THAN.</td>
+</tr>
+<tr>
+<td><code>products.filters.value</code><br/><em>string</em></td>
+<td>The value to use in the field combined with the operation. This is only required when type is SIMPLE.</td>
+</tr>
+<tr>
+<td><code>products.sku</code><br/><em>string</em></td>
+<td>The SKU of the product information.</td>
+</tr>
+<tr>
+<td><code>products.categoryId</code><br/><em>UUID</em></td>
+<td>The UUID of the category to which belongs the product.</td>
+</tr>
+</tbody></table>
+<h3 id='administration-pricings'>Pricings</h3>
+<p>The pricing determines the price for each product defined for a selected catalog.</p>
+
+<!-------------------- LIST PRICINGS -------------------->
+<h4 id='administration-list-pricings'>List pricings</h4>
+<p><code>GET /pricings</code></p>
+
+<p>Retrieves a list of pricings configured in the system.</p>
+<pre class="highlight shell tab-shell"><code><span class="c"># Retrieve pricing list</span>
+curl <span class="s2">"https://cloudmc_endpoint/rest/pricings"</span> <span class="se">\</span>
+   -H <span class="s2">"MC-Api-Key: your_api_key"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"supportedCurrencies"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="s2">"CAD"</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="s2">"productCatalogs"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"mode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ALL_CONNECTIONS_OF_TYPE"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"serviceType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cloudca"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"connectionIds"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+          </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"en"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Default cloud.ca"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"fr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Défaut cloud.ca"</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"en"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cloud.ca default product catalog"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"fr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"catalogue des produits cloud.ca par défaut"</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5ba5df7c-1e60-4d99-869d-dd3d97826b2e"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="s2">"organization"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"409c1162-a930-4207-bdf9-710580c3542b"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"pricingProducts"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"unitPrice"</span><span class="p">:</span><span class="w"> </span><span class="mf">123.0</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"product"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"metricType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GAUGE"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"unit"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"unit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HOUR"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="s2">"period"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HOUR"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"en"</span><span class="p">:</span><span class="w"> </span><span class="s2">"vCPU"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"fr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"vCPU"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="s2">"transformer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PROPORTIONAL_TO_TIME"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"342f0d9b-3c3c-456d-b853-31d713b79e72"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"attribute"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RAWUSAGE"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"source"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"filters"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+            </span><span class="s2">"sku"</span><span class="p">:</span><span class="w"> </span><span class="s2">"vCPU"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"categoryId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fcd8908d-e1a0-41f2-9c38-fed1d1f77f18"</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="s2">"cogs"</span><span class="p">:</span><span class="w"> </span><span class="mf">321.0</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CAD"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"45425fe6-beb3-4c78-be68-f82eeb3976c6"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"en"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cloud.ca default pricing"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"fr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"prix par défaut cloud.ca"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"en"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cloud.ca default pricing"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"fr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"prix par défaut cloud.ca"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"096bbfee-a6e6-4373-8a4e-1a8b0f2bf484"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"effectiveDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-05-08T16:53:45Z"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<table><thead>
+<tr>
+<th>Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code><br/><em>UUID</em></td>
+<td>The UUID of the pricing.</td>
+</tr>
+<tr>
+<td><code>name</code><br/><em>Object</em></td>
+<td>The name object in each language for the pricing.</td>
+</tr>
+<tr>
+<td><code>description</code><br/><em>string</em></td>
+<td>The description object in each language for the pricing.</td>
+</tr>
+<tr>
+<td><code>supportedCurrencies</code><br/><em>Array[string]</em></td>
+<td>List of the currencies which are supported by this pricing.</td>
+</tr>
+<tr>
+<td><code>productCatalogs</code><br/><em>Object</em></td>
+<td>List of product catalog objects which are attached to this pricing.</td>
+</tr>
+<tr>
+<td><code>organization.id</code><br/><em>UUID</em></td>
+<td>UUID of the organisation to which belongs the pricing.</td>
+</tr>
+<tr>
+<td><code>pricingProducts</code><br/><em>Array[Object]</em></td>
+<td>The list of product pricings assigned to the pricing.</td>
+</tr>
+<tr>
+<td><code>pricingProducts.id</code><br/><em>UUID</em></td>
+<td>UUID of the product pricing.</td>
+</tr>
+<tr>
+<td><code>pricingProducts.unitPrice</code><br/><em>double</em></td>
+<td>The unit price of the product.</td>
+</tr>
+<tr>
+<td><code>pricingProducts.product</code><br/><em>Object</em></td>
+<td>The product attached to this product pricing element.</td>
+</tr>
+<tr>
+<td><code>pricingProducts.cogs</code><br/><em>double</em></td>
+<td>The Cost Of Goods Sold (COGS) of the product.</td>
+</tr>
+<tr>
+<td><code>pricingProducts.currency</code><br/><em>string</em></td>
+<td>The currency of the pricing.</td>
+</tr>
+</tbody></table>
+
+<!-------------------- GET PRICING -------------------->
+<h4 id='administration-retrieve-a-pricing'>Retrieve a pricing</h4>
+<p><code>GET /pricings/:id</code></p>
+
+<p>Retrieve a pricing&#39;s details.</p>
+<pre class="highlight shell tab-shell"><code><span class="c"># Retrieve an organization</span>
+curl <span class="s2">"https://cloudmc_endpoint/rest/pricings/03bc22bd-adc4-46b8-988d-afddc24c0cb5"</span> <span class="se">\</span>
+   -H <span class="s2">"MC-Api-Key: your_api_key"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"supportedCurrencies"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"CAD"</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"productCatalogs"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"mode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ALL_CONNECTIONS_OF_TYPE"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"serviceType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cloudca"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"connectionIds"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"en"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Default cloud.ca"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"fr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Défaut cloud.ca"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"changes"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+         </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"en"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cloud.ca default product catalog"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"fr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"catalogue des produits cloud.ca par défaut"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5ba5df7c-1e60-4d99-869d-dd3d97826b2e"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"categories"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"en"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Compute"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"fr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Compute"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fcd8908d-e1a0-41f2-9c38-fed1d1f77f18"</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="s2">"products"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"metricType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GAUGE"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"unit"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"unit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HOUR"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="s2">"period"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HOUR"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"en"</span><span class="p">:</span><span class="w"> </span><span class="s2">"vCPU"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"fr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"vCPU"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="s2">"transformer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PROPORTIONAL_TO_TIME"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"342f0d9b-3c3c-456d-b853-31d713b79e72"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"attribute"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RAWUSAGE"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"source"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"filters"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+            </span><span class="s2">"sku"</span><span class="p">:</span><span class="w"> </span><span class="s2">"vCPU"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"categoryId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fcd8908d-e1a0-41f2-9c38-fed1d1f77f18"</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"organization"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"409c1162-a930-4207-bdf9-710580c3542b"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"pricingProducts"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"unitPrice"</span><span class="p">:</span><span class="w"> </span><span class="mf">123.0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"product"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"metricType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GAUGE"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"unit"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"unit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HOUR"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="s2">"period"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HOUR"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"en"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sfg"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"fr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sdfg"</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="s2">"transformer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PROPORTIONAL_TO_TIME"</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"342f0d9b-3c3c-456d-b853-31d713b79e72"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"attribute"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RAWUSAGE"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"source"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"filters"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+          </span><span class="s2">"sku"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sdfg"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"categoryId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fcd8908d-e1a0-41f2-9c38-fed1d1f77f18"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"cogs"</span><span class="p">:</span><span class="w"> </span><span class="mf">321.0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USD"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"45425fe6-beb3-4c78-be68-f82eeb3976c6"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"en"</span><span class="p">:</span><span class="w"> </span><span class="s2">"testen"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"fr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"testfr"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"en"</span><span class="p">:</span><span class="w"> </span><span class="s2">"descen"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"fr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"testfr"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"096bbfee-a6e6-4373-8a4e-1a8b0f2bf484"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"effectiveDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-05-08T16:53:45Z"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<table><thead>
+<tr>
+<th>Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code><br/><em>UUID</em></td>
+<td>The UUID of the pricing.</td>
+</tr>
+<tr>
+<td><code>name</code><br/><em>Object</em></td>
+<td>The name object in each language for the pricing.</td>
+</tr>
+<tr>
+<td><code>description</code><br/><em>string</em></td>
+<td>The description object in each language for the pricing.</td>
+</tr>
+<tr>
+<td><code>supportedCurrencies</code><br/><em>Array[string]</em></td>
+<td>List of the currencies which are supported by this pricing.</td>
+</tr>
+<tr>
+<td><code>productCatalogs</code><br/><em>Object</em></td>
+<td>List of product catalog objects which are attached to this pricing.</td>
+</tr>
+<tr>
+<td><code>organization.id</code><br/><em>UUID</em></td>
+<td>UUID of the organisation to which belongs the pricing. It is more detailed.</td>
+</tr>
+<tr>
+<td><code>pricingProducts</code><br/><em>Array[Object]</em></td>
+<td>The list of product pricings assigned to the pricing.</td>
+</tr>
+<tr>
+<td><code>pricingProducts.id</code><br/><em>UUID</em></td>
+<td>UUID of the product pricing.</td>
+</tr>
+<tr>
+<td><code>pricingProducts.unitPrice</code><br/><em>double</em></td>
+<td>The unit price of the product.</td>
+</tr>
+<tr>
+<td><code>pricingProducts.product</code><br/><em>Object</em></td>
+<td>The product attached to this product pricing element.</td>
+</tr>
+<tr>
+<td><code>pricingProducts.cogs</code><br/><em>double</em></td>
+<td>The Cost Of Goods Sold (COGS) of the product.</td>
+</tr>
+<tr>
+<td><code>pricingProducts.currency</code><br/><em>string</em></td>
+<td>The currency of the pricing.</td>
 </tr>
 </tbody></table>
 <h1 id='cloudstack-plugin'>CloudStack plugin</h1>
