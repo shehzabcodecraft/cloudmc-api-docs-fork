@@ -395,6 +395,9 @@
                                   <li>
                                     <a href="#administration-retrieve-a-pricing" class="toc-h4 toc-link" data-title="Administration">Retrieve a pricing</a>
                                   </li>
+                                  <li>
+                                    <a href="#administration-create-pricing" class="toc-h4 toc-link" data-title="Administration">Create pricing</a>
+                                  </li>
                               </ul>
                           </li>
                       </ul>
@@ -4750,6 +4753,171 @@ curl <span class="s2">"https://cloudmc_endpoint/rest/pricings/03bc22bd-adc4-46b8
 <tr>
 <td><code>pricingProducts.currency</code><br/><em>string</em></td>
 <td>The currency of the pricing.</td>
+</tr>
+</tbody></table>
+
+<!-------------------- CREATE PRICING -------------------->
+<h4 id='administration-create-pricing'>Create pricing</h4>
+<p><code>POST /pricings</code></p>
+
+<p>Create a new pricing.</p>
+<pre class="highlight shell tab-shell"><code><span class="c"># Creates a new pricing</span>
+curl -X POST <span class="s2">"https://cloudmc_endpoint/rest/pricings"</span> <span class="se">\</span>
+   -H <span class="s2">"MC-Api-Key: your_api_key"</span>
+</code></pre>
+<blockquote>
+<p>Request body example:</p>
+</blockquote>
+<pre class="highlight javascript"><code><span class="p">{</span>
+    <span class="s2">"organization"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">"id"</span><span class="p">:</span> <span class="s2">"1d37a999-6ac6-4193-acb2-49df5c43ff31"</span>
+    <span class="p">},</span>
+    <span class="s2">"productCatalogs"</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="s2">"id"</span><span class="p">:</span> <span class="s2">"b6c89a59-34bf-4be4-a9bf-4414de84f5f7"</span>
+        <span class="p">}</span>
+    <span class="p">],</span>
+    <span class="s2">"name"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">"en"</span><span class="p">:</span> <span class="s2">"name"</span><span class="p">,</span>
+        <span class="s2">"fr"</span><span class="p">:</span> <span class="s2">"nom"</span><span class="p">,</span>
+        <span class="s2">"es"</span><span class="p">:</span> <span class="s2">"nombre"</span>
+    <span class="p">},</span>
+    <span class="s2">"description"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">"en"</span><span class="p">:</span> <span class="s2">"desc_en"</span><span class="p">,</span>
+        <span class="s2">"fr"</span><span class="p">:</span> <span class="s2">"desc_fr"</span><span class="p">,</span>
+        <span class="s2">"es"</span><span class="p">:</span> <span class="s2">"desc_es"</span>
+    <span class="p">},</span>
+    <span class="s2">"effectiveDate"</span><span class="p">:</span> <span class="s2">"2020-05-06T00:00:00.000Z"</span><span class="p">,</span>
+    <span class="s2">"pricingProducts"</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="s2">"product"</span><span class="p">:</span> <span class="p">{</span>
+                <span class="s2">"id"</span><span class="p">:</span> <span class="s2">"c14daee2-4678-4710-b9af-fc26fbd3c7f3"</span>
+            <span class="p">},</span>
+            <span class="s2">"cogs"</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span>
+            <span class="s2">"unitPrice"</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
+            <span class="s2">"currency"</span><span class="p">:</span> <span class="s2">"CAD"</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="s2">"product"</span><span class="p">:</span> <span class="p">{</span>
+                <span class="s2">"id"</span><span class="p">:</span> <span class="s2">"c14daee2-4678-4710-b9af-fc26fbd3c7f3"</span>
+            <span class="p">},</span>
+            <span class="s2">"cogs"</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span>
+            <span class="s2">"unitPrice"</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
+            <span class="s2">"currency"</span><span class="p">:</span> <span class="s2">"USD"</span>
+        <span class="p">}</span>
+    <span class="p">],</span>
+    <span class="s2">"supportedCurrencies"</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">"CAD"</span><span class="p">,</span>
+        <span class="s2">"USD"</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+</code></pre>
+<blockquote>
+<p>The above command return JSON structured like this:</p>
+</blockquote>
+<pre class="highlight javascript"><code><span class="p">{</span>
+  <span class="s2">"data"</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s2">"supportedCurrencies"</span><span class="p">:</span> <span class="p">[</span>
+      <span class="s2">"CAD"</span><span class="p">,</span>
+      <span class="s2">"USD"</span>
+    <span class="p">],</span>
+    <span class="s2">"productCatalogs"</span><span class="p">:</span> <span class="p">[</span>
+      <span class="p">{</span>
+        <span class="s2">"id"</span><span class="p">:</span> <span class="s2">"b6c89a59-34bf-4be4-a9bf-4414de84f5f7"</span>
+      <span class="p">}</span>
+    <span class="p">],</span>
+    <span class="s2">"organization"</span><span class="p">:</span> <span class="p">{</span>
+      <span class="s2">"id"</span><span class="p">:</span> <span class="s2">"1d37a999-6ac6-4193-acb2-49df5c43ff31"</span>
+    <span class="p">},</span>
+    <span class="s2">"pricingProducts"</span><span class="p">:</span> <span class="p">[</span>
+      <span class="p">{</span>
+        <span class="s2">"unitPrice"</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
+        <span class="s2">"product"</span><span class="p">:</span> <span class="p">{</span>
+          <span class="s2">"id"</span><span class="p">:</span> <span class="s2">"c14daee2-4678-4710-b9af-fc26fbd3c7f3"</span><span class="p">,</span>
+        <span class="p">},</span>
+        <span class="s2">"cogs"</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span>
+        <span class="s2">"currency"</span><span class="p">:</span> <span class="s2">"CAD"</span><span class="p">,</span>
+        <span class="s2">"id"</span><span class="p">:</span> <span class="s2">"45301951-59cb-461e-b0d0-85c46a7abb69"</span>
+      <span class="p">},</span>
+      <span class="p">{</span>
+        <span class="s2">"unitPrice"</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
+        <span class="s2">"product"</span><span class="p">:</span> <span class="p">{</span>
+          <span class="s2">"id"</span><span class="p">:</span> <span class="s2">"c14daee2-4678-4710-b9af-fc26fbd3c7f3"</span><span class="p">,</span>
+        <span class="p">},</span>
+        <span class="s2">"cogs"</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span>
+        <span class="s2">"currency"</span><span class="p">:</span> <span class="s2">"USD"</span><span class="p">,</span>
+        <span class="s2">"id"</span><span class="p">:</span> <span class="s2">"30ec5361-0044-44d5-a8b1-68dca07d274e"</span>
+      <span class="p">}</span>
+    <span class="p">],</span>
+    <span class="s2">"name"</span><span class="p">:</span> <span class="p">{</span>
+      <span class="s2">"en"</span><span class="p">:</span> <span class="s2">"name"</span><span class="p">,</span>
+      <span class="s2">"fr"</span><span class="p">:</span> <span class="s2">"nom"</span><span class="p">,</span>
+      <span class="s2">"es"</span><span class="p">:</span> <span class="s2">"nombre"</span>
+    <span class="p">},</span>
+    <span class="s2">"changes"</span><span class="p">:</span> <span class="p">[],</span>
+    <span class="s2">"description"</span><span class="p">:</span> <span class="p">{</span>
+      <span class="s2">"en"</span><span class="p">:</span> <span class="s2">"desc_en"</span><span class="p">,</span>
+      <span class="s2">"fr"</span><span class="p">:</span> <span class="s2">"desc_fr"</span><span class="p">,</span>
+      <span class="s2">"es"</span><span class="p">:</span> <span class="s2">"desc_es"</span>
+    <span class="p">},</span>
+    <span class="s2">"id"</span><span class="p">:</span> <span class="s2">"c4860b7d-ad41-40a8-b2a2-6f96be87c8b0"</span><span class="p">,</span>
+    <span class="s2">"effectiveDate"</span><span class="p">:</span> <span class="s2">"2020-05-06T00:00:00Z"</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+<table><thead>
+<tr>
+<th>Required</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>organization.id</code> <br/><em>UUID</em></td>
+<td>The id of the organization the pricing belongs to.</td>
+</tr>
+<tr>
+<td><code>productCatalogs</code> <br/><em>Array[productCatalogs.id]</em></td>
+<td>An array of product catalogs the pricing can add products from.</td>
+</tr>
+<tr>
+<td><code>productCatalogs.id</code> <br/><em>UUID</em></td>
+<td>The id for a product catalog you&#39;d like to add as a source for your pricing.</td>
+</tr>
+<tr>
+<td><code>name</code> <br/><em>Object</em></td>
+<td>A map of language keys to a name in the specified language.</td>
+</tr>
+<tr>
+<td><code>description</code> <br/><em>Object</em></td>
+<td>A map of language language keys to the description in the specified language.</td>
+</tr>
+<tr>
+<td><code>effectiveDate</code> <br/><em>string</em></td>
+<td>The date the pricing should become effective.</td>
+</tr>
+<tr>
+<td><code>pricingProducts</code> <br/><em>Array[pricingProduct]</em></td>
+<td>A list of products from a supplied product catalog that are priced, need to supply a product with every supported currency.</td>
+</tr>
+<tr>
+<td><code>pricingProduct.product.id</code> <br/><em>UUID</em></td>
+<td>The id of the product you&#39;re applying a price to. Must be contained in one of the specified product catalogs.</td>
+</tr>
+<tr>
+<td><code>pricingProduct.cogs</code> <br/><em>int</em></td>
+<td>The cost of goods sold, represents the direct cost of producing the specified product.</td>
+</tr>
+<tr>
+<td><code>pricingProduct.unitPrice</code> <br/><em>int</em></td>
+<td>The unit price is the price at which the product will be sold to the consumer.</td>
+</tr>
+<tr>
+<td><code>pricingProduct.currency</code> <br/><em>string</em></td>
+<td>The currency the price is set in.</td>
+</tr>
+<tr>
+<td><code>supportedCurrencies</code> <br/><em>Array[string]</em></td>
+<td>An array of supported currencies.</td>
 </tr>
 </tbody></table>
 <h1 id='cloudstack-plugin'>CloudStack plugin</h1>
