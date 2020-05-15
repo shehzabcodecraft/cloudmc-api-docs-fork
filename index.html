@@ -1704,6 +1704,19 @@
                           </li>
                       </ul>
                   </li>
+                  <li>
+                    <a href="#azure-kubernetes" class="toc-h2 toc-link" data-title="Azure plugin">Kubernetes</a>
+                      <ul class="toc-list-h3">
+                          <li>
+                            <a href="#azure-clusters" class="toc-h3 toc-link" data-title="Azure plugin">Clusters</a>
+                              <ul class="toc-list-h4">
+                                  <li>
+                                    <a href="#azure-list-aks-clusters" class="toc-h4 toc-link" data-title="Azure plugin">List AKS clusters</a>
+                                  </li>
+                              </ul>
+                          </li>
+                      </ul>
+                  </li>
               </ul>
           </li>
           <li>
@@ -24541,6 +24554,62 @@ For Windows instances, reset the administrator account and reset the Remote Desk
 <tr>
 <td><code>domainName</code> <br/><em>string</em></td>
 <td>The subdomain part of the fqdn. If it is empty or not provided, the entry will be removed from the DNS.</td>
+</tr>
+</tbody></table>
+<h2 id='azure-kubernetes'>Kubernetes</h2><h3 id='azure-clusters'>Clusters</h3>
+<p>Deploy and manage your Azure Kubenetes Service (AKS) Clusters.</p>
+
+<p>For information regarding AKS clusters, please see <a href="https://docs.microsoft.com/en-us/azure/aks/">azure docs</a>.</p>
+
+<!-------------------- LIST AKS Clusters -------------------->
+<h4 id='azure-list-aks-clusters'>List AKS clusters</h4><pre class="highlight shell tab-shell"><code>curl -X GET <span class="se">\</span>
+   -H <span class="s2">"MC-Api-Key: your_api_key"</span> <span class="se">\</span>
+   <span class="s2">"https://cloudmc_endpoint/v1/services/azure-conn/test_env/clusters"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/subscriptions/9e548d49-7d56-452c-8fc8-e81a25d05ddf/resourcegroups/azure-connect-system-ssamadh-mean-env/providers/Microsoft.ContainerService/managedClusters/ssamadh-aks-mean"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ssamadh-basic"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"premium_lrs"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"region"</span><span class="p">:</span><span class="w"> </span><span class="s2">"southeastasia"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"nodePools"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"totalNodes"</span><span class="p">:</span><span class="w"> </span><span class="s2">"7"</span><span class="p">,</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+       </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/subscriptions/ 803c8d4a-80ca-4793-8def-89b5f55d1091/resourcegroups/azure-connect-system-ssamadh-mean-env/providers/Microsoft.ContainerService/managedClusters/ssamadh-aks-mean"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ssamadh-basic"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"premium_lrs"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"region"</span><span class="p">:</span><span class="w"> </span><span class="s2">"southeastasia"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"nodePools"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"totalNodes"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3"</span><span class="p">,</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="s2">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"recordCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><code>GET /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/clusters</code></p>
+
+<p>Retrieve a list of all the AKS clusters in a given <a href="#administration-environments">environment</a>.</p>
+
+<table><thead>
+<tr>
+<th>Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>data</code><br/><em>array</em></td>
+<td>A list of Azure Kubenetes Service (AKS) Clusters. <em>(See <a href="#azure-retrieve-an-aks-cluster">&quot;Retrieve an AKS cluster&quot;</a> API for the strucutre of each AKS cluster object)</em></td>
+</tr>
+<tr>
+<td><code>metadata</code><br/><em>object</em></td>
+<td>Consists of the meta information related to the returned cluster list. The attribute <code>recordCount</code> contains the number of clusters returned.</td>
 </tr>
 </tbody></table>
 <h1 id='masterportal-plugin'>MasterPortal plugin</h1>
