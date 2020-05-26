@@ -1417,6 +1417,17 @@
                               </ul>
                           </li>
                           <li>
+                            <a href="#gcp-stateful-sets" class="toc-h3 toc-link" data-title="Google Cloud Platform plugin">Stateful Sets</a>
+                              <ul class="toc-list-h4">
+                                  <li>
+                                    <a href="#gcp-list-stateful-sets" class="toc-h4 toc-link" data-title="Google Cloud Platform plugin">List stateful sets</a>
+                                  </li>
+                                  <li>
+                                    <a href="#gcp-get-a-stateful-sets" class="toc-h4 toc-link" data-title="Google Cloud Platform plugin">Get a stateful sets</a>
+                                  </li>
+                              </ul>
+                          </li>
+                          <li>
                             <a href="#gcp-releases" class="toc-h3 toc-link" data-title="Google Cloud Platform plugin">Releases</a>
                               <ul class="toc-list-h4">
                                   <li>
@@ -1490,6 +1501,17 @@
                           </li>
                           <li>
                             <a href="#kubernetes-delete-a-pod" class="toc-h3 toc-link" data-title="Kubernetes plugin">Delete a pod</a>
+                          </li>
+                          <li>
+                            <a href="#kubernetes-stateful-sets" class="toc-h3 toc-link" data-title="Kubernetes plugin">Stateful Sets</a>
+                              <ul class="toc-list-h4">
+                                  <li>
+                                    <a href="#kubernetes-list-stateful-sets" class="toc-h4 toc-link" data-title="Kubernetes plugin">List stateful sets</a>
+                                  </li>
+                                  <li>
+                                    <a href="#kubernetes-get-a-stateful-sets" class="toc-h4 toc-link" data-title="Kubernetes plugin">Get a stateful sets</a>
+                                  </li>
+                              </ul>
                           </li>
                       </ul>
                   </li>
@@ -7184,11 +7206,11 @@ curl -X PUT <span class="se">\</span>
 </tr>
 <tr>
 <td><code>networkAclId</code><br/><em>UUID</em></td>
-<td>The id of the <a href="#cloudstack-network-acls">network ACL</a> of the the network</td>
+<td>The id of the <a href="#cloudstack-network-acls">network ACL</a> of the network</td>
 </tr>
 <tr>
 <td><code>networkAclName</code><br/><em>string</em></td>
-<td>The name of the <a href="#cloudstack-network-acls">network ACL</a> of the the network</td>
+<td>The name of the <a href="#cloudstack-network-acls">network ACL</a> of the network</td>
 </tr>
 <tr>
 <td><code>networkOfferingId</code><br/><em>UUID</em></td>
@@ -7305,11 +7327,11 @@ curl -X PUT <span class="se">\</span>
 </tr>
 <tr>
 <td><code>networkAclId</code><br/><em>UUID</em></td>
-<td>The id of the <a href="#cloudstack-network-acls">network ACL</a> of the the network</td>
+<td>The id of the <a href="#cloudstack-network-acls">network ACL</a> of the network</td>
 </tr>
 <tr>
 <td><code>networkAclName</code><br/><em>string</em></td>
-<td>The name of the <a href="#cloudstack-network-acls">network ACL</a> of the the network</td>
+<td>The name of the <a href="#cloudstack-network-acls">network ACL</a> of the network</td>
 </tr>
 <tr>
 <td><code>networkOfferingId</code><br/><em>UUID</em></td>
@@ -18756,7 +18778,7 @@ curl -X POST <span class="se">\</span>
 </tr>
 <tr>
 <td><code>metadata</code> <br/><em>object</em></td>
-<td>The metadata of the the pod</td>
+<td>The metadata of the pod</td>
 </tr>
 <tr>
 <td><code>metadata.annotations</code> <br/><em>map</em></td>
@@ -18768,7 +18790,7 @@ curl -X POST <span class="se">\</span>
 </tr>
 <tr>
 <td><code>metadata.labels</code> <br/><em>map</em></td>
-<td>The labels associated to the pod and there associated values</td>
+<td>The labels associated to the pod</td>
 </tr>
 <tr>
 <td><code>metadata.name</code> <br/><em>string</em></td>
@@ -18792,11 +18814,11 @@ curl -X POST <span class="se">\</span>
 </tr>
 <tr>
 <td><code>status</code><br/><em>object</em></td>
-<td>The status information of the the pod</td>
+<td>The status information of the pod</td>
 </tr>
 <tr>
 <td><code>status.phase</code><br/><em>string</em></td>
-<td>The status of the the pod. Possible statuses are Running, Pending, Succeeded, Unknown and Failed</td>
+<td>The status of the pod. Possible statuses are Running, Pending, Succeeded, Unknown and Failed</td>
 </tr>
 </tbody></table>
 
@@ -19028,7 +19050,7 @@ curl -X POST <span class="se">\</span>
 </tr>
 <tr>
 <td><code>metadata</code> <br/><em>object</em></td>
-<td>The metadata of the the pod</td>
+<td>The metadata of the pod</td>
 </tr>
 <tr>
 <td><code>metadata.annotations</code> <br/><em>map</em></td>
@@ -19040,7 +19062,7 @@ curl -X POST <span class="se">\</span>
 </tr>
 <tr>
 <td><code>metadata.labels</code> <br/><em>map</em></td>
-<td>The labels associated to the pod and there associated values</td>
+<td>The labels associated to the pod</td>
 </tr>
 <tr>
 <td><code>metadata.name</code> <br/><em>string</em></td>
@@ -19064,11 +19086,11 @@ curl -X POST <span class="se">\</span>
 </tr>
 <tr>
 <td><code>status</code><br/><em>object</em></td>
-<td>The status information of the the pod</td>
+<td>The status information of the pod</td>
 </tr>
 <tr>
 <td><code>status.phase</code><br/><em>string</em></td>
-<td>The status of the the pod. Possible statuses are Running, Pending, Succeeded, Unknown and Failed</td>
+<td>The status of the pod. Possible statuses are Running, Pending, Succeeded, Unknown and Failed</td>
 </tr>
 </tbody></table>
 
@@ -19118,6 +19140,403 @@ curl -X POST <span class="se">\</span>
 <td>The status of the operation</td>
 </tr>
 </tbody></table>
+<h3 id='gcp-stateful-sets'>Stateful Sets</h3>
+<!-------------------- LIST STATEFUL SETS -------------------->
+<h4 id='gcp-list-stateful-sets'>List stateful sets</h4><pre class="highlight shell tab-shell"><code>curl -X GET <span class="se">\</span>
+   -H <span class="s2">"MC-Api-Key: your_api_key"</span> <span class="se">\</span>
+   <span class="s2">"https://cloudmc_endpoint/v1/services/k8s/anenvironment/statefulsets"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test-aerospike/auth"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"replicaRatio"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1 / 1"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"images"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="s2">"aerospike/aerospike-server:4.5.0.5"</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="s2">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"creationTimestamp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-04-27T09:13:49.000-04:00"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"generation"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"labels"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"app"</span><span class="p">:</span><span class="w"> </span><span class="s2">"aerospike"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"chart"</span><span class="p">:</span><span class="w"> </span><span class="s2">"aerospike-0.3.2"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"heritage"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Helm"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"release"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test-aerospike"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"namespace"</span><span class="p">:</span><span class="w"> </span><span class="s2">"auth"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"resourceVersion"</span><span class="p">:</span><span class="w"> </span><span class="s2">"117166675"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"selfLink"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/apis/apps/v1/namespaces/auth/statefulsets/test-aerospike"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"uid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0aeff29e-e33d-48da-b933-651a9070d58c"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"spec"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"podManagementPolicy"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OrderedReady"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"replicas"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"revisionHistoryLimit"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"selector"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"matchLabels"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"app"</span><span class="p">:</span><span class="w"> </span><span class="s2">"aerospike"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"release"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test"</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"serviceName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test-aerospike"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"template"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"annotations"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"checksum/config"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0e07919467cc16f2c07ac99d0036405deafa06f7d3b430215915470b3a6ca631"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="s2">"labels"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"app"</span><span class="p">:</span><span class="w"> </span><span class="s2">"aerospike"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"release"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="s2">"spec"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"containers"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+              </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"image"</span><span class="p">:</span><span class="w"> </span><span class="s2">"aerospike/aerospike-server:4.5.0.5"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"imagePullPolicy"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IfNotPresent"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test-aerospike"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"ports"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                  </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"containerPort"</span><span class="p">:</span><span class="w"> </span><span class="mi">3000</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"clients"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"protocol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TCP"</span><span class="w">
+                  </span><span class="p">},</span><span class="w">
+                  </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"containerPort"</span><span class="p">:</span><span class="w"> </span><span class="mi">3002</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mesh"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"protocol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TCP"</span><span class="w">
+                  </span><span class="p">},</span><span class="w">
+                  </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"containerPort"</span><span class="p">:</span><span class="w"> </span><span class="mi">3003</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"info"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"protocol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TCP"</span><span class="w">
+                  </span><span class="p">}</span><span class="w">
+                </span><span class="p">],</span><span class="w">
+                </span><span class="s2">"readinessProbe"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                  </span><span class="s2">"failureThreshold"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+                  </span><span class="s2">"initialDelaySeconds"</span><span class="p">:</span><span class="w"> </span><span class="mi">15</span><span class="p">,</span><span class="w">
+                  </span><span class="s2">"periodSeconds"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+                  </span><span class="s2">"successThreshold"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+                  </span><span class="s2">"tcpSocket"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"port"</span><span class="p">:</span><span class="w"> </span><span class="mi">3000</span><span class="w">
+                  </span><span class="p">},</span><span class="w">
+                  </span><span class="s2">"timeoutSeconds"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="s2">"resources"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+                </span><span class="s2">"terminationMessagePath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/dev/termination-log"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"terminationMessagePolicy"</span><span class="p">:</span><span class="w"> </span><span class="s2">"File"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"volumeMounts"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                  </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"mountPath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/etc/aerospike"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"config-volume"</span><span class="w">
+                  </span><span class="p">}</span><span class="w">
+                </span><span class="p">]</span><span class="w">
+              </span><span class="p">}</span><span class="w">
+            </span><span class="p">],</span><span class="w">
+            </span><span class="s2">"dnsPolicy"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ClusterFirst"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"restartPolicy"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Always"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"schedulerName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"default-scheduler"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"securityContext"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+            </span><span class="s2">"terminationGracePeriodSeconds"</span><span class="p">:</span><span class="w"> </span><span class="mi">30</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"volumes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+              </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"configMap"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                  </span><span class="s2">"defaultMode"</span><span class="p">:</span><span class="w"> </span><span class="mi">420</span><span class="p">,</span><span class="w">
+                  </span><span class="s2">"items"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                    </span><span class="p">{</span><span class="w">
+                      </span><span class="s2">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"aerospike.conf"</span><span class="p">,</span><span class="w">
+                      </span><span class="s2">"path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"aerospike.conf"</span><span class="w">
+                    </span><span class="p">}</span><span class="w">
+                  </span><span class="p">],</span><span class="w">
+                  </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test-aerospike"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"config-volume"</span><span class="w">
+              </span><span class="p">}</span><span class="w">
+            </span><span class="p">]</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"updateStrategy"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"rollingUpdate"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"partition"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RollingUpdate"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"collisionCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"currentReplicas"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"currentRevision"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test-aerospike-6db7776c7d"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"observedGeneration"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"readyReplicas"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"replicas"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"updateRevision"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test-aerospike-6db7776c7d"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"updatedReplicas"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="s2">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"recordCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><code>GET /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/statefulsets</code></p>
+
+<p>Retrieve a list of all stateful sets in a given <a href="#administration-environments">environment</a>.</p>
+
+<table><thead>
+<tr>
+<th>Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code> <br/><em>string</em></td>
+<td>The id of the stateful set</td>
+</tr>
+<tr>
+<td><code>metadata</code> <br/><em>object</em></td>
+<td>The metadata of the stateful set</td>
+</tr>
+<tr>
+<td><code>metadata.creationTimestamp</code> <br/><em>string</em></td>
+<td>The date of creation of the stateful set as a string</td>
+</tr>
+<tr>
+<td><code>metadata.labels</code> <br/><em>map</em></td>
+<td>The labels associated to the stateful set</td>
+</tr>
+<tr>
+<td><code>metadata.name</code> <br/><em>string</em></td>
+<td>The name of the stateful set</td>
+</tr>
+<tr>
+<td><code>metadata.namespace</code> <br/><em>string</em></td>
+<td>The namespace in which the stateful set is created</td>
+</tr>
+<tr>
+<td><code>metadata.uid</code> <br/><em>object</em></td>
+<td>The UUID of the stateful set</td>
+</tr>
+<tr>
+<td><code>spec</code><br/><em>object</em></td>
+<td>The specification used to create and run the stateful set</td>
+</tr>
+<tr>
+<td><code>status</code><br/><em>object</em></td>
+<td>The status information of the stateful set</td>
+</tr>
+<tr>
+<td><code>status.readyReplicas</code><br/><em>integer</em></td>
+<td>Total number of ready pods targeted by this deployment</td>
+</tr>
+<tr>
+<td><code>status.replicas</code><br/><em>integer</em></td>
+<td>Total number of non-terminated pods targeted by this deployment</td>
+</tr>
+</tbody></table>
+
+<p>Note that the list is not complete, since it is refering to the <a href="https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md">kubernetes api details</a>.</p>
+
+<!-------------------- GET A STATEFUL SET -------------------->
+<h4 id='gcp-get-a-stateful-sets'>Get a stateful sets</h4><pre class="highlight shell tab-shell"><code>curl -X GET <span class="se">\</span>
+   -H <span class="s2">"MC-Api-Key: your_api_key"</span> <span class="se">\</span>
+   <span class="s2">"https://cloudmc_endpoint/v1/services/k8s/anenvironment/statefulsets/test-aerospike/auth"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test-aerospike/auth"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"replicaRatio"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1 / 1"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"images"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"aerospike/aerospike-server:4.5.0.5"</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"apiVersion"</span><span class="p">:</span><span class="w"> </span><span class="s2">"apps/v1"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"kind"</span><span class="p">:</span><span class="w"> </span><span class="s2">"StatefulSet"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"creationTimestamp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-04-27T09:13:49.000-04:00"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"generation"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"labels"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"app"</span><span class="p">:</span><span class="w"> </span><span class="s2">"aerospike"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"chart"</span><span class="p">:</span><span class="w"> </span><span class="s2">"aerospike-0.3.2"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"heritage"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Helm"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"release"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test-aerospike"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"namespace"</span><span class="p">:</span><span class="w"> </span><span class="s2">"auth"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"resourceVersion"</span><span class="p">:</span><span class="w"> </span><span class="s2">"117166675"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"selfLink"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/apis/apps/v1/namespaces/auth/statefulsets/test-aerospike"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"uid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0aeff29e-e33d-48da-b933-651a9070d58c"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"spec"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"podManagementPolicy"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OrderedReady"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"replicas"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"revisionHistoryLimit"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"selector"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"matchLabels"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"app"</span><span class="p">:</span><span class="w"> </span><span class="s2">"aerospike"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"release"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"serviceName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test-aerospike"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"template"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"annotations"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"checksum/config"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0e07919467cc16f2c07ac99d0036405deafa06f7d3b430215915470b3a6ca631"</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="s2">"labels"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"app"</span><span class="p">:</span><span class="w"> </span><span class="s2">"aerospike"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"release"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test"</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"spec"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"containers"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"image"</span><span class="p">:</span><span class="w"> </span><span class="s2">"aerospike/aerospike-server:4.5.0.5"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"imagePullPolicy"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IfNotPresent"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test-aerospike"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"ports"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                  </span><span class="s2">"containerPort"</span><span class="p">:</span><span class="w"> </span><span class="mi">3000</span><span class="p">,</span><span class="w">
+                  </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"clients"</span><span class="p">,</span><span class="w">
+                  </span><span class="s2">"protocol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TCP"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                  </span><span class="s2">"containerPort"</span><span class="p">:</span><span class="w"> </span><span class="mi">3002</span><span class="p">,</span><span class="w">
+                  </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mesh"</span><span class="p">,</span><span class="w">
+                  </span><span class="s2">"protocol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TCP"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                  </span><span class="s2">"containerPort"</span><span class="p">:</span><span class="w"> </span><span class="mi">3003</span><span class="p">,</span><span class="w">
+                  </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"info"</span><span class="p">,</span><span class="w">
+                  </span><span class="s2">"protocol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TCP"</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+              </span><span class="p">],</span><span class="w">
+              </span><span class="s2">"readinessProbe"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"failureThreshold"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"initialDelaySeconds"</span><span class="p">:</span><span class="w"> </span><span class="mi">15</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"periodSeconds"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"successThreshold"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"tcpSocket"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                  </span><span class="s2">"port"</span><span class="p">:</span><span class="w"> </span><span class="mi">3000</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="s2">"timeoutSeconds"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+              </span><span class="p">},</span><span class="w">
+              </span><span class="s2">"resources"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+              </span><span class="s2">"terminationMessagePath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/dev/termination-log"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"terminationMessagePolicy"</span><span class="p">:</span><span class="w"> </span><span class="s2">"File"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"volumeMounts"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                  </span><span class="s2">"mountPath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/etc/aerospike"</span><span class="p">,</span><span class="w">
+                  </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"config-volume"</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+              </span><span class="p">]</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+          </span><span class="p">],</span><span class="w">
+          </span><span class="s2">"dnsPolicy"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ClusterFirst"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"restartPolicy"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Always"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"schedulerName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"default-scheduler"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"securityContext"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+          </span><span class="s2">"terminationGracePeriodSeconds"</span><span class="p">:</span><span class="w"> </span><span class="mi">30</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"volumes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"configMap"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"defaultMode"</span><span class="p">:</span><span class="w"> </span><span class="mi">420</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"items"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                  </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"aerospike.conf"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"aerospike.conf"</span><span class="w">
+                  </span><span class="p">}</span><span class="w">
+                </span><span class="p">],</span><span class="w">
+                </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test-aerospike"</span><span class="w">
+              </span><span class="p">},</span><span class="w">
+              </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"config-volume"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+          </span><span class="p">]</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"updateStrategy"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"rollingUpdate"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"partition"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RollingUpdate"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"collisionCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"currentReplicas"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"currentRevision"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test-aerospike-6db7776c7d"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"observedGeneration"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"readyReplicas"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"replicas"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"updateRevision"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test-aerospike-6db7776c7d"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"updatedReplicas"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><code>GET /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/statefulsets/:id</code></p>
+
+<p>Retrieve a stateful set and all its info in a given <a href="#administration-environments">environment</a>.</p>
+
+<table><thead>
+<tr>
+<th>Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code> <br/><em>string</em></td>
+<td>The id of the stateful set</td>
+</tr>
+<tr>
+<td><code>metadata</code> <br/><em>object</em></td>
+<td>The metadata of the stateful set</td>
+</tr>
+<tr>
+<td><code>metadata.creationTimestamp</code> <br/><em>string</em></td>
+<td>The date of creation of the stateful set as a string</td>
+</tr>
+<tr>
+<td><code>metadata.labels</code> <br/><em>map</em></td>
+<td>The labels associated to the stateful</td>
+</tr>
+<tr>
+<td><code>metadata.name</code> <br/><em>string</em></td>
+<td>The name of the stateful set</td>
+</tr>
+<tr>
+<td><code>metadata.namespace</code> <br/><em>string</em></td>
+<td>The namespace in which the stateful set is created</td>
+</tr>
+<tr>
+<td><code>metadata.uid</code> <br/><em>object</em></td>
+<td>The UUID of the stateful set</td>
+</tr>
+<tr>
+<td><code>spec</code><br/><em>object</em></td>
+<td>The specification used to create and run the stateful set</td>
+</tr>
+<tr>
+<td><code>status</code><br/><em>object</em></td>
+<td>The status information of the stateful set</td>
+</tr>
+<tr>
+<td><code>status.readyReplicas</code><br/><em>integer</em></td>
+<td>Total number of ready pods targeted by this deployment</td>
+</tr>
+<tr>
+<td><code>status.replicas</code><br/><em>integer</em></td>
+<td>Total number of non-terminated pods targeted by this deployment</td>
+</tr>
+</tbody></table>
+
+<p>Note that the list is not complete, since it is refering to the <a href="https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md">kubernetes api details</a>.</p>
 <h3 id='gcp-releases'>Releases</h3>
 <!-------------------- LIST RELEASES -------------------->
 <h4 id='gcp-list-releases'>List releases</h4><pre class="highlight shell tab-shell"><code>curl -X GET <span class="se">\</span>
@@ -19260,7 +19679,7 @@ curl -X POST <span class="se">\</span>
 </tr>
 <tr>
 <td><code>info.deleted</code> <br/><em>string</em></td>
-<td>The labels associated to the pod and there associated values</td>
+<td>The labels associated to the pod</td>
 </tr>
 <tr>
 <td><code>info.description</code> <br/><em>string</em></td>
@@ -19509,7 +19928,7 @@ curl -X POST <span class="se">\</span>
 </tr>
 <tr>
 <td><code>info.deleted</code> <br/><em>string</em></td>
-<td>The labels associated to the pod and there associated values</td>
+<td>The labels associated to the pod</td>
 </tr>
 <tr>
 <td><code>info.description</code> <br/><em>string</em></td>
@@ -19687,7 +20106,7 @@ curl -X POST <span class="se">\</span>
 </blockquote>
 <pre class="highlight javascript"><code><span class="c1">// Change to the latest version of a chart</span>
 <span class="p">{</span>
-  <span class="s2">"upgradeChart"</span><span class="p">:</span>  <span class="s2">"stable/aerospike"</span> 
+  <span class="s2">"upgradeChart"</span><span class="p">:</span>  <span class="s2">"stable/aerospike"</span>
 <span class="p">}</span>
 
 <span class="c1">// Change to a specific version of a chart</span>
@@ -20929,7 +21348,7 @@ curl -X POST <span class="se">\</span>
 </tr>
 <tr>
 <td><code>metadata</code> <br/><em>object</em></td>
-<td>The metadata of the the pod</td>
+<td>The metadata of the pod</td>
 </tr>
 <tr>
 <td><code>metadata.annotations</code> <br/><em>map</em></td>
@@ -20941,7 +21360,7 @@ curl -X POST <span class="se">\</span>
 </tr>
 <tr>
 <td><code>metadata.labels</code> <br/><em>map</em></td>
-<td>The labels associated to the pod and there associated values</td>
+<td>The labels associated to the pod</td>
 </tr>
 <tr>
 <td><code>metadata.name</code> <br/><em>string</em></td>
@@ -20965,11 +21384,11 @@ curl -X POST <span class="se">\</span>
 </tr>
 <tr>
 <td><code>status</code><br/><em>object</em></td>
-<td>The status information of the the pod</td>
+<td>The status information of the pod</td>
 </tr>
 <tr>
 <td><code>status.phase</code><br/><em>string</em></td>
-<td>The status of the the pod. Possible statuses are Running, Pending, Succeeded, Unknown and Failed</td>
+<td>The status of the pod. Possible statuses are Running, Pending, Succeeded, Unknown and Failed</td>
 </tr>
 </tbody></table>
 
@@ -21189,7 +21608,7 @@ curl -X POST <span class="se">\</span>
 </tr>
 <tr>
 <td><code>metadata</code> <br/><em>object</em></td>
-<td>The metadata of the the pod</td>
+<td>The metadata of the pod</td>
 </tr>
 <tr>
 <td><code>metadata.annotations</code> <br/><em>map</em></td>
@@ -21201,7 +21620,7 @@ curl -X POST <span class="se">\</span>
 </tr>
 <tr>
 <td><code>metadata.labels</code> <br/><em>map</em></td>
-<td>The labels associated to the pod and there associated values</td>
+<td>The labels associated to the pod</td>
 </tr>
 <tr>
 <td><code>metadata.name</code> <br/><em>string</em></td>
@@ -21225,11 +21644,11 @@ curl -X POST <span class="se">\</span>
 </tr>
 <tr>
 <td><code>status</code><br/><em>object</em></td>
-<td>The status information of the the pod</td>
+<td>The status information of the pod</td>
 </tr>
 <tr>
 <td><code>status.phase</code><br/><em>string</em></td>
-<td>The status of the the pod. Possible statuses are Running, Pending, Succeeded, Unknown and Failed</td>
+<td>The status of the pod. Possible statuses are Running, Pending, Succeeded, Unknown and Failed</td>
 </tr>
 </tbody></table>
 
@@ -21267,6 +21686,403 @@ curl -X POST <span class="se">\</span>
 <td>The status of the operation</td>
 </tr>
 </tbody></table>
+<h3 id='kubernetes-stateful-sets'>Stateful Sets</h3>
+<!-------------------- LIST STATEFUL SETS -------------------->
+<h4 id='kubernetes-list-stateful-sets'>List stateful sets</h4><pre class="highlight shell tab-shell"><code>curl -X GET <span class="se">\</span>
+   -H <span class="s2">"MC-Api-Key: your_api_key"</span> <span class="se">\</span>
+   <span class="s2">"https://cloudmc_endpoint/v1/services/k8s/anenvironment/statefulsets"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test-aerospike/auth"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"replicaRatio"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1 / 1"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"images"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="s2">"aerospike/aerospike-server:4.5.0.5"</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="s2">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"creationTimestamp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-04-27T09:13:49.000-04:00"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"generation"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"labels"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"app"</span><span class="p">:</span><span class="w"> </span><span class="s2">"aerospike"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"chart"</span><span class="p">:</span><span class="w"> </span><span class="s2">"aerospike-0.3.2"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"heritage"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Helm"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"release"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test-aerospike"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"namespace"</span><span class="p">:</span><span class="w"> </span><span class="s2">"auth"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"resourceVersion"</span><span class="p">:</span><span class="w"> </span><span class="s2">"117166675"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"selfLink"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/apis/apps/v1/namespaces/auth/statefulsets/test-aerospike"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"uid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0aeff29e-e33d-48da-b933-651a9070d58c"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"spec"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"podManagementPolicy"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OrderedReady"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"replicas"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"revisionHistoryLimit"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"selector"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"matchLabels"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"app"</span><span class="p">:</span><span class="w"> </span><span class="s2">"aerospike"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"release"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test"</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"serviceName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test-aerospike"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"template"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"annotations"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"checksum/config"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0e07919467cc16f2c07ac99d0036405deafa06f7d3b430215915470b3a6ca631"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="s2">"labels"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"app"</span><span class="p">:</span><span class="w"> </span><span class="s2">"aerospike"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"release"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="s2">"spec"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"containers"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+              </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"image"</span><span class="p">:</span><span class="w"> </span><span class="s2">"aerospike/aerospike-server:4.5.0.5"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"imagePullPolicy"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IfNotPresent"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test-aerospike"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"ports"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                  </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"containerPort"</span><span class="p">:</span><span class="w"> </span><span class="mi">3000</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"clients"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"protocol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TCP"</span><span class="w">
+                  </span><span class="p">},</span><span class="w">
+                  </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"containerPort"</span><span class="p">:</span><span class="w"> </span><span class="mi">3002</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mesh"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"protocol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TCP"</span><span class="w">
+                  </span><span class="p">},</span><span class="w">
+                  </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"containerPort"</span><span class="p">:</span><span class="w"> </span><span class="mi">3003</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"info"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"protocol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TCP"</span><span class="w">
+                  </span><span class="p">}</span><span class="w">
+                </span><span class="p">],</span><span class="w">
+                </span><span class="s2">"readinessProbe"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                  </span><span class="s2">"failureThreshold"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+                  </span><span class="s2">"initialDelaySeconds"</span><span class="p">:</span><span class="w"> </span><span class="mi">15</span><span class="p">,</span><span class="w">
+                  </span><span class="s2">"periodSeconds"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+                  </span><span class="s2">"successThreshold"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+                  </span><span class="s2">"tcpSocket"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"port"</span><span class="p">:</span><span class="w"> </span><span class="mi">3000</span><span class="w">
+                  </span><span class="p">},</span><span class="w">
+                  </span><span class="s2">"timeoutSeconds"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="s2">"resources"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+                </span><span class="s2">"terminationMessagePath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/dev/termination-log"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"terminationMessagePolicy"</span><span class="p">:</span><span class="w"> </span><span class="s2">"File"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"volumeMounts"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                  </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"mountPath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/etc/aerospike"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"config-volume"</span><span class="w">
+                  </span><span class="p">}</span><span class="w">
+                </span><span class="p">]</span><span class="w">
+              </span><span class="p">}</span><span class="w">
+            </span><span class="p">],</span><span class="w">
+            </span><span class="s2">"dnsPolicy"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ClusterFirst"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"restartPolicy"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Always"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"schedulerName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"default-scheduler"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"securityContext"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+            </span><span class="s2">"terminationGracePeriodSeconds"</span><span class="p">:</span><span class="w"> </span><span class="mi">30</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"volumes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+              </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"configMap"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                  </span><span class="s2">"defaultMode"</span><span class="p">:</span><span class="w"> </span><span class="mi">420</span><span class="p">,</span><span class="w">
+                  </span><span class="s2">"items"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                    </span><span class="p">{</span><span class="w">
+                      </span><span class="s2">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"aerospike.conf"</span><span class="p">,</span><span class="w">
+                      </span><span class="s2">"path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"aerospike.conf"</span><span class="w">
+                    </span><span class="p">}</span><span class="w">
+                  </span><span class="p">],</span><span class="w">
+                  </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test-aerospike"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"config-volume"</span><span class="w">
+              </span><span class="p">}</span><span class="w">
+            </span><span class="p">]</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"updateStrategy"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"rollingUpdate"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"partition"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RollingUpdate"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"collisionCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"currentReplicas"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"currentRevision"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test-aerospike-6db7776c7d"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"observedGeneration"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"readyReplicas"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"replicas"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"updateRevision"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test-aerospike-6db7776c7d"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"updatedReplicas"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="s2">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"recordCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><code>GET /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/statefulsets</code></p>
+
+<p>Retrieve a list of all stateful sets in a given <a href="#administration-environments">environment</a>.</p>
+
+<table><thead>
+<tr>
+<th>Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code> <br/><em>string</em></td>
+<td>The id of the stateful set</td>
+</tr>
+<tr>
+<td><code>metadata</code> <br/><em>object</em></td>
+<td>The metadata of the stateful set</td>
+</tr>
+<tr>
+<td><code>metadata.creationTimestamp</code> <br/><em>string</em></td>
+<td>The date of creation of the stateful set as a string</td>
+</tr>
+<tr>
+<td><code>metadata.labels</code> <br/><em>map</em></td>
+<td>The labels associated to the stateful set</td>
+</tr>
+<tr>
+<td><code>metadata.name</code> <br/><em>string</em></td>
+<td>The name of the stateful set</td>
+</tr>
+<tr>
+<td><code>metadata.namespace</code> <br/><em>string</em></td>
+<td>The namespace in which the stateful set is created</td>
+</tr>
+<tr>
+<td><code>metadata.uid</code> <br/><em>object</em></td>
+<td>The UUID of the stateful set</td>
+</tr>
+<tr>
+<td><code>spec</code><br/><em>object</em></td>
+<td>The specification used to create and run the stateful set</td>
+</tr>
+<tr>
+<td><code>status</code><br/><em>object</em></td>
+<td>The status information of the stateful set</td>
+</tr>
+<tr>
+<td><code>status.readyReplicas</code><br/><em>integer</em></td>
+<td>Total number of ready pods targeted by this deployment</td>
+</tr>
+<tr>
+<td><code>status.replicas</code><br/><em>integer</em></td>
+<td>Total number of non-terminated pods targeted by this deployment</td>
+</tr>
+</tbody></table>
+
+<p>Note that the list is not complete, since it is refering to the <a href="https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md">kubernetes api details</a>.</p>
+
+<!-------------------- GET A STATEFUL SET -------------------->
+<h4 id='kubernetes-get-a-stateful-sets'>Get a stateful sets</h4><pre class="highlight shell tab-shell"><code>curl -X GET <span class="se">\</span>
+   -H <span class="s2">"MC-Api-Key: your_api_key"</span> <span class="se">\</span>
+   <span class="s2">"https://cloudmc_endpoint/v1/services/k8s/anenvironment/statefulsets/test-aerospike/auth"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test-aerospike/auth"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"replicaRatio"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1 / 1"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"images"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"aerospike/aerospike-server:4.5.0.5"</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"apiVersion"</span><span class="p">:</span><span class="w"> </span><span class="s2">"apps/v1"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"kind"</span><span class="p">:</span><span class="w"> </span><span class="s2">"StatefulSet"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"creationTimestamp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-04-27T09:13:49.000-04:00"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"generation"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"labels"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"app"</span><span class="p">:</span><span class="w"> </span><span class="s2">"aerospike"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"chart"</span><span class="p">:</span><span class="w"> </span><span class="s2">"aerospike-0.3.2"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"heritage"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Helm"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"release"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test-aerospike"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"namespace"</span><span class="p">:</span><span class="w"> </span><span class="s2">"auth"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"resourceVersion"</span><span class="p">:</span><span class="w"> </span><span class="s2">"117166675"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"selfLink"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/apis/apps/v1/namespaces/auth/statefulsets/test-aerospike"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"uid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0aeff29e-e33d-48da-b933-651a9070d58c"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"spec"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"podManagementPolicy"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OrderedReady"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"replicas"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"revisionHistoryLimit"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"selector"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"matchLabels"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"app"</span><span class="p">:</span><span class="w"> </span><span class="s2">"aerospike"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"release"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"serviceName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test-aerospike"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"template"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"annotations"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"checksum/config"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0e07919467cc16f2c07ac99d0036405deafa06f7d3b430215915470b3a6ca631"</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="s2">"labels"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"app"</span><span class="p">:</span><span class="w"> </span><span class="s2">"aerospike"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"release"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test"</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"spec"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"containers"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"image"</span><span class="p">:</span><span class="w"> </span><span class="s2">"aerospike/aerospike-server:4.5.0.5"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"imagePullPolicy"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IfNotPresent"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test-aerospike"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"ports"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                  </span><span class="s2">"containerPort"</span><span class="p">:</span><span class="w"> </span><span class="mi">3000</span><span class="p">,</span><span class="w">
+                  </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"clients"</span><span class="p">,</span><span class="w">
+                  </span><span class="s2">"protocol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TCP"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                  </span><span class="s2">"containerPort"</span><span class="p">:</span><span class="w"> </span><span class="mi">3002</span><span class="p">,</span><span class="w">
+                  </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mesh"</span><span class="p">,</span><span class="w">
+                  </span><span class="s2">"protocol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TCP"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                  </span><span class="s2">"containerPort"</span><span class="p">:</span><span class="w"> </span><span class="mi">3003</span><span class="p">,</span><span class="w">
+                  </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"info"</span><span class="p">,</span><span class="w">
+                  </span><span class="s2">"protocol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TCP"</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+              </span><span class="p">],</span><span class="w">
+              </span><span class="s2">"readinessProbe"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"failureThreshold"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"initialDelaySeconds"</span><span class="p">:</span><span class="w"> </span><span class="mi">15</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"periodSeconds"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"successThreshold"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"tcpSocket"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                  </span><span class="s2">"port"</span><span class="p">:</span><span class="w"> </span><span class="mi">3000</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="s2">"timeoutSeconds"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+              </span><span class="p">},</span><span class="w">
+              </span><span class="s2">"resources"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+              </span><span class="s2">"terminationMessagePath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/dev/termination-log"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"terminationMessagePolicy"</span><span class="p">:</span><span class="w"> </span><span class="s2">"File"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"volumeMounts"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                  </span><span class="s2">"mountPath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/etc/aerospike"</span><span class="p">,</span><span class="w">
+                  </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"config-volume"</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+              </span><span class="p">]</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+          </span><span class="p">],</span><span class="w">
+          </span><span class="s2">"dnsPolicy"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ClusterFirst"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"restartPolicy"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Always"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"schedulerName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"default-scheduler"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"securityContext"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+          </span><span class="s2">"terminationGracePeriodSeconds"</span><span class="p">:</span><span class="w"> </span><span class="mi">30</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"volumes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"configMap"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"defaultMode"</span><span class="p">:</span><span class="w"> </span><span class="mi">420</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"items"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                  </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"aerospike.conf"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"aerospike.conf"</span><span class="w">
+                  </span><span class="p">}</span><span class="w">
+                </span><span class="p">],</span><span class="w">
+                </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test-aerospike"</span><span class="w">
+              </span><span class="p">},</span><span class="w">
+              </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"config-volume"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+          </span><span class="p">]</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"updateStrategy"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"rollingUpdate"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"partition"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RollingUpdate"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"collisionCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"currentReplicas"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"currentRevision"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test-aerospike-6db7776c7d"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"observedGeneration"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"readyReplicas"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"replicas"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"updateRevision"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test-aerospike-6db7776c7d"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"updatedReplicas"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><code>GET /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/statefulsets/:id</code></p>
+
+<p>Retrieve a stateful set and all its info in a given <a href="#administration-environments">environment</a>.</p>
+
+<table><thead>
+<tr>
+<th>Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code> <br/><em>string</em></td>
+<td>The id of the stateful set</td>
+</tr>
+<tr>
+<td><code>metadata</code> <br/><em>object</em></td>
+<td>The metadata of the stateful set</td>
+</tr>
+<tr>
+<td><code>metadata.creationTimestamp</code> <br/><em>string</em></td>
+<td>The date of creation of the stateful set as a string</td>
+</tr>
+<tr>
+<td><code>metadata.labels</code> <br/><em>map</em></td>
+<td>The labels associated to the stateful</td>
+</tr>
+<tr>
+<td><code>metadata.name</code> <br/><em>string</em></td>
+<td>The name of the stateful set</td>
+</tr>
+<tr>
+<td><code>metadata.namespace</code> <br/><em>string</em></td>
+<td>The namespace in which the stateful set is created</td>
+</tr>
+<tr>
+<td><code>metadata.uid</code> <br/><em>object</em></td>
+<td>The UUID of the stateful set</td>
+</tr>
+<tr>
+<td><code>spec</code><br/><em>object</em></td>
+<td>The specification used to create and run the stateful set</td>
+</tr>
+<tr>
+<td><code>status</code><br/><em>object</em></td>
+<td>The status information of the stateful set</td>
+</tr>
+<tr>
+<td><code>status.readyReplicas</code><br/><em>integer</em></td>
+<td>Total number of ready pods targeted by this deployment</td>
+</tr>
+<tr>
+<td><code>status.replicas</code><br/><em>integer</em></td>
+<td>Total number of non-terminated pods targeted by this deployment</td>
+</tr>
+</tbody></table>
+
+<p>Note that the list is not complete, since it is refering to the <a href="https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md">kubernetes api details</a>.</p>
 <h2 id='kubernetes-releases'>Releases</h2>
 <!-------------------- LIST RELEASES -------------------->
 <h3 id='kubernetes-list-releases'>List releases</h3><pre class="highlight shell tab-shell"><code>curl -X GET <span class="se">\</span>
@@ -21397,7 +22213,7 @@ curl -X POST <span class="se">\</span>
 </tr>
 <tr>
 <td><code>info.deleted</code> <br/><em>string</em></td>
-<td>The labels associated to the pod and there associated values</td>
+<td>The labels associated to the pod</td>
 </tr>
 <tr>
 <td><code>info.description</code> <br/><em>string</em></td>
@@ -21632,7 +22448,7 @@ curl -X POST <span class="se">\</span>
 </tr>
 <tr>
 <td><code>info.deleted</code> <br/><em>string</em></td>
-<td>The labels associated to the pod and there associated values</td>
+<td>The labels associated to the pod</td>
 </tr>
 <tr>
 <td><code>info.description</code> <br/><em>string</em></td>
@@ -21799,7 +22615,7 @@ curl -X POST <span class="se">\</span>
 <pre class="highlight javascript"><code><span class="c1">// Change to the latest version of a chart</span>
 <span class="p">{</span>
   <span class="s2">"upgradeChart"</span><span class="p">:</span>  <span class="s2">"stable/aerospike"</span><span class="p">,</span>
-  <span class="s2">"upgradeChart"</span><span class="p">:</span>  <span class="mi">1</span> 
+  <span class="s2">"upgradeChart"</span><span class="p">:</span>  <span class="mi">1</span>
 <span class="p">}</span>
 
 <span class="c1">// Change to a specific version of a chart</span>
