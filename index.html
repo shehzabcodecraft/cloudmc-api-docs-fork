@@ -1327,6 +1327,17 @@
                             <a href="#gcp-routes" class="toc-h3 toc-link" data-title="Google Cloud Platform plugin">Routes</a>
                           </li>
                           <li>
+                            <a href="#gcp-routers" class="toc-h3 toc-link" data-title="Google Cloud Platform plugin">Routers</a>
+                              <ul class="toc-list-h4">
+                                  <li>
+                                    <a href="#gcp-list-routers" class="toc-h4 toc-link" data-title="Google Cloud Platform plugin">List Routers</a>
+                                  </li>
+                                  <li>
+                                    <a href="#gcp-retrieve-a-router" class="toc-h4 toc-link" data-title="Google Cloud Platform plugin">Retrieve a Router</a>
+                                  </li>
+                              </ul>
+                          </li>
+                          <li>
                             <a href="#gcp-vpn-gateways" class="toc-h3 toc-link" data-title="Google Cloud Platform plugin">VPN gateways</a>
                               <ul class="toc-list-h4">
                                   <li>
@@ -16446,7 +16457,176 @@ You cannot release an external IP which is currently attached to an instance.
 <p><code>DELETE /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/externalips/:id</code></p>
 
 <p>Release an existing external IP. The external IP goes back to the reserved pool, and is available to be attached to another instance.</p>
-<h3 id='gcp-routes'>Routes</h3><h3 id='gcp-vpn-gateways'>VPN gateways</h3>
+<h3 id='gcp-routes'>Routes</h3><h3 id='gcp-routers'>Routers</h3>
+<p>Cloud Router allows to programs custom dynamic routes and it scales with your network traffic. Cloud Router isn&#39;t a physical device that might cause a bottleneck. It can&#39;t be used by itself. But, it is required or recommended in the following cases:</p>
+
+<ul>
+<li>Required for Cloud NAT</li>
+<li>Required for Cloud Interconnect and High Availability (HA) VPN</li>
+<li>A recommended configuration option for Classic VPN</li>
+</ul>
+
+<!-------------------- LIST ROUTERS -------------------->
+<h4 id='gcp-list-routers'>List Routers</h4><pre class="highlight shell tab-shell"><code>curl -X GET <span class="se">\</span>
+   -H <span class="s2">"MC-Api-Key: your_api_key"</span> <span class="se">\</span>
+   <span class="s2">"https://cloudmc_endpoint/v1/services/gcp/test-area/routers"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4369223640569972416"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c-router-failover"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"kind"</span><span class="p">:</span><span class="w"> </span><span class="s2">"compute#router"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"shortRegion"</span><span class="p">:</span><span class="w"> </span><span class="s2">"europe-west4"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Router specific to internal failover VPC"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"shortNetwork"</span><span class="p">:</span><span class="w"> </span><span class="s2">"failover-vpc-network"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"network"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.googleapis.com/compute/v1/projects/cmc-junniper-lab-ses/global/networks/failover-vpc-network"</span><span class="p">,</span><span class="w">
+      </span><span class="err">....</span><span class="w">
+      </span><span class="err">....</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0569972416436922364"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c-router-main"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"kind"</span><span class="p">:</span><span class="w"> </span><span class="s2">"compute#router"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"shortRegion"</span><span class="p">:</span><span class="w"> </span><span class="s2">"europe-west2"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Router specific to the main VPC"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"shortNetwork"</span><span class="p">:</span><span class="w"> </span><span class="s2">"main-vpc-network"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"network"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.googleapis.com/compute/v1/projects/cmc-junniper-lab-ses/global/networks/main-vpc-network"</span><span class="p">,</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="err">.....</span><span class="w">
+    </span><span class="err">.....</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="s2">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"recordCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><code>GET /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/routers</code></p>
+
+<p>Retrieve a list of all cloud routers in a given <a href="#administration-environments">environment</a>.</p>
+
+<table><thead>
+<tr>
+<th>Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>data</code><br/><em>Array[Object]</em></td>
+<td>List of cloud routers available in the current environment</td>
+</tr>
+<tr>
+<td><code>metadata</code><br/><em>Array</em></td>
+<td>A list of meta information about the response data. Contains <code>recordCount</code> which is an indication of the number of routers in the response</td>
+</tr>
+</tbody></table>
+
+<!-------------------- RETRIEVE A ROUTER -------------------->
+<h4 id='gcp-retrieve-a-router'>Retrieve a Router</h4><pre class="highlight shell tab-shell"><code>curl -X GET <span class="se">\</span>
+   -H <span class="s2">"MC-Api-Key: your_api_key"</span> <span class="se">\</span>
+   <span class="s2">"https://cloudmc_endpoint/v1/services/gcp/test-area/routers/0569972416436922364"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4369223640569972416"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c-router-failover"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"kind"</span><span class="p">:</span><span class="w"> </span><span class="s2">"compute#router"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"shortRegion"</span><span class="p">:</span><span class="w"> </span><span class="s2">"europe-west4"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Router specific to internal failover VPC"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"shortNetwork"</span><span class="p">:</span><span class="w"> </span><span class="s2">"failover-vpc-network"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"network"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.googleapis.com/compute/v1/projects/cmc-junniper-lab-ses/global/networks/failover-vpc-network"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"region"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.googleapis.com/compute/v1/projects/cmc-junniper-lab-ses/regions/europe-west4"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"selfLink"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.googleapis.com/compute/v1/projects/cmc-junniper-lab-ses/regions/europe-west4/routers/c-router-failover"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"bgp"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"advertiseMode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DEFAULT"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"asn"</span><span class="p">:</span><span class="w"> </span><span class="mi">65510</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"bgpPeers"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"advertiseMode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DEFAULT"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"interfaceName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"if-failover-bgp-session"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"ipAddress"</span><span class="p">:</span><span class="w"> </span><span class="s2">"169.254.11.1"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"failover-bgp-session"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"peerAsn"</span><span class="p">:</span><span class="w"> </span><span class="mi">64999</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"peerIpAddress"</span><span class="p">:</span><span class="w"> </span><span class="s2">"169.254.11.2"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"interfaces"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"if-failover-bgp-session"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"ipRange"</span><span class="p">:</span><span class="w"> </span><span class="s2">"169.254.11.1/30"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"linkedVpnTunnel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.googleapis.com/compute/v1/projects/cmc-junniper-lab-ses/regions/europe-west4/vpnTunnels/failover-vpn-tunnel"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><code>GET /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/routers/:id</code></p>
+
+<p>Retrieve a cloud router in a given <a href="#administration-environments">environment</a>.</p>
+
+<table><thead>
+<tr>
+<th>Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code><br/><em>UUID</em></td>
+<td>Unique identifier for this resource.</td>
+</tr>
+<tr>
+<td><code>name</code><br/><em>string</em></td>
+<td>The display name of the VPN gateway.</td>
+</tr>
+<tr>
+<td><code>kind</code><br/><em>string</em></td>
+<td>The type of GCP compute resource.</td>
+</tr>
+<tr>
+<td><code>description</code><br/><em>string</em></td>
+<td>A user-friendly description about the router and its purpose.</td>
+</tr>
+<tr>
+<td><code>shortRegion</code><br/><em>string</em></td>
+<td>The specific region in which the router resides in.</td>
+</tr>
+<tr>
+<td><code>shortNetwork</code><br/><em>string</em></td>
+<td>The VPC network to which the router is attached to.</td>
+</tr>
+<tr>
+<td><code>network</code><br/><em>string</em></td>
+<td>The URI of the VPC network to which the touter is attached to.</td>
+</tr>
+<tr>
+<td><code>region</code><br/><em>string</em></td>
+<td>The URI of the region in which the router resided in.</td>
+</tr>
+<tr>
+<td><code>selfLink</code><br/><em>string</em></td>
+<td>Server-defined URL for the resource.</td>
+</tr>
+<tr>
+<td><code>bgp</code><br/><em>Object</em></td>
+<td>BGP information specific to this router.</td>
+</tr>
+<tr>
+<td><code>bgpPeers</code><br/><em>Object</em></td>
+<td>BGP information that is configured into the routing stack to establish BGP peering. <em>(Includes: <code>Peer ASN</code>, <code>Interface name</code>, <code>IP address</code>)</em></td>
+</tr>
+<tr>
+<td><code>interfaces</code><br/><em>Array[Object]</em></td>
+<td>Router interfaces. Each interface contains either one linked resource or IP address and IP address range.</td>
+</tr>
+</tbody></table>
+<h3 id='gcp-vpn-gateways'>VPN gateways</h3>
 <p>With Classic VPN, your on-premises hosts communicate through one or more IPsec VPN tunnels to Compute Engine Virtual Machine (VM) instances in your project&#39;s VPC networks.</p>
 
 <!-------------------- LIST VPN GATEWAYS -------------------->
