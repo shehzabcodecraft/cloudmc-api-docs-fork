@@ -402,6 +402,14 @@
                           </li>
                       </ul>
                   </li>
+                  <li>
+                    <a href="#administration-authentication" class="toc-h2 toc-link" data-title="Administration">Authentication</a>
+                      <ul class="toc-list-h3">
+                          <li>
+                            <a href="#administration-list-identity-providers" class="toc-h3 toc-link" data-title="Administration">List identity providers</a>
+                          </li>
+                      </ul>
+                  </li>
               </ul>
           </li>
           <li>
@@ -4130,7 +4138,7 @@ curl -X GET <span class="se">\</span>
 
 <!-------------------- LIST PRODUCT CATALOGS -------------------->
 <h4 id='administration-list-product-catalogs'>List product catalogs</h4>
-<p>`GET /product_catalogs</p>
+<p><code>GET /product_catalogs</code></p>
 
 <p>Retrieves a list of product catalogs configured in the system.</p>
 <pre class="highlight shell tab-shell"><code><span class="c"># Retrieve product catalog list</span>
@@ -4994,6 +5002,96 @@ curl -X POST <span class="s2">"https://cloudmc_endpoint/rest/pricings"</span> <s
 <tr>
 <td><code>description</code> <br/><em>Object</em></td>
 <td>A map of language language keys to the description in the specified language.</td>
+</tr>
+</tbody></table>
+<h2 id='administration-authentication'>Authentication</h2>
+<p>Configure methods of authentication for your organizations.</p>
+
+<!-------------------- LIST IDPS -------------------->
+<h3 id='administration-list-identity-providers'>List identity providers</h3>
+<p><code>GET /identity_providers</code></p>
+<pre class="highlight shell tab-shell"><code><span class="c"># Retrieve identity providers</span>
+curl <span class="s2">"https://cloudmc_endpoint/v1/identity_providers"</span> <span class="se">\</span>
+   -H <span class="s2">"MC-Api-Key: your_api_key"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+      </span><span class="s2">"provider"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GOOGLE"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"displayName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Google"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"logo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"aHR0cHM6Ly9kZXZlbG9wZXJzLmdvb2dsZS5jb20vaWR23nRpdHkvaW1hZ2VzL2ctbG9nby5wbmc="</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"identityProviderUsers"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"user"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0c4hc34e-ff76-48de-8976-7cb2fc89aa96"</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="s2">"subjectId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"totallyFakeSubjectID"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"02b3cbd5-9286-4cd7-b47e-22b2fb9ceae5"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"connectionName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Google"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OIDC"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"parameters"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"parameter"</span><span class="p">:</span><span class="w"> </span><span class="s2">"issuerURL"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"02b3cbd5-9286-4cd7-b47e-22b2fb9ceab1"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://accounts.google.com"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"parameter"</span><span class="p">:</span><span class="w"> </span><span class="s2">"clientSecret"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"02b3cbd5-9286-4cd7-b47e-22b2fb9ceab3"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sssshhhhhhhhh"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"parameter"</span><span class="p">:</span><span class="w"> </span><span class="s2">"clientID"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"02b3cbd5-9286-4cd7-b47e-22b2fb9ceab4"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"shhhID"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">}]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>List the identity providers configured on the system.</p>
+
+<table><thead>
+<tr>
+<th>Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code><br/><em>UUID</em></td>
+<td>The id of the identity provider.</td>
+</tr>
+<tr>
+<td><code>provider</code><br/><em>string</em></td>
+<td>The name of the provider. Possible values include the default providers (e.g GOOGLE), or CUSTOM for a custom user-defined provider.</td>
+</tr>
+<tr>
+<td><code>displayName</code><br/><em>string</em></td>
+<td>The display name of the identity provider that will appear on the login screen.</td>
+</tr>
+<tr>
+<td><code>logo</code><br/><em>string</em></td>
+<td>A base64 encoded data url for the logo to display on the login screen.</td>
+</tr>
+<tr>
+<td><code>identityProviderUsers</code><br/><em>Array</em></td>
+<td>A list of objects containing the ids of users associated with the identity provider, and their subject ids.</td>
+</tr>
+<tr>
+<td><code>connectionName</code><br/><em>string</em></td>
+<td>The connection name of the identity provider.</td>
+</tr>
+<tr>
+<td><code>type</code><br/><em>string</em></td>
+<td>The type of authentication protocol. Possible values: OIDC, SAML.</td>
+</tr>
+<tr>
+<td><code>parameters</code><br/><em>Array</em></td>
+<td>A list of parameters associated with the identity provider.</td>
 </tr>
 </tbody></table>
 <h1 id='cloudstack-plugin'>CloudStack plugin</h1>
