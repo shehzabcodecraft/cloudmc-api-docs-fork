@@ -1434,7 +1434,7 @@
                                     <a href="#gcp-list-stateful-sets" class="toc-h4 toc-link" data-title="Google Cloud Platform plugin">List stateful sets</a>
                                   </li>
                                   <li>
-                                    <a href="#gcp-get-a-stateful-sets" class="toc-h4 toc-link" data-title="Google Cloud Platform plugin">Get a stateful sets</a>
+                                    <a href="#gcp-get-a-stateful-set" class="toc-h4 toc-link" data-title="Google Cloud Platform plugin">Get a stateful set</a>
                                   </li>
                               </ul>
                           </li>
@@ -1533,7 +1533,7 @@
                             <a href="#kubernetes-list-stateful-sets" class="toc-h3 toc-link" data-title="Kubernetes plugin">List stateful sets</a>
                           </li>
                           <li>
-                            <a href="#kubernetes-get-a-stateful-sets" class="toc-h3 toc-link" data-title="Kubernetes plugin">Get a stateful sets</a>
+                            <a href="#kubernetes-get-a-stateful-set" class="toc-h3 toc-link" data-title="Kubernetes plugin">Get a stateful set</a>
                           </li>
                       </ul>
                   </li>
@@ -19355,7 +19355,6 @@ curl -X POST <span class="se">\</span>
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
       </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test-aerospike/auth"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"replicaRatio"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1 / 1"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"images"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
         </span><span class="s2">"aerospike/aerospike-server:4.5.0.5"</span><span class="w">
       </span><span class="p">],</span><span class="w">
@@ -19375,98 +19374,7 @@ curl -X POST <span class="se">\</span>
         </span><span class="s2">"uid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0aeff29e-e33d-48da-b933-651a9070d58c"</span><span class="w">
       </span><span class="p">},</span><span class="w">
       </span><span class="s2">"spec"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"podManagementPolicy"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OrderedReady"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"replicas"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"revisionHistoryLimit"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"selector"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="s2">"matchLabels"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"app"</span><span class="p">:</span><span class="w"> </span><span class="s2">"aerospike"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"release"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test"</span><span class="w">
-          </span><span class="p">}</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="s2">"serviceName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test-aerospike"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"template"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="s2">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"annotations"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-              </span><span class="s2">"checksum/config"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0e07919467cc16f2c07ac99d0036405deafa06f7d3b430215915470b3a6ca631"</span><span class="w">
-            </span><span class="p">},</span><span class="w">
-            </span><span class="s2">"labels"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-              </span><span class="s2">"app"</span><span class="p">:</span><span class="w"> </span><span class="s2">"aerospike"</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"release"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test"</span><span class="w">
-            </span><span class="p">}</span><span class="w">
-          </span><span class="p">},</span><span class="w">
-          </span><span class="s2">"spec"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"containers"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-              </span><span class="p">{</span><span class="w">
-                </span><span class="s2">"image"</span><span class="p">:</span><span class="w"> </span><span class="s2">"aerospike/aerospike-server:4.5.0.5"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"imagePullPolicy"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IfNotPresent"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test-aerospike"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"ports"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-                  </span><span class="p">{</span><span class="w">
-                    </span><span class="s2">"containerPort"</span><span class="p">:</span><span class="w"> </span><span class="mi">3000</span><span class="p">,</span><span class="w">
-                    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"clients"</span><span class="p">,</span><span class="w">
-                    </span><span class="s2">"protocol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TCP"</span><span class="w">
-                  </span><span class="p">},</span><span class="w">
-                  </span><span class="p">{</span><span class="w">
-                    </span><span class="s2">"containerPort"</span><span class="p">:</span><span class="w"> </span><span class="mi">3002</span><span class="p">,</span><span class="w">
-                    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mesh"</span><span class="p">,</span><span class="w">
-                    </span><span class="s2">"protocol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TCP"</span><span class="w">
-                  </span><span class="p">},</span><span class="w">
-                  </span><span class="p">{</span><span class="w">
-                    </span><span class="s2">"containerPort"</span><span class="p">:</span><span class="w"> </span><span class="mi">3003</span><span class="p">,</span><span class="w">
-                    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"info"</span><span class="p">,</span><span class="w">
-                    </span><span class="s2">"protocol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TCP"</span><span class="w">
-                  </span><span class="p">}</span><span class="w">
-                </span><span class="p">],</span><span class="w">
-                </span><span class="s2">"readinessProbe"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-                  </span><span class="s2">"failureThreshold"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
-                  </span><span class="s2">"initialDelaySeconds"</span><span class="p">:</span><span class="w"> </span><span class="mi">15</span><span class="p">,</span><span class="w">
-                  </span><span class="s2">"periodSeconds"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
-                  </span><span class="s2">"successThreshold"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-                  </span><span class="s2">"tcpSocket"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-                    </span><span class="s2">"port"</span><span class="p">:</span><span class="w"> </span><span class="mi">3000</span><span class="w">
-                  </span><span class="p">},</span><span class="w">
-                  </span><span class="s2">"timeoutSeconds"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
-                </span><span class="p">},</span><span class="w">
-                </span><span class="s2">"resources"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
-                </span><span class="s2">"terminationMessagePath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/dev/termination-log"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"terminationMessagePolicy"</span><span class="p">:</span><span class="w"> </span><span class="s2">"File"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"volumeMounts"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-                  </span><span class="p">{</span><span class="w">
-                    </span><span class="s2">"mountPath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/etc/aerospike"</span><span class="p">,</span><span class="w">
-                    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"config-volume"</span><span class="w">
-                  </span><span class="p">}</span><span class="w">
-                </span><span class="p">]</span><span class="w">
-              </span><span class="p">}</span><span class="w">
-            </span><span class="p">],</span><span class="w">
-            </span><span class="s2">"dnsPolicy"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ClusterFirst"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"restartPolicy"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Always"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"schedulerName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"default-scheduler"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"securityContext"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
-            </span><span class="s2">"terminationGracePeriodSeconds"</span><span class="p">:</span><span class="w"> </span><span class="mi">30</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"volumes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-              </span><span class="p">{</span><span class="w">
-                </span><span class="s2">"configMap"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-                  </span><span class="s2">"defaultMode"</span><span class="p">:</span><span class="w"> </span><span class="mi">420</span><span class="p">,</span><span class="w">
-                  </span><span class="s2">"items"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-                    </span><span class="p">{</span><span class="w">
-                      </span><span class="s2">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"aerospike.conf"</span><span class="p">,</span><span class="w">
-                      </span><span class="s2">"path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"aerospike.conf"</span><span class="w">
-                    </span><span class="p">}</span><span class="w">
-                  </span><span class="p">],</span><span class="w">
-                  </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test-aerospike"</span><span class="w">
-                </span><span class="p">},</span><span class="w">
-                </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"config-volume"</span><span class="w">
-              </span><span class="p">}</span><span class="w">
-            </span><span class="p">]</span><span class="w">
-          </span><span class="p">}</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="s2">"updateStrategy"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="s2">"rollingUpdate"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"partition"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
-          </span><span class="p">},</span><span class="w">
-          </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RollingUpdate"</span><span class="w">
-        </span><span class="p">}</span><span class="w">
+        </span><span class="err">//</span><span class="w"> </span><span class="err">...</span><span class="w">
       </span><span class="p">},</span><span class="w">
       </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="s2">"collisionCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
@@ -19531,20 +19439,12 @@ curl -X POST <span class="se">\</span>
 <td><code>status</code><br/><em>object</em></td>
 <td>The status information of the stateful set</td>
 </tr>
-<tr>
-<td><code>status.readyReplicas</code><br/><em>integer</em></td>
-<td>Total number of ready pods targeted by this deployment</td>
-</tr>
-<tr>
-<td><code>status.replicas</code><br/><em>integer</em></td>
-<td>Total number of non-terminated pods targeted by this deployment</td>
-</tr>
 </tbody></table>
 
 <p>Note that the list is not complete, since it is refering to the <a href="https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md">kubernetes api details</a>.</p>
 
 <!-------------------- GET A STATEFUL SET -------------------->
-<h4 id='gcp-get-a-stateful-sets'>Get a stateful sets</h4><pre class="highlight shell tab-shell"><code>curl -X GET <span class="se">\</span>
+<h4 id='gcp-get-a-stateful-set'>Get a stateful set</h4><pre class="highlight shell tab-shell"><code>curl -X GET <span class="se">\</span>
    -H <span class="s2">"MC-Api-Key: your_api_key"</span> <span class="se">\</span>
    <span class="s2">"https://cloudmc_endpoint/v1/services/k8s/anenvironment/statefulsets/test-aerospike/auth"</span>
 </code></pre>
@@ -19576,98 +19476,7 @@ curl -X POST <span class="se">\</span>
       </span><span class="s2">"uid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0aeff29e-e33d-48da-b933-651a9070d58c"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="s2">"spec"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"podManagementPolicy"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OrderedReady"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"replicas"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"revisionHistoryLimit"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"selector"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"matchLabels"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="s2">"app"</span><span class="p">:</span><span class="w"> </span><span class="s2">"aerospike"</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"release"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test"</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="s2">"serviceName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test-aerospike"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"template"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="s2">"annotations"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"checksum/config"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0e07919467cc16f2c07ac99d0036405deafa06f7d3b430215915470b3a6ca631"</span><span class="w">
-          </span><span class="p">},</span><span class="w">
-          </span><span class="s2">"labels"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"app"</span><span class="p">:</span><span class="w"> </span><span class="s2">"aerospike"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"release"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test"</span><span class="w">
-          </span><span class="p">}</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="s2">"spec"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="s2">"containers"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-            </span><span class="p">{</span><span class="w">
-              </span><span class="s2">"image"</span><span class="p">:</span><span class="w"> </span><span class="s2">"aerospike/aerospike-server:4.5.0.5"</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"imagePullPolicy"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IfNotPresent"</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test-aerospike"</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"ports"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-                </span><span class="p">{</span><span class="w">
-                  </span><span class="s2">"containerPort"</span><span class="p">:</span><span class="w"> </span><span class="mi">3000</span><span class="p">,</span><span class="w">
-                  </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"clients"</span><span class="p">,</span><span class="w">
-                  </span><span class="s2">"protocol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TCP"</span><span class="w">
-                </span><span class="p">},</span><span class="w">
-                </span><span class="p">{</span><span class="w">
-                  </span><span class="s2">"containerPort"</span><span class="p">:</span><span class="w"> </span><span class="mi">3002</span><span class="p">,</span><span class="w">
-                  </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mesh"</span><span class="p">,</span><span class="w">
-                  </span><span class="s2">"protocol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TCP"</span><span class="w">
-                </span><span class="p">},</span><span class="w">
-                </span><span class="p">{</span><span class="w">
-                  </span><span class="s2">"containerPort"</span><span class="p">:</span><span class="w"> </span><span class="mi">3003</span><span class="p">,</span><span class="w">
-                  </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"info"</span><span class="p">,</span><span class="w">
-                  </span><span class="s2">"protocol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TCP"</span><span class="w">
-                </span><span class="p">}</span><span class="w">
-              </span><span class="p">],</span><span class="w">
-              </span><span class="s2">"readinessProbe"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-                </span><span class="s2">"failureThreshold"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"initialDelaySeconds"</span><span class="p">:</span><span class="w"> </span><span class="mi">15</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"periodSeconds"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"successThreshold"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"tcpSocket"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-                  </span><span class="s2">"port"</span><span class="p">:</span><span class="w"> </span><span class="mi">3000</span><span class="w">
-                </span><span class="p">},</span><span class="w">
-                </span><span class="s2">"timeoutSeconds"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
-              </span><span class="p">},</span><span class="w">
-              </span><span class="s2">"resources"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
-              </span><span class="s2">"terminationMessagePath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/dev/termination-log"</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"terminationMessagePolicy"</span><span class="p">:</span><span class="w"> </span><span class="s2">"File"</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"volumeMounts"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-                </span><span class="p">{</span><span class="w">
-                  </span><span class="s2">"mountPath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/etc/aerospike"</span><span class="p">,</span><span class="w">
-                  </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"config-volume"</span><span class="w">
-                </span><span class="p">}</span><span class="w">
-              </span><span class="p">]</span><span class="w">
-            </span><span class="p">}</span><span class="w">
-          </span><span class="p">],</span><span class="w">
-          </span><span class="s2">"dnsPolicy"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ClusterFirst"</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"restartPolicy"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Always"</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"schedulerName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"default-scheduler"</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"securityContext"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
-          </span><span class="s2">"terminationGracePeriodSeconds"</span><span class="p">:</span><span class="w"> </span><span class="mi">30</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"volumes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-            </span><span class="p">{</span><span class="w">
-              </span><span class="s2">"configMap"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-                </span><span class="s2">"defaultMode"</span><span class="p">:</span><span class="w"> </span><span class="mi">420</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"items"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-                  </span><span class="p">{</span><span class="w">
-                    </span><span class="s2">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"aerospike.conf"</span><span class="p">,</span><span class="w">
-                    </span><span class="s2">"path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"aerospike.conf"</span><span class="w">
-                  </span><span class="p">}</span><span class="w">
-                </span><span class="p">],</span><span class="w">
-                </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test-aerospike"</span><span class="w">
-              </span><span class="p">},</span><span class="w">
-              </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"config-volume"</span><span class="w">
-            </span><span class="p">}</span><span class="w">
-          </span><span class="p">]</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="s2">"updateStrategy"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"rollingUpdate"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="s2">"partition"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RollingUpdate"</span><span class="w">
-      </span><span class="p">}</span><span class="w">
+      </span><span class="err">//</span><span class="w"> </span><span class="err">...</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="s2">"collisionCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
@@ -19727,14 +19536,6 @@ curl -X POST <span class="se">\</span>
 <tr>
 <td><code>status</code><br/><em>object</em></td>
 <td>The status information of the stateful set</td>
-</tr>
-<tr>
-<td><code>status.readyReplicas</code><br/><em>integer</em></td>
-<td>Total number of ready pods targeted by this deployment</td>
-</tr>
-<tr>
-<td><code>status.replicas</code><br/><em>integer</em></td>
-<td>Total number of non-terminated pods targeted by this deployment</td>
 </tr>
 </tbody></table>
 
@@ -22136,7 +21937,6 @@ curl -X POST <span class="se">\</span>
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
       </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test-aerospike/auth"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"replicaRatio"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1 / 1"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"images"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
         </span><span class="s2">"aerospike/aerospike-server:4.5.0.5"</span><span class="w">
       </span><span class="p">],</span><span class="w">
@@ -22156,98 +21956,7 @@ curl -X POST <span class="se">\</span>
         </span><span class="s2">"uid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0aeff29e-e33d-48da-b933-651a9070d58c"</span><span class="w">
       </span><span class="p">},</span><span class="w">
       </span><span class="s2">"spec"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"podManagementPolicy"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OrderedReady"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"replicas"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"revisionHistoryLimit"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"selector"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="s2">"matchLabels"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"app"</span><span class="p">:</span><span class="w"> </span><span class="s2">"aerospike"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"release"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test"</span><span class="w">
-          </span><span class="p">}</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="s2">"serviceName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test-aerospike"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"template"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="s2">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"annotations"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-              </span><span class="s2">"checksum/config"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0e07919467cc16f2c07ac99d0036405deafa06f7d3b430215915470b3a6ca631"</span><span class="w">
-            </span><span class="p">},</span><span class="w">
-            </span><span class="s2">"labels"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-              </span><span class="s2">"app"</span><span class="p">:</span><span class="w"> </span><span class="s2">"aerospike"</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"release"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test"</span><span class="w">
-            </span><span class="p">}</span><span class="w">
-          </span><span class="p">},</span><span class="w">
-          </span><span class="s2">"spec"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"containers"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-              </span><span class="p">{</span><span class="w">
-                </span><span class="s2">"image"</span><span class="p">:</span><span class="w"> </span><span class="s2">"aerospike/aerospike-server:4.5.0.5"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"imagePullPolicy"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IfNotPresent"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test-aerospike"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"ports"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-                  </span><span class="p">{</span><span class="w">
-                    </span><span class="s2">"containerPort"</span><span class="p">:</span><span class="w"> </span><span class="mi">3000</span><span class="p">,</span><span class="w">
-                    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"clients"</span><span class="p">,</span><span class="w">
-                    </span><span class="s2">"protocol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TCP"</span><span class="w">
-                  </span><span class="p">},</span><span class="w">
-                  </span><span class="p">{</span><span class="w">
-                    </span><span class="s2">"containerPort"</span><span class="p">:</span><span class="w"> </span><span class="mi">3002</span><span class="p">,</span><span class="w">
-                    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mesh"</span><span class="p">,</span><span class="w">
-                    </span><span class="s2">"protocol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TCP"</span><span class="w">
-                  </span><span class="p">},</span><span class="w">
-                  </span><span class="p">{</span><span class="w">
-                    </span><span class="s2">"containerPort"</span><span class="p">:</span><span class="w"> </span><span class="mi">3003</span><span class="p">,</span><span class="w">
-                    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"info"</span><span class="p">,</span><span class="w">
-                    </span><span class="s2">"protocol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TCP"</span><span class="w">
-                  </span><span class="p">}</span><span class="w">
-                </span><span class="p">],</span><span class="w">
-                </span><span class="s2">"readinessProbe"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-                  </span><span class="s2">"failureThreshold"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
-                  </span><span class="s2">"initialDelaySeconds"</span><span class="p">:</span><span class="w"> </span><span class="mi">15</span><span class="p">,</span><span class="w">
-                  </span><span class="s2">"periodSeconds"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
-                  </span><span class="s2">"successThreshold"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-                  </span><span class="s2">"tcpSocket"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-                    </span><span class="s2">"port"</span><span class="p">:</span><span class="w"> </span><span class="mi">3000</span><span class="w">
-                  </span><span class="p">},</span><span class="w">
-                  </span><span class="s2">"timeoutSeconds"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
-                </span><span class="p">},</span><span class="w">
-                </span><span class="s2">"resources"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
-                </span><span class="s2">"terminationMessagePath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/dev/termination-log"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"terminationMessagePolicy"</span><span class="p">:</span><span class="w"> </span><span class="s2">"File"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"volumeMounts"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-                  </span><span class="p">{</span><span class="w">
-                    </span><span class="s2">"mountPath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/etc/aerospike"</span><span class="p">,</span><span class="w">
-                    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"config-volume"</span><span class="w">
-                  </span><span class="p">}</span><span class="w">
-                </span><span class="p">]</span><span class="w">
-              </span><span class="p">}</span><span class="w">
-            </span><span class="p">],</span><span class="w">
-            </span><span class="s2">"dnsPolicy"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ClusterFirst"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"restartPolicy"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Always"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"schedulerName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"default-scheduler"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"securityContext"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
-            </span><span class="s2">"terminationGracePeriodSeconds"</span><span class="p">:</span><span class="w"> </span><span class="mi">30</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"volumes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-              </span><span class="p">{</span><span class="w">
-                </span><span class="s2">"configMap"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-                  </span><span class="s2">"defaultMode"</span><span class="p">:</span><span class="w"> </span><span class="mi">420</span><span class="p">,</span><span class="w">
-                  </span><span class="s2">"items"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-                    </span><span class="p">{</span><span class="w">
-                      </span><span class="s2">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"aerospike.conf"</span><span class="p">,</span><span class="w">
-                      </span><span class="s2">"path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"aerospike.conf"</span><span class="w">
-                    </span><span class="p">}</span><span class="w">
-                  </span><span class="p">],</span><span class="w">
-                  </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test-aerospike"</span><span class="w">
-                </span><span class="p">},</span><span class="w">
-                </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"config-volume"</span><span class="w">
-              </span><span class="p">}</span><span class="w">
-            </span><span class="p">]</span><span class="w">
-          </span><span class="p">}</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="s2">"updateStrategy"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="s2">"rollingUpdate"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"partition"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
-          </span><span class="p">},</span><span class="w">
-          </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RollingUpdate"</span><span class="w">
-        </span><span class="p">}</span><span class="w">
+        </span><span class="err">//</span><span class="w"> </span><span class="err">...</span><span class="w">
       </span><span class="p">},</span><span class="w">
       </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="s2">"collisionCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
@@ -22312,20 +22021,12 @@ curl -X POST <span class="se">\</span>
 <td><code>status</code><br/><em>object</em></td>
 <td>The status information of the stateful set</td>
 </tr>
-<tr>
-<td><code>status.readyReplicas</code><br/><em>integer</em></td>
-<td>Total number of ready pods targeted by this deployment</td>
-</tr>
-<tr>
-<td><code>status.replicas</code><br/><em>integer</em></td>
-<td>Total number of non-terminated pods targeted by this deployment</td>
-</tr>
 </tbody></table>
 
 <p>Note that the list is not complete, since it is refering to the <a href="https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md">kubernetes api details</a>.</p>
 
 <!-------------------- GET A STATEFUL SET -------------------->
-<h3 id='kubernetes-get-a-stateful-sets'>Get a stateful sets</h3><pre class="highlight shell tab-shell"><code>curl -X GET <span class="se">\</span>
+<h3 id='kubernetes-get-a-stateful-set'>Get a stateful set</h3><pre class="highlight shell tab-shell"><code>curl -X GET <span class="se">\</span>
    -H <span class="s2">"MC-Api-Key: your_api_key"</span> <span class="se">\</span>
    <span class="s2">"https://cloudmc_endpoint/v1/services/k8s/anenvironment/statefulsets/test-aerospike/auth"</span>
 </code></pre>
@@ -22357,98 +22058,7 @@ curl -X POST <span class="se">\</span>
       </span><span class="s2">"uid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0aeff29e-e33d-48da-b933-651a9070d58c"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="s2">"spec"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"podManagementPolicy"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OrderedReady"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"replicas"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"revisionHistoryLimit"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"selector"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"matchLabels"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="s2">"app"</span><span class="p">:</span><span class="w"> </span><span class="s2">"aerospike"</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"release"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test"</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="s2">"serviceName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test-aerospike"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"template"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="s2">"annotations"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"checksum/config"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0e07919467cc16f2c07ac99d0036405deafa06f7d3b430215915470b3a6ca631"</span><span class="w">
-          </span><span class="p">},</span><span class="w">
-          </span><span class="s2">"labels"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"app"</span><span class="p">:</span><span class="w"> </span><span class="s2">"aerospike"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"release"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test"</span><span class="w">
-          </span><span class="p">}</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="s2">"spec"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="s2">"containers"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-            </span><span class="p">{</span><span class="w">
-              </span><span class="s2">"image"</span><span class="p">:</span><span class="w"> </span><span class="s2">"aerospike/aerospike-server:4.5.0.5"</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"imagePullPolicy"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IfNotPresent"</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test-aerospike"</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"ports"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-                </span><span class="p">{</span><span class="w">
-                  </span><span class="s2">"containerPort"</span><span class="p">:</span><span class="w"> </span><span class="mi">3000</span><span class="p">,</span><span class="w">
-                  </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"clients"</span><span class="p">,</span><span class="w">
-                  </span><span class="s2">"protocol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TCP"</span><span class="w">
-                </span><span class="p">},</span><span class="w">
-                </span><span class="p">{</span><span class="w">
-                  </span><span class="s2">"containerPort"</span><span class="p">:</span><span class="w"> </span><span class="mi">3002</span><span class="p">,</span><span class="w">
-                  </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mesh"</span><span class="p">,</span><span class="w">
-                  </span><span class="s2">"protocol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TCP"</span><span class="w">
-                </span><span class="p">},</span><span class="w">
-                </span><span class="p">{</span><span class="w">
-                  </span><span class="s2">"containerPort"</span><span class="p">:</span><span class="w"> </span><span class="mi">3003</span><span class="p">,</span><span class="w">
-                  </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"info"</span><span class="p">,</span><span class="w">
-                  </span><span class="s2">"protocol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TCP"</span><span class="w">
-                </span><span class="p">}</span><span class="w">
-              </span><span class="p">],</span><span class="w">
-              </span><span class="s2">"readinessProbe"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-                </span><span class="s2">"failureThreshold"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"initialDelaySeconds"</span><span class="p">:</span><span class="w"> </span><span class="mi">15</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"periodSeconds"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"successThreshold"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"tcpSocket"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-                  </span><span class="s2">"port"</span><span class="p">:</span><span class="w"> </span><span class="mi">3000</span><span class="w">
-                </span><span class="p">},</span><span class="w">
-                </span><span class="s2">"timeoutSeconds"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
-              </span><span class="p">},</span><span class="w">
-              </span><span class="s2">"resources"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
-              </span><span class="s2">"terminationMessagePath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/dev/termination-log"</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"terminationMessagePolicy"</span><span class="p">:</span><span class="w"> </span><span class="s2">"File"</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"volumeMounts"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-                </span><span class="p">{</span><span class="w">
-                  </span><span class="s2">"mountPath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/etc/aerospike"</span><span class="p">,</span><span class="w">
-                  </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"config-volume"</span><span class="w">
-                </span><span class="p">}</span><span class="w">
-              </span><span class="p">]</span><span class="w">
-            </span><span class="p">}</span><span class="w">
-          </span><span class="p">],</span><span class="w">
-          </span><span class="s2">"dnsPolicy"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ClusterFirst"</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"restartPolicy"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Always"</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"schedulerName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"default-scheduler"</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"securityContext"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
-          </span><span class="s2">"terminationGracePeriodSeconds"</span><span class="p">:</span><span class="w"> </span><span class="mi">30</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"volumes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-            </span><span class="p">{</span><span class="w">
-              </span><span class="s2">"configMap"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-                </span><span class="s2">"defaultMode"</span><span class="p">:</span><span class="w"> </span><span class="mi">420</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"items"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-                  </span><span class="p">{</span><span class="w">
-                    </span><span class="s2">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"aerospike.conf"</span><span class="p">,</span><span class="w">
-                    </span><span class="s2">"path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"aerospike.conf"</span><span class="w">
-                  </span><span class="p">}</span><span class="w">
-                </span><span class="p">],</span><span class="w">
-                </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test-aerospike"</span><span class="w">
-              </span><span class="p">},</span><span class="w">
-              </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"config-volume"</span><span class="w">
-            </span><span class="p">}</span><span class="w">
-          </span><span class="p">]</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="s2">"updateStrategy"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"rollingUpdate"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="s2">"partition"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RollingUpdate"</span><span class="w">
-      </span><span class="p">}</span><span class="w">
+      </span><span class="err">//</span><span class="w"> </span><span class="err">...</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="s2">"collisionCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
@@ -22508,14 +22118,6 @@ curl -X POST <span class="se">\</span>
 <tr>
 <td><code>status</code><br/><em>object</em></td>
 <td>The status information of the stateful set</td>
-</tr>
-<tr>
-<td><code>status.readyReplicas</code><br/><em>integer</em></td>
-<td>Total number of ready pods targeted by this deployment</td>
-</tr>
-<tr>
-<td><code>status.replicas</code><br/><em>integer</em></td>
-<td>Total number of non-terminated pods targeted by this deployment</td>
 </tr>
 </tbody></table>
 
