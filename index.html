@@ -1524,16 +1524,16 @@
                           <li>
                             <a href="#kubernetes-delete-a-pod" class="toc-h3 toc-link" data-title="Kubernetes plugin">Delete a pod</a>
                           </li>
+                      </ul>
+                  </li>
+                  <li>
+                    <a href="#kubernetes-stateful-sets" class="toc-h2 toc-link" data-title="Kubernetes plugin">Stateful Sets</a>
+                      <ul class="toc-list-h3">
                           <li>
-                            <a href="#kubernetes-stateful-sets" class="toc-h3 toc-link" data-title="Kubernetes plugin">Stateful Sets</a>
-                              <ul class="toc-list-h4">
-                                  <li>
-                                    <a href="#kubernetes-list-stateful-sets" class="toc-h4 toc-link" data-title="Kubernetes plugin">List stateful sets</a>
-                                  </li>
-                                  <li>
-                                    <a href="#kubernetes-get-a-stateful-sets" class="toc-h4 toc-link" data-title="Kubernetes plugin">Get a stateful sets</a>
-                                  </li>
-                              </ul>
+                            <a href="#kubernetes-list-stateful-sets" class="toc-h3 toc-link" data-title="Kubernetes plugin">List stateful sets</a>
+                          </li>
+                          <li>
+                            <a href="#kubernetes-get-a-stateful-sets" class="toc-h3 toc-link" data-title="Kubernetes plugin">Get a stateful sets</a>
                           </li>
                       </ul>
                   </li>
@@ -22123,9 +22123,9 @@ curl -X POST <span class="se">\</span>
 <td>The status of the operation</td>
 </tr>
 </tbody></table>
-<h3 id='kubernetes-stateful-sets'>Stateful Sets</h3>
+<h2 id='kubernetes-stateful-sets'>Stateful Sets</h2>
 <!-------------------- LIST STATEFUL SETS -------------------->
-<h4 id='kubernetes-list-stateful-sets'>List stateful sets</h4><pre class="highlight shell tab-shell"><code>curl -X GET <span class="se">\</span>
+<h3 id='kubernetes-list-stateful-sets'>List stateful sets</h3><pre class="highlight shell tab-shell"><code>curl -X GET <span class="se">\</span>
    -H <span class="s2">"MC-Api-Key: your_api_key"</span> <span class="se">\</span>
    <span class="s2">"https://cloudmc_endpoint/v1/services/k8s/anenvironment/statefulsets"</span>
 </code></pre>
@@ -22325,7 +22325,7 @@ curl -X POST <span class="se">\</span>
 <p>Note that the list is not complete, since it is refering to the <a href="https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md">kubernetes api details</a>.</p>
 
 <!-------------------- GET A STATEFUL SET -------------------->
-<h4 id='kubernetes-get-a-stateful-sets'>Get a stateful sets</h4><pre class="highlight shell tab-shell"><code>curl -X GET <span class="se">\</span>
+<h3 id='kubernetes-get-a-stateful-sets'>Get a stateful sets</h3><pre class="highlight shell tab-shell"><code>curl -X GET <span class="se">\</span>
    -H <span class="s2">"MC-Api-Key: your_api_key"</span> <span class="se">\</span>
    <span class="s2">"https://cloudmc_endpoint/v1/services/k8s/anenvironment/statefulsets/test-aerospike/auth"</span>
 </code></pre>
