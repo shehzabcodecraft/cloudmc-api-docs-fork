@@ -1447,6 +1447,17 @@
                               </ul>
                           </li>
                           <li>
+                            <a href="#gcp-daemon-sets" class="toc-h3 toc-link" data-title="Google Cloud Platform plugin">Daemon Sets</a>
+                              <ul class="toc-list-h4">
+                                  <li>
+                                    <a href="#gcp-list-daemon-sets" class="toc-h4 toc-link" data-title="Google Cloud Platform plugin">List daemon sets</a>
+                                  </li>
+                                  <li>
+                                    <a href="#gcp-get-a-daemon-set" class="toc-h4 toc-link" data-title="Google Cloud Platform plugin">Get a daemon set</a>
+                                  </li>
+                              </ul>
+                          </li>
+                          <li>
                             <a href="#gcp-releases" class="toc-h3 toc-link" data-title="Google Cloud Platform plugin">Releases</a>
                               <ul class="toc-list-h4">
                                   <li>
@@ -1542,6 +1553,17 @@
                           </li>
                           <li>
                             <a href="#kubernetes-get-a-stateful-set" class="toc-h3 toc-link" data-title="Kubernetes plugin">Get a stateful set</a>
+                          </li>
+                      </ul>
+                  </li>
+                  <li>
+                    <a href="#kubernetes-daemon-sets" class="toc-h2 toc-link" data-title="Kubernetes plugin">Daemon Sets</a>
+                      <ul class="toc-list-h3">
+                          <li>
+                            <a href="#kubernetes-list-daemon-sets" class="toc-h3 toc-link" data-title="Kubernetes plugin">List daemon sets</a>
+                          </li>
+                          <li>
+                            <a href="#kubernetes-get-a-daemon-set" class="toc-h3 toc-link" data-title="Kubernetes plugin">Get a daemon set</a>
                           </li>
                       </ul>
                   </li>
@@ -2155,7 +2177,7 @@ curl <span class="s2">"https://cloudmc_endpoint/v1/services/connections/03bc22bd
    -H <span class="s2">"MC-Api-Key: your_api_key"</span>
 </code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>The above command returns a JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:[{</span><span class="w">
@@ -2236,7 +2258,7 @@ curl <span class="s2">"https://cloudmc_endpoint/v1/services/connections/03bc22bd
    <span class="s2">"https://cloudmc_endpoint/v1/services/connections/03bc22bd-adc4-46b8-988d-afddc24c0cb5/policies"</span>
 </code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>The above command returns a JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:[</span><span class="w">
@@ -2333,7 +2355,7 @@ curl <span class="s2">"https://cloudmc_endpoint/v1/organizations"</span> <span c
    -H <span class="s2">"MC-Api-Key: your_api_key"</span>
 </code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>The above command returns a JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -2436,7 +2458,7 @@ curl <span class="s2">"https://cloudmc_endpoint/v1/organizations/03bc22bd-adc4-4
    -H <span class="s2">"MC-Api-Key: your_api_key"</span>
 </code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>The above command returns a JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -2664,7 +2686,7 @@ curl <span class="s2">"https://cloudmc_endpoint/v1/users"</span> <span class="se
    -H <span class="s2">"MC-Api-Key: your_api_key"</span>
 </code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>The above command returns a JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:[{</span><span class="w">
@@ -2749,7 +2771,7 @@ curl <span class="s2">"https://cloudmc_endpoint/v1/users/fdf60a19-980d-4380-acab
    -H <span class="s2">"MC-Api-Key: your_api_key"</span>
 </code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>The above command returns a JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:{</span><span class="w">
@@ -2994,7 +3016,7 @@ curl <span class="s2">"https://cloudmc_endpoint/rest/roles?v=v2&amp;environment_
    -H <span class="s2">"MC-Api-Key: your_api_key"</span>
 </code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>The above command returns a JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
    </span><span class="s2">"data"</span><span class="p">:[</span><span class="w">
@@ -3079,7 +3101,7 @@ curl <span class="s2">"https://cloudmc_endpoint/v1/environments"</span> <span cl
    -H <span class="s2">"MC-Api-Key: your_api_key"</span>
 </code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>The above command returns a JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
@@ -3159,7 +3181,7 @@ curl <span class="s2">"https://cloudmc_endpoint/v1/environment/487a2745-bb8a-44b
    -H <span class="s2">"MC-Api-Key: your_api_key"</span>
 </code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>The above command returns a JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -3388,7 +3410,7 @@ curl <span class="s2">"https://cloudmc_endpoint/v1/resource_commitments"</span> 
    -H <span class="s2">"MC-Api-Key: your_api_key"</span>
 </code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>The above command returns a JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
@@ -3522,7 +3544,7 @@ curl <span class="s2">"https://cloudmc_endpoint/v1/resource_commitments/fbgc7647
    -H <span class="s2">"MC-Api-Key: your_api_key"</span>
 </code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>The above command returns a JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -3868,7 +3890,7 @@ curl <span class="s2">"https://cloudmc_endpoint/v1/usage_summary/organizations/0
    -H <span class="s2">"MC-Api-Key: your_api_key"</span>
 </code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>The above command returns a JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
@@ -3888,7 +3910,7 @@ curl <span class="s2">"https://cloudmc_endpoint/v1/usage_summary/organizations/0
    -H <span class="s2">"MC-Api-Key: your_api_key"</span>
 </code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>The above command returns a JSON structured like this:</p>
 </blockquote>
 <pre class="highlight plaintext"><code>organizationId,serviceConnectionId,startDate,endDate,usageType,secondaryType,serviceConnectionPricingId,utilityCost,utilityUsage
 52fd201e-aa82-4a27-86b3-ea9650a7fb1e,beeba736-0451-49b0-8020-8b93ed5abb35,2017-05-01T00:00:00.000Z,2017-05-01T01:00:00.000Z,1,RAM,e37cc44a-47b6-4a26-81f5-1dbf85433e36,0.660000,5.49999878
@@ -4007,7 +4029,7 @@ curl -X GET <span class="se">\</span>
   -H <span class="s1">'mc-api-key: your_api_key'</span> <span class="se">\</span>
 </code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>The above command returns a JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -4145,7 +4167,7 @@ curl -X GET <span class="se">\</span>
 curl <span class="s2">"https://cloudmc_endpoint/rest/product_catalogs"</span> <span class="se">\</span>
    -H <span class="s2">"MC-Api-Key: your_api_key"</span>
 <span class="sb">```</span>s
-<span class="gp">&gt; </span>The above <span class="nb">command </span>returns JSON structured like this:
+<span class="gp">&gt; </span>The above <span class="nb">command </span>returns a JSON structured like this:
 
 <span class="sb">```</span>json
 <span class="o">{</span>
@@ -4342,7 +4364,7 @@ curl <span class="s2">"https://cloudmc_endpoint/rest/product_catalogs/03bc22bd-a
    -H <span class="s2">"MC-Api-Key: your_api_key"</span>
 </code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>The above command returns a JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -4539,7 +4561,7 @@ curl <span class="s2">"https://cloudmc_endpoint/rest/pricings"</span> <span clas
    -H <span class="s2">"MC-Api-Key: your_api_key"</span>
 </code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>The above command returns a JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -4675,7 +4697,7 @@ curl <span class="s2">"https://cloudmc_endpoint/rest/pricings/03bc22bd-adc4-46b8
    -H <span class="s2">"MC-Api-Key: your_api_key"</span>
 </code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>The above command returns a JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -5112,7 +5134,7 @@ An easy way to remember the structure of API endpoints is that going from left t
 <p>and for listing entities, looks like:</p>
 
 <p><code>https://cloudmc_endpoint/v1/services/:service_code/:environment_name/:entity_type?<strong>org_id=:org_id</strong></code></p>
-<h2 id='tasks'>Tasks</h2><pre class="highlight shell tab-shell"><code><span class="c"># The above command returns JSON structured like this:</span>
+<h2 id='tasks'>Tasks</h2><pre class="highlight shell tab-shell"><code><span class="c"># The above command returns a JSON structured like this:</span>
 </code></pre><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"taskId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"b2f82e2a-123e-4f86-a4c7-dc9b850dd11e"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"taskStatus"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PENDING"</span><span class="w">
@@ -5143,7 +5165,7 @@ An easy way to remember the structure of API endpoints is that going from left t
    <span class="s2">"https://cloudmc_endpoint/v1/services/compute-on/test_area/instances"</span>
 </code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>The above command returns a JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -5278,7 +5300,7 @@ An easy way to remember the structure of API endpoints is that going from left t
    <span class="s2">"https://cloudmc_endpoint/v1/services/compute-on/test_area/instances/5951c2b8-e901-4c01-8ae0-cb8d7c508d29"</span>
 </code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>The above command returns a JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -5953,7 +5975,7 @@ curl -X PUT <span class="se">\</span>
    <span class="s2">"https://cloudmc_endpoint/v1/services/compute-on/test_area/templates"</span>
 </code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>The above command returns a JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
@@ -6086,7 +6108,7 @@ curl -X PUT <span class="se">\</span>
 <span class="s2">"https://cloudmc_endpoint/v1/services/compute-on/test_area/templates/162cdfcb-45e5-4aa6-81c4-124c94621bdb"</span>
 </code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>The above command returns a JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -6414,7 +6436,7 @@ curl -X PUT <span class="se">\</span>
    <span class="s2">"https://cloudmc_endpoint/v1/services/compute-on/test_area/isos"</span>
 </code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>The above command returns a JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
@@ -6507,7 +6529,7 @@ curl -X PUT <span class="se">\</span>
 <span class="s2">"https://cloudmc_endpoint/v1/services/compute-on/test_area/isos/162cdfcb-45e5-4aa6-81c4-124c94621bdb"</span>
 </code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>The above command returns a JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -6711,7 +6733,7 @@ curl -X PUT <span class="se">\</span>
    <span class="s2">"https://cloudmc_endpoint/v1/services/compute-on/test_area/sshkeys"</span>
 </code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>The above command returns a JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
@@ -6749,7 +6771,7 @@ curl -X PUT <span class="se">\</span>
    <span class="s2">"https://cloudmc_endpoint/v1/services/compute-on/test_area/sshkeys/mellon"</span>
 </code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>The above command returns a JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -6786,7 +6808,7 @@ curl -X PUT <span class="se">\</span>
   <span class="s2">"https://cloudmc_endpoint/v1/services/compute-on/test_area/affinitygroups"</span>
 </code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>The above command returns a JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
@@ -6836,7 +6858,7 @@ curl -X PUT <span class="se">\</span>
    <span class="s2">"https://cloudmc_endpoint/v1/services/compute-on/test_area/affinitygroups/d4fd794f-66e1-4906-a720-d0afb04bd517"</span>
 </code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>The above command returns a JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -6986,7 +7008,7 @@ curl -X PUT <span class="se">\</span>
    <span class="s2">"https://cloudmc_endpoint/v1/services/compute-on/test_area/vpcs"</span>
 </code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>The above command returns a JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
@@ -7070,7 +7092,7 @@ curl -X PUT <span class="se">\</span>
    <span class="s2">"https://cloudmc_endpoint/v1/services/compute-on/test_area/vpcs/ad5bcae8-ee8b-4ee8-a7a4-381c25444b8e"</span>
 </code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>The above command returns a JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -7259,7 +7281,7 @@ curl -X PUT <span class="se">\</span>
    <span class="s2">"https://cloudmc_endpoint/v1/services/compute-on/test_area/networks"</span>
 </code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>The above command returns a JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
@@ -7383,7 +7405,7 @@ curl -X PUT <span class="se">\</span>
    <span class="s2">"https://cloudmc_endpoint/v1/services/compute-on/test_area/networks/ad5bcae8-ee8b-4ee8-a7a4-381c25444b8e"</span>
 </code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>The above command returns a JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -7647,7 +7669,7 @@ curl -X PUT <span class="se">\</span>
    <span class="s2">"https://cloudmc_endpoint/v1/services/compute-on/test_area/networkacls?vpc_id=eb763d03-9935-4cd4-8a42-99134e242ccb"</span>
 </code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>The above command returns a JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -7717,7 +7739,7 @@ curl -X PUT <span class="se">\</span>
    <span class="s2">"https://cloudmc_endpoint/v1/services/compute-on/test_area/networkacls/736d0c2e-d6b5-43fc-bcf0-732fce9a509e"</span>
 </code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>The above command returns a JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -7798,7 +7820,7 @@ curl -X PUT <span class="se">\</span>
    <span class="s2">"https://cloudmc_endpoint/v1/services/compute-on/test_area/networkaclrules?network_acl_id=3246de94-e7e7-11e3-9187-06669c0000ad"</span>
 </code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>The above command returns a JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -7894,7 +7916,7 @@ curl -X PUT <span class="se">\</span>
    <span class="s2">"https://cloudmc_endpoint/v1/services/compute-on/test_area/networkaclrules/3247167a-e7e7-11e3-9187-06669c0000ad"</span>
 </code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>The above command returns a JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -8107,7 +8129,7 @@ A rule's protocol can only be changed from TCP to UDP or vice versa.
    <span class="s2">"https://cloudmc_endpoint/v1/services/compute-on/test_area/publicipaddresses"</span>
 </code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>The above command returns a JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -8224,7 +8246,7 @@ A rule's protocol can only be changed from TCP to UDP or vice versa.
 <span class="s2">"https://cloudmc_endpoint/v1/services/compute-on/test_area/publicipaddresses/10001e7d-b4ef-489b-836e-0619a383bc8d"</span>
 </code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>The above command returns a JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -8376,7 +8398,7 @@ A rule's protocol can only be changed from TCP to UDP or vice versa.
    <span class="s2">"https://cloudmc_endpoint/v1/services/compute-on/test_area/portforwardingrules"</span>
 </code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>The above command returns a JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
@@ -8486,7 +8508,7 @@ A rule's protocol can only be changed from TCP to UDP or vice versa.
    <span class="s2">"https://cloudmc_endpoint/v1/services/compute-on/test_area/portforwardingrules/ad5bcae8-ee8b-4ee8-a7a4-381c25444b8e"</span>
 </code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>The above command returns a JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -8661,7 +8683,7 @@ A rule's protocol can only be changed from TCP to UDP or vice versa.
    <span class="s2">"https://cloudmc_endpoint/v1/services/compute-on/test_area/loadbalancerrules?public_ip_id=eb763d03-9935-4cd4-8a42-99134e242ccb"</span>
 </code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>The above command returns a JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -8772,7 +8794,7 @@ A rule's protocol can only be changed from TCP to UDP or vice versa.
    <span class="s2">"https://cloudmc_endpoint/v1/services/compute-on/test_area/loadbalancerrules/f8ed7f44-449c-4510-848c-dc18e6665db1"</span>
 </code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>The above command returns a JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -9158,7 +9180,7 @@ A rule's protocol can only be changed from TCP to UDP or vice versa.
    <span class="s2">"https://cloudmc_endpoint/v1/services/compute-on/test_area/ingressrules"</span>
 </code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>The above command returns a JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -9276,7 +9298,7 @@ A rule's protocol can only be changed from TCP to UDP or vice versa.
    <span class="s2">"https://cloudmc_endpoint/v1/services/compute-on/test_area/ingressrules/f1863d10-e7ec-4f17-8cdd-0e4046643b0b"</span>
 </code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>The above command returns a JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -9415,7 +9437,7 @@ A rule's protocol can only be changed from TCP to UDP or vice versa.
    <span class="s2">"https://cloudmc_endpoint/v1/services/compute-on/test_area/egressrules"</span>
 </code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>The above command returns a JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -9526,7 +9548,7 @@ A rule's protocol can only be changed from TCP to UDP or vice versa.
    <span class="s2">"https://cloudmc_endpoint/v1/services/compute-on/test_area/egressrules/f1863d10-e7ec-4f17-8cdd-0e4046643b0b"</span>
 </code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>The above command returns a JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -9682,7 +9704,7 @@ For rules with protocol <code>ALL</code>, no protocol-specific information is re
    <span class="s2">"https://cloudmc_endpoint/v1/services/compute-on/test_area/nics"</span>
 </code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>The above command returns a JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
@@ -9791,7 +9813,7 @@ For rules with protocol <code>ALL</code>, no protocol-specific information is re
    <span class="s2">"https://cloudmc_endpoint/v1/services/compute-on/test_area/nics/fff1f45a-8350-4c87-be43-947b96d01ebd"</span>
 </code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>The above command returns a JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -9933,7 +9955,7 @@ For rules with protocol <code>ALL</code>, no protocol-specific information is re
    <span class="s2">"https://cloudmc_endpoint/v1/services/compute-on/test_area/remoteaccessvpns"</span>
 </code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>The above command returns a JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -10007,7 +10029,7 @@ For rules with protocol <code>ALL</code>, no protocol-specific information is re
    <span class="s2">"https://cloudmc_endpoint/v1/services/compute-on/test_area/remoteaccessvpns/10001e7d-b4ef-489b-836e-0619a383bc8d"</span>
 </code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>The above command returns a JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -10056,7 +10078,7 @@ For rules with protocol <code>ALL</code>, no protocol-specific information is re
    <span class="s2">"https://cloudmc_endpoint/v1/services/compute-on/test_area/vpnusers"</span>
 </code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>The above command returns a JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -10094,7 +10116,7 @@ For rules with protocol <code>ALL</code>, no protocol-specific information is re
    <span class="s2">"https://cloudmc_endpoint/v1/services/compute-on/test_area/vpnusers/5de76bf5-9f61-487a-a989-042b52882da4"</span>
 </code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>The above command returns a JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -10138,7 +10160,7 @@ For rules with protocol <code>ALL</code>, no protocol-specific information is re
    <span class="s2">"https://cloudmc_endpoint/v1/services/compute-on/test_area/sitetositevpns"</span>
 </code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>The above command returns a JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -10265,7 +10287,7 @@ For rules with protocol <code>ALL</code>, no protocol-specific information is re
    <span class="s2">"https://cloudmc_endpoint/v1/services/compute-on/test_area/sitetositevpns/d49b2922-0581-4587-94df-6fe719327d0f"</span>
 </code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>The above command returns a JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -10596,7 +10618,7 @@ curl -X PUT <span class="se">\</span>
    <span class="s2">"https://cloudmc_endpoint/v1/services/compute-on/test_area/volumes"</span>
 </code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>The above command returns a JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -10694,7 +10716,7 @@ curl -X PUT <span class="se">\</span>
    <span class="s2">"https://cloudmc_endpoint/v1/services/compute-on/test_area/volumes/1bd672f4-b274-4371-a792-b0a6c6778cc7"</span>
 </code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>The above command returns a JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -10902,7 +10924,7 @@ curl -X PUT <span class="se">\</span>
    <span class="s2">"https://cloudmc_endpoint/v1/services/compute-on/test_area/snapshots"</span>
 </code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>The above command returns a JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -10979,7 +11001,7 @@ curl -X PUT <span class="se">\</span>
    <span class="s2">"https://cloudmc_endpoint/v1/services/compute-on/test_area/snapshots/1bd672f4-b274-4371-a792-b0a6c6778cc7"</span>
 </code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>The above command returns a JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -11089,7 +11111,7 @@ curl -X PUT <span class="se">\</span>
    <span class="s2">"https://cloudmc_endpoint/v1/services/compute-on/test_area/vpcofferings"</span>
 </code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>The above command returns a JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -11147,7 +11169,7 @@ curl -X PUT <span class="se">\</span>
    <span class="s2">"https://cloudmc_endpoint/v1/services/compute-on/test_area/vpcofferings/41ac6ba0-6172-4bc4-bff6-b0831b91677c"</span>
 </code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>The above command returns a JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -11202,7 +11224,7 @@ curl -X PUT <span class="se">\</span>
    <span class="s2">"https://cloudmc_endpoint/v1/services/compute-on/test_area/networkofferings"</span>
 </code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>The above command returns a JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -11295,7 +11317,7 @@ curl -X PUT <span class="se">\</span>
    <span class="s2">"https://cloudmc_endpoint/v1/services/compute-on/test_area/networkofferings/89724d35-b69c-418c-be81-7d83fcfc9da9"</span>
 </code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>The above command returns a JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -11355,7 +11377,7 @@ curl -X PUT <span class="se">\</span>
    <span class="s2">"https://cloudmc_endpoint/v1/services/compute-on/test_area/computeofferings"</span>
 </code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>The above command returns a JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -11445,7 +11467,7 @@ curl -X PUT <span class="se">\</span>
    <span class="s2">"https://cloudmc_endpoint/v1/services/compute-on/test_area/computeofferings/40a2e5f7-22e6-4d1e-b03b-4a4b7c9cbc6f"</span>
 </code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>The above command returns a JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -11515,7 +11537,7 @@ curl -X PUT <span class="se">\</span>
    <span class="s2">"https://cloudmc_endpoint/v1/services/compute-on/test_area/diskofferings"</span>
 </code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>The above command returns a JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -11575,7 +11597,7 @@ curl -X PUT <span class="se">\</span>
    <span class="s2">"https://cloudmc_endpoint/v1/services/compute-on/test_area/diskofferings/18bbab50-8d85-4b34-8361-0dc223ffd7e5"</span>
 </code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>The above command returns a JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -11625,7 +11647,7 @@ curl -X PUT <span class="se">\</span>
    <span class="s2">"https://cloudmc_endpoint/v1/services/compute-on/test_area/zones"</span>
 </code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>The above command returns a JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -11663,7 +11685,7 @@ curl -X PUT <span class="se">\</span>
    <span class="s2">"https://cloudmc_endpoint/v1/services/compute-on/test_area/zones/ea901007-056b-4c50-bb3a-2dd635fce2ab"</span>
 </code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>The above command returns a JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -11699,7 +11721,7 @@ curl -X PUT <span class="se">\</span>
     <span class="s2">"https://api.your.cloudmc/v1/services/compute-os/devel/instances"</span>
 </code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>The above command returns a JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -11846,7 +11868,7 @@ curl -X PUT <span class="se">\</span>
     <span class="s2">"https://api.your.cloudmc/v1/services/compute-os/devel/instances/30fca349-68b0-48c2-9ada-1f60f57fa44e"</span>
 </code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>The above command returns a JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -12129,7 +12151,7 @@ curl -X PUT <span class="se">\</span>
     <span class="s2">"https://api.your.cloudmc/v1/services/compute-os/devel/networks"</span>
 </code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>The above command returns a JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -12201,7 +12223,7 @@ curl -X PUT <span class="se">\</span>
     <span class="s2">"https://api.your.cloudmc/v1/services/compute-os/devel/networks/a9e8861d-64a1-4126-b385-6e4db9a5814f"</span>
 </code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>The above command returns a JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -12325,7 +12347,7 @@ curl -X PUT <span class="se">\</span>
     <span class="s2">"https://api.your.cloudmc/v1/services/compute-os/devel/flavors"</span>
 </code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>The above command returns a JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -12390,7 +12412,7 @@ curl -X PUT <span class="se">\</span>
     <span class="s2">"https://api.your.cloudmc/v1/services/compute-os/devel/flavors/1d547941-1738-4d7b-a70b-b52a44ff18e5"</span>
 </code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>The above command returns a JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -12444,7 +12466,7 @@ curl -X PUT <span class="se">\</span>
     <span class="s2">"https://api.your.cloudmc/v1/services/compute-os/devel/images"</span>
 </code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>The above command returns a JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -12485,7 +12507,7 @@ curl -X PUT <span class="se">\</span>
     <span class="s2">"https://api.your.cloudmc/v1/services/compute-os/devel/images/22f53310-798d-4029-bb00-747a52d2a376"</span>
 </code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>The above command returns a JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -12519,7 +12541,7 @@ curl -X PUT <span class="se">\</span>
     <span class="s2">"https://api.your.cloudmc/v1/services/compute-os/devel/floatingips"</span>
 </code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>The above command returns a JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -12566,7 +12588,7 @@ curl -X PUT <span class="se">\</span>
     <span class="s2">"https://api.your.cloudmc/v1/services/compute-os/devel/floatingips/287a3963-983b-4602-9dea-4dff89e9dc10"</span>
 </code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>The above command returns a JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -12644,7 +12666,7 @@ curl -X PUT <span class="se">\</span>
     <span class="s2">"https://api.your.cloudmc/v1/services/compute-os/devel/securitygroups"</span>
 </code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>The above command returns a JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -12691,7 +12713,7 @@ curl -X PUT <span class="se">\</span>
     <span class="s2">"https://api.your.cloudmc/v1/services/compute-os/devel/securitygroups/1bd672f4-b274-4371-a792-b0a6c6778cc7"</span>
 </code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>The above command returns a JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -12775,7 +12797,7 @@ curl -X PUT <span class="se">\</span>
     <span class="s2">"https://api.your.cloudmc/v1/services/compute-os/devel/securitygrouprules?securitygroupid=f54f050b-01b2-4a73-b6e1-4e13a5566323"</span>
 </code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>The above command returns a JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -12852,7 +12874,7 @@ curl -X PUT <span class="se">\</span>
     <span class="s2">"https://api.your.cloudmc/v1/services/compute-os/devel/securitygrouprules/655d3bcb-3f8a-4738-b50a-53bca43469b5"</span>
 </code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>The above command returns a JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
      </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -12984,7 +13006,7 @@ curl -X PUT <span class="se">\</span>
     <span class="s2">"https://api.your.cloudmc/v1/services/compute-os/devel/routers"</span>
 </code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>The above command returns a JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -13047,7 +13069,7 @@ curl -X PUT <span class="se">\</span>
     <span class="s2">"https://api.your.cloudmc/v1/services/compute-os/devel/routers/212eb8d8-80ee-4edd-8bae-1efed8bc5c71"</span>
 </code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>The above command returns a JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -13175,7 +13197,7 @@ curl -X PUT <span class="se">\</span>
     <span class="s2">"https://api.your.cloudmc/v1/services/compute-os/devel/routerinterfaces?routerid=3de4f523-06ce-4955-acb0-b8e3d61ec582"</span>
 </code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>The above command returns a JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -13237,7 +13259,7 @@ curl -X PUT <span class="se">\</span>
     <span class="s2">"https://api.your.cloudmc/v1/services/compute-os/devel/routerinterfaces/b5f0cbbf-45f3-4e77-8a5c-90351f83e5f9"</span>
 </code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>The above command returns a JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -13336,7 +13358,7 @@ curl -X PUT <span class="se">\</span>
     <span class="s2">"https://api.your.cloudmc/v1/services/compute-os/devel/sshkeys"</span>
 </code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>The above command returns a JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -13389,7 +13411,7 @@ curl -X PUT <span class="se">\</span>
     <span class="s2">"https://api.your.cloudmc/v1/services/compute-os/devel/sshkeys/ssh-key-a"</span>
 </code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>The above command returns a JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -13478,7 +13500,7 @@ curl -X PUT <span class="se">\</span>
     <span class="s2">"https://api.your.cloudmc/v1/services/compute-os/devel/volumes"</span>
 </code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>The above command returns a JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -13542,7 +13564,7 @@ curl -X PUT <span class="se">\</span>
     <span class="s2">"https://api.your.cloudmc/v1/services/compute-os/devel/volumes/52cfc2f8-5b1f-4833-83cd-a77f55c5ed24"</span>
 </code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>The above command returns a JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -13719,7 +13741,7 @@ curl -X PUT <span class="se">\</span>
     <span class="s2">"https://api.your.cloudmc/v1/services/compute-os/devel/snapshots"</span>
 </code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>The above command returns a JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -13776,7 +13798,7 @@ curl -X PUT <span class="se">\</span>
     <span class="s2">"https://api.your.cloudmc/v1/services/compute-os/devel/snapshots/4b41c7de-b2a8-4cb7-82ce-46685b07921d"</span>
 </code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>The above command returns a JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -13842,7 +13864,7 @@ curl -X PUT <span class="se">\</span>
    <span class="s2">"https://cloudmc_endpoint/v1/services/gcp/test-area/instances"</span>
 </code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>The above command returns a JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -14075,7 +14097,7 @@ curl -X PUT <span class="se">\</span>
    <span class="s2">"https://cloudmc_endpoint/v1/services/gcp/test-area/instances/5611478403377505138"</span>
 </code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>The above command returns a JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -14634,7 +14656,7 @@ An instance can only belong to one load balanced instance group. But you can add
    <span class="s2">"https://cloudmc_endpoint/v1/services/gcp/test-area/instancegroups"</span>
 </code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>The above command returns a JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -14739,7 +14761,7 @@ An instance can only belong to one load balanced instance group. But you can add
    <span class="s2">"https://cloudmc_endpoint/v1/services/gcp/test-area/instancegroups/2986056884972096897"</span>
 </code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>The above command returns a JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -14946,7 +14968,7 @@ An instance can only belong to one load balanced instance group. But you can add
    <span class="s2">"https://cloudmc_endpoint/v1/services/gcp/test-area/disks"</span>
 </code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>The above command returns a JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -15073,7 +15095,7 @@ An instance can only belong to one load balanced instance group. But you can add
    <span class="s2">"https://cloudmc_endpoint/v1/services/gcp/test-area/disks/5333546534174463697"</span>
 </code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>The above command returns a JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -15368,7 +15390,7 @@ An instance can only belong to one load balanced instance group. But you can add
    <span class="s2">"https://cloudmc_endpoint/v1/services/gcp/test-area/sshkeys"</span>
 </code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>The above command returns a JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -15413,7 +15435,7 @@ An instance can only belong to one load balanced instance group. But you can add
    <span class="s2">"https://cloudmc_endpoint/v1/services/gcp/test-area/sshkeys/user1"</span>
 </code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>The above command returns a JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -15498,7 +15520,7 @@ An instance can only belong to one load balanced instance group. But you can add
   <span class="s2">"https://cloudmc_endpoint/v1/services/gcp/test-area/healthchecks"</span>
 </code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>The above command returns a JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -15605,7 +15627,7 @@ An instance can only belong to one load balanced instance group. But you can add
    <span class="s2">"https://cloudmc_endpoint/v1/services/gcp/test-area/healthchecks/5930212998788364011"</span>
 </code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>The above command returns a JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -15806,7 +15828,7 @@ An instance can only belong to one load balanced instance group. But you can add
    <span class="s2">"https://cloudmc_endpoint/v1/services/gcp/test-area/networks"</span>
 </code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>The above command returns a JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -15889,7 +15911,7 @@ An instance can only belong to one load balanced instance group. But you can add
     <span class="s2">"https://api.your.cloudmc/v1/services/gcp/test-area/networks/6402509859159933821"</span>
 </code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>The above command returns a JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -15968,7 +15990,7 @@ An instance can only belong to one load balanced instance group. But you can add
    <span class="s2">"https://cloudmc_endpoint/v1/services/gcp/test-area/firewallrules"</span>
 </code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>The above command returns a JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -16088,7 +16110,7 @@ An instance can only belong to one load balanced instance group. But you can add
    <span class="s2">"https://cloudmc_endpoint/v1/services/gcp/test-area/firewallrules/4890726785951782638"</span>
 </code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>The above command returns a JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -16290,7 +16312,7 @@ An instance can only belong to one load balanced instance group. But you can add
    <span class="s2">"https://cloudmc_endpoint/v1/services/gcp/test-area/externalips"</span>
 </code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>The above command returns a JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -16412,7 +16434,7 @@ An instance can only belong to one load balanced instance group. But you can add
    <span class="s2">"https://cloudmc_endpoint/v1/services/gcp/test-area/externalips/8516891730356002156"</span>
 </code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>The above command returns a JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -16592,7 +16614,7 @@ You cannot release an external IP which is currently attached to an instance.
    <span class="s2">"https://cloudmc_endpoint/v1/services/gcp/test-area/routers"</span>
 </code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>The above command returns a JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -16650,7 +16672,7 @@ You cannot release an external IP which is currently attached to an instance.
    <span class="s2">"https://cloudmc_endpoint/v1/services/gcp/test-area/routers/0569972416436922364"</span>
 </code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>The above command returns a JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -16755,7 +16777,7 @@ You cannot release an external IP which is currently attached to an instance.
    <span class="s2">"https://cloudmc_endpoint/v1/services/gcp/test-area/vpngateways"</span>
 </code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>The above command returns a JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -16843,7 +16865,7 @@ You cannot release an external IP which is currently attached to an instance.
    <span class="s2">"https://cloudmc_endpoint/v1/services/gcp/test-area/vpngateways/3112849056897469664"</span>
 </code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>The above command returns a JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -16989,7 +17011,7 @@ You cannot release an external IP which is currently attached to an instance.
    <span class="s2">"https://cloudmc_endpoint/v1/services/gcp/test-area/vpngateways/3112849056897469664"</span>
 </code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>The above command returns a JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"externalIpToRelease"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"32.45.23.54"</span><span class="p">]</span><span class="w">
@@ -17019,7 +17041,7 @@ You cannot release an external IP which is currently attached to an instance.
    <span class="s2">"https://cloudmc_endpoint/v1/services/gcp/test-area/vpngateways"</span>
 </code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>The above command returns a JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -17136,7 +17158,7 @@ You cannot release an external IP which is currently attached to an instance.
    <span class="s2">"https://cloudmc_endpoint/v1/services/gcp/test-area/vpntunnels/8211895554244865771"</span>
 </code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>The above command returns a JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:{</span><span class="w">
@@ -17321,7 +17343,7 @@ You cannot release an external IP which is currently attached to an instance.
    <span class="s2">"https://cloudmc_endpoint/v1/services/gcp/test-area/vpntunnels/8211895554244865771"</span>
 </code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>The above command returns a JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"vpnGatewayToDelete"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3932849056897469665"</span><span class="p">,</span><span class="w">
@@ -17358,7 +17380,7 @@ You cannot release an external IP which is currently attached to an instance.
    <span class="s2">"https://cloudmc_endpoint/v1/services/gcp/test-area/loadbalancers"</span>
 </code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>The above command returns a JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -17426,7 +17448,7 @@ You cannot release an external IP which is currently attached to an instance.
    <span class="s2">"https://cloudmc_endpoint/v1/services/gcp/test-area/loadbalancers/8268558443601303519"</span>
 </code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>The above command returns a JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -17580,7 +17602,7 @@ You cannot release an external IP which is currently attached to an instance.
    <span class="s2">"https://cloudmc_endpoint/v1/services/gcp/test-area/loadbalancers/8268558443601303519"</span>
 </code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>The above command returns a JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"shortBackendsToDelete"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"be-test-jik"</span><span class="p">,</span><span class="w"> </span><span class="s2">"be-other-srd"</span><span class="p">],</span><span class="w">
@@ -17632,7 +17654,7 @@ Any specified optional resources to be removed will be deleted if they can be de
   <span class="s2">"https://cloudmc_endpoint/v1/services/gcp/test-area/forwardingrules"</span>
 </code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>The above command returns a JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -17734,7 +17756,7 @@ Any specified optional resources to be removed will be deleted if they can be de
    <span class="s2">"https://cloudmc_endpoint/v1/services/gcp/test-area/forwardingrules/4724455712741277576"</span>
 </code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>The above command returns a JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -17917,7 +17939,7 @@ Any specified optional resources to be removed will be deleted if they can be de
    <span class="s2">"https://cloudmc_endpoint/v1/services/gcp/test-area/targetproxies"</span>
 </code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>The above command returns a JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -17991,7 +18013,7 @@ Any specified optional resources to be removed will be deleted if they can be de
    <span class="s2">"https://cloudmc_endpoint/v1/services/gcp/test-area/targetproxies/2137054791002409126"</span>
 </code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>The above command returns a JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -18132,7 +18154,7 @@ curl -X POST <span class="se">\</span>
    <span class="s2">"https://cloudmc_endpoint/v1/services/gcp/test-area/backendservices"</span>
 </code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>The above command returns a JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -18270,7 +18292,7 @@ curl -X POST <span class="se">\</span>
    <span class="s2">"https://cloudmc_endpoint/v1/services/gcp/test-area/backendservices"</span>
 </code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>The above command returns a JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -18461,7 +18483,7 @@ curl -X POST <span class="se">\</span>
    <span class="s2">"https://cloudmc_endpoint/v1/services/gcp/test-area/sslcertificates"</span>
 </code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>The above command returns a JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -18569,7 +18591,7 @@ curl -X POST <span class="se">\</span>
    <span class="s2">"https://cloudmc_endpoint/v1/services/gcp/test-area/sslcertificates/6911678730334723784"</span>
 </code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>The above command returns a JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -18722,7 +18744,7 @@ curl -X POST <span class="se">\</span>
    <span class="s2">"https://cloudmc_endpoint/v1/services/gcp/test-area/clusters"</span>
 </code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>The above command returns a JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -18797,7 +18819,7 @@ curl -X POST <span class="se">\</span>
    <span class="s2">"https://cloudmc_endpoint/v1/services/gcp/test-area/clusters/standard-cluster-1"</span>
 </code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>The above command returns a JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -18855,10 +18877,10 @@ curl -X POST <span class="se">\</span>
 <!-------------------- LIST PODS -------------------->
 <h4 id='gcp-list-pods'>List pods</h4><pre class="highlight shell tab-shell"><code>curl -X GET <span class="se">\</span>
    -H <span class="s2">"MC-Api-Key: your_api_key"</span> <span class="se">\</span>
-   <span class="s2">"https://cloudmc_endpoint/v1/services/k8s/anenvironment/pods?cluster_id=projects/cmc-k8s-enabled-llb/locations/us-central1-a/clusters/standard-cluster-1"</span>
+   <span class="s2">"https://cloudmc_endpoint/v1/services/k8s/an_environment/pods?cluster_id=projects/cmc-k8s-enabled-llb/locations/us-central1-a/clusters/standard-cluster-1"</span>
 </code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>The above command returns a JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -19127,10 +19149,10 @@ curl -X POST <span class="se">\</span>
 <!-------------------- GET A POD -------------------->
 <h4 id='gcp-get-a-pod'>Get a pod</h4><pre class="highlight shell tab-shell"><code>curl -X GET <span class="se">\</span>
    -H <span class="s2">"MC-Api-Key: your_api_key"</span> <span class="se">\</span>
-   <span class="s2">"https://cloudmc_endpoint/v1/services/k8s/anenvironment/pods/my-aerospike-0/default?cluster_id=projects/cmc-k8s-enabled-llb/locations/us-central1-a/clusters/standard-cluster-1"</span>
+   <span class="s2">"https://cloudmc_endpoint/v1/services/k8s/an_environment/pods/my-aerospike-0/default?cluster_id=projects/cmc-k8s-enabled-llb/locations/us-central1-a/clusters/standard-cluster-1"</span>
 </code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>The above command returns a JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -19399,10 +19421,10 @@ curl -X POST <span class="se">\</span>
 <!-------------------- DELETE POD -------------------->
 <h4 id='gcp-delete-a-pod'>Delete a pod</h4><pre class="highlight shell tab-shell"><code>curl -X DELETE <span class="se">\</span>
    -H <span class="s2">"MC-Api-Key: your_api_key"</span> <span class="se">\</span>
-   <span class="s2">"https://cloudmc_endpoint/v1/services/k8s/anenvironment/pods/my-aerospike-0/default?cluster_id=projects/cmc-k8s-enabled-llb/locations/us-central1-a/clusters/standard-cluster-1"</span>
+   <span class="s2">"https://cloudmc_endpoint/v1/services/k8s/an_environment/pods/my-aerospike-0/default?cluster_id=projects/cmc-k8s-enabled-llb/locations/us-central1-a/clusters/standard-cluster-1"</span>
 </code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>The above command returns a JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"taskId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1542bd45-4732-419b-87b6-4ea6ec695c2b"</span><span class="p">,</span><span class="w">
@@ -19444,10 +19466,10 @@ curl -X POST <span class="se">\</span>
 <!-------------------- LIST STATEFUL SETS -------------------->
 <h4 id='gcp-list-stateful-sets'>List stateful sets</h4><pre class="highlight shell tab-shell"><code>curl -X GET <span class="se">\</span>
    -H <span class="s2">"MC-Api-Key: your_api_key"</span> <span class="se">\</span>
-   <span class="s2">"https://cloudmc_endpoint/v1/services/k8s/anenvironment/statefulsets"</span>
+   <span class="s2">"https://cloudmc_endpoint/v1/services/k8s/an_environment/statefulsets"</span>
 </code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>The above command returns a JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -19544,10 +19566,10 @@ curl -X POST <span class="se">\</span>
 <!-------------------- GET A STATEFUL SET -------------------->
 <h4 id='gcp-get-a-stateful-set'>Get a stateful set</h4><pre class="highlight shell tab-shell"><code>curl -X GET <span class="se">\</span>
    -H <span class="s2">"MC-Api-Key: your_api_key"</span> <span class="se">\</span>
-   <span class="s2">"https://cloudmc_endpoint/v1/services/k8s/anenvironment/statefulsets/test-aerospike/auth"</span>
+   <span class="s2">"https://cloudmc_endpoint/v1/services/k8s/an_environment/statefulsets/test-aerospike/auth"</span>
 </code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>The above command returns a JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -19638,14 +19660,204 @@ curl -X POST <span class="se">\</span>
 </tbody></table>
 
 <p>Note that the list is not complete, since it is refering to the <a href="https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md">kubernetes api details</a>.</p>
+<h3 id='gcp-daemon-sets'>Daemon Sets</h3>
+<!-------------------- LIST DAEMON SETS -------------------->
+<h4 id='gcp-list-daemon-sets'>List daemon sets</h4><pre class="highlight shell tab-shell"><code>curl -X GET <span class="se">\</span>
+   -H <span class="s2">"MC-Api-Key: your_api_key"</span> <span class="se">\</span>
+   <span class="s2">"https://cloudmc_endpoint/v1/services/k8s/an_environment/daemonsets"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns a JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"canal/kube-system"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"annotations"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"deprecated.daemonset.template.generation"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"kubectl.kubernetes.io/last-applied-configuration"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{...}"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"creationTimestamp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-03-12T14:22:52.000-04:00"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"generation"</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"labels"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"k8s-app"</span><span class="p">:</span><span class="w"> </span><span class="s2">"canal"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"canal"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"namespace"</span><span class="p">:</span><span class="w"> </span><span class="s2">"kube-system"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"resourceVersion"</span><span class="p">:</span><span class="w"> </span><span class="s2">"117221602"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"selfLink"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/apis/apps/v1/namespaces/kube-system/daemonsets/canal"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"uid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d946db1b-44f3-11e9-960d-02007a9a001f"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"spec"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="err">/*...*/</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"currentNumberScheduled"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"desiredNumberScheduled"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"numberAvailable"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"numberMisscheduled"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"numberReady"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"observedGeneration"</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"updatedNumberScheduled"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="err">//</span><span class="w"> </span><span class="err">...</span><span class="w">
+  </span><span class="s2">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"recordCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">9</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><code>GET /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/daemonsets</code></p>
+
+<p>Retrieve a list of all daemon sets in a given <a href="#administration-environments">environment</a>.</p>
+
+<table><thead>
+<tr>
+<th>Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code> <br/><em>string</em></td>
+<td>The id of the daemon set</td>
+</tr>
+<tr>
+<td><code>metadata</code> <br/><em>object</em></td>
+<td>The metadata of the daemon set</td>
+</tr>
+<tr>
+<td><code>metadata.creationTimestamp</code> <br/><em>string</em></td>
+<td>The date of creation of the daemon set as a string</td>
+</tr>
+<tr>
+<td><code>metadata.labels</code> <br/><em>map</em></td>
+<td>The labels associated to the daemon set</td>
+</tr>
+<tr>
+<td><code>metadata.name</code> <br/><em>string</em></td>
+<td>The name of the daemon set</td>
+</tr>
+<tr>
+<td><code>metadata.namespace</code> <br/><em>string</em></td>
+<td>The namespace in which the daemon set is created</td>
+</tr>
+<tr>
+<td><code>metadata.uid</code> <br/><em>object</em></td>
+<td>The UUID of the daemon set</td>
+</tr>
+<tr>
+<td><code>spec</code><br/><em>object</em></td>
+<td>The specification used to create and run the daemon set</td>
+</tr>
+<tr>
+<td><code>status</code><br/><em>object</em></td>
+<td>The status information of the daemon set</td>
+</tr>
+</tbody></table>
+
+<p>Note that the list is not complete, since it is refering to the <a href="https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md">kubernetes api details</a>.</p>
+
+<!-------------------- GET A DAEMON SET -------------------->
+<h4 id='gcp-get-a-daemon-set'>Get a daemon set</h4><pre class="highlight shell tab-shell"><code>curl -X GET <span class="se">\</span>
+   -H <span class="s2">"MC-Api-Key: your_api_key"</span> <span class="se">\</span>
+   <span class="s2">"https://cloudmc_endpoint/v1/services/k8s/an_environment/statefulsets/test-aerospike/auth"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns a JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"canal/kube-system"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"annotations"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"deprecated.daemonset.template.generation"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"kubectl.kubernetes.io/last-applied-configuration"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{...}"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="s2">"creationTimestamp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-03-12T14:22:52.000-04:00"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"generation"</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"labels"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"k8s-app"</span><span class="p">:</span><span class="w"> </span><span class="s2">"canal"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"canal"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"namespace"</span><span class="p">:</span><span class="w"> </span><span class="s2">"kube-system"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"resourceVersion"</span><span class="p">:</span><span class="w"> </span><span class="s2">"117221602"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"selfLink"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/apis/apps/v1/namespaces/kube-system/daemonsets/canal"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"uid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d946db1b-44f3-11e9-960d-02007a9a001f"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"spec"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="err">//</span><span class="w"> </span><span class="err">...</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"currentNumberScheduled"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"desiredNumberScheduled"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"numberAvailable"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"numberMisscheduled"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"numberReady"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"observedGeneration"</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"updatedNumberScheduled"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><code>GET /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/statefulsets/:id</code></p>
+
+<p>Retrieve a daemon set and all its info in a given <a href="#administration-environments">environment</a>.</p>
+
+<table><thead>
+<tr>
+<th>Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code> <br/><em>string</em></td>
+<td>The id of the daemon set</td>
+</tr>
+<tr>
+<td><code>metadata</code> <br/><em>object</em></td>
+<td>The metadata of the daemon set</td>
+</tr>
+<tr>
+<td><code>metadata.creationTimestamp</code> <br/><em>string</em></td>
+<td>The date of creation of the daemon set as a string</td>
+</tr>
+<tr>
+<td><code>metadata.labels</code> <br/><em>map</em></td>
+<td>The labels associated to the daemon</td>
+</tr>
+<tr>
+<td><code>metadata.name</code> <br/><em>string</em></td>
+<td>The name of the daemon set</td>
+</tr>
+<tr>
+<td><code>metadata.namespace</code> <br/><em>string</em></td>
+<td>The namespace in which the daemon set is created</td>
+</tr>
+<tr>
+<td><code>metadata.uid</code> <br/><em>object</em></td>
+<td>The UUID of the daemon set</td>
+</tr>
+<tr>
+<td><code>spec</code><br/><em>object</em></td>
+<td>The specification used to create and run the daemon set</td>
+</tr>
+<tr>
+<td><code>status</code><br/><em>object</em></td>
+<td>The status information of the daemon set</td>
+</tr>
+</tbody></table>
+
+<p>Note that the list is not complete, since it is refering to the <a href="https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md">kubernetes api details</a>.</p>
 <h3 id='gcp-releases'>Releases</h3>
 <!-------------------- LIST RELEASES -------------------->
 <h4 id='gcp-list-releases'>List releases</h4><pre class="highlight shell tab-shell"><code>curl -X GET <span class="se">\</span>
    -H <span class="s2">"MC-Api-Key: your_api_key"</span> <span class="se">\</span>
-   <span class="s2">"https://cloudmc_endpoint/v1/services/k8s/anenvironment/releases?cluster_id=projects/cmc-k8s-enabled-llb/locations/us-central1-a/clusters/standard-cluster-1"</span>
+   <span class="s2">"https://cloudmc_endpoint/v1/services/k8s/an_environment/releases?cluster_id=projects/cmc-k8s-enabled-llb/locations/us-central1-a/clusters/standard-cluster-1"</span>
 </code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>The above command returns a JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -19865,10 +20077,10 @@ curl -X POST <span class="se">\</span>
 <!-------------------- GET RELEASE -------------------->
 <h4 id='gcp-get-release'>Get release</h4><pre class="highlight shell tab-shell"><code>curl -X GET <span class="se">\</span>
    -H <span class="s2">"MC-Api-Key: your_api_key"</span> <span class="se">\</span>
-   <span class="s2">"https://cloudmc_endpoint/v1/services/k8s/anenvironment/releases/pspensieri/aerospike-1579797954?cluster_id=projects/cmc-k8s-enabled-llb/locations/us-central1-a/clusters/standard-cluster-1"</span>
+   <span class="s2">"https://cloudmc_endpoint/v1/services/k8s/an_environment/releases/pspensieri/aerospike-1579797954?cluster_id=projects/cmc-k8s-enabled-llb/locations/us-central1-a/clusters/standard-cluster-1"</span>
 </code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>The above command returns a JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -20140,10 +20352,10 @@ curl -X POST <span class="se">\</span>
 <!-- ROLLBACK RELEASE -->
 <h4 id='gcp-rollback-release-to-previous-revision'>Rollback release to previous revision</h4><pre class="highlight shell tab-shell"><code>curl -X POST <span class="se">\</span>
    -H <span class="s2">"MC-Api-Key: your_api_key"</span> <span class="se">\</span>
-   <span class="s2">"https://cloudmc_endpoint/v1/services/k8s/anenvironment/releases/pspensieri/aerospike-1579797954&amp;operation=rollback&amp;cluster_id=projects/cmc-k8s-enabled-llb/locations/us-central1-a/clusters/standard-cluster-1"</span>
+   <span class="s2">"https://cloudmc_endpoint/v1/services/k8s/an_environment/releases/pspensieri/aerospike-1579797954&amp;operation=rollback&amp;cluster_id=projects/cmc-k8s-enabled-llb/locations/us-central1-a/clusters/standard-cluster-1"</span>
 </code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>The above command returns a JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -20199,7 +20411,7 @@ curl -X POST <span class="se">\</span>
 <!-------------------- UPGRADE RELEASE -------------------->
 <h4 id='gcp-upgrade-release'>Upgrade release</h4><pre class="highlight shell tab-shell"><code>curl -X POST <span class="se">\</span>
    -H <span class="s2">"MC-Api-Key: your_api_key"</span> <span class="se">\</span>
-   <span class="s2">"https://cloudmc_endpoint/v1/services/k8s/anenvironment/releases/pspensieri/aerospike-1579797954?operation=upgrade&amp;cluster_id=projects/cmc-k8s-enabled-llb/locations/us-central1-a/clusters/standard-cluster-1"</span>
+   <span class="s2">"https://cloudmc_endpoint/v1/services/k8s/an_environment/releases/pspensieri/aerospike-1579797954?operation=upgrade&amp;cluster_id=projects/cmc-k8s-enabled-llb/locations/us-central1-a/clusters/standard-cluster-1"</span>
    -d <span class="s2">"request_body"</span>
 </code></pre>
 <blockquote>
@@ -20280,7 +20492,7 @@ curl -X POST <span class="se">\</span>
 <!-- UNINSTALL RELEASE -->
 <h4 id='gcp-uninstall-a-release'>Uninstall a release</h4><pre class="highlight shell tab-shell"><code>curl -X POST <span class="se">\</span>
    -H <span class="s2">"MC-Api-Key: your_api_key"</span> <span class="se">\</span>
-   <span class="s2">"https://cloudmc_endpoint/v1/services/k8s/anenvironment/releases/pspensieri/aerospike-1579797954&amp;operation=uninstall&amp;cluster_id=projects/cmc-k8s-enabled-llb/locations/us-central1-a/clusters/standard-cluster-1"</span>
+   <span class="s2">"https://cloudmc_endpoint/v1/services/k8s/an_environment/releases/pspensieri/aerospike-1579797954&amp;operation=uninstall&amp;cluster_id=projects/cmc-k8s-enabled-llb/locations/us-central1-a/clusters/standard-cluster-1"</span>
    -d <span class="s2">"request_body"</span>
 </code></pre>
 <blockquote>
@@ -20291,7 +20503,7 @@ curl -X POST <span class="se">\</span>
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>The above command returns a JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -20357,10 +20569,10 @@ curl -X POST <span class="se">\</span>
 <!-------------------- LIST CHARTS -------------------->
 <h4 id='gcp-list-charts'>List charts</h4><pre class="highlight shell tab-shell"><code>curl -X GET <span class="se">\</span>
    -H <span class="s2">"MC-Api-Key: your_api_key"</span> <span class="se">\</span>
-   <span class="s2">"https://cloudmc_endpoint/v1/services/k8s/anenvironment/charts?cluster_id=projects/cmc-k8s-enabled-llb/locations/us-central1-a/clusters/standard-cluster-1"</span>
+   <span class="s2">"https://cloudmc_endpoint/v1/services/k8s/an_environment/charts?cluster_id=projects/cmc-k8s-enabled-llb/locations/us-central1-a/clusters/standard-cluster-1"</span>
 </code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>The above command returns a JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -20533,10 +20745,10 @@ curl -X POST <span class="se">\</span>
 <!-------------------- GET CHART -------------------->
 <h4 id='gcp-get-chart'>Get chart</h4><pre class="highlight shell tab-shell"><code>curl -X GET <span class="se">\</span>
    -H <span class="s2">"MC-Api-Key: your_api_key"</span> <span class="se">\</span>
-   <span class="s2">"https://cloudmc_endpoint/v1/services/k8s/anenvironment/charts/stable/aerospike?cluster_id=projects/cmc-k8s-enabled-llb/locations/us-central1-a/clusters/standard-cluster-1"</span>
+   <span class="s2">"https://cloudmc_endpoint/v1/services/k8s/an_environment/charts/stable/aerospike?cluster_id=projects/cmc-k8s-enabled-llb/locations/us-central1-a/clusters/standard-cluster-1"</span>
 </code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>The above command returns a JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -20704,10 +20916,10 @@ curl -X POST <span class="se">\</span>
 <!-------------------- INSTALL CHART -------------------->
 <h4 id='gcp-install-chart'>Install chart</h4><pre class="highlight shell tab-shell"><code>curl -X POST <span class="se">\</span>
    -H <span class="s2">"MC-Api-Key: your_api_key"</span> <span class="se">\</span>
-   <span class="s2">"https://cloudmc_endpoint/v1/services/k8s/anenvironment/charts?cluster_id=projects/cmc-k8s-enabled-llb/locations/us-central1-a/clusters/standard-cluster-1"</span>
+   <span class="s2">"https://cloudmc_endpoint/v1/services/k8s/an_environment/charts?cluster_id=projects/cmc-k8s-enabled-llb/locations/us-central1-a/clusters/standard-cluster-1"</span>
 </code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>The above command returns a JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -20783,7 +20995,7 @@ curl -X POST <span class="se">\</span>
    <span class="s2">"https://cloudmc_endpoint/v1/services/k8s/an_environment/namespaces"</span>
 </code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>The above command returns a JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -20916,7 +21128,7 @@ curl -X POST <span class="se">\</span>
    <span class="s2">"https://cloudmc_endpoint/v1/services/k8s/an_environment/namespaces/cert-manager"</span>
 </code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>The above command returns a JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -21019,7 +21231,7 @@ curl -X POST <span class="se">\</span>
     <span class="s2">"https://api.your.cloudmc/v1/services/gcp/test-area/images"</span>
 </code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>The above command returns a JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -21177,7 +21389,7 @@ curl -X POST <span class="se">\</span>
     <span class="s2">"https://api.your.cloudmc/v1/services/gcp/test-area/images/4658005417542122143"</span>
 </code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>The above command returns a JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -21300,7 +21512,7 @@ curl -X POST <span class="se">\</span>
     <span class="s2">"https://api.your.cloudmc/v1/services/gcp/test-area/regions"</span>
 </code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>The above command returns a JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -21389,7 +21601,7 @@ curl -X POST <span class="se">\</span>
     <span class="s2">"https://api.your.cloudmc/v1/services/gcp/test-area/regions/1330"</span>
 </code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>The above command returns a JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -21473,10 +21685,10 @@ curl -X POST <span class="se">\</span>
 <!-------------------- LIST PODS -------------------->
 <h3 id='kubernetes-list-pods'>List pods</h3><pre class="highlight shell tab-shell"><code>curl -X GET <span class="se">\</span>
    -H <span class="s2">"MC-Api-Key: your_api_key"</span> <span class="se">\</span>
-   <span class="s2">"https://cloudmc_endpoint/v1/services/k8s/anenvironment/pods"</span>
+   <span class="s2">"https://cloudmc_endpoint/v1/services/k8s/an_environment/pods"</span>
 </code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>The above command returns a JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -21733,10 +21945,10 @@ curl -X POST <span class="se">\</span>
 <!-------------------- GET A POD -------------------->
 <h3 id='kubernetes-get-a-pod'>Get a pod</h3><pre class="highlight shell tab-shell"><code>curl -X GET <span class="se">\</span>
    -H <span class="s2">"MC-Api-Key: your_api_key"</span> <span class="se">\</span>
-   <span class="s2">"https://cloudmc_endpoint/v1/services/k8s/anenvironment/pods/my-aerospike-0/default"</span>
+   <span class="s2">"https://cloudmc_endpoint/v1/services/k8s/an_environment/pods/my-aerospike-0/default"</span>
 </code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>The above command returns a JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -21993,10 +22205,10 @@ curl -X POST <span class="se">\</span>
 <!-------------------- DELETE POD -------------------->
 <h3 id='kubernetes-delete-a-pod'>Delete a pod</h3><pre class="highlight shell tab-shell"><code>curl -X DELETE <span class="se">\</span>
    -H <span class="s2">"MC-Api-Key: your_api_key"</span> <span class="se">\</span>
-   <span class="s2">"https://cloudmc_endpoint/v1/services/k8s/anenvironment/pods/my-aerospike-0/default"</span>
+   <span class="s2">"https://cloudmc_endpoint/v1/services/k8s/an_environment/pods/my-aerospike-0/default"</span>
 </code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>The above command returns a JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"taskId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1542bd45-4732-419b-87b6-4ea6ec695c2b"</span><span class="p">,</span><span class="w">
@@ -22026,10 +22238,10 @@ curl -X POST <span class="se">\</span>
 <!-------------------- LIST STATEFUL SETS -------------------->
 <h3 id='kubernetes-list-stateful-sets'>List stateful sets</h3><pre class="highlight shell tab-shell"><code>curl -X GET <span class="se">\</span>
    -H <span class="s2">"MC-Api-Key: your_api_key"</span> <span class="se">\</span>
-   <span class="s2">"https://cloudmc_endpoint/v1/services/k8s/anenvironment/statefulsets"</span>
+   <span class="s2">"https://cloudmc_endpoint/v1/services/k8s/an_environment/statefulsets"</span>
 </code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>The above command returns a JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -22126,10 +22338,10 @@ curl -X POST <span class="se">\</span>
 <!-------------------- GET A STATEFUL SET -------------------->
 <h3 id='kubernetes-get-a-stateful-set'>Get a stateful set</h3><pre class="highlight shell tab-shell"><code>curl -X GET <span class="se">\</span>
    -H <span class="s2">"MC-Api-Key: your_api_key"</span> <span class="se">\</span>
-   <span class="s2">"https://cloudmc_endpoint/v1/services/k8s/anenvironment/statefulsets/test-aerospike/auth"</span>
+   <span class="s2">"https://cloudmc_endpoint/v1/services/k8s/an_environment/statefulsets/test-aerospike/auth"</span>
 </code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>The above command returns a JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -22220,14 +22432,204 @@ curl -X POST <span class="se">\</span>
 </tbody></table>
 
 <p>Note that the list is not complete, since it is refering to the <a href="https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md">kubernetes api details</a>.</p>
+<h2 id='kubernetes-daemon-sets'>Daemon Sets</h2>
+<!-------------------- LIST DAEMON SETS -------------------->
+<h3 id='kubernetes-list-daemon-sets'>List daemon sets</h3><pre class="highlight shell tab-shell"><code>curl -X GET <span class="se">\</span>
+   -H <span class="s2">"MC-Api-Key: your_api_key"</span> <span class="se">\</span>
+   <span class="s2">"https://cloudmc_endpoint/v1/services/k8s/an_environment/daemonsets"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns a JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"canal/kube-system"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"annotations"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"deprecated.daemonset.template.generation"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"kubectl.kubernetes.io/last-applied-configuration"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{...}"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"creationTimestamp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-03-12T14:22:52.000-04:00"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"generation"</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"labels"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"k8s-app"</span><span class="p">:</span><span class="w"> </span><span class="s2">"canal"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"canal"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"namespace"</span><span class="p">:</span><span class="w"> </span><span class="s2">"kube-system"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"resourceVersion"</span><span class="p">:</span><span class="w"> </span><span class="s2">"117221602"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"selfLink"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/apis/apps/v1/namespaces/kube-system/daemonsets/canal"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"uid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d946db1b-44f3-11e9-960d-02007a9a001f"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"spec"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="err">/*...*/</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"currentNumberScheduled"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"desiredNumberScheduled"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"numberAvailable"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"numberMisscheduled"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"numberReady"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"observedGeneration"</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"updatedNumberScheduled"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="err">//</span><span class="w"> </span><span class="err">...</span><span class="w">
+  </span><span class="s2">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"recordCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">9</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><code>GET /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/daemonsets</code></p>
+
+<p>Retrieve a list of all daemon sets in a given <a href="#administration-environments">environment</a>.</p>
+
+<table><thead>
+<tr>
+<th>Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code> <br/><em>string</em></td>
+<td>The id of the daemon set</td>
+</tr>
+<tr>
+<td><code>metadata</code> <br/><em>object</em></td>
+<td>The metadata of the daemon set</td>
+</tr>
+<tr>
+<td><code>metadata.creationTimestamp</code> <br/><em>string</em></td>
+<td>The date of creation of the daemon set as a string</td>
+</tr>
+<tr>
+<td><code>metadata.labels</code> <br/><em>map</em></td>
+<td>The labels associated to the daemon set</td>
+</tr>
+<tr>
+<td><code>metadata.name</code> <br/><em>string</em></td>
+<td>The name of the daemon set</td>
+</tr>
+<tr>
+<td><code>metadata.namespace</code> <br/><em>string</em></td>
+<td>The namespace in which the daemon set is created</td>
+</tr>
+<tr>
+<td><code>metadata.uid</code> <br/><em>object</em></td>
+<td>The UUID of the daemon set</td>
+</tr>
+<tr>
+<td><code>spec</code><br/><em>object</em></td>
+<td>The specification used to create and run the daemon set</td>
+</tr>
+<tr>
+<td><code>status</code><br/><em>object</em></td>
+<td>The status information of the daemon set</td>
+</tr>
+</tbody></table>
+
+<p>Note that the list is not complete, since it is refering to the <a href="https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md">kubernetes api details</a>.</p>
+
+<!-------------------- GET A DAEMON SET -------------------->
+<h3 id='kubernetes-get-a-daemon-set'>Get a daemon set</h3><pre class="highlight shell tab-shell"><code>curl -X GET <span class="se">\</span>
+   -H <span class="s2">"MC-Api-Key: your_api_key"</span> <span class="se">\</span>
+   <span class="s2">"https://cloudmc_endpoint/v1/services/k8s/an_environment/statefulsets/test-aerospike/auth"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns a JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"canal/kube-system"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"annotations"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"deprecated.daemonset.template.generation"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"kubectl.kubernetes.io/last-applied-configuration"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{...}"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="s2">"creationTimestamp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-03-12T14:22:52.000-04:00"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"generation"</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"labels"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"k8s-app"</span><span class="p">:</span><span class="w"> </span><span class="s2">"canal"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"canal"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"namespace"</span><span class="p">:</span><span class="w"> </span><span class="s2">"kube-system"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"resourceVersion"</span><span class="p">:</span><span class="w"> </span><span class="s2">"117221602"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"selfLink"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/apis/apps/v1/namespaces/kube-system/daemonsets/canal"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"uid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d946db1b-44f3-11e9-960d-02007a9a001f"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"spec"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="err">//</span><span class="w"> </span><span class="err">...</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"currentNumberScheduled"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"desiredNumberScheduled"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"numberAvailable"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"numberMisscheduled"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"numberReady"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"observedGeneration"</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"updatedNumberScheduled"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><code>GET /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/statefulsets/:id</code></p>
+
+<p>Retrieve a daemon set and all its info in a given <a href="#administration-environments">environment</a>.</p>
+
+<table><thead>
+<tr>
+<th>Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code> <br/><em>string</em></td>
+<td>The id of the daemon set</td>
+</tr>
+<tr>
+<td><code>metadata</code> <br/><em>object</em></td>
+<td>The metadata of the daemon set</td>
+</tr>
+<tr>
+<td><code>metadata.creationTimestamp</code> <br/><em>string</em></td>
+<td>The date of creation of the daemon set as a string</td>
+</tr>
+<tr>
+<td><code>metadata.labels</code> <br/><em>map</em></td>
+<td>The labels associated to the daemon</td>
+</tr>
+<tr>
+<td><code>metadata.name</code> <br/><em>string</em></td>
+<td>The name of the daemon set</td>
+</tr>
+<tr>
+<td><code>metadata.namespace</code> <br/><em>string</em></td>
+<td>The namespace in which the daemon set is created</td>
+</tr>
+<tr>
+<td><code>metadata.uid</code> <br/><em>object</em></td>
+<td>The UUID of the daemon set</td>
+</tr>
+<tr>
+<td><code>spec</code><br/><em>object</em></td>
+<td>The specification used to create and run the daemon set</td>
+</tr>
+<tr>
+<td><code>status</code><br/><em>object</em></td>
+<td>The status information of the daemon set</td>
+</tr>
+</tbody></table>
+
+<p>Note that the list is not complete, since it is refering to the <a href="https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md">kubernetes api details</a>.</p>
 <h2 id='kubernetes-releases'>Releases</h2>
 <!-------------------- LIST RELEASES -------------------->
 <h3 id='kubernetes-list-releases'>List releases</h3><pre class="highlight shell tab-shell"><code>curl -X GET <span class="se">\</span>
    -H <span class="s2">"MC-Api-Key: your_api_key"</span> <span class="se">\</span>
-   <span class="s2">"https://cloudmc_endpoint/v1/services/k8s/anenvironment/releases"</span>
+   <span class="s2">"https://cloudmc_endpoint/v1/services/k8s/an_environment/releases"</span>
 </code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>The above command returns a JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -22435,10 +22837,10 @@ curl -X POST <span class="se">\</span>
 <!-------------------- GET RELEASE -------------------->
 <h3 id='kubernetes-get-release'>Get release</h3><pre class="highlight shell tab-shell"><code>curl -X GET <span class="se">\</span>
    -H <span class="s2">"MC-Api-Key: your_api_key"</span> <span class="se">\</span>
-   <span class="s2">"https://cloudmc_endpoint/v1/services/k8s/anenvironment/releases/pspensieri/aerospike-1579797954"</span>
+   <span class="s2">"https://cloudmc_endpoint/v1/services/k8s/an_environment/releases/pspensieri/aerospike-1579797954"</span>
 </code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>The above command returns a JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -22696,10 +23098,10 @@ curl -X POST <span class="se">\</span>
 <!-- ROLLBACK RELEASE -->
 <h3 id='kubernetes-rollback-release-to-previous-revision'>Rollback release to previous revision</h3><pre class="highlight shell tab-shell"><code>curl -X POST <span class="se">\</span>
    -H <span class="s2">"MC-Api-Key: your_api_key"</span> <span class="se">\</span>
-   <span class="s2">"https://cloudmc_endpoint/v1/services/k8s/anenvironment/releases/pspensieri/aerospike-1579797954&amp;operation=rollback"</span>
+   <span class="s2">"https://cloudmc_endpoint/v1/services/k8s/an_environment/releases/pspensieri/aerospike-1579797954&amp;operation=rollback"</span>
 </code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>The above command returns a JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -22743,7 +23145,7 @@ curl -X POST <span class="se">\</span>
 <!-------------------- UPGRADE RELEASE -------------------->
 <h3 id='kubernetes-upgrade-release'>Upgrade release</h3><pre class="highlight shell tab-shell"><code>curl -X POST <span class="se">\</span>
    -H <span class="s2">"MC-Api-Key: your_api_key"</span> <span class="se">\</span>
-   <span class="s2">"https://cloudmc_endpoint/v1/services/k8s/anenvironment/releases/pspensieri/aerospike-1579797954?operation=upgrade"</span>
+   <span class="s2">"https://cloudmc_endpoint/v1/services/k8s/an_environment/releases/pspensieri/aerospike-1579797954?operation=upgrade"</span>
    -d <span class="s2">"request_body"</span>
 </code></pre>
 <blockquote>
@@ -22821,7 +23223,7 @@ curl -X POST <span class="se">\</span>
 <!-- UNINSTALL RELEASE -->
 <h3 id='kubernetes-uninstall-a-release'>Uninstall a release</h3><pre class="highlight shell tab-shell"><code>curl -X POST <span class="se">\</span>
    -H <span class="s2">"MC-Api-Key: your_api_key"</span> <span class="se">\</span>
-   <span class="s2">"https://cloudmc_endpoint/v1/services/k8s/anenvironment/releases/pspensieri/aerospike-1579797954&amp;operation=uninstall"</span>
+   <span class="s2">"https://cloudmc_endpoint/v1/services/k8s/an_environment/releases/pspensieri/aerospike-1579797954&amp;operation=uninstall"</span>
    -d <span class="s2">"request_body"</span>
 </code></pre>
 <blockquote>
@@ -22832,7 +23234,7 @@ curl -X POST <span class="se">\</span>
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>The above command returns a JSON structured like this:</p>
 </blockquote>
 <pre class="highlight javascript"><code><span class="p">{</span>
   <span class="s2">"data"</span><span class="p">:</span> <span class="p">{</span>
@@ -22886,10 +23288,10 @@ curl -X POST <span class="se">\</span>
 <!-------------------- LIST CHARTS -------------------->
 <h3 id='kubernetes-list-charts'>List charts</h3><pre class="highlight shell tab-shell"><code>curl -X GET <span class="se">\</span>
    -H <span class="s2">"MC-Api-Key: your_api_key"</span> <span class="se">\</span>
-   <span class="s2">"https://cloudmc_endpoint/v1/services/k8s/anenvironment/charts"</span>
+   <span class="s2">"https://cloudmc_endpoint/v1/services/k8s/an_environment/charts"</span>
 </code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>The above command returns a JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -23050,10 +23452,10 @@ curl -X POST <span class="se">\</span>
 <!-------------------- GET CHART -------------------->
 <h3 id='kubernetes-get-chart'>Get chart</h3><pre class="highlight shell tab-shell"><code>curl -X GET <span class="se">\</span>
    -H <span class="s2">"MC-Api-Key: your_api_key"</span> <span class="se">\</span>
-   <span class="s2">"https://cloudmc_endpoint/v1/services/k8s/anenvironment/charts/stable/aerospike"</span>
+   <span class="s2">"https://cloudmc_endpoint/v1/services/k8s/an_environment/charts/stable/aerospike"</span>
 </code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>The above command returns a JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -23209,10 +23611,10 @@ curl -X POST <span class="se">\</span>
 <!-------------------- INSTALL CHART -------------------->
 <h3 id='kubernetes-install-chart'>Install chart</h3><pre class="highlight shell tab-shell"><code>curl -X POST <span class="se">\</span>
    -H <span class="s2">"MC-Api-Key: your_api_key"</span> <span class="se">\</span>
-   <span class="s2">"https://cloudmc_endpoint/v1/services/k8s/anenvironment/charts"</span>
+   <span class="s2">"https://cloudmc_endpoint/v1/services/k8s/an_environment/charts"</span>
 </code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>The above command returns a JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -23276,7 +23678,7 @@ curl -X POST <span class="se">\</span>
    <span class="s2">"https://cloudmc_endpoint/v1/services/k8s/an_environment/namespaces"</span>
 </code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>The above command returns a JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -23409,7 +23811,7 @@ curl -X POST <span class="se">\</span>
    <span class="s2">"https://cloudmc_endpoint/v1/services/k8s/an_environment/namespaces/cert-manager"</span>
 </code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>The above command returns a JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -23515,7 +23917,7 @@ curl -X POST <span class="se">\</span>
    <span class="s2">"https://cloudmc_endpoint/v1/services/azure/example/instances"</span>
 </code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>The above command returns a JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -23674,7 +24076,7 @@ curl -X POST <span class="se">\</span>
    <span class="s2">"https://cloudmc_endpoint/v1/services/azure/example/instances/subscriptions/subscriptionId/resourceGroups/cmc-example/providers/Microsoft.Compute/virtualMachines/example-small-server"</span>
 </code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>The above command returns a JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -24053,7 +24455,7 @@ For Windows instances, reset the administrator account and reset the Remote Desk
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>The above command returns a JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"taskId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"802c5ae0-8431-47dc-9abe-7e10a9badddc"</span><span class="p">,</span><span class="w">
@@ -24084,7 +24486,7 @@ For Windows instances, reset the administrator account and reset the Remote Desk
    <span class="s2">"https://cloudmc_endpoint/v1/services/azure/example/regions"</span>
 </code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>The above command returns a JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -24120,7 +24522,7 @@ For Windows instances, reset the administrator account and reset the Remote Desk
    <span class="s2">"https://cloudmc_endpoint/v1/services/azure/example/regions/useast"</span>
 </code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>The above command returns a JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -24154,7 +24556,7 @@ For Windows instances, reset the administrator account and reset the Remote Desk
    <span class="s2">"https://cloudmc_endpoint/v1/services/azure-conn/test_env/disks"</span>
 </code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>The above command returns a JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -24221,7 +24623,7 @@ For Windows instances, reset the administrator account and reset the Remote Desk
    <span class="s2">"https://cloudmc_endpoint/v1/services/azure-conn/test_env/disks/subscriptions/60a3c9eebe64-55c1-4b1d-969b-60a3c/resourceGroups/azure-connect-system-ssamadh-mean-env/providers/Microsoft.Compute/disks/the-sheep_disk1_c0cbe27c49aa928525e93bd2519aac4"</span>
 </code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>The above command returns a JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/subscriptions/6b6a1f27-55c1-4b1d-969b-60a3c9eebe64/resourceGroups/azure-connect-system-ssamadh-mean-env/providers/Microsoft.Compute/disks/the-sheep_disk1_e93bd2519aac4c0cbe27c49aa928525e"</span><span class="p">,</span><span class="w">
@@ -24328,7 +24730,7 @@ For Windows instances, reset the administrator account and reset the Remote Desk
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>The above command returns a JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"taskId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"802c5ae0-8431-47dc-9abe-7e10a9badddc"</span><span class="p">,</span><span class="w">
@@ -24471,7 +24873,7 @@ For Windows instances, reset the administrator account and reset the Remote Desk
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>The above command returns a JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"taskId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"802c5ae0-8431-47dc-9abe-7e10a9badddc"</span><span class="p">,</span><span class="w">
@@ -24502,7 +24904,7 @@ For Windows instances, reset the administrator account and reset the Remote Desk
    <span class="s2">"https://cloudmc_endpoint/v1/services/azure/example/networks"</span>
 </code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>The above command returns a JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -24626,7 +25028,7 @@ For Windows instances, reset the administrator account and reset the Remote Desk
    <span class="s2">"https://cloudmc_endpoint/v1/services/azure/example/subnets"</span>
 </code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>The above command returns a JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -24749,7 +25151,7 @@ For Windows instances, reset the administrator account and reset the Remote Desk
    <span class="s2">"https://cloudmc_endpoint/v1/services/azure/example/subnets/subscriptions/mySubscription/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/example-vnet/subnets/example-subnet"</span>
 </code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>The above command returns a JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -24969,7 +25371,7 @@ For Windows instances, reset the administrator account and reset the Remote Desk
    <span class="s2">"https://cloudmc_endpoint/v1/services/azure/example/networksecuritygroups"</span>
 </code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>The above command returns a JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -25092,7 +25494,7 @@ For Windows instances, reset the administrator account and reset the Remote Desk
    <span class="s2">"https://cloudmc_endpoint/v1/services/azure/example/securityrules"</span>
 </code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>The above command returns a JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -25202,7 +25604,7 @@ For Windows instances, reset the administrator account and reset the Remote Desk
   <span class="s2">"https://cloudmc_endpoint/v1/services/azure/example/securityrules/subscriptions/subscriptionId/resourceGroups/cmc-example/providers/Microsoft.Network/networkSecurityGroups/mySecurityGroup/securityRules/mySeccurityRule"</span>
 </code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>The above command returns a JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -25455,7 +25857,7 @@ For Windows instances, reset the administrator account and reset the Remote Desk
    <span class="s2">"https://cloudmc_endpoint/v1/services/azure/example/publicipaddresses"</span>
 </code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>The above command returns a JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -25540,7 +25942,7 @@ For Windows instances, reset the administrator account and reset the Remote Desk
    <span class="s2">"https://cloudmc_endpoint/v1/services/azure/example/publicipaddresses/subscriptions/subscriptionId/resourceGroups/cmc-example/providers/Microsoft.Network/publicIPAddresses/some-public-ip"</span>
 </code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>The above command returns a JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -25763,7 +26165,7 @@ For Windows instances, reset the administrator account and reset the Remote Desk
    <span class="s2">"https://cloudmc_endpoint/v1/services/azure-conn/test_env/clusters"</span>
 </code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>The above command returns a JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -25821,7 +26223,7 @@ For Windows instances, reset the administrator account and reset the Remote Desk
 }'</span>
 </code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>The above command returns a JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"taskId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ac3144ab-03c8-4564-afbf-fabf5fc68199"</span><span class="p">,</span><span class="w">
@@ -25861,7 +26263,7 @@ For Windows instances, reset the administrator account and reset the Remote Desk
 }'</span>
 </code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>The above command returns a JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"taskId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ecdd71ea-1648-44d2-a9cf-71b160acab17"</span><span class="p">,</span><span class="w">
@@ -25901,7 +26303,7 @@ is their <a href="#administration-users">CloudMC user</a> id and <a href="#maste
   -H <span class="s1">'mc-api-key: your_api_key'</span> 
 </code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>The above command returns a JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">    
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://mp_proxy_endpoint/portal/login-path/427f5873-7edf-4bba-ba65-8c927776da81/d5484354-28a3-45be-a536-0b02ef3c8e23/datadog-ukqrqhie/f59139e1-82e5-4526-bd5d-04c777a55f2a/b7f0bdd5-b544-d07e-ee56-4ee0d1a8a9c3"</span><span class="p">,</span><span class="w">
@@ -25923,7 +26325,7 @@ is their <a href="#administration-users">CloudMC user</a> id and <a href="#maste
    <span class="s2">"https://cloudmc_endpoint/v1/services/swift/example/buckets"</span>
 </code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>The above command returns a JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -26015,7 +26417,7 @@ is their <a href="#administration-users">CloudMC user</a> id and <a href="#maste
    <span class="s2">"https://cloudmc_endpoint/v1/services/swift/example/buckets/private"</span>
 </code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>The above command returns a JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"private"</span><span class="p">,</span><span class="w">
