@@ -1466,6 +1466,17 @@
                               </ul>
                           </li>
                           <li>
+                            <a href="#gcp-deployments" class="toc-h3 toc-link" data-title="Google Cloud Platform plugin">Deployments</a>
+                              <ul class="toc-list-h4">
+                                  <li>
+                                    <a href="#gcp-list-deployments" class="toc-h4 toc-link" data-title="Google Cloud Platform plugin">List deployments</a>
+                                  </li>
+                                  <li>
+                                    <a href="#gcp-get-a-deployment" class="toc-h4 toc-link" data-title="Google Cloud Platform plugin">Get a deployment</a>
+                                  </li>
+                              </ul>
+                          </li>
+                          <li>
                             <a href="#gcp-releases" class="toc-h3 toc-link" data-title="Google Cloud Platform plugin">Releases</a>
                               <ul class="toc-list-h4">
                                   <li>
@@ -1572,6 +1583,17 @@
                           </li>
                           <li>
                             <a href="#kubernetes-get-a-daemon-set" class="toc-h3 toc-link" data-title="Kubernetes plugin">Get a daemon set</a>
+                          </li>
+                      </ul>
+                  </li>
+                  <li>
+                    <a href="#kubernetes-deployments" class="toc-h2 toc-link" data-title="Kubernetes plugin">Deployments</a>
+                      <ul class="toc-list-h3">
+                          <li>
+                            <a href="#kubernetes-list-deployments" class="toc-h3 toc-link" data-title="Kubernetes plugin">List deployments</a>
+                          </li>
+                          <li>
+                            <a href="#kubernetes-get-a-deployment" class="toc-h3 toc-link" data-title="Kubernetes plugin">Get a deployment</a>
                           </li>
                       </ul>
                   </li>
@@ -19996,7 +20018,7 @@ curl -X POST <span class="se">\</span>
 <!-------------------- GET A DAEMON SET -------------------->
 <h4 id='gcp-get-a-daemon-set'>Get a daemon set</h4><pre class="highlight shell tab-shell"><code>curl -X GET <span class="se">\</span>
    -H <span class="s2">"MC-Api-Key: your_api_key"</span> <span class="se">\</span>
-   <span class="s2">"https://cloudmc_endpoint/v1/services/k8s/an_environment/statefulsets/test-aerospike/auth"</span>
+   <span class="s2">"https://cloudmc_endpoint/v1/services/k8s/an_environment/daemonsets/test-aerospike/auth"</span>
 </code></pre>
 <blockquote>
 <p>The above command returns a JSON structured like this:</p>
@@ -20035,7 +20057,7 @@ curl -X POST <span class="se">\</span>
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<p><code>GET /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/statefulsets/:id</code></p>
+<p><code>GET /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/daemonsets/:id</code></p>
 
 <p>Retrieve a daemon set and all its info in a given <a href="#administration-environments">environment</a>.</p>
 
@@ -20080,6 +20102,208 @@ curl -X POST <span class="se">\</span>
 <tr>
 <td><code>status</code><br/><em>object</em></td>
 <td>The status information of the daemon set</td>
+</tr>
+</tbody></table>
+
+<p>Note that the list is not complete, since it is refering to the <a href="https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md">kubernetes api details</a>.</p>
+<h3 id='gcp-deployments'>Deployments</h3>
+<!-------------------- LIST DEPLOYMENTS -------------------->
+<h4 id='gcp-list-deployments'>List deployments</h4><pre class="highlight shell tab-shell"><code>curl -X GET <span class="se">\</span>
+   -H <span class="s2">"MC-Api-Key: your_api_key"</span> <span class="se">\</span>
+   <span class="s2">"https://cloudmc_endpoint/v1/services/k8s/an_environment/deployments"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns a JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"apm-server-1585600296-apm-server/monitoring"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"deploymentStatus"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Available"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"readyRatio"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1/1"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"annotations"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"deployment.kubernetes.io/revision"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"creationTimestamp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-03-30T16:31:43.000-04:00"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"generation"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"labels"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"app"</span><span class="p">:</span><span class="w"> </span><span class="s2">"apm-server"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"release"</span><span class="p">:</span><span class="w"> </span><span class="s2">"apm-server-1585600296"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"apm-server-1585600296-apm-server"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"namespace"</span><span class="p">:</span><span class="w"> </span><span class="s2">"monitoring"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"resourceVersion"</span><span class="p">:</span><span class="w"> </span><span class="s2">"117204237"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"selfLink"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/apis/apps/v1/namespaces/monitoring/deployments/apm-server-1585600296-apm-server"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"uid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"783030e4-72c5-11ea-a953-02007a9a001f"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"spec"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="err">/*...*/</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"availableReplicas"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"conditions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"lastTransitionTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-04-24T15:06:15.000-04:00"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"lastUpdateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-04-24T15:08:43.000-04:00"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ReplicaSet </span><span class="se">\"</span><span class="s2">cert-manager-webhook-6ff9487489</span><span class="se">\"</span><span class="s2"> has successfully progressed."</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"reason"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NewReplicaSetAvailable"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"True"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Progressing"</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="s2">"observedGeneration"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"readyReplicas"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"replicas"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"updatedReplicas"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="err">//</span><span class="w"> </span><span class="err">...</span><span class="w">
+  </span><span class="s2">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"recordCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">9</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><code>GET /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/deployments</code></p>
+
+<p>Retrieve a list of all deployments in a given <a href="#administration-environments">environment</a>.</p>
+
+<table><thead>
+<tr>
+<th>Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code> <br/><em>string</em></td>
+<td>The id of the deployment</td>
+</tr>
+<tr>
+<td><code>metadata</code> <br/><em>object</em></td>
+<td>The metadata of the deployment</td>
+</tr>
+<tr>
+<td><code>metadata.name</code> <br/><em>string</em></td>
+<td>The name of the deployment</td>
+</tr>
+<tr>
+<td><code>metadata.namespace</code> <br/><em>string</em></td>
+<td>The namespace in which the deployment is created</td>
+</tr>
+<tr>
+<td><code>metadata.uid</code> <br/><em>object</em></td>
+<td>The UUID of the deployment</td>
+</tr>
+<tr>
+<td><code>images</code> <br/><em>object</em></td>
+<td>The container images within a deployment</td>
+</tr>
+<tr>
+<td><code>spec</code><br/><em>object</em></td>
+<td>The specification used to create and run the deployment</td>
+</tr>
+<tr>
+<td><code>status</code><br/><em>object</em></td>
+<td>The status information of the deployment</td>
+</tr>
+</tbody></table>
+
+<p>Note that the list is not complete, since it is refering to the <a href="https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md">kubernetes api details</a>.</p>
+
+<!-------------------- GET A DEPLOYMENT -------------------->
+<h4 id='gcp-get-a-deployment'>Get a deployment</h4><pre class="highlight shell tab-shell"><code>curl -X GET <span class="se">\</span>
+   -H <span class="s2">"MC-Api-Key: your_api_key"</span> <span class="se">\</span>
+   <span class="s2">"https://cloudmc_endpoint/v1/services/k8s/an_environment/deployments/test-aerospike/auth"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns a JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"apm-server-1585600296-apm-server/monitoring"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"deploymentStatus"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Available"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"readyRatio"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1/1"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"annotations"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"deployment.kubernetes.io/revision"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"creationTimestamp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-03-30T16:31:43.000-04:00"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"generation"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"labels"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"app"</span><span class="p">:</span><span class="w"> </span><span class="s2">"apm-server"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"release"</span><span class="p">:</span><span class="w"> </span><span class="s2">"apm-server-1585600296"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"apm-server-1585600296-apm-server"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"namespace"</span><span class="p">:</span><span class="w"> </span><span class="s2">"monitoring"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"resourceVersion"</span><span class="p">:</span><span class="w"> </span><span class="s2">"117204237"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"selfLink"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/apis/apps/v1/namespaces/monitoring/deployments/apm-server-1585600296-apm-server"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"uid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"783030e4-72c5-11ea-a953-02007a9a001f"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"spec"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="err">/*...*/</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"availableReplicas"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"conditions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"lastTransitionTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-04-24T15:06:15.000-04:00"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"lastUpdateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-04-24T15:08:43.000-04:00"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ReplicaSet </span><span class="se">\"</span><span class="s2">cert-manager-webhook-6ff9487489</span><span class="se">\"</span><span class="s2"> has successfully progressed."</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"reason"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NewReplicaSetAvailable"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"True"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Progressing"</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="s2">"observedGeneration"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"readyReplicas"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"replicas"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"updatedReplicas"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><code>GET /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/deployments/:id</code></p>
+
+<p>Retrieve a deployment and all its info in a given <a href="#administration-environments">environment</a>.</p>
+
+<table><thead>
+<tr>
+<th>Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code> <br/><em>string</em></td>
+<td>The id of the deployment</td>
+</tr>
+<tr>
+<td><code>metadata</code> <br/><em>object</em></td>
+<td>The metadata of the deployment</td>
+</tr>
+<tr>
+<td><code>metadata.name</code> <br/><em>string</em></td>
+<td>The name of the deployment</td>
+</tr>
+<tr>
+<td><code>metadata.namespace</code> <br/><em>string</em></td>
+<td>The namespace in which the deployment is created</td>
+</tr>
+<tr>
+<td><code>metadata.uid</code> <br/><em>object</em></td>
+<td>The UUID of the deployment</td>
+</tr>
+<tr>
+<td><code>images</code> <br/><em>object</em></td>
+<td>The container images within a deployment</td>
+</tr>
+<tr>
+<td><code>spec</code><br/><em>object</em></td>
+<td>The specification used to create and run the deployment</td>
+</tr>
+<tr>
+<td><code>status</code><br/><em>object</em></td>
+<td>The status information of the deployment</td>
 </tr>
 </tbody></table>
 
@@ -22768,7 +22992,7 @@ curl -X POST <span class="se">\</span>
 <!-------------------- GET A DAEMON SET -------------------->
 <h3 id='kubernetes-get-a-daemon-set'>Get a daemon set</h3><pre class="highlight shell tab-shell"><code>curl -X GET <span class="se">\</span>
    -H <span class="s2">"MC-Api-Key: your_api_key"</span> <span class="se">\</span>
-   <span class="s2">"https://cloudmc_endpoint/v1/services/k8s/an_environment/statefulsets/test-aerospike/auth"</span>
+   <span class="s2">"https://cloudmc_endpoint/v1/services/k8s/an_environment/daemonsets/test-aerospike/auth"</span>
 </code></pre>
 <blockquote>
 <p>The above command returns a JSON structured like this:</p>
@@ -22807,7 +23031,7 @@ curl -X POST <span class="se">\</span>
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<p><code>GET /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/statefulsets/:id</code></p>
+<p><code>GET /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/daemonsets/:id</code></p>
 
 <p>Retrieve a daemon set and all its info in a given <a href="#administration-environments">environment</a>.</p>
 
@@ -22852,6 +23076,208 @@ curl -X POST <span class="se">\</span>
 <tr>
 <td><code>status</code><br/><em>object</em></td>
 <td>The status information of the daemon set</td>
+</tr>
+</tbody></table>
+
+<p>Note that the list is not complete, since it is refering to the <a href="https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md">kubernetes api details</a>.</p>
+<h2 id='kubernetes-deployments'>Deployments</h2>
+<!-------------------- LIST DEPLOYMENTS -------------------->
+<h4 id='kubernetes-list-deployments'>List deployments</h4><pre class="highlight shell tab-shell"><code>curl -X GET <span class="se">\</span>
+   -H <span class="s2">"MC-Api-Key: your_api_key"</span> <span class="se">\</span>
+   <span class="s2">"https://cloudmc_endpoint/v1/services/k8s/an_environment/deployments"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns a JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"apm-server-1585600296-apm-server/monitoring"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"deploymentStatus"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Available"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"readyRatio"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1/1"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"annotations"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"deployment.kubernetes.io/revision"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"creationTimestamp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-03-30T16:31:43.000-04:00"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"generation"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"labels"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"app"</span><span class="p">:</span><span class="w"> </span><span class="s2">"apm-server"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"release"</span><span class="p">:</span><span class="w"> </span><span class="s2">"apm-server-1585600296"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"apm-server-1585600296-apm-server"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"namespace"</span><span class="p">:</span><span class="w"> </span><span class="s2">"monitoring"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"resourceVersion"</span><span class="p">:</span><span class="w"> </span><span class="s2">"117204237"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"selfLink"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/apis/apps/v1/namespaces/monitoring/deployments/apm-server-1585600296-apm-server"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"uid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"783030e4-72c5-11ea-a953-02007a9a001f"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"spec"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="err">/*...*/</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"availableReplicas"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"conditions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"lastTransitionTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-04-24T15:06:15.000-04:00"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"lastUpdateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-04-24T15:08:43.000-04:00"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ReplicaSet </span><span class="se">\"</span><span class="s2">cert-manager-webhook-6ff9487489</span><span class="se">\"</span><span class="s2"> has successfully progressed."</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"reason"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NewReplicaSetAvailable"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"True"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Progressing"</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="s2">"observedGeneration"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"readyReplicas"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"replicas"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"updatedReplicas"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="err">//</span><span class="w"> </span><span class="err">...</span><span class="w">
+  </span><span class="s2">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"recordCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">9</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><code>GET /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/deployments</code></p>
+
+<p>Retrieve a list of all deployments in a given <a href="#administration-environments">environment</a>.</p>
+
+<table><thead>
+<tr>
+<th>Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code> <br/><em>string</em></td>
+<td>The id of the deployment</td>
+</tr>
+<tr>
+<td><code>metadata</code> <br/><em>object</em></td>
+<td>The metadata of the deployment</td>
+</tr>
+<tr>
+<td><code>metadata.name</code> <br/><em>string</em></td>
+<td>The name of the deployment</td>
+</tr>
+<tr>
+<td><code>metadata.namespace</code> <br/><em>string</em></td>
+<td>The namespace in which the deployment is created</td>
+</tr>
+<tr>
+<td><code>metadata.uid</code> <br/><em>object</em></td>
+<td>The UUID of the deployment</td>
+</tr>
+<tr>
+<td><code>images</code> <br/><em>object</em></td>
+<td>The container images within a deployment</td>
+</tr>
+<tr>
+<td><code>spec</code><br/><em>object</em></td>
+<td>The specification used to create and run the deployment</td>
+</tr>
+<tr>
+<td><code>status</code><br/><em>object</em></td>
+<td>The status information of the deployment</td>
+</tr>
+</tbody></table>
+
+<p>Note that the list is not complete, since it is refering to the <a href="https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md">kubernetes api details</a>.</p>
+
+<!-------------------- GET A DEPLOYMENT -------------------->
+<h4 id='kubernetes-get-a-deployment'>Get a deployment</h4><pre class="highlight shell tab-shell"><code>curl -X GET <span class="se">\</span>
+   -H <span class="s2">"MC-Api-Key: your_api_key"</span> <span class="se">\</span>
+   <span class="s2">"https://cloudmc_endpoint/v1/services/k8s/an_environment/deployments/test-aerospike/auth"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns a JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"apm-server-1585600296-apm-server/monitoring"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"deploymentStatus"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Available"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"readyRatio"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1/1"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"annotations"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"deployment.kubernetes.io/revision"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"creationTimestamp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-03-30T16:31:43.000-04:00"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"generation"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"labels"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"app"</span><span class="p">:</span><span class="w"> </span><span class="s2">"apm-server"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"release"</span><span class="p">:</span><span class="w"> </span><span class="s2">"apm-server-1585600296"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"apm-server-1585600296-apm-server"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"namespace"</span><span class="p">:</span><span class="w"> </span><span class="s2">"monitoring"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"resourceVersion"</span><span class="p">:</span><span class="w"> </span><span class="s2">"117204237"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"selfLink"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/apis/apps/v1/namespaces/monitoring/deployments/apm-server-1585600296-apm-server"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"uid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"783030e4-72c5-11ea-a953-02007a9a001f"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"spec"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="err">/*...*/</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"availableReplicas"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"conditions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"lastTransitionTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-04-24T15:06:15.000-04:00"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"lastUpdateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-04-24T15:08:43.000-04:00"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ReplicaSet </span><span class="se">\"</span><span class="s2">cert-manager-webhook-6ff9487489</span><span class="se">\"</span><span class="s2"> has successfully progressed."</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"reason"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NewReplicaSetAvailable"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"True"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Progressing"</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="s2">"observedGeneration"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"readyReplicas"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"replicas"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"updatedReplicas"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><code>GET /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/deployments/:id</code></p>
+
+<p>Retrieve a deployment and all its info in a given <a href="#administration-environments">environment</a>.</p>
+
+<table><thead>
+<tr>
+<th>Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code> <br/><em>string</em></td>
+<td>The id of the deployment</td>
+</tr>
+<tr>
+<td><code>metadata</code> <br/><em>object</em></td>
+<td>The metadata of the deployment</td>
+</tr>
+<tr>
+<td><code>metadata.name</code> <br/><em>string</em></td>
+<td>The name of the deployment</td>
+</tr>
+<tr>
+<td><code>metadata.namespace</code> <br/><em>string</em></td>
+<td>The namespace in which the deployment is created</td>
+</tr>
+<tr>
+<td><code>metadata.uid</code> <br/><em>object</em></td>
+<td>The UUID of the deployment</td>
+</tr>
+<tr>
+<td><code>images</code> <br/><em>object</em></td>
+<td>The container images within a deployment</td>
+</tr>
+<tr>
+<td><code>spec</code><br/><em>object</em></td>
+<td>The specification used to create and run the deployment</td>
+</tr>
+<tr>
+<td><code>status</code><br/><em>object</em></td>
+<td>The status information of the deployment</td>
 </tr>
 </tbody></table>
 
