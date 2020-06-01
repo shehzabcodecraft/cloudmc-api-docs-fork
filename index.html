@@ -412,7 +412,10 @@
                                     <a href="#administration-create-identity-provider" class="toc-h4 toc-link" data-title="Administration">Create identity provider</a>
                                   </li>
                                   <li>
-                                    <a href="#administration-update-identity-providr" class="toc-h4 toc-link" data-title="Administration">Update Identity Providr</a>
+                                    <a href="#administration-update-identity-provider" class="toc-h4 toc-link" data-title="Administration">Update Identity Provider</a>
+                                  </li>
+                                  <li>
+                                    <a href="#administration-delete-identity-provider" class="toc-h4 toc-link" data-title="Administration">Delete Identity Provider</a>
                                   </li>
                               </ul>
                           </li>
@@ -5262,11 +5265,11 @@ curl -X POST <span class="s2">"https://cloudmc_endpoint/rest/identity_providers"
 </tbody></table>
 
 <!-------------------- UPDATE IDPS -------------------->
-<h4 id='administration-update-identity-providr'>Update Identity Providr</h4>
+<h4 id='administration-update-identity-provider'>Update Identity Provider</h4>
 <p><code>POST /identity_providers/:id</code></p>
 
 <p>Update an existing identity provider.</p>
-<pre class="highlight shell tab-shell"><code><span class="c"># Creates a new identity provider</span>
+<pre class="highlight shell tab-shell"><code><span class="c"># Updates an existing identity provider</span>
 curl -X POST <span class="s2">"https://cloudmc_endpoint/rest/identity_providers/c84cfe41-929b-47c9-bde4-b55a10bd2774"</span> <span class="se">\</span>
    -H <span class="s2">"MC-Api-Key: your_api_key"</span>
 </code></pre>
@@ -5370,6 +5373,39 @@ curl -X POST <span class="s2">"https://cloudmc_endpoint/rest/identity_providers/
 <tr>
 <td><code>css</code><br/><em>string</em></td>
 <td>Custom css for the login button of the identity provider.</td>
+</tr>
+</tbody></table>
+
+<!-------------------- Delete IDPs -------------------->
+<h4 id='administration-delete-identity-provider'>Delete Identity Provider</h4>
+<p><code>Delete /identity_providers/:id</code></p>
+
+<p>Delete an existing identity provider.</p>
+<pre class="highlight shell tab-shell"><code><span class="c"># Deletes a specified identity provider</span>
+curl -X DELETE <span class="s2">"https://cloudmc_endpoint/rest/identity_providers/c84cfe41-929b-47c9-bde4-b55a10bd2774"</span> <span class="se">\</span>
+   -H <span class="s2">"MC-Api-Key: your_api_key"</span>
+</code></pre>
+<blockquote>
+<p>The above command(s) return(s) JSON structured like this:</p>
+</blockquote>
+<pre class="highlight javascript"><code><span class="p">{</span>
+  <span class="s2">"taskId"</span><span class="p">:</span> <span class="s2">"c50390c7-9d5b-4af4-a2da-e2a2678a83e8"</span><span class="p">,</span>
+  <span class="s2">"taskStatus"</span><span class="p">:</span> <span class="s2">"SUCCESS"</span>
+<span class="p">}</span>
+</code></pre>
+<table><thead>
+<tr>
+<th>Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>taskId</code> <br/><em>string</em></td>
+<td>The task id related to the identity provider deletion.</td>
+</tr>
+<tr>
+<td><code>taskStatus</code> <br/><em>string</em></td>
+<td>The status of the operation.</td>
 </tr>
 </tbody></table>
 <h1 id='cloudstack-plugin'>CloudStack plugin</h1>
