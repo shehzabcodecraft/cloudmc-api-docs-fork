@@ -1354,6 +1354,15 @@
                                   <li>
                                     <a href="#gcp-retrieve-a-router" class="toc-h4 toc-link" data-title="Google Cloud Platform plugin">Retrieve a Router</a>
                                   </li>
+                                  <li>
+                                    <a href="#gcp-create-a-router" class="toc-h4 toc-link" data-title="Google Cloud Platform plugin">Create a router</a>
+                                  </li>
+                                  <li>
+                                    <a href="#gcp-add-router-interface-s" class="toc-h4 toc-link" data-title="Google Cloud Platform plugin">Add router interface(s)</a>
+                                  </li>
+                                  <li>
+                                    <a href="#gcp-add-bgp-peer-s" class="toc-h4 toc-link" data-title="Google Cloud Platform plugin">Add BGP peer(s)</a>
+                                  </li>
                               </ul>
                           </li>
                           <li>
@@ -17060,6 +17069,175 @@ You cannot release an external IP which is currently attached to an instance.
 <td>Router interfaces. Each interface contains either one linked resource or IP address and IP address range.</td>
 </tr>
 </tbody></table>
+
+<!-------------------- CREATE A ROUTER -------------------->
+<h4 id='gcp-create-a-router'>Create a router</h4><pre class="highlight shell tab-shell"><code>curl -X POST <span class="se">\</span>
+   -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+   -H <span class="s2">"MC-Api-Key: your_api_key"</span> <span class="se">\</span>
+   -d <span class="s2">"request_body"</span> <span class="se">\</span>
+   <span class="s2">"https://cloudmc_endpoint/v1/services/gcp/test-area/routers"</span>
+</code></pre>
+<blockquote>
+<p>Request body example:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cmc-c-router"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"shortNetwork"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cmc-vpc"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"shortRegion"</span><span class="p">:</span><span class="w"> </span><span class="s2">"us-central1"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"bgp"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"asn"</span><span class="p">:</span><span class="w"> </span><span class="mi">65510</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><code>POST /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/routers</code></p>
+
+<p>Create a new router</p>
+
+<table><thead>
+<tr>
+<th>Required</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>name</code><br/><em>string</em></td>
+<td>The display name of the router.</td>
+</tr>
+<tr>
+<td><code>shortRegion</code><br/><em>string</em></td>
+<td>A short version of the region name.</td>
+</tr>
+<tr>
+<td><code>shortNetwork</code><br/><em>string</em></td>
+<td>A short version of the network name this router is attached to.</td>
+</tr>
+<tr>
+<td><code>bgp.asn</code><br/><em>string</em></td>
+<td>The BGP Autonomous System Number (ASN) Number that is to be assigned to this router. <em>Must be a valid ASN between 64512–65534</em>.</td>
+</tr>
+</tbody></table>
+
+<table><thead>
+<tr>
+<th>Optional</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>region</code><br/><em>string</em></td>
+<td>Instead of the <code>shortRegion</code>, the long URI version of the region can also be provided.</td>
+</tr>
+<tr>
+<td><code>network</code><br/><em>string</em></td>
+<td>Instead of the <code>shortNetwork</code>, the long URI version of the network can also be provided.</td>
+</tr>
+</tbody></table>
+
+<!-------------------- ADD VPN TUNNEL INTERFACES -------------------->
+<h4 id='gcp-add-router-interface-s'>Add router interface(s)</h4><pre class="highlight shell tab-shell"><code>curl -X POST <span class="se">\</span>
+   -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+   -H <span class="s2">"MC-Api-Key: your_api_key"</span> <span class="se">\</span>
+   -d <span class="s2">"request_body"</span> <span class="se">\</span>
+   <span class="s2">"https://cloudmc_endpoint/v1/services/gcp/test-area/routers/5333546534174463697?operation=addvpntunnelinterface"</span>
+</code></pre>
+<blockquote>
+<p>Request body example:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"interfaces"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"if-cmc-srx-bgp-interface"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"ipRange"</span><span class="p">:</span><span class="w"> </span><span class="s2">"169.254.13.1/30"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"linkedVpnTunnel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.googleapis.com/compute/v1/projects/cmc-junniper-lab-ses/regions/us-central1/vpnTunnels/cmc-srx-vpn-tunnel"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><code>POST /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/routers/:id?operation=addvpntunnelinterface</code></p>
+
+<p>Add one or more interfaces associated to existing <a href="#gcp-vpn-tunnels">Vpn Tunnel(s)</a>.</p>
+
+<table><thead>
+<tr>
+<th>Required</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>interfaces</code><br/><em>Array</em></td>
+<td>An array of interfaces to be added to the selected router.</td>
+</tr>
+<tr>
+<td><code>interfaces[*].name</code><br/><em>string</em></td>
+<td>The name of the interface on the router.</td>
+</tr>
+<tr>
+<td><code>interfaces[*].ipRange</code><br/><em>string</em></td>
+<td>IP address and range of the interface. The IP range must be in the RFC3927 link-local IP address space. The value must be a CIDR-formatted string, <em>for example: 169.254.0.1/30</em>.</td>
+</tr>
+<tr>
+<td><code>interfaces[*].linkedVpnTunnel</code><br/><em>string</em></td>
+<td>URI of the linked VPN tunnel, which must be in the same region as the router.</td>
+</tr>
+</tbody></table>
+
+<!-------------------- ADD BGP PEERS -------------------->
+<h4 id='gcp-add-bgp-peer-s'>Add BGP peer(s)</h4><pre class="highlight shell tab-shell"><code>curl -X POST <span class="se">\</span>
+   -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+   -H <span class="s2">"MC-Api-Key: your_api_key"</span> <span class="se">\</span>
+   -d <span class="s2">"request_body"</span> <span class="se">\</span>
+   <span class="s2">"https://cloudmc_endpoint/v1/services/gcp/test-area/routers/5333546534174463697?operation=addbgppeer"</span>
+</code></pre>
+<blockquote>
+<p>Request body example:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"bgpPeers"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"juniper-srx-bgp-5th-p2"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"interfaceName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"if-juniper-srx-bgp-3rd-exp"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"ipAddress"</span><span class="p">:</span><span class="w"> </span><span class="s2">"169.254.13.1"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"peerIpAddress"</span><span class="p">:</span><span class="w"> </span><span class="s2">"169.254.13.2"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"peerAsn"</span><span class="p">:</span><span class="w"> </span><span class="mi">64999</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><code>POST /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/routers/:id?operation=addbgppeer</code></p>
+
+<p>Add one or more BGP peers associated to existing router interface(s)</p>
+
+<table><thead>
+<tr>
+<th>Required</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>bgpPeers</code><br/><em>Array</em></td>
+<td>An array of BGP peers to be added to the selected router.</td>
+</tr>
+<tr>
+<td><code>bgpPeers[*].name</code><br/><em>string</em></td>
+<td>The name of the BGP peer association.</td>
+</tr>
+<tr>
+<td><code>bgpPeers[*].interfaceName</code><br/><em>string</em></td>
+<td>The router interface through which this BGP peering will be realized.</td>
+</tr>
+<tr>
+<td><code>bgpPeers[*].ipAddress</code><br/><em>string</em></td>
+<td>The router&#39;s IP address on the above interface for this BGP peering. Only IPv4 is supported.</td>
+</tr>
+<tr>
+<td><code>bgpPeers[*].peerIpAddress</code><br/><em>string</em></td>
+<td>The peer IP address this BGP peering tries to connect to. Only IPv4 is supported.</td>
+</tr>
+<tr>
+<td><code>bgpPeers[*].peerAsn</code><br/><em>string</em></td>
+<td>Peer BGP Autonomous System Number (ASN). Each BGP interface may use a different value.</td>
+</tr>
+</tbody></table>
 <h3 id='gcp-vpn-gateways'>VPN gateways</h3>
 <p>With Classic VPN, your on-premises hosts communicate through one or more IPsec VPN tunnels to Compute Engine Virtual Machine (VM) instances in your project&#39;s VPC networks.</p>
 
@@ -17292,7 +17470,7 @@ You cannot release an external IP which is currently attached to an instance.
 <td>The name of the external static IP to use for the VPN gateway</td>
 </tr>
 <tr>
-<td><code>reseveStaticIP</code><br/><em>string</em></td>
+<td><code>reserveStaticIP</code><br/><em>string</em></td>
 <td>A flag to indicate if a new external static IP needs to be reserved for the VPN gateway. This option is mutually exclusive with <code>shortIP</code>.</td>
 </tr>
 </tbody></table>
