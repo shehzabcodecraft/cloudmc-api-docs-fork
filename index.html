@@ -14665,6 +14665,19 @@ curl -X PUT <span class="se">\</span>
   <span class="s2">"bootDiskSizeInGb"</span><span class="p">:</span> <span class="s2">"10"</span><span class="p">,</span>
   <span class="s2">"cpuCount"</span><span class="p">:</span> <span class="s2">"2"</span><span class="p">,</span>
   <span class="s2">"memoryInGB"</span><span class="p">:</span> <span class="s2">"4.5"</span><span class="p">,</span>
+  <span class="s2">"osImageSelfLink"</span><span class="p">:</span> <span class="s2">"https://www.googleapis.com/compute/v1/projects/debian-cloud/global/images/debian-9-stretch-v20190514"</span><span class="p">,</span>
+  <span class="s2">"ephemeralIP"</span><span class="p">:</span> <span class="kc">true</span>
+<span class="p">}</span>
+
+<span class="c1">// Create an instance with no external IP</span>
+<span class="p">{</span>
+  <span class="s2">"name"</span><span class="p">:</span> <span class="s2">"my-instance"</span><span class="p">,</span>
+  <span class="s2">"shortRegion"</span><span class="p">:</span> <span class="s2">"northamerica-northeast1"</span><span class="p">,</span>
+  <span class="s2">"shortZone"</span><span class="p">:</span> <span class="s2">"northamerica-northeast1-a"</span><span class="p">,</span>
+  <span class="s2">"bootDiskType"</span><span class="p">:</span> <span class="s2">"pd-standard"</span><span class="p">,</span>
+  <span class="s2">"bootDiskSizeInGb"</span><span class="p">:</span> <span class="s2">"10"</span><span class="p">,</span>
+  <span class="s2">"cpuCount"</span><span class="p">:</span> <span class="s2">"2"</span><span class="p">,</span>
+  <span class="s2">"memoryInGB"</span><span class="p">:</span> <span class="s2">"4.5"</span><span class="p">,</span>
   <span class="s2">"osImageSelfLink"</span><span class="p">:</span> <span class="s2">"https://www.googleapis.com/compute/v1/projects/debian-cloud/global/images/debian-9-stretch-v20190514"</span>
 <span class="p">}</span>
 </code></pre>
@@ -14720,11 +14733,15 @@ curl -X PUT <span class="se">\</span>
 </thead><tbody>
 <tr>
 <td><code>reserveStaticIP</code><br/><em>boolean</em></td>
-<td>If the value is false and if no shortIP is provided, an ephemeral external IP address will be assigned. If the value is true, a new static IP would be reserved and provided to the resource.</td>
+<td>If the value is true, a new static IP would be reserved and provided to the resource.</td>
 </tr>
 <tr>
 <td><code>shortIP</code><br/><em>string</em></td>
-<td>The name of an existing regional external IP address assigned to this instance in the same region. This argument is only valid in conjunction with reserveStaticIP being false.</td>
+<td>The name of an existing regional external IP address assigned to this instance in the same region. This argument is only valid in conjunction with reserveStaticIP and ephemeral IP being false.</td>
+</tr>
+<tr>
+<td><code>ephemeralIP</code><br/><em>boolean</em></td>
+<td>If the value is false, reserve static IP is false and if no shortIP is provided the instance won&#39;t have an external IP. If the value is true, an ephemeral external IP address will be assigned.</td>
 </tr>
 </tbody></table>
 
