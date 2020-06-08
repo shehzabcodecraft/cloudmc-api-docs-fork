@@ -14199,10 +14199,16 @@ curl -X PUT <span class="se">\</span>
       </span><span class="p">],</span><span class="w">
       </span><span class="s2">"kind"</span><span class="p">:</span><span class="w"> </span><span class="s2">"compute#instance"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"labelFingerprint"</span><span class="p">:</span><span class="w"> </span><span class="s2">"42WmSpB8rSM="</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"fingerprint"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WFshDDge4fM="</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"kind"</span><span class="p">:</span><span class="w"> </span><span class="s2">"compute#metadata"</span><span class="w">
-      </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"fingerprint"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RnfaWQ2UP4U="</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"items"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"startup-script"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"#! /bin/bash</span><span class="se">\n</span><span class="s2">apt-get update</span><span class="se">\n</span><span class="s2">EOF"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="s2">"kind"</span><span class="p">:</span><span class="w"> </span><span class="s2">"compute#metadata"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
       </span><span class="s2">"networkInterfaces"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
         </span><span class="p">{</span><span class="w">
           </span><span class="s2">"accessConfigs"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -14433,6 +14439,12 @@ curl -X PUT <span class="se">\</span>
     </span><span class="s2">"labelFingerprint"</span><span class="p">:</span><span class="w"> </span><span class="s2">"42WmSpB8rSM="</span><span class="p">,</span><span class="w">
     </span><span class="s2">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="s2">"fingerprint"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WFshDDge4fM="</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"items"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"startup-script"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"#! /bin/bash</span><span class="se">\n</span><span class="s2">apt-get update</span><span class="se">\n</span><span class="s2">EOF"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
       </span><span class="s2">"kind"</span><span class="p">:</span><span class="w"> </span><span class="s2">"compute#metadata"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="s2">"networkInterfaces"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -14640,7 +14652,8 @@ curl -X PUT <span class="se">\</span>
   <span class="s2">"cpuCount"</span><span class="p">:</span> <span class="s2">"2"</span><span class="p">,</span>
   <span class="s2">"memoryInGB"</span><span class="p">:</span> <span class="s2">"4.5"</span><span class="p">,</span>
   <span class="s2">"osImageSelfLink"</span><span class="p">:</span> <span class="s2">"https://www.googleapis.com/compute/v1/projects/debian-cloud/global/images/debian-9-stretch-v20190514"</span><span class="p">,</span>
-  <span class="s2">"shortIP"</span><span class="p">:</span> <span class="s2">"my-ip-name"</span>
+  <span class="s2">"shortIP"</span><span class="p">:</span> <span class="s2">"my-ip-name"</span><span class="p">,</span>
+  <span class="s2">"startupScript"</span><span class="p">:</span> <span class="s2">"#! /bin/bash\napt-get update\nEOF"</span>
 <span class="p">}</span>
 
 <span class="c1">// Create an instance with a new static IP</span>
@@ -14742,6 +14755,10 @@ curl -X PUT <span class="se">\</span>
 <tr>
 <td><code>ephemeralIP</code><br/><em>boolean</em></td>
 <td>If the value is false, reserve static IP is false and if no shortIP is provided the instance won&#39;t have an external IP. If the value is true, an ephemeral external IP address will be assigned.</td>
+</tr>
+<tr>
+<td><code>startupScript</code><br/><em>string</em></td>
+<td>A startup script metadata item to run every time the instance boots up.</td>
 </tr>
 </tbody></table>
 
