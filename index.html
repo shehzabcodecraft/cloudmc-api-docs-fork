@@ -435,6 +435,25 @@
                           </li>
                       </ul>
                   </li>
+                  <li>
+                    <a href="#administration-service-providers" class="toc-h2 toc-link" data-title="Administration">Service Providers</a>
+                      <ul class="toc-list-h3">
+                          <li>
+                            <a href="#administration-list-service-providers" class="toc-h3 toc-link" data-title="Administration">List service providers</a>
+                          </li>
+                          <li>
+                            <a href="#administration-retrieve-service-provider" class="toc-h3 toc-link" data-title="Administration">Retrieve service provider</a>
+                              <ul class="toc-list-h4">
+                                  <li>
+                                    <a href="#administration-create-service-provider" class="toc-h4 toc-link" data-title="Administration">Create service provider</a>
+                                  </li>
+                                  <li>
+                                    <a href="#administration-update-service-provider" class="toc-h4 toc-link" data-title="Administration">Update service provider</a>
+                                  </li>
+                              </ul>
+                          </li>
+                      </ul>
+                  </li>
               </ul>
           </li>
           <li>
@@ -5836,6 +5855,461 @@ curl -X DELETE <span class="s2">"https://cloudmc_endpoint/rest/identity_provider
 <tr>
 <td><code>taskStatus</code> <br/><em>string</em></td>
 <td>The status of the operation.</td>
+</tr>
+</tbody></table>
+<h2 id='administration-service-providers'>Service Providers</h2>
+<p>Configure the service providers that can use CloudMC as their authentication source.</p>
+
+<!-------------------- LIST SERVICE PROVIDERS -------------------->
+<h3 id='administration-list-service-providers'>List service providers</h3>
+<p><code>GET /service_providers</code></p>
+<pre class="highlight shell tab-shell"><code><span class="c"># Retrieve service providers</span>
+curl <span class="s2">"https://cloudmc_endpoint/v1/service_providers"</span> <span class="se">\</span>
+   -H <span class="s2">"MC-Api-Key: your_api_key"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Slack"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"04b77783-516f-4064-a6df-e7f9cae222c1"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SAML"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"config"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"assertionConsumerUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"issuer.com"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"nameIdFormat"</span><span class="p">:</span><span class="w"> </span><span class="s2">"UNSPECIFIED"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"responseAttributes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"nameFormat"</span><span class="p">:</span><span class="w"> </span><span class="s2">"UNSPECIFIED"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"attributeName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"username"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"attributeValueField"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"fieldName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"firstName"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"sourceModel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"user"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="s2">"sign"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RESPONSE"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"serviceProviderIssuer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"slack"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>List the service providers configured on the system.</p>
+
+<table><thead>
+<tr>
+<th>Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code><br/><em>UUID</em></td>
+<td>The id of the service provider.</td>
+</tr>
+<tr>
+<td><code>name</code><br/><em>string</em></td>
+<td>The name of the service provider.</td>
+</tr>
+<tr>
+<td><code>type</code><br/><em>string</em></td>
+<td>The type of service provider. Possible values are : SAML.</td>
+</tr>
+<tr>
+<td><code>config</code><br/><em>Object</em></td>
+<td>The object containing the configuration of the service provider.</td>
+</tr>
+<tr>
+<td><code>config.serviceProviderIssuer</code><br/><em>string</em></td>
+<td>The issuer for the service provider. This is what is contained in the SAML request issuer tag. This is also referred to as the EntityID or EntityURL.</td>
+</tr>
+<tr>
+<td><code>config.assertionConsumerUrl</code><br/><em>string</em></td>
+<td>The URL where the response is sent.</td>
+</tr>
+<tr>
+<td><code>config.sign</code><br/><em>string</em></td>
+<td>How the returned XML is signed. Possible values are : ASSERTION, RESPONSE, ASSERTION_AND_RESPONSE.</td>
+</tr>
+<tr>
+<td><code>config.nameIdFormat</code><br/><em>string</em></td>
+<td>The format for the name field. Possible values are : UNSPECIFIED, EMAIL_ADDRESS, X509_SUBJECT, WINDOWS_DQN, KERBEROS_PRINCIPAL, ENTITY, PERSISTENT and TRANSIENT.</td>
+</tr>
+<tr>
+<td><code>config.responseAttributes</code><br/><em>Array[Object]</em></td>
+<td>The list of attributes part of the response</td>
+</tr>
+<tr>
+<td><code>config.responseAttributes.nameFormat</code><br/><em>string</em></td>
+<td>The format for the name field. Possible values are : UNSPECIFIED, URI and BASIC.</td>
+</tr>
+<tr>
+<td><code>config.responseAttributes.attributeName</code><br/><em>string</em></td>
+<td>The attribute name</td>
+</tr>
+<tr>
+<td><code>config.responseAttributes.attributeValueField</code><br/><em>Object</em></td>
+<td>The object containing the source for the value in the response.</td>
+</tr>
+<tr>
+<td><code>config.responseAttributes.attributeValueField.sourceModel</code><br/><em>string</em></td>
+<td>The model object to get the value from. Possible values are : ORGANIZATION, USER.</td>
+</tr>
+<tr>
+<td><code>config.responseAttributes.attributeValueField.fieldName</code><br/><em>string</em></td>
+<td>The field name to get the information from.</td>
+</tr>
+</tbody></table>
+
+<!-------------------- GET SERVICE PROVIDERS -------------------->
+<h3 id='administration-retrieve-service-provider'>Retrieve service provider</h3>
+<p><code>GET /service_provider/:id</code></p>
+<pre class="highlight shell tab-shell"><code><span class="c"># Retrieve service providers</span>
+curl <span class="s2">"https://cloudmc_endpoint/v1/service_providers/04b77783-516f-4064-a6df-e7f9cae222c1"</span> <span class="se">\</span>
+   -H <span class="s2">"MC-Api-Key: your_api_key"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Slack"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"04b77783-516f-4064-a6df-e7f9cae222c1"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SAML"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"config"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"assertionConsumerUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"issuer.com"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"nameIdFormat"</span><span class="p">:</span><span class="w"> </span><span class="s2">"UNSPECIFIED"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"responseAttributes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"nameFormat"</span><span class="p">:</span><span class="w"> </span><span class="s2">"UNSPECIFIED"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"attributeName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"username"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"attributeValueField"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"fieldName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"firstName"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"sourceModel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"user"</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="s2">"sign"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RESPONSE"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"serviceProviderIssuer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"slack"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>Return the service provider configured associated to the id on the system.</p>
+
+<table><thead>
+<tr>
+<th>Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code><br/><em>UUID</em></td>
+<td>The id of the service provider.</td>
+</tr>
+<tr>
+<td><code>name</code><br/><em>string</em></td>
+<td>The name of the service provider.</td>
+</tr>
+<tr>
+<td><code>type</code><br/><em>string</em></td>
+<td>The type of service provider. Possible values are : SAML.</td>
+</tr>
+<tr>
+<td><code>config</code><br/><em>Object</em></td>
+<td>The object containing the configuration of the service provider.</td>
+</tr>
+<tr>
+<td><code>config.serviceProviderIssuer</code><br/><em>string</em></td>
+<td>The issuer for the service provider. This is what is contained in the SAML request issuer tag. This is also referred to as the EntityID or EntityURL.</td>
+</tr>
+<tr>
+<td><code>config.assertionConsumerUrl</code><br/><em>string</em></td>
+<td>The URL where the response is sent.</td>
+</tr>
+<tr>
+<td><code>config.sign</code><br/><em>string</em></td>
+<td>How the returned XML is signed. Possible values are : ASSERTION, RESPONSE, ASSERTION_AND_RESPONSE.</td>
+</tr>
+<tr>
+<td><code>config.nameIdFormat</code><br/><em>string</em></td>
+<td>The format for the name field. Possible values are : UNSPECIFIED, EMAIL_ADDRESS, X509_SUBJECT, WINDOWS_DQN, KERBEROS_PRINCIPAL, ENTITY, PERSISTENT and TRANSIENT.</td>
+</tr>
+<tr>
+<td><code>config.responseAttributes</code><br/><em>Array[Object]</em></td>
+<td>The list of attributes part of the response</td>
+</tr>
+<tr>
+<td><code>config.responseAttributes.nameFormat</code><br/><em>string</em></td>
+<td>The format for the name field. Possible values are : UNSPECIFIED, URI and BASIC.</td>
+</tr>
+<tr>
+<td><code>config.responseAttributes.attributeName</code><br/><em>string</em></td>
+<td>The attribute name</td>
+</tr>
+<tr>
+<td><code>config.responseAttributes.attributeValueField</code><br/><em>Object</em></td>
+<td>The object containing the source for the value in the response.</td>
+</tr>
+<tr>
+<td><code>config.responseAttributes.attributeValueField.sourceModel</code><br/><em>string</em></td>
+<td>The model object to get the value from. Possible values are : ORGANIZATION, USER.</td>
+</tr>
+<tr>
+<td><code>config.responseAttributes.attributeValueField.fieldName</code><br/><em>string</em></td>
+<td>The field name to get the information from.</td>
+</tr>
+</tbody></table>
+
+<!-------------------- CREATE SERVICE PROVIDERS -------------------->
+<h4 id='administration-create-service-provider'>Create service provider</h4>
+<p><code>POST /service_providers</code></p>
+<pre class="highlight shell tab-shell"><code><span class="c"># Creates a new service provider</span>
+curl -X POST <span class="s2">"https://cloudmc_endpoint/rest/service_providers"</span> <span class="se">\</span>
+   -H <span class="s2">"MC-Api-Key: your_api_key"</span>
+</code></pre>
+<blockquote>
+<p>Request body example:</p>
+</blockquote>
+<pre class="highlight javascript"><code><span class="p">{</span>
+    <span class="s2">"name"</span><span class="p">:</span> <span class="s2">"Slack"</span><span class="p">,</span>
+    <span class="s2">"type"</span><span class="p">:</span> <span class="s2">"SAML"</span><span class="p">,</span>
+    <span class="s2">"config"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">"assertionConsumerUrl"</span><span class="p">:</span> <span class="s2">"https://yourdomain.slack.com/sso/saml"</span><span class="p">,</span>
+        <span class="s2">"serviceProviderIssuer"</span><span class="p">:</span> <span class="s2">"https://slack.com"</span><span class="p">,</span>
+        <span class="s2">"sign"</span><span class="p">:</span> <span class="s2">"RESPONSE"</span><span class="p">,</span>
+        <span class="s2">"responseAttributes"</span><span class="p">:</span> <span class="p">[</span>
+            <span class="p">{</span>
+                <span class="s2">"attributeName"</span><span class="p">:</span> <span class="s2">"first-name"</span><span class="p">,</span>
+                <span class="s2">"attributeValueField"</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="s2">"sourceModel"</span><span class="p">:</span> <span class="s2">"user"</span><span class="p">,</span>
+                    <span class="s2">"fieldName"</span><span class="p">:</span> <span class="s2">"firstName"</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">]</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+<blockquote>
+<p>The above command return JSON structured like this:</p>
+</blockquote>
+<pre class="highlight javascript"><code><span class="p">{</span>
+  <span class="s2">"data"</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s2">"name"</span><span class="p">:</span> <span class="s2">"Slack"</span><span class="p">,</span>
+    <span class="s2">"id"</span><span class="p">:</span> <span class="s2">"dbf3df1c-d28e-4cb5-bcb9-ce85d1675b27"</span><span class="p">,</span>
+    <span class="s2">"type"</span><span class="p">:</span> <span class="s2">"SAML"</span><span class="p">,</span>
+    <span class="s2">"config"</span><span class="p">:</span> <span class="p">{</span>
+      <span class="s2">"assertionConsumerUrl"</span><span class="p">:</span> <span class="s2">"https://yourdomain.slack.com/sso/saml"</span><span class="p">,</span>
+      <span class="s2">"nameIdFormat"</span><span class="p">:</span> <span class="s2">"UNSPECIFIED"</span><span class="p">,</span>
+      <span class="s2">"responseAttributes"</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+          <span class="s2">"nameFormat"</span><span class="p">:</span> <span class="s2">"UNSPECIFIED"</span><span class="p">,</span>
+          <span class="s2">"attributeName"</span><span class="p">:</span> <span class="s2">"first-name"</span><span class="p">,</span>
+          <span class="s2">"attributeValueField"</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">"fieldName"</span><span class="p">:</span> <span class="s2">"firstName"</span><span class="p">,</span>
+            <span class="s2">"sourceModel"</span><span class="p">:</span> <span class="s2">"user"</span>
+          <span class="p">}</span>
+        <span class="p">}</span>
+      <span class="p">],</span>
+      <span class="s2">"name"</span><span class="p">:</span> <span class="s2">"Slack"</span><span class="p">,</span>
+      <span class="s2">"sign"</span><span class="p">:</span> <span class="s2">"RESPONSE"</span><span class="p">,</span>
+      <span class="s2">"serviceProviderIssuer"</span><span class="p">:</span> <span class="s2">"https://slack.com"</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+<table><thead>
+<tr>
+<th>Required</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>name</code><br/><em>string</em></td>
+<td>The name of the service provider.</td>
+</tr>
+<tr>
+<td><code>type</code><br/><em>string</em></td>
+<td>The type of service provider. Possible values are : SAML.</td>
+</tr>
+<tr>
+<td><code>config</code><br/><em>Object</em></td>
+<td>The object containing the configuration of the service provider.</td>
+</tr>
+<tr>
+<td><code>config.serviceProviderIssuer</code><br/><em>string</em></td>
+<td>The issuer for the service provider. This is what is contained in the SAML request issuer tag. This is also referred to as the EntityID or EntityURL.</td>
+</tr>
+<tr>
+<td><code>config.assertionConsumerUrl</code><br/><em>string</em></td>
+<td>The URL where the response is sent.</td>
+</tr>
+<tr>
+<td><code>config.sign</code><br/><em>string</em></td>
+<td>How the returned XML is signed. Possible values are : ASSERTION, RESPONSE, ASSERTION_AND_RESPONSE. Only required if <code>config.responseAttributes</code> is passed.</td>
+</tr>
+<tr>
+<td><code>config.responseAttributes.attributeName</code><br/><em>string</em></td>
+<td>The attribute name. Only required if <code>config.responseAttributes</code> is passed.</td>
+</tr>
+<tr>
+<td><code>config.responseAttributes.attributeValueField</code><br/><em>Object</em></td>
+<td>The object containing the source for the value in the response. Only required if <code>config.responseAttributes</code> is passed.</td>
+</tr>
+<tr>
+<td><code>config.responseAttributes.attributeValueField.sourceModel</code><br/><em>string</em></td>
+<td>The model object to get the value from. Possible values are : ORGANIZATION, USER. Only required if <code>config.responseAttributes</code> is passed.</td>
+</tr>
+<tr>
+<td><code>config.responseAttributes.attributeValueField.fieldName</code><br/><em>string</em></td>
+<td>The field name to get the information from. Only required if <code>config.responseAttributes</code> is passed.</td>
+</tr>
+</tbody></table>
+
+<table><thead>
+<tr>
+<th>Optional</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>config.nameIdFormat</code><br/><em>string</em></td>
+<td>The format for the name field. Possible values are : UNSPECIFIED, EMAIL_ADDRESS, X509_SUBJECT, WINDOWS_DQN, KERBEROS_PRINCIPAL, ENTITY, PERSISTENT and TRANSIENT. If not provided this defaults to UNSPECIFIED.</td>
+</tr>
+<tr>
+<td><code>config.responseAttributes.nameFormat</code><br/><em>string</em></td>
+<td>The format for the name field. Possible values are : UNSPECIFIED, URI and BASIC. If not provided this defaults to UNSPECIFIED.</td>
+</tr>
+<tr>
+<td><code>config.responseAttributes</code><br/><em>Array[Object]</em></td>
+<td>The list of attributes part of the response.</td>
+</tr>
+</tbody></table>
+
+<!-------------------- UPDATE SERVICE PROVIDERS -------------------->
+<h4 id='administration-update-service-provider'>Update service provider</h4>
+<p><code>PUT /service_providers/:id</code></p>
+<pre class="highlight shell tab-shell"><code><span class="c"># Updates an existing service provider</span>
+curl -X POST <span class="s2">"https://cloudmc_endpoint/rest/service_providers/:id"</span> <span class="se">\</span>
+   -H <span class="s2">"MC-Api-Key: your_api_key"</span>
+</code></pre>
+<blockquote>
+<p>Request body example:</p>
+</blockquote>
+<pre class="highlight javascript"><code><span class="p">{</span>
+    <span class="s2">"name"</span><span class="p">:</span> <span class="s2">"Slack"</span><span class="p">,</span>
+  <span class="s2">"id"</span><span class="p">:</span> <span class="s2">"dbf3df1c-d28e-4cb5-bcb9-ce85d1675b27"</span><span class="p">,</span>
+    <span class="s2">"type"</span><span class="p">:</span> <span class="s2">"SAML"</span><span class="p">,</span>
+    <span class="s2">"config"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">"assertionConsumerUrl"</span><span class="p">:</span> <span class="s2">"https://yourdomain.slack.com/sso/saml"</span><span class="p">,</span>
+        <span class="s2">"serviceProviderIssuer"</span><span class="p">:</span> <span class="s2">"https://slack.com"</span><span class="p">,</span>
+        <span class="s2">"sign"</span><span class="p">:</span> <span class="s2">"RESPONSE"</span><span class="p">,</span>
+        <span class="s2">"responseAttributes"</span><span class="p">:</span> <span class="p">[</span>
+            <span class="p">{</span>
+                <span class="s2">"attributeName"</span><span class="p">:</span> <span class="s2">"first-name"</span><span class="p">,</span>
+                <span class="s2">"attributeValueField"</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="s2">"sourceModel"</span><span class="p">:</span> <span class="s2">"user"</span><span class="p">,</span>
+                    <span class="s2">"fieldName"</span><span class="p">:</span> <span class="s2">"firstName"</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">]</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+<blockquote>
+<p>The above command return JSON structured like this:</p>
+</blockquote>
+<pre class="highlight javascript"><code><span class="p">{</span>
+  <span class="s2">"data"</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s2">"name"</span><span class="p">:</span> <span class="s2">"Slack"</span><span class="p">,</span>
+    <span class="s2">"id"</span><span class="p">:</span> <span class="s2">"dbf3df1c-d28e-4cb5-bcb9-ce85d1675b27"</span><span class="p">,</span>
+    <span class="s2">"type"</span><span class="p">:</span> <span class="s2">"SAML"</span><span class="p">,</span>
+    <span class="s2">"config"</span><span class="p">:</span> <span class="p">{</span>
+      <span class="s2">"assertionConsumerUrl"</span><span class="p">:</span> <span class="s2">"https://yourdomain.slack.com/sso/saml"</span><span class="p">,</span>
+      <span class="s2">"nameIdFormat"</span><span class="p">:</span> <span class="s2">"UNSPECIFIED"</span><span class="p">,</span>
+      <span class="s2">"responseAttributes"</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+          <span class="s2">"nameFormat"</span><span class="p">:</span> <span class="s2">"UNSPECIFIED"</span><span class="p">,</span>
+          <span class="s2">"attributeName"</span><span class="p">:</span> <span class="s2">"first-name"</span><span class="p">,</span>
+          <span class="s2">"attributeValueField"</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">"fieldName"</span><span class="p">:</span> <span class="s2">"firstName"</span><span class="p">,</span>
+            <span class="s2">"sourceModel"</span><span class="p">:</span> <span class="s2">"user"</span>
+          <span class="p">}</span>
+        <span class="p">}</span>
+      <span class="p">],</span>
+      <span class="s2">"name"</span><span class="p">:</span> <span class="s2">"Slack"</span><span class="p">,</span>
+      <span class="s2">"sign"</span><span class="p">:</span> <span class="s2">"RESPONSE"</span><span class="p">,</span>
+      <span class="s2">"serviceProviderIssuer"</span><span class="p">:</span> <span class="s2">"https://slack.com"</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+<table><thead>
+<tr>
+<th>Required</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>name</code><br/><em>string</em></td>
+<td>The name of the service provider.</td>
+</tr>
+<tr>
+<td><code>type</code><br/><em>string</em></td>
+<td>The type of service provider. Possible values are : SAML.</td>
+</tr>
+<tr>
+<td><code>config</code><br/><em>Object</em></td>
+<td>The object containing the configuration of the service provider.</td>
+</tr>
+<tr>
+<td><code>config.serviceProviderIssuer</code><br/><em>string</em></td>
+<td>The issuer for the service provider. This is what is contained in the SAML request issuer tag. This is also referred to as the EntityID or EntityURL.</td>
+</tr>
+<tr>
+<td><code>config.assertionConsumerUrl</code><br/><em>string</em></td>
+<td>The URL where the response is sent.</td>
+</tr>
+<tr>
+<td><code>config.sign</code><br/><em>string</em></td>
+<td>How the returned XML is signed. Possible values are : ASSERTION, RESPONSE, ASSERTION_AND_RESPONSE. Only required if <code>config.responseAttributes</code> is passed.</td>
+</tr>
+<tr>
+<td><code>config.responseAttributes.attributeName</code><br/><em>string</em></td>
+<td>The attribute name. Only required if <code>config.responseAttributes</code> is passed.</td>
+</tr>
+<tr>
+<td><code>config.responseAttributes.attributeValueField</code><br/><em>Object</em></td>
+<td>The object containing the source for the value in the response. Only required if <code>config.responseAttributes</code> is passed.</td>
+</tr>
+<tr>
+<td><code>config.responseAttributes.attributeValueField.sourceModel</code><br/><em>string</em></td>
+<td>The model object to get the value from. Possible values are : ORGANIZATION, USER. Only required if <code>config.responseAttributes</code> is passed.</td>
+</tr>
+<tr>
+<td><code>config.responseAttributes.attributeValueField.fieldName</code><br/><em>string</em></td>
+<td>The field name to get the information from. Only required if <code>config.responseAttributes</code> is passed.</td>
+</tr>
+</tbody></table>
+
+<table><thead>
+<tr>
+<th>Optional</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>config.nameIdFormat</code><br/><em>string</em></td>
+<td>The format for the name field. Possible values are : UNSPECIFIED, EMAIL_ADDRESS, X509_SUBJECT, WINDOWS_DQN, KERBEROS_PRINCIPAL, ENTITY, PERSISTENT and TRANSIENT. If not provided this defaults to UNSPECIFIED.</td>
+</tr>
+<tr>
+<td><code>config.responseAttributes.nameFormat</code><br/><em>string</em></td>
+<td>The format for the name field. Possible values are : UNSPECIFIED, URI and BASIC. If not provided this defaults to UNSPECIFIED.</td>
+</tr>
+<tr>
+<td><code>config.responseAttributes</code><br/><em>Array[Object]</em></td>
+<td>The list of attributes part of the response.</td>
 </tr>
 </tbody></table>
 <h1 id='cloudstack-plugin'>CloudStack plugin</h1>
