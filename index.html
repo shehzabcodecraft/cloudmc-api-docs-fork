@@ -400,6 +400,20 @@
                                   </li>
                               </ul>
                           </li>
+                          <li>
+                            <a href="#administration-applied-pricings" class="toc-h3 toc-link" data-title="Administration">Applied Pricings</a>
+                              <ul class="toc-list-h4">
+                                  <li>
+                                    <a href="#administration-list-applied-pricings" class="toc-h4 toc-link" data-title="Administration">List applied pricings</a>
+                                  </li>
+                                  <li>
+                                    <a href="#administration-retrieve-an-applied-pricing" class="toc-h4 toc-link" data-title="Administration">Retrieve an applied pricing</a>
+                                  </li>
+                                  <li>
+                                    <a href="#administration-create-applied-pricing" class="toc-h4 toc-link" data-title="Administration">Create applied pricing</a>
+                                  </li>
+                              </ul>
+                          </li>
                       </ul>
                   </li>
                   <li>
@@ -1207,6 +1221,9 @@
                                   <li>
                                     <a href="#gcp-stop-an-instance" class="toc-h4 toc-link" data-title="Google Cloud Platform plugin">Stop an instance</a>
                                   </li>
+                                  <li>
+                                    <a href="#gcp-edit-a-startup-script" class="toc-h4 toc-link" data-title="Google Cloud Platform plugin">Edit a startup script</a>
+                                  </li>
                               </ul>
                           </li>
                           <li>
@@ -1853,6 +1870,12 @@
                               <ul class="toc-list-h4">
                                   <li>
                                     <a href="#azure-list-aks-clusters" class="toc-h4 toc-link" data-title="Azure plugin">List AKS clusters</a>
+                                  </li>
+                                  <li>
+                                    <a href="#azure-retrieve-an-aks-clusters" class="toc-h4 toc-link" data-title="Azure plugin">Retrieve an AKS clusters</a>
+                                  </li>
+                                  <li>
+                                    <a href="#azure-create-a-cluster" class="toc-h4 toc-link" data-title="Azure plugin">Create a cluster</a>
                                   </li>
                               </ul>
                           </li>
@@ -4415,7 +4438,7 @@ curl <span class="s2">"https://cloudmc_endpoint/rest/product_catalogs"</span> <s
 <p><code>GET /product_catalogs/:id</code></p>
 
 <p>Retrieve a product catalog&#39;s details.</p>
-<pre class="highlight shell tab-shell"><code><span class="c"># Retrieve an organization</span>
+<pre class="highlight shell tab-shell"><code><span class="c"># Retrieve a product catalog's details</span>
 curl <span class="s2">"https://cloudmc_endpoint/rest/product_catalogs/03bc22bd-adc4-46b8-988d-afddc24c0cb5"</span> <span class="se">\</span>
    -H <span class="s2">"MC-Api-Key: your_api_key"</span>
 </code></pre>
@@ -4748,7 +4771,7 @@ curl <span class="s2">"https://cloudmc_endpoint/rest/pricings"</span> <span clas
 <p><code>GET /pricings/:id</code></p>
 
 <p>Retrieve a pricing&#39;s details.</p>
-<pre class="highlight shell tab-shell"><code><span class="c"># Retrieve an organization</span>
+<pre class="highlight shell tab-shell"><code><span class="c"># Retrieve a pricing's details</span>
 curl <span class="s2">"https://cloudmc_endpoint/rest/pricings/03bc22bd-adc4-46b8-988d-afddc24c0cb5"</span> <span class="se">\</span>
    -H <span class="s2">"MC-Api-Key: your_api_key"</span>
 </code></pre>
@@ -5080,6 +5103,384 @@ curl -X POST <span class="s2">"https://cloudmc_endpoint/rest/pricings"</span> <s
 <tr>
 <td><code>description</code> <br/><em>Object</em></td>
 <td>A map of language language keys to the description in the specified language.</td>
+</tr>
+</tbody></table>
+<h3 id='administration-applied-pricings'>Applied Pricings</h3>
+<p>The applied pricing allows the assignment of pricing to organization with a determined scope.</p>
+
+<!-------------------- LIST APPLIED PRICINGS -------------------->
+<h4 id='administration-list-applied-pricings'>List applied pricings</h4>
+<p><code>GET /applied_pricings</code></p>
+
+<p>Retrieves a list of applied pricings configured in the system.</p>
+<pre class="highlight shell tab-shell"><code><span class="c"># Retrieve applied pricing list</span>
+curl <span class="s2">"https://cloudmc_endpoint/rest/applied_pricings"</span> <span class="se">\</span>
+   -H <span class="s2">"MC-Api-Key: your_api_key"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns a JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"pricingDefinition"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"supportedCurrencies"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="s2">"CAD"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"USD"</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="s2">"organization"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"23910576-d29f-4c14-b663-31d728ff49a5"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"en"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Simple pricing"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"fr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Facturaction simple"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"changes"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+        </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"f786b9c5-177b-4cbc-9011-331282485d05"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"effectiveDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-06-04T17:55:17Z"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"endDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-06-05T23:59:59.999Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"organization"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"System"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"23910576-d29f-4c14-b663-31d728ff49a5"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"billingDay"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USD"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"47c4993a-a131-4365-a427-02de95bad85b"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"creationDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-06-04T18:30:21.000Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"scopeQualifier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GLOBAL"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"startDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-06-05T00:00:00Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ACTIVE"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<table><thead>
+<tr>
+<th>Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code><br/><em>UUID</em></td>
+<td>The UUID of the applied pricing.</td>
+</tr>
+<tr>
+<td><code>pricingDefinition</code><br/><em>Object</em></td>
+<td>The pricing definition associated with the applied pricing.</td>
+</tr>
+<tr>
+<td><code>pricingDefinition.id</code><br/><em>UUID</em></td>
+<td>The UUID of the pricing.</td>
+</tr>
+<tr>
+<td><code>pricingDefinition.supportedCurrencies</code><br/><em>Array[string]</em></td>
+<td>The list of currencies associated to the pricing.</td>
+</tr>
+<tr>
+<td><code>pricingDefinition.organization.id</code><br/><em>UUID</em></td>
+<td>The UUID of the organization owning of the pricing definition.</td>
+</tr>
+<tr>
+<td><code>pricingDefinition.name</code><br/><em>Object</em></td>
+<td>Mapped object containing the pricing name in different languages.</td>
+</tr>
+<tr>
+<td><code>pricingDefinition.description</code><br/><em>Object</em></td>
+<td>Mapped object containing the pricing description in different languages.</td>
+</tr>
+<tr>
+<td><code>pricingDefinition.effectiveDate</code><br/><em>date</em></td>
+<td>The date to which the pricing will be applicable from.</td>
+</tr>
+<tr>
+<td><code>organization</code><br/><em>Object</em></td>
+<td>The object representing the organization owning the applied pricing.</td>
+</tr>
+<tr>
+<td><code>organization.id</code><br/><em>UUID</em></td>
+<td>The UUID of the organization.</td>
+</tr>
+<tr>
+<td><code>organization.name</code><br/><em>string</em></td>
+<td>The name of the organization.</td>
+</tr>
+<tr>
+<td><code>startDate</code><br/><em>date</em></td>
+<td>The start date of the applied pricing.</td>
+</tr>
+<tr>
+<td><code>endDate</code><br/><em>date</em></td>
+<td>The end date of the applied pricing. If it is not present, there is no end date defined.</td>
+</tr>
+<tr>
+<td><code>currency</code><br/><em>string</em></td>
+<td>The currency associated to the applied pricing.</td>
+</tr>
+<tr>
+<td><code>billingDay</code><br/><em>int</em></td>
+<td>The billing day that the applied pricing will be applied.</td>
+</tr>
+<tr>
+<td><code>scopeQualifier</code><br/><em>string</em></td>
+<td>Scope qualifier of the applied pricing. Possible values are : GLOBAL, ORG_TOPLEVEL, ORG_SUBS, ORG_BASE, ORG_TREE.</td>
+</tr>
+<tr>
+<td><code>scopeOrganization</code><br/><em>Object</em></td>
+<td>The organization to which the scope is applied to.</td>
+</tr>
+<tr>
+<td><code>scopeOrganization.id</code><br/><em>UUID</em></td>
+<td>The UUID of the organization.</td>
+</tr>
+<tr>
+<td><code>scopeOrganization.name</code><br/><em>string</em></td>
+<td>The name of the organization.</td>
+</tr>
+<tr>
+<td><code>creationDate</code><br/><em>Object</em></td>
+<td>The date the applied pricing was created.</td>
+</tr>
+<tr>
+<td><code>status</code><br/><em>string</em></td>
+<td>The status of the applied pricing. Possible values are : ACTIVE, EXPIRED, FUTURE.</td>
+</tr>
+</tbody></table>
+
+<!-------------------- GET APPLIED PRICING -------------------->
+<h4 id='administration-retrieve-an-applied-pricing'>Retrieve an applied pricing</h4>
+<p><code>GET /applied_pricings/:id</code></p>
+
+<p>Retrieve an applied pricing&#39;s details.</p>
+<pre class="highlight shell tab-shell"><code><span class="c"># Retrieve an applied pricing</span>
+curl <span class="s2">"https://cloudmc_endpoint/rest/applied_pricings/03bc22bd-adc4-46b8-988d-afddc24c0cb5"</span> <span class="se">\</span>
+   -H <span class="s2">"MC-Api-Key: your_api_key"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns a JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"pricingDefinition"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"supportedCurrencies"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="s2">"CAD"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"USD"</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="s2">"organization"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"23910576-d29f-4c14-b663-31d728ff49a5"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"en"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Simple pricing"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"fr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Facturaction simple"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"changes"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+      </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"f786b9c5-177b-4cbc-9011-331282485d05"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"effectiveDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-06-04T17:55:17Z"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"endDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-06-05T23:59:59.999Z"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"organization"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"System"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"23910576-d29f-4c14-b663-31d728ff49a5"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"billingDay"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USD"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"47c4993a-a131-4365-a427-02de95bad85b"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"creationDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-06-04T18:30:21.000Z"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"scopeQualifier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GLOBAL"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"startDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-06-05T00:00:00Z"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ACTIVE"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<table><thead>
+<tr>
+<th>Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code><br/><em>UUID</em></td>
+<td>The UUID of the applied pricing.</td>
+</tr>
+<tr>
+<td><code>pricingDefinition</code><br/><em>Object</em></td>
+<td>The pricing definition associated with the applied pricing.</td>
+</tr>
+<tr>
+<td><code>pricingDefinition.id</code><br/><em>UUID</em></td>
+<td>The UUID of the pricing.</td>
+</tr>
+<tr>
+<td><code>pricingDefinition.supportedCurrencies</code><br/><em>Array[string]</em></td>
+<td>The list of currencies associated to the pricing.</td>
+</tr>
+<tr>
+<td><code>pricingDefinition.organization.id</code><br/><em>UUID</em></td>
+<td>The UUID of the organization owning of the pricing definition.</td>
+</tr>
+<tr>
+<td><code>pricingDefinition.name</code><br/><em>Object</em></td>
+<td>Mapped object containing the pricing name in different languages.</td>
+</tr>
+<tr>
+<td><code>pricingDefinition.description</code><br/><em>Object</em></td>
+<td>Mapped object containing the pricing description in different languages.</td>
+</tr>
+<tr>
+<td><code>pricingDefinition.effectiveDate</code><br/><em>date</em></td>
+<td>The date to which the pricing will be applicable from.</td>
+</tr>
+<tr>
+<td><code>organization</code><br/><em>Object</em></td>
+<td>The object representing the organization owning the applied pricing.</td>
+</tr>
+<tr>
+<td><code>organization.id</code><br/><em>UUID</em></td>
+<td>The UUID of the organization.</td>
+</tr>
+<tr>
+<td><code>organization.name</code><br/><em>string</em></td>
+<td>The name of the organization.</td>
+</tr>
+<tr>
+<td><code>startDate</code><br/><em>date</em></td>
+<td>The start date of the applied pricing.</td>
+</tr>
+<tr>
+<td><code>endDate</code><br/><em>date</em></td>
+<td>The end date of the applied pricing. If it is not present, there is no end date defined.</td>
+</tr>
+<tr>
+<td><code>currency</code><br/><em>string</em></td>
+<td>The currency associated to the applied pricing.</td>
+</tr>
+<tr>
+<td><code>billingDay</code><br/><em>int</em></td>
+<td>The billing day that the applied pricing will be applied.</td>
+</tr>
+<tr>
+<td><code>scopeQualifier</code><br/><em>string</em></td>
+<td>Scope qualifier of the applied pricing. Possible values are : GLOBAL, ORG_TOPLEVEL, ORG_SUBS, ORG_BASE, ORG_TREE.</td>
+</tr>
+<tr>
+<td><code>scopeOrganization</code><br/><em>Object</em></td>
+<td>The organization to which the scope is applied to.</td>
+</tr>
+<tr>
+<td><code>scopeOrganization.id</code><br/><em>UUID</em></td>
+<td>The UUID of the organization.</td>
+</tr>
+<tr>
+<td><code>scopeOrganization.name</code><br/><em>string</em></td>
+<td>The name of the organization.</td>
+</tr>
+<tr>
+<td><code>creationDate</code><br/><em>Object</em></td>
+<td>The date the applied pricing was created.</td>
+</tr>
+<tr>
+<td><code>status</code><br/><em>string</em></td>
+<td>The status of the applied pricing. Possible values are : ACTIVE, EXPIRED, FUTURE.</td>
+</tr>
+</tbody></table>
+
+<!-------------------- CREATE APPLIED PRICING -------------------->
+<h4 id='administration-create-applied-pricing'>Create applied pricing</h4>
+<p><code>POST /applied_pricings</code></p>
+
+<p>Create a new applied pricing.</p>
+<pre class="highlight shell tab-shell"><code><span class="c"># Creates a new pricing</span>
+curl -X POST <span class="s2">"https://cloudmc_endpoint/rest/applied_pricings"</span> <span class="se">\</span>
+   -H <span class="s2">"MC-Api-Key: your_api_key"</span>
+</code></pre>
+<blockquote>
+<p>Request body example:</p>
+</blockquote>
+<pre class="highlight javascript"><code><span class="p">{</span>
+  <span class="s2">"pricingDefinition"</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s2">"id"</span><span class="p">:</span> <span class="s2">"f786b9c5-177b-4cbc-9011-331282485d05"</span>
+  <span class="p">},</span>
+  <span class="s2">"organization"</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s2">"id"</span><span class="p">:</span> <span class="s2">"23910576-d29f-4c14-b663-31d728ff49a5"</span>
+  <span class="p">},</span>
+  <span class="s2">"billingDay"</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
+  <span class="s2">"currency"</span><span class="p">:</span> <span class="s2">"USD"</span><span class="p">,</span>
+  <span class="s2">"scopeQualifier"</span><span class="p">:</span> <span class="s2">"GLOBAL"</span><span class="p">,</span>
+  <span class="s2">"startDate"</span><span class="p">:</span> <span class="s2">"2020-06-05T00:00:00Z"</span><span class="p">,</span>
+  <span class="s2">"endDate"</span><span class="p">:</span> <span class="s2">"2021-06-05T23:59:59.999Z"</span>
+<span class="p">}</span>
+</code></pre>
+<blockquote>
+<p>The above command return JSON structured like this:</p>
+</blockquote>
+<pre class="highlight javascript"><code><span class="p">{</span>
+  <span class="s2">"data"</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s2">"pricingDefinition"</span><span class="p">:</span> <span class="p">{</span>
+      <span class="s2">"name"</span><span class="p">:</span> <span class="p">{},</span>
+      <span class="s2">"changes"</span><span class="p">:</span> <span class="p">[],</span>
+      <span class="s2">"description"</span><span class="p">:</span> <span class="p">{},</span>
+      <span class="s2">"id"</span><span class="p">:</span> <span class="s2">"f786b9c5-177b-4cbc-9011-331282485d05"</span>
+    <span class="p">},</span>
+    <span class="s2">"endDate"</span><span class="p">:</span> <span class="s2">"2021-06-05T23:59:59.999Z"</span><span class="p">,</span>
+    <span class="s2">"organization"</span><span class="p">:</span> <span class="p">{</span>
+      <span class="s2">"id"</span><span class="p">:</span> <span class="s2">"23910576-d29f-4c14-b663-31d728ff49a5"</span>
+    <span class="p">},</span>
+    <span class="s2">"billingDay"</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
+    <span class="s2">"currency"</span><span class="p">:</span> <span class="s2">"USD"</span><span class="p">,</span>
+    <span class="s2">"id"</span><span class="p">:</span> <span class="s2">"8bb5e457-41c3-410b-aced-b9c694ff141a"</span><span class="p">,</span>
+    <span class="s2">"creationDate"</span><span class="p">:</span> <span class="s2">"2020-06-04T19:31:31.178Z"</span><span class="p">,</span>
+    <span class="s2">"scopeQualifier"</span><span class="p">:</span> <span class="s2">"GLOBAL"</span><span class="p">,</span>
+    <span class="s2">"startDate"</span><span class="p">:</span> <span class="s2">"2020-06-05T00:00:00Z"</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+<table><thead>
+<tr>
+<th>Required</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>organization.id</code> <br/><em>UUID</em></td>
+<td>The UUID of the organization the applied pricing belongs to.</td>
+</tr>
+<tr>
+<td><code>pricingDefinition.id</code> <br/><em>UUID</em></td>
+<td>the UUID of the pricing that will be used in the applied pricing.</td>
+</tr>
+<tr>
+<td><code>scopeQualifier</code> <br/><em>string</em></td>
+<td>The scope qualifier for the applied pricing. Possible values are : ORG_BASE, ORG_TREE, ORG_SUB, ORG_TOPLEVEL, GLOBAL.</td>
+</tr>
+<tr>
+<td><code>currency</code> <br/><em>String</em></td>
+<td>The currency used for the applied pricing. The value is a ISO 4217 currency code that is part of the pricing selected.</td>
+</tr>
+<tr>
+<td><code>startDate</code> <br/><em>Date</em></td>
+<td>The start date for the applied pricing.</td>
+</tr>
+<tr>
+<td><code>billingDay</code> <br/><em>int</em></td>
+<td>The billing day that the applied pricing will be applied.</td>
+</tr>
+</tbody></table>
+
+<table><thead>
+<tr>
+<th>Optional</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>endDate</code> <br/><em>Date</em></td>
+<td>The end date for the applied pricing.</td>
+</tr>
+<tr>
+<td><code>scopeOrganization.id</code> <br/><em>UUID</em></td>
+<td>The UUID of the organization that the scope is targeting. Only required for scopes : ORG_BASE, ORG_TREE, ORG_SUBS.</td>
 </tr>
 </tbody></table>
 <h2 id='administration-authentication'>Authentication</h2>
@@ -14996,6 +15397,35 @@ An instance can only belong to one load balanced instance group. But you can add
 <p><code>POST /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/instances/:id?operation=stop</code></p>
 
 <p>Stop an existing instance. The instance must be in either the <em>RUNNING</em> or <em>STOPPING</em> status for this operation to work. The default behavior is that the instance (denote by <strong>id</strong>) will be stopped gracefully.</p>
+
+<!-------------------- EDIT STARTUP SCRIPT -------------------->
+<h4 id='gcp-edit-a-startup-script'>Edit a startup script</h4><pre class="highlight shell tab-shell"><code>curl -X POST <span class="se">\</span>
+   -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+   -H <span class="s2">"MC-Api-Key: your_api_key"</span> <span class="se">\</span>
+   <span class="s2">"https://cloudmc_endpoint/v1/services/gcp/test-area/instances/6564997542943928188?operation=edit_startup_script"</span>
+</code></pre>
+<blockquote>
+<p>Request body example:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"startupScript"</span><span class="p">:</span><span class="w"> </span><span class="s2">"#! /bin/bash</span><span class="se">\n</span><span class="s2">cat &lt;&lt;EOF &gt; /var/www/html/index.html</span><span class="se">\n</span><span class="s2">&lt;html&gt;&lt;body&gt;&lt;h1&gt;Hello World&lt;/h1&gt;</span><span class="se">\n</span><span class="s2">&lt;p&gt;This page was created from a simple startup script!&lt;/p&gt;</span><span class="se">\n</span><span class="s2">&lt;/body&gt;&lt;/html&gt;</span><span class="se">\n</span><span class="s2">EOF"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><code>POST /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/instances/:id?operation=edit_startup_script</code></p>
+
+<p>Edit the startup script for an existing instance.</p>
+
+<table><thead>
+<tr>
+<th>Required</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>startupScript</code><br/><em>string</em></td>
+<td>A startup script metadata item to run every time the instance boots up.</td>
+</tr>
+</tbody></table>
 <h3 id='gcp-instance-groups'>Instance groups</h3>
 <p>An instance group is a collection of <a href="#gcp-instances">VM instances</a> that you can manage as a single entity. Instance groups are used to apply <a href="#gcp-load-balancer">load balancing</a> to groups of heterogeneous instances. In a load balancer setup, an instance group can be used as part of a <a href="#gcp-backend-service">backend service</a>.</p>
 
@@ -27287,6 +27717,165 @@ For Windows instances, reset the administrator account and reset the Remote Desk
 <tr>
 <td><code>metadata</code><br/><em>object</em></td>
 <td>Consists of the meta information related to the returned cluster list. The attribute <code>recordCount</code> contains the number of clusters returned.</td>
+</tr>
+</tbody></table>
+
+<!-------------------- Retrieve  AKS Cluster -------------------->
+<h4 id='azure-retrieve-an-aks-clusters'>Retrieve an AKS clusters</h4><pre class="highlight shell tab-shell"><code>curl -X GET <span class="se">\</span>
+   -H <span class="s2">"MC-Api-Key: your_api_key"</span> <span class="se">\</span>
+   <span class="s2">"https://cloudmc_endpoint/v1/services/azure-conn/test_env/clusters/subscriptions/9e548d49-7d56-452c-8fc8-e81a25d05ddf/resourcegroups/azure-connect-system-ssamadh-mean-env/providers/Microsoft.ContainerService/managedClusters/ssamadh-aks-mean"</span>
+</code></pre>
+<p>Note: The above example uses the complete cluster id set by Azure. However, the cluster may also be retrieved by the cluster name as shown below:</p>
+<pre class="highlight shell tab-shell"><code>curl -X GET <span class="se">\</span>
+   -H <span class="s2">"MC-Api-Key: your_api_key"</span> <span class="se">\</span>
+   <span class="s2">"https://cloudmc_endpoint/v1/services/azure-conn/test_env/clusters/ssamadh-aks-mean"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns a JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/subscriptions/9e548d49-7d56-452c-8fc8-e81a25d05ddf/resourcegroups/azure-connect-system-ssamadh-mean-env/providers/Microsoft.ContainerService/managedClusters/ssamadh-aks-mean"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ssamadh-basic"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"premium_lrs"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"region"</span><span class="p">:</span><span class="w"> </span><span class="s2">"southeastasia"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"nodePools"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"totalNodes"</span><span class="p">:</span><span class="w"> </span><span class="s2">"7"</span><span class="p">,</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><code>GET /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/clusters/:cluster_name</code></p>
+
+<p>Retrieve a specific AKS cluster in a given <a href="#administration-environments">environment</a>.</p>
+
+<table><thead>
+<tr>
+<th>Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code> <br/><em>string</em></td>
+<td>The resource id</td>
+</tr>
+<tr>
+<td><code>name</code> <br/><em>string</em></td>
+<td>The name of the resource, unique within the environment</td>
+</tr>
+<tr>
+<td><code>provisioningState</code> <br/><em>string</em></td>
+<td>The state of the cluster could be any of [Succeeded, Creating, Deleting, Updating, Cancelled, Failed]</td>
+</tr>
+<tr>
+<td><code>dnsPrefix</code><br/><em>string</em></td>
+<td>The DNS prefix specified when creating the managed cluster</td>
+</tr>
+<tr>
+<td><code>nodePools</code><br/><em>int</em></td>
+<td>The number of node container service agent pool</td>
+</tr>
+<tr>
+<td><code>totalNodes</code><br/><em>int</em></td>
+<td>The total number of nodes across all nodePools</td>
+</tr>
+<tr>
+<td><code>rbacEnabled</code><br/><em>boolean</em></td>
+<td>Indicates of RBAC is enabled for this kubernetes cluster</td>
+</tr>
+<tr>
+<td><code>endpoint</code><br/><em>string</em></td>
+<td>The fully qualified domain name (fqdn) for the master pool</td>
+</tr>
+<tr>
+<td><code>region</code><br/><em>string</em></td>
+<td>The resource location</td>
+</tr>
+<tr>
+<td><code>version</code> <br/><em>string</em></td>
+<td>The version of kubernetes running in the cluster</td>
+</tr>
+</tbody></table>
+
+<!-------------------- CREATE AKS CLUSTER -------------------->
+<h4 id='azure-create-a-cluster'>Create a cluster</h4><pre class="highlight shell tab-shell"><code>curl -X POST <span class="se">\</span>
+   -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+   -H <span class="s2">"MC-Api-Key: your_api_key"</span> <span class="se">\</span>
+   -d <span class="s2">"request_body"</span> <span class="se">\</span>
+   <span class="s2">"http://cloudmc_endpoint/v1/services/azure/example/clusters"</span>
+</code></pre>
+<blockquote>
+<p>Request body examples:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.18.2"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"dnsPrefix"</span><span class="p">:</span><span class="w"> </span><span class="s2">"kub-root-nik-dns"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"rootUsername"</span><span class="p">:</span><span class="w"> </span><span class="s2">"root_nzk"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"primaryPoolNodeType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Standard_B2ms"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"primaryPoolNodeCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"vmScaleSetsEnabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"rbacEnabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"region"</span><span class="p">:</span><span class="w"> </span><span class="s2">"canadacentral"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"kub_root_nzk"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"sshkey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCguvgDRuUF/wijOJCNmYlQHujCmUHl/i0Ubos4nHy5uCBdn1LGF+PG3TpJqO1LUWqpHaPl4yN7bpsdXyq6a9nxe0C1bQ4FK6P5qm0X320uvqv34jwTPsIbnhw9I317df+xJyXXsL/P5vS4ULPMC5UZjWm4BYe7did4zmXXhA/zmLY6cUg19sZp5r5SUQcf5xHAqO3cQVZwzBhBMwroflZZ59zNpxy+xXPBqC3IdusF2yTDW7bwCQHESUOsd9XhwrzCB+1wETKjLpk0wkWj8G2j1pkKGRpv60QcG85lbZvQAg54v3HYD7fVJCaz9gJJoiyRBnqQ6XVxam5bZgiMKa0J johndoe@machine.local"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><code>POST /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/clusters</code></p>
+
+<p>Create a new cluster.</p>
+
+<table><thead>
+<tr>
+<th>Required</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>dnsPrefix</code><br/><em>string</em></td>
+<td>The DNS prefix to be used to create the FQDN for the master pool.</td>
+</tr>
+<tr>
+<td><code>name</code><br/><em>string</em></td>
+<td>. The name of the cluster.</td>
+</tr>
+<tr>
+<td><code>primaryPoolNodeCount</code><br/><em>string</em></td>
+<td>The number of agents (VMs) to host docker containers. Allowed values must be in the range of 1 to 100 (inclusive).</td>
+</tr>
+<tr>
+<td><code>primaryPoolNodeType</code><br/><em>string</em></td>
+<td>The size type of each virtual machine in the agent pool.</td>
+</tr>
+<tr>
+<td><code>rbacEnabled</code><br/><em>boolean</em></td>
+<td>A boolean to indicate whether RBAC should be enabled on this cluster or not.</td>
+</tr>
+<tr>
+<td><code>region</code><br/><em>string</em></td>
+<td>The name of the region for the cluster.</td>
+</tr>
+<tr>
+<td><code>sshkey</code><br/><em>string</em></td>
+<td>The ssh key public portion that will be used to access cluster.</td>
+</tr>
+<tr>
+<td><code>version</code> <br/><em>string</em></td>
+<td>The version for the Kubernetes cluster.</td>
+</tr>
+<tr>
+<td><code>vmScaleSetsEnabled</code><br/><em>boolean</em></td>
+<td>The boolean to indicate whether to use virtual machine scale sets or availability set for agent pool.</td>
+</tr>
+</tbody></table>
+
+<table><thead>
+<tr>
+<th>Optional</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>rootUsername</code><br/><em>string</em></td>
+<td>The user name to create a root user on cluster.</td>
 </tr>
 </tbody></table>
 <h1 id='masterportal-plugin'>MasterPortal plugin</h1>
