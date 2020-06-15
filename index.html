@@ -1426,7 +1426,13 @@
                                     <a href="#gcp-filters" class="toc-h4 toc-link" data-title="Google Cloud Platform plugin">Filters</a>
                                   </li>
                                   <li>
+                                    <a href="#gcp-retrieve-a-subnet" class="toc-h4 toc-link" data-title="Google Cloud Platform plugin">Retrieve a subnet</a>
+                                  </li>
+                                  <li>
                                     <a href="#gcp-create-a-subnet" class="toc-h4 toc-link" data-title="Google Cloud Platform plugin">Create a subnet</a>
+                                  </li>
+                                  <li>
+                                    <a href="#gcp-delete-a-subnet" class="toc-h4 toc-link" data-title="Google Cloud Platform plugin">Delete a subnet</a>
                                   </li>
                               </ul>
                           </li>
@@ -18322,7 +18328,7 @@ You cannot release an external IP which is currently attached to an instance.
 <h3 id='gcp-subnets'>Subnets</h3>
 <p>Create and manage your subnets. Subnets belongs to a network.</p>
 
-<!-------------------- LIST SUBNETWORKS -------------------->
+<!-------------------- LIST SUBNETS -------------------->
 <h4 id='gcp-list-subnets'>List subnets</h4><pre class="highlight shell tab-shell"><code>curl -X GET <span class="se">\</span>
   -H <span class="s2">"mc-api-key: your_api_key"</span> <span class="se">\</span>
   <span class="s2">"https://cloudmc_endpoint/v1/services/gcp/test-area/subnetworks"</span>
@@ -18354,7 +18360,7 @@ You cannot release an external IP which is currently attached to an instance.
 </span></code></pre>
 <p><code>GET /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/subnetworks</code></p>
 
-<p>Retrieve a list of all networks in a given <a href="#administration-environments">environment</a>.</p>
+<p>Retrieve a list of all subnets in a given <a href="#administration-environments">environment</a>.</p>
 
 <table><thead>
 <tr>
@@ -18364,47 +18370,47 @@ You cannot release an external IP which is currently attached to an instance.
 </thead><tbody>
 <tr>
 <td><code>creationTimestamp</code><br/><em>string</em></td>
-<td>Creation timestamp in RFC3339 text format</td>
+<td>Creation timestamp in RFC3339 text format.</td>
 </tr>
 <tr>
 <td><code>fingerprint</code><br/><em>string</em></td>
-<td>A base64-encoded string. A hash of the label&#39;s contents and used for optimistic locking</td>
+<td>A base64-encoded string. A hash of the label&#39;s contents and used for optimistic locking.</td>
 </tr>
 <tr>
 <td><code>gatewayAddress</code><br/><em>string</em></td>
-<td>Second address in the primary IP range for the subnet</td>
+<td>Second address in the primary IP range for the subnet.</td>
 </tr>
 <tr>
 <td><code>ipCidrRange</code><br/><em>string</em></td>
-<td>Primary IP address range for the following resources: VM instances, internal load balancers, and internal protocol forwarding</td>
+<td>Primary IP address range for the following resources: VM instances, internal load balancers, and internal protocol forwarding.</td>
 </tr>
 <tr>
 <td><code>kind</code><br/><em>string</em></td>
-<td>Type of the resource</td>
+<td>Type of the resource.</td>
 </tr>
 <tr>
 <td><code>network</code><br/><em>string</em></td>
-<td>Server-defined URL for the VPC network that contains the subnet</td>
+<td>Server-defined URL for the VPC network that contains the subnet.</td>
 </tr>
 <tr>
 <td><code>privateIpGoogleAccess</code><br/><em>string</em></td>
-<td>Whether the Private Google Access is configured</td>
+<td>Whether the Private Google Access is configured.</td>
 </tr>
 <tr>
 <td><code>region</code><br/><em>Array[Disk]</em></td>
-<td>Server-defined URL for the region name</td>
+<td>Server-defined URL for the region name.</td>
 </tr>
 <tr>
 <td><code>selfLink</code><br/><em>string</em></td>
-<td>Server-defined URL for this resource</td>
+<td>Server-defined URL for this resource.</td>
 </tr>
 <tr>
 <td><code>shortNetwork</code><br/><em>string</em></td>
-<td>Display name of the VPC network that contains the subnet</td>
+<td>Display name of the VPC network that contains the subnet.</td>
 </tr>
 <tr>
 <td><code>id</code><br/><em>UUID</em></td>
-<td>The id of the subnet</td>
+<td>The id of the subnet.</td>
 </tr>
 <tr>
 <td><code>name</code><br/><em>string</em></td>
@@ -18412,7 +18418,7 @@ You cannot release an external IP which is currently attached to an instance.
 </tr>
 <tr>
 <td><code>shortRegion</code><br/><em>string</em></td>
-<td>A short version of the region name</td>
+<td>A short version of the region name.</td>
 </tr>
 </tbody></table>
 <h4 id='gcp-filters'>Filters</h4>
@@ -18420,7 +18426,97 @@ You cannot release an external IP which is currently attached to an instance.
 
 <p>Retrieve a list of all networks in a given <a href="#administration-environments">environment</a> and [VPC-network].</p>
 
-<!-------------------- CREATE A SUBNETWORK -------------------->
+<!-------------------- RETRIEVE A SUBNET -------------------->
+<h4 id='gcp-retrieve-a-subnet'>Retrieve a subnet</h4><pre class="highlight shell tab-shell"><code>curl -X GET <span class="se">\</span>
+  -H <span class="s2">"mc-api-key: your_api_key"</span> <span class="se">\</span>
+  <span class="s2">"https://cloudmc_endpoint/v1/services/gcp/test-area/subnetworks/8841143494674098002"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns a JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"creationTimestamp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-06-12T08:05:33.741-07:00"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"fingerprint"</span><span class="p">:</span><span class="w"> </span><span class="s2">"resource_fingerprint"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"gatewayAddress"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10.128.0.1"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"ipCidrRange"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10.128.0.0/20"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"kind"</span><span class="p">:</span><span class="w"> </span><span class="s2">"compute#subnetwork"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"network"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.googleapis.com/compute/v1/projects/test-area-oox/global/networks/default"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"privateIpGoogleAccess"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"region"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.googleapis.com/compute/v1/projects/test-area-oox/regions/us-central1"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"selfLink"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.googleapis.com/compute/v1/projects/test-area-oox/regions/us-central1/subnetworks/default"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"shortNetwork"</span><span class="p">:</span><span class="w"> </span><span class="s2">"default"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"resource_id"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"default"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"shortRegion"</span><span class="p">:</span><span class="w"> </span><span class="s2">"us-central1"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><code>GET /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/subnetworks/:id</code></p>
+
+<p>Retrieve information about a subnet.</p>
+
+<table><thead>
+<tr>
+<th>Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>creationTimestamp</code><br/><em>string</em></td>
+<td>Creation timestamp in RFC3339 text format.</td>
+</tr>
+<tr>
+<td><code>fingerprint</code><br/><em>string</em></td>
+<td>A base64-encoded string. A hash of the label&#39;s contents and used for optimistic locking.</td>
+</tr>
+<tr>
+<td><code>gatewayAddress</code><br/><em>string</em></td>
+<td>Second address in the primary IP range for the subnet.</td>
+</tr>
+<tr>
+<td><code>ipCidrRange</code><br/><em>string</em></td>
+<td>Primary IP address range for the following resources: VM instances, internal load balancers, and internal protocol forwarding.</td>
+</tr>
+<tr>
+<td><code>kind</code><br/><em>string</em></td>
+<td>Type of the resource.</td>
+</tr>
+<tr>
+<td><code>network</code><br/><em>string</em></td>
+<td>Server-defined URL for the VPC network that contains the subnet.</td>
+</tr>
+<tr>
+<td><code>privateIpGoogleAccess</code><br/><em>string</em></td>
+<td>Whether the Private Google Access is configured.</td>
+</tr>
+<tr>
+<td><code>region</code><br/><em>Array[Disk]</em></td>
+<td>Server-defined URL for the region name.</td>
+</tr>
+<tr>
+<td><code>selfLink</code><br/><em>string</em></td>
+<td>Server-defined URL for this resource.</td>
+</tr>
+<tr>
+<td><code>shortNetwork</code><br/><em>string</em></td>
+<td>Display name of the VPC network that contains the subnet.</td>
+</tr>
+<tr>
+<td><code>id</code><br/><em>UUID</em></td>
+<td>The id of the subnet.</td>
+</tr>
+<tr>
+<td><code>name</code><br/><em>string</em></td>
+<td>The display name of the subnet.</td>
+</tr>
+<tr>
+<td><code>shortRegion</code><br/><em>string</em></td>
+<td>A short version of the region name.</td>
+</tr>
+</tbody></table>
+
+<!-------------------- CREATE A SUBNET -------------------->
 <h4 id='gcp-create-a-subnet'>Create a subnet</h4><pre class="highlight shell tab-shell"><code>curl -X POST <span class="se">\</span>
    -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
    -H <span class="s2">"MC-Api-Key: your_api_key"</span> <span class="se">\</span>
@@ -18449,19 +18545,19 @@ You cannot release an external IP which is currently attached to an instance.
 </thead><tbody>
 <tr>
 <td><code>name</code><br/><em>string</em></td>
-<td>The display name of the subnet</td>
+<td>The display name of the subnet.</td>
 </tr>
 <tr>
 <td><code>shortRegion</code><br/><em>string</em></td>
-<td>A short version of the region name</td>
+<td>A short version of the region name.</td>
 </tr>
 <tr>
 <td><code>network</code><br/><em>string</em></td>
-<td>The selflink of the network</td>
+<td>The selflink of the network.</td>
 </tr>
 <tr>
 <td><code>ipCidrRange</code><br/><em>string</em></td>
-<td>The CIDR IP range of the subnet</td>
+<td>The CIDR IP range of the subnet.</td>
 </tr>
 </tbody></table>
 
@@ -18473,9 +18569,18 @@ You cannot release an external IP which is currently attached to an instance.
 </thead><tbody>
 <tr>
 <td><code>description</code><br/><em>string</em></td>
-<td>Description of the subnet</td>
+<td>Description of the subnet.</td>
 </tr>
 </tbody></table>
+
+<!-------------------- DELETE A SUBNET -------------------->
+<h4 id='gcp-delete-a-subnet'>Delete a subnet</h4><pre class="highlight shell tab-shell"><code>curl -X DELETE <span class="se">\</span>
+  -H <span class="s2">"mc-api-key: your_api_key"</span> <span class="se">\</span>
+  <span class="s2">"https://cloudmc_endpoint/v1/services/gcp/test-area/subnetworks/8841143494674098002"</span>
+</code></pre>
+<p><code>DELETE /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/subnetworks/:id</code></p>
+
+<p>Delete an existing subnet</p>
 <h3 id='gcp-load-balancing'>Load balancing</h3><h4 id='gcp-load-balancer'>Load balancer</h4>
 <p>HTTP(S) load balancing can balance HTTP and HTTPS traffic across multiple backend instances, across multiple regions. Your entire app is available via a single global IP address, resulting in a simplified DNS setup. HTTP(S) load balancing is scalable, fault-tolerant, requires no pre-warming, and enables content-based load balancing. For HTTPS traffic, it provides SSL termination and load balancing.</p>
 
