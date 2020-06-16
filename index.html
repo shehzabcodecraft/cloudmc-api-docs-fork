@@ -1902,6 +1902,9 @@
                                   <li>
                                     <a href="#azure-create-a-cluster" class="toc-h4 toc-link" data-title="Azure plugin">Create a cluster</a>
                                   </li>
+                                  <li>
+                                    <a href="#azure-delete-a-cluster" class="toc-h4 toc-link" data-title="Azure plugin">Delete a cluster</a>
+                                  </li>
                               </ul>
                           </li>
                       </ul>
@@ -28457,6 +28460,23 @@ For Windows instances, reset the administrator account and reset the Remote Desk
 <td>The user name to create a root user on cluster.</td>
 </tr>
 </tbody></table>
+
+<!-------------------- DELETE A CLUSTER -------------------->
+<h4 id='azure-delete-a-cluster'>Delete a cluster</h4><pre class="highlight shell tab-shell"><code>curl -X DELETE <span class="se">\</span>
+   -H <span class="s2">"MC-Api-Key: your_api_key"</span> <span class="se">\</span>
+   <span class="s2">"https://cloudmc_endpoint/v1/services/azure/example/clusters/subscriptions/subscriptionId/resourceGroups/cmc-example/providers/Microsoft.ContainerService/managedClusters/sample_small_cluster"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns a JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"taskId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3e4d4466-ce4b-404b-ada5-ee5a3fb76f4e"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"taskStatus"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PENDING"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><code>DELETE /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/clusters/:id</code></p>
+
+<p>Delete an existing cluster.</p>
 <h1 id='masterportal-plugin'>MasterPortal plugin</h1>
 <p>The MasterPortal plugin allows users to add applications to an environment and to request an automatic login allowing for a single sign-on experience. </p>
 <h3 id='masterportal-applications'>Applications</h3>
