@@ -2050,15 +2050,15 @@ You must replace <code>your_api_key</code> with your personal API key.
 </thead><tbody>
 <tr>
 <td><code>data</code></td>
-<td>The data field contains the object requested by the API caller</td>
+<td>The data field contains the object requested by the API caller.</td>
 </tr>
 <tr>
 <td><code>taskId</code></td>
-<td>The <a href="#tasks">task id</a> of an operation executed through the services API</td>
+<td>The <a href="#tasks">task id</a> of an operation executed through the services API.</td>
 </tr>
 <tr>
 <td><code>taskStatus</code></td>
-<td>The status of a <a href="#tasks">task</a> of an operation executed the services API</td>
+<td>The status of a <a href="#tasks">task</a> of an operation executed the services API.</td>
 </tr>
 </tbody></table>
 
@@ -2069,7 +2069,8 @@ You must replace <code>your_api_key</code> with your personal API key.
 <aside class="notice">
 If the response contains the "errors" field, the request was <strong>not</strong> successful.
 </aside>
-<h3 id='error-response'>Error response</h3><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+<h3 id='error-response'>Error response</h3><pre class="highlight shell tab-shell"><code><span class="c"># Example of error response</span>
+</code></pre><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"errors"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
       </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">2012</span><span class="p">,</span><span class="w">
@@ -2096,7 +2097,7 @@ If the response contains the "errors" field, the request was <strong>not</strong
 </thead><tbody>
 <tr>
 <td><code>errors</code></td>
-<td>A list of errors objects that contain information about each error</td>
+<td>A list of errors objects that contain information about each error.</td>
 </tr>
 </tbody></table>
 
@@ -2110,15 +2111,15 @@ If the response contains the "errors" field, the request was <strong>not</strong
 </thead><tbody>
 <tr>
 <td><code>code</code></td>
-<td>The CloudMC error code</td>
+<td>The CloudMC error code.</td>
 </tr>
 <tr>
 <td><code>message</code></td>
-<td>A human readable explanation of the error code</td>
+<td>A human readable explanation of the error code.</td>
 </tr>
 <tr>
 <td><code>context</code></td>
-<td>Additional information</td>
+<td>Additional information.</td>
 </tr>
 </tbody></table>
 
@@ -2136,7 +2137,7 @@ If the response contains the "errors" field, the request was <strong>not</strong
 </tr>
 <tr>
 <td><code>204</code></td>
-<td>The request was successful and the response body is empty</td>
+<td>The request was successful and the response body is empty.</td>
 </tr>
 <tr>
 <td><code>400</code></td>
@@ -2203,7 +2204,7 @@ If you are not familiar with the CloudMC API response structures, it would be va
 </thead><tbody>
 <tr>
 <td><code>id</code><br/><em>UUID</em></td>
-<td>The id of the service connection</td>
+<td>The id of the service connection.</td>
 </tr>
 <tr>
 <td><code>serviceCode</code><br/><em>string</em></td>
@@ -2211,7 +2212,7 @@ If you are not familiar with the CloudMC API response structures, it would be va
 </tr>
 <tr>
 <td><code>name</code><br/><em>string</em></td>
-<td>The name of the service connection</td>
+<td>The name of the service connection.</td>
 </tr>
 <tr>
 <td><code>type</code><br/><em>string</em></td>
@@ -2219,7 +2220,7 @@ If you are not familiar with the CloudMC API response structures, it would be va
 </tr>
 <tr>
 <td><code>status</code><br/><em>Object</em></td>
-<td>Status of the service connection. Tells you if the service is up.<br/><em>includes</em>: <code>lastUpdated</code>, <code>reachable</code></td>
+<td>Status of the service connection. Tells you if the service is up.<br/><em>includes</em>: <code>lastUpdated</code>, <code>reachable</code>.</td>
 </tr>
 </tbody></table>
 
@@ -2247,7 +2248,7 @@ If you are not familiar with the CloudMC API response structures, it would be va
 </thead><tbody>
 <tr>
 <td><code>id</code><br/><em>UUID</em></td>
-<td>The id of the service connection</td>
+<td>The id of the service connection.</td>
 </tr>
 <tr>
 <td><code>serviceCode</code><br/><em>string</em></td>
@@ -2255,7 +2256,7 @@ If you are not familiar with the CloudMC API response structures, it would be va
 </tr>
 <tr>
 <td><code>name</code><br/><em>string</em></td>
-<td>The name of the service connection</td>
+<td>The name of the service connection.</td>
 </tr>
 <tr>
 <td><code>type</code><br/><em>string</em></td>
@@ -2263,7 +2264,7 @@ If you are not familiar with the CloudMC API response structures, it would be va
 </tr>
 <tr>
 <td><code>status</code><br/><em>Object</em></td>
-<td>Status of the service connection. Tells you if the service is up.<br/><em>includes</em>: <code>lastUpdated</code>, <code>reachable</code></td>
+<td>Status of the service connection. Tells you if the service is up.<br/><em>includes</em>: <code>lastUpdated</code>, <code>reachable</code>.</td>
 </tr>
 </tbody></table>
 
@@ -2338,7 +2339,7 @@ curl <span class="s2">"https://cloudmc_endpoint/v1/services/connections/03bc22bd
 </thead><tbody>
 <tr>
 <td><code>name</code><br/><em>string</em></td>
-<td>The name of the policy section</td>
+<td>The name of the policy section.</td>
 </tr>
 <tr>
 <td><code>label</code><br/><em>string</em></td>
@@ -2354,7 +2355,7 @@ curl <span class="s2">"https://cloudmc_endpoint/v1/services/connections/03bc22bd
 </tr>
 <tr>
 <td><code>entity</code><br/> <em>Object</em></td>
-<td>The service connection entity which includes a string to string map of the ServiceConnectionPolicy::name to ServiceConnectionPolicy::value</td>
+<td>The service connection entity which includes a string to string map of the <code>ServiceConnectionPolicy::name</code> to <code>ServiceConnectionPolicy::value</code>.</td>
 </tr>
 </tbody></table>
 
@@ -2433,15 +2434,15 @@ curl <span class="s2">"https://cloudmc_endpoint/v1/services/connections/03bc22bd
 </thead><tbody>
 <tr>
 <td><code>id</code><br/><em>UUID</em></td>
-<td>The id of the organization</td>
+<td>The id of the organization.</td>
 </tr>
 <tr>
 <td><code>name</code><br/><em>string</em></td>
-<td>The name of the organization</td>
+<td>The name of the organization.</td>
 </tr>
 <tr>
 <td><code>entryPoint</code><br/><em>string</em></td>
-<td>The entry point of the organization. Also refered to as the organization code</td>
+<td>The entry point of the organization. Also refered to as the organization code.</td>
 </tr>
 <tr>
 <td><code>state</code><br/><em>string</em></td>
@@ -2453,7 +2454,7 @@ curl <span class="s2">"https://cloudmc_endpoint/v1/services/connections/03bc22bd
 </tr>
 </tbody></table>
 <h2 id='administration-organizations'>Organizations</h2>
-<p>Organizations are the largest logical grouping of users, environments and resources available in CloudMC. Each organization is isolated from other organizations. It has its own subdomain (<code>[entryPoint].CloudMC</code>) and is protected by its own customizable system <a href="#administration-roles">roles</a>. An administrator that must manage it&#39;s sub-organizations environments or provisioned resources can do so by having the <code>Access other levels</code> permission. Additionally, provisioned resource usage is metered at the organization level facilitating cost tracking.</p>
+<p>Organizations are the largest logical grouping of users, environments and resources available in CloudMC. Each organization is isolated from other organizations. It has its own subdomain (<code>[entryPoint].CloudMC</code>) and is protected by its own customizable system <a href="#administration-roles">roles</a>. An administrator that must manage its sub-organizations environments or provisioned resources can do so by having the <code>Access other levels</code> permission. Additionally, provisioned resource usage is metered at the organization level facilitating cost tracking.</p>
 
 <!-------------------- LIST ORGANIZATIONS -------------------->
 <h3 id='administration-list-organizations'>List organizations</h3>
@@ -2514,47 +2515,47 @@ curl <span class="s2">"https://cloudmc_endpoint/v1/organizations"</span> <span c
 </thead><tbody>
 <tr>
 <td><code>id</code><br/><em>UUID</em></td>
-<td>---</td>
+<td>The id of the organization.</td>
 </tr>
 <tr>
 <td><code>name</code><br/><em>string</em></td>
-<td>---</td>
+<td>The name of the organization.</td>
 </tr>
 <tr>
 <td><code>entryPoint</code><br/><em>string</em></td>
-<td>The entry point of the organization is the subdomain of the organization in the CloudMC URL : <code>[entryPoint].CloudMC</code></td>
+<td>The entry point of the organization is the subdomain of the organization in the CloudMC URL : <code>[entryPoint].CloudMC</code>.</td>
 </tr>
 <tr>
 <td><code>billableStartDate</code><br/><em>string</em></td>
-<td>The billable start date in <a href="https://en.wikipedia.org/wiki/ISO_8601">ISO 8601</a> of the organization</td>
+<td>The billable start date in <a href="https://en.wikipedia.org/wiki/ISO_8601">ISO 8601</a> of the organization.</td>
 </tr>
 <tr>
 <td><code>isBillable</code><br/><em>boolean</em></td>
-<td>If the organization is billable this values is true, false otherwise</td>
+<td>If the organization is billable this values is true, false otherwise.</td>
 </tr>
 <tr>
 <td><code>tags</code><br/><em>Array[string]</em></td>
-<td>Tags associated to the organization</td>
+<td>Tags associated to the organization.</td>
 </tr>
 <tr>
 <td><code>parent</code><br/><em><a href="#administration-organizations">Organization</a></em></td>
-<td>If the organization is a sub-organization, it will have it&#39;s <code>parent</code> organization. <em>includes</em>:<code>id</code>,<code>name</code></td>
+<td>If the organization is a sub-organization, it will have its <code>parent</code> organization. <em>includes</em>:<code>id</code>,<code>name</code>.</td>
 </tr>
 <tr>
 <td><code>environments</code><br/><em>Array[<a href="#administration-environments">Environment</a>]</em></td>
-<td>The environments belonging to the organization<br/><em>includes</em>: <code>id</code></td>
+<td>The environments belonging to the organization.<br/><em>includes</em>: <code>id</code></td>
 </tr>
 <tr>
 <td><code>roles</code><br/><em>Array[<a href="#administration-roles">Role</a>]</em></td>
-<td>The system and environments roles belonging to the organization<br/><em>includes</em>: <code>id</code></td>
+<td>The system and environments roles belonging to the organization.<br/><em>includes</em>: <code>id</code></td>
 </tr>
 <tr>
 <td><code>serviceConnections</code><br/><em>Array[<a href="#administration-service-connections">ServiceConnection</a>]</em></td>
-<td>The services for which the organization is allowed to provision resources<br/><em>includes</em>: <code>id</code>,<code>serviceCode</code></td>
+<td>The services for which the organization is allowed to provision resources.<br/><em>includes</em>: <code>id</code>,<code>serviceCode</code></td>
 </tr>
 <tr>
 <td><code>users</code><br/><em>Array[<a href="#administration-users">User</a>]</em></td>
-<td>The users of the organization<br/><em>includes</em>: <code>id</code></td>
+<td>The users of the organization.<br/><em>includes</em>: <code>id</code></td>
 </tr>
 </tbody></table>
 
@@ -2615,47 +2616,47 @@ curl <span class="s2">"https://cloudmc_endpoint/v1/organizations/03bc22bd-adc4-4
 </thead><tbody>
 <tr>
 <td><code>id</code><br/><em>UUID</em></td>
-<td>---</td>
+<td>The id of the organization.</td>
 </tr>
 <tr>
 <td><code>name</code><br/><em>string</em></td>
-<td>---</td>
+<td>The name of the organization.</td>
 </tr>
 <tr>
 <td><code>entryPoint</code><br/><em>string</em></td>
-<td>The entry point of the organization is the subdomain of the organization in the CloudMC URL :<br/><code>[entryPoint].CloudMC</code></td>
+<td>The entry point of the organization is the subdomain of the organization in the CloudMC URL :<br/><code>[entryPoint].CloudMC</code>.</td>
 </tr>
 <tr>
 <td><code>billableStartDate</code><br/><em>string</em></td>
-<td>The billable start date in <a href="https://en.wikipedia.org/wiki/ISO_8601">ISO 8601</a> of the organization</td>
+<td>The billable start date in <a href="https://en.wikipedia.org/wiki/ISO_8601">ISO 8601</a> of the organization.</td>
 </tr>
 <tr>
 <td><code>isBillable</code><br/><em>boolean</em></td>
-<td>If the organization is billable this values is true, false otherwise</td>
+<td>If the organization is billable this values is true, false otherwise.</td>
 </tr>
 <tr>
 <td><code>tags</code><br/><em>Array[string]</em></td>
-<td>Tags associated to the organization</td>
+<td>Tags associated to the organization.</td>
 </tr>
 <tr>
 <td><code>parent</code><br/><em><a href="#administration-organizations">Organization</a></em></td>
-<td>If the organization is a sub-organization, it will have it&#39;s <code>parent</code> organization. <em>includes</em>:<code>id</code>,<code>name</code></td>
+<td>If the organization is a sub-organization, it will have its <code>parent</code> organization. <em>includes</em>:<code>id</code>,<code>name</code>.</td>
 </tr>
 <tr>
 <td><code>environments</code><br/><em>Array[<a href="#administration-environments">Environment</a>]</em></td>
-<td>The environments belonging to the organization<br/><em>includes</em>: <code>id</code></td>
+<td>The environments belonging to the organization.<br/><em>includes</em>: <code>id</code></td>
 </tr>
 <tr>
 <td><code>roles</code><br/><em>Array[<a href="#administration-roles">Role</a>]</em></td>
-<td>The system and environments roles belonging to the organization<br/><em>includes</em>: <code>id</code></td>
+<td>The system and environments roles belonging to the organization.<br/><em>includes</em>: <code>id</code></td>
 </tr>
 <tr>
 <td><code>serviceConnections</code><br/><em>Array[<a href="#administration-service-connections">ServiceConnection</a>]</em></td>
-<td>The services for which the organization is allowed to provision resources<br/><em>includes</em>: <code>id</code>,<code>serviceCode</code></td>
+<td>The services for which the organization is allowed to provision resources.<br/><em>includes</em>: <code>id</code>,<code>serviceCode</code></td>
 </tr>
 <tr>
 <td><code>users</code><br/><em>Array[<a href="#administration-users">User</a>]</em></td>
-<td>The users of the organization<br/><em>includes</em>: <code>id</code></td>
+<td>The users of the organization.<br/><em>includes</em>: <code>id</code></td>
 </tr>
 </tbody></table>
 
@@ -2698,7 +2699,7 @@ curl -X POST <span class="s2">"https://cloudmc_endpoint/v1/organizations"</span>
 </tr>
 <tr>
 <td><code>entryPoint</code><br/><em>string</em></td>
-<td>The entry point of the organization is the subdomain of the organization in the CloudMC URL : <code>[entryPoint].CloudMC</code></td>
+<td>The entry point of the organization is the subdomain of the organization in the CloudMC URL : <code>[entryPoint].CloudMC</code>.</td>
 </tr>
 </tbody></table>
 
@@ -2718,13 +2719,13 @@ curl -X POST <span class="s2">"https://cloudmc_endpoint/v1/organizations"</span>
 </tr>
 </tbody></table>
 
-<p>The responses&#39; <code>data</code> field contains the created <a href="#administration-organizations">organization</a> with it&#39;s <code>id</code>.</p>
+<p>The responses&#39; <code>data</code> field contains the created <a href="#administration-organizations">organization</a> with its <code>id</code>.</p>
 
 <!-------------------- UPDATE ORGANIZATION -------------------->
 <h3 id='administration-update-organization'>Update organization</h3>
 <p><code>PUT /organizations/:id</code></p>
 
-<p>Update an organization. It&#39;s parent organization cannot be changed. It can be assigned service connections.</p>
+<p>Update an organization. Its parent organization cannot be changed. It can be assigned service connections.</p>
 <pre class="highlight shell tab-shell"><code><span class="c"># Update an organization</span>
 curl -X PUT <span class="s2">"https://cloudmc_endpoint/v1/organizations/03bc22bd-adc4-46b8-988d-afddc24c0cb5"</span> <span class="se">\</span>
    -H <span class="s2">"MC-Api-Key: your_api_key"</span> <span class="se">\</span>
@@ -2756,7 +2757,7 @@ curl -X PUT <span class="s2">"https://cloudmc_endpoint/v1/organizations/03bc22bd
 </tr>
 <tr>
 <td><code>entryPoint</code><br/><em>string</em></td>
-<td>The entry point of the organization is the subdomain of the organization in the CloudMC URL : <code>[entryPoint].CloudMC</code></td>
+<td>The entry point of the organization is the subdomain of the organization in the CloudMC URL : <code>[entryPoint].CloudMC</code>.</td>
 </tr>
 </tbody></table>
 
@@ -2837,27 +2838,27 @@ curl <span class="s2">"https://cloudmc_endpoint/v1/users"</span> <span class="se
 </thead><tbody>
 <tr>
 <td><code>id</code><br/><em>UUID</em></td>
-<td>The id of the user</td>
+<td>The id of the user.</td>
 </tr>
 <tr>
 <td><code>userName</code><br/><em>string</em></td>
-<td>The username of the user</td>
+<td>The username of the user.</td>
 </tr>
 <tr>
 <td><code>firstName</code><br/><em>string</em></td>
-<td>The first name of the user</td>
+<td>The first name of the user.</td>
 </tr>
 <tr>
 <td><code>lastName</code><br/><em>string</em></td>
-<td>The last name of the user</td>
+<td>The last name of the user.</td>
 </tr>
 <tr>
 <td><code>email</code><br/><em>string</em></td>
-<td>The email of the user</td>
+<td>The email of the user.</td>
 </tr>
 <tr>
 <td><code>creationDate</code><br/><em>string</em></td>
-<td>The date in <a href="https://en.wikipedia.org/wiki/ISO_8601">ISO 8601</a> that the user was created</td>
+<td>The date in <a href="https://en.wikipedia.org/wiki/ISO_8601">ISO 8601</a> that the user was created.</td>
 </tr>
 <tr>
 <td><code>status</code><br/><em>string</em></td>
@@ -2865,11 +2866,11 @@ curl <span class="s2">"https://cloudmc_endpoint/v1/users"</span> <span class="se
 </tr>
 <tr>
 <td><code>organization</code><br/><em><a href="#administration-organization">Organization</a></em></td>
-<td>The organization to which the user belongs</td>
+<td>The organization to which the user belongs.</td>
 </tr>
 <tr>
 <td><code>roles</code><br/><em>Array[<a href="#administration-roles">Role</a>]</em></td>
-<td>The system and environments roles that are assigned to the user<br/><em>includes</em>: <code>id</code>, <code>name</code> and <code>environment.id</code></td>
+<td>The system and environments roles that are assigned to the user.<br/><em>includes</em>: <code>id</code>, <code>name</code> and <code>environment.id</code></td>
 </tr>
 </tbody></table>
 
@@ -2926,27 +2927,27 @@ curl <span class="s2">"https://cloudmc_endpoint/v1/users/fdf60a19-980d-4380-acab
 </thead><tbody>
 <tr>
 <td><code>id</code><br/><em>UUID</em></td>
-<td>The id of the user</td>
+<td>The id of the user.</td>
 </tr>
 <tr>
 <td><code>userName</code><br/><em>string</em></td>
-<td>The username of the user</td>
+<td>The username of the user.</td>
 </tr>
 <tr>
 <td><code>firstName</code><br/><em>string</em></td>
-<td>The first name of the user</td>
+<td>The first name of the user.</td>
 </tr>
 <tr>
 <td><code>lastName</code><br/><em>string</em></td>
-<td>The last name of the user</td>
+<td>The last name of the user.</td>
 </tr>
 <tr>
 <td><code>email</code><br/><em>string</em></td>
-<td>The email of the user</td>
+<td>The email of the user.</td>
 </tr>
 <tr>
 <td><code>creationDate</code><br/><em>string</em></td>
-<td>The date in <a href="https://en.wikipedia.org/wiki/ISO_8601">ISO 8601</a> that the user was created</td>
+<td>The date in <a href="https://en.wikipedia.org/wiki/ISO_8601">ISO 8601</a> that the user was created.</td>
 </tr>
 <tr>
 <td><code>status</code><br/><em>string</em></td>
@@ -2954,15 +2955,15 @@ curl <span class="s2">"https://cloudmc_endpoint/v1/users/fdf60a19-980d-4380-acab
 </tr>
 <tr>
 <td><code>organization</code><br/><em><a href="#administration-organization">Organization</a></em></td>
-<td>The organization to which the user belongs</td>
+<td>The organization to which the user belongs.</td>
 </tr>
 <tr>
 <td><code>environments</code><br/><em>Array[<a href="#administration-environments">Environment</a>]</em></td>
-<td>The environments the user is member of<br/><em>includes</em>: <code>id</code>, <code>name</code></td>
+<td>The environments the user is member of.<br/><em>includes</em>: <code>id</code>, <code>name</code></td>
 </tr>
 <tr>
 <td><code>roles</code><br/><em>Array[<a href="#administration-roles">Role</a>]</em></td>
-<td>The system and environments roles that are assigned to the user<br/><em>includes</em>: <code>id</code>, <code>name</code> and <code>environment.id</code></td>
+<td>The system and environments roles that are assigned to the user.<br/><em>includes</em>: <code>id</code>, <code>name</code> and <code>environment.id</code></td>
 </tr>
 </tbody></table>
 
@@ -3008,11 +3009,11 @@ curl -X POST <span class="s2">"https://cloudmc_endpoint/v1/users"</span> <span c
 </tr>
 <tr>
 <td><code>firstName</code><br/><em>string</em></td>
-<td>First name of the user</td>
+<td>First name of the user.</td>
 </tr>
 <tr>
 <td><code>lastName</code><br/><em>string</em></td>
-<td>Last name of the user</td>
+<td>Last name of the user.</td>
 </tr>
 <tr>
 <td><code>email</code><br/><em>string</em></td>
@@ -3028,15 +3029,15 @@ curl -X POST <span class="s2">"https://cloudmc_endpoint/v1/users"</span> <span c
 </thead><tbody>
 <tr>
 <td><code>organization</code></br><em><a href="#administration-organization">Organization</a></em></td>
-<td>Organization in which the user will be created. <em>Defaults to your organization</em><br/><em>required:</em> <code>id</code></td>
+<td>Organization in which the user will be created. <em>Defaults to your organization</em>.<br/><em>required:</em> <code>id</code></td>
 </tr>
 <tr>
 <td><code>roles</code><br/><em>Array[<a href="#administration-roles">Role</a>]</em></td>
-<td>The system and environment roles to give to the user<br/><em>required</em>: <code>id</code></td>
+<td>The system and environment roles to give to the user.<br/><em>required</em>: <code>id</code></td>
 </tr>
 </tbody></table>
 <h5 id='administration-returns'>Returns</h5>
-<p>The responses&#39; <code>data</code> field contains the created <a href="#administration-users">user</a> with it&#39;s <code>id</code>.</p>
+<p>The responses&#39; <code>data</code> field contains the created <a href="#administration-users">user</a> with its <code>id</code>.</p>
 
 <!-------------------- UPDATE USER -------------------->
 <h3 id='administration-update-user'>Update user</h3>
@@ -3076,11 +3077,11 @@ curl -X PUT <span class="s2">"https://cloudmc_endpoint/v1/users/fdf60a19-980d-43
 </tr>
 <tr>
 <td><code>firstName</code><br/><em>string</em></td>
-<td>The new first name of the user</td>
+<td>The new first name of the user.</td>
 </tr>
 <tr>
 <td><code>lastName</code><br/><em>string</em></td>
-<td>The new last name of the user</td>
+<td>The new last name of the user.</td>
 </tr>
 <tr>
 <td><code>email</code><br/><em>string</em></td>
@@ -3175,19 +3176,19 @@ curl <span class="s2">"https://cloudmc_endpoint/rest/roles?v=v2&amp;environment_
 </thead><tbody>
 <tr>
 <td><code>filter_scope</code><br/><em><a href="#administration-scopequalifier">ScopeQualifier</a></em></td>
-<td>Return only roles with this as the default scope</td>
+<td>Return only roles with this as the default scope.</td>
 </tr>
 <tr>
 <td><code>system_only</code><br/><em>boolean</em></td>
-<td>Return only system roles</td>
+<td>Return only system roles.</td>
 </tr>
 <tr>
 <td><code>organization_id</code><br/><em>UUID</em></td>
-<td>Return only roles requesting user can assign on this organization</td>
+<td>Return only roles requesting user can assign on this organization.</td>
 </tr>
 <tr>
 <td><code>environment_id</code><br/><em>UUID</em></td>
-<td>Filters out env-scoped roles applicated to this environment. If an environment is of a plugin type that has custom plugin roles it only returns the plugin&#39;s roles, if the environment has no plugin defined roles it returns only the default environment-scoped roles</td>
+<td>Filters out env-scoped roles applicated to this environment. If an environment is of a plugin type that has custom plugin roles it only returns the plugin&#39;s roles, if the environment has no plugin defined roles it returns only the default environment-scoped roles.</td>
 </tr>
 </tbody></table>
 <h3 id='administration-scopequalifier'>ScopeQualifier</h3>
@@ -3251,15 +3252,15 @@ curl <span class="s2">"https://cloudmc_endpoint/v1/environments"</span> <span cl
 </thead><tbody>
 <tr>
 <td><code>id</code><br/><em>UUID</em></td>
-<td>The id of the environment</td>
+<td>The id of the environment.</td>
 </tr>
 <tr>
 <td><code>name</code><br/><em>string</em></td>
-<td>The name of the environment</td>
+<td>The name of the environment.</td>
 </tr>
 <tr>
 <td><code>description</code><br/><em>string</em></td>
-<td>The description of the environment</td>
+<td>The description of the environment.</td>
 </tr>
 <tr>
 <td><code>membership</code><br/><em>string</em></td>
@@ -3267,15 +3268,15 @@ curl <span class="s2">"https://cloudmc_endpoint/v1/environments"</span> <span cl
 </tr>
 <tr>
 <td><code>creationDate</code><br/><em>string</em></td>
-<td>The date in <a href="https://en.wikipedia.org/wiki/ISO_8601">ISO 8601</a> that the environment was created</td>
+<td>The date in <a href="https://en.wikipedia.org/wiki/ISO_8601">ISO 8601</a> that the environment was created.</td>
 </tr>
 <tr>
 <td><code>organization</code><br/><em><a href="#administration-organizations">Organization</a></em></td>
-<td>The organization of the environment<br/><em>includes</em>: <code>id</code>, <code>name</code>, <code>entryPoint</code></td>
+<td>The organization of the environment.<br/><em>includes</em>: <code>id</code>, <code>name</code>, <code>entryPoint</code></td>
 </tr>
 <tr>
 <td><code>serviceConnection</code><br/><em><a href="#administration-service-connections">ServiceConnection</a></em></td>
-<td>The service connection of the environment<br/><em>includes</em>: <code>id</code>, <code>name</code></td>
+<td>The service connection of the environment.<br/><em>includes</em>: <code>id</code>, <code>name</code></td>
 </tr>
 <tr>
 <td><code>roles</code><br/><em>Array[<a href="#administration-roles">Role</a>]</em></td>
@@ -3325,7 +3326,7 @@ curl <span class="s2">"https://cloudmc_endpoint/v1/environment/487a2745-bb8a-44b
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<p>Retrieve an environment you have access to. You can always retrieve environments that you&#39;re member of but to access other environments you will need the <code>Environments read</code> permission.</p>
+<p>Retrieve an environment you have access to. You can always retrieve environments that you&#39;re a member of but to access other environments you will need the <code>Environments read</code> permission.</p>
 
 <table><thead>
 <tr>
@@ -3335,15 +3336,15 @@ curl <span class="s2">"https://cloudmc_endpoint/v1/environment/487a2745-bb8a-44b
 </thead><tbody>
 <tr>
 <td><code>id</code><br/><em>UUID</em></td>
-<td>The id of the environment</td>
+<td>The id of the environment.</td>
 </tr>
 <tr>
 <td><code>name</code><br/><em>string</em></td>
-<td>The name of the environment</td>
+<td>The name of the environment.</td>
 </tr>
 <tr>
 <td><code>description</code><br/><em>string</em></td>
-<td>The description of the environment</td>
+<td>The description of the environment.</td>
 </tr>
 <tr>
 <td><code>membership</code><br/><em>string</em></td>
@@ -3351,19 +3352,19 @@ curl <span class="s2">"https://cloudmc_endpoint/v1/environment/487a2745-bb8a-44b
 </tr>
 <tr>
 <td><code>creationDate</code><br/><em>string</em></td>
-<td>The date in <a href="https://en.wikipedia.org/wiki/ISO_8601">ISO 8601</a> that the environment was created</td>
+<td>The date in <a href="https://en.wikipedia.org/wiki/ISO_8601">ISO 8601</a> that the environment was created.</td>
 </tr>
 <tr>
 <td><code>organization</code><br/><em><a href="#administration-organizations">Organization</a></em></td>
-<td>The organization of the environment<br/><em>includes</em>: <code>id</code>, <code>name</code>, <code>entryPoint</code></td>
+<td>The organization of the environment.<br/><em>includes</em>: <code>id</code>, <code>name</code>, <code>entryPoint</code></td>
 </tr>
 <tr>
 <td><code>serviceConnection</code><br/><em><a href="#administration-service-connections">ServiceConnection</a></em></td>
-<td>The service connection of the environment<br/><em>includes</em>: <code>id</code>, <code>name</code></td>
+<td>The service connection of the environment.<br/><em>includes</em>: <code>id</code>, <code>name</code></td>
 </tr>
 <tr>
 <td><code>users</code><br/><em>Array[<a href="#administration-users">User</a>]</em></td>
-<td>The users that are members of the environment<br/><em>includes</em>: <code>id</code>, <code>username</code></td>
+<td>The users that are members of the environment.<br/><em>includes</em>: <code>id</code>, <code>username</code></td>
 </tr>
 <tr>
 <td><code>roles</code><br/><em>Array[<a href="#administration-roles">Role</a>]</em></td>
@@ -3421,7 +3422,7 @@ curl -X POST <span class="s2">"https://cloudmc_endpoint/v1/environments"</span> 
 </tr>
 <tr>
 <td><code>serviceConnection</code><br/><em><a href="#administration-service-connections">ServiceConnection</a></em></td>
-<td>The service connection that the environment should be created in<br/><em>required</em>: <code>id</code></td>
+<td>The service connection that the environment should be created in.<br/><em>required</em>: <code>id</code></td>
 </tr>
 </tbody></table>
 
@@ -3433,11 +3434,11 @@ curl -X POST <span class="s2">"https://cloudmc_endpoint/v1/environments"</span> 
 </thead><tbody>
 <tr>
 <td><code>organization</code><br/><em><a href="#administration-organizations">Organization</a></em></td>
-<td>The organization that the environment should be created in. <em>Defaults to your organization</em><br/><em>required</em>: <code>id</code></td>
+<td>The organization that the environment should be created in. <em>Defaults to your organization</em>.<br/><em>required</em>: <code>id</code></td>
 </tr>
 <tr>
 <td><code>membership</code><br/><em>string</em></td>
-<td>Type of membership of the environment. ALL_ORG_USERS will add every user in the organization to this environment with the default role. MANY_USERS will allow you to  choose the users you want in the environment and assigned them specific roles. <em>Defaults to MANY_USERS</em></td>
+<td>Type of membership of the environment. ALL_ORG_USERS will add every user in the organization to this environment with the default role. MANY_USERS will allow you to  choose the users you want in the environment and assigned them specific roles. <em>Defaults to MANY_USERS</em>.</td>
 </tr>
 <tr>
 <td><code>roles</code><br/><em>Array[<a href="#administration-roles">Role</a>]</em></td>
@@ -3482,11 +3483,11 @@ curl -X POST <span class="s2">"https://cloudmc_endpoint/v1/environments/f9dea588
 </tr>
 <tr>
 <td><code>description</code><br/><em>string</em></td>
-<td>The updated description of the environment</td>
+<td>The updated description of the environment.</td>
 </tr>
 <tr>
 <td><code>membership</code><br/><em>string</em></td>
-<td>Type of membership of the environment. ALL_ORG_USERS will add every user in the organization to this environment with the default role. MANY_USERS will allow you to  choose the users you want in the environment and assigned them specific roles. <em>Defaults to MANY_USERS</em></td>
+<td>Type of membership of the environment. ALL_ORG_USERS will add every user in the organization to this environment with the default role. MANY_USERS will allow you to choose the users you want in the environment and assigned them specific roles. <em>Defaults to MANY_USERS</em>.</td>
 </tr>
 <tr>
 <td><code>roles</code><br/><em>Array[<a href="#administration-roles">Role</a>]</em></td>
@@ -3589,47 +3590,47 @@ curl <span class="s2">"https://cloudmc_endpoint/v1/resource_commitments"</span> 
 </thead><tbody>
 <tr>
 <td><code>id</code><br/><em>UUID</em></td>
-<td>The id of the resource commitment</td>
+<td>The id of the resource commitment.</td>
 </tr>
 <tr>
 <td><code>displayName</code><br/><em>string</em></td>
-<td>The name of the resource commitment</td>
+<td>The name of the resource commitment.</td>
 </tr>
 <tr>
 <td><code>creationDate</code><br/><em>string</em></td>
-<td>The date in <a href="https://en.wikipedia.org/wiki/ISO_8601">ISO 8601</a> that the resource commitment was created</td>
+<td>The date in <a href="https://en.wikipedia.org/wiki/ISO_8601">ISO 8601</a> that the resource commitment was created.</td>
 </tr>
 <tr>
 <td><code>startDate</code><br/><em>string</em></td>
-<td>The date in <a href="https://en.wikipedia.org/wiki/ISO_8601">ISO 8601</a> from when the resource commitment becomes active</td>
+<td>The date in <a href="https://en.wikipedia.org/wiki/ISO_8601">ISO 8601</a> from when the resource commitment becomes active.</td>
 </tr>
 <tr>
 <td><code>endDate</code><br/><em>string</em></td>
-<td>The date in <a href="https://en.wikipedia.org/wiki/ISO_8601">ISO 8601</a> until when the resource commitment will be active<br/><em>optional</em>: <code>if not present then the commitment has no end date</code></td>
+<td>The date in <a href="https://en.wikipedia.org/wiki/ISO_8601">ISO 8601</a> until when the resource commitment will be active.<br/><em>optional</em>: <code>if not present then the commitment has no end date</code></td>
 </tr>
 <tr>
 <td><code>pricingMethod</code><br/><em>string</em></td>
-<td>One of the two following options that define how the effective price for the resource commitment is calculated<br/><em>FIXED_MONTHLY</em>: <code>a fixed price per billing cycle</code><br/><em>VARIABLE_UTILITY_DISCOUNT</em>: <code>pricing with custom discount on specific resources</code></td>
+<td>One of the two following options that define how the effective price for the resource commitment is calculated.<br/><em>FIXED_MONTHLY</em>: <code>a fixed price per billing cycle</code><br/><em>VARIABLE_UTILITY_DISCOUNT</em>: <code>pricing with custom discount on specific resources</code></td>
 </tr>
 <tr>
 <td><code>currency</code><br/><em>string</em></td>
-<td>The currency type based on which the pricing is defined</td>
+<td>The currency type based on which the pricing is defined.</td>
 </tr>
 <tr>
 <td><code>monthlyPrice</code><br/><em>number</em></td>
-<td>The effective monthly price for this resource commitment</td>
+<td>The effective monthly price for this resource commitment.</td>
 </tr>
 <tr>
 <td><code>effectiveDiscount</code><br/><em>number</em></td>
-<td>The effective discount percentage (%) on this resource commitment</td>
+<td>The effective discount percentage (%) on this resource commitment.</td>
 </tr>
 <tr>
 <td><code>billableHoursPerMonth</code><br/><em>number</em></td>
-<td>The number hours per month based on which the monthly price is calculated<br/><em>optional</em>: <code>not present if the pricing method is FIXED_MONTHLY</code></td>
+<td>The number hours per month based on which the monthly price is calculated.<br/><em>optional</em>: <code>not present if the pricing method is FIXED_MONTHLY</code></td>
 </tr>
 <tr>
 <td><code>billingDay</code><br/><em>number</em></td>
-<td>The day of the month based on which the billing cycle is calculated</td>
+<td>The day of the month based on which the billing cycle is calculated.</td>
 </tr>
 <tr>
 <td><code>resourceCommitmentDetails</code><br/><em>Array [Commitment detail]</em></td>
@@ -3637,11 +3638,11 @@ curl <span class="s2">"https://cloudmc_endpoint/v1/resource_commitments"</span> 
 </tr>
 <tr>
 <td><code>organization</code><br/><em><a href="#administration-organizations">Organization</a></em></td>
-<td>The organization on whose connection the resource commitment is defined<br/><em>includes</em>: <code>id</code>, <code>name</code></td>
+<td>The organization on whose connection the resource commitment is defined.<br/><em>includes</em>: <code>id</code>, <code>name</code></td>
 </tr>
 <tr>
 <td><code>serviceConnection</code><br/><em><a href="#administration-service-connections">ServiceConnection</a></em></td>
-<td>The service connection on which the resource commitment is defined<br/><em>includes</em>: <code>id</code>, <code>name</code>, <code>type</code></td>
+<td>The service connection on which the resource commitment is defined.<br/><em>includes</em>: <code>id</code>, <code>name</code>, <code>type</code></td>
 </tr>
 </tbody></table>
 
@@ -3716,47 +3717,47 @@ curl <span class="s2">"https://cloudmc_endpoint/v1/resource_commitments/fbgc7647
 </thead><tbody>
 <tr>
 <td><code>id</code><br/><em>UUID</em></td>
-<td>The id of the resource commitment</td>
+<td>The id of the resource commitment.</td>
 </tr>
 <tr>
 <td><code>displayName</code><br/><em>string</em></td>
-<td>The name of the resource commitment</td>
+<td>The name of the resource commitment.</td>
 </tr>
 <tr>
 <td><code>creationDate</code><br/><em>string</em></td>
-<td>The date in <a href="https://en.wikipedia.org/wiki/ISO_8601">ISO 8601</a> that the resource commitment was created</td>
+<td>The date in <a href="https://en.wikipedia.org/wiki/ISO_8601">ISO 8601</a> that the resource commitment was created.</td>
 </tr>
 <tr>
 <td><code>startDate</code><br/><em>string</em></td>
-<td>The date in <a href="https://en.wikipedia.org/wiki/ISO_8601">ISO 8601</a> from when the resource commitment becomes active</td>
+<td>The date in <a href="https://en.wikipedia.org/wiki/ISO_8601">ISO 8601</a> from when the resource commitment becomes active.</td>
 </tr>
 <tr>
 <td><code>endDate</code><br/><em>string</em></td>
-<td>The date in <a href="https://en.wikipedia.org/wiki/ISO_8601">ISO 8601</a> until when the resource commitment will be active<br/><em>optional</em>: <code>if not present then the commitment has no end date</code></td>
+<td>The date in <a href="https://en.wikipedia.org/wiki/ISO_8601">ISO 8601</a> until when the resource commitment will be active.<br/><em>optional</em>: <code>if not present then the commitment has no end date</code></td>
 </tr>
 <tr>
 <td><code>pricingMethod</code><br/><em>string</em></td>
-<td>One of the two following options that define how the effective price for the resource commitment is calculated<br/><em>FIXED_MONTHLY</em>: <code>a fixed price per billing cycle</code><br/><em>VARIABLE_UTILITY_DISCOUNT</em>: <code>pricing with custom discount on specific resources</code></td>
+<td>One of the two following options that define how the effective price for the resource commitment is calculated.<br/><em>FIXED_MONTHLY</em>: <code>a fixed price per billing cycle</code><br/><em>VARIABLE_UTILITY_DISCOUNT</em>: <code>pricing with custom discount on specific resources</code></td>
 </tr>
 <tr>
 <td><code>currency</code><br/><em>string</em></td>
-<td>The currency type based on which the pricing is defined</td>
+<td>The currency type based on which the pricing is defined.</td>
 </tr>
 <tr>
 <td><code>monthlyPrice</code><br/><em>number</em></td>
-<td>The effective monthly price for this resource commitment</td>
+<td>The effective monthly price for this resource commitment.</td>
 </tr>
 <tr>
 <td><code>effectiveDiscount</code><br/><em>number</em></td>
-<td>The effective discount on this resource commitment</td>
+<td>The effective discount on this resource commitment.</td>
 </tr>
 <tr>
 <td><code>billableHoursPerMonth</code><br/><em>number</em></td>
-<td>The number hours per month based on which the monthly price is calculated<br/><em>optional</em>: <code>not present if the pricing method is FIXED_MONTHLY</code></td>
+<td>The number hours per month based on which the monthly price is calculated.<br/><em>optional</em>: <code>not present if the pricing method is FIXED_MONTHLY</code></td>
 </tr>
 <tr>
 <td><code>billingDay</code><br/><em>number</em></td>
-<td>The day of the month based on which the billing cycle is calculated</td>
+<td>The day of the month based on which the billing cycle is calculated.</td>
 </tr>
 <tr>
 <td><code>resourceCommitmentDetails</code><br/><em>Array [Commitment detail]</em></td>
@@ -3764,11 +3765,11 @@ curl <span class="s2">"https://cloudmc_endpoint/v1/resource_commitments/fbgc7647
 </tr>
 <tr>
 <td><code>organization</code><br/><em><a href="#administration-organizations">Organization</a></em></td>
-<td>The organization on whose connection the resource commitment is defined<br/><em>includes</em>: <code>id</code>, <code>name</code></td>
+<td>The organization on whose connection the resource commitment is defined.<br/><em>includes</em>: <code>id</code>, <code>name</code></td>
 </tr>
 <tr>
 <td><code>serviceConnection</code><br/><em><a href="#administration-service-connections">ServiceConnection</a></em></td>
-<td>The service connection on which the resource commitment is defined<br/><em>includes</em>: <code>id</code>, <code>name</code>, <code>type</code></td>
+<td>The service connection on which the resource commitment is defined.<br/><em>includes</em>: <code>id</code>, <code>name</code>, <code>type</code></td>
 </tr>
 </tbody></table>
 
@@ -3828,35 +3829,35 @@ curl -X POST <span class="s2">"https://cloudmc_endpoint/v1/resource_commitments"
 </thead><tbody>
 <tr>
 <td><code>displayName</code><br/><em>string</em></td>
-<td>The name of the resource commitment</td>
+<td>The name of the resource commitment.</td>
 </tr>
 <tr>
 <td><code>startDate</code><br/><em>string</em></td>
-<td>The date in <a href="https://en.wikipedia.org/wiki/ISO_8601">ISO 8601</a> from when the resource commitment becomes active</td>
+<td>The date in <a href="https://en.wikipedia.org/wiki/ISO_8601">ISO 8601</a> from when the resource commitment becomes active.</td>
 </tr>
 <tr>
 <td><code>endDate</code><br/><em>string</em></td>
-<td>The date in <a href="https://en.wikipedia.org/wiki/ISO_8601">ISO 8601</a> until when the resource commitment will be active<br/><em>optional</em>: <code>if not present then the commitment has no end date</code></td>
+<td>The date in <a href="https://en.wikipedia.org/wiki/ISO_8601">ISO 8601</a> until when the resource commitment will be active.<br/><em>optional</em>: <code>if not present then the commitment has no end date</code></td>
 </tr>
 <tr>
 <td><code>pricingMethod</code><br/><em>string</em></td>
-<td>One of the two following options that define how the effective price for the resource commitment is calculated<br/><em>FIXED_MONTHLY</em>: <code>a fixed price per billing cycle</code><br/><em>VARIABLE_UTILITY_DISCOUNT</em>: <code>pricing with custom discount on specific resources</code></td>
+<td>One of the two following options that define how the effective price for the resource commitment is calculated.<br/><em>FIXED_MONTHLY</em>: <code>a fixed price per billing cycle</code><br/><em>VARIABLE_UTILITY_DISCOUNT</em>: <code>pricing with custom discount on specific resources</code></td>
 </tr>
 <tr>
 <td><code>currency</code><br/><em>string</em></td>
-<td>The currency type based on which the pricing is defined</td>
+<td>The currency type based on which the pricing is defined.</td>
 </tr>
 <tr>
 <td><code>monthlyPrice</code><br/><em>number</em></td>
-<td>The effective monthly price for this resource commitment</td>
+<td>The effective monthly price for this resource commitment.</td>
 </tr>
 <tr>
 <td><code>billableHoursPerMonth</code><br/><em>number</em></td>
-<td>The number hours per month based on which the monthly price is calculated<br/><em>optional</em>: <code>only required if the pricing method is VARIABLE_UTILITY_DISCOUNT</code></td>
+<td>The number hours per month based on which the monthly price is calculated.<br/><em>optional</em>: <code>only required if the pricing method is VARIABLE_UTILITY_DISCOUNT</code></td>
 </tr>
 <tr>
 <td><code>billingDay</code><br/><em>number</em></td>
-<td>The day of the month based on which the billing cycle is calculated</td>
+<td>The day of the month based on which the billing cycle is calculated.</td>
 </tr>
 <tr>
 <td><code>resourceCommitmentDetails</code><br/><em>Array [Commitment detail]</em></td>
@@ -3864,11 +3865,11 @@ curl -X POST <span class="s2">"https://cloudmc_endpoint/v1/resource_commitments"
 </tr>
 <tr>
 <td><code>organization</code><br/><em><a href="#administration-organizations">Organization</a></em></td>
-<td>The organization on whose connection the resource commitment is to be defined<br/><em>must include</em>: <code>id</code></td>
+<td>The organization on whose connection the resource commitment is to be defined.<br/><em>must include</em>: <code>id</code></td>
 </tr>
 <tr>
 <td><code>serviceConnection</code><br/><em><a href="#administration-service-connections">ServiceConnection</a></em></td>
-<td>The service connection on which the resource commitment is to be defined<br/><em>must include</em>: <code>id</code></td>
+<td>The service connection on which the resource commitment is to be defined.<br/><em>must include</em>: <code>id</code></td>
 </tr>
 </tbody></table>
 
@@ -3932,39 +3933,39 @@ curl -X PUT <span class="s2">"https://cloudmc_endpoint/v1/resource_commitments/f
 </thead><tbody>
 <tr>
 <td><code>id</code><br/><em>UUID</em></td>
-<td>The id of the resource commitment</td>
+<td>The id of the resource commitment.</td>
 </tr>
 <tr>
 <td><code>displayName</code><br/><em>string</em></td>
-<td>The name of the resource commitment</td>
+<td>The name of the resource commitment.</td>
 </tr>
 <tr>
 <td><code>startDate</code><br/><em>string</em></td>
-<td>The date in <a href="https://en.wikipedia.org/wiki/ISO_8601">ISO 8601</a> from when the resource commitment becomes active</td>
+<td>The date in <a href="https://en.wikipedia.org/wiki/ISO_8601">ISO 8601</a> from when the resource commitment becomes active.</td>
 </tr>
 <tr>
 <td><code>endDate</code><br/><em>string</em></td>
-<td>The date in <a href="https://en.wikipedia.org/wiki/ISO_8601">ISO 8601</a> until when the resource commitment will be active<br/><em>optional</em>: <code>if not present then the commitment has no end date</code></td>
+<td>The date in <a href="https://en.wikipedia.org/wiki/ISO_8601">ISO 8601</a> until when the resource commitment will be active.<br/><em>optional</em>: <code>if not present then the commitment has no end date</code></td>
 </tr>
 <tr>
 <td><code>pricingMethod</code><br/><em>string</em></td>
-<td>One of the two following options that define how the effective price for the resource commitment is calculated<br/><em>FIXED_MONTHLY</em>: <code>a fixed price per billing cycle</code><br/><em>VARIABLE_UTILITY_DISCOUNT</em>: <code>pricing with custom discount on specific resources</code></td>
+<td>One of the two following options that define how the effective price for the resource commitment is calculated.<br/><em>FIXED_MONTHLY</em>: <code>a fixed price per billing cycle</code><br/><em>VARIABLE_UTILITY_DISCOUNT</em>: <code>pricing with custom discount on specific resources</code></td>
 </tr>
 <tr>
 <td><code>currency</code><br/><em>string</em></td>
-<td>The currency type based on which the pricing is defined</td>
+<td>The currency type based on which the pricing is defined.</td>
 </tr>
 <tr>
 <td><code>monthlyPrice</code><br/><em>number</em></td>
-<td>The effective monthly price for this resource commitment</td>
+<td>The effective monthly price for this resource commitment.</td>
 </tr>
 <tr>
 <td><code>billableHoursPerMonth</code><br/><em>number</em></td>
-<td>The number hours per month based on which the monthly price is calculated<br/><em>optional</em>: <code>only required if the pricing method is VARIABLE_UTILITY_DISCOUNT</code></td>
+<td>The number hours per month based on which the monthly price is calculated.<br/><em>optional</em>: <code>only required if the pricing method is VARIABLE_UTILITY_DISCOUNT</code></td>
 </tr>
 <tr>
 <td><code>billingDay</code><br/><em>number</em></td>
-<td>The day of the month based on which the billing cycle is calculated</td>
+<td>The day of the month based on which the billing cycle is calculated.</td>
 </tr>
 <tr>
 <td><code>resourceCommitmentDetails</code><br/><em>Array [Commitment detail]</em></td>
@@ -3972,11 +3973,11 @@ curl -X PUT <span class="s2">"https://cloudmc_endpoint/v1/resource_commitments/f
 </tr>
 <tr>
 <td><code>organization</code><br/><em><a href="#administration-organizations">Organization</a></em></td>
-<td>The organization on whose connection the resource commitment to be edited is defined<br/><em>includes</em>: <code>id</code></td>
+<td>The organization on whose connection the resource commitment to be edited is defined.<br/><em>includes</em>: <code>id</code></td>
 </tr>
 <tr>
 <td><code>serviceConnection</code><br/><em><a href="#administration-service-connections">ServiceConnection</a></em></td>
-<td>The service connection on which the resource commitment to be edited is defined<br/><em>includes</em>: <code>id</code></td>
+<td>The service connection on which the resource commitment to be edited is defined.<br/><em>includes</em>: <code>id</code></td>
 </tr>
 </tbody></table>
 
@@ -4037,31 +4038,31 @@ curl <span class="s2">"https://cloudmc_endpoint/v1/usage_summary/organizations/0
 </thead><tbody>
 <tr>
 <td><code>organizationId</code><br/><em>UUID</em></td>
-<td>Id of the <a href="#administration-organizations">organization</a></td>
+<td>Id of the <a href="#administration-organizations">organization</a>.</td>
 </tr>
 <tr>
 <td><code>serviceConnectionId</code><br/><em>UUID</em></td>
-<td>Id of the <a href="#administration-service-connections">service connection</a></td>
+<td>Id of the <a href="#administration-service-connections">service connection</a>.</td>
 </tr>
 <tr>
 <td><code>serviceConnectionPricingId</code><br/><em>UUID</em></td>
-<td>Id of the service connection pricing</td>
+<td>Id of the service connection pricing.</td>
 </tr>
 <tr>
 <td><code>utilityCost</code><br/><em>string</em></td>
-<td>Utility cost of the record (aggregated per the period)</td>
+<td>Utility cost of the record (aggregated per the period).</td>
 </tr>
 <tr>
 <td><code>utilityUsage</code><br/><em>string</em></td>
-<td>Utility usage of the record</td>
+<td>Utility usage of the record.</td>
 </tr>
 <tr>
 <td><code>startDate</code><br/><em>string</em></td>
-<td>Start date of the record in <a href="https://en.wikipedia.org/wiki/ISO_8601">ISO 8601</a></td>
+<td>Start date of the record in <a href="https://en.wikipedia.org/wiki/ISO_8601">ISO 8601</a>.</td>
 </tr>
 <tr>
 <td><code>endDate</code><br/><em>string</em></td>
-<td>End date of the record in <a href="https://en.wikipedia.org/wiki/ISO_8601">ISO 8601</a></td>
+<td>End date of the record in <a href="https://en.wikipedia.org/wiki/ISO_8601">ISO 8601</a>.</td>
 </tr>
 <tr>
 <td><code>usageType</code><br/><em>string</em></td>
@@ -4099,7 +4100,7 @@ curl <span class="s2">"https://cloudmc_endpoint/v1/usage_summary/organizations/0
 </thead><tbody>
 <tr>
 <td><code>service_connection_id</code><br/><em>UUID</em></td>
-<td>Show usage summary for this service connection</td>
+<td>Show usage summary for this service connection.</td>
 </tr>
 <tr>
 <td><code>include_sub_orgs</code><br/><em>boolean</em></td>
@@ -4115,7 +4116,7 @@ curl <span class="s2">"https://cloudmc_endpoint/v1/usage_summary/organizations/0
 </tr>
 <tr>
 <td><code>combine_usage_types</code><br/><em>boolean</em></td>
-<td>Sums up the utility cost per organization and service connection. The following fields are removed from the output: <code>serviceConnectionPricingId</code>, <code>usageType</code>, <code>secondaryType</code>, <code>utilityUsage</code></td>
+<td>Sums up the utility cost per organization and service connection. The following fields are removed from the output: <code>serviceConnectionPricingId</code>, <code>usageType</code>, <code>secondaryType</code>, <code>utilityUsage</code>.</td>
 </tr>
 <tr>
 <td><code>period</code><br/><em>String</em></td>
@@ -4127,7 +4128,7 @@ curl <span class="s2">"https://cloudmc_endpoint/v1/usage_summary/organizations/0
 </tr>
 <tr>
 <td><code>include_deleted</code><br/><em>boolean</em></td>
-<td>Will find usage of an organization that may have been deleted</td>
+<td>Will find usage of an organization that may have been deleted.</td>
 </tr>
 </tbody></table>
 <h3 id='administration-list-top-level-organization-usage-summary'>List top level organization usage summary</h3>
@@ -4157,7 +4158,7 @@ curl -X GET <span class="se">\</span>
    </span><span class="p">}]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<p>Retrieves the usage summary records for top level organization and it&#39;s sub-organizations for a specific period ensuring that usage is split between two buckets, resource commitment usage and utility usage. The response format will be in the JSON format.</p>
+<p>Retrieves the usage summary records for top level organization and its sub-organizations for a specific period ensuring that usage is split between two buckets, resource commitment usage and utility usage. The response format will be in the JSON format.</p>
 <h5 id='administration-resource-commitment-usage'>Resource Commitment Usage:</h5>
 <p>The usage that is counted toward a pre assigned pool of resources defined by the Resource Commitment of the organization on a specified service connection. The resource commitment usage is capped by the resource commitment capacity which is the total amount of resource allocated to the organization.</p>
 <h5 id='administration-utility-usage'>Utility Usage:</h5>
@@ -4174,23 +4175,23 @@ curl -X GET <span class="se">\</span>
 </thead><tbody>
 <tr>
 <td><code>organizationId</code><br/><em>UUID</em></td>
-<td>Id of the <a href="#administration-organizations">organization</a></td>
+<td>Id of the <a href="#administration-organizations">organization</a>.</td>
 </tr>
 <tr>
 <td><code>serviceConnectionId</code><br/><em>UUID</em></td>
-<td>Id of the <a href="#administration-service-connections">service connection</a></td>
+<td>Id of the <a href="#administration-service-connections">service connection</a>.</td>
 </tr>
 <tr>
 <td><code>serviceConnectionPricingId</code><br/><em>UUID</em></td>
-<td>Id of the service connection pricing</td>
+<td>Id of the service connection pricing.</td>
 </tr>
 <tr>
 <td><code>utilityCost</code><br/><em>string</em></td>
-<td>Utility cost of the record (aggregated per the period)</td>
+<td>Utility cost of the record (aggregated per the period).</td>
 </tr>
 <tr>
 <td><code>utilityUsage</code><br/><em>string</em></td>
-<td>Utility usage of the record</td>
+<td>Utility usage of the record.</td>
 </tr>
 <tr>
 <td><code>resourceCommitmentUsage</code><br/><em>string</em></td>
@@ -4198,11 +4199,11 @@ curl -X GET <span class="se">\</span>
 </tr>
 <tr>
 <td><code>startDate</code><br/><em>string</em></td>
-<td>Start date of the record in <a href="https://en.wikipedia.org/wiki/ISO_8601">ISO 8601</a></td>
+<td>Start date of the record in <a href="https://en.wikipedia.org/wiki/ISO_8601">ISO 8601</a>.</td>
 </tr>
 <tr>
 <td><code>endDate</code><br/><em>string</em></td>
-<td>End date of the record in <a href="https://en.wikipedia.org/wiki/ISO_8601">ISO 8601</a></td>
+<td>End date of the record in <a href="https://en.wikipedia.org/wiki/ISO_8601">ISO 8601</a>.</td>
 </tr>
 <tr>
 <td><code>usageType</code><br/><em>string</em></td>
@@ -4238,7 +4239,7 @@ curl -X GET <span class="se">\</span>
 </thead><tbody>
 <tr>
 <td><code>service_connection_id</code><br/><em>UUID</em></td>
-<td>Show usage summary for this service connection</td>
+<td>Show usage summary for this service connection.</td>
 </tr>
 <tr>
 <td><code>include_sub_orgs</code><br/><em>boolean</em></td>
@@ -4254,7 +4255,7 @@ curl -X GET <span class="se">\</span>
 </tr>
 <tr>
 <td><code>combine_usage_types</code><br/><em>boolean</em></td>
-<td>Sums up the utility cost per organization and service connection. The following fields are removed from the output: <code>serviceConnectionPricingId</code>, <code>usageType</code>, <code>secondaryType</code>, <code>utilityUsage</code></td>
+<td>Sums up the utility cost per organization and service connection. The following fields are removed from the output: <code>serviceConnectionPricingId</code>, <code>usageType</code>, <code>secondaryType</code>, <code>utilityUsage</code>.</td>
 </tr>
 <tr>
 <td><code>period</code><br/><em>String</em></td>
@@ -4262,7 +4263,7 @@ curl -X GET <span class="se">\</span>
 </tr>
 <tr>
 <td><code>include_deleted</code><br/><em>boolean</em></td>
-<td>Will find usage of an organization that may have been deleted</td>
+<td>Will find usage of an organization that may have been deleted.</td>
 </tr>
 </tbody></table>
 <h2 id='administration-monetization'>Monetization</h2><h3 id='administration-product-catalogs'>Product Catalogs</h3>
@@ -13997,7 +13998,7 @@ curl -X PUT <span class="se">\</span>
 
 <table><thead>
 <tr>
-<th>Required attributes</th>
+<th>Required</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
@@ -14182,7 +14183,7 @@ curl -X PUT <span class="se">\</span>
 
 <table><thead>
 <tr>
-<th>Required attributes</th>
+<th>Required</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
@@ -14194,7 +14195,7 @@ curl -X PUT <span class="se">\</span>
 
 <table><thead>
 <tr>
-<th>Optional attributes</th>
+<th>Optional</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
@@ -14558,7 +14559,7 @@ curl -X PUT <span class="se">\</span>
 
 <table><thead>
 <tr>
-<th>Required attributes</th>
+<th>Required</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
@@ -14700,7 +14701,7 @@ curl -X PUT <span class="se">\</span>
 
 <table><thead>
 <tr>
-<th>Required attributes</th>
+<th>Required</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
@@ -14866,7 +14867,7 @@ curl -X PUT <span class="se">\</span>
 
 <table><thead>
 <tr>
-<th>Required attributes</th>
+<th>Required</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
@@ -14909,7 +14910,7 @@ curl -X PUT <span class="se">\</span>
 
 <table><thead>
 <tr>
-<th>Required attributes</th>
+<th>Required</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
@@ -14944,7 +14945,7 @@ curl -X PUT <span class="se">\</span>
 
 <table><thead>
 <tr>
-<th>Required attributes</th>
+<th>Required</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
@@ -15199,55 +15200,55 @@ curl -X PUT <span class="se">\</span>
 </thead><tbody>
 <tr>
 <td><code>status</code><br/><em>string</em></td>
-<td>The status of the instance. One of the following values: PROVISIONING, STAGING, RUNNING, STOPPING, STOPPED, SUSPENDING, SUSPENDED, and TERMINATED</td>
+<td>The status of the instance. One of the following values: PROVISIONING, STAGING, RUNNING, STOPPING, STOPPED, SUSPENDING, SUSPENDED, and TERMINATED.</td>
 </tr>
 <tr>
 <td><code>zone</code><br/><em>string</em></td>
-<td>URL of the zone where the instance resides</td>
+<td>URL of the zone where the instance resides.</td>
 </tr>
 <tr>
 <td><code>machineType</code><br/><em>string</em></td>
-<td>URL of the machine type resource used by this instance</td>
+<td>URL of the machine type resource used by this instance.</td>
 </tr>
 <tr>
 <td><code>cpuPlatform</code><br/><em>string</em></td>
-<td>The CPU platform used by this instance</td>
+<td>The CPU platform used by this instance.</td>
 </tr>
 <tr>
 <td><code>creationTimestamp</code><br/><em>string</em></td>
-<td>Creation timestamp in RFC3339 text format</td>
+<td>Creation timestamp in RFC3339 text format.</td>
 </tr>
 <tr>
 <td><code>deletionProtection</code><br/><em>string</em></td>
-<td>Whether the resource should be protected against deletion</td>
+<td>Whether the resource should be protected against deletion.</td>
 </tr>
 <tr>
 <td><code>disks</code><br/><em>Array[Disk]</em></td>
-<td>Array of disks associated with this instance</td>
+<td>Array of disks associated with this instance.</td>
 </tr>
 <tr>
 <td><code>kind</code><br/><em>string</em></td>
-<td>Type of the resource</td>
+<td>Type of the resource.</td>
 </tr>
 <tr>
 <td><code>labelFingerprint</code><br/><em>string</em></td>
-<td>A base64-encoded string. A hash of the label&#39;s contents and used for optimistic locking</td>
+<td>A base64-encoded string. A hash of the label&#39;s contents and used for optimistic locking.</td>
 </tr>
 <tr>
 <td><code>metadata</code><br/><em>object</em></td>
-<td>The metadata key/value pairs assigned to this instance</td>
+<td>The metadata key/value pairs assigned to this instance.</td>
 </tr>
 <tr>
 <td><code>networkInterfaces</code><br/><em>Array[object]</em></td>
-<td>An array of network configurations for this instance</td>
+<td>An array of network configurations for this instance.</td>
 </tr>
 <tr>
 <td><code>scheduling</code><br/><em>object</em></td>
-<td>Sets the scheduling options for this instance</td>
+<td>Sets the scheduling options for this instance.</td>
 </tr>
 <tr>
 <td><code>selfLink</code><br/><em>string</em></td>
-<td>Server-defined URL for this resource</td>
+<td>Server-defined URL for this resource.</td>
 </tr>
 <tr>
 <td><code>startRestricted</code><br/><em>boolean</em></td>
@@ -15255,71 +15256,71 @@ curl -X PUT <span class="se">\</span>
 </tr>
 <tr>
 <td><code>tags</code><br/><em>object</em></td>
-<td>Tags to apply to this instance. Tags are used to identify valid sources or targets for network firewalls and are specified by the client during instance creation</td>
+<td>Tags to apply to this instance. Tags are used to identify valid sources or targets for network firewalls and are specified by the client during instance creation.</td>
 </tr>
 <tr>
 <td><code>shortMachineType</code><br/><em>string</em></td>
-<td>A short version of the machineType name</td>
+<td>A short version of the machineType name.</td>
 </tr>
 <tr>
 <td><code>project</code><br/><em>string</em></td>
-<td>The project where the instance resides</td>
+<td>The project where the instance resides.</td>
 </tr>
 <tr>
 <td><code>internalIp</code><br/><em>string</em></td>
-<td>The instance&#39;s internal IP</td>
+<td>The instance&#39;s internal IP.</td>
 </tr>
 <tr>
 <td><code>networkName</code><br/><em>string</em></td>
-<td>The network to which the instance is connected to</td>
+<td>The network to which the instance is connected to.</td>
 </tr>
 <tr>
 <td><code>subnetworkName</code><br/><em>string</em></td>
-<td>The sub-network within the network the instance is connected to</td>
+<td>The sub-network within the network the instance is connected to.</td>
 </tr>
 <tr>
 <td><code>iconUrl</code><br/><em>string</em></td>
-<td>Icon representing the OS installed on the instance&#39;s boot disk</td>
+<td>Icon representing the OS installed on the instance&#39;s boot disk.</td>
 </tr>
 <tr>
 <td><code>osImageName</code><br/><em>string</em></td>
-<td>The name of the OS image installed on the instance&#39;s boot disk</td>
+<td>The name of the OS image installed on the instance&#39;s boot disk.</td>
 </tr>
 <tr>
 <td><code>osImageSelfLink</code><br/><em>string</em></td>
-<td>The full URL to the OS image</td>
+<td>The full URL to the OS image.</td>
 </tr>
 <tr>
 <td><code>osImageSizeInGb</code><br/><em>string</em></td>
-<td>The size of the OS image</td>
+<td>The size of the OS image.</td>
 </tr>
 <tr>
 <td><code>bootDiskSizeInGb</code><br/><em>string</em></td>
-<td>The size of the instance&#39;s boot disk</td>
+<td>The size of the instance&#39;s boot disk.</td>
 </tr>
 <tr>
 <td><code>cpuCount</code><br/><em>string</em></td>
-<td>The number of vCPUs for the machine type</td>
+<td>The number of vCPUs for the machine type.</td>
 </tr>
 <tr>
 <td><code>memoryInGB</code><br/><em>string</em></td>
-<td>The memory size for the machine name</td>
+<td>The memory size for the machine name.</td>
 </tr>
 <tr>
 <td><code>id</code><br/><em>UUID</em></td>
-<td>The id of the instance</td>
+<td>The id of the instance.</td>
 </tr>
 <tr>
 <td><code>name</code><br/><em>string</em></td>
-<td>The display name of the instance</td>
+<td>The display name of the instance.</td>
 </tr>
 <tr>
 <td><code>shortZone</code><br/><em>string</em></td>
-<td>A short version of the zone name</td>
+<td>A short version of the zone name.</td>
 </tr>
 <tr>
 <td><code>shortRegion</code><br/><em>string</em></td>
-<td>A short version of the region name</td>
+<td>A short version of the region name.</td>
 </tr>
 </tbody></table>
 
@@ -15433,55 +15434,55 @@ curl -X PUT <span class="se">\</span>
 </thead><tbody>
 <tr>
 <td><code>status</code><br/><em>string</em></td>
-<td>The status of the instance. One of the following values: PROVISIONING, STAGING, RUNNING, STOPPING, STOPPED, SUSPENDING, SUSPENDED, and TERMINATED</td>
+<td>The status of the instance. One of the following values: PROVISIONING, STAGING, RUNNING, STOPPING, STOPPED, SUSPENDING, SUSPENDED, and TERMINATED.</td>
 </tr>
 <tr>
 <td><code>zone</code><br/><em>string</em></td>
-<td>URL of the zone where the instance resides</td>
+<td>URL of the zone where the instance resides.</td>
 </tr>
 <tr>
 <td><code>machineType</code><br/><em>string</em></td>
-<td>URL of the machine type resource used by this instance</td>
+<td>URL of the machine type resource used by this instance.</td>
 </tr>
 <tr>
 <td><code>cpuPlatform</code><br/><em>string</em></td>
-<td>The CPU platform used by this instance</td>
+<td>The CPU platform used by this instance.</td>
 </tr>
 <tr>
 <td><code>creationTimestamp</code><br/><em>string</em></td>
-<td>Creation timestamp in RFC3339 text format</td>
+<td>Creation timestamp in RFC3339 text format.</td>
 </tr>
 <tr>
 <td><code>deletionProtection</code><br/><em>string</em></td>
-<td>Whether the resource should be protected against deletion</td>
+<td>Whether the resource should be protected against deletion.</td>
 </tr>
 <tr>
 <td><code>disks</code><br/><em>Array[Disk]</em></td>
-<td>Array of disks associated with this instance</td>
+<td>Array of disks associated with this instance.</td>
 </tr>
 <tr>
 <td><code>kind</code><br/><em>string</em></td>
-<td>Type of the resource</td>
+<td>Type of the resource.</td>
 </tr>
 <tr>
 <td><code>labelFingerprint</code><br/><em>string</em></td>
-<td>A base64-encoded string. A hash of the label&#39;s contents and used for optimistic locking</td>
+<td>A base64-encoded string. A hash of the label&#39;s contents and used for optimistic locking.</td>
 </tr>
 <tr>
 <td><code>metadata</code><br/><em>object</em></td>
-<td>The metadata key/value pairs assigned to this instance</td>
+<td>The metadata key/value pairs assigned to this instance.</td>
 </tr>
 <tr>
 <td><code>networkInterfaces</code><br/><em>Array[object]</em></td>
-<td>An array of network configurations for this instance</td>
+<td>An array of network configurations for this instance.</td>
 </tr>
 <tr>
 <td><code>scheduling</code><br/><em>object</em></td>
-<td>Sets the scheduling options for this instance</td>
+<td>Sets the scheduling options for this instance.</td>
 </tr>
 <tr>
 <td><code>selfLink</code><br/><em>string</em></td>
-<td>Server-defined URL for this resource</td>
+<td>Server-defined URL for this resource.</td>
 </tr>
 <tr>
 <td><code>startRestricted</code><br/><em>boolean</em></td>
@@ -15489,71 +15490,71 @@ curl -X PUT <span class="se">\</span>
 </tr>
 <tr>
 <td><code>tags</code><br/><em>object</em></td>
-<td>Tags to apply to this instance. Tags are used to identify valid sources or targets for network firewalls and are specified by the client during instance creation</td>
+<td>Tags to apply to this instance. Tags are used to identify valid sources or targets for network firewalls and are specified by the client during instance creation.</td>
 </tr>
 <tr>
 <td><code>shortMachineType</code><br/><em>string</em></td>
-<td>A short version of the machineType name</td>
+<td>A short version of the machineType name.</td>
 </tr>
 <tr>
 <td><code>project</code><br/><em>string</em></td>
-<td>The project where the instance resides</td>
+<td>The project where the instance resides.</td>
 </tr>
 <tr>
 <td><code>internalIp</code><br/><em>string</em></td>
-<td>The instance&#39;s internal IP</td>
+<td>The instance&#39;s internal IP.</td>
 </tr>
 <tr>
 <td><code>networkName</code><br/><em>string</em></td>
-<td>The network to which the instance is connected to</td>
+<td>The network to which the instance is connected to.</td>
 </tr>
 <tr>
 <td><code>subnetworkName</code><br/><em>string</em></td>
-<td>The sub-network within the network the instance is connected to</td>
+<td>The sub-network within the network the instance is connected to.</td>
 </tr>
 <tr>
 <td><code>iconUrl</code><br/><em>string</em></td>
-<td>Icon representing the OS installed on the instance&#39;s boot disk</td>
+<td>Icon representing the OS installed on the instance&#39;s boot disk.</td>
 </tr>
 <tr>
 <td><code>osImageName</code><br/><em>string</em></td>
-<td>The name of the OS image installed on the instance&#39;s boot disk</td>
+<td>The name of the OS image installed on the instance&#39;s boot disk.</td>
 </tr>
 <tr>
 <td><code>osImageSelfLink</code><br/><em>string</em></td>
-<td>The full URL to the OS image</td>
+<td>The full URL to the OS image.</td>
 </tr>
 <tr>
 <td><code>osImageSizeInGb</code><br/><em>string</em></td>
-<td>The size of the OS image</td>
+<td>The size of the OS image.</td>
 </tr>
 <tr>
 <td><code>bootDiskSizeInGb</code><br/><em>string</em></td>
-<td>The size of the instance&#39;s boot disk</td>
+<td>The size of the instance&#39;s boot disk.</td>
 </tr>
 <tr>
 <td><code>cpuCount</code><br/><em>string</em></td>
-<td>The number of vCPUs for the machine type</td>
+<td>The number of vCPUs for the machine type.</td>
 </tr>
 <tr>
 <td><code>memoryInGB</code><br/><em>string</em></td>
-<td>The memory size for the machine name</td>
+<td>The memory size for the machine name.</td>
 </tr>
 <tr>
 <td><code>id</code><br/><em>UUID</em></td>
-<td>The id of the instance</td>
+<td>The id of the instance.</td>
 </tr>
 <tr>
 <td><code>name</code><br/><em>string</em></td>
-<td>The display name of the instance</td>
+<td>The display name of the instance.</td>
 </tr>
 <tr>
 <td><code>shortZone</code><br/><em>string</em></td>
-<td>A short version of the zone name</td>
+<td>A short version of the zone name.</td>
 </tr>
 <tr>
 <td><code>shortRegion</code><br/><em>string</em></td>
-<td>A short version of the region name</td>
+<td>A short version of the region name.</td>
 </tr>
 </tbody></table>
 
@@ -15631,35 +15632,35 @@ curl -X PUT <span class="se">\</span>
 </thead><tbody>
 <tr>
 <td><code>name</code><br/><em>string</em></td>
-<td>The display name of the instance</td>
+<td>The display name of the instance.</td>
 </tr>
 <tr>
 <td><code>shortRegion</code><br/><em>string</em></td>
-<td>A short version of the region name</td>
+<td>A short version of the region name.</td>
 </tr>
 <tr>
 <td><code>shortZone</code><br/><em>string</em></td>
-<td>A short version of the zone name</td>
+<td>A short version of the zone name.</td>
 </tr>
 <tr>
 <td><code>bootDiskType</code><br/><em>string</em></td>
-<td>The boot disk type. Choices are &#39;pd-standard&#39; or &#39;pd-ssd&#39;</td>
+<td>The boot disk type. Choices are &#39;pd-standard&#39; or &#39;pd-ssd&#39;.</td>
 </tr>
 <tr>
 <td><code>bootDiskSizeInGb</code> <br/><em>string</em></td>
-<td>The size of the boot disk in GB. Acceptable values are 1 to 2000, inclusive</td>
+<td>The size of the boot disk in GB. Acceptable values are 1 to 2000, inclusive.</td>
 </tr>
 <tr>
 <td><code>cpuCount</code><br/><em>string</em></td>
-<td>Updated number of vCPUs of instance</td>
+<td>Updated number of vCPUs of instance.</td>
 </tr>
 <tr>
 <td><code>memoryInGB</code><br/><em>string</em></td>
-<td>Updated memory of instance</td>
+<td>Updated memory of instance.</td>
 </tr>
 <tr>
 <td><code>osImageSelfLink</code><br/><em>string</em></td>
-<td>The full URL to the OS image</td>
+<td>The full URL to the OS image.</td>
 </tr>
 </tbody></table>
 
@@ -15740,11 +15741,11 @@ The total memory for a machine type must be a multiple of 512 MB. For example, 6
 </thead><tbody>
 <tr>
 <td><code>cpuCount</code><br/><em>string</em></td>
-<td>Updated number of vCPUs of instance</td>
+<td>Updated number of vCPUs of instance.</td>
 </tr>
 <tr>
 <td><code>memoryInGB</code><br/><em>string</em></td>
-<td>Updated memory of instance</td>
+<td>Updated memory of instance.</td>
 </tr>
 </tbody></table>
 
@@ -15851,7 +15852,7 @@ The total memory for a machine type must be a multiple of 512 MB. For example, 6
 </thead><tbody>
 <tr>
 <td><code>username</code><br/><em>string</em></td>
-<td>The username</td>
+<td>The username.</td>
 </tr>
 </tbody></table>
 
@@ -15988,27 +15989,27 @@ An instance can only belong to one load balanced instance group. But you can add
 </thead><tbody>
 <tr>
 <td><code>creationTimestamp</code><br/><em>string</em></td>
-<td>Creation timestamp in RFC3339 text format</td>
+<td>Creation timestamp in RFC3339 text format.</td>
 </tr>
 <tr>
 <td><code>description</code><br/><em>string</em></td>
-<td>An optional description of this resource</td>
+<td>An optional description of this resource.</td>
 </tr>
 <tr>
 <td><code>fingerprint</code><br/><em>string</em></td>
-<td>A short sequence of bytes used to identify the named ports</td>
+<td>A short sequence of bytes used to identify the named ports.</td>
 </tr>
 <tr>
 <td><code>id</code><br/><em>UUID</em></td>
-<td>The id of the instance group</td>
+<td>The id of the instance group.</td>
 </tr>
 <tr>
 <td><code>kind</code><br/><em>string</em></td>
-<td>Type of the resource</td>
+<td>Type of the resource.</td>
 </tr>
 <tr>
 <td><code>name</code><br/><em>string</em></td>
-<td>The display name of the instance group</td>
+<td>The display name of the instance group.</td>
 </tr>
 <tr>
 <td><code>namedPorts</code><br/><em>object</em></td>
@@ -16016,31 +16017,31 @@ An instance can only belong to one load balanced instance group. But you can add
 </tr>
 <tr>
 <td><code>network</code><br/><em>string</em></td>
-<td>The network to which the instance group is connected to</td>
+<td>The network to which the instance group is connected to.</td>
 </tr>
 <tr>
 <td><code>selfLink</code><br/><em>string</em></td>
-<td>Server-defined URL for this resource</td>
+<td>Server-defined URL for this resource.</td>
 </tr>
 <tr>
 <td><code>shortRegion</code><br/><em>string</em></td>
-<td>A short version of the region name</td>
+<td>A short version of the region name.</td>
 </tr>
 <tr>
 <td><code>shortZone</code><br/><em>string</em></td>
-<td>A short version of the zone name</td>
+<td>A short version of the zone name.</td>
 </tr>
 <tr>
 <td><code>size</code><br/><em>integer</em></td>
-<td>The number of instances in the group</td>
+<td>The number of instances in the group.</td>
 </tr>
 <tr>
 <td><code>subnetwork</code><br/><em>string</em></td>
-<td>The sub-network within the network the instance group is connected to</td>
+<td>The sub-network within the network the instance group is connected to.</td>
 </tr>
 <tr>
 <td><code>zone</code><br/><em>string</em></td>
-<td>URL of the zone where the instance group resides</td>
+<td>URL of the zone where the instance group resides.</td>
 </tr>
 </tbody></table>
 
@@ -16088,27 +16089,27 @@ An instance can only belong to one load balanced instance group. But you can add
 </thead><tbody>
 <tr>
 <td><code>creationTimestamp</code><br/><em>string</em></td>
-<td>Creation timestamp in RFC3339 text format</td>
+<td>Creation timestamp in RFC3339 text format.</td>
 </tr>
 <tr>
 <td><code>description</code><br/><em>string</em></td>
-<td>An optional description of this resource</td>
+<td>An optional description of this resource.</td>
 </tr>
 <tr>
 <td><code>fingerprint</code><br/><em>string</em></td>
-<td>A short sequence of bytes used to identify the named ports</td>
+<td>A short sequence of bytes used to identify the named ports.</td>
 </tr>
 <tr>
 <td><code>id</code><br/><em>UUID</em></td>
-<td>The id of the instance group</td>
+<td>The id of the instance group.</td>
 </tr>
 <tr>
 <td><code>kind</code><br/><em>string</em></td>
-<td>Type of the resource</td>
+<td>Type of the resource.</td>
 </tr>
 <tr>
 <td><code>name</code><br/><em>string</em></td>
-<td>The display name of the instance group</td>
+<td>The display name of the instance group.</td>
 </tr>
 <tr>
 <td><code>namedPorts</code><br/><em>object</em></td>
@@ -16116,31 +16117,31 @@ An instance can only belong to one load balanced instance group. But you can add
 </tr>
 <tr>
 <td><code>network</code><br/><em>string</em></td>
-<td>The network to which the instance group is connected to</td>
+<td>The network to which the instance group is connected to.</td>
 </tr>
 <tr>
 <td><code>selfLink</code><br/><em>string</em></td>
-<td>Server-defined URL for this resource</td>
+<td>Server-defined URL for this resource.</td>
 </tr>
 <tr>
 <td><code>shortRegion</code><br/><em>string</em></td>
-<td>A short version of the region name</td>
+<td>A short version of the region name.</td>
 </tr>
 <tr>
 <td><code>shortZone</code><br/><em>string</em></td>
-<td>A short version of the zone name</td>
+<td>A short version of the zone name.</td>
 </tr>
 <tr>
 <td><code>size</code><br/><em>integer</em></td>
-<td>The number of instances in the group</td>
+<td>The number of instances in the group.</td>
 </tr>
 <tr>
 <td><code>subnetwork</code><br/><em>string</em></td>
-<td>The sub-network within the network the instance group is connected to</td>
+<td>The sub-network within the network the instance group is connected to.</td>
 </tr>
 <tr>
 <td><code>zone</code><br/><em>string</em></td>
-<td>URL of the zone where the instance group resides</td>
+<td>URL of the zone where the instance group resides.</td>
 </tr>
 </tbody></table>
 
@@ -16175,11 +16176,11 @@ An instance can only belong to one load balanced instance group. But you can add
 </thead><tbody>
 <tr>
 <td><code>name</code><br/><em>string</em></td>
-<td>The display name of the instance group</td>
+<td>The display name of the instance group.</td>
 </tr>
 <tr>
 <td><code>shortZone</code><br/><em>string</em></td>
-<td>A short version of the zone name</td>
+<td>A short version of the zone name.</td>
 </tr>
 </tbody></table>
 
@@ -16191,19 +16192,19 @@ An instance can only belong to one load balanced instance group. But you can add
 </thead><tbody>
 <tr>
 <td><code>shortInstances</code><br/><em>array[string]</em></td>
-<td>Array of instance names to add to the instance group upon creation</td>
+<td>Array of instance names to add to the instance group upon creation.</td>
 </tr>
 <tr>
 <td><code>shortNetwork</code><br/><em>string</em></td>
-<td>The network to which the instance group is connected to</td>
+<td>The network to which the instance group is connected to.</td>
 </tr>
 <tr>
 <td><code>shortRegion</code><br/><em>string</em></td>
-<td>A short version of the region name</td>
+<td>A short version of the region name.</td>
 </tr>
 <tr>
 <td><code>shortSubnetwork</code><br/><em>string</em></td>
-<td>The sub-network within the network the instance group is connected to</td>
+<td>The sub-network within the network the instance group is connected to.</td>
 </tr>
 </tbody></table>
 
@@ -16234,7 +16235,7 @@ An instance can only belong to one load balanced instance group. But you can add
 <p>Manage instance members in an existing instance group.</p>
 
 <aside class="notice">
-An instance can only belong to one load balanced instance group. But you can add an instance to multiple non-load balanced instance groups
+An instance can only belong to one load balanced instance group. But you can add an instance to multiple non-load balanced instance groups.
 </aside>
 
 <table><thead>
@@ -16302,7 +16303,7 @@ An instance can only belong to one load balanced instance group. But you can add
 </thead><tbody>
 <tr>
 <td><code>creationTimestamp</code><br/><em>string</em></td>
-<td>Creation timestamp in RFC3339 text format</td>
+<td>Creation timestamp in RFC3339 text format.</td>
 </tr>
 <tr>
 <td><code>sizeGb</code> <br/><em>string</em></td>
@@ -16318,7 +16319,7 @@ An instance can only belong to one load balanced instance group. But you can add
 </tr>
 <tr>
 <td><code>selfLink</code><br/><em>string</em></td>
-<td>Server-defined URL for this resource</td>
+<td>Server-defined URL for this resource.</td>
 </tr>
 <tr>
 <td><code>type</code><br/><em>string</em></td>
@@ -16334,7 +16335,7 @@ An instance can only belong to one load balanced instance group. But you can add
 </tr>
 <tr>
 <td><code>labelFingerprint</code><br/><em>string</em></td>
-<td>A base64-encoded string. A hash of the label&#39;s contents and used for optimistic locking</td>
+<td>A base64-encoded string. A hash of the label&#39;s contents and used for optimistic locking.</td>
 </tr>
 <tr>
 <td><code>physicalBlockSizeBytes</code><br/><em>string</em></td>
@@ -16362,19 +16363,19 @@ An instance can only belong to one load balanced instance group. But you can add
 </tr>
 <tr>
 <td><code>id</code><br/><em>UUID</em></td>
-<td>The id of the instance</td>
+<td>The id of the instance.</td>
 </tr>
 <tr>
 <td><code>name</code><br/><em>string</em></td>
-<td>The display name of the instance</td>
+<td>The display name of the instance.</td>
 </tr>
 <tr>
 <td><code>shortZone</code><br/><em>string</em></td>
-<td>A short version of the zone name</td>
+<td>A short version of the zone name.</td>
 </tr>
 <tr>
 <td><code>shortRegion</code><br/><em>string</em></td>
-<td>A short version of the region name</td>
+<td>A short version of the region name.</td>
 </tr>
 </tbody></table>
 
@@ -16424,7 +16425,7 @@ An instance can only belong to one load balanced instance group. But you can add
 </thead><tbody>
 <tr>
 <td><code>creationTimestamp</code><br/><em>string</em></td>
-<td>Creation timestamp in RFC3339 text format</td>
+<td>Creation timestamp in RFC3339 text format.</td>
 </tr>
 <tr>
 <td><code>sizeGb</code> <br/><em>string</em></td>
@@ -16440,7 +16441,7 @@ An instance can only belong to one load balanced instance group. But you can add
 </tr>
 <tr>
 <td><code>selfLink</code><br/><em>string</em></td>
-<td>Server-defined URL for this resource</td>
+<td>Server-defined URL for this resource.</td>
 </tr>
 <tr>
 <td><code>type</code><br/><em>string</em></td>
@@ -16456,7 +16457,7 @@ An instance can only belong to one load balanced instance group. But you can add
 </tr>
 <tr>
 <td><code>labelFingerprint</code><br/><em>string</em></td>
-<td>A base64-encoded string. A hash of the label&#39;s contents and used for optimistic locking</td>
+<td>A base64-encoded string. A hash of the label&#39;s contents and used for optimistic locking.</td>
 </tr>
 <tr>
 <td><code>physicalBlockSizeBytes</code><br/><em>string</em></td>
@@ -16484,19 +16485,19 @@ An instance can only belong to one load balanced instance group. But you can add
 </tr>
 <tr>
 <td><code>id</code><br/><em>UUID</em></td>
-<td>The id of the instance</td>
+<td>The id of the instance.</td>
 </tr>
 <tr>
 <td><code>name</code><br/><em>string</em></td>
-<td>The display name of the instance</td>
+<td>The display name of the instance.</td>
 </tr>
 <tr>
 <td><code>shortZone</code><br/><em>string</em></td>
-<td>A short version of the zone name</td>
+<td>A short version of the zone name.</td>
 </tr>
 <tr>
 <td><code>shortRegion</code><br/><em>string</em></td>
-<td>A short version of the region name</td>
+<td>A short version of the region name.</td>
 </tr>
 </tbody></table>
 
@@ -16530,15 +16531,15 @@ An instance can only belong to one load balanced instance group. But you can add
 </thead><tbody>
 <tr>
 <td><code>name</code><br/><em>string</em></td>
-<td>The display name of the instance</td>
+<td>The display name of the instance.</td>
 </tr>
 <tr>
 <td><code>shortRegion</code><br/><em>string</em></td>
-<td>A short version of the region name</td>
+<td>A short version of the region name.</td>
 </tr>
 <tr>
 <td><code>shortZone</code><br/><em>string</em></td>
-<td>A short version of the zone name</td>
+<td>A short version of the zone name.</td>
 </tr>
 <tr>
 <td><code>shortType</code><br/><em>string</em></td>
@@ -16637,7 +16638,7 @@ An instance can only belong to one load balanced instance group. But you can add
 </thead><tbody>
 <tr>
 <td><code>shortUsers</code><br/><em>string</em></td>
-<td>The id of the <a href="#gcp-instances">instance</a> to which the created disk should be attached</td>
+<td>The id of the <a href="#gcp-instances">instance</a> to which the created disk should be attached.</td>
 </tr>
 </tbody></table>
 
@@ -16706,11 +16707,11 @@ An instance can only belong to one load balanced instance group. But you can add
 </thead><tbody>
 <tr>
 <td><code>id</code><br/><em>string</em></td>
-<td>The SSH key&#39;s id</td>
+<td>The SSH key&#39;s id.</td>
 </tr>
 <tr>
 <td><code>name</code><br/><em>string</em></td>
-<td>The name of the SSH key</td>
+<td>The name of the SSH key.</td>
 </tr>
 <tr>
 <td><code>publicKey</code><br/><em>string</em></td>
@@ -16746,11 +16747,11 @@ An instance can only belong to one load balanced instance group. But you can add
 </thead><tbody>
 <tr>
 <td><code>id</code><br/><em>string</em></td>
-<td>The SSH key&#39;s id</td>
+<td>The SSH key&#39;s id.</td>
 </tr>
 <tr>
 <td><code>name</code><br/><em>string</em></td>
-<td>The name of the SSH key</td>
+<td>The name of the SSH key.</td>
 </tr>
 <tr>
 <td><code>publicKey</code><br/><em>string</em></td>
@@ -16785,7 +16786,7 @@ An instance can only belong to one load balanced instance group. But you can add
 </thead><tbody>
 <tr>
 <td><code>name</code><br/><em>string</em></td>
-<td>The name of the SSH key</td>
+<td>The name of the SSH key.</td>
 </tr>
 <tr>
 <td><code>publicKey</code><br/><em>string</em></td>
@@ -16802,8 +16803,7 @@ An instance can only belong to one load balanced instance group. But you can add
 
 <p>Delete an existing SSH key from the <a href="#administration-environments">environment</a>.</p>
 <h3 id='gcp-health-checks'>Health checks</h3>
-<p>Health checking mechanisms determine whether VM instances respond properly to traffic.
-&lt;!-------------------- LIST HEALTH CHECK --------------------&gt;</p>
+<p>Health checking mechanisms determine whether VM instances respond properly to traffic.</p>
 <h4 id='gcp-list-health-checks'>List health checks</h4><pre class="highlight shell tab-shell"><code>curl -X GET <span class="se">\</span>
   -H <span class="s1">'MC-Api-key: your_api_key'</span>
   <span class="s2">"https://cloudmc_endpoint/v1/services/gcp/test-area/healthchecks"</span>
@@ -16844,7 +16844,7 @@ An instance can only belong to one load balanced instance group. But you can add
    GET /service/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/healthchecks
 </code></p>
 
-<p>Retrieve a list of all healtch checks.</p>
+<p>Retrieve a list of all health checks.</p>
 
 <table><thead>
 <tr>
@@ -16854,11 +16854,11 @@ An instance can only belong to one load balanced instance group. But you can add
 </thead><tbody>
 <tr>
 <td><code>checkIntervalSec</code><br/><em>int</em></td>
-<td>How often (in seconds) to send a health check. The default value is 5 seconds</td>
+<td>How often (in seconds) to send a health check. The default value is 5 seconds.</td>
 </tr>
 <tr>
 <td><code>creationTimestamp</code><br/><em>string</em></td>
-<td>Creation timestamp in RFC3339 text format</td>
+<td>Creation timestamp in RFC3339 text format.</td>
 </tr>
 <tr>
 <td><code>description</code> <br/><em>string</em></td>
@@ -16870,11 +16870,11 @@ An instance can only belong to one load balanced instance group. But you can add
 </tr>
 <tr>
 <td><code>httpHealthCheck</code> <br/><em>object</em></td>
-<td>When the type is set to HTTP, this object represents the health check</td>
+<td>When the type is set to HTTP, this object represents the health check.</td>
 </tr>
 <tr>
 <td><code>httpSHealthCheck</code> <br/><em>object</em></td>
-<td>When the type is set to HTTPS, this object represents the health check</td>
+<td>When the type is set to HTTPS, this object represents the health check.</td>
 </tr>
 <tr>
 <td><code>id</code><br/><em>string</em></td>
@@ -16906,7 +16906,7 @@ An instance can only belong to one load balanced instance group. But you can add
 </tr>
 <tr>
 <td><code>portNumber</code><br/><em>string</em></td>
-<td>The port number for health check</td>
+<td>The port number for health check.</td>
 </tr>
 </tbody></table>
 
@@ -16954,11 +16954,11 @@ An instance can only belong to one load balanced instance group. But you can add
 </thead><tbody>
 <tr>
 <td><code>checkIntervalSec</code><br/><em>int</em></td>
-<td>How often (in seconds) to send a health check. The default value is 5 seconds</td>
+<td>How often (in seconds) to send a health check. The default value is 5 seconds.</td>
 </tr>
 <tr>
 <td><code>creationTimestamp</code><br/><em>string</em></td>
-<td>Creation timestamp in RFC3339 text format</td>
+<td>Creation timestamp in RFC3339 text format.</td>
 </tr>
 <tr>
 <td><code>description</code> <br/><em>string</em></td>
@@ -16970,11 +16970,11 @@ An instance can only belong to one load balanced instance group. But you can add
 </tr>
 <tr>
 <td><code>httpHealthCheck</code> <br/><em>object</em></td>
-<td>When the type is set to HTTP, this object represents the health check</td>
+<td>When the type is set to HTTP, this object represents the health check.</td>
 </tr>
 <tr>
 <td><code>httpSHealthCheck</code> <br/><em>object</em></td>
-<td>When the type is set to HTTPS, this object represents the health check</td>
+<td>When the type is set to HTTPS, this object represents the health check.</td>
 </tr>
 <tr>
 <td><code>id</code><br/><em>string</em></td>
@@ -17006,7 +17006,7 @@ An instance can only belong to one load balanced instance group. But you can add
 </tr>
 <tr>
 <td><code>portNumber</code><br/><em>string</em></td>
-<td>The port number for health check</td>
+<td>The port number for health check.</td>
 </tr>
 </tbody></table>
 
@@ -17029,7 +17029,7 @@ An instance can only belong to one load balanced instance group. But you can add
 </thead><tbody>
 <tr>
 <td><code>name</code><br/><em>string</em></td>
-<td>The display name of the health check</td>
+<td>The display name of the health check.</td>
 </tr>
 </tbody></table>
 
@@ -17049,7 +17049,7 @@ An instance can only belong to one load balanced instance group. But you can add
 </tr>
 <tr>
 <td><code>description</code><br/><em>string</em></td>
-<td>Description of the health check</td>
+<td>Description of the health check.</td>
 </tr>
 </tbody></table>
 
@@ -17089,7 +17089,7 @@ An instance can only belong to one load balanced instance group. But you can add
 </thead><tbody>
 <tr>
 <td><code>portNumber</code><br/><em>integer</em></td>
-<td>The port number of the health check</td>
+<td>The port number of the health check.</td>
 </tr>
 </tbody></table>
 
@@ -17105,7 +17105,7 @@ An instance can only belong to one load balanced instance group. But you can add
 </tr>
 <tr>
 <td><code>description</code><br/><em>string</em></td>
-<td>Description of the health check</td>
+<td>Description of the health check.</td>
 </tr>
 </tbody></table>
 <h2 id='gcp-networking'>Networking</h2><h3 id='gcp-networks'>Networks</h3>
@@ -17163,23 +17163,23 @@ An instance can only belong to one load balanced instance group. But you can add
 </tr>
 <tr>
 <td><code>creationTimestamp</code><br/><em>string</em></td>
-<td>Creation timestamp in RFC3339 text format</td>
+<td>Creation timestamp in RFC3339 text format.</td>
 </tr>
 <tr>
 <td><code>description</code><br/><em>string</em></td>
-<td>An optional description of this resource</td>
+<td>An optional description of this resource.</td>
 </tr>
 <tr>
 <td><code>id</code><br/><em>string</em></td>
-<td>The network&#39;s id</td>
+<td>The network&#39;s id.</td>
 </tr>
 <tr>
 <td><code>name</code><br/><em>string</em></td>
-<td>The network&#39;s name</td>
+<td>The network&#39;s name.</td>
 </tr>
 <tr>
 <td><code>kind</code><br/><em>string</em></td>
-<td>Type of the resource</td>
+<td>Type of the resource.</td>
 </tr>
 <tr>
 <td><code>routingConfig</code><br/><em>object</em></td>
@@ -17187,11 +17187,11 @@ An instance can only belong to one load balanced instance group. But you can add
 </tr>
 <tr>
 <td><code>selfLink</code><br/><em>string</em></td>
-<td>Server-defined URL for this resource</td>
+<td>Server-defined URL for this resource.</td>
 </tr>
 <tr>
 <td><code>subnetworks</code><br/><em>Array[URL]</em></td>
-<td>Server-defined fully-qualified URLs for all subnetworks in this VPC network</td>
+<td>Server-defined fully-qualified URLs for all subnetworks in this VPC network.</td>
 </tr>
 </tbody></table>
 
@@ -17241,23 +17241,23 @@ An instance can only belong to one load balanced instance group. But you can add
 </tr>
 <tr>
 <td><code>creationTimestamp</code><br/><em>string</em></td>
-<td>Creation timestamp in RFC3339 text format</td>
+<td>Creation timestamp in RFC3339 text format.</td>
 </tr>
 <tr>
 <td><code>description</code><br/><em>string</em></td>
-<td>An optional description of this resource</td>
+<td>An optional description of this resource.</td>
 </tr>
 <tr>
 <td><code>id</code><br/><em>string</em></td>
-<td>The network&#39;s id</td>
+<td>The network&#39;s id.</td>
 </tr>
 <tr>
 <td><code>name</code><br/><em>string</em></td>
-<td>The network&#39;s name</td>
+<td>The network&#39;s name.</td>
 </tr>
 <tr>
 <td><code>kind</code><br/><em>string</em></td>
-<td>Type of the resource</td>
+<td>Type of the resource.</td>
 </tr>
 <tr>
 <td><code>routingConfig</code><br/><em>object</em></td>
@@ -17265,11 +17265,11 @@ An instance can only belong to one load balanced instance group. But you can add
 </tr>
 <tr>
 <td><code>selfLink</code><br/><em>string</em></td>
-<td>Server-defined URL for this resource</td>
+<td>Server-defined URL for this resource.</td>
 </tr>
 <tr>
 <td><code>subnetworks</code><br/><em>Array[URL]</em></td>
-<td>Server-defined fully-qualified URLs for all subnetworks in this VPC network</td>
+<td>Server-defined fully-qualified URLs for all subnetworks in this VPC network.</td>
 </tr>
 </tbody></table>
 <h3 id='gcp-firewall-rules'>Firewall rules</h3>
@@ -17367,7 +17367,7 @@ An instance can only belong to one load balanced instance group. But you can add
 </tr>
 <tr>
 <td><code>name</code><br/><em>string</em></td>
-<td>The display name of the firewall rule</td>
+<td>The display name of the firewall rule.</td>
 </tr>
 <tr>
 <td><code>network</code><br/><em>string</em></td>
@@ -17391,7 +17391,7 @@ An instance can only belong to one load balanced instance group. But you can add
 </tr>
 <tr>
 <td><code>action</code><br/><em>string</em></td>
-<td>The firewall rule type: &#39;allow&#39; (allow traffic) or &#39;deny&#39; (deny traffic)</td>
+<td>The firewall rule type: &#39;allow&#39; (allow traffic) or &#39;deny&#39; (deny traffic).</td>
 </tr>
 </tbody></table>
 <h4 id='gcp-retrieve-a-firewall-rule'>Retrieve a firewall rule</h4><pre class="highlight shell tab-shell"><code>curl -X GET <span class="se">\</span>
@@ -17482,7 +17482,7 @@ An instance can only belong to one load balanced instance group. But you can add
 </tr>
 <tr>
 <td><code>name</code><br/><em>string</em></td>
-<td>The display name of the firewall rule</td>
+<td>The display name of the firewall rule.</td>
 </tr>
 <tr>
 <td><code>network</code><br/><em>string</em></td>
@@ -17506,7 +17506,7 @@ An instance can only belong to one load balanced instance group. But you can add
 </tr>
 <tr>
 <td><code>action</code><br/><em>string</em></td>
-<td>The firewall rule type: &#39;allow&#39; (allow traffic) or &#39;deny&#39; (deny traffic)</td>
+<td>The firewall rule type: &#39;allow&#39; (allow traffic) or &#39;deny&#39; (deny traffic).</td>
 </tr>
 </tbody></table>
 
@@ -17540,7 +17540,7 @@ An instance can only belong to one load balanced instance group. But you can add
 </thead><tbody>
 <tr>
 <td><code>action</code><br/><em>string</em></td>
-<td>The firewall rule type: &#39;allow&#39; (allow traffic) or &#39;deny&#39; (deny traffic)</td>
+<td>The firewall rule type: &#39;allow&#39; (allow traffic) or &#39;deny&#39; (deny traffic).</td>
 </tr>
 <tr>
 <td><code>direction</code><br/><em>string</em></td>
@@ -17548,7 +17548,7 @@ An instance can only belong to one load balanced instance group. But you can add
 </tr>
 <tr>
 <td><code>name</code><br/><em>string</em></td>
-<td>The display name of the firewall rule</td>
+<td>The display name of the firewall rule.</td>
 </tr>
 <tr>
 <td><code>priority</code><br/><em>string</em></td>
@@ -17568,19 +17568,19 @@ An instance can only belong to one load balanced instance group. But you can add
 </thead><tbody>
 <tr>
 <td><code>all</code><br/><em>boolean</em></td>
-<td>Specifies if the firewall rule is an allow all or deny all rule</td>
+<td>Specifies if the firewall rule is an allow all or deny all rule.</td>
 </tr>
 <tr>
 <td><code>tcpPorts</code><br/><em>string</em></td>
-<td>The tcp ports on which to apply the rule. These must be in the range [0, 65535). They may be specified as combination of comma seperated values and port ranges i.e. 3,6,9,10-22</td>
+<td>The tcp ports on which to apply the rule. These must be in the range [0, 65535). They may be specified as combination of comma seperated values and port ranges i.e. 3,6,9,10-22.</td>
 </tr>
 <tr>
 <td><code>udpPorts</code><br/><em>string</em></td>
-<td>The udp ports on which to apply the rule. These must be in the range [0, 65535). They may be specified as combination of comma seperated values and port ranges i.e. 3,6,9,10-22</td>
+<td>The udp ports on which to apply the rule. These must be in the range [0, 65535). They may be specified as combination of comma seperated values and port ranges i.e. 3,6,9,10-22.</td>
 </tr>
 <tr>
 <td><code>protocols</code><br/><em>string</em></td>
-<td>Supported protocols are: icmp, esp, ah, sctp, ipip or a valid <a href="https://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml">decimal IP protocol number</a></td>
+<td>Supported protocols are: icmp, esp, ah, sctp, ipip or a valid <a href="https://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml">decimal IP protocol number</a>.</td>
 </tr>
 </tbody></table>
 
@@ -17709,7 +17709,7 @@ An instance can only belong to one load balanced instance group. But you can add
 </tr>
 <tr>
 <td><code>shortRegion</code><br/><em>string</em></td>
-<td>A short version of the region name</td>
+<td>A short version of the region name.</td>
 </tr>
 <tr>
 <td><code>type</code><br/><em>string</em></td>
@@ -17819,7 +17819,7 @@ An instance can only belong to one load balanced instance group. But you can add
 </tr>
 <tr>
 <td><code>shortRegion</code><br/><em>string</em></td>
-<td>A short version of the region name</td>
+<td>A short version of the region name.</td>
 </tr>
 <tr>
 <td><code>type</code><br/><em>string</em></td>
@@ -17856,11 +17856,11 @@ If <code>shortInstance</code> is provided, the IP will be reserved and attached 
 </thead><tbody>
 <tr>
 <td><code>name</code><br/><em>string</em></td>
-<td>The display name of the external ip</td>
+<td>The display name of the external ip.</td>
 </tr>
 <tr>
 <td><code>shortRegion</code><br/><em>string</em></td>
-<td>A short version of the region name</td>
+<td>A short version of the region name.</td>
 </tr>
 </tbody></table>
 
@@ -17872,7 +17872,7 @@ If <code>shortInstance</code> is provided, the IP will be reserved and attached 
 </thead><tbody>
 <tr>
 <td><code>shortInstance</code><br/><em>string</em></td>
-<td>The instance name to attach the new external ip address to</td>
+<td>The instance name to attach the new external ip address to.</td>
 </tr>
 </tbody></table>
 
@@ -18281,7 +18281,7 @@ You cannot release an external IP which is currently attached to an instance.
 </tr>
 <tr>
 <td><code>description</code><br/><em>string</em></td>
-<td>An optional description</td>
+<td>An optional description.</td>
 </tr>
 <tr>
 <td><code>externalIp</code><br/><em>Object</em></td>
@@ -18289,7 +18289,7 @@ You cannot release an external IP which is currently attached to an instance.
 </tr>
 <tr>
 <td><code>forwardingRules</code><br/>Array</td>
-<td>List of the forwarding rules which are defined for this VPN gateway</td>
+<td>List of the forwarding rules which are defined for this VPN gateway.</td>
 </tr>
 <tr>
 <td><code>id</code><br/><em>UUID</em></td>
@@ -18364,7 +18364,7 @@ You cannot release an external IP which is currently attached to an instance.
 </tr>
 <tr>
 <td><code>description</code><br/><em>string</em></td>
-<td>An optional description</td>
+<td>An optional description.</td>
 </tr>
 <tr>
 <td><code>externalIp</code><br/><em>Object</em></td>
@@ -18372,7 +18372,7 @@ You cannot release an external IP which is currently attached to an instance.
 </tr>
 <tr>
 <td><code>forwardingRules</code><br/>Array</td>
-<td>List of the forwarding rules which are defined for this VPN gateway</td>
+<td>List of the forwarding rules which are defined for this VPN gateway.</td>
 </tr>
 <tr>
 <td><code>id</code><br/><em>UUID</em></td>
@@ -18435,11 +18435,11 @@ You cannot release an external IP which is currently attached to an instance.
 </thead><tbody>
 <tr>
 <td><code>name</code><br/><em>string</em></td>
-<td>The display name of the VPN gateway</td>
+<td>The display name of the VPN gateway.</td>
 </tr>
 <tr>
 <td><code>shortRegion</code><br/><em>string</em></td>
-<td>A short version of the region name</td>
+<td>A short version of the region name.</td>
 </tr>
 </tbody></table>
 
@@ -18451,11 +18451,11 @@ You cannot release an external IP which is currently attached to an instance.
 </thead><tbody>
 <tr>
 <td><code>description</code><br/><em>string</em></td>
-<td>An optional description</td>
+<td>An optional description.</td>
 </tr>
 <tr>
 <td><code>shortIP</code><br/><em>string</em></td>
-<td>The name of the external static IP to use for the VPN gateway</td>
+<td>The name of the external static IP to use for the VPN gateway.</td>
 </tr>
 <tr>
 <td><code>reserveStaticIP</code><br/><em>string</em></td>
@@ -18554,19 +18554,19 @@ You cannot release an external IP which is currently attached to an instance.
 </tr>
 <tr>
 <td><code>description</code><br/><em>string</em></td>
-<td>An optional description</td>
+<td>An optional description.</td>
 </tr>
 <tr>
 <td><code>id</code><br/><em>UUID</em></td>
-<td>Unique identifier for this resource</td>
+<td>Unique identifier for this resource.</td>
 </tr>
 <tr>
 <td><code>gcpVpnGateway</code><br/><em>Object</em></td>
-<td>The VPN Gateway associated with this tunnel</td>
+<td>The VPN Gateway associated with this tunnel.</td>
 </tr>
 <tr>
 <td><code>ikeVersion</code><br/><em>integer</em></td>
-<td>IKE protocol version to use when establishing the VPN tunnel with the peer VPN gateway. Acceptable IKE versions are 1 or 2. The default version is 2</td>
+<td>IKE protocol version to use when establishing the VPN tunnel with the peer VPN gateway. Acceptable IKE versions are 1 or 2. The default version is 2.</td>
 </tr>
 <tr>
 <td><code>localTrafficSelector</code><br/><em>string</em></td>
@@ -18574,15 +18574,15 @@ You cannot release an external IP which is currently attached to an instance.
 </tr>
 <tr>
 <td><code>name</code><br/><em>string</em></td>
-<td>The display name of the address</td>
+<td>The display name of the address.</td>
 </tr>
 <tr>
 <td><code>peerIp</code><br/><em>string</em></td>
-<td>IP address of the peer VPN gateway in another VPC</td>
+<td>IP address of the peer VPN gateway in another VPC.</td>
 </tr>
 <tr>
 <td><code>region</code><br/><em>string</em></td>
-<td>The URL of the region where the VPN tunnel is</td>
+<td>The URL of the region where the VPN tunnel is.</td>
 </tr>
 <tr>
 <td><code>remoteTrafficSelector</code><br/><em>string</em></td>
@@ -18594,15 +18594,15 @@ You cannot release an external IP which is currently attached to an instance.
 </tr>
 <tr>
 <td><code>status</code><br/><em>string</em></td>
-<td>The status of the VPN tunnel</td>
+<td>The status of the VPN tunnel.</td>
 </tr>
 <tr>
 <td><code>selfLink</code><br/><em>string</em></td>
-<td>Server-defined URL for the resource</td>
+<td>Server-defined URL for the resource.</td>
 </tr>
 <tr>
 <td><code>targetVpnGateway</code><br/><em>string</em></td>
-<td>The URL of the Target VPN gateway with which this VPN tunnel is associated</td>
+<td>The URL of the Target VPN gateway with which this VPN tunnel is associated.</td>
 </tr>
 <tr>
 <td><code>type</code><br/><em>string</em></td>
@@ -18666,19 +18666,19 @@ You cannot release an external IP which is currently attached to an instance.
 </tr>
 <tr>
 <td><code>description</code><br/><em>string</em></td>
-<td>An optional description</td>
+<td>An optional description.</td>
 </tr>
 <tr>
 <td><code>id</code><br/><em>UUID</em></td>
-<td>Unique identifier for this resource</td>
+<td>Unique identifier for this resource.</td>
 </tr>
 <tr>
 <td><code>gcpVpnGateway</code><br/><em>Object</em></td>
-<td>The VPN Gateway associated with this tunnel</td>
+<td>The VPN Gateway associated with this tunnel.</td>
 </tr>
 <tr>
 <td><code>ikeVersion</code><br/><em>integer</em></td>
-<td>IKE protocol version to use when establishing the VPN tunnel with the peer VPN gateway. Acceptable IKE versions are 1 or 2. The default version is 2</td>
+<td>IKE protocol version to use when establishing the VPN tunnel with the peer VPN gateway. Acceptable IKE versions are 1 or 2. The default version is 2.</td>
 </tr>
 <tr>
 <td><code>localTrafficSelector</code><br/><em>string</em></td>
@@ -18686,15 +18686,15 @@ You cannot release an external IP which is currently attached to an instance.
 </tr>
 <tr>
 <td><code>name</code><br/><em>string</em></td>
-<td>The display name of the address</td>
+<td>The display name of the address.</td>
 </tr>
 <tr>
 <td><code>peerIp</code><br/><em>string</em></td>
-<td>IP address of the peer VPN gateway in another VPC</td>
+<td>IP address of the peer VPN gateway in another VPC.</td>
 </tr>
 <tr>
 <td><code>region</code><br/><em>string</em></td>
-<td>The URL of the region where the VPN tunnel is</td>
+<td>The URL of the region where the VPN tunnel is.</td>
 </tr>
 <tr>
 <td><code>remoteTrafficSelector</code><br/><em>string</em></td>
@@ -18706,15 +18706,15 @@ You cannot release an external IP which is currently attached to an instance.
 </tr>
 <tr>
 <td><code>status</code><br/><em>string</em></td>
-<td>The status of the VPN tunnel</td>
+<td>The status of the VPN tunnel.</td>
 </tr>
 <tr>
 <td><code>selfLink</code><br/><em>string</em></td>
-<td>Server-defined URL for the resource</td>
+<td>Server-defined URL for the resource.</td>
 </tr>
 <tr>
 <td><code>targetVpnGateway</code><br/><em>string</em></td>
-<td>The URL of the Target VPN gateway with which this VPN tunnel is associated</td>
+<td>The URL of the Target VPN gateway with which this VPN tunnel is associated.</td>
 </tr>
 <tr>
 <td><code>type</code><br/><em>string</em></td>
@@ -18755,19 +18755,19 @@ You cannot release an external IP which is currently attached to an instance.
 </thead><tbody>
 <tr>
 <td><code>name</code><br/><em>string</em></td>
-<td>The display name of the VPN tunnel</td>
+<td>The display name of the VPN tunnel.</td>
 </tr>
 <tr>
 <td><code>ikeVersion</code><br/><em>string</em></td>
-<td>KE protocol version to use when establishing the VPN tunnel with the peer VPN gateway. Acceptable IKE versions are 1 or 2. The default version is 2</td>
+<td>KE protocol version to use when establishing the VPN tunnel with the peer VPN gateway. Acceptable IKE versions are 1 or 2. The default version is 2.</td>
 </tr>
 <tr>
 <td><code>peerIP</code><br/><em>string</em></td>
-<td>The IP address of the Virtual Private Cloud (VPC) the tunnel will connect to</td>
+<td>The IP address of the Virtual Private Cloud (VPC) the tunnel will connect to.</td>
 </tr>
 <tr>
 <td><code>remoteTrafficSelector</code><br/><em>string</em></td>
-<td>Remote traffic selectors to use when establishing the VPN tunnel with the peer VPN gateway. The value should be a CIDR formatted string</td>
+<td>Remote traffic selectors to use when establishing the VPN tunnel with the peer VPN gateway. The value should be a CIDR formatted string.</td>
 </tr>
 <tr>
 <td><code>sharedSecret</code><br/><em>string</em></td>
@@ -18775,7 +18775,7 @@ You cannot release an external IP which is currently attached to an instance.
 </tr>
 <tr>
 <td><code>targetVpnGateway</code><br/><em>string</em></td>
-<td>URL of the Target VPN gateway with which this VPN tunnel is associated</td>
+<td>URL of the Target VPN gateway with which this VPN tunnel is associated.</td>
 </tr>
 </tbody></table>
 
@@ -18787,11 +18787,11 @@ You cannot release an external IP which is currently attached to an instance.
 </thead><tbody>
 <tr>
 <td><code>description</code><br/><em>string</em></td>
-<td>An optional description</td>
+<td>An optional description.</td>
 </tr>
 <tr>
 <td><code>localTrafficSelector</code><br/><em>string</em></td>
-<td>Local traffic selector to use when establishing the VPN tunnel with the peer VPN gateway. The value should be a CIDR formatted string</td>
+<td>Local traffic selector to use when establishing the VPN tunnel with the peer VPN gateway. The value should be a CIDR formatted string.</td>
 </tr>
 </tbody></table>
 
@@ -18822,7 +18822,7 @@ You cannot release an external IP which is currently attached to an instance.
 </thead><tbody>
 <tr>
 <td><code>vpnGatewayToDelete</code><br/><em>string</em></td>
-<td>The ID of the VPN gateway to delete after deleting the VPN tunnel</td>
+<td>The ID of the VPN gateway to delete after deleting the VPN tunnel.</td>
 </tr>
 <tr>
 <td><code>gcpVpnGateway.externalIpToRelease</code><br/><em>Array</em></td>
@@ -19132,27 +19132,27 @@ You cannot release an external IP which is currently attached to an instance.
 </thead><tbody>
 <tr>
 <td><code>backendServices</code><br/><em>List<String></em></td>
-<td>The list of backends for this resource</td>
+<td>The list of backends for this resource.</td>
 </tr>
 <tr>
 <td><code>forwardingRules</code><br/><em>List<String></em></td>
-<td>The list of forwarding rules for this resource</td>
+<td>The list of forwarding rules for this resource.</td>
 </tr>
 <tr>
 <td><code>id</code><br/><em>String</em></td>
-<td>The id of this resource, which should be the same id as corresponding Url Map</td>
+<td>The id of this resource, which should be the same id as corresponding Url Map.</td>
 </tr>
 <tr>
 <td><code>name</code><br/><em>String</em></td>
-<td>The name of this resource</td>
+<td>The name of this resource.</td>
 </tr>
 <tr>
 <td><code>targetProxies</code><br/><em>List<String></em></td>
-<td>The list of target proxies for this resource</td>
+<td>The list of target proxies for this resource.</td>
 </tr>
 <tr>
 <td><code>urlMap</code><br/><em>String</em></td>
-<td>Server-defined URL for corresponding url map</td>
+<td>Server-defined URL for corresponding url map.</td>
 </tr>
 </tbody></table>
 
@@ -19195,27 +19195,27 @@ You cannot release an external IP which is currently attached to an instance.
 </thead><tbody>
 <tr>
 <td><code>backendServices</code><br/><em>List<String></em></td>
-<td>The list of backends for this resource</td>
+<td>The list of backends for this resource.</td>
 </tr>
 <tr>
 <td><code>forwardingRules</code><br/><em>List<String></em></td>
-<td>The list of forwarding rules for this resource</td>
+<td>The list of forwarding rules for this resource.</td>
 </tr>
 <tr>
 <td><code>id</code><br/><em>String</em></td>
-<td>The id of this resource, which should be the same id as corresponding Url Map</td>
+<td>The id of this resource, which should be the same id as corresponding Url Map.</td>
 </tr>
 <tr>
 <td><code>name</code><br/><em>String</em></td>
-<td>The name of this resource</td>
+<td>The name of this resource.</td>
 </tr>
 <tr>
 <td><code>targetProxies</code><br/><em>List<String></em></td>
-<td>The list of target proxies for this resource</td>
+<td>The list of target proxies for this resource.</td>
 </tr>
 <tr>
 <td><code>urlMap</code><br/><em>String</em></td>
-<td>Server-defined URL for corresponding url map</td>
+<td>Server-defined URL for corresponding url map.</td>
 </tr>
 </tbody></table>
 
@@ -19274,7 +19274,7 @@ You cannot release an external IP which is currently attached to an instance.
 </thead><tbody>
 <tr>
 <td><code>name</code><br/><em>string</em></td>
-<td>The display name of the load balancer</td>
+<td>The display name of the load balancer.</td>
 </tr>
 <tr>
 <td><code>shortBackend</code><br/><em>string</em></td>
@@ -19348,15 +19348,15 @@ Any specified optional resources to be removed will be deleted if they can be de
 </thead><tbody>
 <tr>
 <td><code>shortBackendsToDelete</code><br/><em>List<String></em></td>
-<td>A list of backend services to delete</td>
+<td>A list of backend services to delete.</td>
 </tr>
 <tr>
 <td><code>shortHealthChecksToDelete</code><br/><em>List<String></em></td>
-<td>A list of health checks to delete</td>
+<td>A list of health checks to delete.</td>
 </tr>
 <tr>
 <td><code>shortSslCertificatesToDelete</code><br/><em>List<String></em></td>
-<td>A list of SSL certificates to delete</td>
+<td>A list of SSL certificates to delete.</td>
 </tr>
 </tbody></table>
 <h4 id='gcp-forwarding-rules'>Forwarding rules</h4>
@@ -19604,11 +19604,11 @@ Any specified optional resources to be removed will be deleted if they can be de
 </thead><tbody>
 <tr>
 <td><code>name</code><br/><em>string</em></td>
-<td>The display name of the forwarding rule</td>
+<td>The display name of the forwarding rule.</td>
 </tr>
 <tr>
 <td><code>portRange</code><br/><em>string</em></td>
-<td>The port which will be allocated to the forwarding rule. Supported ports are: 80 or 8080 (HTTP) and 443 (HTTPS)</td>
+<td>The port which will be allocated to the forwarding rule. Supported ports are: 80 or 8080 (HTTP) and 443 (HTTPS).</td>
 </tr>
 <tr>
 <td><code>shortTarget</code><br/><em>string</em></td>
@@ -20168,15 +20168,15 @@ curl -X POST <span class="se">\</span>
 </thead><tbody>
 <tr>
 <td><code>name</code><br/><em>string</em></td>
-<td>The display name of the backend service</td>
+<td>The display name of the backend service.</td>
 </tr>
 <tr>
 <td><code>shortBackends</code><br/><em>string</em></td>
-<td>A short version of the list of backends</td>
+<td>A short version of the list of backends.</td>
 </tr>
 <tr>
 <td><code>shortHealthChecks</code><br/><em>string</em></td>
-<td>A short version of the health checks</td>
+<td>A short version of the health checks.</td>
 </tr>
 </tbody></table>
 
@@ -20421,7 +20421,7 @@ curl -X POST <span class="se">\</span>
 </thead><tbody>
 <tr>
 <td><code>certificate</code><br/><em>string</em></td>
-<td>Public key certificate in PEM format</td>
+<td>Public key certificate in PEM format.</td>
 </tr>
 <tr>
 <td><code>chainCertificate</code><br/><em>string</em></td>
@@ -20433,7 +20433,7 @@ curl -X POST <span class="se">\</span>
 </tr>
 <tr>
 <td><code>name</code><br/><em>string</em></td>
-<td>The display name of the ssl certificate</td>
+<td>The display name of the ssl certificate.</td>
 </tr>
 <tr>
 <td><code>privateKey</code><br/><em>string</em></td>
@@ -20495,11 +20495,11 @@ curl -X POST <span class="se">\</span>
 </thead><tbody>
 <tr>
 <td><code>creationTimestamp</code><br/><em>string</em></td>
-<td>Creation timestamp in RFC3339 text format</td>
+<td>Creation timestamp in RFC3339 text format.</td>
 </tr>
 <tr>
 <td><code>nodeCount</code><br/><em>number</em></td>
-<td>Number of nodes in the cluster</td>
+<td>Number of nodes in the cluster.</td>
 </tr>
 <tr>
 <td><code>endpoint</code><br/><em>string</em></td>
@@ -20511,7 +20511,7 @@ curl -X POST <span class="se">\</span>
 </tr>
 <tr>
 <td><code>status</code> <br/> <em>string</em></td>
-<td>The status of the cluster</td>
+<td>The status of the cluster.</td>
 </tr>
 <tr>
 <td><code>id</code> <br/> <em>string</em></td>
@@ -20519,7 +20519,7 @@ curl -X POST <span class="se">\</span>
 </tr>
 <tr>
 <td><code>name</code> <br/> <em>string</em></td>
-<td>The name of the cluster</td>
+<td>The name of the cluster.</td>
 </tr>
 <tr>
 <td><code>caCert</code> <br/> <em>string</em></td>
@@ -20556,11 +20556,11 @@ curl -X POST <span class="se">\</span>
 </thead><tbody>
 <tr>
 <td><code>creationTimestamp</code><br/><em>string</em></td>
-<td>Creation timestamp in RFC3339 text format</td>
+<td>Creation timestamp in RFC3339 text format.</td>
 </tr>
 <tr>
 <td><code>nodeCount</code><br/><em>number</em></td>
-<td>Number of nodes in the cluster</td>
+<td>Number of nodes in the cluster.</td>
 </tr>
 <tr>
 <td><code>endpoint</code><br/><em>string</em></td>
@@ -20572,7 +20572,7 @@ curl -X POST <span class="se">\</span>
 </tr>
 <tr>
 <td><code>status</code> <br/> <em>string</em></td>
-<td>The status of the cluster</td>
+<td>The status of the cluster.</td>
 </tr>
 <tr>
 <td><code>id</code> <br/> <em>string</em></td>
@@ -20580,7 +20580,7 @@ curl -X POST <span class="se">\</span>
 </tr>
 <tr>
 <td><code>name</code> <br/> <em>string</em></td>
-<td>The name of the cluster</td>
+<td>The name of the cluster.</td>
 </tr>
 <tr>
 <td><code>caCert</code> <br/> <em>string</em></td>
@@ -20814,47 +20814,47 @@ curl -X POST <span class="se">\</span>
 </tr>
 <tr>
 <td><code>metadata</code> <br/><em>object</em></td>
-<td>The metadata of the pod</td>
+<td>The metadata of the pod.</td>
 </tr>
 <tr>
 <td><code>metadata.annotations</code> <br/><em>map</em></td>
-<td>The annotations of the pod</td>
+<td>The annotations of the pod.</td>
 </tr>
 <tr>
 <td><code>metadata.creationTimestamp</code> <br/><em>string</em></td>
-<td>The date of creation of the pod as a string</td>
+<td>The date of creation of the pod as a string.</td>
 </tr>
 <tr>
 <td><code>metadata.labels</code> <br/><em>map</em></td>
-<td>The labels associated to the pod</td>
+<td>The labels associated to the pod.</td>
 </tr>
 <tr>
 <td><code>metadata.name</code> <br/><em>string</em></td>
-<td>The name of the pod</td>
+<td>The name of the pod.</td>
 </tr>
 <tr>
 <td><code>metadata.namespace</code> <br/><em>string</em></td>
-<td>The namespace in which the pod is created</td>
+<td>The namespace in which the pod is created.</td>
 </tr>
 <tr>
 <td><code>metadata.uid</code> <br/><em>object</em></td>
-<td>The UUID of the pod</td>
+<td>The UUID of the pod.</td>
 </tr>
 <tr>
 <td><code>spec</code><br/><em>object</em></td>
-<td>The specification used to create and run the pod</td>
+<td>The specification used to create and run the pod.</td>
 </tr>
 <tr>
 <td><code>spec.container</code><br/><em>string</em></td>
-<td>The name of the container running</td>
+<td>The name of the container running.</td>
 </tr>
 <tr>
 <td><code>status</code><br/><em>object</em></td>
-<td>The status information of the pod</td>
+<td>The status information of the pod.</td>
 </tr>
 <tr>
 <td><code>status.phase</code><br/><em>string</em></td>
-<td>The status of the pod. Possible statuses are Running, Pending, Succeeded, Unknown and Failed</td>
+<td>The status of the pod. Possible statuses are Running, Pending, Succeeded, Unknown and Failed.</td>
 </tr>
 </tbody></table>
 
@@ -21086,47 +21086,47 @@ curl -X POST <span class="se">\</span>
 </tr>
 <tr>
 <td><code>metadata</code> <br/><em>object</em></td>
-<td>The metadata of the pod</td>
+<td>The metadata of the pod.</td>
 </tr>
 <tr>
 <td><code>metadata.annotations</code> <br/><em>map</em></td>
-<td>The annotations of the pod</td>
+<td>The annotations of the pod.</td>
 </tr>
 <tr>
 <td><code>metadata.creationTimestamp</code> <br/><em>string</em></td>
-<td>The date of creation of the pod as a string</td>
+<td>The date of creation of the pod as a string.</td>
 </tr>
 <tr>
 <td><code>metadata.labels</code> <br/><em>map</em></td>
-<td>The labels associated to the pod</td>
+<td>The labels associated to the pod.</td>
 </tr>
 <tr>
 <td><code>metadata.name</code> <br/><em>string</em></td>
-<td>The name of the pod</td>
+<td>The name of the pod.</td>
 </tr>
 <tr>
 <td><code>metadata.namespace</code> <br/><em>string</em></td>
-<td>The namespace in which the pod is created</td>
+<td>The namespace in which the pod is created.</td>
 </tr>
 <tr>
 <td><code>metadata.uid</code> <br/><em>object</em></td>
-<td>The UUID of the pod</td>
+<td>The UUID of the pod.</td>
 </tr>
 <tr>
 <td><code>spec</code><br/><em>object</em></td>
-<td>The specification used to create and run the pod</td>
+<td>The specification used to create and run the pod.</td>
 </tr>
 <tr>
 <td><code>spec.container</code><br/><em>string</em></td>
-<td>The name of the container running</td>
+<td>The name of the container running.</td>
 </tr>
 <tr>
 <td><code>status</code><br/><em>object</em></td>
-<td>The status information of the pod</td>
+<td>The status information of the pod.</td>
 </tr>
 <tr>
 <td><code>status.phase</code><br/><em>string</em></td>
-<td>The status of the pod. Possible statuses are Running, Pending, Succeeded, Unknown and Failed</td>
+<td>The status of the pod. Possible statuses are Running, Pending, Succeeded, Unknown and Failed.</td>
 </tr>
 </tbody></table>
 
@@ -21173,7 +21173,7 @@ curl -X POST <span class="se">\</span>
 </tr>
 <tr>
 <td><code>taskStatus</code> <br/><em>string</em></td>
-<td>The status of the operation</td>
+<td>The status of the operation.</td>
 </tr>
 </tbody></table>
 <h3 id='gcp-stateful-sets'>Stateful Sets</h3>
@@ -21896,95 +21896,95 @@ curl -X POST <span class="se">\</span>
 </tr>
 <tr>
 <td><code>info</code> <br/><em>object</em></td>
-<td>The information about the release</td>
+<td>The information about the release.</td>
 </tr>
 <tr>
 <td><code>info.first_deployed</code> <br/><em>string</em></td>
-<td>The annotations of the pod</td>
+<td>The annotations of the pod.</td>
 </tr>
 <tr>
 <td><code>info.last_deployed</code> <br/><em>string</em></td>
-<td>The date of creation of the pod as a string</td>
+<td>The date of creation of the pod as a string.</td>
 </tr>
 <tr>
 <td><code>info.deleted</code> <br/><em>string</em></td>
-<td>The labels associated to the pod</td>
+<td>The labels associated to the pod.</td>
 </tr>
 <tr>
 <td><code>info.description</code> <br/><em>string</em></td>
-<td>The name of the pod</td>
+<td>The name of the pod.</td>
 </tr>
 <tr>
 <td><code>info.status</code> <br/><em>string</em></td>
-<td>The status of the release. Possible values are unknown, installed, uninstalled, superseded, failed, uninstalling, pending-install, pending-upgrade, pending-rollback</td>
+<td>The status of the release. Possible values are unknown, installed, uninstalled, superseded, failed, uninstalling, pending-install, pending-upgrade, pending-rollback.</td>
 </tr>
 <tr>
 <td><code>info.notes</code> <br/><em>string</em></td>
-<td>The notes linked to the release</td>
+<td>The notes linked to the release.</td>
 </tr>
 <tr>
 <td><code>chart</code><br/><em>object</em></td>
-<td>The information related to the chart of used in the release</td>
+<td>The information related to the chart of used in the release.</td>
 </tr>
 <tr>
 <td><code>chart.version</code> <br/><em>string</em></td>
-<td>The version of the chart</td>
+<td>The version of the chart.</td>
 </tr>
 <tr>
 <td><code>chart.metadata</code> <br/><em>object</em></td>
-<td>The metadata associated to the chart</td>
+<td>The metadata associated to the chart.</td>
 </tr>
 <tr>
 <td><code>chart.metadata.name</code> <br/><em>string</em></td>
-<td>The name of the chart</td>
+<td>The name of the chart.</td>
 </tr>
 <tr>
 <td><code>chart.metadata.home</code> <br/><em>string</em></td>
-<td>The home URL for the chart</td>
+<td>The home URL for the chart.</td>
 </tr>
 <tr>
 <td><code>chart.metadata.sources</code> <br/><em>list</em></td>
-<td>The list of source of the charts</td>
+<td>The list of source of the charts.</td>
 </tr>
 <tr>
 <td><code>chart.metadata.version</code> <br/><em>string</em></td>
-<td>The version of the chart</td>
+<td>The version of the chart.</td>
 </tr>
 <tr>
 <td><code>chart.metadata.description</code> <br/><em>string</em></td>
-<td>The description of the chart</td>
+<td>The description of the chart.</td>
 </tr>
 <tr>
 <td><code>chart.metadata.keywords</code> <br/><em>list</em></td>
-<td>The list of keywords linked to the chart</td>
+<td>The list of keywords linked to the chart.</td>
 </tr>
 <tr>
 <td><code>chart.metadata.maintainers</code> <br/><em>list</em></td>
-<td>The list of the maintainer contact information</td>
+<td>The list of the maintainer contact information.</td>
 </tr>
 <tr>
 <td><code>chart.metadata.icon</code> <br/><em>string</em></td>
-<td>The icon URL for the chart</td>
+<td>The icon URL for the chart.</td>
 </tr>
 <tr>
 <td><code>chart.metadata.appVersion</code> <br/><em>string</em></td>
-<td>The version of the application</td>
+<td>The version of the application.</td>
 </tr>
 <tr>
 <td><code>chart.metadata.deprecate</code> <br/><em>bool</em></td>
-<td>If the chart is deprecated or not of the application</td>
+<td>If the chart is deprecated or not of the application.</td>
 </tr>
 <tr>
 <td><code>values</code> <br/><em>object</em></td>
-<td>All values that were used to install the release</td>
+<td>All values that were used to install the release.</td>
 </tr>
 <tr>
 <td><code>version</code><br/><em>string</em></td>
-<td>The revision of the release</td>
+<td>The revision of the release.</td>
 </tr>
 <tr>
 <td><code>namespace</code><br/><em>string</em></td>
-<td>The namespace to which the release is installed</td>
+<td>The namespace to which the release is installed.</td>
 </tr>
 </tbody></table>
 
@@ -22145,83 +22145,83 @@ curl -X POST <span class="se">\</span>
 </tr>
 <tr>
 <td><code>info</code> <br/><em>object</em></td>
-<td>The information about the release</td>
+<td>The information about the release.</td>
 </tr>
 <tr>
 <td><code>info.first_deployed</code> <br/><em>string</em></td>
-<td>The annotations of the pod</td>
+<td>The annotations of the pod.</td>
 </tr>
 <tr>
 <td><code>info.last_deployed</code> <br/><em>string</em></td>
-<td>The date of creation of the pod as a string</td>
+<td>The date of creation of the pod as a string.</td>
 </tr>
 <tr>
 <td><code>info.deleted</code> <br/><em>string</em></td>
-<td>The labels associated to the pod</td>
+<td>The labels associated to the pod.</td>
 </tr>
 <tr>
 <td><code>info.description</code> <br/><em>string</em></td>
-<td>The name of the pod</td>
+<td>The name of the pod.</td>
 </tr>
 <tr>
 <td><code>info.status</code> <br/><em>string</em></td>
-<td>The status of the release. Possible values are unknown, installed, uninstalled, superseded, failed, uninstalling, pending-install, pending-upgrade, pending-rollback</td>
+<td>The status of the release. Possible values are unknown, installed, uninstalled, superseded, failed, uninstalling, pending-install, pending-upgrade, pending-rollback.</td>
 </tr>
 <tr>
 <td><code>info.notes</code> <br/><em>string</em></td>
-<td>The notes linked to the release</td>
+<td>The notes linked to the release.</td>
 </tr>
 <tr>
 <td><code>chart</code><br/><em>object</em></td>
-<td>The information related to the chart of used in the release</td>
+<td>The information related to the chart of used in the release.</td>
 </tr>
 <tr>
 <td><code>chart.version</code> <br/><em>string</em></td>
-<td>The version of the chart</td>
+<td>The version of the chart.</td>
 </tr>
 <tr>
 <td><code>chart.metadata</code> <br/><em>object</em></td>
-<td>The metadata associated to the chart</td>
+<td>The metadata associated to the chart.</td>
 </tr>
 <tr>
 <td><code>chart.metadata.name</code> <br/><em>string</em></td>
-<td>The name of the chart</td>
+<td>The name of the chart.</td>
 </tr>
 <tr>
 <td><code>chart.metadata.home</code> <br/><em>string</em></td>
-<td>The home URL for the chart</td>
+<td>The home URL for the chart.</td>
 </tr>
 <tr>
 <td><code>chart.metadata.sources</code> <br/><em>list</em></td>
-<td>The list of source of the charts</td>
+<td>The list of source of the charts.</td>
 </tr>
 <tr>
 <td><code>chart.metadata.version</code> <br/><em>string</em></td>
-<td>The version of the chart</td>
+<td>The version of the chart.</td>
 </tr>
 <tr>
 <td><code>chart.metadata.description</code> <br/><em>string</em></td>
-<td>The description of the chart</td>
+<td>The description of the chart.</td>
 </tr>
 <tr>
 <td><code>chart.metadata.keywords</code> <br/><em>list</em></td>
-<td>The list of keywords linked to the chart</td>
+<td>The list of keywords linked to the chart.</td>
 </tr>
 <tr>
 <td><code>chart.metadata.maintainers</code> <br/><em>list</em></td>
-<td>The list of the maintainer contact information</td>
+<td>The list of the maintainer contact information.</td>
 </tr>
 <tr>
 <td><code>chart.metadata.icon</code> <br/><em>string</em></td>
-<td>The icon URL for the chart</td>
+<td>The icon URL for the chart.</td>
 </tr>
 <tr>
 <td><code>chart.metadata.appVersion</code> <br/><em>string</em></td>
-<td>The version of the application</td>
+<td>The version of the application.</td>
 </tr>
 <tr>
 <td><code>chart.metadata.deprecate</code> <br/><em>bool</em></td>
-<td>If the chart is deprecated or not of the application</td>
+<td>If the chart is deprecated or not of the application.</td>
 </tr>
 <tr>
 <td><code>chart.templates</code> <br/> <em>list</em></td>
@@ -22253,15 +22253,15 @@ curl -X POST <span class="se">\</span>
 </tr>
 <tr>
 <td><code>values</code> <br/><em>object</em></td>
-<td>All values that were used to install the release</td>
+<td>All values that were used to install the release.</td>
 </tr>
 <tr>
 <td><code>version</code><br/><em>string</em></td>
-<td>The revision of the release</td>
+<td>The revision of the release.</td>
 </tr>
 <tr>
 <td><code>namespace</code><br/><em>string</em></td>
-<td>The namespace to which the release is installed</td>
+<td>The namespace to which the release is installed.</td>
 </tr>
 </tbody></table>
 
@@ -22578,83 +22578,83 @@ curl -X POST <span class="se">\</span>
 </tr>
 <tr>
 <td><code>type</code> <br/><em>string</em></td>
-<td>The type of chart</td>
+<td>The type of chart.</td>
 </tr>
 <tr>
 <td><code>attributes</code> <br/><em>object</em></td>
-<td>The annotations of the pod</td>
+<td>The annotations of the pod.</td>
 </tr>
 <tr>
 <td><code>attributes.name</code> <br/><em>string</em></td>
-<td>The name of the chart</td>
+<td>The name of the chart.</td>
 </tr>
 <tr>
 <td><code>attributes.repo</code> <br/><em>map</em></td>
-<td>The repository information where this chart was fetched (name,url)</td>
+<td>The repository information where this chart was fetched (name,url).</td>
 </tr>
 <tr>
 <td><code>attributes.repoUrl</code> <br/><em>string</em></td>
-<td>The url of the source of the chart</td>
+<td>The url of the source of the chart.</td>
 </tr>
 <tr>
 <td><code>attributes.description</code> <br/><em>string</em></td>
-<td>The chart description</td>
+<td>The chart description.</td>
 </tr>
 <tr>
 <td><code>attributes.home</code> <br/><em>string</em></td>
-<td>The home url for the chart</td>
+<td>The home url for the chart.</td>
 </tr>
 <tr>
 <td><code>attributes.keywords</code> <br/><em>string</em></td>
-<td>The keywords linked to the chart</td>
+<td>The keywords linked to the chart.</td>
 </tr>
 <tr>
 <td><code>attributes.maintainers</code> <br/><em>object</em></td>
-<td>The maintainers of the charts and their information</td>
+<td>The maintainers of the charts and their information.</td>
 </tr>
 <tr>
 <td><code>attributes.sources</code> <br/><em>list</em></td>
-<td>The sources for the chart</td>
+<td>The sources for the chart.</td>
 </tr>
 <tr>
 <td><code>attributes.icon</code> <br/><em>string</em></td>
-<td>The icon for the chart</td>
+<td>The icon for the chart.</td>
 </tr>
 <tr>
 <td><code>relationships</code> <br/><em>objection</em></td>
-<td>The relationship information for the chart</td>
+<td>The relationship information for the chart.</td>
 </tr>
 <tr>
 <td><code>relationships.latestChartVersion</code> <br/><em>object</em></td>
-<td>The lastest version chart information</td>
+<td>The lastest version chart information.</td>
 </tr>
 <tr>
 <td><code>relationships.latestChartVersion.data.version</code> <br/><em>string</em></td>
-<td>The digest validating the chart</td>
+<td>The digest validating the chart.</td>
 </tr>
 <tr>
 <td><code>relationships.latestChartVersion.data.digest</code> <br/><em>string</em></td>
-<td>The name of the chart</td>
+<td>The name of the chart.</td>
 </tr>
 <tr>
 <td><code>relationships.latestChartVersion.data.urls</code> <br/><em>string</em></td>
-<td>The URLs for the package to download</td>
+<td>The URLs for the package to download.</td>
 </tr>
 <tr>
 <td><code>relationships.latestChartVersion.data.readme</code> <br/><em>string</em></td>
-<td>The readme file location</td>
+<td>The readme file location.</td>
 </tr>
 <tr>
 <td><code>relationships.latestChartVersion.data.values</code> <br/><em>string</em></td>
-<td>The values file location</td>
+<td>The values file location.</td>
 </tr>
 <tr>
 <td><code>version</code><br/><em>string</em></td>
-<td>The revision of the release</td>
+<td>The revision of the release.</td>
 </tr>
 <tr>
 <td><code>insecureServer</code><br/><em>boolean</em></td>
-<td>Specify if to access the chart we need an unsecure connection</td>
+<td>Specify if to access the chart we need an unsecure connection.</td>
 </tr>
 </tbody></table>
 
@@ -22749,83 +22749,83 @@ curl -X POST <span class="se">\</span>
 </tr>
 <tr>
 <td><code>type</code> <br/><em>string</em></td>
-<td>The type of chart</td>
+<td>The type of chart.</td>
 </tr>
 <tr>
 <td><code>attributes</code> <br/><em>object</em></td>
-<td>The annotations of the pod</td>
+<td>The annotations of the pod.</td>
 </tr>
 <tr>
 <td><code>attributes.name</code> <br/><em>string</em></td>
-<td>The name of the chart</td>
+<td>The name of the chart.</td>
 </tr>
 <tr>
 <td><code>attributes.repo</code> <br/><em>map</em></td>
-<td>The repository information where this chart was fetched (name,url)</td>
+<td>The repository information where this chart was fetched (name,url).</td>
 </tr>
 <tr>
 <td><code>attributes.repoUrl</code> <br/><em>string</em></td>
-<td>The url of the source of the chart</td>
+<td>The url of the source of the chart.</td>
 </tr>
 <tr>
 <td><code>attributes.description</code> <br/><em>string</em></td>
-<td>The chart description</td>
+<td>The chart description.</td>
 </tr>
 <tr>
 <td><code>attributes.home</code> <br/><em>string</em></td>
-<td>The home url for the chart</td>
+<td>The home url for the chart.</td>
 </tr>
 <tr>
 <td><code>attributes.keywords</code> <br/><em>string</em></td>
-<td>The keywords linked to the chart</td>
+<td>The keywords linked to the chart.</td>
 </tr>
 <tr>
 <td><code>attributes.maintainers</code> <br/><em>object</em></td>
-<td>The maintainers of the charts and their information</td>
+<td>The maintainers of the charts and their information.</td>
 </tr>
 <tr>
 <td><code>attributes.sources</code> <br/><em>list</em></td>
-<td>The sources for the chart</td>
+<td>The sources for the chart.</td>
 </tr>
 <tr>
 <td><code>attributes.icon</code> <br/><em>string</em></td>
-<td>The icon for the chart</td>
+<td>The icon for the chart.</td>
 </tr>
 <tr>
 <td><code>relationships</code> <br/><em>objection</em></td>
-<td>The relationship information for the chart</td>
+<td>The relationship information for the chart.</td>
 </tr>
 <tr>
 <td><code>relationships.latestChartVersion</code> <br/><em>object</em></td>
-<td>The lastest version chart information</td>
+<td>The lastest version chart information.</td>
 </tr>
 <tr>
 <td><code>relationships.latestChartVersion.data.version</code> <br/><em>string</em></td>
-<td>The digest validating the chart</td>
+<td>The digest validating the chart.</td>
 </tr>
 <tr>
 <td><code>relationships.latestChartVersion.data.digest</code> <br/><em>string</em></td>
-<td>The name of the chart</td>
+<td>The name of the chart.</td>
 </tr>
 <tr>
 <td><code>relationships.latestChartVersion.data.urls</code> <br/><em>string</em></td>
-<td>The URLs for the package to download</td>
+<td>The URLs for the package to download.</td>
 </tr>
 <tr>
 <td><code>relationships.latestChartVersion.data.readme</code> <br/><em>string</em></td>
-<td>The readme file location</td>
+<td>The readme file location.</td>
 </tr>
 <tr>
 <td><code>relationships.latestChartVersion.data.values</code> <br/><em>string</em></td>
-<td>The values file location</td>
+<td>The values file location.</td>
 </tr>
 <tr>
 <td><code>version</code><br/><em>string</em></td>
-<td>The revision of the release</td>
+<td>The revision of the release.</td>
 </tr>
 <tr>
 <td><code>insecureServer</code><br/><em>boolean</em></td>
-<td>Specify if to access the chart we need an unsecure connection</td>
+<td>Specify if to access the chart we need an unsecure connection.</td>
 </tr>
 </tbody></table>
 
@@ -22877,27 +22877,27 @@ curl -X POST <span class="se">\</span>
 </thead><tbody>
 <tr>
 <td><code>relationships</code> <br/><em>objection</em></td>
-<td>The relationship information for the chart</td>
+<td>The relationship information for the chart.</td>
 </tr>
 <tr>
 <td><code>relationships.latestChartVersion</code> <br/><em>object</em></td>
-<td>The lastest version chart information</td>
+<td>The lastest version chart information.</td>
 </tr>
 <tr>
 <td><code>relationships.latestChartVersion.data.urls</code> <br/><em>string</em></td>
-<td>The URLs for the package to download</td>
+<td>The URLs for the package to download.</td>
 </tr>
 <tr>
 <td><code>insecureServer</code><br/><em>boolean</em></td>
-<td>Specify if to access the chart we need an unsecure connection</td>
+<td>Specify if to access the chart we need an unsecure connection.</td>
 </tr>
 <tr>
 <td><code>passedValues</code> <br/><em>string</em></td>
-<td>The values to use to install the chart. It must be a valid Yaml format</td>
+<td>The values to use to install the chart. It must be a valid Yaml format.</td>
 </tr>
 <tr>
 <td><code>namespace</code> <br/><em>map</em></td>
-<td>The namespace in which the chart will be installed</td>
+<td>The namespace in which the chart will be installed.</td>
 </tr>
 <tr>
 <td><code>releaseName</code> <br/><em>string</em></td>
@@ -23228,51 +23228,51 @@ curl -X POST <span class="se">\</span>
 </thead><tbody>
 <tr>
 <td><code>archiveSizeBytes</code><br/><em>string</em></td>
-<td>Size of the image tar.gz archive stored in Google Cloud Storage (in bytes)</td>
+<td>Size of the image tar.gz archive stored in Google Cloud Storage (in bytes).</td>
 </tr>
 <tr>
 <td><code>creationTimestamp</code><br/><em>string</em></td>
-<td>Creation timestamp in RFC3339 text format</td>
+<td>Creation timestamp in RFC3339 text format.</td>
 </tr>
 <tr>
 <td><code>description</code><br/><em>string</em></td>
-<td>An optional description of this resource</td>
+<td>An optional description of this resource.</td>
 </tr>
 <tr>
 <td><code>diskSizeGb</code><br/><em>string</em></td>
-<td>Size of the image when restored onto a persistent disk (in GB)</td>
+<td>Size of the image when restored onto a persistent disk (in GB).</td>
 </tr>
 <tr>
 <td><code>family</code><br/><em>string</em></td>
-<td>The name of the image family to which this image belongs</td>
+<td>The name of the image family to which this image belongs.</td>
 </tr>
 <tr>
 <td><code>kind</code><br/><em>string</em></td>
-<td>Type of the resource</td>
+<td>Type of the resource.</td>
 </tr>
 <tr>
 <td><code>labelFingerprint</code><br/><em>string</em></td>
-<td>A base64-encoded string. A hash of the label&#39;s contents and used for optimistic locking</td>
+<td>A base64-encoded string. A hash of the label&#39;s contents and used for optimistic locking.</td>
 </tr>
 <tr>
 <td><code>licenseCodes</code><br/><em>Array[integer]</em></td>
-<td>License codes indicating which licenses are attached to this image.</td>
+<td>License codes indicating which licenses are attached to this image..</td>
 </tr>
 <tr>
 <td><code>licenses</code><br/><em>Array[URI]</em></td>
-<td>Any applicable license URI</td>
+<td>Any applicable license URI.</td>
 </tr>
 <tr>
 <td><code>rawDisk</code><br/><em>Object</em></td>
-<td>The parameters of the raw disk image</td>
+<td>The parameters of the raw disk image.</td>
 </tr>
 <tr>
 <td><code>selfLink</code><br/><em>string</em></td>
-<td>Server-defined URL for this resource</td>
+<td>Server-defined URL for this resource.</td>
 </tr>
 <tr>
 <td><code>sourceType</code><br/><em>string</em></td>
-<td>The type of the image used to create this disk. The default and only value is RAW</td>
+<td>The type of the image used to create this disk. The default and only value is RAW.</td>
 </tr>
 <tr>
 <td><code>status</code><br/><em>string</em></td>
@@ -23280,23 +23280,23 @@ curl -X POST <span class="se">\</span>
 </tr>
 <tr>
 <td><code>vendorFamily</code><br/><em>string</em></td>
-<td>Image family&#39;s vendor name</td>
+<td>Image family&#39;s vendor name.</td>
 </tr>
 <tr>
 <td><code>shortName</code><br/><em>string</em></td>
-<td>A short version of the OS image&#39;s name</td>
+<td>A short version of the OS image&#39;s name.</td>
 </tr>
 <tr>
 <td><code>iconUrl</code><br/><em>string</em></td>
-<td>Icon representing the OS image</td>
+<td>Icon representing the OS image.</td>
 </tr>
 <tr>
 <td><code>id</code><br/><em>UUID</em></td>
-<td>The image&#39;s id</td>
+<td>The image&#39;s id.</td>
 </tr>
 <tr>
 <td><code>name</code><br/><em>string</em></td>
-<td>The image&#39;s name</td>
+<td>The image&#39;s name.</td>
 </tr>
 </tbody></table>
 
@@ -23349,31 +23349,31 @@ curl -X POST <span class="se">\</span>
 </thead><tbody>
 <tr>
 <td><code>archiveSizeBytes</code><br/><em>string</em></td>
-<td>Size of the image tar.gz archive stored in Google Cloud Storage (in bytes)</td>
+<td>Size of the image tar.gz archive stored in Google Cloud Storage (in bytes).</td>
 </tr>
 <tr>
 <td><code>creationTimestamp</code><br/><em>string</em></td>
-<td>Creation timestamp in RFC3339 text format</td>
+<td>Creation timestamp in RFC3339 text format.</td>
 </tr>
 <tr>
 <td><code>description</code><br/><em>string</em></td>
-<td>An optional description of this resource</td>
+<td>An optional description of this resource.</td>
 </tr>
 <tr>
 <td><code>diskSizeGb</code><br/><em>string</em></td>
-<td>Size of the image when restored onto a persistent disk (in GB)</td>
+<td>Size of the image when restored onto a persistent disk (in GB).</td>
 </tr>
 <tr>
 <td><code>family</code><br/><em>string</em></td>
-<td>The name of the image family to which this image belongs</td>
+<td>The name of the image family to which this image belongs.</td>
 </tr>
 <tr>
 <td><code>kind</code><br/><em>string</em></td>
-<td>Type of the resource</td>
+<td>Type of the resource.</td>
 </tr>
 <tr>
 <td><code>labelFingerprint</code><br/><em>string</em></td>
-<td>A base64-encoded string. A hash of the label&#39;s contents and used for optimistic locking</td>
+<td>A base64-encoded string. A hash of the label&#39;s contents and used for optimistic locking.</td>
 </tr>
 <tr>
 <td><code>licenseCodes</code><br/><em>Array[integer]</em></td>
@@ -23381,19 +23381,19 @@ curl -X POST <span class="se">\</span>
 </tr>
 <tr>
 <td><code>licenses</code><br/><em>Array[URI]</em></td>
-<td>Any applicable license URI</td>
+<td>Any applicable license URI.</td>
 </tr>
 <tr>
 <td><code>rawDisk</code><br/><em>Object</em></td>
-<td>The parameters of the raw disk image</td>
+<td>The parameters of the raw disk image.</td>
 </tr>
 <tr>
 <td><code>selfLink</code><br/><em>string</em></td>
-<td>Server-defined URL for this resource</td>
+<td>Server-defined URL for this resource.</td>
 </tr>
 <tr>
 <td><code>sourceType</code><br/><em>string</em></td>
-<td>The type of the image used to create this disk. The default and only value is RAW</td>
+<td>The type of the image used to create this disk. The default and only value is RAW.</td>
 </tr>
 <tr>
 <td><code>status</code><br/><em>string</em></td>
@@ -23401,23 +23401,23 @@ curl -X POST <span class="se">\</span>
 </tr>
 <tr>
 <td><code>vendorFamily</code><br/><em>string</em></td>
-<td>Image family&#39;s vendor name</td>
+<td>Image family&#39;s vendor name.</td>
 </tr>
 <tr>
 <td><code>shortName</code><br/><em>string</em></td>
-<td>A short version of the OS image&#39;s name</td>
+<td>A short version of the OS image&#39;s name.</td>
 </tr>
 <tr>
 <td><code>iconUrl</code><br/><em>string</em></td>
-<td>Icon representing the OS image</td>
+<td>Icon representing the OS image.</td>
 </tr>
 <tr>
 <td><code>id</code><br/><em>UUID</em></td>
-<td>The image&#39;s id</td>
+<td>The image&#39;s id.</td>
 </tr>
 <tr>
 <td><code>name</code><br/><em>string</em></td>
-<td>The image&#39;s name</td>
+<td>The image&#39;s name.</td>
 </tr>
 </tbody></table>
 <h2 id='gcp-regions'>Regions</h2>
@@ -23476,39 +23476,39 @@ curl -X POST <span class="se">\</span>
 </thead><tbody>
 <tr>
 <td><code>creationTimestamp</code><br/><em>string</em></td>
-<td>Creation timestamp in RFC3339 text format</td>
+<td>Creation timestamp in RFC3339 text format.</td>
 </tr>
 <tr>
 <td><code>description</code><br/><em>string</em></td>
-<td>An optional description of this resource</td>
+<td>An optional description of this resource.</td>
 </tr>
 <tr>
 <td><code>id</code><br/><em>UUID</em></td>
-<td>The region&#39;s id</td>
+<td>The region&#39;s id.</td>
 </tr>
 <tr>
 <td><code>kind</code><br/><em>string</em></td>
-<td>Type of the resource</td>
+<td>Type of the resource.</td>
 </tr>
 <tr>
 <td><code>name</code><br/><em>string</em></td>
-<td>The region&#39;s name</td>
+<td>The region&#39;s name.</td>
 </tr>
 <tr>
 <td><code>quotas</code><br/><em>Array[object]</em></td>
-<td>Quotas assigned to this region</td>
+<td>Quotas assigned to this region.</td>
 </tr>
 <tr>
 <td><code>selfLink</code><br/><em>string</em></td>
-<td>Server-defined URL for this resource</td>
+<td>Server-defined URL for this resource.</td>
 </tr>
 <tr>
 <td><code>status</code><br/><em>string</em></td>
-<td>tatus of the region, either UP or DOWN</td>
+<td>tatus of the region, either UP or DOWN.</td>
 </tr>
 <tr>
 <td><code>zones</code><br/><em>Array[URL]</em></td>
-<td>A list of zones available in this region, in the form of resource URLs</td>
+<td>A list of zones available in this region, in the form of resource URLs.</td>
 </tr>
 </tbody></table>
 
@@ -23560,39 +23560,39 @@ curl -X POST <span class="se">\</span>
 </thead><tbody>
 <tr>
 <td><code>creationTimestamp</code><br/><em>string</em></td>
-<td>Creation timestamp in RFC3339 text format</td>
+<td>Creation timestamp in RFC3339 text format.</td>
 </tr>
 <tr>
 <td><code>description</code><br/><em>string</em></td>
-<td>An optional description of this resource</td>
+<td>An optional description of this resource.</td>
 </tr>
 <tr>
 <td><code>id</code><br/><em>UUID</em></td>
-<td>The region&#39;s id</td>
+<td>The region&#39;s id.</td>
 </tr>
 <tr>
 <td><code>kind</code><br/><em>string</em></td>
-<td>Type of the resource</td>
+<td>Type of the resource.</td>
 </tr>
 <tr>
 <td><code>name</code><br/><em>string</em></td>
-<td>The region&#39;s name</td>
+<td>The region&#39;s name.</td>
 </tr>
 <tr>
 <td><code>quotas</code><br/><em>Array[object]</em></td>
-<td>Quotas assigned to this region</td>
+<td>Quotas assigned to this region.</td>
 </tr>
 <tr>
 <td><code>selfLink</code><br/><em>string</em></td>
-<td>Server-defined URL for this resource</td>
+<td>Server-defined URL for this resource.</td>
 </tr>
 <tr>
 <td><code>status</code><br/><em>string</em></td>
-<td>tatus of the region, either UP or DOWN</td>
+<td>tatus of the region, either UP or DOWN.</td>
 </tr>
 <tr>
 <td><code>zones</code><br/><em>Array[URL]</em></td>
-<td>A list of zones available in this region, in the form of resource URLs</td>
+<td>A list of zones available in this region, in the form of resource URLs.</td>
 </tr>
 </tbody></table>
 <h1 id='kubernetes-plugin'>Kubernetes plugin</h1>
@@ -28524,7 +28524,7 @@ For Windows instances, reset the administrator account and reset the Remote Desk
   </span><span class="s2">"taskStatus"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SUCCESS"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<p><code>POST /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/apps/:id</code></p>
+<p><code>POST /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/apps/:id?operation=addCredentials</code></p>
 
 <p>Add credentials to your own user for the given application.</p>
 
@@ -28536,11 +28536,11 @@ For Windows instances, reset the administrator account and reset the Remote Desk
 </thead><tbody>
 <tr>
 <td><code>username</code><br/><em>string</em></td>
-<td>The username for the application</td>
+<td>The username for the application.</td>
 </tr>
 <tr>
 <td><code>password</code><br/><em>string</em></td>
-<td>The password for the application</td>
+<td>The password for the application.</td>
 </tr>
 </tbody></table>
 <h4 id='masterportal-add-credentials-for-another-user'>Add Credentials for Another User</h4><pre class="highlight shell tab-shell"><code>curl -X POST <span class="se">\</span>
@@ -28564,7 +28564,7 @@ For Windows instances, reset the administrator account and reset the Remote Desk
   </span><span class="s2">"taskStatus"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SUCCESS"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<p><code>POST /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/appUser/:id</code></p>
+<p><code>POST /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/appUser/:id?operation=addUserCredentials</code></p>
 
 <p>Add credentials to another user for the given application. Note the appUser&#39;s id
 is their <a href="#administration-users">CloudMC user</a> id and <a href="#masterportal-applications">application</a> id concatenated like <code>&lt;cloudMcUserId&gt;:&lt;appId&gt;</code>.</p>
@@ -28577,19 +28577,19 @@ is their <a href="#administration-users">CloudMC user</a> id and <a href="#maste
 </thead><tbody>
 <tr>
 <td><code>cloudMcUserId</code><br/><em>UUID</em></td>
-<td>The id for the <em>cloudmc</em> user to which the credentials should be added</td>
+<td>The id for the <em>cloudmc</em> user to which the credentials should be added.</td>
 </tr>
 <tr>
 <td><code>app &gt; id</code><br/><em>UUID</em></td>
-<td>The id of the <a href="#masterportal-applications">application</a> to which the credentials should be added</td>
+<td>The id of the <a href="#masterportal-applications">application</a> to which the credentials should be added.</td>
 </tr>
 <tr>
 <td><code>app &gt; username</code><br/><em>string</em></td>
-<td>The username for the application</td>
+<td>The username for the application.</td>
 </tr>
 <tr>
 <td><code>app &gt; password</code><br/><em>string</em></td>
-<td>The password for the application</td>
+<td>The password for the application.</td>
 </tr>
 </tbody></table>
 <h4 id='masterportal-login-to-an-application'>Login to An Application</h4><pre class="highlight shell tab-shell"><code>curl -X POST <span class="se">\</span>
@@ -28798,7 +28798,7 @@ is their <a href="#administration-users">CloudMC user</a> id and <a href="#maste
 <table><thead>
 <tr>
 <th>Required</th>
-<th>&nbsp;∂===</th>
+<th>&nbsp;</th>
 </tr>
 </thead><tbody>
 <tr>
