@@ -5994,8 +5994,6 @@ curl <span class="s2">"https://cloudmc_endpoint/v1/service_providers"</span> <sp
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<p><code>GET /service_providers</code></p>
-
 <p>List the service providers configured on the system.</p>
 
 <table><thead>
@@ -6096,8 +6094,6 @@ curl <span class="s2">"https://cloudmc_endpoint/v1/service_providers/04b77783-51
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<p><code>GET /service_providers/:id</code></p>
-
 <p>Return the service provider configured associated to the id on the system.</p>
 
 <table><thead>
@@ -6221,8 +6217,6 @@ curl -X POST <span class="s2">"https://cloudmc_endpoint/rest/service_providers"<
   <span class="p">}</span>
 <span class="p">}</span>
 </code></pre>
-<p><code>POST /service_providers</code></p>
-
 <p>Create a new service provider</p>
 
 <table><thead>
@@ -6351,8 +6345,6 @@ curl -X POST <span class="s2">"https://cloudmc_endpoint/rest/service_providers/:
   <span class="p">}</span>
 <span class="p">}</span>
 </code></pre>
-<p><code>POST /service_providers/:id</code></p>
-
 <p>Updates a specific service provider</p>
 
 <table><thead>
@@ -6431,8 +6423,6 @@ curl <span class="s2">"https://cloudmc_endpoint/rest/service_providers/f9dea588-
    -X DELETE -H <span class="s2">"MC-Api-Key: your_api_key"</span>
 
 </code></pre>
-<p><code>DELETE /service_providers/:id</code></p>
-
 <p>Delete a specific service provider. </p>
 <h1 id='cloudstack-plugin'>CloudStack plugin</h1>
 <p>The CloudStack plugin provides endpoints for carrying out operations on CloudMC compute and networking entities. While each operation has its own validation and required fields, all operations need to specify the service code and environment in which they should be carried out. The following example URL describes how to specify this information for all entities.</p>
