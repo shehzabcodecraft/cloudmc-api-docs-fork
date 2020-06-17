@@ -2009,17 +2009,6 @@
                               </ul>
                           </li>
                           <li>
-                            <a href="#azure-secrets" class="toc-h3 toc-link" data-title="Azure plugin">Secrets</a>
-                              <ul class="toc-list-h4">
-                                  <li>
-                                    <a href="#azure-list-secrets" class="toc-h4 toc-link" data-title="Azure plugin">List secrets</a>
-                                  </li>
-                                  <li>
-                                    <a href="#azure-get-a-secret" class="toc-h4 toc-link" data-title="Azure plugin">Get a secret</a>
-                                  </li>
-                              </ul>
-                          </li>
-                          <li>
                             <a href="#azure-configmaps" class="toc-h3 toc-link" data-title="Azure plugin">ConfigMaps</a>
                               <ul class="toc-list-h4">
                                   <li>
@@ -2027,6 +2016,17 @@
                                   </li>
                                   <li>
                                     <a href="#azure-get-a-configmap" class="toc-h4 toc-link" data-title="Azure plugin">Get a configmap</a>
+                                  </li>
+                              </ul>
+                          </li>
+                          <li>
+                            <a href="#azure-secrets" class="toc-h3 toc-link" data-title="Azure plugin">Secrets</a>
+                              <ul class="toc-list-h4">
+                                  <li>
+                                    <a href="#azure-list-secrets" class="toc-h4 toc-link" data-title="Azure plugin">List secrets</a>
+                                  </li>
+                                  <li>
+                                    <a href="#azure-get-a-secret" class="toc-h4 toc-link" data-title="Azure plugin">Get a secret</a>
                                   </li>
                               </ul>
                           </li>
@@ -29583,6 +29583,132 @@ For Windows instances, reset the administrator account and reset the Remote Desk
 </tbody></table>
 
 <p>Note that the list is not complete, since it is refering to the <a href="https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md">kubernetes api details</a>.</p>
+<h3 id='azure-configmaps'>ConfigMaps</h3>
+
+<!-------------------- LIST CONFIG MAPS -------------------->
+
+<p><h4 id='azure-list-configmaps'>List configmaps</h4><pre class="highlight shell tab-shell"><code>curl -X GET <span class="se">&lt;/span&gt;
+   -H <span class="s2">&quot;MC-Api-Key: your_api_key&quot;</span> <span class="se">&lt;/span&gt;
+   <span class="s2">&quot;https://cloudmc_endpoint/v1/services/a_service/an_environment/configmaps?cluster_id=a_cluster_id&quot;</span>
+</code></pre>
+<blockquote>
+<p>The above command returns a JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">&quot;data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;coredns/kube-system&quot;</span><span class="p">,</span><span class="w">
+      </span><span class="s2">&quot;data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">&quot;Corefile&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;.:53 {</span><span class="se">\n</span><span class="s2">    errors</span><span class="se">\n</span><span class="s2">    health</span><span class="se">\n</span><span class="s2">    kubernetes cluster.local in-addr.arpa ip6.arpa {</span><span class="se">\n</span><span class="s2">      pods insecure</span><span class="se">\n</span><span class="s2">      upstream</span><span class="se">\n</span><span class="s2">      fallthrough in-addr.arpa ip6.arpa</span><span class="se">\n</span><span class="s2">    }</span><span class="se">\n</span><span class="s2">    prometheus :9153</span><span class="se">\n</span><span class="s2">    forward . /etc/resolv.conf</span><span class="se">\n</span><span class="s2">    cache 30</span><span class="se">\n</span><span class="s2">    loop</span><span class="se">\n</span><span class="s2">    reload</span><span class="se">\n</span><span class="s2">    loadbalance</span><span class="se">\n</span><span class="s2">    import custom/<em>.override</span><span class="se">\n</span><span class="s2">}</span><span class="se">\n</span><span class="s2">import custom/</em>.server</span><span class="se">\n</span><span class="s2">&quot;</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">&quot;metadata&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="s2">&quot;metadata&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">&quot;recordCount&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><code>GET /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/configmaps?cluster_id=:cluster_id</code></p></p>
+
+<p>Retrieve a list of all config maps in a given <a href="#administration-environments">environment</a>.</p>
+
+<table><thead>
+<tr>
+<th>Required</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>cluster_id</code> <br/><em>string</em></td>
+<td>The id of the cluster in which to list the config maps.</td>
+</tr>
+</tbody></table>
+
+<table><thead>
+<tr>
+<th>Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code> <br/><em>string</em></td>
+<td>The id of the config map</td>
+</tr>
+<tr>
+<td><code>apiVersion</code> <br/><em>string</em></td>
+<td>The API version used to retrieve this config map</td>
+</tr>
+<tr>
+<td><code>kind</code> <br/><em>string</em></td>
+<td>The type of the returned resource. ie, ConfigMap</td>
+</tr>
+<tr>
+<td><code>metadata</code> <br/><em>object</em></td>
+<td>The metadata of the config map</td>
+</tr>
+</tbody></table>
+
+<!-------------------- GET A configmap -------------------->
+
+<p><h4 id='azure-get-a-configmap'>Get a configmap</h4><pre class="highlight shell tab-shell"><code>curl -X GET <span class="se">&lt;/span&gt;
+   -H <span class="s2">&quot;MC-Api-Key: your_api_key&quot;</span> <span class="se">&lt;/span&gt;
+   <span class="s2">&quot;https://cloudmc_endpoint/v1/services/a_service/an_environment/configmaps/coredns/kube-system?cluster_id=a_cluster_id&quot;</span>
+</code></pre>
+<blockquote>
+<p>The above command returns a JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">&quot;data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;coredns/kube-system&quot;</span><span class="p">,</span><span class="w">
+    </span><span class="s2">&quot;apiVersion&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;v1&quot;</span><span class="p">,</span><span class="w">
+    </span><span class="s2">&quot;data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">&quot;Corefile&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;.:53 {</span><span class="se">\n</span><span class="s2">    errors</span><span class="se">\n</span><span class="s2">    health</span><span class="se">\n</span><span class="s2">    kubernetes cluster.local in-addr.arpa ip6.arpa {</span><span class="se">\n</span><span class="s2">      pods insecure</span><span class="se">\n</span><span class="s2">      upstream</span><span class="se">\n</span><span class="s2">      fallthrough in-addr.arpa ip6.arpa</span><span class="se">\n</span><span class="s2">    }</span><span class="se">\n</span><span class="s2">    prometheus :9153</span><span class="se">\n</span><span class="s2">    forward . /etc/resolv.conf</span><span class="se">\n</span><span class="s2">    cache 30</span><span class="se">\n</span><span class="s2">    loop</span><span class="se">\n</span><span class="s2">    reload</span><span class="se">\n</span><span class="s2">    loadbalance</span><span class="se">\n</span><span class="s2">    import custom/<em>.override</span><span class="se">\n</span><span class="s2">}</span><span class="se">\n</span><span class="s2">import custom/</em>.server</span><span class="se">\n</span><span class="s2">&quot;</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">&quot;kind&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ConfigMap&quot;</span><span class="p">,</span><span class="w">
+    </span><span class="s2">&quot;metadata&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><code>GET /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/configmaps/:id?cluster_id=:cluster_id</code></p></p>
+
+<p>Retrieve a configmap and all its info in a given <a href="#administration-environments">environment</a>.</p>
+
+<table><thead>
+<tr>
+<th>Required</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>cluster_id</code> <br/><em>string</em></td>
+<td>The id of the cluster in which to get the config map.</td>
+</tr>
+</tbody></table>
+
+<table><thead>
+<tr>
+<th>Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code> <br/><em>string</em></td>
+<td>The id of the config map</td>
+</tr>
+<tr>
+<td><code>apiVersion</code> <br/><em>string</em></td>
+<td>The API version used to retrieve this config map</td>
+</tr>
+<tr>
+<td><code>kind</code> <br/><em>string</em></td>
+<td>The type of the returned resource. ie, ConfigMap</td>
+</tr>
+<tr>
+<td><code>metadata</code> <br/><em>object</em></td>
+<td>The metadata of the config map</td>
+</tr>
+</tbody></table>
 <h3 id='azure-secrets'>Secrets</h3>
 
 <!-------------------- LIST Secrets -------------------->
@@ -29731,132 +29857,6 @@ For Windows instances, reset the administrator account and reset the Remote Desk
 <tr>
 <td><code>type</code> <br/><em>string</em></td>
 <td>A string used to facilitate programmatic handling of a secret&#39;s data.</td>
-</tr>
-</tbody></table>
-<h3 id='azure-configmaps'>ConfigMaps</h3>
-
-<!-------------------- LIST CONFIG MAPS -------------------->
-
-<p><h4 id='azure-list-configmaps'>List configmaps</h4><pre class="highlight shell tab-shell"><code>curl -X GET <span class="se">&lt;/span&gt;
-   -H <span class="s2">&quot;MC-Api-Key: your_api_key&quot;</span> <span class="se">&lt;/span&gt;
-   <span class="s2">&quot;https://cloudmc_endpoint/v1/services/a_service/an_environment/configmaps?cluster_id=a_cluster_id&quot;</span>
-</code></pre>
-<blockquote>
-<p>The above command returns a JSON structured like this:</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">&quot;data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="s2">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;coredns/kube-system&quot;</span><span class="p">,</span><span class="w">
-      </span><span class="s2">&quot;data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">&quot;Corefile&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;.:53 {</span><span class="se">\n</span><span class="s2">    errors</span><span class="se">\n</span><span class="s2">    health</span><span class="se">\n</span><span class="s2">    kubernetes cluster.local in-addr.arpa ip6.arpa {</span><span class="se">\n</span><span class="s2">      pods insecure</span><span class="se">\n</span><span class="s2">      upstream</span><span class="se">\n</span><span class="s2">      fallthrough in-addr.arpa ip6.arpa</span><span class="se">\n</span><span class="s2">    }</span><span class="se">\n</span><span class="s2">    prometheus :9153</span><span class="se">\n</span><span class="s2">    forward . /etc/resolv.conf</span><span class="se">\n</span><span class="s2">    cache 30</span><span class="se">\n</span><span class="s2">    loop</span><span class="se">\n</span><span class="s2">    reload</span><span class="se">\n</span><span class="s2">    loadbalance</span><span class="se">\n</span><span class="s2">    import custom/<em>.override</span><span class="se">\n</span><span class="s2">}</span><span class="se">\n</span><span class="s2">import custom/</em>.server</span><span class="se">\n</span><span class="s2">&quot;</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="s2">&quot;metadata&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-  </span><span class="p">],</span><span class="w">
-  </span><span class="s2">&quot;metadata&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="s2">&quot;recordCount&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-<p><code>GET /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/configmaps?cluster_id=:cluster_id</code></p></p>
-
-<p>Retrieve a list of all config maps in a given <a href="#administration-environments">environment</a>.</p>
-
-<table><thead>
-<tr>
-<th>Required</th>
-<th>&nbsp;</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code>cluster_id</code> <br/><em>string</em></td>
-<td>The id of the cluster in which to list the config maps.</td>
-</tr>
-</tbody></table>
-
-<table><thead>
-<tr>
-<th>Attributes</th>
-<th>&nbsp;</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code>id</code> <br/><em>string</em></td>
-<td>The id of the config map</td>
-</tr>
-<tr>
-<td><code>apiVersion</code> <br/><em>string</em></td>
-<td>The API version used to retrieve this config map</td>
-</tr>
-<tr>
-<td><code>kind</code> <br/><em>string</em></td>
-<td>The type of the returned resource. ie, ConfigMap</td>
-</tr>
-<tr>
-<td><code>metadata</code> <br/><em>object</em></td>
-<td>The metadata of the config map</td>
-</tr>
-</tbody></table>
-
-<!-------------------- GET A configmap -------------------->
-
-<p><h4 id='azure-get-a-configmap'>Get a configmap</h4><pre class="highlight shell tab-shell"><code>curl -X GET <span class="se">&lt;/span&gt;
-   -H <span class="s2">&quot;MC-Api-Key: your_api_key&quot;</span> <span class="se">&lt;/span&gt;
-   <span class="s2">&quot;https://cloudmc_endpoint/v1/services/a_service/an_environment/configmaps/coredns/kube-system?cluster_id=a_cluster_id&quot;</span>
-</code></pre>
-<blockquote>
-<p>The above command returns a JSON structured like this:</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">&quot;data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="s2">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;coredns/kube-system&quot;</span><span class="p">,</span><span class="w">
-    </span><span class="s2">&quot;apiVersion&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;v1&quot;</span><span class="p">,</span><span class="w">
-    </span><span class="s2">&quot;data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="s2">&quot;Corefile&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;.:53 {</span><span class="se">\n</span><span class="s2">    errors</span><span class="se">\n</span><span class="s2">    health</span><span class="se">\n</span><span class="s2">    kubernetes cluster.local in-addr.arpa ip6.arpa {</span><span class="se">\n</span><span class="s2">      pods insecure</span><span class="se">\n</span><span class="s2">      upstream</span><span class="se">\n</span><span class="s2">      fallthrough in-addr.arpa ip6.arpa</span><span class="se">\n</span><span class="s2">    }</span><span class="se">\n</span><span class="s2">    prometheus :9153</span><span class="se">\n</span><span class="s2">    forward . /etc/resolv.conf</span><span class="se">\n</span><span class="s2">    cache 30</span><span class="se">\n</span><span class="s2">    loop</span><span class="se">\n</span><span class="s2">    reload</span><span class="se">\n</span><span class="s2">    loadbalance</span><span class="se">\n</span><span class="s2">    import custom/<em>.override</span><span class="se">\n</span><span class="s2">}</span><span class="se">\n</span><span class="s2">import custom/</em>.server</span><span class="se">\n</span><span class="s2">&quot;</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="s2">&quot;kind&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ConfigMap&quot;</span><span class="p">,</span><span class="w">
-    </span><span class="s2">&quot;metadata&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-<p><code>GET /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/configmaps/:id?cluster_id=:cluster_id</code></p></p>
-
-<p>Retrieve a configmap and all its info in a given <a href="#administration-environments">environment</a>.</p>
-
-<table><thead>
-<tr>
-<th>Required</th>
-<th>&nbsp;</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code>cluster_id</code> <br/><em>string</em></td>
-<td>The id of the cluster in which to get the config map.</td>
-</tr>
-</tbody></table>
-
-<table><thead>
-<tr>
-<th>Attributes</th>
-<th>&nbsp;</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code>id</code> <br/><em>string</em></td>
-<td>The id of the config map</td>
-</tr>
-<tr>
-<td><code>apiVersion</code> <br/><em>string</em></td>
-<td>The API version used to retrieve this config map</td>
-</tr>
-<tr>
-<td><code>kind</code> <br/><em>string</em></td>
-<td>The type of the returned resource. ie, ConfigMap</td>
-</tr>
-<tr>
-<td><code>metadata</code> <br/><em>object</em></td>
-<td>The metadata of the config map</td>
 </tr>
 </tbody></table>
 <h1 id='masterportal-plugin'>MasterPortal plugin</h1>
