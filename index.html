@@ -443,14 +443,12 @@
                           </li>
                           <li>
                             <a href="#administration-retrieve-service-provider" class="toc-h3 toc-link" data-title="Administration">Retrieve service provider</a>
-                              <ul class="toc-list-h4">
-                                  <li>
-                                    <a href="#administration-create-service-provider" class="toc-h4 toc-link" data-title="Administration">Create service provider</a>
-                                  </li>
-                                  <li>
-                                    <a href="#administration-update-service-provider" class="toc-h4 toc-link" data-title="Administration">Update service provider</a>
-                                  </li>
-                              </ul>
+                          </li>
+                          <li>
+                            <a href="#administration-create-service-provider" class="toc-h3 toc-link" data-title="Administration">Create service provider</a>
+                          </li>
+                          <li>
+                            <a href="#administration-update-service-provider" class="toc-h3 toc-link" data-title="Administration">Update service provider</a>
                           </li>
                           <li>
                             <a href="#administration-delete-service-provider" class="toc-h3 toc-link" data-title="Administration">Delete service provider</a>
@@ -6161,7 +6159,7 @@ curl <span class="s2">"https://cloudmc_endpoint/v1/service_providers/04b77783-51
 </tbody></table>
 
 <!-------------------- CREATE SERVICE PROVIDERS -------------------->
-<h4 id='administration-create-service-provider'>Create service provider</h4>
+<h3 id='administration-create-service-provider'>Create service provider</h3>
 <p><code>POST /service_providers</code></p>
 <pre class="highlight shell tab-shell"><code><span class="c"># Creates a new service provider</span>
 curl -X POST <span class="s2">"https://cloudmc_endpoint/rest/service_providers"</span> <span class="se">\</span>
@@ -6288,7 +6286,7 @@ curl -X POST <span class="s2">"https://cloudmc_endpoint/rest/service_providers"<
 </tbody></table>
 
 <!-------------------- UPDATE SERVICE PROVIDERS -------------------->
-<h4 id='administration-update-service-provider'>Update service provider</h4>
+<h3 id='administration-update-service-provider'>Update service provider</h3>
 <p><code>PUT /service_providers/:id</code></p>
 <pre class="highlight shell tab-shell"><code><span class="c"># Updates an existing service provider</span>
 curl -X POST <span class="s2">"https://cloudmc_endpoint/rest/service_providers/:id"</span> <span class="se">\</span>
