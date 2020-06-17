@@ -1669,6 +1669,17 @@
                       </ul>
                   </li>
                   <li>
+                    <a href="#kubernetes-configmaps" class="toc-h2 toc-link" data-title="Kubernetes plugin">ConfigMaps</a>
+                      <ul class="toc-list-h3">
+                          <li>
+                            <a href="#kubernetes-list-configmaps" class="toc-h3 toc-link" data-title="Kubernetes plugin">List configmaps</a>
+                          </li>
+                          <li>
+                            <a href="#kubernetes-get-a-configmap" class="toc-h3 toc-link" data-title="Kubernetes plugin">Get a configmap</a>
+                          </li>
+                      </ul>
+                  </li>
+                  <li>
                     <a href="#kubernetes-releases" class="toc-h2 toc-link" data-title="Kubernetes plugin">Releases</a>
                       <ul class="toc-list-h3">
                           <li>
@@ -24740,6 +24751,174 @@ curl -X POST <span class="se">\</span>
 </tbody></table>
 
 <p>Note that the list is not complete, since it is refering to the <a href="https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md">kubernetes api details</a>.</p>
+<h2 id='kubernetes-configmaps'>ConfigMaps</h2>
+<!-------------------- LIST CONFIG MAPS -------------------->
+<h3 id='kubernetes-list-configmaps'>List configmaps</h3><pre class="highlight shell tab-shell"><code>curl -X GET <span class="se">\</span>
+   -H <span class="s2">"MC-Api-Key: your_api_key"</span> <span class="se">\</span>
+   <span class="s2">"https://cloudmc_endpoint/v1/services/k8s/an_environment/configmaps"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns a JSON structured like this:</p>
+</blockquote>
+<pre class="highlight javascript"><code><span class="p">{</span>
+  <span class="s2">"data"</span><span class="p">:</span> <span class="p">[{</span>
+      <span class="s2">"id"</span><span class="p">:</span> <span class="s2">"cert-manager-cainjector-leader-election/kube-system"</span><span class="p">,</span>
+      <span class="s2">"apiVersion"</span><span class="p">:</span> <span class="s2">"v1"</span><span class="p">,</span>
+      <span class="s2">"kind"</span><span class="p">:</span> <span class="s2">"ConfigMap"</span><span class="p">,</span>
+      <span class="s2">"metadata"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">"annotations"</span><span class="p">:</span> <span class="p">{</span>
+          <span class="s2">"control-plane.alpha.kubernetes.io/leader"</span><span class="p">:</span> <span class="s2">"{\"holderIdentity\":\"cert-manager-cainjector-54c4796c5d-9txng_7d63d35e-a197-497b-9b5f-c9722aabc6cd\",\"leaseDurationSeconds\":15,\"acquireTime\":\"2020-06-14T02:01:27Z\",\"renewTime\":\"2020-06-16T19:54:04Z\",\"leaderTransitions\":23}"</span>
+        <span class="p">},</span>
+        <span class="s2">"creationTimestamp"</span><span class="p">:</span> <span class="s2">"2020-03-20T15:48:41.000-04:00"</span><span class="p">,</span>
+        <span class="s2">"name"</span><span class="p">:</span> <span class="s2">"cert-manager-cainjector-leader-election"</span><span class="p">,</span>
+        <span class="s2">"namespace"</span><span class="p">:</span> <span class="s2">"kube-system"</span><span class="p">,</span>
+        <span class="s2">"resourceVersion"</span><span class="p">:</span> <span class="s2">"25190285"</span><span class="p">,</span>
+        <span class="s2">"selfLink"</span><span class="p">:</span> <span class="s2">"/api/v1/namespaces/kube-system/configmaps/cert-manager-cainjector-leader-election"</span><span class="p">,</span>
+        <span class="s2">"uid"</span><span class="p">:</span> <span class="s2">"255fdf58-4f53-4260-abb9-334445c187a2"</span>
+      <span class="p">}</span>
+    <span class="p">},</span> <span class="p">{</span>
+      <span class="nx">etc</span><span class="p">...</span>
+    <span class="p">}</span> 
+  <span class="p">]</span>
+</code></pre>
+<p><code>GET /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/configmaps</code></p>
+
+<p>Retrieve a list of all config maps in a given <a href="#administration-environments">environment</a>.</p>
+
+<table><thead>
+<tr>
+<th>Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code> <br/><em>string</em></td>
+<td>The id of the config map</td>
+</tr>
+<tr>
+<td><code>apiVersion</code> <br/><em>string</em></td>
+<td>The API version used to retrieve this config map</td>
+</tr>
+<tr>
+<td><code>kind</code> <br/><em>string</em></td>
+<td>The type of the returned resource. ie, ConfigMap</td>
+</tr>
+<tr>
+<td><code>metadata</code> <br/><em>object</em></td>
+<td>The metadata of the config map</td>
+</tr>
+<tr>
+<td><code>metadata.creationTimestamp</code> <br/><em>string</em></td>
+<td>The date of creation of the config map as a string</td>
+</tr>
+<tr>
+<td><code>metadata.annotations</code> <br/><em>map</em></td>
+<td>The annotations associated to the config map</td>
+</tr>
+<tr>
+<td><code>metadata.name</code> <br/><em>string</em></td>
+<td>The name of the config map</td>
+</tr>
+<tr>
+<td><code>metadata.namespace</code> <br/><em>string</em></td>
+<td>The namespace in which the config map is created</td>
+</tr>
+<tr>
+<td><code>metadata.uid</code> <br/><em>object</em></td>
+<td>The UUID of the config map</td>
+</tr>
+<tr>
+<td><code>metadata.selfLink</code> <br/><em>object</em></td>
+<td>A link that uniquely identifies this config map</td>
+</tr>
+<tr>
+<td><code>metadata.resourceVersion</code> <br/><em>object</em></td>
+<td>The resource version of the config map</td>
+</tr>
+</tbody></table>
+
+<!-------------------- GET A configmap -------------------->
+<h3 id='kubernetes-get-a-configmap'>Get a configmap</h3><pre class="highlight shell tab-shell"><code>curl -X GET <span class="se">\</span>
+   -H <span class="s2">"MC-Api-Key: your_api_key"</span> <span class="se">\</span>
+   <span class="s2">"https://cloudmc_endpoint/v1/services/k8s/an_environment/configmaps/cert-manager-cainjector-leader-election/kube-system"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns a JSON structured like this:</p>
+</blockquote>
+<pre class="highlight javascript"><code><span class="p">{</span>
+    <span class="s2">"data"</span><span class="p">:</span> <span class="p">{</span>
+      <span class="s2">"id"</span><span class="p">:</span> <span class="s2">"cert-manager-cainjector-leader-election/kube-system"</span><span class="p">,</span>
+      <span class="s2">"apiVersion"</span><span class="p">:</span> <span class="s2">"v1"</span><span class="p">,</span>
+      <span class="s2">"kind"</span><span class="p">:</span> <span class="s2">"ConfigMap"</span><span class="p">,</span>
+      <span class="s2">"metadata"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">"annotations"</span><span class="p">:</span> <span class="p">{</span>
+          <span class="s2">"control-plane.alpha.kubernetes.io/leader"</span><span class="p">:</span> <span class="s2">"{\"holderIdentity\":\"cert-manager-cainjector-54c4796c5d-9txng_7d63d35e-a197-497b-9b5f-c9722aabc6cd\",\"leaseDurationSeconds\":15,\"acquireTime\":\"2020-06-14T02:01:27Z\",\"renewTime\":\"2020-06-16T19:54:04Z\",\"leaderTransitions\":23}"</span>
+        <span class="p">},</span>
+        <span class="s2">"creationTimestamp"</span><span class="p">:</span> <span class="s2">"2020-03-20T15:48:41.000-04:00"</span><span class="p">,</span>
+        <span class="s2">"name"</span><span class="p">:</span> <span class="s2">"cert-manager-cainjector-leader-election"</span><span class="p">,</span>
+        <span class="s2">"namespace"</span><span class="p">:</span> <span class="s2">"kube-system"</span><span class="p">,</span>
+        <span class="s2">"resourceVersion"</span><span class="p">:</span> <span class="s2">"25190285"</span><span class="p">,</span>
+        <span class="s2">"selfLink"</span><span class="p">:</span> <span class="s2">"/api/v1/namespaces/kube-system/configmaps/cert-manager-cainjector-leader-election"</span><span class="p">,</span>
+        <span class="s2">"uid"</span><span class="p">:</span> <span class="s2">"255fdf58-4f53-4260-abb9-334445c187a2"</span>
+      <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+<p><code>GET /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/configmaps/:id</code></p>
+
+<p>Retrieve a configmap and all its info in a given <a href="#administration-environments">environment</a>.</p>
+
+<table><thead>
+<tr>
+<th>Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code> <br/><em>string</em></td>
+<td>The id of the config map</td>
+</tr>
+<tr>
+<td><code>apiVersion</code> <br/><em>string</em></td>
+<td>The API version used to retrieve this config map</td>
+</tr>
+<tr>
+<td><code>kind</code> <br/><em>string</em></td>
+<td>The type of the returned resource. ie, ConfigMap</td>
+</tr>
+<tr>
+<td><code>metadata</code> <br/><em>object</em></td>
+<td>The metadata of the config map</td>
+</tr>
+<tr>
+<td><code>metadata.creationTimestamp</code> <br/><em>string</em></td>
+<td>The date of creation of the config map as a string</td>
+</tr>
+<tr>
+<td><code>metadata.annotations</code> <br/><em>map</em></td>
+<td>The annotations associated to the config map</td>
+</tr>
+<tr>
+<td><code>metadata.name</code> <br/><em>string</em></td>
+<td>The name of the config map</td>
+</tr>
+<tr>
+<td><code>metadata.namespace</code> <br/><em>string</em></td>
+<td>The namespace in which the config map is created</td>
+</tr>
+<tr>
+<td><code>metadata.uid</code> <br/><em>object</em></td>
+<td>The UUID of the config map</td>
+</tr>
+<tr>
+<td><code>metadata.selfLink</code> <br/><em>object</em></td>
+<td>A link that uniquely identifies this config map</td>
+</tr>
+<tr>
+<td><code>metadata.resourceVersion</code> <br/><em>object</em></td>
+<td>The resource version of the config map</td>
+</tr>
+</tbody></table>
 <h2 id='kubernetes-releases'>Releases</h2>
 <!-------------------- LIST RELEASES -------------------->
 <h3 id='kubernetes-list-releases'>List releases</h3><pre class="highlight shell tab-shell"><code>curl -X GET <span class="se">\</span>
