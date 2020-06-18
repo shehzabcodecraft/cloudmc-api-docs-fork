@@ -1398,6 +1398,9 @@
                                   <li>
                                     <a href="#gcp-add-bgp-peer-s" class="toc-h4 toc-link" data-title="Google Cloud Platform plugin">Add BGP peer(s)</a>
                                   </li>
+                                  <li>
+                                    <a href="#gcp-delete-a-router" class="toc-h4 toc-link" data-title="Google Cloud Platform plugin">Delete a Router</a>
+                                  </li>
                               </ul>
                           </li>
                           <li>
@@ -1430,7 +1433,7 @@
                                     <a href="#gcp-create-a-vpn-tunnel" class="toc-h4 toc-link" data-title="Google Cloud Platform plugin">Create a VPN tunnel</a>
                                   </li>
                                   <li>
-                                    <a href="#gcp-delete-vpn-gateway" class="toc-h4 toc-link" data-title="Google Cloud Platform plugin">Delete VPN gateway</a>
+                                    <a href="#gcp-delete-vpn-tunnel" class="toc-h4 toc-link" data-title="Google Cloud Platform plugin">Delete VPN Tunnel</a>
                                   </li>
                               </ul>
                           </li>
@@ -18207,11 +18210,11 @@ You cannot release an external IP which is currently attached to an instance.
 </tr>
 <tr>
 <td><code>shortNetwork</code><br/><em>string</em></td>
-<td>A short version of the network name this router is attached to.</td>
+<td>A shortened version of the network name that the router is attached to.</td>
 </tr>
 <tr>
 <td><code>bgp.asn</code><br/><em>string</em></td>
-<td>The BGP Autonomous System Number (ASN) Number that is to be assigned to this router. <em>Must be a valid ASN between 64512–65534</em>.</td>
+<td>The BGP Autonomous System Number (ASN) that is to be assigned to this router. <em>Must be a valid ASN between 64512–65534</em>.</td>
 </tr>
 </tbody></table>
 
@@ -18329,11 +18332,32 @@ You cannot release an external IP which is currently attached to an instance.
 </tr>
 <tr>
 <td><code>bgpPeers[*].peerIpAddress</code><br/><em>string</em></td>
-<td>The peer IP address this BGP peering tries to connect to. Only IPv4 is supported.</td>
+<td>The peer IP address that the BGP peering will try to connect to. Only IPv4 is supported.</td>
 </tr>
 <tr>
 <td><code>bgpPeers[*].peerAsn</code><br/><em>string</em></td>
 <td>Peer BGP Autonomous System Number (ASN). Each BGP interface may use a different value.</td>
+</tr>
+</tbody></table>
+
+<!-------------------- DELETE A ROUTER -------------------->
+<h4 id='gcp-delete-a-router'>Delete a Router</h4><pre class="highlight shell tab-shell"><code>curl -X DELETE <span class="se">\</span>
+   -H <span class="s2">"MC-Api-Key: your_api_key"</span> <span class="se">\</span>
+   <span class="s2">"https://cloudmc_endpoint/v1/services/gcp/test-area/routers/5333546534174463697"</span>
+</code></pre>
+<p><code>DELETE /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/routers/:id</code></p>
+
+<p>Delete an existing cloud router from the <a href="#administration-environments">environment</a>.</p>
+
+<table><thead>
+<tr>
+<th>Optional</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>selfLink</code><br/><em>string</em></td>
+<td>The partially qualified Google Cloud <code>selfLink</code> of this router. This should include the projectId, region and the router name delimited by the URL path separator. <code>Ex: project-id/regions/&lt;short-region&gt;/routers/&lt;router-name&gt;</code></td>
 </tr>
 </tbody></table>
 <h3 id='gcp-vpn-gateways'>VPN gateways</h3>
@@ -18606,7 +18630,7 @@ You cannot release an external IP which is currently attached to an instance.
 <!-------------------- LIST VPN TUNNELS -------------------->
 <h4 id='gcp-list-vpn-tunnels'>List VPN tunnels</h4><pre class="highlight shell tab-shell"><code>curl -X GET <span class="se">\</span>
    -H <span class="s2">"MC-Api-Key: your_api_key"</span> <span class="se">\</span>
-   <span class="s2">"https://cloudmc_endpoint/v1/services/gcp/test-area/vpngateways"</span>
+   <span class="s2">"https://cloudmc_endpoint/v1/services/gcp/test-area/vpntunnels"</span>
 </code></pre>
 <blockquote>
 <p>The above command returns a JSON structured like this:</p>
@@ -18905,8 +18929,8 @@ You cannot release an external IP which is currently attached to an instance.
 </tr>
 </tbody></table>
 
-<!-------------------- DELETE VPN GATEWAY -------------------->
-<h4 id='gcp-delete-vpn-gateway'>Delete VPN gateway</h4><pre class="highlight shell tab-shell"><code>curl -X DELETE <span class="se">\</span>
+<!-------------------- DELETE VPN TUNNEL -------------------->
+<h4 id='gcp-delete-vpn-tunnel'>Delete VPN Tunnel</h4><pre class="highlight shell tab-shell"><code>curl -X DELETE <span class="se">\</span>
    -H <span class="s2">"MC-Api-Key: your_api_key"</span> <span class="se">\</span>
    <span class="s2">"https://cloudmc_endpoint/v1/services/gcp/test-area/vpntunnels/8211895554244865771"</span>
 </code></pre>
