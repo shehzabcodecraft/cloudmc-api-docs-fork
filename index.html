@@ -1558,6 +1558,17 @@
                               </ul>
                           </li>
                           <li>
+                            <a href="#gcp-services" class="toc-h3 toc-link" data-title="Google Cloud Platform plugin">Services</a>
+                              <ul class="toc-list-h4">
+                                  <li>
+                                    <a href="#gcp-list-services" class="toc-h4 toc-link" data-title="Google Cloud Platform plugin">List services</a>
+                                  </li>
+                                  <li>
+                                    <a href="#gcp-get-a-service" class="toc-h4 toc-link" data-title="Google Cloud Platform plugin">Get a service</a>
+                                  </li>
+                              </ul>
+                          </li>
+                          <li>
                             <a href="#gcp-configmaps" class="toc-h3 toc-link" data-title="Google Cloud Platform plugin">ConfigMaps</a>
                               <ul class="toc-list-h4">
                                   <li>
@@ -1697,6 +1708,17 @@
                           </li>
                           <li>
                             <a href="#kubernetes-get-a-deployment" class="toc-h3 toc-link" data-title="Kubernetes plugin">Get a deployment</a>
+                          </li>
+                      </ul>
+                  </li>
+                  <li>
+                    <a href="#kubernetes-services" class="toc-h2 toc-link" data-title="Kubernetes plugin">Services</a>
+                      <ul class="toc-list-h3">
+                          <li>
+                            <a href="#kubernetes-list-services" class="toc-h3 toc-link" data-title="Kubernetes plugin">List services</a>
+                          </li>
+                          <li>
+                            <a href="#kubernetes-get-a-service" class="toc-h3 toc-link" data-title="Kubernetes plugin">Get a service</a>
                           </li>
                       </ul>
                   </li>
@@ -2008,6 +2030,17 @@
                                   </li>
                                   <li>
                                     <a href="#azure-get-a-deployment" class="toc-h4 toc-link" data-title="Azure plugin">Get a deployment</a>
+                                  </li>
+                              </ul>
+                          </li>
+                          <li>
+                            <a href="#azure-services" class="toc-h3 toc-link" data-title="Azure plugin">Services</a>
+                              <ul class="toc-list-h4">
+                                  <li>
+                                    <a href="#azure-list-services" class="toc-h4 toc-link" data-title="Azure plugin">List services</a>
+                                  </li>
+                                  <li>
+                                    <a href="#azure-get-a-service" class="toc-h4 toc-link" data-title="Azure plugin">Get a service</a>
                                   </li>
                               </ul>
                           </li>
@@ -21855,6 +21888,195 @@ curl -X POST <span class="se">\</span>
 </tbody></table>
 
 <p>Note that the list is not complete, since it is refering to the <a href="https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md">kubernetes api details</a>.</p>
+<h3 id='gcp-services'>Services</h3>
+
+<!-------------------- LIST SERVICES -------------------->
+
+<p><h4 id='gcp-list-services'>List services</h4><pre class="highlight shell tab-shell"><code>curl -X GET <span class="se">&lt;/span&gt;
+   -H <span class="s2">&quot;MC-Api-Key: your_api_key&quot;</span> <span class="se">&lt;/span&gt;
+   <span class="s2">&quot;https://cloudmc_endpoint/v1/services/a_service/an_environment/services?cluster_id=a_cluster_id&quot;</span>
+</code></pre>
+<blockquote>
+<p>The above command returns a JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">&quot;data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;alaintest-aerospike/default&quot;</span><span class="p">,</span><span class="w">
+      </span><span class="s2">&quot;ports&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="s2">&quot;3000/TCP&quot;</span><span class="p">,</span><span class="w">
+        </span><span class="s2">&quot;3002/TCP&quot;</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="s2">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ClusterIP&quot;</span><span class="p">,</span><span class="w">
+      </span><span class="s2">&quot;metadata&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+      </span><span class="s2">&quot;spec&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+      </span><span class="s2">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">&quot;loadBalancer&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;alertmanager-operated/monitoring&quot;</span><span class="p">,</span><span class="w">
+      </span><span class="s2">&quot;ports&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="s2">&quot;9093/TCP&quot;</span><span class="p">,</span><span class="w">
+        </span><span class="s2">&quot;9094/TCP&quot;</span><span class="p">,</span><span class="w">
+        </span><span class="s2">&quot;9094/UDP&quot;</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="s2">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;NodePort&quot;</span><span class="p">,</span><span class="w">
+      </span><span class="s2">&quot;apiVersion&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;v1&quot;</span><span class="p">,</span><span class="w">
+      </span><span class="s2">&quot;kind&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Service&quot;</span><span class="p">,</span><span class="w">
+      </span><span class="s2">&quot;metadata&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+      </span><span class="s2">&quot;spec&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+      </span><span class="s2">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+       </span><span class="s2">&quot;loadBalancer&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+    </span><span class="s2">&quot;metadata&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">&quot;recordCount&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><code>GET /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/services?cluster_id=:cluster_id</code></p></p>
+
+<p>Retrieve a list of all services in a given <a href="#administration-environments">environment</a>.
+| Required                   | &nbsp;                                             |
+| -------------------------- | -------------------------------------------------- |
+| <code>cluster_id</code> <br/><em>string</em> | The id of the cluster in which to get the service. |</p>
+
+<table><thead>
+<tr>
+<th>Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code> <br/><em>string</em></td>
+<td>The id of the service</td>
+</tr>
+<tr>
+<td><code>metadata</code> <br/><em>object</em></td>
+<td>The metadata of the service</td>
+</tr>
+<tr>
+<td><code>metadata.name</code> <br/><em>string</em></td>
+<td>The name of the service</td>
+</tr>
+<tr>
+<td><code>metadata.namespace</code> <br/><em>string</em></td>
+<td>The namespace in which the service is created</td>
+</tr>
+<tr>
+<td><code>metadata.uid</code> <br/><em>object</em></td>
+<td>The UUID of the service</td>
+</tr>
+<tr>
+<td><code>type</code> <br/><em>object</em></td>
+<td>The container images within a service</td>
+</tr>
+<tr>
+<td><code>ports</code><br/><em>object</em></td>
+<td>The list of ports that are exposed by this service</td>
+</tr>
+<tr>
+<td><code>spec</code><br/><em>object</em></td>
+<td>The attributes that a user creates on a service</td>
+</tr>
+<tr>
+<td><code>spec.selector</code><br/><em>object</em></td>
+<td>The keys and values corresponding to pod labels, used to determine where service traffic will be routed</td>
+</tr>
+</tbody></table>
+
+<p>Note that the list is not complete, since it is refering to the <a href="https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md">kubernetes api details</a>.</p>
+
+<!-------------------- GET A SERVICE -------------------->
+
+<p><h4 id='gcp-get-a-service'>Get a service</h4><pre class="highlight shell tab-shell"><code>curl -X GET <span class="se">&lt;/span&gt;
+   -H <span class="s2">&quot;MC-Api-Key: your_api_key&quot;</span> <span class="se">&lt;/span&gt;
+   <span class="s2">&quot;https://cloudmc_endpoint/v1/services/a_service/an_environment/services/test-aerospike/auth?cluster_id=a_cluster_id&quot;</span>
+</code></pre>
+<blockquote>
+<p>The above command returns a JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">&quot;data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;test-aerospike/auth&quot;</span><span class="p">,</span><span class="w">
+    </span><span class="s2">&quot;ports&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="s2">&quot;3000/TCP&quot;</span><span class="p">,</span><span class="w">
+      </span><span class="s2">&quot;3002/TCP&quot;</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ClusterIP&quot;</span><span class="p">,</span><span class="w">
+    </span><span class="s2">&quot;apiVersion&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;v1&quot;</span><span class="p">,</span><span class="w">
+    </span><span class="s2">&quot;kind&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Service&quot;</span><span class="p">,</span><span class="w">
+    </span><span class="s2">&quot;metadata&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+    </span><span class="s2">&quot;spec&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+    </span><span class="s2">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">&quot;loadBalancer&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><code>GET /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/services/:id?cluster_id=:cluster_id</code></p></p>
+
+<p>Retrieve a service and all its info in a given <a href="#administration-environments">environment</a>.</p>
+
+<table><thead>
+<tr>
+<th>Required</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>cluster_id</code> <br/><em>string</em></td>
+<td>The id of the cluster in which to get the service.</td>
+</tr>
+</tbody></table>
+
+<table><thead>
+<tr>
+<th>Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code> <br/><em>string</em></td>
+<td>The id of the service</td>
+</tr>
+<tr>
+<td><code>metadata</code> <br/><em>object</em></td>
+<td>The metadata of the service</td>
+</tr>
+<tr>
+<td><code>metadata.name</code> <br/><em>string</em></td>
+<td>The name of the service</td>
+</tr>
+<tr>
+<td><code>metadata.namespace</code> <br/><em>string</em></td>
+<td>The namespace in which the service is created</td>
+</tr>
+<tr>
+<td><code>metadata.uid</code> <br/><em>object</em></td>
+<td>The UUID of the service</td>
+</tr>
+<tr>
+<td><code>type</code> <br/><em>object</em></td>
+<td>The container images within a service</td>
+</tr>
+<tr>
+<td><code>ports</code><br/><em>object</em></td>
+<td>The list of ports that are exposed by this service</td>
+</tr>
+<tr>
+<td><code>spec</code><br/><em>object</em></td>
+<td>The attributes that a user creates on a service</td>
+</tr>
+<tr>
+<td><code>spec.selector</code><br/><em>object</em></td>
+<td>The keys and values corresponding to pod labels, used to determine where service traffic will be routed</td>
+</tr>
+</tbody></table>
+
+<p>Note that the list is not complete, since it is refering to the <a href="https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md">kubernetes api details</a>.</p>
 <h3 id='gcp-configmaps'>ConfigMaps</h3>
 
 <!-------------------- LIST CONFIG MAPS -------------------->
@@ -24721,6 +24943,177 @@ curl -X POST <span class="se">\</span>
 <tr>
 <td><code>status</code><br/><em>object</em></td>
 <td>The status information of the deployment</td>
+</tr>
+</tbody></table>
+
+<p>Note that the list is not complete, since it is refering to the <a href="https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md">kubernetes api details</a>.</p>
+<h2 id='kubernetes-services'>Services</h2>
+<!-------------------- LIST SERVICES -------------------->
+<h4 id='kubernetes-list-services'>List services</h4><pre class="highlight shell tab-shell"><code>curl -X GET <span class="se">\</span>
+   -H <span class="s2">"MC-Api-Key: your_api_key"</span> <span class="se">\</span>
+   <span class="s2">"https://cloudmc_endpoint/v1/services/a_service/an_environment/services"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns a JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"alaintest-aerospike/default"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"ports"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="s2">"3000/TCP"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"3002/TCP"</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ClusterIP"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+      </span><span class="s2">"spec"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+      </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"loadBalancer"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"alertmanager-operated/monitoring"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"ports"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="s2">"9093/TCP"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"9094/TCP"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"9094/UDP"</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NodePort"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"apiVersion"</span><span class="p">:</span><span class="w"> </span><span class="s2">"v1"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"kind"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Service"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+      </span><span class="s2">"spec"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+      </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+       </span><span class="s2">"loadBalancer"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"recordCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><code>GET /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/services</code></p>
+
+<p>Retrieve a list of all services in a given <a href="#administration-environments">environment</a>.</p>
+
+<table><thead>
+<tr>
+<th>Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code> <br/><em>string</em></td>
+<td>The id of the service</td>
+</tr>
+<tr>
+<td><code>metadata</code> <br/><em>object</em></td>
+<td>The metadata of the service</td>
+</tr>
+<tr>
+<td><code>metadata.name</code> <br/><em>string</em></td>
+<td>The name of the service</td>
+</tr>
+<tr>
+<td><code>metadata.namespace</code> <br/><em>string</em></td>
+<td>The namespace in which the service is created</td>
+</tr>
+<tr>
+<td><code>metadata.uid</code> <br/><em>object</em></td>
+<td>The UUID of the service</td>
+</tr>
+<tr>
+<td><code>type</code> <br/><em>object</em></td>
+<td>The container images within a service</td>
+</tr>
+<tr>
+<td><code>ports</code><br/><em>object</em></td>
+<td>The list of ports that are exposed by this service</td>
+</tr>
+<tr>
+<td><code>spec</code><br/><em>object</em></td>
+<td>The attributes that a user creates on a service</td>
+</tr>
+<tr>
+<td><code>spec.selector</code><br/><em>object</em></td>
+<td>The keys and values corresponding to pod labels, used to determine where service traffic will be routed</td>
+</tr>
+</tbody></table>
+
+<p>Note that the list is not complete, since it is refering to the <a href="https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md">kubernetes api details</a>.</p>
+
+<!-------------------- GET A SERVICE -------------------->
+<h4 id='kubernetes-get-a-service'>Get a service</h4><pre class="highlight shell tab-shell"><code>curl -X GET <span class="se">\</span>
+   -H <span class="s2">"MC-Api-Key: your_api_key"</span> <span class="se">\</span>
+   <span class="s2">"https://cloudmc_endpoint/v1/services/a_service/an_environment/services/test-aerospike/auth"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns a JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test-aerospike/auth"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"ports"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"3000/TCP"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"3002/TCP"</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ClusterIP"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"apiVersion"</span><span class="p">:</span><span class="w"> </span><span class="s2">"v1"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"kind"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Service"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+    </span><span class="s2">"spec"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"loadBalancer"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><code>GET /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/services/:id</code></p>
+
+<p>Retrieve a service and all its info in a given <a href="#administration-environments">environment</a>.</p>
+
+<table><thead>
+<tr>
+<th>Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code> <br/><em>string</em></td>
+<td>The id of the service</td>
+</tr>
+<tr>
+<td><code>metadata</code> <br/><em>object</em></td>
+<td>The metadata of the service</td>
+</tr>
+<tr>
+<td><code>metadata.name</code> <br/><em>string</em></td>
+<td>The name of the service</td>
+</tr>
+<tr>
+<td><code>metadata.namespace</code> <br/><em>string</em></td>
+<td>The namespace in which the service is created</td>
+</tr>
+<tr>
+<td><code>metadata.uid</code> <br/><em>object</em></td>
+<td>The UUID of the service</td>
+</tr>
+<tr>
+<td><code>type</code> <br/><em>object</em></td>
+<td>The container images within a service</td>
+</tr>
+<tr>
+<td><code>ports</code><br/><em>object</em></td>
+<td>The list of ports that are exposed by this service</td>
+</tr>
+<tr>
+<td><code>spec</code><br/><em>object</em></td>
+<td>The attributes that a user creates on a service</td>
+</tr>
+<tr>
+<td><code>spec.selector</code><br/><em>object</em></td>
+<td>The keys and values corresponding to pod labels, used to determine where service traffic will be routed</td>
 </tr>
 </tbody></table>
 
@@ -29603,6 +29996,195 @@ For Windows instances, reset the administrator account and reset the Remote Desk
 <tr>
 <td><code>status</code><br/><em>object</em></td>
 <td>The status information of the deployment</td>
+</tr>
+</tbody></table>
+
+<p>Note that the list is not complete, since it is refering to the <a href="https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md">kubernetes api details</a>.</p>
+<h3 id='azure-services'>Services</h3>
+
+<!-------------------- LIST SERVICES -------------------->
+
+<p><h4 id='azure-list-services'>List services</h4><pre class="highlight shell tab-shell"><code>curl -X GET <span class="se">&lt;/span&gt;
+   -H <span class="s2">&quot;MC-Api-Key: your_api_key&quot;</span> <span class="se">&lt;/span&gt;
+   <span class="s2">&quot;https://cloudmc_endpoint/v1/services/a_service/an_environment/services?cluster_id=a_cluster_id&quot;</span>
+</code></pre>
+<blockquote>
+<p>The above command returns a JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">&quot;data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;alaintest-aerospike/default&quot;</span><span class="p">,</span><span class="w">
+      </span><span class="s2">&quot;ports&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="s2">&quot;3000/TCP&quot;</span><span class="p">,</span><span class="w">
+        </span><span class="s2">&quot;3002/TCP&quot;</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="s2">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ClusterIP&quot;</span><span class="p">,</span><span class="w">
+      </span><span class="s2">&quot;metadata&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+      </span><span class="s2">&quot;spec&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+      </span><span class="s2">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">&quot;loadBalancer&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;alertmanager-operated/monitoring&quot;</span><span class="p">,</span><span class="w">
+      </span><span class="s2">&quot;ports&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="s2">&quot;9093/TCP&quot;</span><span class="p">,</span><span class="w">
+        </span><span class="s2">&quot;9094/TCP&quot;</span><span class="p">,</span><span class="w">
+        </span><span class="s2">&quot;9094/UDP&quot;</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="s2">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;NodePort&quot;</span><span class="p">,</span><span class="w">
+      </span><span class="s2">&quot;apiVersion&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;v1&quot;</span><span class="p">,</span><span class="w">
+      </span><span class="s2">&quot;kind&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Service&quot;</span><span class="p">,</span><span class="w">
+      </span><span class="s2">&quot;metadata&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+      </span><span class="s2">&quot;spec&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+      </span><span class="s2">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+       </span><span class="s2">&quot;loadBalancer&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+    </span><span class="s2">&quot;metadata&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">&quot;recordCount&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><code>GET /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/services?cluster_id=:cluster_id</code></p></p>
+
+<p>Retrieve a list of all services in a given <a href="#administration-environments">environment</a>.
+| Required                   | &nbsp;                                             |
+| -------------------------- | -------------------------------------------------- |
+| <code>cluster_id</code> <br/><em>string</em> | The id of the cluster in which to get the service. |</p>
+
+<table><thead>
+<tr>
+<th>Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code> <br/><em>string</em></td>
+<td>The id of the service</td>
+</tr>
+<tr>
+<td><code>metadata</code> <br/><em>object</em></td>
+<td>The metadata of the service</td>
+</tr>
+<tr>
+<td><code>metadata.name</code> <br/><em>string</em></td>
+<td>The name of the service</td>
+</tr>
+<tr>
+<td><code>metadata.namespace</code> <br/><em>string</em></td>
+<td>The namespace in which the service is created</td>
+</tr>
+<tr>
+<td><code>metadata.uid</code> <br/><em>object</em></td>
+<td>The UUID of the service</td>
+</tr>
+<tr>
+<td><code>type</code> <br/><em>object</em></td>
+<td>The container images within a service</td>
+</tr>
+<tr>
+<td><code>ports</code><br/><em>object</em></td>
+<td>The list of ports that are exposed by this service</td>
+</tr>
+<tr>
+<td><code>spec</code><br/><em>object</em></td>
+<td>The attributes that a user creates on a service</td>
+</tr>
+<tr>
+<td><code>spec.selector</code><br/><em>object</em></td>
+<td>The keys and values corresponding to pod labels, used to determine where service traffic will be routed</td>
+</tr>
+</tbody></table>
+
+<p>Note that the list is not complete, since it is refering to the <a href="https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md">kubernetes api details</a>.</p>
+
+<!-------------------- GET A SERVICE -------------------->
+
+<p><h4 id='azure-get-a-service'>Get a service</h4><pre class="highlight shell tab-shell"><code>curl -X GET <span class="se">&lt;/span&gt;
+   -H <span class="s2">&quot;MC-Api-Key: your_api_key&quot;</span> <span class="se">&lt;/span&gt;
+   <span class="s2">&quot;https://cloudmc_endpoint/v1/services/a_service/an_environment/services/test-aerospike/auth?cluster_id=a_cluster_id&quot;</span>
+</code></pre>
+<blockquote>
+<p>The above command returns a JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">&quot;data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;test-aerospike/auth&quot;</span><span class="p">,</span><span class="w">
+    </span><span class="s2">&quot;ports&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="s2">&quot;3000/TCP&quot;</span><span class="p">,</span><span class="w">
+      </span><span class="s2">&quot;3002/TCP&quot;</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ClusterIP&quot;</span><span class="p">,</span><span class="w">
+    </span><span class="s2">&quot;apiVersion&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;v1&quot;</span><span class="p">,</span><span class="w">
+    </span><span class="s2">&quot;kind&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Service&quot;</span><span class="p">,</span><span class="w">
+    </span><span class="s2">&quot;metadata&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+    </span><span class="s2">&quot;spec&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+    </span><span class="s2">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">&quot;loadBalancer&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><code>GET /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/services/:id?cluster_id=:cluster_id</code></p></p>
+
+<p>Retrieve a service and all its info in a given <a href="#administration-environments">environment</a>.</p>
+
+<table><thead>
+<tr>
+<th>Required</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>cluster_id</code> <br/><em>string</em></td>
+<td>The id of the cluster in which to get the service.</td>
+</tr>
+</tbody></table>
+
+<table><thead>
+<tr>
+<th>Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code> <br/><em>string</em></td>
+<td>The id of the service</td>
+</tr>
+<tr>
+<td><code>metadata</code> <br/><em>object</em></td>
+<td>The metadata of the service</td>
+</tr>
+<tr>
+<td><code>metadata.name</code> <br/><em>string</em></td>
+<td>The name of the service</td>
+</tr>
+<tr>
+<td><code>metadata.namespace</code> <br/><em>string</em></td>
+<td>The namespace in which the service is created</td>
+</tr>
+<tr>
+<td><code>metadata.uid</code> <br/><em>object</em></td>
+<td>The UUID of the service</td>
+</tr>
+<tr>
+<td><code>type</code> <br/><em>object</em></td>
+<td>The container images within a service</td>
+</tr>
+<tr>
+<td><code>ports</code><br/><em>object</em></td>
+<td>The list of ports that are exposed by this service</td>
+</tr>
+<tr>
+<td><code>spec</code><br/><em>object</em></td>
+<td>The attributes that a user creates on a service</td>
+</tr>
+<tr>
+<td><code>spec.selector</code><br/><em>object</em></td>
+<td>The keys and values corresponding to pod labels, used to determine where service traffic will be routed</td>
 </tr>
 </tbody></table>
 
