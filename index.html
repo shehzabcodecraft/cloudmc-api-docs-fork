@@ -1327,6 +1327,17 @@
                                   </li>
                               </ul>
                           </li>
+                          <li>
+                            <a href="#gcp-snapshots" class="toc-h3 toc-link" data-title="Google Cloud Platform plugin">Snapshots</a>
+                              <ul class="toc-list-h4">
+                                  <li>
+                                    <a href="#gcp-list-snapshots" class="toc-h4 toc-link" data-title="Google Cloud Platform plugin">List snapshots</a>
+                                  </li>
+                                  <li>
+                                    <a href="#gcp-retrieve-a-snapshot" class="toc-h4 toc-link" data-title="Google Cloud Platform plugin">Retrieve a snapshot</a>
+                                  </li>
+                              </ul>
+                          </li>
                       </ul>
                   </li>
                   <li>
@@ -17252,6 +17263,259 @@ An instance can only belong to one load balanced instance group. But you can add
 <tr>
 <td><code>description</code><br/><em>string</em></td>
 <td>Description of the health check.</td>
+</tr>
+</tbody></table>
+<h3 id='gcp-snapshots'>Snapshots</h3>
+<p>Snapshots can be created to periodically back up data from your instances.</p>
+<h4 id='gcp-list-snapshots'>List snapshots</h4><pre class="highlight shell tab-shell"><code>curl -X GET <span class="se">\</span>
+  -H <span class="s1">'MC-Api-key: your_api_key'</span>
+  <span class="s2">"https://cloudmc_endpoint/v1/services/gcp/test-area/snapshots"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns a JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"This is a snapshot description"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"creationTimestamp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-06-17T08:02:34.132-07:00"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"READY"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"sourceDisk"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.googleapis.com/compute/v1/projects/testarea/zones/northamerica-northeast1-a/disks/source-instance-name"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"sourceDiskId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"7481902077681239049"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"diskSizeGb"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"storageBytes"</span><span class="p">:</span><span class="w"> </span><span class="s2">"932828192"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"storageBytesStatus"</span><span class="p">:</span><span class="w"> </span><span class="s2">"UP_TO_DATE"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"licenses"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="s2">"https://www.googleapis.com/compute/v1/projects/debian-cloud/global/licenses/debian-9-stretch"</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="s2">"selfLink"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.googleapis.com/compute/v1/projects/testarea/global/snapshots/snapshot-1"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"labels"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"sampleLabel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"label value"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"labelFingerprint"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6gSwJq6EkEI="</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"licenseCodes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="s2">"1023205"</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="s2">"storageLocations"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="s2">"us"</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="s2">"kind"</span><span class="p">:</span><span class="w"> </span><span class="s2">"compute#snapshot"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"downloadBytes"</span><span class="p">:</span><span class="w"> </span><span class="s2">"932822788"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"7059283128121212212"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"snapshot-1"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="s2">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"recordCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><code>
+   GET /service/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/snapshots
+</code></p>
+
+<p>Retrieve a list of all snapshots.</p>
+
+<table><thead>
+<tr>
+<th>Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>description</code> <br/><em>string</em></td>
+<td>The snapshot description.</td>
+</tr>
+<tr>
+<td><code>creationTimestamp</code> <br/><em>string</em></td>
+<td>Creation timestamp in RFC3339 text format.</td>
+</tr>
+<tr>
+<td><code>status</code> <br/><em>string</em></td>
+<td>The status of the snapshot. One of the following values: CREATING, DELETING, FAILED, READY, or UPLOADING.</td>
+</tr>
+<tr>
+<td><code>sourceDisk</code> <br/><em>string</em></td>
+<td>The source disk used to create this snapshot.</td>
+</tr>
+<tr>
+<td><code>sourceDiskId</code> <br/><em>string</em></td>
+<td>The ID value of the disk used to create this snapshot.</td>
+</tr>
+<tr>
+<td><code>diskSizeGb</code> <br/><em>string</em></td>
+<td>Size of the source disk, specified in GB.</td>
+</tr>
+<tr>
+<td><code>storageBytes</code> <br/><em>string</em></td>
+<td>A size of the storage used by the snapshot.</td>
+</tr>
+<tr>
+<td><code>storageBytesStatus</code> <br/><em>string</em></td>
+<td>An indicator whether storageBytes is in a stable state or it is being adjusted as a result of shared storage reallocation. This status can either be UPDATING, meaning the size of the snapshot is being updated, or UP_TO_DATE, meaning the size of the snapshot is up-to-date.</td>
+</tr>
+<tr>
+<td><code>licenses</code> <br/><em>Array[string]</em></td>
+<td>A list of public visible licenses that apply to this snapshot.</td>
+</tr>
+<tr>
+<td><code>selfLink</code> <br/><em>string</em></td>
+<td>Server-defined URL for the resource.</td>
+</tr>
+<tr>
+<td><code>labels</code> <br/><em>Object</em></td>
+<td>Mapped object containing labels applied to this snapshot. Label values may be empty.</td>
+</tr>
+<tr>
+<td><code>labelFingerprint</code> <br/><em>string</em></td>
+<td>A fingerprint for the labels being applied to this snapshot. Initially generated by Compute Engine and changes after every request to modify or update labels.</td>
+</tr>
+<tr>
+<td><code>licenseCodes</code> <br/><em>Array[string]</em></td>
+<td>Integer license codes indicating which licenses are attached to this snapshot.</td>
+</tr>
+<tr>
+<td><code>storageLocations</code> <br/><em>Array[string]</em></td>
+<td>Cloud Storage bucket storage location of the snapshot (regional or multi-regional).</td>
+</tr>
+<tr>
+<td><code>kind</code> <br/><em>string</em></td>
+<td>Type of the resource. Always compute#snapshot for Snapshot resources.</td>
+</tr>
+<tr>
+<td><code>downloadBytes</code> <br/><em>string</em></td>
+<td>Number of bytes downloaded to restore a snapshot to a disk.</td>
+</tr>
+<tr>
+<td><code>id</code> <br/><em>string</em></td>
+<td>The unique identifier for the resource. This identifier is defined by the server.</td>
+</tr>
+<tr>
+<td><code>name</code> <br/><em>string</em></td>
+<td>Name of the resource; provided by the client when the resource is created.</td>
+</tr>
+</tbody></table>
+
+<!-------------------- RETRIEVE A SNAPSHOT -------------------->
+<h4 id='gcp-retrieve-a-snapshot'>Retrieve a snapshot</h4><pre class="highlight shell tab-shell"><code>curl -X GET <span class="se">\</span>
+   -H <span class="s2">"MC-Api-Key: your_api_key"</span> <span class="se">\</span>
+   <span class="s2">"https://cloudmc_endpoint/v1/services/gcp/test-area/snapshots/7059283128121212212"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns a JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"This is a snapshot description"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"creationTimestamp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-06-17T08:02:34.132-07:00"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"READY"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"sourceDisk"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.googleapis.com/compute/v1/projects/testarea/zones/northamerica-northeast1-a/disks/source-instance-name"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"sourceDiskId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"7481902077681239049"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"diskSizeGb"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"storageBytes"</span><span class="p">:</span><span class="w"> </span><span class="s2">"932828192"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"storageBytesStatus"</span><span class="p">:</span><span class="w"> </span><span class="s2">"UP_TO_DATE"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"licenses"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="s2">"https://www.googleapis.com/compute/v1/projects/debian-cloud/global/licenses/debian-9-stretch"</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="s2">"selfLink"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.googleapis.com/compute/v1/projects/testarea/global/snapshots/snapshot-1"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"labels"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"sampleLabel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"label value"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"labelFingerprint"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6gSwJq6EkEI="</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"licenseCodes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="s2">"1023205"</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="s2">"storageLocations"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="s2">"us"</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="s2">"kind"</span><span class="p">:</span><span class="w"> </span><span class="s2">"compute#snapshot"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"downloadBytes"</span><span class="p">:</span><span class="w"> </span><span class="s2">"932822788"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"7059283128121212212"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"snapshot-1"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><code>GET /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/snapshots/:id</code></p>
+
+<p>Retrieve a specific snapshot by id.</p>
+
+<table><thead>
+<tr>
+<th>Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>description</code> <br/><em>string</em></td>
+<td>The snapshot description.</td>
+</tr>
+<tr>
+<td><code>creationTimestamp</code> <br/><em>string</em></td>
+<td>Creation timestamp in RFC3339 text format.</td>
+</tr>
+<tr>
+<td><code>status</code> <br/><em>string</em></td>
+<td>The status of the snapshot. One of the following values: CREATING, DELETING, FAILED, READY, or UPLOADING.</td>
+</tr>
+<tr>
+<td><code>sourceDisk</code> <br/><em>string</em></td>
+<td>The source disk used to create this snapshot.</td>
+</tr>
+<tr>
+<td><code>sourceDiskId</code> <br/><em>string</em></td>
+<td>The ID value of the disk used to create this snapshot.</td>
+</tr>
+<tr>
+<td><code>diskSizeGb</code> <br/><em>string</em></td>
+<td>Size of the source disk, specified in GB.</td>
+</tr>
+<tr>
+<td><code>storageBytes</code> <br/><em>string</em></td>
+<td>A size of the storage used by the snapshot.</td>
+</tr>
+<tr>
+<td><code>storageBytesStatus</code> <br/><em>string</em></td>
+<td>An indicator whether storageBytes is in a stable state or it is being adjusted as a result of shared storage reallocation. This status can either be UPDATING, meaning the size of the snapshot is being updated, or UP_TO_DATE, meaning the size of the snapshot is up-to-date.</td>
+</tr>
+<tr>
+<td><code>licenses</code> <br/><em>Array[string]</em></td>
+<td>A list of public visible licenses that apply to this snapshot.</td>
+</tr>
+<tr>
+<td><code>selfLink</code> <br/><em>string</em></td>
+<td>Server-defined URL for the resource.</td>
+</tr>
+<tr>
+<td><code>labels</code> <br/><em>Object</em></td>
+<td>Mapped object containing labels applied to this snapshot. Label values may be empty.</td>
+</tr>
+<tr>
+<td><code>labelFingerprint</code> <br/><em>string</em></td>
+<td>A fingerprint for the labels being applied to this snapshot. Initially generated by Compute Engine and changes after every request to modify or update labels.</td>
+</tr>
+<tr>
+<td><code>licenseCodes</code> <br/><em>Array[string]</em></td>
+<td>Integer license codes indicating which licenses are attached to this snapshot.</td>
+</tr>
+<tr>
+<td><code>storageLocations</code> <br/><em>Array[string]</em></td>
+<td>Cloud Storage bucket storage location of the snapshot (regional or multi-regional).</td>
+</tr>
+<tr>
+<td><code>kind</code> <br/><em>string</em></td>
+<td>Type of the resource. Always compute#snapshot for Snapshot resources.</td>
+</tr>
+<tr>
+<td><code>downloadBytes</code> <br/><em>string</em></td>
+<td>Number of bytes downloaded to restore a snapshot to a disk.</td>
+</tr>
+<tr>
+<td><code>id</code> <br/><em>string</em></td>
+<td>The unique identifier for the resource. This identifier is defined by the server.</td>
+</tr>
+<tr>
+<td><code>name</code> <br/><em>string</em></td>
+<td>Name of the resource; provided by the client when the resource is created.</td>
 </tr>
 </tbody></table>
 <h2 id='gcp-networking'>Networking</h2><h3 id='gcp-networks'>Networks</h3>
