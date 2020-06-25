@@ -1352,6 +1352,9 @@
                                   <li>
                                     <a href="#gcp-retrieve-a-network" class="toc-h4 toc-link" data-title="Google Cloud Platform plugin">Retrieve a network</a>
                                   </li>
+                                  <li>
+                                    <a href="#gcp-create-a-network" class="toc-h4 toc-link" data-title="Google Cloud Platform plugin">Create a network</a>
+                                  </li>
                               </ul>
                           </li>
                           <li>
@@ -17680,6 +17683,87 @@ An instance can only belong to one load balanced instance group. But you can add
 <tr>
 <td><code>subnetworks</code><br/><em>Array[URL]</em></td>
 <td>Server-defined fully-qualified URLs for all subnetworks in this VPC network.</td>
+</tr>
+</tbody></table>
+
+<!-------------------- CREATE A NETWORK -------------------->
+<h4 id='gcp-create-a-network'>Create a network</h4><pre class="highlight shell tab-shell"><code>curl -X POST <span class="se">\</span>
+   -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+   -H <span class="s2">"MC-Api-Key: your_api_key"</span> <span class="se">\</span>
+   -d <span class="s2">"request_body"</span> <span class="se">\</span>
+   <span class="s2">"https://cloudmc_endpoint/v1/services/gcp/test-area/networks"</span>
+</code></pre>
+<blockquote>
+<p>Request body example for network in auto subnet creation mode:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"vpc-name"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"autoCreateSubnetworks"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<blockquote>
+<p>Request body example for network in custom subnet creation mode:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"vpc-name"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"subnetName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"subnet-name"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"subnetShortRegion"</span><span class="p">:</span><span class="w"> </span><span class="s2">"northamerica-northeast1"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"subnetIpCidrRange"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10.0.0.0/20"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><code>POST /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/networks</code></p>
+
+<p>Create a new network and attach subnet</p>
+
+<table><thead>
+<tr>
+<th>Required in auto mode</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>name</code><br/><em>string</em></td>
+<td>The display name of the network.</td>
+</tr>
+<tr>
+<td><code>autoCreateSubnetworks</code><br/><em>boolean</em></td>
+<td>Whether subnets will be automatically created for each region.</td>
+</tr>
+</tbody></table>
+
+<table><thead>
+<tr>
+<th>Required in custom mode</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>name</code><br/><em>string</em></td>
+<td>The display name of the network.</td>
+</tr>
+<tr>
+<td><code>subnetName</code><br/><em>string</em></td>
+<td>The display name of the subnet.</td>
+</tr>
+<tr>
+<td><code>subnetShortRegion</code><br/><em>string</em></td>
+<td>A short version of the region name of the subnet.</td>
+</tr>
+<tr>
+<td><code>subnetIpCidrRange</code><br/><em>string</em></td>
+<td>The CIDR IP range of the subnet.</td>
+</tr>
+</tbody></table>
+
+<table><thead>
+<tr>
+<th>Optional</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>description</code><br/><em>string</em></td>
+<td>Description of the network.</td>
 </tr>
 </tbody></table>
 <h3 id='gcp-firewall-rules'>Firewall rules</h3>
