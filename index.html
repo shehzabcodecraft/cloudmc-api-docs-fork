@@ -1374,6 +1374,9 @@
                                   <li>
                                     <a href="#gcp-create-a-network" class="toc-h4 toc-link" data-title="Google Cloud Platform plugin">Create a network</a>
                                   </li>
+                                  <li>
+                                    <a href="#gcp-delete-a-network" class="toc-h4 toc-link" data-title="Google Cloud Platform plugin">Delete a network</a>
+                                  </li>
                               </ul>
                           </li>
                           <li>
@@ -17758,7 +17761,7 @@ An instance can only belong to one load balanced instance group. But you can add
 
 <!-------------------- RETRIEVE A NETWORK -------------------->
 <h4 id='gcp-retrieve-a-network'>Retrieve a network</h4><pre class="highlight shell tab-shell"><code>curl -H <span class="s2">"MC-Api-Key: your_api_key"</span> <span class="se">\</span>
-    <span class="s2">"https://api.your.cloudmc/v1/services/gcp/test-area/networks/6402509859159933821"</span>
+    <span class="s2">"https://cloudmc_endpoint/v1/services/gcp/test-area/networks/6402509859159933821"</span>
 </code></pre>
 <blockquote>
 <p>The above command returns a JSON structured like this:</p>
@@ -17914,6 +17917,15 @@ An instance can only belong to one load balanced instance group. But you can add
 <td>Description of the network.</td>
 </tr>
 </tbody></table>
+
+<!-------------------- DELETE A NETWORK -------------------->
+<h4 id='gcp-delete-a-network'>Delete a network</h4><pre class="highlight shell tab-shell"><code>curl -X DELETE <span class="se">\</span>
+  -H <span class="s2">"mc-api-key: your_api_key"</span> <span class="se">\</span>
+  <span class="s2">"https://cloudmc_endpoint/v1/services/gcp/test-area/networks/6402509859159933821"</span>
+</code></pre>
+<p><code>DELETE /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/networks/:id</code></p>
+
+<p>Delete an existing network.</p>
 <h3 id='gcp-firewall-rules'>Firewall rules</h3>
 <p>Firewall allows you to control inbound and outbound traffic to your <a href="#administration-environments">environment</a>.</p>
 <h4 id='gcp-list-firewall-rules'>List firewall rules</h4><pre class="highlight shell tab-shell"><code>curl -X GET <span class="se">\</span>
