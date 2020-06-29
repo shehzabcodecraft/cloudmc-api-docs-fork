@@ -420,36 +420,55 @@
                     <a href="#administration-authentication" class="toc-h2 toc-link" data-title="Administration">Authentication</a>
                       <ul class="toc-list-h3">
                           <li>
-                            <a href="#administration-list-identity-providers" class="toc-h3 toc-link" data-title="Administration">List identity providers</a>
+                            <a href="#administration-identity-providers" class="toc-h3 toc-link" data-title="Administration">Identity providers</a>
+                              <ul class="toc-list-h4">
+                                  <li>
+                                    <a href="#administration-list-identity-providers" class="toc-h4 toc-link" data-title="Administration">List identity providers</a>
+                                  </li>
+                                  <li>
+                                    <a href="#administration-create-identity-provider" class="toc-h4 toc-link" data-title="Administration">Create identity provider</a>
+                                  </li>
+                                  <li>
+                                    <a href="#administration-update-identity-provider" class="toc-h4 toc-link" data-title="Administration">Update Identity Provider</a>
+                                  </li>
+                                  <li>
+                                    <a href="#administration-delete-identity-provider" class="toc-h4 toc-link" data-title="Administration">Delete Identity Provider</a>
+                                  </li>
+                              </ul>
                           </li>
                           <li>
-                            <a href="#administration-create-identity-provider" class="toc-h3 toc-link" data-title="Administration">Create identity provider</a>
+                            <a href="#administration-service-providers" class="toc-h3 toc-link" data-title="Administration">Service Providers</a>
+                              <ul class="toc-list-h4">
+                                  <li>
+                                    <a href="#administration-list-service-providers" class="toc-h4 toc-link" data-title="Administration">List service providers</a>
+                                  </li>
+                                  <li>
+                                    <a href="#administration-retrieve-service-provider" class="toc-h4 toc-link" data-title="Administration">Retrieve service provider</a>
+                                  </li>
+                                  <li>
+                                    <a href="#administration-create-service-provider" class="toc-h4 toc-link" data-title="Administration">Create service provider</a>
+                                  </li>
+                                  <li>
+                                    <a href="#administration-update-service-provider" class="toc-h4 toc-link" data-title="Administration">Update service provider</a>
+                                  </li>
+                                  <li>
+                                    <a href="#administration-delete-service-provider" class="toc-h4 toc-link" data-title="Administration">Delete service provider</a>
+                                  </li>
+                              </ul>
                           </li>
                           <li>
-                            <a href="#administration-update-identity-provider" class="toc-h3 toc-link" data-title="Administration">Update Identity Provider</a>
-                          </li>
-                          <li>
-                            <a href="#administration-delete-identity-provider" class="toc-h3 toc-link" data-title="Administration">Delete Identity Provider</a>
-                          </li>
-                      </ul>
-                  </li>
-                  <li>
-                    <a href="#administration-service-providers" class="toc-h2 toc-link" data-title="Administration">Service Providers</a>
-                      <ul class="toc-list-h3">
-                          <li>
-                            <a href="#administration-list-service-providers" class="toc-h3 toc-link" data-title="Administration">List service providers</a>
-                          </li>
-                          <li>
-                            <a href="#administration-retrieve-service-provider" class="toc-h3 toc-link" data-title="Administration">Retrieve service provider</a>
-                          </li>
-                          <li>
-                            <a href="#administration-create-service-provider" class="toc-h3 toc-link" data-title="Administration">Create service provider</a>
-                          </li>
-                          <li>
-                            <a href="#administration-update-service-provider" class="toc-h3 toc-link" data-title="Administration">Update service provider</a>
-                          </li>
-                          <li>
-                            <a href="#administration-delete-service-provider" class="toc-h3 toc-link" data-title="Administration">Delete service provider</a>
+                            <a href="#administration-saml-settings" class="toc-h3 toc-link" data-title="Administration">SAML settings</a>
+                              <ul class="toc-list-h4">
+                                  <li>
+                                    <a href="#administration-list-saml-settings" class="toc-h4 toc-link" data-title="Administration">List SAML settings</a>
+                                  </li>
+                                  <li>
+                                    <a href="#administration-retrieve-saml-settings" class="toc-h4 toc-link" data-title="Administration">Retrieve SAML settings</a>
+                                  </li>
+                                  <li>
+                                    <a href="#administration-update-saml-settings" class="toc-h4 toc-link" data-title="Administration">Update SAML settings</a>
+                                  </li>
+                              </ul>
                           </li>
                       </ul>
                   </li>
@@ -5685,11 +5704,11 @@ curl -X POST <span class="s2">"https://cloudmc_endpoint/rest/applied_pricings"</
 <td>The UUID of the organization that the scope is targeting. Only required for scopes : ORG_BASE, ORG_TREE, ORG_SUBS.</td>
 </tr>
 </tbody></table>
-<h2 id='administration-authentication'>Authentication</h2>
+<h2 id='administration-authentication'>Authentication</h2><h3 id='administration-identity-providers'>Identity providers</h3>
 <p>Configure methods of authentication for your organizations.</p>
 
 <!-------------------- LIST IDPS -------------------->
-<h3 id='administration-list-identity-providers'>List identity providers</h3>
+<h4 id='administration-list-identity-providers'>List identity providers</h4>
 <p><code>GET /identity_providers</code></p>
 <pre class="highlight shell tab-shell"><code><span class="c"># Retrieve identity providers</span>
 curl <span class="s2">"https://cloudmc_endpoint/v1/identity_providers"</span> <span class="se">\</span>
@@ -5781,7 +5800,7 @@ curl <span class="s2">"https://cloudmc_endpoint/v1/identity_providers"</span> <s
 </tbody></table>
 
 <!-------------------- CREATE IDPS -------------------->
-<h3 id='administration-create-identity-provider'>Create identity provider</h3>
+<h4 id='administration-create-identity-provider'>Create identity provider</h4>
 <p><code>POST /identity_providers</code></p>
 
 <p>Create a new identity provider.</p>
@@ -5891,12 +5910,12 @@ curl -X POST <span class="s2">"https://cloudmc_endpoint/rest/identity_providers"
 </tbody></table>
 
 <!-------------------- UPDATE IDPS -------------------->
-<h3 id='administration-update-identity-provider'>Update Identity Provider</h3>
-<p><code>POST /identity_providers/:id</code></p>
+<h4 id='administration-update-identity-provider'>Update Identity Provider</h4>
+<p><code>PUT /identity_providers/:id</code></p>
 
 <p>Update an existing identity provider.</p>
 <pre class="highlight shell tab-shell"><code><span class="c"># Updates an existing identity provider</span>
-curl -X POST <span class="s2">"https://cloudmc_endpoint/rest/identity_providers/c84cfe41-929b-47c9-bde4-b55a10bd2774"</span> <span class="se">\</span>
+curl -X PUT <span class="s2">"https://cloudmc_endpoint/rest/identity_providers/c84cfe41-929b-47c9-bde4-b55a10bd2774"</span> <span class="se">\</span>
    -H <span class="s2">"MC-Api-Key: your_api_key"</span>
 </code></pre>
 <blockquote>
@@ -5905,7 +5924,7 @@ curl -X POST <span class="s2">"https://cloudmc_endpoint/rest/identity_providers/
 <pre class="highlight javascript"><code><span class="p">{</span>
     <span class="s2">"provider"</span><span class="p">:</span> <span class="s2">"CUSTOM"</span><span class="p">,</span>
     <span class="s2">"type"</span><span class="p">:</span> <span class="s2">"OIDC"</span><span class="p">,</span>
-  <span class="s2">"id"</span><span class="p">:</span> <span class="s2">"c84cfe41-929b-47c9-bde4-b55a10bd2774"</span><span class="p">,</span>
+    <span class="s2">"id"</span><span class="p">:</span> <span class="s2">"c84cfe41-929b-47c9-bde4-b55a10bd2774"</span><span class="p">,</span>
     <span class="s2">"connectionName"</span><span class="p">:</span> <span class="s2">"CloudMC Google"</span><span class="p">,</span>
     <span class="s2">"displayName"</span><span class="p">:</span> <span class="s2">"Google"</span><span class="p">,</span>
     <span class="s2">"parameters"</span><span class="p">:</span> <span class="p">[</span>
@@ -6003,7 +6022,7 @@ curl -X POST <span class="s2">"https://cloudmc_endpoint/rest/identity_providers/
 </tbody></table>
 
 <!-------------------- Delete IDPs -------------------->
-<h3 id='administration-delete-identity-provider'>Delete Identity Provider</h3>
+<h4 id='administration-delete-identity-provider'>Delete Identity Provider</h4>
 <p><code>Delete /identity_providers/:id</code></p>
 
 <p>Delete an existing identity provider.</p>
@@ -6034,11 +6053,11 @@ curl -X DELETE <span class="s2">"https://cloudmc_endpoint/rest/identity_provider
 <td>The status of the operation.</td>
 </tr>
 </tbody></table>
-<h2 id='administration-service-providers'>Service Providers</h2>
+<h3 id='administration-service-providers'>Service Providers</h3>
 <p>Configure the service providers that can use CloudMC as their authentication source.</p>
 
 <!-------------------- LIST SERVICE PROVIDERS -------------------->
-<h3 id='administration-list-service-providers'>List service providers</h3>
+<h4 id='administration-list-service-providers'>List service providers</h4>
 <p><code>GET /service_providers</code></p>
 <pre class="highlight shell tab-shell"><code><span class="c"># Retrieve service providers</span>
 curl <span class="s2">"https://cloudmc_endpoint/v1/service_providers"</span> <span class="se">\</span>
@@ -6140,7 +6159,7 @@ curl <span class="s2">"https://cloudmc_endpoint/v1/service_providers"</span> <sp
 </tbody></table>
 
 <!-------------------- GET SERVICE PROVIDERS -------------------->
-<h3 id='administration-retrieve-service-provider'>Retrieve service provider</h3>
+<h4 id='administration-retrieve-service-provider'>Retrieve service provider</h4>
 <p><code>GET /service_providers/:id</code></p>
 <pre class="highlight shell tab-shell"><code><span class="c"># Retrieve service providers</span>
 curl <span class="s2">"https://cloudmc_endpoint/v1/service_providers/04b77783-516f-4064-a6df-e7f9cae222c1"</span> <span class="se">\</span>
@@ -6240,7 +6259,7 @@ curl <span class="s2">"https://cloudmc_endpoint/v1/service_providers/04b77783-51
 </tbody></table>
 
 <!-------------------- CREATE SERVICE PROVIDERS -------------------->
-<h3 id='administration-create-service-provider'>Create service provider</h3>
+<h4 id='administration-create-service-provider'>Create service provider</h4>
 <p><code>POST /service_providers</code></p>
 <pre class="highlight shell tab-shell"><code><span class="c"># Creates a new service provider</span>
 curl -X POST <span class="s2">"https://cloudmc_endpoint/rest/service_providers"</span> <span class="se">\</span>
@@ -6367,10 +6386,10 @@ curl -X POST <span class="s2">"https://cloudmc_endpoint/rest/service_providers"<
 </tbody></table>
 
 <!-------------------- UPDATE SERVICE PROVIDERS -------------------->
-<h3 id='administration-update-service-provider'>Update service provider</h3>
+<h4 id='administration-update-service-provider'>Update service provider</h4>
 <p><code>PUT /service_providers/:id</code></p>
 <pre class="highlight shell tab-shell"><code><span class="c"># Updates an existing service provider</span>
-curl -X POST <span class="s2">"https://cloudmc_endpoint/rest/service_providers/:id"</span> <span class="se">\</span>
+curl -X PUT <span class="s2">"https://cloudmc_endpoint/rest/service_providers/:id"</span> <span class="se">\</span>
    -H <span class="s2">"MC-Api-Key: your_api_key"</span>
 </code></pre>
 <blockquote>
@@ -6378,7 +6397,7 @@ curl -X POST <span class="s2">"https://cloudmc_endpoint/rest/service_providers/:
 </blockquote>
 <pre class="highlight javascript"><code><span class="p">{</span>
     <span class="s2">"name"</span><span class="p">:</span> <span class="s2">"Slack"</span><span class="p">,</span>
-  <span class="s2">"id"</span><span class="p">:</span> <span class="s2">"dbf3df1c-d28e-4cb5-bcb9-ce85d1675b27"</span><span class="p">,</span>
+    <span class="s2">"id"</span><span class="p">:</span> <span class="s2">"dbf3df1c-d28e-4cb5-bcb9-ce85d1675b27"</span><span class="p">,</span>
     <span class="s2">"type"</span><span class="p">:</span> <span class="s2">"SAML"</span><span class="p">,</span>
     <span class="s2">"config"</span><span class="p">:</span> <span class="p">{</span>
         <span class="s2">"assertionConsumerUrl"</span><span class="p">:</span> <span class="s2">"https://yourdomain.slack.com/sso/saml"</span><span class="p">,</span>
@@ -6495,7 +6514,7 @@ curl -X POST <span class="s2">"https://cloudmc_endpoint/rest/service_providers/:
 </tbody></table>
 
 <!-------------------- DELETE SERVICE PROVIDER -------------------->
-<h3 id='administration-delete-service-provider'>Delete service provider</h3>
+<h4 id='administration-delete-service-provider'>Delete service provider</h4>
 <p><code>DELETE /service_providers/:id</code></p>
 <pre class="highlight shell tab-shell"><code><span class="c"># Delete a service provider</span>
 curl <span class="s2">"https://cloudmc_endpoint/rest/service_providers/f9dea588-d7ab-4f42-b6e6-4b85f273f3db"</span> <span class="se">\</span>
@@ -6503,6 +6522,135 @@ curl <span class="s2">"https://cloudmc_endpoint/rest/service_providers/f9dea588-
 
 </code></pre>
 <p>Delete a specific service provider. </p>
+<h3 id='administration-saml-settings'>SAML settings</h3>
+<p>Allows to change the configuration for the service provider integrated with SAML.</p>
+
+<!-------------------- LIST SERVICE SAML -------------------->
+<h4 id='administration-list-saml-settings'>List SAML settings</h4>
+<p><code>GET /saml_settings</code></p>
+<pre class="highlight shell tab-shell"><code><span class="c"># Retrieve SAML settings</span>
+curl <span class="s2">"https://cloudmc_endpoint/v1/saml_settings"</span> <span class="se">\</span>
+   -H <span class="s2">"MC-Api-Key: your_api_key"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"04b77783-516f-4064-a6df-e7f9cae222c1"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"certificate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"certificate value"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"privateKey"</span><span class="p">:</span><span class="w">  </span><span class="s2">"private key value"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>List the SAML settings configured on the system. There will be only one entry if configured.</p>
+
+<table><thead>
+<tr>
+<th>Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code><br/><em>UUID</em></td>
+<td>The id of the SAML setting</td>
+</tr>
+<tr>
+<td><code>certificate</code><br/><em>string</em></td>
+<td>The certificate send in the saml response for the service provider to validate the signature.</td>
+</tr>
+<tr>
+<td><code>privateKey</code><br/><em>string</em></td>
+<td>The private key used to sign the SAML request.</td>
+</tr>
+</tbody></table>
+
+<!-------------------- GET SAML SETTINGS -------------------->
+<h4 id='administration-retrieve-saml-settings'>Retrieve SAML settings</h4>
+<p><code>GET /saml_settings/:id</code></p>
+<pre class="highlight shell tab-shell"><code><span class="c"># Retrieve saml settings</span>
+curl <span class="s2">"https://cloudmc_endpoint/v1/saml_settings/04b77783-516f-4064-a6df-e7f9cae222c1"</span> <span class="se">\</span>
+   -H <span class="s2">"MC-Api-Key: your_api_key"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"04b77783-516f-4064-a6df-e7f9cae222c1"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"certificate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"certificate value"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"privateKey"</span><span class="p">:</span><span class="w">  </span><span class="s2">"private key value"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>Return the SAML settings configured on the system.</p>
+
+<table><thead>
+<tr>
+<th>Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code><br/><em>UUID</em></td>
+<td>The id of the SAML setting</td>
+</tr>
+<tr>
+<td><code>certificate</code><br/><em>string</em></td>
+<td>The certificate send in the saml response for the service provider to validate the signature.</td>
+</tr>
+<tr>
+<td><code>privateKey</code><br/><em>string</em></td>
+<td>The private key used to sign the SAML request.</td>
+</tr>
+</tbody></table>
+
+<!-------------------- UPDATE SAML SETTINGS -------------------->
+<h4 id='administration-update-saml-settings'>Update SAML settings</h4>
+<p><code>PUT /saml_settings/:id</code></p>
+<pre class="highlight shell tab-shell"><code><span class="c"># Updates an existing saml settings</span>
+curl -X POST <span class="s2">"https://cloudmc_endpoint/rest/saml_settings/:id"</span> <span class="se">\</span>
+   -H <span class="s2">"MC-Api-Key: your_api_key"</span>
+</code></pre>
+<blockquote>
+<p>Request body example:</p>
+</blockquote>
+<pre class="highlight javascript"><code><span class="p">{</span>
+    <span class="s2">"id"</span><span class="p">:</span> <span class="s2">"04b77783-516f-4064-a6df-e7f9cae222c1"</span><span class="p">,</span>
+    <span class="s2">"certificate"</span><span class="p">:</span> <span class="s2">"certificate value"</span><span class="p">,</span>
+    <span class="s2">"privateKey"</span><span class="p">:</span>  <span class="s2">"private key value"</span>
+<span class="p">}</span>
+</code></pre>
+<blockquote>
+<p>The above command return JSON structured like this:</p>
+</blockquote>
+<pre class="highlight javascript"><code><span class="p">{</span>
+  <span class="s2">"data"</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s2">"id"</span><span class="p">:</span> <span class="s2">"04b77783-516f-4064-a6df-e7f9cae222c1"</span><span class="p">,</span>
+    <span class="s2">"certificate"</span><span class="p">:</span> <span class="s2">"certificate value"</span><span class="p">,</span>
+    <span class="s2">"privateKey"</span><span class="p">:</span>  <span class="s2">"private key value"</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+<p>Updates a specific SAML settings</p>
+
+<table><thead>
+<tr>
+<th>Required</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>certificate</code><br/><em>string</em></td>
+<td>The certificate send in the saml response for the service provider to validate the signature. It must use the SHA-256 algorithm.</td>
+</tr>
+<tr>
+<td><code>privateKey</code><br/><em>string</em></td>
+<td>The private key used to sign the SAML request. It must be an RSA key of 2048 bits</td>
+</tr>
+</tbody></table>
 <h1 id='cloudstack-plugin'>CloudStack plugin</h1>
 <p>The CloudStack plugin provides endpoints for carrying out operations on CloudMC compute and networking entities. While each operation has its own validation and required fields, all operations need to specify the service code and environment in which they should be carried out. The following example URL describes how to specify this information for all entities.</p>
 
