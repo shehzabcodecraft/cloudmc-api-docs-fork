@@ -1307,6 +1307,9 @@
                                   <li>
                                     <a href="#gcp-resize-a-disk" class="toc-h4 toc-link" data-title="Google Cloud Platform plugin">Resize a disk</a>
                                   </li>
+                                  <li>
+                                    <a href="#gcp-take-a-snapshot-of-a-disk" class="toc-h4 toc-link" data-title="Google Cloud Platform plugin">Take a snapshot of a disk</a>
+                                  </li>
                               </ul>
                           </li>
                           <li>
@@ -1354,6 +1357,9 @@
                                   </li>
                                   <li>
                                     <a href="#gcp-retrieve-a-snapshot" class="toc-h4 toc-link" data-title="Google Cloud Platform plugin">Retrieve a snapshot</a>
+                                  </li>
+                                  <li>
+                                    <a href="#gcp-create-a-snapshot" class="toc-h4 toc-link" data-title="Google Cloud Platform plugin">Create a snapshot</a>
                                   </li>
                               </ul>
                           </li>
@@ -16982,6 +16988,40 @@ An instance can only belong to one load balanced instance group. But you can add
 <td>The size of the disk in GB. Valid values are 1 to 65536, inclusive, unless this is an <a href="#gcp-instances">instance</a>&#39;s boot disk, then the valid values are 1 to 2000.</td>
 </tr>
 </tbody></table>
+
+<!-------------------- TAKE SNAPSHOT -------------------->
+<h4 id='gcp-take-a-snapshot-of-a-disk'>Take a snapshot of a disk</h4><pre class="highlight shell tab-shell"><code>curl -X POST <span class="se">\</span>
+   -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+   -H <span class="s2">"MC-Api-Key: your_api_key"</span> <span class="se">\</span>
+   -d <span class="s2">"request_body"</span> <span class="se">\</span>
+   <span class="s2">"https://cloudmc_endpoint/v1/services/gcp/test-area/disks/5333546534174463697?operation=snapshot"</span>
+</code></pre>
+<blockquote>
+<p>Request body example:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+   </span><span class="s2">"snapshotName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"my-snapshot"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><code>POST /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/disks/:id?operation=snapshot</code></p>
+
+<p>Take a snapshot of a persistent disk.</p>
+
+<aside class="notice">
+Snapshots are incremental to avoid billing for redundant data and minimize use of storage. However, snapshots may occasionally capture the full disk for reliability. See the link for more information on <a href="https://cloud.google.com/compute/docs/disks/create-snapshots">creating snapshots.</a>
+</aside>
+
+<table><thead>
+<tr>
+<th>Optional</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>snapshotName</code> <br/><em>string</em></td>
+<td>The name of the snapshot. A default value set if a snapshot name is not provided.</td>
+</tr>
+</tbody></table>
 <h3 id='gcp-ssh-keys'>SSH keys</h3>
 <p>SSH keys are managed at the <a href="#administration-environments">environment</a> level.</p>
 
@@ -17176,7 +17216,7 @@ An instance can only belong to one load balanced instance group. But you can add
 <td>An optional description of this resource. Provide this property when you create the resource.</td>
 </tr>
 <tr>
-<td><code>healthyThreshold</code>ç</td>
+<td><code>healthyThreshold</code></td>
 <td>A so-far unhealthy instance will be marked healthy after this many consecutive successes. The default value is 2.</td>
 </tr>
 <tr>
@@ -17672,6 +17712,10 @@ An instance can only belong to one load balanced instance group. But you can add
 <td>Name of the resource; provided by the client when the resource is created.</td>
 </tr>
 </tbody></table>
+
+<!-------------------- CREATE A SNAPSHOT -------------------->
+<h4 id='gcp-create-a-snapshot'>Create a snapshot</h4>
+<p>See <a href="#gcp-take-a-snapshot-of-a-disk">take a snapshot of a disk</a> to create a snapshot.</p>
 <h2 id='gcp-networking'>Networking</h2><h3 id='gcp-networks'>Networks</h3>
 <p>A network is an isolated network where you can place groups of resources, such as <a href="#gcp-instances">instances</a>.</p>
 
