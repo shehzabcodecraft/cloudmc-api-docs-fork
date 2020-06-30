@@ -1421,6 +1421,14 @@
                           </li>
                           <li>
                             <a href="#gcp-routes" class="toc-h3 toc-link" data-title="Google Cloud Platform plugin">Routes</a>
+                              <ul class="toc-list-h4">
+                                  <li>
+                                    <a href="#gcp-list-routes" class="toc-h4 toc-link" data-title="Google Cloud Platform plugin">List routes</a>
+                                  </li>
+                                  <li>
+                                    <a href="#gcp-retrieve-a-route" class="toc-h4 toc-link" data-title="Google Cloud Platform plugin">Retrieve a route</a>
+                                  </li>
+                              </ul>
                           </li>
                           <li>
                             <a href="#gcp-routers" class="toc-h3 toc-link" data-title="Google Cloud Platform plugin">Routers</a>
@@ -17747,8 +17755,10 @@ Snapshots are incremental to avoid billing for redundant data and minimize use o
         </span><span class="s2">"https://www.googleapis.com/compute/v1/projects/test-area-oox/regions/us-west1/subnetworks/default"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"https://www.googleapis.com/compute/v1/projects/test-area-oox/regions/northamerica-northeast1/subnetworks/default"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"https://www.googleapis.com/compute/v1/projects/test-area-oox/regions/us-east4/subnetworks/default"</span><span class="w">
-      </span><span class="p">]</span><span class="w">
-    </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="s2">"numberSubnets"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"mode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"custom"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
   </span><span class="p">],</span><span class="w">
   </span><span class="s2">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"recordCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
@@ -17801,6 +17811,14 @@ Snapshots are incremental to avoid billing for redundant data and minimize use o
 <td><code>subnetworks</code><br/><em>Array[URL]</em></td>
 <td>Server-defined fully-qualified URLs for all subnetworks in this VPC network.</td>
 </tr>
+<tr>
+<td><code>numberSubnets</code><br/><em>integer</em></td>
+<td>Number of subnets in the network.</td>
+</tr>
+<tr>
+<td><code>mode</code><br/><em>string</em></td>
+<td>If autoCreateSubnetworks is true, then auto, else custom.</td>
+</tr>
 </tbody></table>
 
 <!-------------------- RETRIEVE A NETWORK -------------------->
@@ -17829,7 +17847,9 @@ Snapshots are incremental to avoid billing for redundant data and minimize use o
         </span><span class="s2">"https://www.googleapis.com/compute/v1/projects/test-area-oox/regions/us-west1/subnetworks/default"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"https://www.googleapis.com/compute/v1/projects/test-area-oox/regions/northamerica-northeast1/subnetworks/default"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"https://www.googleapis.com/compute/v1/projects/test-area-oox/regions/us-east4/subnetworks/default"</span><span class="w">
-      </span><span class="p">]</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="s2">"numberSubnets"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"mode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"custom"</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
@@ -17878,6 +17898,14 @@ Snapshots are incremental to avoid billing for redundant data and minimize use o
 <tr>
 <td><code>subnetworks</code><br/><em>Array[URL]</em></td>
 <td>Server-defined fully-qualified URLs for all subnetworks in this VPC network.</td>
+</tr>
+<tr>
+<td><code>numberSubnets</code><br/><em>integer</em></td>
+<td>Number of subnets in the network.</td>
+</tr>
+<tr>
+<td><code>mode</code><br/><em>string</em></td>
+<td>If autoCreateSubnetworks is true, then auto, else custom.</td>
 </tr>
 </tbody></table>
 
@@ -18009,6 +18037,7 @@ Snapshots are incremental to avoid billing for redundant data and minimize use o
       </span><span class="s2">"targetTags"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
         </span><span class="s2">"http-server"</span><span class="w">
       </span><span class="p">],</span><span class="w">
+      </span><span class="s2">"details"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tcp : 80"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"action"</span><span class="p">:</span><span class="w"> </span><span class="s2">"allow"</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">],</span><span class="w">
@@ -18088,6 +18117,10 @@ Snapshots are incremental to avoid billing for redundant data and minimize use o
 <td>A list of tags that controls which instances the firewall rule applies to. If targetTags are specified, then the firewall rule applies only to instances in the VPC network that have one of those tags. If no targetTags are specified, the firewall rule applies to all instances on the specified network.</td>
 </tr>
 <tr>
+<td><code>details</code><br/><em>string</em></td>
+<td>Concatenation of the IP protocols followed by the port ranges.</td>
+</tr>
+<tr>
 <td><code>action</code><br/><em>string</em></td>
 <td>The firewall rule type: &#39;allow&#39; (allow traffic) or &#39;deny&#39; (deny traffic).</td>
 </tr>
@@ -18128,6 +18161,7 @@ Snapshots are incremental to avoid billing for redundant data and minimize use o
     </span><span class="s2">"targetTags"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="s2">"http-server"</span><span class="w">
     </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"details"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tcp : 80"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"action"</span><span class="p">:</span><span class="w"> </span><span class="s2">"allow"</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -18201,6 +18235,10 @@ Snapshots are incremental to avoid billing for redundant data and minimize use o
 <tr>
 <td><code>targetTags</code><br/><em>Array[string]</em></td>
 <td>A list of tags that controls which instances the firewall rule applies to. If targetTags are specified, then the firewall rule applies only to instances in the VPC network that have one of those tags. If no targetTags are specified, the firewall rule applies to all instances on the specified network.</td>
+</tr>
+<tr>
+<td><code>details</code><br/><em>string</em></td>
+<td>Concatenation of the IP protocols followed by the port ranges.</td>
 </tr>
 <tr>
 <td><code>action</code><br/><em>string</em></td>
@@ -18586,7 +18624,171 @@ You cannot release an external IP which is currently attached to an instance.
 <p><code>DELETE /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/externalips/:id</code></p>
 
 <p>Release an existing external IP. The external IP goes back to the reserved pool, and is available to be attached to another instance.</p>
-<h3 id='gcp-routes'>Routes</h3><h3 id='gcp-routers'>Routers</h3>
+<h3 id='gcp-routes'>Routes</h3>
+<p>A route is a path that network traffic takes from an <a href="#gcp-instances">instance</a> to other destinations. The destination can be inside a GCP network or outside.</p>
+
+<!-------------------- LIST ROUTES -------------------->
+<h4 id='gcp-list-routes'>List routes</h4><pre class="highlight shell tab-shell"><code>curl -X GET <span class="se">\</span>
+   -H <span class="s2">"MC-Api-Key: your_api_key"</span> <span class="se">\</span>
+   <span class="s2">"https://cloudmc_endpoint/v1/services/gcp/test-area/routes"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns a JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w"> </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6918030089270271318"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"creationTimestamp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-05-21T08:52:26.010-07:00"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"default-route-0f2f9d9f9910829a"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Default local route to the subnetwork 10.172.0.0/20."</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"network"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.googleapis.com/compute/v1/projects/test-area/global/networks/default"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"destRange"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10.172.0.0/20"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"priority"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"nextHopNetwork"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.googleapis.com/compute/v1/projects/test-area/global/networks/default"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"selfLink"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.googleapis.com/compute/v1/projects/test-area/global/routes/default-route-0f2f9d9f9910829a"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"kind"</span><span class="p">:</span><span class="w"> </span><span class="s2">"compute#route"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"networkName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"default"</span><span class="w">
+    </span><span class="p">}],</span><span class="w">
+  </span><span class="s2">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"recordCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><code>GET /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/routes</code></p>
+
+<p>Retrieve a list of all routes in an <a href="#administration-environments">environment</a>.</p>
+
+<table><thead>
+<tr>
+<th>Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code><br/><em>string</em></td>
+<td>The route&#39;s id.</td>
+</tr>
+<tr>
+<td><code>creationTimestamp</code><br/><em>string</em></td>
+<td>Creation timestamp in RFC3339 text format.</td>
+</tr>
+<tr>
+<td><code>name</code><br/><em>string</em></td>
+<td>The route&#39;s name.</td>
+</tr>
+<tr>
+<td><code>description</code><br/><em>string</em></td>
+<td>An optional description of this resource.</td>
+</tr>
+<tr>
+<td><code>network</code><br/><em>string</em></td>
+<td>URL of the network to which this route is attached.</td>
+</tr>
+<tr>
+<td><code>destRange</code><br/><em>string</em></td>
+<td>The route&#39;s address destination.</td>
+</tr>
+<tr>
+<td><code>priority</code><br/><em>integer</em></td>
+<td>Priority for this route. Number should be a positive integer. Priority is used to break ties when there is more than one matching route of maximum length.</td>
+</tr>
+<tr>
+<td><code>nextHopNetwork</code><br/><em>string</em></td>
+<td>The next hop handles the matching packets for this route. It can be an instance, an IP address or the default internet gateway.</td>
+</tr>
+<tr>
+<td><code>selfLink</code><br/><em>string</em></td>
+<td>Server-defined URL for the resource.</td>
+</tr>
+<tr>
+<td><code>kind</code><br/><em>string</em></td>
+<td>Type of the resource.</td>
+</tr>
+<tr>
+<td><code>networkName</code><br/><em>string</em></td>
+<td>Name of the network to which this route is attached.</td>
+</tr>
+</tbody></table>
+
+<!-------------------- RETRIEVE A ROUTE -------------------->
+<h4 id='gcp-retrieve-a-route'>Retrieve a route</h4><pre class="highlight shell tab-shell"><code>curl -H <span class="s2">"MC-Api-Key: your_api_key"</span> <span class="se">\</span>
+    <span class="s2">"https://cloudmc_endpoint/v1/services/gcp/test-area/routes/6918030089270271318"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns a JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6918030089270271318"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"creationTimestamp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-05-21T08:52:26.010-07:00"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"default-route-0f2f9d9f9910829a"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Default local route to the subnetwork 10.172.0.0/20."</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"network"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.googleapis.com/compute/v1/projects/test-area/global/networks/default"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"destRange"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10.172.0.0/20"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"priority"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"nextHopNetwork"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.googleapis.com/compute/v1/projects/test-area/global/networks/default"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"selfLink"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.googleapis.com/compute/v1/projects/test-area/global/routes/default-route-0f2f9d9f9910829a"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"kind"</span><span class="p">:</span><span class="w"> </span><span class="s2">"compute#route"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"networkName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"default"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><code>GET /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/routes/:id</code></p>
+
+<p>Retrieve a route in a given <a href="#administration-environments">environment</a>.</p>
+
+<table><thead>
+<tr>
+<th>Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code><br/><em>string</em></td>
+<td>The route&#39;s id.</td>
+</tr>
+<tr>
+<td><code>creationTimestamp</code><br/><em>string</em></td>
+<td>Creation timestamp in RFC3339 text format.</td>
+</tr>
+<tr>
+<td><code>name</code><br/><em>string</em></td>
+<td>The route&#39;s name.</td>
+</tr>
+<tr>
+<td><code>description</code><br/><em>string</em></td>
+<td>An optional description of this resource.</td>
+</tr>
+<tr>
+<td><code>network</code><br/><em>string</em></td>
+<td>URL of the network to which this route is attached.</td>
+</tr>
+<tr>
+<td><code>destRange</code><br/><em>string</em></td>
+<td>The route&#39;s address destination.</td>
+</tr>
+<tr>
+<td><code>priority</code><br/><em>integer</em></td>
+<td>Priority for this route. Number should be a positive integer. Priority is used to break ties when there is more than one matching route of maximum length.</td>
+</tr>
+<tr>
+<td><code>nextHopNetwork</code><br/><em>string</em></td>
+<td>The next hop handles the matching packets for this route. It can be an instance, an IP address or the default internet gateway.</td>
+</tr>
+<tr>
+<td><code>selfLink</code><br/><em>string</em></td>
+<td>Server-defined URL for the resource.</td>
+</tr>
+<tr>
+<td><code>kind</code><br/><em>string</em></td>
+<td>Type of the resource.</td>
+</tr>
+<tr>
+<td><code>networkName</code><br/><em>string</em></td>
+<td>Name of the network to which this route is attached.</td>
+</tr>
+</tbody></table>
+<h3 id='gcp-routers'>Routers</h3>
 <p>Cloud Router allows to programs custom dynamic routes and it scales with your network traffic. Cloud Router isn&#39;t a physical device that might cause a bottleneck. It can&#39;t be used by itself. But, it is required or recommended in the following cases:</p>
 
 <ul>
@@ -19245,6 +19447,7 @@ You cannot release an external IP which is currently attached to an instance.
       </span><span class="s2">"kind"</span><span class="p">:</span><span class="w"> </span><span class="s2">"compute#vpnTunnel"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"gcpVpnGateway"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
       </span><span class="s2">"shortVpnGateway"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test-vpn-gw"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"shortNetwork"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test-vpc"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"34.66.131.105"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CLASSIC"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8211895554244865771"</span><span class="p">,</span><span class="w">
@@ -19324,6 +19527,18 @@ You cannot release an external IP which is currently attached to an instance.
 <td>The URL of the Target VPN gateway with which this VPN tunnel is associated.</td>
 </tr>
 <tr>
+<td><code>shortVpnGateway</code><br/><em>string</em></td>
+<td>Name of the VPN gateway with which this VPN tunnel is associated.</td>
+</tr>
+<tr>
+<td><code>shortNetwork</code><br/><em>string</em></td>
+<td>Name of the network with which this VPN tunnel is associated.</td>
+</tr>
+<tr>
+<td><code>shortRegion</code><br/><em>string</em></td>
+<td>Name of the region with which the VPN gateway attached to the tunnel is located.</td>
+</tr>
+<tr>
 <td><code>type</code><br/><em>string</em></td>
 <td>The type of this VPN Tunnel. Only CLASSIC is supported.</td>
 </tr>
@@ -19361,6 +19576,7 @@ You cannot release an external IP which is currently attached to an instance.
     </span><span class="s2">"kind"</span><span class="p">:</span><span class="w"> </span><span class="s2">"compute#vpnTunnel"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"gcpVpnGateway"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
     </span><span class="s2">"shortVpnGateway"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test-vpn-gw"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"shortNetwork"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test-vpc"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"34.66.131.105"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CLASSIC"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8211895554244865771"</span><span class="p">,</span><span class="w">
@@ -19434,6 +19650,18 @@ You cannot release an external IP which is currently attached to an instance.
 <tr>
 <td><code>targetVpnGateway</code><br/><em>string</em></td>
 <td>The URL of the Target VPN gateway with which this VPN tunnel is associated.</td>
+</tr>
+<tr>
+<td><code>shortVpnGateway</code><br/><em>string</em></td>
+<td>Name of the VPN gateway with which this VPN tunnel is associated.</td>
+</tr>
+<tr>
+<td><code>shortNetwork</code><br/><em>string</em></td>
+<td>Name of the network with which this VPN tunnel is associated.</td>
+</tr>
+<tr>
+<td><code>shortRegion</code><br/><em>string</em></td>
+<td>Name of the region with which the VPN gateway attached to the tunnel is located.</td>
 </tr>
 <tr>
 <td><code>type</code><br/><em>string</em></td>
