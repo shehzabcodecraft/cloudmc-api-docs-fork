@@ -1619,6 +1619,17 @@
                               </ul>
                           </li>
                           <li>
+                            <a href="#gcp-ingresses" class="toc-h3 toc-link" data-title="Google Cloud Platform plugin">Ingresses</a>
+                              <ul class="toc-list-h4">
+                                  <li>
+                                    <a href="#gcp-list-ingresses" class="toc-h4 toc-link" data-title="Google Cloud Platform plugin">List ingresses</a>
+                                  </li>
+                                  <li>
+                                    <a href="#gcp-get-an-ingress" class="toc-h4 toc-link" data-title="Google Cloud Platform plugin">Get an ingress</a>
+                                  </li>
+                              </ul>
+                          </li>
+                          <li>
                             <a href="#gcp-configmaps" class="toc-h3 toc-link" data-title="Google Cloud Platform plugin">ConfigMaps</a>
                               <ul class="toc-list-h4">
                                   <li>
@@ -1769,6 +1780,17 @@
                           </li>
                           <li>
                             <a href="#kubernetes-get-a-service" class="toc-h3 toc-link" data-title="Kubernetes plugin">Get a service</a>
+                          </li>
+                      </ul>
+                  </li>
+                  <li>
+                    <a href="#kubernetes-ingresses" class="toc-h2 toc-link" data-title="Kubernetes plugin">Ingresses</a>
+                      <ul class="toc-list-h3">
+                          <li>
+                            <a href="#kubernetes-list-ingresses" class="toc-h3 toc-link" data-title="Kubernetes plugin">List ingresses</a>
+                          </li>
+                          <li>
+                            <a href="#kubernetes-get-an-ingress" class="toc-h3 toc-link" data-title="Kubernetes plugin">Get an ingress</a>
                           </li>
                       </ul>
                   </li>
@@ -2091,6 +2113,17 @@
                                   </li>
                                   <li>
                                     <a href="#azure-get-a-service" class="toc-h4 toc-link" data-title="Azure plugin">Get a service</a>
+                                  </li>
+                              </ul>
+                          </li>
+                          <li>
+                            <a href="#azure-ingresses" class="toc-h3 toc-link" data-title="Azure plugin">Ingresses</a>
+                              <ul class="toc-list-h4">
+                                  <li>
+                                    <a href="#azure-list-ingresses" class="toc-h4 toc-link" data-title="Azure plugin">List ingresses</a>
+                                  </li>
+                                  <li>
+                                    <a href="#azure-get-an-ingress" class="toc-h4 toc-link" data-title="Azure plugin">Get an ingress</a>
                                   </li>
                               </ul>
                           </li>
@@ -22857,6 +22890,254 @@ curl -X POST <span class="se">\</span>
 </tbody></table>
 
 <p>Note that the list is not complete, since it is refering to the <a href="https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md">kubernetes api details</a>.</p>
+<h3 id='gcp-ingresses'>Ingresses</h3>
+
+<!-------------------- LIST INGRESSES -------------------->
+
+<p><h4 id='gcp-list-ingresses'>List ingresses</h4><pre class="highlight shell tab-shell"><code>curl -X GET <span class="se">&lt;/span&gt;
+   -H <span class="s2">&quot;MC-Api-Key: your_api_key&quot;</span> <span class="se">&lt;/span&gt;
+   <span class="s2">&quot;https://cloudmc_endpoint/v1/services/a_service/an_environment/ingresses?cluster_id=a_cluster_id&quot;</span>
+</code></pre>
+<blockquote>
+<p>The above command returns a JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">&quot;data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;cloudmc/cmc-stg&quot;</span><span class="p">,</span><span class="w">
+      </span><span class="s2">&quot;endpoint&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http://cmc.cloudmc-staging-endpoint.com&quot;</span><span class="p">,</span><span class="w">
+      </span><span class="s2">&quot;service&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">&quot;port&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;8080&quot;</span><span class="p">,</span><span class="w">
+        </span><span class="s2">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;cloudmc&quot;</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">&quot;metadata&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">&quot;annotations&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+        </span><span class="s2">&quot;creationTimestamp&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2019-07-11T10:00:18.000-04:00&quot;</span><span class="p">,</span><span class="w">
+        </span><span class="s2">&quot;generation&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+        </span><span class="s2">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;cloudmc&quot;</span><span class="p">,</span><span class="w">
+        </span><span class="s2">&quot;namespace&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;cmc-stg&quot;</span><span class="p">,</span><span class="w">
+        </span><span class="s2">&quot;resourceVersion&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;143213903&quot;</span><span class="p">,</span><span class="w">
+        </span><span class="s2">&quot;selfLink&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/apis/extensions/v1beta1/namespaces/cmc-stg/ingresses/cloudmc&quot;</span><span class="p">,</span><span class="w">
+        </span><span class="s2">&quot;uid&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;376bc4c5-a3e4-11e9-b6bd-02006e76001e&quot;</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">&quot;spec&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">&quot;rules&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+        </span><span class="s2">&quot;tls&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">&quot;loadBalancer&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;cm-acme-http-solver-75png/auth&quot;</span><span class="p">,</span><span class="w">
+      </span><span class="s2">&quot;endpoint&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http://cmc.cloudmc-staging-endpoint.com&quot;</span><span class="p">,</span><span class="w">
+      </span><span class="s2">&quot;service&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">&quot;port&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;8089&quot;</span><span class="p">,</span><span class="w">
+        </span><span class="s2">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;cm-acme-http-solver-2x5gv&quot;</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">&quot;metadata&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">&quot;annotations&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+        </span><span class="s2">&quot;creationTimestamp&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2020-06-24T11:00:49.000-04:00&quot;</span><span class="p">,</span><span class="w">
+        </span><span class="s2">&quot;generateName&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;cm-acme-http-solver-&quot;</span><span class="p">,</span><span class="w">
+        </span><span class="s2">&quot;generation&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="s2">&quot;labels&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">&quot;acme.cert-manager.io/http-domain&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1965164889&quot;</span><span class="p">,</span><span class="w">
+          </span><span class="s2">&quot;acme.cert-manager.io/http-token&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;820448657&quot;</span><span class="p">,</span><span class="w">
+          </span><span class="s2">&quot;acme.cert-manager.io/http01-solver&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;true&quot;</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;cm-acme-http-solver-75png&quot;</span><span class="p">,</span><span class="w">
+        </span><span class="s2">&quot;namespace&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;auth&quot;</span><span class="p">,</span><span class="w">
+        </span><span class="s2">&quot;ownerReferences&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+        </span><span class="s2">&quot;resourceVersion&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;143213968&quot;</span><span class="p">,</span><span class="w">
+        </span><span class="s2">&quot;selfLink&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/apis/extensions/v1beta1/namespaces/auth/ingresses/cm-acme-http-solver-75png&quot;</span><span class="p">,</span><span class="w">
+        </span><span class="s2">&quot;uid&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;48720f48-f2bc-45fc-95c5-60cae8ffe11e&quot;</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">&quot;spec&quot;</span><span class="p">:{</span><span class="w">
+        </span><span class="s2">&quot;rules&quot;</span><span class="p">:[]</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">&quot;loadBalancer&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><code>GET /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/ingresses?cluster_id=:cluster_id</code></p></p>
+
+<p>Retrieve a list of all ingresses in a given <a href="#administration-environments">environment</a>.</p>
+
+<table><thead>
+<tr>
+<th>Required</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>cluster_id</code> <br/><em>string</em></td>
+<td>The id of the cluster in which to get the ingress.</td>
+</tr>
+</tbody></table>
+
+<table><thead>
+<tr>
+<th>Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code> <br/><em>string</em></td>
+<td>The id of the ingress</td>
+</tr>
+<tr>
+<td><code>endpoint</code> <br/><em>string</em></td>
+<td>The endpoint of the ingress</td>
+</tr>
+<tr>
+<td><code>service</code> <br/><em>object</em></td>
+<td>The service associated with the ingress</td>
+</tr>
+<tr>
+<td><code>service.port</code> <br/><em>string</em></td>
+<td>The port of the service associated with the ingress</td>
+</tr>
+<tr>
+<td><code>service.name</code> <br/><em>string</em></td>
+<td>The name of the service associated with the ingress</td>
+</tr>
+<tr>
+<td><code>metadata</code> <br/><em>object</em></td>
+<td>The metadata of the ingress</td>
+</tr>
+<tr>
+<td><code>metadata.name</code> <br/><em>string</em></td>
+<td>The name of the ingress</td>
+</tr>
+<tr>
+<td><code>metadata.namespace</code> <br/><em>string</em></td>
+<td>The namespace in which the ingress is created</td>
+</tr>
+<tr>
+<td><code>metadata.labels</code> <br/><em>object</em></td>
+<td>The labels associated with the ingress</td>
+</tr>
+<tr>
+<td><code>metadata.uid</code> <br/><em>object</em></td>
+<td>The UUID of the ingress</td>
+</tr>
+<tr>
+<td><code>spec</code><br/><em>object</em></td>
+<td>The attributes that a user specifies for an ingress</td>
+</tr>
+</tbody></table>
+
+<p>Note that the list is not complete, since it is refering to the <a href="https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md">kubernetes api details</a>.</p>
+
+<!-------------------- GET AN INGRESS -------------------->
+
+<p><h4 id='gcp-get-an-ingress'>Get an ingress</h4><pre class="highlight shell tab-shell"><code>curl -X GET <span class="se">&lt;/span&gt;
+   -H <span class="s2">&quot;MC-Api-Key: your_api_key&quot;</span> <span class="se">&lt;/span&gt;
+   <span class="s2">&quot;https://cloudmc_endpoint/v1/services/a_service/an_environment/ingresses/cloudmc/cmc-stg?cluster_id=a_cluster_id&quot;</span>
+</code></pre>
+<blockquote>
+<p>The above command returns a JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">&quot;data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;cloudmc/cmc-stg&quot;</span><span class="p">,</span><span class="w">
+    </span><span class="s2">&quot;endpoint&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http://cmc.cloudmc-staging-endpoint.com&quot;</span><span class="p">,</span><span class="w">
+    </span><span class="s2">&quot;service&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">&quot;port&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;8080&quot;</span><span class="p">,</span><span class="w">
+      </span><span class="s2">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;cloudmc&quot;</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">&quot;metadata&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">&quot;annotations&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+      </span><span class="s2">&quot;creationTimestamp&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2019-07-11T10:00:18.000-04:00&quot;</span><span class="p">,</span><span class="w">
+      </span><span class="s2">&quot;generation&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+      </span><span class="s2">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;cloudmc&quot;</span><span class="p">,</span><span class="w">
+      </span><span class="s2">&quot;namespace&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;cmc-stg&quot;</span><span class="p">,</span><span class="w">
+      </span><span class="s2">&quot;resourceVersion&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;143213903&quot;</span><span class="p">,</span><span class="w">
+      </span><span class="s2">&quot;selfLink&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/apis/extensions/v1beta1/namespaces/cmc-stg/ingresses/cloudmc&quot;</span><span class="p">,</span><span class="w">
+      </span><span class="s2">&quot;uid&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;376bc4c5-a3e4-11e9-b6bd-02006e76001e&quot;</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">&quot;spec&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">&quot;rules&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+      </span><span class="s2">&quot;tls&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">&quot;loadBalancer&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><code>GET /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/ingress/:id??cluster_id=:cluster_id</code></p></p>
+
+<p>Retrieve an ingress and all its info in a given <a href="#administration-environments">environment</a>.</p>
+
+<table><thead>
+<tr>
+<th>Required</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>cluster_id</code> <br/><em>string</em></td>
+<td>The id of the cluster in which to get the ingress.</td>
+</tr>
+</tbody></table>
+
+<table><thead>
+<tr>
+<th>Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code> <br/><em>string</em></td>
+<td>The id of the ingress</td>
+</tr>
+<tr>
+<td><code>endpoint</code> <br/><em>string</em></td>
+<td>The endpoint of the ingress</td>
+</tr>
+<tr>
+<td><code>service</code> <br/><em>object</em></td>
+<td>The service associated with the ingress</td>
+</tr>
+<tr>
+<td><code>service.port</code> <br/><em>string</em></td>
+<td>The port of the service associated with the ingress</td>
+</tr>
+<tr>
+<td><code>service.name</code> <br/><em>string</em></td>
+<td>The name of the service associated with the ingress</td>
+</tr>
+<tr>
+<td><code>metadata</code> <br/><em>object</em></td>
+<td>The metadata of the ingress</td>
+</tr>
+<tr>
+<td><code>metadata.name</code> <br/><em>string</em></td>
+<td>The name of the ingress</td>
+</tr>
+<tr>
+<td><code>metadata.namespace</code> <br/><em>string</em></td>
+<td>The namespace in which the ingress is created</td>
+</tr>
+<tr>
+<td><code>metadata.labels</code> <br/><em>object</em></td>
+<td>The labels associated with the ingress</td>
+</tr>
+<tr>
+<td><code>metadata.uid</code> <br/><em>object</em></td>
+<td>The UUID of the ingress</td>
+</tr>
+<tr>
+<td><code>spec</code><br/><em>object</em></td>
+<td>The attributes that a user specifies for an ingress</td>
+</tr>
+</tbody></table>
+
+<p>Note that the list is not complete, since it is refering to the <a href="https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md">kubernetes api details</a>.</p>
 <h3 id='gcp-configmaps'>ConfigMaps</h3>
 
 <!-------------------- LIST CONFIG MAPS -------------------->
@@ -25894,6 +26175,227 @@ curl -X POST <span class="se">\</span>
 <tr>
 <td><code>spec.selector</code><br/><em>object</em></td>
 <td>The keys and values corresponding to pod labels, used to determine where service traffic will be routed</td>
+</tr>
+</tbody></table>
+
+<p>Note that the list is not complete, since it is refering to the <a href="https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md">kubernetes api details</a>.</p>
+<h2 id='kubernetes-ingresses'>Ingresses</h2>
+<!-------------------- LIST INGRESSES -------------------->
+<h4 id='kubernetes-list-ingresses'>List ingresses</h4><pre class="highlight shell tab-shell"><code>curl -X GET <span class="se">\</span>
+   -H <span class="s2">"MC-Api-Key: your_api_key"</span> <span class="se">\</span>
+   <span class="s2">"https://cloudmc_endpoint/v1/services/a_service/an_environment/ingresses"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns a JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cloudmc/cmc-stg"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"endpoint"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://cmc.cloudmc-staging-endpoint.com"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"service"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"port"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8080"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cloudmc"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"annotations"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+        </span><span class="s2">"creationTimestamp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-07-11T10:00:18.000-04:00"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"generation"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cloudmc"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"namespace"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cmc-stg"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"resourceVersion"</span><span class="p">:</span><span class="w"> </span><span class="s2">"143213903"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"selfLink"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/apis/extensions/v1beta1/namespaces/cmc-stg/ingresses/cloudmc"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"uid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"376bc4c5-a3e4-11e9-b6bd-02006e76001e"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"spec"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"rules"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+        </span><span class="s2">"tls"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"loadBalancer"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cm-acme-http-solver-75png/auth"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"endpoint"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://cmc.cloudmc-staging-endpoint.com"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"service"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"port"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8089"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cm-acme-http-solver-2x5gv"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"annotations"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+        </span><span class="s2">"creationTimestamp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-06-24T11:00:49.000-04:00"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"generateName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cm-acme-http-solver-"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"generation"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"labels"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"acme.cert-manager.io/http-domain"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1965164889"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"acme.cert-manager.io/http-token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"820448657"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"acme.cert-manager.io/http01-solver"</span><span class="p">:</span><span class="w"> </span><span class="s2">"true"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cm-acme-http-solver-75png"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"namespace"</span><span class="p">:</span><span class="w"> </span><span class="s2">"auth"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"ownerReferences"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+        </span><span class="s2">"resourceVersion"</span><span class="p">:</span><span class="w"> </span><span class="s2">"143213968"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"selfLink"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/apis/extensions/v1beta1/namespaces/auth/ingresses/cm-acme-http-solver-75png"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"uid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"48720f48-f2bc-45fc-95c5-60cae8ffe11e"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"spec"</span><span class="p">:{</span><span class="w">
+        </span><span class="s2">"rules"</span><span class="p">:[]</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"loadBalancer"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><code>GET /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/ingresses</code></p>
+
+<p>Retrieve a list of all ingresses in a given <a href="#administration-environments">environment</a>.</p>
+
+<table><thead>
+<tr>
+<th>Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code> <br/><em>string</em></td>
+<td>The id of the ingress</td>
+</tr>
+<tr>
+<td><code>endpoint</code> <br/><em>string</em></td>
+<td>The endpoint of the ingress</td>
+</tr>
+<tr>
+<td><code>service</code> <br/><em>object</em></td>
+<td>The service associated with the ingress</td>
+</tr>
+<tr>
+<td><code>service.port</code> <br/><em>string</em></td>
+<td>The port of the service associated with the ingress</td>
+</tr>
+<tr>
+<td><code>service.name</code> <br/><em>string</em></td>
+<td>The name of the service associated with the ingress</td>
+</tr>
+<tr>
+<td><code>metadata</code> <br/><em>object</em></td>
+<td>The metadata of the ingress</td>
+</tr>
+<tr>
+<td><code>metadata.name</code> <br/><em>string</em></td>
+<td>The name of the ingress</td>
+</tr>
+<tr>
+<td><code>metadata.namespace</code> <br/><em>string</em></td>
+<td>The namespace in which the ingress is created</td>
+</tr>
+<tr>
+<td><code>metadata.labels</code> <br/><em>object</em></td>
+<td>The labels associated with the ingress</td>
+</tr>
+<tr>
+<td><code>metadata.uid</code> <br/><em>object</em></td>
+<td>The UUID of the ingress</td>
+</tr>
+<tr>
+<td><code>spec</code><br/><em>object</em></td>
+<td>The attributes that a user specifies for an ingress</td>
+</tr>
+</tbody></table>
+
+<p>Note that the list is not complete, since it is refering to the <a href="https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md">kubernetes api details</a>.</p>
+
+<!-------------------- GET AN INGRESS -------------------->
+<h4 id='kubernetes-get-an-ingress'>Get an ingress</h4><pre class="highlight shell tab-shell"><code>curl -X GET <span class="se">\</span>
+   -H <span class="s2">"MC-Api-Key: your_api_key"</span> <span class="se">\</span>
+   <span class="s2">"https://cloudmc_endpoint/v1/services/a_service/an_environment/ingresses/cloudmc/cmc-stg"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns a JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cloudmc/cmc-stg"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"endpoint"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://cmc.cloudmc-staging-endpoint.com"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"service"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"port"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8080"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cloudmc"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"annotations"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+      </span><span class="s2">"creationTimestamp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-07-11T10:00:18.000-04:00"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"generation"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cloudmc"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"namespace"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cmc-stg"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"resourceVersion"</span><span class="p">:</span><span class="w"> </span><span class="s2">"143213903"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"selfLink"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/apis/extensions/v1beta1/namespaces/cmc-stg/ingresses/cloudmc"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"uid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"376bc4c5-a3e4-11e9-b6bd-02006e76001e"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"spec"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"rules"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+      </span><span class="s2">"tls"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"loadBalancer"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><code>GET /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/ingress/:id</code></p>
+
+<p>Retrieve an ingress and all its info in a given <a href="#administration-environments">environment</a>.</p>
+
+<table><thead>
+<tr>
+<th>Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code> <br/><em>string</em></td>
+<td>The id of the ingress</td>
+</tr>
+<tr>
+<td><code>endpoint</code> <br/><em>string</em></td>
+<td>The endpoint of the ingress</td>
+</tr>
+<tr>
+<td><code>service</code> <br/><em>object</em></td>
+<td>The service associated with the ingress</td>
+</tr>
+<tr>
+<td><code>service.port</code> <br/><em>string</em></td>
+<td>The port of the service associated with the ingress</td>
+</tr>
+<tr>
+<td><code>service.name</code> <br/><em>string</em></td>
+<td>The name of the service associated with the ingress</td>
+</tr>
+<tr>
+<td><code>metadata</code> <br/><em>object</em></td>
+<td>The metadata of the ingress</td>
+</tr>
+<tr>
+<td><code>metadata.name</code> <br/><em>string</em></td>
+<td>The name of the ingress</td>
+</tr>
+<tr>
+<td><code>metadata.namespace</code> <br/><em>string</em></td>
+<td>The namespace in which the ingress is created</td>
+</tr>
+<tr>
+<td><code>metadata.labels</code> <br/><em>object</em></td>
+<td>The labels associated with the ingress</td>
+</tr>
+<tr>
+<td><code>metadata.uid</code> <br/><em>object</em></td>
+<td>The UUID of the ingress</td>
+</tr>
+<tr>
+<td><code>spec</code><br/><em>object</em></td>
+<td>The attributes that a user specifies for an ingress</td>
 </tr>
 </tbody></table>
 
@@ -30965,6 +31467,254 @@ For Windows instances, reset the administrator account and reset the Remote Desk
 <tr>
 <td><code>spec.selector</code><br/><em>object</em></td>
 <td>The keys and values corresponding to pod labels, used to determine where service traffic will be routed</td>
+</tr>
+</tbody></table>
+
+<p>Note that the list is not complete, since it is refering to the <a href="https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md">kubernetes api details</a>.</p>
+<h3 id='azure-ingresses'>Ingresses</h3>
+
+<!-------------------- LIST INGRESSES -------------------->
+
+<p><h4 id='azure-list-ingresses'>List ingresses</h4><pre class="highlight shell tab-shell"><code>curl -X GET <span class="se">&lt;/span&gt;
+   -H <span class="s2">&quot;MC-Api-Key: your_api_key&quot;</span> <span class="se">&lt;/span&gt;
+   <span class="s2">&quot;https://cloudmc_endpoint/v1/services/a_service/an_environment/ingresses?cluster_id=a_cluster_id&quot;</span>
+</code></pre>
+<blockquote>
+<p>The above command returns a JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">&quot;data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;cloudmc/cmc-stg&quot;</span><span class="p">,</span><span class="w">
+      </span><span class="s2">&quot;endpoint&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http://cmc.cloudmc-staging-endpoint.com&quot;</span><span class="p">,</span><span class="w">
+      </span><span class="s2">&quot;service&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">&quot;port&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;8080&quot;</span><span class="p">,</span><span class="w">
+        </span><span class="s2">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;cloudmc&quot;</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">&quot;metadata&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">&quot;annotations&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+        </span><span class="s2">&quot;creationTimestamp&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2019-07-11T10:00:18.000-04:00&quot;</span><span class="p">,</span><span class="w">
+        </span><span class="s2">&quot;generation&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+        </span><span class="s2">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;cloudmc&quot;</span><span class="p">,</span><span class="w">
+        </span><span class="s2">&quot;namespace&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;cmc-stg&quot;</span><span class="p">,</span><span class="w">
+        </span><span class="s2">&quot;resourceVersion&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;143213903&quot;</span><span class="p">,</span><span class="w">
+        </span><span class="s2">&quot;selfLink&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/apis/extensions/v1beta1/namespaces/cmc-stg/ingresses/cloudmc&quot;</span><span class="p">,</span><span class="w">
+        </span><span class="s2">&quot;uid&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;376bc4c5-a3e4-11e9-b6bd-02006e76001e&quot;</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">&quot;spec&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">&quot;rules&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+        </span><span class="s2">&quot;tls&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">&quot;loadBalancer&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;cm-acme-http-solver-75png/auth&quot;</span><span class="p">,</span><span class="w">
+      </span><span class="s2">&quot;endpoint&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http://cmc.cloudmc-staging-endpoint.com&quot;</span><span class="p">,</span><span class="w">
+      </span><span class="s2">&quot;service&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">&quot;port&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;8089&quot;</span><span class="p">,</span><span class="w">
+        </span><span class="s2">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;cm-acme-http-solver-2x5gv&quot;</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">&quot;metadata&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">&quot;annotations&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+        </span><span class="s2">&quot;creationTimestamp&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2020-06-24T11:00:49.000-04:00&quot;</span><span class="p">,</span><span class="w">
+        </span><span class="s2">&quot;generateName&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;cm-acme-http-solver-&quot;</span><span class="p">,</span><span class="w">
+        </span><span class="s2">&quot;generation&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="s2">&quot;labels&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">&quot;acme.cert-manager.io/http-domain&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1965164889&quot;</span><span class="p">,</span><span class="w">
+          </span><span class="s2">&quot;acme.cert-manager.io/http-token&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;820448657&quot;</span><span class="p">,</span><span class="w">
+          </span><span class="s2">&quot;acme.cert-manager.io/http01-solver&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;true&quot;</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;cm-acme-http-solver-75png&quot;</span><span class="p">,</span><span class="w">
+        </span><span class="s2">&quot;namespace&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;auth&quot;</span><span class="p">,</span><span class="w">
+        </span><span class="s2">&quot;ownerReferences&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+        </span><span class="s2">&quot;resourceVersion&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;143213968&quot;</span><span class="p">,</span><span class="w">
+        </span><span class="s2">&quot;selfLink&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/apis/extensions/v1beta1/namespaces/auth/ingresses/cm-acme-http-solver-75png&quot;</span><span class="p">,</span><span class="w">
+        </span><span class="s2">&quot;uid&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;48720f48-f2bc-45fc-95c5-60cae8ffe11e&quot;</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">&quot;spec&quot;</span><span class="p">:{</span><span class="w">
+        </span><span class="s2">&quot;rules&quot;</span><span class="p">:[]</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">&quot;loadBalancer&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><code>GET /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/ingresses?cluster_id=:cluster_id</code></p></p>
+
+<p>Retrieve a list of all ingresses in a given <a href="#administration-environments">environment</a>.</p>
+
+<table><thead>
+<tr>
+<th>Required</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>cluster_id</code> <br/><em>string</em></td>
+<td>The id of the cluster in which to get the ingress.</td>
+</tr>
+</tbody></table>
+
+<table><thead>
+<tr>
+<th>Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code> <br/><em>string</em></td>
+<td>The id of the ingress</td>
+</tr>
+<tr>
+<td><code>endpoint</code> <br/><em>string</em></td>
+<td>The endpoint of the ingress</td>
+</tr>
+<tr>
+<td><code>service</code> <br/><em>object</em></td>
+<td>The service associated with the ingress</td>
+</tr>
+<tr>
+<td><code>service.port</code> <br/><em>string</em></td>
+<td>The port of the service associated with the ingress</td>
+</tr>
+<tr>
+<td><code>service.name</code> <br/><em>string</em></td>
+<td>The name of the service associated with the ingress</td>
+</tr>
+<tr>
+<td><code>metadata</code> <br/><em>object</em></td>
+<td>The metadata of the ingress</td>
+</tr>
+<tr>
+<td><code>metadata.name</code> <br/><em>string</em></td>
+<td>The name of the ingress</td>
+</tr>
+<tr>
+<td><code>metadata.namespace</code> <br/><em>string</em></td>
+<td>The namespace in which the ingress is created</td>
+</tr>
+<tr>
+<td><code>metadata.labels</code> <br/><em>object</em></td>
+<td>The labels associated with the ingress</td>
+</tr>
+<tr>
+<td><code>metadata.uid</code> <br/><em>object</em></td>
+<td>The UUID of the ingress</td>
+</tr>
+<tr>
+<td><code>spec</code><br/><em>object</em></td>
+<td>The attributes that a user specifies for an ingress</td>
+</tr>
+</tbody></table>
+
+<p>Note that the list is not complete, since it is refering to the <a href="https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md">kubernetes api details</a>.</p>
+
+<!-------------------- GET AN INGRESS -------------------->
+
+<p><h4 id='azure-get-an-ingress'>Get an ingress</h4><pre class="highlight shell tab-shell"><code>curl -X GET <span class="se">&lt;/span&gt;
+   -H <span class="s2">&quot;MC-Api-Key: your_api_key&quot;</span> <span class="se">&lt;/span&gt;
+   <span class="s2">&quot;https://cloudmc_endpoint/v1/services/a_service/an_environment/ingresses/cloudmc/cmc-stg?cluster_id=a_cluster_id&quot;</span>
+</code></pre>
+<blockquote>
+<p>The above command returns a JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">&quot;data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;cloudmc/cmc-stg&quot;</span><span class="p">,</span><span class="w">
+    </span><span class="s2">&quot;endpoint&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http://cmc.cloudmc-staging-endpoint.com&quot;</span><span class="p">,</span><span class="w">
+    </span><span class="s2">&quot;service&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">&quot;port&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;8080&quot;</span><span class="p">,</span><span class="w">
+      </span><span class="s2">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;cloudmc&quot;</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">&quot;metadata&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">&quot;annotations&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+      </span><span class="s2">&quot;creationTimestamp&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2019-07-11T10:00:18.000-04:00&quot;</span><span class="p">,</span><span class="w">
+      </span><span class="s2">&quot;generation&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+      </span><span class="s2">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;cloudmc&quot;</span><span class="p">,</span><span class="w">
+      </span><span class="s2">&quot;namespace&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;cmc-stg&quot;</span><span class="p">,</span><span class="w">
+      </span><span class="s2">&quot;resourceVersion&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;143213903&quot;</span><span class="p">,</span><span class="w">
+      </span><span class="s2">&quot;selfLink&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/apis/extensions/v1beta1/namespaces/cmc-stg/ingresses/cloudmc&quot;</span><span class="p">,</span><span class="w">
+      </span><span class="s2">&quot;uid&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;376bc4c5-a3e4-11e9-b6bd-02006e76001e&quot;</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">&quot;spec&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">&quot;rules&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+      </span><span class="s2">&quot;tls&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">&quot;loadBalancer&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><code>GET /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/ingress/:id??cluster_id=:cluster_id</code></p></p>
+
+<p>Retrieve an ingress and all its info in a given <a href="#administration-environments">environment</a>.</p>
+
+<table><thead>
+<tr>
+<th>Required</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>cluster_id</code> <br/><em>string</em></td>
+<td>The id of the cluster in which to get the ingress.</td>
+</tr>
+</tbody></table>
+
+<table><thead>
+<tr>
+<th>Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code> <br/><em>string</em></td>
+<td>The id of the ingress</td>
+</tr>
+<tr>
+<td><code>endpoint</code> <br/><em>string</em></td>
+<td>The endpoint of the ingress</td>
+</tr>
+<tr>
+<td><code>service</code> <br/><em>object</em></td>
+<td>The service associated with the ingress</td>
+</tr>
+<tr>
+<td><code>service.port</code> <br/><em>string</em></td>
+<td>The port of the service associated with the ingress</td>
+</tr>
+<tr>
+<td><code>service.name</code> <br/><em>string</em></td>
+<td>The name of the service associated with the ingress</td>
+</tr>
+<tr>
+<td><code>metadata</code> <br/><em>object</em></td>
+<td>The metadata of the ingress</td>
+</tr>
+<tr>
+<td><code>metadata.name</code> <br/><em>string</em></td>
+<td>The name of the ingress</td>
+</tr>
+<tr>
+<td><code>metadata.namespace</code> <br/><em>string</em></td>
+<td>The namespace in which the ingress is created</td>
+</tr>
+<tr>
+<td><code>metadata.labels</code> <br/><em>object</em></td>
+<td>The labels associated with the ingress</td>
+</tr>
+<tr>
+<td><code>metadata.uid</code> <br/><em>object</em></td>
+<td>The UUID of the ingress</td>
+</tr>
+<tr>
+<td><code>spec</code><br/><em>object</em></td>
+<td>The attributes that a user specifies for an ingress</td>
 </tr>
 </tbody></table>
 
