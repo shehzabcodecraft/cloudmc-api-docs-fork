@@ -454,6 +454,9 @@
                                   <li>
                                     <a href="#administration-delete-service-provider" class="toc-h4 toc-link" data-title="Administration">Delete service provider</a>
                                   </li>
+                                  <li>
+                                    <a href="#administration-get-service-provider-metadata-file" class="toc-h4 toc-link" data-title="Administration">Get service provider metadata file</a>
+                                  </li>
                               </ul>
                           </li>
                           <li>
@@ -6572,6 +6575,54 @@ curl <span class="s2">"https://cloudmc_endpoint/rest/service_providers/f9dea588-
 
 </code></pre>
 <p>Delete a specific service provider. </p>
+
+<!-------------------- GET SERVICE PROVIDER METADATA -------------------->
+<h4 id='administration-get-service-provider-metadata-file'>Get service provider metadata file</h4>
+<p><code>GET /service_providers/:id/metadata</code></p>
+<pre class="highlight shell tab-shell"><code><span class="c"># Get a service provider's metadata file</span>
+curl <span class="s2">"https://cloudmc_endpoint/rest/service_providers/f9dea588-d7ab-4f42-b6e6-4b85f273f3db/metadata"</span>
+
+<span class="gp">&gt; </span>The above <span class="nb">command </span>returns XML structured like this:
+
+<span class="sb">```</span>xml
+&lt;md:EntityDescriptor <span class="nv">entityID</span><span class="o">=</span><span class="s2">"https://cloudmc_endpoint"</span>&gt;
+    &lt;ds:Signature&gt;
+        &lt;ds:SignedInfo&gt;
+            &lt;ds:CanonicalizationMethod <span class="nv">Algorithm</span><span class="o">=</span><span class="s2">"http://www.w3.org/2001/10/xml-exc-c14n#"</span>/&gt;
+            &lt;ds:SignatureMethod <span class="nv">Algorithm</span><span class="o">=</span><span class="s2">"http://www.w3.org/2001/04/xmldsig-more#rsa-sha256"</span>/&gt;
+            &lt;ds:Reference <span class="nv">URI</span><span class="o">=</span><span class="s2">""</span>&gt;
+                &lt;ds:Transforms&gt;
+                    &lt;ds:Transform <span class="nv">Algorithm</span><span class="o">=</span><span class="s2">"http://www.w3.org/2000/09/xmldsig#enveloped-signature"</span>/&gt;
+                    &lt;ds:Transform <span class="nv">Algorithm</span><span class="o">=</span><span class="s2">"http://www.w3.org/2001/10/xml-exc-c14n#"</span>/&gt;
+                &lt;/ds:Transforms&gt;
+                &lt;ds:DigestMethod <span class="nv">Algorithm</span><span class="o">=</span><span class="s2">"http://www.w3.org/2001/04/xmlenc#sha256"</span>/&gt;
+                &lt;ds:DigestValue&gt;5U/iSjUM0ooVDT5n60sK1vgPchsZbVyp+Epm7P/GP8Y<span class="o">=</span>&lt;/ds:DigestValue&gt;
+            &lt;/ds:Reference&gt;
+        &lt;/ds:SignedInfo&gt;
+        &lt;ds:SignatureValue&gt;
+k2k3+9IbMkUCIN/TmcZMmrG3AB6izICW10bjtnjSocz+RgnAwrUEoNQTYsOG4nsEcHFZ31zxuRJq YOnjJ259XcPGsTrZSmV/GIWxYwUcPUP292D00Ulql+Gpj5YVk31uoaWQ93fln42hbwW6Qkaaiz9i +4OXASSxx8WgBpG4Ro0Carm0fT7nJU55+ZX0bFiKRCBmbUhxXivbVj914ed2vFjkWoucG1NXvIdF L+j3Qhn3DAd/XUvR06WfPWModAl7ip/+GH97QkE7sq4szcRAKzrR10kFVLFBbMu/zZ1a0FMSc1tC vZKh1SAA61IYZy/j9OuYGCELt59f2wd+5X1+7w<span class="o">==</span>
+&lt;/ds:SignatureValue&gt;
+        &lt;ds:KeyInfo&gt;
+            &lt;ds:X509Data&gt;
+                &lt;ds:X509Certificate&gt;CERT_DATA&lt;/ds:X509Data&gt;
+        &lt;/ds:KeyInfo&gt;
+    &lt;/ds:Signature&gt;
+    &lt;md:IDPSSODescriptor <span class="nv">WantAuthnRequestsSigned</span><span class="o">=</span><span class="s2">"true"</span> <span class="nv">protocolSupportEnumeration</span><span class="o">=</span><span class="s2">"urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect"</span>&gt;
+        &lt;md:KeyDescriptor <span class="nv">use</span><span class="o">=</span><span class="s2">"signing"</span>&gt;
+            &lt;ds:KeyInfo&gt;
+                &lt;ds:X509Data&gt;
+                    &lt;ds:X509Certificate&gt;CERT_DATA&lt;/ds:X509Data&gt;
+            &lt;/ds:KeyInfo&gt;
+        &lt;/md:KeyDescriptor&gt;
+        &lt;md:NameIDFormat&gt;
+urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified
+&lt;/md:NameIDFormat&gt;
+        &lt;md:SingleSignOnService <span class="nv">Binding</span><span class="o">=</span><span class="s2">"urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect"</span> <span class="nv">Location</span><span class="o">=</span><span class="s2">"https://cloudmc_endpoint/rest/service_providers/f9dea588-d7ab-4f42-b6e6-4b85f273f3db"</span>/&gt;
+        &lt;saml2:Attribute <span class="nv">Name</span><span class="o">=</span><span class="s2">"first-name"</span> <span class="nv">NameFormat</span><span class="o">=</span><span class="s2">"urn:oasis:names:tc:SAML:2.0:attrname-format:unspecified"</span>/&gt;
+    &lt;/md:IDPSSODescriptor&gt;
+&lt;/md:EntityDescriptor&gt;
+</code></pre>
+<p>Gets the metadata file for a given service provider. This can be provided to certain identity providers for quick set-up. </p>
 <h3 id='administration-saml-settings'>SAML settings</h3>
 <p>Allows to change the configuration for the service provider integrated with SAML.</p>
 
