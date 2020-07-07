@@ -15987,6 +15987,7 @@ curl -X PUT <span class="se">\</span>
   <span class="s2">"cpuCount"</span><span class="p">:</span> <span class="s2">"2"</span><span class="p">,</span>
   <span class="s2">"memoryInGB"</span><span class="p">:</span> <span class="s2">"4.5"</span><span class="p">,</span>
   <span class="s2">"osImageSelfLink"</span><span class="p">:</span> <span class="s2">"https://www.googleapis.com/compute/v1/projects/debian-cloud/global/images/debian-9-stretch-v20190514"</span><span class="p">,</span>
+  <span class="s2">"subnetworkName"</span><span class="p">:</span> <span class="s2">"production-net"</span><span class="p">,</span>
   <span class="s2">"shortIP"</span><span class="p">:</span> <span class="s2">"my-ip-name"</span><span class="p">,</span>
   <span class="s2">"startupScript"</span><span class="p">:</span> <span class="s2">"#! /bin/bash\napt-get update\nEOF"</span>
 <span class="p">}</span>
@@ -16001,6 +16002,7 @@ curl -X PUT <span class="se">\</span>
   <span class="s2">"cpuCount"</span><span class="p">:</span> <span class="s2">"2"</span><span class="p">,</span>
   <span class="s2">"memoryInGB"</span><span class="p">:</span> <span class="s2">"4.5"</span><span class="p">,</span>
   <span class="s2">"osImageSelfLink"</span><span class="p">:</span> <span class="s2">"https://www.googleapis.com/compute/v1/projects/debian-cloud/global/images/debian-9-stretch-v20190514"</span><span class="p">,</span>
+  <span class="s2">"subnetworkName"</span><span class="p">:</span> <span class="s2">"staging-net"</span><span class="p">,</span>
   <span class="s2">"reserveStaticIP"</span><span class="p">:</span> <span class="kc">true</span>
 <span class="p">}</span>
 
@@ -16014,6 +16016,7 @@ curl -X PUT <span class="se">\</span>
   <span class="s2">"cpuCount"</span><span class="p">:</span> <span class="s2">"2"</span><span class="p">,</span>
   <span class="s2">"memoryInGB"</span><span class="p">:</span> <span class="s2">"4.5"</span><span class="p">,</span>
   <span class="s2">"osImageSelfLink"</span><span class="p">:</span> <span class="s2">"https://www.googleapis.com/compute/v1/projects/debian-cloud/global/images/debian-9-stretch-v20190514"</span><span class="p">,</span>
+  <span class="s2">"subnetworkName"</span><span class="p">:</span> <span class="s2">"development-net"</span><span class="p">,</span>
   <span class="s2">"ephemeralIP"</span><span class="p">:</span> <span class="kc">true</span>
 <span class="p">}</span>
 
@@ -16026,7 +16029,8 @@ curl -X PUT <span class="se">\</span>
   <span class="s2">"bootDiskSizeInGb"</span><span class="p">:</span> <span class="s2">"10"</span><span class="p">,</span>
   <span class="s2">"cpuCount"</span><span class="p">:</span> <span class="s2">"2"</span><span class="p">,</span>
   <span class="s2">"memoryInGB"</span><span class="p">:</span> <span class="s2">"4.5"</span><span class="p">,</span>
-  <span class="s2">"osImageSelfLink"</span><span class="p">:</span> <span class="s2">"https://www.googleapis.com/compute/v1/projects/debian-cloud/global/images/debian-9-stretch-v20190514"</span>
+  <span class="s2">"osImageSelfLink"</span><span class="p">:</span> <span class="s2">"https://www.googleapis.com/compute/v1/projects/debian-cloud/global/images/debian-9-stretch-v20190514"</span><span class="p">,</span>
+  <span class="s2">"subnetworkName"</span><span class="p">:</span> <span class="s2">"demo-net"</span><span class="p">,</span>
 <span class="p">}</span>
 </code></pre>
 <p><code>POST /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/instances</code></p>
@@ -16070,6 +16074,10 @@ curl -X PUT <span class="se">\</span>
 <tr>
 <td><code>osImageSelfLink</code><br/><em>string</em></td>
 <td>The full URL to the OS image.</td>
+</tr>
+<tr>
+<td><code>subnetworkName</code><br/><em>string</em></td>
+<td>The subnet that the instance is attached to upon creation. <em>(Note that the subnet must be in the same region as the instance)</em>.</td>
 </tr>
 </tbody></table>
 
