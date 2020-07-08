@@ -473,6 +473,20 @@
                                   </li>
                               </ul>
                           </li>
+                          <li>
+                            <a href="#administration-trials" class="toc-h3 toc-link" data-title="Administration">Trials</a>
+                              <ul class="toc-list-h4">
+                                  <li>
+                                    <a href="#administration-list-trials-settings" class="toc-h4 toc-link" data-title="Administration">List trials settings</a>
+                                  </li>
+                                  <li>
+                                    <a href="#administration-retrieve-trial-settings" class="toc-h4 toc-link" data-title="Administration">Retrieve trial settings</a>
+                                  </li>
+                                  <li>
+                                    <a href="#administration-update-trial-settings" class="toc-h4 toc-link" data-title="Administration">Update trial settings</a>
+                                  </li>
+                              </ul>
+                          </li>
                       </ul>
                   </li>
               </ul>
@@ -6750,6 +6764,299 @@ curl -X POST <span class="s2">"https://cloudmc_endpoint/rest/saml_settings/:id"<
 <tr>
 <td><code>privateKey</code><br/><em>string</em></td>
 <td>The private key used to sign the SAML request. It must be an RSA key of 2048 bits</td>
+</tr>
+</tbody></table>
+<h3 id='administration-trials'>Trials</h3>
+<p>Manage trials and trials settings.</p>
+
+<!-------------------- LIST TRIALS SETTINGS -------------------->
+<h4 id='administration-list-trials-settings'>List trials settings</h4>
+<p><code>GET /trials_settings</code></p>
+<pre class="highlight shell tab-shell"><code><span class="c"># Retrieve trials settings</span>
+curl <span class="s2">"https://cloudmc_endpoint/v1/trials_settings"</span> <span class="se">\</span>
+   -H <span class="s2">"MC-Api-Key: your_api_key"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"b41f2aa3-e2d1-48d8-9760-8b874c20e8ae"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"duration"</span><span class="p">:</span><span class="w"> </span><span class="mi">14</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"extensionDays"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"maxConcurrentTrials"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"cleanupDelayDays"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"expirationReminderDays"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"allowMultipleTrialSameEmail"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"contactUsEmail"</span><span class="p">:</span><span class="w"> </span><span class="s2">"email@gmail.com"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"contactUsPhone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"555-555-555"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"registrationHTML"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"en"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;div&gt;Registration HTML EN&lt;/div&gt;"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"fr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;div&gt;Registration HTML FR&lt;/div&gt;"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"termsAndConditionsHTML"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"en"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;div&gt;Terms and conditions HTML EN&lt;/div&gt;"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"fr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;div&gt;Terms and conditions HTML FR&lt;/div&gt;"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>List the trials settings configured on the system.</p>
+
+<table><thead>
+<tr>
+<th>Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code><br/><em>UUID</em></td>
+<td>The id of the trial settings.</td>
+</tr>
+<tr>
+<td><code>duration</code><br/><em>integer</em></td>
+<td>The number of days a trial account will remain active.</td>
+</tr>
+<tr>
+<td><code>extensionDays</code><br/><em>integer</em></td>
+<td>The number of days that a trial administrator adds when extending an active trial.</td>
+</tr>
+<tr>
+<td><code>maxConcurrentTrials</code><br/><em>integer</em></td>
+<td>The number of organizations that can concurrently have an active trial account. A value of zero indicates that there is no upper limit.</td>
+</tr>
+<tr>
+<td><code>cleanupDelayDays</code><br/><em>integer</em></td>
+<td>The number of days after the trial expiration before the system will delete the trial&#39;s resources.</td>
+</tr>
+<tr>
+<td><code>expirationReminderDays</code><br/><em>integer</em></td>
+<td>The number of days before the trial&#39;s end that the trial administrator will receive an email notification that the trial is about to expire.</td>
+</tr>
+<tr>
+<td><code>allowMultipleTrialSameEmail</code><br/><em>boolean</em></td>
+<td>If more than one trial account can be created using the same email address.</td>
+</tr>
+<tr>
+<td><code>contactUsEmail</code><br/><em>string</em></td>
+<td>The email address that trial user can contact for more info/support.</td>
+</tr>
+<tr>
+<td><code>contactUsPhone</code><br/><em>string</em></td>
+<td>The phone number that trial user can contact for more info/support.</td>
+</tr>
+<tr>
+<td><code>registrationHTML</code><br/><em>Object</em></td>
+<td>Mapped object containing the registration information HTML in different languages.</td>
+</tr>
+<tr>
+<td><code>termsAndConditionsHTML</code><br/><em>Object</em></td>
+<td>Mapped object containing the terms and conditions HTML name in different languages.</td>
+</tr>
+</tbody></table>
+
+<!-------------------- GET TRIAL SETTINGS -------------------->
+<h4 id='administration-retrieve-trial-settings'>Retrieve trial settings</h4>
+<p><code>GET /trials_settings/:id</code></p>
+<pre class="highlight shell tab-shell"><code><span class="c"># Retrieve trial settings</span>
+curl <span class="s2">"https://cloudmc_endpoint/v1/trials_settings/b41f2aa3-e2d1-48d8-9760-8b874c20e8ae"</span> <span class="se">\</span>
+   -H <span class="s2">"MC-Api-Key: your_api_key"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"b41f2aa3-e2d1-48d8-9760-8b874c20e8ae"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"duration"</span><span class="p">:</span><span class="w"> </span><span class="mi">14</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"extensionDays"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"maxConcurrentTrials"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"cleanupDelayDays"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"expirationReminderDays"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"allowMultipleTrialSameEmail"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"contactUsEmail"</span><span class="p">:</span><span class="w"> </span><span class="s2">"email@gmail.com"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"contactUsPhone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"555-555-555"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"registrationHTML"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"en"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;div&gt;Registration HTML EN&lt;/div&gt;"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"fr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;div&gt;Registration HTML FR&lt;/div&gt;"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"termsAndConditionsHTML"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"en"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;div&gt;Terms and conditions HTML EN&lt;/div&gt;"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"fr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;div&gt;Terms and conditions HTML FR&lt;/div&gt;"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>Return the trial settings configured associated to the id on the system.</p>
+
+<table><thead>
+<tr>
+<th>Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code><br/><em>UUID</em></td>
+<td>The id of the trial settings.</td>
+</tr>
+<tr>
+<td><code>duration</code><br/><em>integer</em></td>
+<td>The number of days a trial account will remain active.</td>
+</tr>
+<tr>
+<td><code>extensionDays</code><br/><em>integer</em></td>
+<td>The number of days that a trial administrator adds when extending an active trial.</td>
+</tr>
+<tr>
+<td><code>maxConcurrentTrials</code><br/><em>integer</em></td>
+<td>The number of organizations that can concurrently have an active trial account. A value of zero indicates that there is no upper limit.</td>
+</tr>
+<tr>
+<td><code>cleanupDelayDays</code><br/><em>integer</em></td>
+<td>The number of days after the trial expiration before the system will delete the trial&#39;s resources.</td>
+</tr>
+<tr>
+<td><code>expirationReminderDays</code><br/><em>integer</em></td>
+<td>The number of days before the trial&#39;s end that the trial administrator will receive an email notification that the trial is about to expire.</td>
+</tr>
+<tr>
+<td><code>allowMultipleTrialSameEmail</code><br/><em>boolean</em></td>
+<td>If more than one trial account can be created using the same email address.</td>
+</tr>
+<tr>
+<td><code>contactUsEmail</code><br/><em>string</em></td>
+<td>The email address that trial user can contact for more info/support.</td>
+</tr>
+<tr>
+<td><code>contactUsPhone</code><br/><em>string</em></td>
+<td>The phone number that trial user can contact for more info/support.</td>
+</tr>
+<tr>
+<td><code>registrationHTML</code><br/><em>Object</em></td>
+<td>Mapped object containing the registration information HTML in different languages.</td>
+</tr>
+<tr>
+<td><code>termsAndConditionsHTML</code><br/><em>Object</em></td>
+<td>Mapped object containing the terms and conditions HTML name in different languages.</td>
+</tr>
+</tbody></table>
+
+<!-------------------- UPDATE TRIALS SETTINGS -------------------->
+<h4 id='administration-update-trial-settings'>Update trial settings</h4>
+<p><code>PUT /trials_settings/:id</code></p>
+<pre class="highlight shell tab-shell"><code><span class="c"># Updates an existing trial's settings</span>
+curl -X PUT <span class="s2">"https://cloudmc_endpoint/rest/trials_settings/:id"</span> <span class="se">\</span>
+   -H <span class="s2">"MC-Api-Key: your_api_key"</span>
+</code></pre>
+<blockquote>
+<p>Request body example:</p>
+</blockquote>
+<pre class="highlight javascript"><code><span class="p">{</span>
+  <span class="s2">"id"</span><span class="p">:</span> <span class="s2">"b41f2aa3-e2d1-48d8-9760-8b874c20e8ae"</span><span class="p">,</span>
+  <span class="s2">"duration"</span><span class="p">:</span> <span class="mi">14</span><span class="p">,</span>
+  <span class="s2">"extensionDays"</span><span class="p">:</span> <span class="mi">7</span><span class="p">,</span>
+  <span class="s2">"maxConcurrentTrials"</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
+  <span class="s2">"cleanupDelayDays"</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
+  <span class="s2">"expirationReminderDays"</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
+  <span class="s2">"allowMultipleTrialSameEmail"</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+  <span class="s2">"contactUsEmail"</span><span class="p">:</span> <span class="s2">"email@gmail.com"</span><span class="p">,</span>
+  <span class="s2">"contactUsPhone"</span><span class="p">:</span> <span class="s2">"555-555-555"</span><span class="p">,</span>
+  <span class="s2">"registrationHTML"</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s2">"en"</span><span class="p">:</span> <span class="s2">"&lt;div&gt;Registration HTML EN&lt;/div&gt;"</span><span class="p">,</span>
+    <span class="s2">"fr"</span><span class="p">:</span> <span class="s2">"&lt;div&gt;Registration HTML FR&lt;/div&gt;"</span><span class="p">,</span>
+  <span class="p">},</span>
+  <span class="s2">"termsAndConditionsHTML"</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s2">"en"</span><span class="p">:</span> <span class="s2">"&lt;div&gt;Terms and conditions HTML EN&lt;/div&gt;"</span><span class="p">,</span>
+    <span class="s2">"fr"</span><span class="p">:</span> <span class="s2">"&lt;div&gt;Terms and conditions HTML FR&lt;/div&gt;"</span><span class="p">,</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+<blockquote>
+<p>The above command return JSON structured like this:</p>
+</blockquote>
+<pre class="highlight javascript"><code><span class="p">{</span>
+  <span class="s2">"data"</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s2">"id"</span><span class="p">:</span> <span class="s2">"b41f2aa3-e2d1-48d8-9760-8b874c20e8ae"</span><span class="p">,</span>
+    <span class="s2">"duration"</span><span class="p">:</span> <span class="mi">14</span><span class="p">,</span>
+    <span class="s2">"extensionDays"</span><span class="p">:</span> <span class="mi">7</span><span class="p">,</span>
+    <span class="s2">"maxConcurrentTrials"</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
+    <span class="s2">"cleanupDelayDays"</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
+    <span class="s2">"expirationReminderDays"</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
+    <span class="s2">"allowMultipleTrialSameEmail"</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+    <span class="s2">"contactUsEmail"</span><span class="p">:</span> <span class="s2">"email@gmail.com"</span><span class="p">,</span>
+    <span class="s2">"contactUsPhone"</span><span class="p">:</span> <span class="s2">"555-555-555"</span><span class="p">,</span>
+    <span class="s2">"registrationHTML"</span><span class="p">:</span> <span class="p">{</span>
+      <span class="s2">"en"</span><span class="p">:</span> <span class="s2">"&lt;div&gt;Registration HTML EN&lt;/div&gt;"</span><span class="p">,</span>
+      <span class="s2">"fr"</span><span class="p">:</span> <span class="s2">"&lt;div&gt;Registration HTML FR&lt;/div&gt;"</span><span class="p">,</span>
+    <span class="p">},</span>
+    <span class="s2">"termsAndConditionsHTML"</span><span class="p">:</span> <span class="p">{</span>
+      <span class="s2">"en"</span><span class="p">:</span> <span class="s2">"&lt;div&gt;Terms and conditions HTML EN&lt;/div&gt;"</span><span class="p">,</span>
+      <span class="s2">"fr"</span><span class="p">:</span> <span class="s2">"&lt;div&gt;Terms and conditions HTML FR&lt;/div&gt;"</span><span class="p">,</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+<p>Updates a specific trial&#39;s settings.</p>
+
+<table><thead>
+<tr>
+<th>Required</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code><br/><em>UUID</em></td>
+<td>The id of the trial settings.</td>
+</tr>
+<tr>
+<td><code>duration</code><br/><em>integer</em></td>
+<td>The number of days a trial account will remain active.</td>
+</tr>
+<tr>
+<td><code>extensionDays</code><br/><em>integer</em></td>
+<td>The number of days that a trial administrator adds when extending an active trial.</td>
+</tr>
+<tr>
+<td><code>maxConcurrentTrials</code><br/><em>integer</em></td>
+<td>The number of organizations that can concurrently have an active trial account. A value of zero indicates that there is no upper limit.</td>
+</tr>
+<tr>
+<td><code>cleanupDelayDays</code><br/><em>integer</em></td>
+<td>The number of days after the trial expiration before the system will delete the trial&#39;s resources.</td>
+</tr>
+<tr>
+<td><code>expirationReminderDays</code><br/><em>integer</em></td>
+<td>The number of days before the trial&#39;s end that the trial administrator will receive an email notification that the trial is about to expire.</td>
+</tr>
+<tr>
+<td><code>allowMultipleTrialSameEmail</code><br/><em>boolean</em></td>
+<td>If more than one trial account can be created using the same email address.</td>
+</tr>
+<tr>
+<td><code>contactUsEmail</code><br/><em>string</em></td>
+<td>The email address that trial user can contact for more info/support.</td>
+</tr>
+<tr>
+<td><code>registrationHTML</code><br/><em>Object</em></td>
+<td>Mapped object containing the registration information HTML in different languages.</td>
+</tr>
+<tr>
+<td><code>termsAndConditionsHTML</code><br/><em>Object</em></td>
+<td>Mapped object containing the terms and conditions HTML name in different languages.</td>
+</tr>
+</tbody></table>
+
+<table><thead>
+<tr>
+<th>Optional</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>contactUsPhone</code><br/><em>string</em></td>
+<td>The phone number that trial user can contact for more info/support.</td>
 </tr>
 </tbody></table>
 <h1 id='cloudstack-plugin'>CloudStack plugin</h1>
