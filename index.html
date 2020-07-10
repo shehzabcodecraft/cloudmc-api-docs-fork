@@ -1592,6 +1592,9 @@
                                     <a href="#gcp-get-a-pod" class="toc-h4 toc-link" data-title="Google Cloud Platform plugin">Get a pod</a>
                                   </li>
                                   <li>
+                                    <a href="#gcp-create-a-pod" class="toc-h4 toc-link" data-title="Google Cloud Platform plugin">Create a pod</a>
+                                  </li>
+                                  <li>
                                     <a href="#gcp-delete-a-pod" class="toc-h4 toc-link" data-title="Google Cloud Platform plugin">Delete a pod</a>
                                   </li>
                               </ul>
@@ -1605,6 +1608,9 @@
                                   <li>
                                     <a href="#gcp-get-a-stateful-set" class="toc-h4 toc-link" data-title="Google Cloud Platform plugin">Get a stateful set</a>
                                   </li>
+                                  <li>
+                                    <a href="#gcp-create-a-stateful-set" class="toc-h4 toc-link" data-title="Google Cloud Platform plugin">Create a stateful set</a>
+                                  </li>
                               </ul>
                           </li>
                           <li>
@@ -1615,6 +1621,9 @@
                                   </li>
                                   <li>
                                     <a href="#gcp-get-a-daemon-set" class="toc-h4 toc-link" data-title="Google Cloud Platform plugin">Get a daemon set</a>
+                                  </li>
+                                  <li>
+                                    <a href="#gcp-create-a-daemon-set" class="toc-h4 toc-link" data-title="Google Cloud Platform plugin">Create a daemon set</a>
                                   </li>
                               </ul>
                           </li>
@@ -1628,6 +1637,9 @@
                                     <a href="#gcp-get-a-deployment" class="toc-h4 toc-link" data-title="Google Cloud Platform plugin">Get a deployment</a>
                                   </li>
                               </ul>
+                          </li>
+                          <li>
+                            <a href="#gcp-create-a-deployment" class="toc-h3 toc-link" data-title="Google Cloud Platform plugin">Create a deployment</a>
                           </li>
                           <li>
                             <a href="#gcp-services" class="toc-h3 toc-link" data-title="Google Cloud Platform plugin">Services</a>
@@ -1757,6 +1769,9 @@
                             <a href="#kubernetes-get-a-pod" class="toc-h3 toc-link" data-title="Kubernetes plugin">Get a pod</a>
                           </li>
                           <li>
+                            <a href="#kubernetes-create-a-pod" class="toc-h3 toc-link" data-title="Kubernetes plugin">Create a pod</a>
+                          </li>
+                          <li>
                             <a href="#kubernetes-delete-a-pod" class="toc-h3 toc-link" data-title="Kubernetes plugin">Delete a pod</a>
                           </li>
                       </ul>
@@ -1770,6 +1785,9 @@
                           <li>
                             <a href="#kubernetes-get-a-stateful-set" class="toc-h3 toc-link" data-title="Kubernetes plugin">Get a stateful set</a>
                           </li>
+                          <li>
+                            <a href="#kubernetes-create-a-stateful-set" class="toc-h3 toc-link" data-title="Kubernetes plugin">Create a stateful set</a>
+                          </li>
                       </ul>
                   </li>
                   <li>
@@ -1781,6 +1799,9 @@
                           <li>
                             <a href="#kubernetes-get-a-daemon-set" class="toc-h3 toc-link" data-title="Kubernetes plugin">Get a daemon set</a>
                           </li>
+                          <li>
+                            <a href="#kubernetes-create-a-daemon-set" class="toc-h3 toc-link" data-title="Kubernetes plugin">Create a daemon set</a>
+                          </li>
                       </ul>
                   </li>
                   <li>
@@ -1791,6 +1812,9 @@
                           </li>
                           <li>
                             <a href="#kubernetes-get-a-deployment" class="toc-h3 toc-link" data-title="Kubernetes plugin">Get a deployment</a>
+                          </li>
+                          <li>
+                            <a href="#kubernetes-create-a-deployment" class="toc-h3 toc-link" data-title="Kubernetes plugin">Create a deployment</a>
                           </li>
                       </ul>
                   </li>
@@ -2090,6 +2114,9 @@
                                     <a href="#azure-get-a-pod" class="toc-h4 toc-link" data-title="Azure plugin">Get a pod</a>
                                   </li>
                                   <li>
+                                    <a href="#azure-create-a-pod" class="toc-h4 toc-link" data-title="Azure plugin">Create a pod</a>
+                                  </li>
+                                  <li>
                                     <a href="#azure-delete-a-pod" class="toc-h4 toc-link" data-title="Azure plugin">Delete a pod</a>
                                   </li>
                               </ul>
@@ -2103,6 +2130,9 @@
                                   <li>
                                     <a href="#azure-get-a-stateful-set" class="toc-h4 toc-link" data-title="Azure plugin">Get a stateful set</a>
                                   </li>
+                                  <li>
+                                    <a href="#azure-create-a-stateful-set" class="toc-h4 toc-link" data-title="Azure plugin">Create a stateful set</a>
+                                  </li>
                               </ul>
                           </li>
                           <li>
@@ -2113,6 +2143,9 @@
                                   </li>
                                   <li>
                                     <a href="#azure-get-a-daemon-set" class="toc-h4 toc-link" data-title="Azure plugin">Get a daemon set</a>
+                                  </li>
+                                  <li>
+                                    <a href="#azure-create-a-daemon-set" class="toc-h4 toc-link" data-title="Azure plugin">Create a daemon set</a>
                                   </li>
                               </ul>
                           </li>
@@ -2126,6 +2159,9 @@
                                     <a href="#azure-get-a-deployment" class="toc-h4 toc-link" data-title="Azure plugin">Get a deployment</a>
                                   </li>
                               </ul>
+                          </li>
+                          <li>
+                            <a href="#azure-create-a-deployment" class="toc-h3 toc-link" data-title="Azure plugin">Create a deployment</a>
                           </li>
                           <li>
                             <a href="#azure-services" class="toc-h3 toc-link" data-title="Azure plugin">Services</a>
@@ -22628,6 +22664,107 @@ curl -X POST <span class="se">\</span>
 
 <p>Note that the list is not complete, since it is refering to the <a href="https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md">kubernetes api details</a>.</p>
 
+<!-------------------- CREATE POD -------------------->
+
+<p><h4 id='gcp-create-a-pod'>Create a pod</h4><pre class="highlight shell tab-shell"><code>curl -X POST <span class="se">&lt;/span&gt;
+  -H <span class="s2">&quot;MC-Api-Key: your_api_key&quot;</span> <span class="se">&lt;/span&gt;
+   <span class="s2">&quot;https://cloudmc_endpoint/v1/services/a_service/an_environment/pods&quot;</span>
+  Content-Type: application/json
+  <span class="o">{</span>
+      <span class="s2">&quot;apiVersion&quot;</span>: <span class="s2">&quot;v1&quot;</span>,
+    <span class="s2">&quot;kind&quot;</span>: <span class="s2">&quot;Pod&quot;</span>,
+      <span class="s2">&quot;metadata&quot;</span>: <span class="o">{</span>
+        <span class="s2">&quot;name&quot;</span>: <span class="s2">&quot;edgar-allen-pod&quot;</span>,
+          <span class="s2">&quot;namespace&quot;</span>: <span class="s2">&quot;default&quot;</span>
+    <span class="o">}</span>,
+      <span class="s2">&quot;spec&quot;</span>: <span class="o">{</span>
+        <span class="s2">&quot;containers&quot;</span>: <span class="o">[</span>
+            <span class="o">{</span>
+                <span class="s2">&quot;image&quot;</span>: <span class="s2">&quot;nginx&quot;</span>,
+                <span class="s2">&quot;name&quot;</span>: <span class="s2">&quot;nginx&quot;</span>
+            <span class="o">}</span>
+          <span class="o">]</span>
+      <span class="o">}</span>
+  <span class="o">}</span>
+</code></pre>
+<blockquote>
+<p>The above command returns a JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">&quot;taskId&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1542bd45-4732-419b-87b6-4ea6ec695c2b&quot;</span><span class="p">,</span><span class="w">
+  </span><span class="s2">&quot;taskStatus&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;PENDING&quot;</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><code>POST /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/pods</code></p></p>
+
+<p>Create a pod in a given <a href="#administration-environments">environment</a>.</p>
+
+<table><thead>
+<tr>
+<th>Required Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>apiVersion</code> <br/><em>string</em></td>
+<td>The api version (versioned schema) of the pod</td>
+</tr>
+<tr>
+<td><code>metadata</code> <br/><em>object</em></td>
+<td>The metadata of the pod</td>
+</tr>
+<tr>
+<td><code>metadata.name</code> <br/><em>string</em></td>
+<td>The name of the pod</td>
+</tr>
+<tr>
+<td><code>spec</code><br/><em>object</em></td>
+<td>The specification used to create and run the pod</td>
+</tr>
+<tr>
+<td><code>spec.container.image</code><br/><em>string</em></td>
+<td>The docker image name</td>
+</tr>
+<tr>
+<td><code>spec.container.name</code><br/><em>string</em></td>
+<td>The (unique) name of the container specified as a DNS_LABEL</td>
+</tr>
+</tbody></table>
+
+<table><thead>
+<tr>
+<th>Optional Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>kind</code><br/><em>string</em></td>
+<td>The string value representing the REST resource this object represents</td>
+</tr>
+<tr>
+<td><code>metadata.namespace</code> <br/><em>string</em></td>
+<td>The namespace in which the pod is created</td>
+</tr>
+</tbody></table>
+
+<p>Return value:</p>
+
+<table><thead>
+<tr>
+<th>Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>taskId</code> <br/><em>string</em></td>
+<td>The id corresponding to the create pod task.</td>
+</tr>
+<tr>
+<td><code>taskStatus</code> <br/><em>string</em></td>
+<td>The status of the operation.</td>
+</tr>
+</tbody></table>
+
 <!-------------------- DELETE POD -------------------->
 
 <p><h4 id='gcp-delete-a-pod'>Delete a pod</h4><pre class="highlight shell tab-shell"><code>curl -X DELETE <span class="se">&lt;/span&gt;
@@ -22666,7 +22803,7 @@ curl -X POST <span class="se">\</span>
 </thead><tbody>
 <tr>
 <td><code>taskId</code> <br/><em>string</em></td>
-<td>The task id related to the delete pod.</td>
+<td>The task id related to the delete pod task.</td>
 </tr>
 <tr>
 <td><code>taskStatus</code> <br/><em>string</em></td>
@@ -22804,6 +22941,129 @@ curl -X POST <span class="se">\</span>
 </tbody></table>
 
 <p>Note that the list is not complete, since it is refering to the <a href="https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md">kubernetes api details</a>.</p>
+
+<!-------------------- CREATE A STATEFUL SET -------------------->
+
+<p><h4 id='gcp-create-a-stateful-set'>Create a stateful set</h4><pre class="highlight shell tab-shell"><code>curl -X POST <span class="se">&lt;/span&gt;
+  -H <span class="s2">&quot;MC-Api-Key: your_api_key&quot;</span> <span class="se">&lt;/span&gt;
+   <span class="s2">&quot;https://cloudmc_endpoint/v1/services/a_service/an_environment/statefulsets?cluster_id=a_cluster_id&quot;</span>
+  Content-Type: application/json
+  <span class="o">{</span>
+  <span class="s2">&quot;apiVersion&quot;</span>: <span class="s2">&quot;apps/v1&quot;</span>,
+  <span class="s2">&quot;kind&quot;</span>:<span class="s2">&quot;StatefulSet&quot;</span>,
+  <span class="s2">&quot;metadata&quot;</span>: <span class="o">{</span>
+    <span class="s2">&quot;name&quot;</span>: <span class="s2">&quot;stateful-set-name&quot;</span>,
+    <span class="s2">&quot;namespace&quot;</span>: <span class="s2">&quot;default&quot;</span>
+  <span class="o">}</span>,
+  <span class="s2">&quot;spec&quot;</span>: <span class="o">{</span>
+    <span class="s2">&quot;selector&quot;</span>: <span class="o">{</span>
+      <span class="s2">&quot;matchLabels&quot;</span>: <span class="o">{</span>
+        <span class="s2">&quot;app&quot;</span>: <span class="s2">&quot;nginx&quot;</span>
+      <span class="o">}</span>
+    <span class="o">}</span>,
+    <span class="s2">&quot;template&quot;</span>: <span class="o">{</span>
+      <span class="s2">&quot;metadata&quot;</span>: <span class="o">{</span>
+        <span class="s2">&quot;labels&quot;</span>: <span class="o">{</span>
+          <span class="s2">&quot;app&quot;</span>: <span class="s2">&quot;nginx&quot;</span>
+        <span class="o">}</span>
+      <span class="o">}</span>,
+      <span class="s2">&quot;spec&quot;</span>: <span class="o">{</span>
+        <span class="s2">&quot;containers&quot;</span>: <span class="o">[</span>
+          <span class="o">{</span>
+            <span class="s2">&quot;name&quot;</span>: <span class="s2">&quot;nginx&quot;</span>,
+            <span class="s2">&quot;image&quot;</span>: <span class="s2">&quot;k8s.gcr.io/nginx-slim:0.8&quot;</span>
+          <span class="o">}</span>
+        <span class="o">]</span>
+      <span class="o">}</span>
+    <span class="o">}</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</code></pre>
+<blockquote>
+<p>The above command returns a JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">&quot;taskId&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1542bd45-4732-419b-87b6-4ea6ec695c2b&quot;</span><span class="p">,</span><span class="w">
+  </span><span class="s2">&quot;taskStatus&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;PENDING&quot;</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><code>POST /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/statefulsets?cluster_id=:cluster_id</code></p></p>
+
+<p>Create a stateful set in a given <a href="#administration-environments">environment</a>.</p>
+
+<table><thead>
+<tr>
+<th>Required Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>apiVersion</code> <br/> <em>string</em></td>
+<td>The api version (versioned schema) of the stateful set</td>
+</tr>
+<tr>
+<td><code>metadata</code> <br/><em>object</em></td>
+<td>The metadata of the stateful set</td>
+</tr>
+<tr>
+<td><code>metadata.name</code> <br/><em>string</em></td>
+<td>The name of the stateful set</td>
+</tr>
+<tr>
+<td><code>spec</code><br/><em>object</em></td>
+<td>The specification used to create and run the stateful set</td>
+</tr>
+<tr>
+<td><code>spec.selector</code><br/><em>object</em></td>
+<td>The label query over the stateful set&#39;s resources</td>
+</tr>
+<tr>
+<td><code>spec.template</code><br/><em>object</em></td>
+<td>The data a stateful set&#39;s pod should have when created</td>
+</tr>
+<tr>
+<td><code>spec.spec</code><br/><em>object</em></td>
+<td>The specification used to create and run the pod(s) within the stateful set</td>
+</tr>
+</tbody></table>
+
+<table><thead>
+<tr>
+<th>Optional Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>kind</code><br/><em>string</em></td>
+<td>The string value representing the REST resource this object represents</td>
+</tr>
+<tr>
+<td><code>metadata.namespace</code> <br/><em>string</em></td>
+<td>The namespace in which the stateful set is created</td>
+</tr>
+<tr>
+<td><code>spec.selector.matchLabels</code><br/><em>object</em></td>
+<td>The key value pairs retrieved by a label query from a stateful set</td>
+</tr>
+</tbody></table>
+
+<p>Return value:</p>
+
+<table><thead>
+<tr>
+<th>Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>taskId</code> <br/><em>string</em></td>
+<td>The id corresponding to the create stateful set task.</td>
+</tr>
+<tr>
+<td><code>taskStatus</code> <br/><em>string</em></td>
+<td>The status of the operation.</td>
+</tr>
+</tbody></table>
 <h3 id='gcp-daemon-sets'>Daemon Sets</h3>
 
 <!-------------------- LIST DAEMON SETS -------------------->
@@ -22934,6 +23194,128 @@ curl -X POST <span class="se">\</span>
 </tbody></table>
 
 <p>Note that the list is not complete, since it is refering to the <a href="https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md">kubernetes api details</a>.</p>
+
+<!-------------------- CREATE DAEMON SET -------------------->
+
+<p><h4 id='gcp-create-a-daemon-set'>Create a daemon set</h4><pre class="highlight shell tab-shell"><code>curl -X POST <span class="se">&lt;/span&gt;
+  -H <span class="s2">&quot;MC-Api-Key: your_api_key&quot;</span> <span class="se">&lt;/span&gt;
+   <span class="s2">&quot;https://cloudmc_endpoint/v1/services/a_service/an_environment/daemonsets?cluster_id=a_cluster_id&quot;</span>
+  Content-Type: application/json
+  <span class="o">{</span>
+  <span class="s2">&quot;apiVersion&quot;</span>: <span class="s2">&quot;apps/v1&quot;</span>,
+  <span class="s2">&quot;metadata&quot;</span>: <span class="o">{</span>
+    <span class="s2">&quot;name&quot;</span>: <span class="s2">&quot;daemonset-name&quot;</span>,
+    <span class="s2">&quot;namespace&quot;</span>: <span class="s2">&quot;default&quot;</span>
+  <span class="o">}</span>,
+  <span class="s2">&quot;spec&quot;</span>: <span class="o">{</span>
+    <span class="s2">&quot;selector&quot;</span>: <span class="o">{</span>
+      <span class="s2">&quot;matchLabels&quot;</span>: <span class="o">{</span>
+        <span class="s2">&quot;name&quot;</span>: <span class="s2">&quot;fluentd-elasticsearch&quot;</span>
+      <span class="o">}</span>
+    <span class="o">}</span>,
+    <span class="s2">&quot;template&quot;</span>: <span class="o">{</span>
+      <span class="s2">&quot;metadata&quot;</span>: <span class="o">{</span>
+        <span class="s2">&quot;labels&quot;</span>: <span class="o">{</span>
+          <span class="s2">&quot;name&quot;</span>: <span class="s2">&quot;fluentd-elasticsearch&quot;</span>
+        <span class="o">}</span>
+      <span class="o">}</span>,
+      <span class="s2">&quot;spec&quot;</span>: <span class="o">{</span>
+        <span class="s2">&quot;containers&quot;</span>: <span class="o">[</span>
+          <span class="o">{</span>
+            <span class="s2">&quot;name&quot;</span>: <span class="s2">&quot;fluentd-elasticsearch&quot;</span>,
+            <span class="s2">&quot;image&quot;</span>: <span class="s2">&quot;quay.io/fluentd_elasticsearch/fluentd:v2.5.2&quot;</span>
+          <span class="o">}</span>
+        <span class="o">]</span>
+      <span class="o">}</span>
+    <span class="o">}</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</code></pre>
+<blockquote>
+<p>The above command returns a JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">&quot;taskId&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1542bd45-4732-419b-87b6-4ea6ec695c2b&quot;</span><span class="p">,</span><span class="w">
+  </span><span class="s2">&quot;taskStatus&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;PENDING&quot;</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><code>POST /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/daemonsets?cluster_id=:cluster_id</code></p></p>
+
+<p>Create a daemon set in a given <a href="#administration-environments">environment</a>.</p>
+
+<table><thead>
+<tr>
+<th>Required Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>apiVersion</code> <br/> <em>string</em></td>
+<td>The api version (versioned schema) of the daemon set</td>
+</tr>
+<tr>
+<td><code>metadata</code> <br/><em>object</em></td>
+<td>The metadata of the daemon set</td>
+</tr>
+<tr>
+<td><code>metadata.name</code> <br/><em>string</em></td>
+<td>The name of the daemon set</td>
+</tr>
+<tr>
+<td><code>spec</code><br/><em>object</em></td>
+<td>The specification used to create and run the daemon set</td>
+</tr>
+<tr>
+<td><code>spec.selector</code><br/><em>object</em></td>
+<td>The label query over the daemon set&#39;s resources</td>
+</tr>
+<tr>
+<td><code>spec.template</code><br/><em>object</em></td>
+<td>The data a daemon set&#39;s pod should have when created</td>
+</tr>
+<tr>
+<td><code>spec.spec</code><br/><em>object</em></td>
+<td>The specification used to create and run the pod(s) within the daemon set</td>
+</tr>
+</tbody></table>
+
+<table><thead>
+<tr>
+<th>Optional Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>kind</code><br/><em>string</em></td>
+<td>The string value representing the REST resource this object represents</td>
+</tr>
+<tr>
+<td><code>metadata.namespace</code> <br/><em>string</em></td>
+<td>The namespace in which the daemon set is created</td>
+</tr>
+<tr>
+<td><code>spec.selector.matchLabels</code><br/><em>object</em></td>
+<td>The key value pairs retrieved by a label query from a daemon set</td>
+</tr>
+</tbody></table>
+
+<p>Return value:</p>
+
+<table><thead>
+<tr>
+<th>Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>taskId</code> <br/><em>string</em></td>
+<td>The id corresponding to the create daemon set task.</td>
+</tr>
+<tr>
+<td><code>taskStatus</code> <br/><em>string</em></td>
+<td>The status of the operation.</td>
+</tr>
+</tbody></table>
 <h3 id='gcp-deployments'>Deployments</h3>
 
 <!-------------------- LIST DEPLOYMENTS -------------------->
@@ -23000,7 +23382,11 @@ curl -X POST <span class="se">\</span>
 <td>The specification used to create and run the deployment</td>
 </tr>
 <tr>
-<td><code>status</code><br/><em>object</em></td>
+<td><code>readyRatio</code> <br/><em>object</em></td>
+<td>The ready replicas to total replicas ratio of this deployment set</td>
+</tr>
+<tr>
+<td><code>deploymentStatus</code><br/><em>object</em></td>
 <td>The status information of the deployment</td>
 </tr>
 </tbody></table>
@@ -23068,12 +23454,139 @@ curl -X POST <span class="se">\</span>
 <td>The specification used to create and run the deployment</td>
 </tr>
 <tr>
-<td><code>status</code><br/><em>object</em></td>
+<td><code>readyRatio</code> <br/><em>object</em></td>
+<td>The ready replicas to total replicas ratio of this deployment set</td>
+</tr>
+<tr>
+<td><code>deploymentStatus</code><br/><em>object</em></td>
 <td>The status information of the deployment</td>
 </tr>
 </tbody></table>
 
 <p>Note that the list is not complete, since it is refering to the <a href="https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md">kubernetes api details</a>.</p>
+
+<!-------------------- CREATE DEPLOYMENT -------------------->
+
+<p><h3 id='gcp-create-a-deployment'>Create a deployment</h3><pre class="highlight shell tab-shell"><code>curl -X POST <span class="se">&lt;/span&gt;
+  -H <span class="s2">&quot;MC-Api-Key: your_api_key&quot;</span> <span class="se">&lt;/span&gt;
+   <span class="s2">&quot;https://cloudmc_endpoint/v1/services/a_service/an_environment/deployments?cluster_id=a_cluster_id&quot;</span>
+  Content-Type: application/json
+  <span class="o">{</span>
+  <span class="s2">&quot;apiVersion&quot;</span>: <span class="s2">&quot;apps/v1&quot;</span>,
+  <span class="s2">&quot;kind&quot;</span>: <span class="s2">&quot;Deployment&quot;</span>,
+  <span class="s2">&quot;metadata&quot;</span>: <span class="o">{</span>
+    <span class="s2">&quot;name&quot;</span>: <span class="s2">&quot;api-test-deployment-name&quot;</span>,
+    <span class="s2">&quot;namespace&quot;</span>: <span class="s2">&quot;default&quot;</span>
+  <span class="o">}</span>,
+  <span class="s2">&quot;spec&quot;</span>: <span class="o">{</span>
+    <span class="s2">&quot;selector&quot;</span>: <span class="o">{</span>
+      <span class="s2">&quot;matchLabels&quot;</span>: <span class="o">{</span>
+        <span class="s2">&quot;app&quot;</span>: <span class="s2">&quot;nginx&quot;</span>
+      <span class="o">}</span>
+    <span class="o">}</span>,
+    <span class="s2">&quot;template&quot;</span>: <span class="o">{</span>
+      <span class="s2">&quot;metadata&quot;</span>: <span class="o">{</span>
+        <span class="s2">&quot;labels&quot;</span>: <span class="o">{</span>
+          <span class="s2">&quot;app&quot;</span>: <span class="s2">&quot;nginx&quot;</span>
+        <span class="o">}</span>
+      <span class="o">}</span>,
+      <span class="s2">&quot;spec&quot;</span>: <span class="o">{</span>
+        <span class="s2">&quot;containers&quot;</span>: <span class="o">[</span>
+          <span class="o">{</span>
+            <span class="s2">&quot;name&quot;</span>: <span class="s2">&quot;nginx&quot;</span>,
+            <span class="s2">&quot;image&quot;</span>: <span class="s2">&quot;nginx&quot;</span>
+          <span class="o">}</span>
+        <span class="o">]</span>
+      <span class="o">}</span>
+    <span class="o">}</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</code></pre>
+<blockquote>
+<p>The above command returns a JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">&quot;taskId&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1542bd45-4732-419b-87b6-4ea6ec695c2b&quot;</span><span class="p">,</span><span class="w">
+  </span><span class="s2">&quot;taskStatus&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;PENDING&quot;</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><code>POST /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/deployments?cluster_id=:cluster_id</code></p></p>
+
+<p>Create a deployment in a given <a href="#administration-environments">environment</a>.</p>
+
+<table><thead>
+<tr>
+<th>Required Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>apiVersion</code> <br/> <em>string</em></td>
+<td>The api version (versioned schema) of the deployment</td>
+</tr>
+<tr>
+<td><code>metadata</code> <br/><em>object</em></td>
+<td>The metadata of the deployment</td>
+</tr>
+<tr>
+<td><code>metadata.name</code> <br/><em>string</em></td>
+<td>The name of the deployment</td>
+</tr>
+<tr>
+<td><code>spec</code><br/><em>object</em></td>
+<td>The specification used to create and run the deployment</td>
+</tr>
+<tr>
+<td><code>spec.selector</code><br/><em>object</em></td>
+<td>The label query over the deployment&#39;s set of resources</td>
+</tr>
+<tr>
+<td><code>spec.template</code><br/><em>object</em></td>
+<td>The data a deployment&#39;s pod should have when created</td>
+</tr>
+<tr>
+<td><code>spec.spec</code><br/><em>object</em></td>
+<td>The specification used to create and run the pod(s) within the deployment</td>
+</tr>
+</tbody></table>
+
+<table><thead>
+<tr>
+<th>Optional Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>kind</code><br/><em>string</em></td>
+<td>The string value representing the REST resource this object represents</td>
+</tr>
+<tr>
+<td><code>metadata.namespace</code> <br/><em>string</em></td>
+<td>The namespace in which the deployment is created</td>
+</tr>
+<tr>
+<td><code>spec.selector.matchLabels</code><br/><em>object</em></td>
+<td>The key value pairs retrieved by a label query from a deployment</td>
+</tr>
+</tbody></table>
+
+<p>Return value:</p>
+
+<table><thead>
+<tr>
+<th>Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>taskId</code> <br/><em>string</em></td>
+<td>The id corresponding to the create deployment task.</td>
+</tr>
+<tr>
+<td><code>taskStatus</code> <br/><em>string</em></td>
+<td>The status of the operation.</td>
+</tr>
+</tbody></table>
 <h3 id='gcp-services'>Services</h3>
 
 <!-------------------- LIST SERVICES -------------------->
@@ -26019,6 +26532,106 @@ curl -X POST <span class="se">\</span>
 
 <p>Note that the list is not complete, since it is refering to the <a href="https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md">kubernetes api details</a>.</p>
 
+<!-------------------- CREATE POD -------------------->
+<h3 id='kubernetes-create-a-pod'>Create a pod</h3><pre class="highlight shell tab-shell"><code>curl -X POST <span class="se">\</span>
+  -H <span class="s2">"MC-Api-Key: your_api_key"</span> <span class="se">\</span>
+   <span class="s2">"https://cloudmc_endpoint/v1/services/a_service/an_environment/pods"</span>
+  Content-Type: application/json
+  <span class="o">{</span>
+      <span class="s2">"apiVersion"</span>: <span class="s2">"v1"</span>,
+    <span class="s2">"kind"</span>: <span class="s2">"Pod"</span>,
+      <span class="s2">"metadata"</span>: <span class="o">{</span>
+        <span class="s2">"name"</span>: <span class="s2">"edgar-allen-pod"</span>,
+          <span class="s2">"namespace"</span>: <span class="s2">"default"</span>
+    <span class="o">}</span>,
+      <span class="s2">"spec"</span>: <span class="o">{</span>
+        <span class="s2">"containers"</span>: <span class="o">[</span>
+            <span class="o">{</span>
+                <span class="s2">"image"</span>: <span class="s2">"nginx"</span>,
+                <span class="s2">"name"</span>: <span class="s2">"nginx"</span>
+            <span class="o">}</span>
+          <span class="o">]</span>
+      <span class="o">}</span>
+  <span class="o">}</span>
+</code></pre>
+<blockquote>
+<p>The above command returns a JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"taskId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1542bd45-4732-419b-87b6-4ea6ec695c2b"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"taskStatus"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PENDING"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><code>POST /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/pods</code></p>
+
+<p>Create a pod in a given <a href="#administration-environments">environment</a>.</p>
+
+<table><thead>
+<tr>
+<th>Required Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>apiVersion</code> <br/><em>string</em></td>
+<td>The api version (versioned schema) of the pod</td>
+</tr>
+<tr>
+<td><code>metadata</code> <br/><em>object</em></td>
+<td>The metadata of the pod</td>
+</tr>
+<tr>
+<td><code>metadata.name</code> <br/><em>string</em></td>
+<td>The name of the pod</td>
+</tr>
+<tr>
+<td><code>spec</code><br/><em>object</em></td>
+<td>The specification used to create and run the pod</td>
+</tr>
+<tr>
+<td><code>spec.container.image</code><br/><em>string</em></td>
+<td>The docker image name</td>
+</tr>
+<tr>
+<td><code>spec.container.name</code><br/><em>string</em></td>
+<td>The (unique) name of the container specified as a DNS_LABEL</td>
+</tr>
+</tbody></table>
+
+<table><thead>
+<tr>
+<th>Optional Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>kind</code><br/><em>string</em></td>
+<td>The string value representing the REST resource this object represents</td>
+</tr>
+<tr>
+<td><code>metadata.namespace</code> <br/><em>string</em></td>
+<td>The namespace in which the pod is created</td>
+</tr>
+</tbody></table>
+
+<p>Return value:</p>
+
+<table><thead>
+<tr>
+<th>Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>taskId</code> <br/><em>string</em></td>
+<td>The id corresponding to the create pod task.</td>
+</tr>
+<tr>
+<td><code>taskStatus</code> <br/><em>string</em></td>
+<td>The status of the operation.</td>
+</tr>
+</tbody></table>
+
 <!-------------------- DELETE POD -------------------->
 <h3 id='kubernetes-delete-a-pod'>Delete a pod</h3><pre class="highlight shell tab-shell"><code>curl -X DELETE <span class="se">\</span>
    -H <span class="s2">"MC-Api-Key: your_api_key"</span> <span class="se">\</span>
@@ -26044,11 +26657,11 @@ curl -X POST <span class="se">\</span>
 </thead><tbody>
 <tr>
 <td><code>taskId</code> <br/><em>string</em></td>
-<td>The task id related to the delete pod.</td>
+<td>The id corresponding to the delete pod task.</td>
 </tr>
 <tr>
 <td><code>taskStatus</code> <br/><em>string</em></td>
-<td>The status of the operation</td>
+<td>The status of the operation.</td>
 </tr>
 </tbody></table>
 <h2 id='kubernetes-stateful-sets'>Stateful Sets</h2>
@@ -26159,6 +26772,128 @@ curl -X POST <span class="se">\</span>
 </tbody></table>
 
 <p>Note that the list is not complete, since it is refering to the <a href="https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md">kubernetes api details</a>.</p>
+
+<!-------------------- CREATE A STATEFUL SET -------------------->
+<h3 id='kubernetes-create-a-stateful-set'>Create a stateful set</h3><pre class="highlight shell tab-shell"><code>curl -X POST <span class="se">\</span>
+  -H <span class="s2">"MC-Api-Key: your_api_key"</span> <span class="se">\</span>
+   <span class="s2">"https://cloudmc_endpoint/v1/services/a_service/an_environment/statefulsets"</span>
+  Content-Type: application/json
+  <span class="o">{</span>
+  <span class="s2">"apiVersion"</span>: <span class="s2">"apps/v1"</span>,
+  <span class="s2">"kind"</span>: <span class="s2">"StatefulSet"</span>,
+  <span class="s2">"metadata"</span>: <span class="o">{</span>
+    <span class="s2">"name"</span>: <span class="s2">"stateful-set-name"</span>,
+    <span class="s2">"namespace"</span>: <span class="s2">"default"</span>
+  <span class="o">}</span>,
+  <span class="s2">"spec"</span>: <span class="o">{</span>
+    <span class="s2">"selector"</span>: <span class="o">{</span>
+      <span class="s2">"matchLabels"</span>: <span class="o">{</span>
+        <span class="s2">"app"</span>: <span class="s2">"nginx"</span>
+      <span class="o">}</span>
+    <span class="o">}</span>,
+    <span class="s2">"template"</span>: <span class="o">{</span>
+      <span class="s2">"metadata"</span>: <span class="o">{</span>
+        <span class="s2">"labels"</span>: <span class="o">{</span>
+          <span class="s2">"app"</span>: <span class="s2">"nginx"</span>
+        <span class="o">}</span>
+      <span class="o">}</span>,
+      <span class="s2">"spec"</span>: <span class="o">{</span>
+        <span class="s2">"containers"</span>: <span class="o">[</span>
+          <span class="o">{</span>
+            <span class="s2">"name"</span>: <span class="s2">"nginx"</span>,
+            <span class="s2">"image"</span>: <span class="s2">"k8s.gcr.io/nginx-slim:0.8"</span>
+          <span class="o">}</span>
+        <span class="o">]</span>
+      <span class="o">}</span>
+    <span class="o">}</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</code></pre>
+<blockquote>
+<p>The above command returns a JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"taskId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1542bd45-4732-419b-87b6-4ea6ec695c2b"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"taskStatus"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PENDING"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><code>POST /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/statefulsets</code></p>
+
+<p>Create a stateful set in a given <a href="#administration-environments">environment</a>.</p>
+
+<table><thead>
+<tr>
+<th>Required Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>apiVersion</code> <br/> <em>string</em></td>
+<td>The api version (versioned schema) of the stateful set</td>
+</tr>
+<tr>
+<td><code>metadata</code> <br/><em>object</em></td>
+<td>The metadata of the stateful set</td>
+</tr>
+<tr>
+<td><code>metadata.name</code> <br/><em>string</em></td>
+<td>The name of the stateful set</td>
+</tr>
+<tr>
+<td><code>spec</code><br/><em>object</em></td>
+<td>The specification used to create and run the stateful set</td>
+</tr>
+<tr>
+<td><code>spec.selector</code><br/><em>object</em></td>
+<td>The label query over the stateful set&#39;s of resources</td>
+</tr>
+<tr>
+<td><code>spec.template</code><br/><em>object</em></td>
+<td>The data a stateful set&#39;s pod should have when created</td>
+</tr>
+<tr>
+<td><code>spec.spec</code><br/><em>object</em></td>
+<td>The specification used to create and run the pod(s) within the stateful set</td>
+</tr>
+</tbody></table>
+
+<table><thead>
+<tr>
+<th>Optional Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>kind</code><br/><em>string</em></td>
+<td>The string value representing the REST resource this object represents</td>
+</tr>
+<tr>
+<td><code>metadata.namespace</code> <br/><em>string</em></td>
+<td>The namespace in which the stateful set is created</td>
+</tr>
+<tr>
+<td><code>spec.selector.matchLabels</code><br/><em>object</em></td>
+<td>The key value pairs retrieved by a label query from a stateful set</td>
+</tr>
+</tbody></table>
+
+<p>Return value:</p>
+
+<table><thead>
+<tr>
+<th>Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>taskId</code> <br/><em>string</em></td>
+<td>The id corresponding to the create stateful set task.</td>
+</tr>
+<tr>
+<td><code>taskStatus</code> <br/><em>string</em></td>
+<td>The status of the operation.</td>
+</tr>
+</tbody></table>
 <h2 id='kubernetes-daemon-sets'>Daemon Sets</h2>
 <!-------------------- LIST DAEMON SETS -------------------->
 <h3 id='kubernetes-list-daemon-sets'>List daemon sets</h3><pre class="highlight shell tab-shell"><code>curl -X GET <span class="se">\</span>
@@ -26258,6 +26993,128 @@ curl -X POST <span class="se">\</span>
 </tbody></table>
 
 <p>Note that the list is not complete, since it is refering to the <a href="https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md">kubernetes api details</a>.</p>
+
+<!-------------------- CREATE DAEMON SET -------------------->
+<h3 id='kubernetes-create-a-daemon-set'>Create a daemon set</h3><pre class="highlight shell tab-shell"><code>curl -X POST <span class="se">\</span>
+  -H <span class="s2">"MC-Api-Key: your_api_key"</span> <span class="se">\</span>
+   <span class="s2">"https://cloudmc_endpoint/v1/services/a_service/an_environment/daemonsets"</span>
+  Content-Type: application/json
+  <span class="o">{</span>
+  <span class="s2">"apiVersion"</span>: <span class="s2">"apps/v1"</span>,
+  <span class="s2">"kind"</span>: <span class="s2">"DaemonSet"</span>,
+  <span class="s2">"metadata"</span>: <span class="o">{</span>
+    <span class="s2">"name"</span>: <span class="s2">"daemonset-name"</span>,
+    <span class="s2">"namespace"</span>: <span class="s2">"default"</span>
+  <span class="o">}</span>,
+  <span class="s2">"spec"</span>: <span class="o">{</span>
+    <span class="s2">"selector"</span>: <span class="o">{</span>
+      <span class="s2">"matchLabels"</span>: <span class="o">{</span>
+        <span class="s2">"name"</span>: <span class="s2">"fluentd-elasticsearch"</span>
+      <span class="o">}</span>
+    <span class="o">}</span>,
+    <span class="s2">"template"</span>: <span class="o">{</span>
+      <span class="s2">"metadata"</span>: <span class="o">{</span>
+        <span class="s2">"labels"</span>: <span class="o">{</span>
+          <span class="s2">"name"</span>: <span class="s2">"fluentd-elasticsearch"</span>
+        <span class="o">}</span>
+      <span class="o">}</span>,
+      <span class="s2">"spec"</span>: <span class="o">{</span>
+        <span class="s2">"containers"</span>: <span class="o">[</span>
+          <span class="o">{</span>
+            <span class="s2">"name"</span>: <span class="s2">"fluentd-elasticsearch"</span>,
+            <span class="s2">"image"</span>: <span class="s2">"quay.io/fluentd_elasticsearch/fluentd:v2.5.2"</span>
+          <span class="o">}</span>
+        <span class="o">]</span>
+      <span class="o">}</span>
+    <span class="o">}</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</code></pre>
+<blockquote>
+<p>The above command returns a JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"taskId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1542bd45-4732-419b-87b6-4ea6ec695c2b"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"taskStatus"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PENDING"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><code>POST /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/daemonsets</code></p>
+
+<p>Create a daemon set in a given <a href="#administration-environments">environment</a>.</p>
+
+<table><thead>
+<tr>
+<th>Required Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>apiVersion</code> <br/> <em>string</em></td>
+<td>The api version (versioned schema) of the daemon set</td>
+</tr>
+<tr>
+<td><code>metadata</code> <br/><em>object</em></td>
+<td>The metadata of the daemon set</td>
+</tr>
+<tr>
+<td><code>metadata.name</code> <br/><em>string</em></td>
+<td>The name of the daemon set</td>
+</tr>
+<tr>
+<td><code>spec</code><br/><em>object</em></td>
+<td>The specification used to create and run the daemon set</td>
+</tr>
+<tr>
+<td><code>spec.selector</code><br/><em>object</em></td>
+<td>The label query over the daemon set&#39;s resources</td>
+</tr>
+<tr>
+<td><code>spec.template</code><br/><em>object</em></td>
+<td>The data a daemon set&#39;s pod should have when created</td>
+</tr>
+<tr>
+<td><code>spec.spec</code><br/><em>object</em></td>
+<td>The specification used to create and run the pod(s) within the daemon set</td>
+</tr>
+</tbody></table>
+
+<table><thead>
+<tr>
+<th>Optional Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>kind</code><br/><em>string</em></td>
+<td>The string value representing the REST resource this object represents</td>
+</tr>
+<tr>
+<td><code>metadata.namespace</code> <br/><em>string</em></td>
+<td>The namespace in which the daemon set is created</td>
+</tr>
+<tr>
+<td><code>spec.selector.matchLabels</code><br/><em>object</em></td>
+<td>The key value pairs retrieved by a label query from a daemon set</td>
+</tr>
+</tbody></table>
+
+<p>Return value:</p>
+
+<table><thead>
+<tr>
+<th>Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>taskId</code> <br/><em>string</em></td>
+<td>The id corresponding to the create daemon set task.</td>
+</tr>
+<tr>
+<td><code>taskStatus</code> <br/><em>string</em></td>
+<td>The status of the operation.</td>
+</tr>
+</tbody></table>
 <h2 id='kubernetes-deployments'>Deployments</h2>
 <!-------------------- LIST DEPLOYMENTS -------------------->
 <h4 id='kubernetes-list-deployments'>List deployments</h4><pre class="highlight shell tab-shell"><code>curl -X GET <span class="se">\</span>
@@ -26363,24 +27220,146 @@ curl -X POST <span class="se">\</span>
 <td>The id of the deployment</td>
 </tr>
 <tr>
+<td><code>deplomentStatus</code><br/><em>object</em></td>
+<td>The status information of the deployment</td>
+</tr>
+<tr>
+<td><code>readyRatio</code> <br/><em>object</em></td>
+<td>The ready replicas to total replicas ratio of this deployment set</td>
+</tr>
+<tr>
 <td><code>metadata</code> <br/><em>object</em></td>
 <td>The metadata of the deployment</td>
 </tr>
 <tr>
-<td><code>images</code> <br/><em>object</em></td>
-<td>The container images within a deployment</td>
+<td><code>spec</code><br/><em>object</em></td>
+<td>The specification used to create and run the deployment</td>
+</tr>
+</tbody></table>
+
+<p>Note that the list is not complete, since it is refering to the <a href="https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md">kubernetes api details</a>.</p>
+
+<!-------------------- CREATE DEPLOYMENT -------------------->
+<h3 id='kubernetes-create-a-deployment'>Create a deployment</h3><pre class="highlight shell tab-shell"><code>curl -X POST <span class="se">\</span>
+  -H <span class="s2">"MC-Api-Key: your_api_key"</span> <span class="se">\</span>
+   <span class="s2">"https://cloudmc_endpoint/v1/services/a_service/an_environment/deployments"</span>
+  Content-Type: application/json
+  <span class="o">{</span>
+  <span class="s2">"apiVersion"</span>: <span class="s2">"apps/v1"</span>,
+  <span class="s2">"kind"</span>: <span class="s2">"Deployment"</span>,
+  <span class="s2">"metadata"</span>: <span class="o">{</span>
+    <span class="s2">"name"</span>: <span class="s2">"api-test-deployment-name"</span>,
+    <span class="s2">"namespace"</span>: <span class="s2">"default"</span>
+  <span class="o">}</span>,
+  <span class="s2">"spec"</span>: <span class="o">{</span>
+    <span class="s2">"selector"</span>: <span class="o">{</span>
+      <span class="s2">"matchLabels"</span>: <span class="o">{</span>
+        <span class="s2">"app"</span>: <span class="s2">"nginx"</span>
+      <span class="o">}</span>
+    <span class="o">}</span>,
+    <span class="s2">"template"</span>: <span class="o">{</span>
+      <span class="s2">"metadata"</span>: <span class="o">{</span>
+        <span class="s2">"labels"</span>: <span class="o">{</span>
+          <span class="s2">"app"</span>: <span class="s2">"nginx"</span>
+        <span class="o">}</span>
+      <span class="o">}</span>,
+      <span class="s2">"spec"</span>: <span class="o">{</span>
+        <span class="s2">"containers"</span>: <span class="o">[</span>
+          <span class="o">{</span>
+            <span class="s2">"name"</span>: <span class="s2">"nginx"</span>,
+            <span class="s2">"image"</span>: <span class="s2">"nginx"</span>
+          <span class="o">}</span>
+        <span class="o">]</span>
+      <span class="o">}</span>
+    <span class="o">}</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</code></pre>
+<blockquote>
+<p>The above command returns a JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"taskId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1542bd45-4732-419b-87b6-4ea6ec695c2b"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"taskStatus"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PENDING"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><code>POST /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/deployments</code></p>
+
+<p>Create a deployment in a given <a href="#administration-environments">environment</a>.</p>
+
+<table><thead>
+<tr>
+<th>Required Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>apiVersion</code> <br/> <em>string</em></td>
+<td>The api version (versioned schema) of the deployment</td>
+</tr>
+<tr>
+<td><code>metadata</code> <br/><em>object</em></td>
+<td>The metadata of the deployment</td>
+</tr>
+<tr>
+<td><code>metadata.name</code> <br/><em>string</em></td>
+<td>The name of the deployment</td>
 </tr>
 <tr>
 <td><code>spec</code><br/><em>object</em></td>
 <td>The specification used to create and run the deployment</td>
 </tr>
 <tr>
-<td><code>status</code><br/><em>object</em></td>
-<td>The status information of the deployment</td>
+<td><code>spec.selector</code><br/><em>object</em></td>
+<td>The label query over the deployment&#39;s set of resources</td>
+</tr>
+<tr>
+<td><code>spec.template</code><br/><em>object</em></td>
+<td>The data a deployment&#39;s pod should have when created</td>
+</tr>
+<tr>
+<td><code>spec.spec</code><br/><em>object</em></td>
+<td>The specification used to create and run the pod(s) within the deployment</td>
 </tr>
 </tbody></table>
 
-<p>Note that the list is not complete, since it is refering to the <a href="https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md">kubernetes api details</a>.</p>
+<table><thead>
+<tr>
+<th>Optional Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>kind</code><br/><em>string</em></td>
+<td>The string value representing the REST resource this object represents</td>
+</tr>
+<tr>
+<td><code>metadata.namespace</code> <br/><em>string</em></td>
+<td>The namespace in which the deployment is created</td>
+</tr>
+<tr>
+<td><code>spec.selector.matchLabels</code><br/><em>object</em></td>
+<td>The key value pairs retrieved by a label query from a deployment</td>
+</tr>
+</tbody></table>
+
+<p>Return value:</p>
+
+<table><thead>
+<tr>
+<th>Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>taskId</code> <br/><em>string</em></td>
+<td>The id corresponding to the create deployment task.</td>
+</tr>
+<tr>
+<td><code>taskStatus</code> <br/><em>string</em></td>
+<td>The status of the operation.</td>
+</tr>
+</tbody></table>
 <h2 id='kubernetes-services'>Services</h2>
 <!-------------------- LIST SERVICES -------------------->
 <h4 id='kubernetes-list-services'>List services</h4><pre class="highlight shell tab-shell"><code>curl -X GET <span class="se">\</span>
@@ -31209,6 +32188,107 @@ For Windows instances, reset the administrator account and reset the Remote Desk
 
 <p>Note that the list is not complete, since it is refering to the <a href="https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md">kubernetes api details</a>.</p>
 
+<!-------------------- CREATE POD -------------------->
+
+<p><h4 id='azure-create-a-pod'>Create a pod</h4><pre class="highlight shell tab-shell"><code>curl -X POST <span class="se">&lt;/span&gt;
+  -H <span class="s2">&quot;MC-Api-Key: your_api_key&quot;</span> <span class="se">&lt;/span&gt;
+   <span class="s2">&quot;https://cloudmc_endpoint/v1/services/a_service/an_environment/pods&quot;</span>
+  Content-Type: application/json
+  <span class="o">{</span>
+      <span class="s2">&quot;apiVersion&quot;</span>: <span class="s2">&quot;v1&quot;</span>,
+    <span class="s2">&quot;kind&quot;</span>: <span class="s2">&quot;Pod&quot;</span>,
+      <span class="s2">&quot;metadata&quot;</span>: <span class="o">{</span>
+        <span class="s2">&quot;name&quot;</span>: <span class="s2">&quot;edgar-allen-pod&quot;</span>,
+          <span class="s2">&quot;namespace&quot;</span>: <span class="s2">&quot;default&quot;</span>
+    <span class="o">}</span>,
+      <span class="s2">&quot;spec&quot;</span>: <span class="o">{</span>
+        <span class="s2">&quot;containers&quot;</span>: <span class="o">[</span>
+            <span class="o">{</span>
+                <span class="s2">&quot;image&quot;</span>: <span class="s2">&quot;nginx&quot;</span>,
+                <span class="s2">&quot;name&quot;</span>: <span class="s2">&quot;nginx&quot;</span>
+            <span class="o">}</span>
+          <span class="o">]</span>
+      <span class="o">}</span>
+  <span class="o">}</span>
+</code></pre>
+<blockquote>
+<p>The above command returns a JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">&quot;taskId&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1542bd45-4732-419b-87b6-4ea6ec695c2b&quot;</span><span class="p">,</span><span class="w">
+  </span><span class="s2">&quot;taskStatus&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;PENDING&quot;</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><code>POST /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/pods</code></p></p>
+
+<p>Create a pod in a given <a href="#administration-environments">environment</a>.</p>
+
+<table><thead>
+<tr>
+<th>Required Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>apiVersion</code> <br/><em>string</em></td>
+<td>The api version (versioned schema) of the pod</td>
+</tr>
+<tr>
+<td><code>metadata</code> <br/><em>object</em></td>
+<td>The metadata of the pod</td>
+</tr>
+<tr>
+<td><code>metadata.name</code> <br/><em>string</em></td>
+<td>The name of the pod</td>
+</tr>
+<tr>
+<td><code>spec</code><br/><em>object</em></td>
+<td>The specification used to create and run the pod</td>
+</tr>
+<tr>
+<td><code>spec.container.image</code><br/><em>string</em></td>
+<td>The docker image name</td>
+</tr>
+<tr>
+<td><code>spec.container.name</code><br/><em>string</em></td>
+<td>The (unique) name of the container specified as a DNS_LABEL</td>
+</tr>
+</tbody></table>
+
+<table><thead>
+<tr>
+<th>Optional Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>kind</code><br/><em>string</em></td>
+<td>The string value representing the REST resource this object represents</td>
+</tr>
+<tr>
+<td><code>metadata.namespace</code> <br/><em>string</em></td>
+<td>The namespace in which the pod is created</td>
+</tr>
+</tbody></table>
+
+<p>Return value:</p>
+
+<table><thead>
+<tr>
+<th>Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>taskId</code> <br/><em>string</em></td>
+<td>The id corresponding to the create pod task.</td>
+</tr>
+<tr>
+<td><code>taskStatus</code> <br/><em>string</em></td>
+<td>The status of the operation.</td>
+</tr>
+</tbody></table>
+
 <!-------------------- DELETE POD -------------------->
 
 <p><h4 id='azure-delete-a-pod'>Delete a pod</h4><pre class="highlight shell tab-shell"><code>curl -X DELETE <span class="se">&lt;/span&gt;
@@ -31247,7 +32327,7 @@ For Windows instances, reset the administrator account and reset the Remote Desk
 </thead><tbody>
 <tr>
 <td><code>taskId</code> <br/><em>string</em></td>
-<td>The task id related to the delete pod.</td>
+<td>The task id related to the delete pod task.</td>
 </tr>
 <tr>
 <td><code>taskStatus</code> <br/><em>string</em></td>
@@ -31385,6 +32465,129 @@ For Windows instances, reset the administrator account and reset the Remote Desk
 </tbody></table>
 
 <p>Note that the list is not complete, since it is refering to the <a href="https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md">kubernetes api details</a>.</p>
+
+<!-------------------- CREATE A STATEFUL SET -------------------->
+
+<p><h4 id='azure-create-a-stateful-set'>Create a stateful set</h4><pre class="highlight shell tab-shell"><code>curl -X POST <span class="se">&lt;/span&gt;
+  -H <span class="s2">&quot;MC-Api-Key: your_api_key&quot;</span> <span class="se">&lt;/span&gt;
+   <span class="s2">&quot;https://cloudmc_endpoint/v1/services/a_service/an_environment/statefulsets?cluster_id=a_cluster_id&quot;</span>
+  Content-Type: application/json
+  <span class="o">{</span>
+  <span class="s2">&quot;apiVersion&quot;</span>: <span class="s2">&quot;apps/v1&quot;</span>,
+  <span class="s2">&quot;kind&quot;</span>:<span class="s2">&quot;StatefulSet&quot;</span>,
+  <span class="s2">&quot;metadata&quot;</span>: <span class="o">{</span>
+    <span class="s2">&quot;name&quot;</span>: <span class="s2">&quot;stateful-set-name&quot;</span>,
+    <span class="s2">&quot;namespace&quot;</span>: <span class="s2">&quot;default&quot;</span>
+  <span class="o">}</span>,
+  <span class="s2">&quot;spec&quot;</span>: <span class="o">{</span>
+    <span class="s2">&quot;selector&quot;</span>: <span class="o">{</span>
+      <span class="s2">&quot;matchLabels&quot;</span>: <span class="o">{</span>
+        <span class="s2">&quot;app&quot;</span>: <span class="s2">&quot;nginx&quot;</span>
+      <span class="o">}</span>
+    <span class="o">}</span>,
+    <span class="s2">&quot;template&quot;</span>: <span class="o">{</span>
+      <span class="s2">&quot;metadata&quot;</span>: <span class="o">{</span>
+        <span class="s2">&quot;labels&quot;</span>: <span class="o">{</span>
+          <span class="s2">&quot;app&quot;</span>: <span class="s2">&quot;nginx&quot;</span>
+        <span class="o">}</span>
+      <span class="o">}</span>,
+      <span class="s2">&quot;spec&quot;</span>: <span class="o">{</span>
+        <span class="s2">&quot;containers&quot;</span>: <span class="o">[</span>
+          <span class="o">{</span>
+            <span class="s2">&quot;name&quot;</span>: <span class="s2">&quot;nginx&quot;</span>,
+            <span class="s2">&quot;image&quot;</span>: <span class="s2">&quot;k8s.gcr.io/nginx-slim:0.8&quot;</span>
+          <span class="o">}</span>
+        <span class="o">]</span>
+      <span class="o">}</span>
+    <span class="o">}</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</code></pre>
+<blockquote>
+<p>The above command returns a JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">&quot;taskId&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1542bd45-4732-419b-87b6-4ea6ec695c2b&quot;</span><span class="p">,</span><span class="w">
+  </span><span class="s2">&quot;taskStatus&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;PENDING&quot;</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><code>POST /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/statefulsets?cluster_id=:cluster_id</code></p></p>
+
+<p>Create a stateful set in a given <a href="#administration-environments">environment</a>.</p>
+
+<table><thead>
+<tr>
+<th>Required Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>apiVersion</code> <br/> <em>string</em></td>
+<td>The api version (versioned schema) of the stateful set</td>
+</tr>
+<tr>
+<td><code>metadata</code> <br/><em>object</em></td>
+<td>The metadata of the stateful set</td>
+</tr>
+<tr>
+<td><code>metadata.name</code> <br/><em>string</em></td>
+<td>The name of the stateful set</td>
+</tr>
+<tr>
+<td><code>spec</code><br/><em>object</em></td>
+<td>The specification used to create and run the stateful set</td>
+</tr>
+<tr>
+<td><code>spec.selector</code><br/><em>object</em></td>
+<td>The label query over the stateful set&#39;s resources</td>
+</tr>
+<tr>
+<td><code>spec.template</code><br/><em>object</em></td>
+<td>The data a stateful set&#39;s pod should have when created</td>
+</tr>
+<tr>
+<td><code>spec.spec</code><br/><em>object</em></td>
+<td>The specification used to create and run the pod(s) within the stateful set</td>
+</tr>
+</tbody></table>
+
+<table><thead>
+<tr>
+<th>Optional Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>kind</code><br/><em>string</em></td>
+<td>The string value representing the REST resource this object represents</td>
+</tr>
+<tr>
+<td><code>metadata.namespace</code> <br/><em>string</em></td>
+<td>The namespace in which the stateful set is created</td>
+</tr>
+<tr>
+<td><code>spec.selector.matchLabels</code><br/><em>object</em></td>
+<td>The key value pairs retrieved by a label query from a stateful set</td>
+</tr>
+</tbody></table>
+
+<p>Return value:</p>
+
+<table><thead>
+<tr>
+<th>Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>taskId</code> <br/><em>string</em></td>
+<td>The id corresponding to the create stateful set task.</td>
+</tr>
+<tr>
+<td><code>taskStatus</code> <br/><em>string</em></td>
+<td>The status of the operation.</td>
+</tr>
+</tbody></table>
 <h3 id='azure-daemon-sets'>Daemon Sets</h3>
 
 <!-------------------- LIST DAEMON SETS -------------------->
@@ -31515,6 +32718,128 @@ For Windows instances, reset the administrator account and reset the Remote Desk
 </tbody></table>
 
 <p>Note that the list is not complete, since it is refering to the <a href="https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md">kubernetes api details</a>.</p>
+
+<!-------------------- CREATE DAEMON SET -------------------->
+
+<p><h4 id='azure-create-a-daemon-set'>Create a daemon set</h4><pre class="highlight shell tab-shell"><code>curl -X POST <span class="se">&lt;/span&gt;
+  -H <span class="s2">&quot;MC-Api-Key: your_api_key&quot;</span> <span class="se">&lt;/span&gt;
+   <span class="s2">&quot;https://cloudmc_endpoint/v1/services/a_service/an_environment/daemonsets?cluster_id=a_cluster_id&quot;</span>
+  Content-Type: application/json
+  <span class="o">{</span>
+  <span class="s2">&quot;apiVersion&quot;</span>: <span class="s2">&quot;apps/v1&quot;</span>,
+  <span class="s2">&quot;metadata&quot;</span>: <span class="o">{</span>
+    <span class="s2">&quot;name&quot;</span>: <span class="s2">&quot;daemonset-name&quot;</span>,
+    <span class="s2">&quot;namespace&quot;</span>: <span class="s2">&quot;default&quot;</span>
+  <span class="o">}</span>,
+  <span class="s2">&quot;spec&quot;</span>: <span class="o">{</span>
+    <span class="s2">&quot;selector&quot;</span>: <span class="o">{</span>
+      <span class="s2">&quot;matchLabels&quot;</span>: <span class="o">{</span>
+        <span class="s2">&quot;name&quot;</span>: <span class="s2">&quot;fluentd-elasticsearch&quot;</span>
+      <span class="o">}</span>
+    <span class="o">}</span>,
+    <span class="s2">&quot;template&quot;</span>: <span class="o">{</span>
+      <span class="s2">&quot;metadata&quot;</span>: <span class="o">{</span>
+        <span class="s2">&quot;labels&quot;</span>: <span class="o">{</span>
+          <span class="s2">&quot;name&quot;</span>: <span class="s2">&quot;fluentd-elasticsearch&quot;</span>
+        <span class="o">}</span>
+      <span class="o">}</span>,
+      <span class="s2">&quot;spec&quot;</span>: <span class="o">{</span>
+        <span class="s2">&quot;containers&quot;</span>: <span class="o">[</span>
+          <span class="o">{</span>
+            <span class="s2">&quot;name&quot;</span>: <span class="s2">&quot;fluentd-elasticsearch&quot;</span>,
+            <span class="s2">&quot;image&quot;</span>: <span class="s2">&quot;quay.io/fluentd_elasticsearch/fluentd:v2.5.2&quot;</span>
+          <span class="o">}</span>
+        <span class="o">]</span>
+      <span class="o">}</span>
+    <span class="o">}</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</code></pre>
+<blockquote>
+<p>The above command returns a JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">&quot;taskId&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1542bd45-4732-419b-87b6-4ea6ec695c2b&quot;</span><span class="p">,</span><span class="w">
+  </span><span class="s2">&quot;taskStatus&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;PENDING&quot;</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><code>POST /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/daemonsets?cluster_id=:cluster_id</code></p></p>
+
+<p>Create a daemon set in a given <a href="#administration-environments">environment</a>.</p>
+
+<table><thead>
+<tr>
+<th>Required Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>apiVersion</code> <br/> <em>string</em></td>
+<td>The api version (versioned schema) of the daemon set</td>
+</tr>
+<tr>
+<td><code>metadata</code> <br/><em>object</em></td>
+<td>The metadata of the daemon set</td>
+</tr>
+<tr>
+<td><code>metadata.name</code> <br/><em>string</em></td>
+<td>The name of the daemon set</td>
+</tr>
+<tr>
+<td><code>spec</code><br/><em>object</em></td>
+<td>The specification used to create and run the daemon set</td>
+</tr>
+<tr>
+<td><code>spec.selector</code><br/><em>object</em></td>
+<td>The label query over the daemon set&#39;s resources</td>
+</tr>
+<tr>
+<td><code>spec.template</code><br/><em>object</em></td>
+<td>The data a daemon set&#39;s pod should have when created</td>
+</tr>
+<tr>
+<td><code>spec.spec</code><br/><em>object</em></td>
+<td>The specification used to create and run the pod(s) within the daemon set</td>
+</tr>
+</tbody></table>
+
+<table><thead>
+<tr>
+<th>Optional Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>kind</code><br/><em>string</em></td>
+<td>The string value representing the REST resource this object represents</td>
+</tr>
+<tr>
+<td><code>metadata.namespace</code> <br/><em>string</em></td>
+<td>The namespace in which the daemon set is created</td>
+</tr>
+<tr>
+<td><code>spec.selector.matchLabels</code><br/><em>object</em></td>
+<td>The key value pairs retrieved by a label query from a daemon set</td>
+</tr>
+</tbody></table>
+
+<p>Return value:</p>
+
+<table><thead>
+<tr>
+<th>Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>taskId</code> <br/><em>string</em></td>
+<td>The id corresponding to the create daemon set task.</td>
+</tr>
+<tr>
+<td><code>taskStatus</code> <br/><em>string</em></td>
+<td>The status of the operation.</td>
+</tr>
+</tbody></table>
 <h3 id='azure-deployments'>Deployments</h3>
 
 <!-------------------- LIST DEPLOYMENTS -------------------->
@@ -31581,7 +32906,11 @@ For Windows instances, reset the administrator account and reset the Remote Desk
 <td>The specification used to create and run the deployment</td>
 </tr>
 <tr>
-<td><code>status</code><br/><em>object</em></td>
+<td><code>readyRatio</code> <br/><em>object</em></td>
+<td>The ready replicas to total replicas ratio of this deployment set</td>
+</tr>
+<tr>
+<td><code>deploymentStatus</code><br/><em>object</em></td>
 <td>The status information of the deployment</td>
 </tr>
 </tbody></table>
@@ -31649,12 +32978,139 @@ For Windows instances, reset the administrator account and reset the Remote Desk
 <td>The specification used to create and run the deployment</td>
 </tr>
 <tr>
-<td><code>status</code><br/><em>object</em></td>
+<td><code>readyRatio</code> <br/><em>object</em></td>
+<td>The ready replicas to total replicas ratio of this deployment set</td>
+</tr>
+<tr>
+<td><code>deploymentStatus</code><br/><em>object</em></td>
 <td>The status information of the deployment</td>
 </tr>
 </tbody></table>
 
 <p>Note that the list is not complete, since it is refering to the <a href="https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md">kubernetes api details</a>.</p>
+
+<!-------------------- CREATE DEPLOYMENT -------------------->
+
+<p><h3 id='azure-create-a-deployment'>Create a deployment</h3><pre class="highlight shell tab-shell"><code>curl -X POST <span class="se">&lt;/span&gt;
+  -H <span class="s2">&quot;MC-Api-Key: your_api_key&quot;</span> <span class="se">&lt;/span&gt;
+   <span class="s2">&quot;https://cloudmc_endpoint/v1/services/a_service/an_environment/deployments?cluster_id=a_cluster_id&quot;</span>
+  Content-Type: application/json
+  <span class="o">{</span>
+  <span class="s2">&quot;apiVersion&quot;</span>: <span class="s2">&quot;apps/v1&quot;</span>,
+  <span class="s2">&quot;kind&quot;</span>: <span class="s2">&quot;Deployment&quot;</span>,
+  <span class="s2">&quot;metadata&quot;</span>: <span class="o">{</span>
+    <span class="s2">&quot;name&quot;</span>: <span class="s2">&quot;api-test-deployment-name&quot;</span>,
+    <span class="s2">&quot;namespace&quot;</span>: <span class="s2">&quot;default&quot;</span>
+  <span class="o">}</span>,
+  <span class="s2">&quot;spec&quot;</span>: <span class="o">{</span>
+    <span class="s2">&quot;selector&quot;</span>: <span class="o">{</span>
+      <span class="s2">&quot;matchLabels&quot;</span>: <span class="o">{</span>
+        <span class="s2">&quot;app&quot;</span>: <span class="s2">&quot;nginx&quot;</span>
+      <span class="o">}</span>
+    <span class="o">}</span>,
+    <span class="s2">&quot;template&quot;</span>: <span class="o">{</span>
+      <span class="s2">&quot;metadata&quot;</span>: <span class="o">{</span>
+        <span class="s2">&quot;labels&quot;</span>: <span class="o">{</span>
+          <span class="s2">&quot;app&quot;</span>: <span class="s2">&quot;nginx&quot;</span>
+        <span class="o">}</span>
+      <span class="o">}</span>,
+      <span class="s2">&quot;spec&quot;</span>: <span class="o">{</span>
+        <span class="s2">&quot;containers&quot;</span>: <span class="o">[</span>
+          <span class="o">{</span>
+            <span class="s2">&quot;name&quot;</span>: <span class="s2">&quot;nginx&quot;</span>,
+            <span class="s2">&quot;image&quot;</span>: <span class="s2">&quot;nginx&quot;</span>
+          <span class="o">}</span>
+        <span class="o">]</span>
+      <span class="o">}</span>
+    <span class="o">}</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</code></pre>
+<blockquote>
+<p>The above command returns a JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">&quot;taskId&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1542bd45-4732-419b-87b6-4ea6ec695c2b&quot;</span><span class="p">,</span><span class="w">
+  </span><span class="s2">&quot;taskStatus&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;PENDING&quot;</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><code>POST /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/deployments?cluster_id=:cluster_id</code></p></p>
+
+<p>Create a deployment in a given <a href="#administration-environments">environment</a>.</p>
+
+<table><thead>
+<tr>
+<th>Required Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>apiVersion</code> <br/> <em>string</em></td>
+<td>The api version (versioned schema) of the deployment</td>
+</tr>
+<tr>
+<td><code>metadata</code> <br/><em>object</em></td>
+<td>The metadata of the deployment</td>
+</tr>
+<tr>
+<td><code>metadata.name</code> <br/><em>string</em></td>
+<td>The name of the deployment</td>
+</tr>
+<tr>
+<td><code>spec</code><br/><em>object</em></td>
+<td>The specification used to create and run the deployment</td>
+</tr>
+<tr>
+<td><code>spec.selector</code><br/><em>object</em></td>
+<td>The label query over the deployment&#39;s set of resources</td>
+</tr>
+<tr>
+<td><code>spec.template</code><br/><em>object</em></td>
+<td>The data a deployment&#39;s pod should have when created</td>
+</tr>
+<tr>
+<td><code>spec.spec</code><br/><em>object</em></td>
+<td>The specification used to create and run the pod(s) within the deployment</td>
+</tr>
+</tbody></table>
+
+<table><thead>
+<tr>
+<th>Optional Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>kind</code><br/><em>string</em></td>
+<td>The string value representing the REST resource this object represents</td>
+</tr>
+<tr>
+<td><code>metadata.namespace</code> <br/><em>string</em></td>
+<td>The namespace in which the deployment is created</td>
+</tr>
+<tr>
+<td><code>spec.selector.matchLabels</code><br/><em>object</em></td>
+<td>The key value pairs retrieved by a label query from a deployment</td>
+</tr>
+</tbody></table>
+
+<p>Return value:</p>
+
+<table><thead>
+<tr>
+<th>Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>taskId</code> <br/><em>string</em></td>
+<td>The id corresponding to the create deployment task.</td>
+</tr>
+<tr>
+<td><code>taskStatus</code> <br/><em>string</em></td>
+<td>The status of the operation.</td>
+</tr>
+</tbody></table>
 <h3 id='azure-services'>Services</h3>
 
 <!-------------------- LIST SERVICES -------------------->
