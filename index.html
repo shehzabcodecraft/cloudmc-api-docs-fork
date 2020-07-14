@@ -1686,6 +1686,17 @@
                               </ul>
                           </li>
                           <li>
+                            <a href="#gcp-storage-classes" class="toc-h3 toc-link" data-title="Google Cloud Platform plugin">Storage Classes</a>
+                              <ul class="toc-list-h4">
+                                  <li>
+                                    <a href="#gcp-list-storage-classes" class="toc-h4 toc-link" data-title="Google Cloud Platform plugin">List storage classes</a>
+                                  </li>
+                                  <li>
+                                    <a href="#gcp-get-a-storage-class" class="toc-h4 toc-link" data-title="Google Cloud Platform plugin">Get a storage class</a>
+                                  </li>
+                              </ul>
+                          </li>
+                          <li>
                             <a href="#gcp-releases" class="toc-h3 toc-link" data-title="Google Cloud Platform plugin">Releases</a>
                               <ul class="toc-list-h4">
                                   <li>
@@ -1859,6 +1870,17 @@
                           </li>
                           <li>
                             <a href="#kubernetes-get-a-secret" class="toc-h3 toc-link" data-title="Kubernetes plugin">Get a secret</a>
+                          </li>
+                          <li>
+                            <a href="#kubernetes-storage-classes" class="toc-h3 toc-link" data-title="Kubernetes plugin">Storage Classes</a>
+                              <ul class="toc-list-h4">
+                                  <li>
+                                    <a href="#kubernetes-list-storage-classes" class="toc-h4 toc-link" data-title="Kubernetes plugin">List storage classes</a>
+                                  </li>
+                                  <li>
+                                    <a href="#kubernetes-get-a-storage-class" class="toc-h4 toc-link" data-title="Kubernetes plugin">Get a storage class</a>
+                                  </li>
+                              </ul>
                           </li>
                       </ul>
                   </li>
@@ -2204,6 +2226,17 @@
                                   </li>
                                   <li>
                                     <a href="#azure-get-a-secret" class="toc-h4 toc-link" data-title="Azure plugin">Get a secret</a>
+                                  </li>
+                              </ul>
+                          </li>
+                          <li>
+                            <a href="#azure-storage-classes" class="toc-h3 toc-link" data-title="Azure plugin">Storage Classes</a>
+                              <ul class="toc-list-h4">
+                                  <li>
+                                    <a href="#azure-list-storage-classes" class="toc-h4 toc-link" data-title="Azure plugin">List storage classes</a>
+                                  </li>
+                                  <li>
+                                    <a href="#azure-get-a-storage-class" class="toc-h4 toc-link" data-title="Azure plugin">Get a storage class</a>
                                   </li>
                               </ul>
                           </li>
@@ -24300,6 +24333,210 @@ curl -X POST <span class="se">\</span>
 <td>A string used to facilitate programmatic handling of a secret&#39;s data.</td>
 </tr>
 </tbody></table>
+<h3 id='gcp-storage-classes'>Storage Classes</h3>
+
+<!-------------------- LIST Storage classes -------------------->
+
+<p><h4 id='gcp-list-storage-classes'>List storage classes</h4><pre class="highlight shell tab-shell"><code>curl -X GET <span class="se">&lt;/span&gt;
+   -H <span class="s2">&quot;MC-Api-Key: your_api_key&quot;</span> <span class="se">&lt;/span&gt;
+   <span class="s2">&quot;https://cloudmc_endpoint/v1/services/a_service/an_environment/storageclasses?cluster_id=a_cluster_id&quot;</span>
+</code></pre>
+<blockquote>
+<p>The above command returns a JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">&quot;data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;rook-ceph-block&quot;</span><span class="p">,</span><span class="w">
+      </span><span class="s2">&quot;isDefault&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="s2">&quot;allowVolumeExpansion&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="s2">&quot;metadata&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">&quot;annotations&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">&quot;storageclass.kubernetes.io/is-default-class&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;true&quot;</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">&quot;creationTimestamp&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2020-04-20T16:08:54.000-04:00&quot;</span><span class="p">,</span><span class="w">
+        </span><span class="s2">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;rook-ceph-block&quot;</span><span class="p">,</span><span class="w">
+        </span><span class="s2">&quot;resourceVersion&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;107033002&quot;</span><span class="p">,</span><span class="w">
+        </span><span class="s2">&quot;selfLink&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/apis/storage.k8s.io/v1/storageclasses/rook-ceph-block&quot;</span><span class="p">,</span><span class="w">
+        </span><span class="s2">&quot;uid&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;f289c0e6-3f20-4274-8cb8-5db8b34dece6&quot;</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">&quot;parameters&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">&quot;clusterID&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;rook-ceph&quot;</span><span class="p">,</span><span class="w">
+        </span><span class="s2">&quot;csi.storage.k8s.io/controller-expand-secret-name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;rook-csi-rbd-provisioner&quot;</span><span class="p">,</span><span class="w">
+        </span><span class="s2">&quot;csi.storage.k8s.io/controller-expand-secret-namespace&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;rook-ceph&quot;</span><span class="p">,</span><span class="w">
+        </span><span class="s2">&quot;csi.storage.k8s.io/fstype&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ext4&quot;</span><span class="p">,</span><span class="w">
+        </span><span class="s2">&quot;csi.storage.k8s.io/node-stage-secret-name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;rook-csi-rbd-node&quot;</span><span class="p">,</span><span class="w">
+        </span><span class="s2">&quot;csi.storage.k8s.io/node-stage-secret-namespace&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;rook-ceph&quot;</span><span class="p">,</span><span class="w">
+        </span><span class="s2">&quot;csi.storage.k8s.io/provisioner-secret-name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;rook-csi-rbd-provisioner&quot;</span><span class="p">,</span><span class="w">
+        </span><span class="s2">&quot;csi.storage.k8s.io/provisioner-secret-namespace&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;rook-ceph&quot;</span><span class="p">,</span><span class="w">
+        </span><span class="s2">&quot;imageFeatures&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;layering&quot;</span><span class="p">,</span><span class="w">
+        </span><span class="s2">&quot;imageFormat&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2&quot;</span><span class="p">,</span><span class="w">
+        </span><span class="s2">&quot;pool&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;replicapool&quot;</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">&quot;provisioner&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;rook-ceph.rbd.csi.ceph.com&quot;</span><span class="p">,</span><span class="w">
+      </span><span class="s2">&quot;reclaimPolicy&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Delete&quot;</span><span class="p">,</span><span class="w">
+      </span><span class="s2">&quot;volumeBindingMode&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Immediate&quot;</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="s2">&quot;metadata&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">&quot;recordCount&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><code>GET /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/storageclasses?cluster_id=:cluster_id</code></p></p>
+
+<p>Retrieve a list of all storage classes in a given <a href="#administration-environments">environment</a>.</p>
+
+<table><thead>
+<tr>
+<th>Required</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>cluster_id</code> <br/><em>string</em></td>
+<td>The id of the cluster in which to list the storage classes.</td>
+</tr>
+</tbody></table>
+
+<table><thead>
+<tr>
+<th>Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code> <br/><em>string</em></td>
+<td>The id of the storage class. This is the name of the resource.</td>
+</tr>
+<tr>
+<td><code>isDefault</code> <br/><em>boolean</em></td>
+<td>Whether or not the storage class is the default one.</td>
+</tr>
+<tr>
+<td><code>allowVolumeExpansion</code> <br/><em>boolean</em></td>
+<td>Whether not the storage class allows for expandable volumes.</td>
+</tr>
+<tr>
+<td><code>metadata</code> <br/><em>object</em></td>
+<td>The metadata of the storage class.</td>
+</tr>
+<tr>
+<td><code>parameters</code> <br/><em>object</em></td>
+<td>The parameters for the storage provisioner. These are storage provisioner specific and you will likely have to read external documentation.</td>
+</tr>
+<tr>
+<td><code>provisioner</code> <br/><em>string</em></td>
+<td>The provisioner for the storage class.</td>
+</tr>
+<tr>
+<td><code>reclaimPolicy</code> <br/><em>string</em></td>
+<td>The default volume reclaim policy for this storage class. You have a choice between <code>Reclaim</code> or <code>Delete</code>.</td>
+</tr>
+<tr>
+<td><code>volumeBindingMode</code> <br/><em>string</em></td>
+<td>The default volume binding model for this storage class. You have a choice between <code>Immediate</code> or <code>WaitForFirstConsumer</code>.</td>
+</tr>
+</tbody></table>
+
+<!-------------------- GET A storage class -------------------->
+
+<p><h4 id='gcp-get-a-storage-class'>Get a storage class</h4><pre class="highlight shell tab-shell"><code>curl -X GET <span class="se">&lt;/span&gt;
+   -H <span class="s2">&quot;MC-Api-Key: your_api_key&quot;</span> <span class="se">&lt;/span&gt;
+   <span class="s2">&quot;https://cloudmc_endpoint/v1/services/a_service/an_environment/storageclasses/rook-ceph-block?cluster_id=a_cluster_id&quot;</span>
+</code></pre>
+<blockquote>
+<p>The above command returns a JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">&quot;data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;rook-ceph-block&quot;</span><span class="p">,</span><span class="w">
+      </span><span class="s2">&quot;isDefault&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="s2">&quot;allowVolumeExpansion&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="s2">&quot;metadata&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">&quot;annotations&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">&quot;storageclass.kubernetes.io/is-default-class&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;true&quot;</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">&quot;creationTimestamp&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2020-04-20T16:08:54.000-04:00&quot;</span><span class="p">,</span><span class="w">
+        </span><span class="s2">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;rook-ceph-block&quot;</span><span class="p">,</span><span class="w">
+        </span><span class="s2">&quot;resourceVersion&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;107033002&quot;</span><span class="p">,</span><span class="w">
+        </span><span class="s2">&quot;selfLink&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/apis/storage.k8s.io/v1/storageclasses/rook-ceph-block&quot;</span><span class="p">,</span><span class="w">
+        </span><span class="s2">&quot;uid&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;f289c0e6-3f20-4274-8cb8-5db8b34dece6&quot;</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">&quot;parameters&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">&quot;clusterID&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;rook-ceph&quot;</span><span class="p">,</span><span class="w">
+        </span><span class="s2">&quot;csi.storage.k8s.io/controller-expand-secret-name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;rook-csi-rbd-provisioner&quot;</span><span class="p">,</span><span class="w">
+        </span><span class="s2">&quot;csi.storage.k8s.io/controller-expand-secret-namespace&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;rook-ceph&quot;</span><span class="p">,</span><span class="w">
+        </span><span class="s2">&quot;csi.storage.k8s.io/fstype&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ext4&quot;</span><span class="p">,</span><span class="w">
+        </span><span class="s2">&quot;csi.storage.k8s.io/node-stage-secret-name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;rook-csi-rbd-node&quot;</span><span class="p">,</span><span class="w">
+        </span><span class="s2">&quot;csi.storage.k8s.io/node-stage-secret-namespace&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;rook-ceph&quot;</span><span class="p">,</span><span class="w">
+        </span><span class="s2">&quot;csi.storage.k8s.io/provisioner-secret-name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;rook-csi-rbd-provisioner&quot;</span><span class="p">,</span><span class="w">
+        </span><span class="s2">&quot;csi.storage.k8s.io/provisioner-secret-namespace&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;rook-ceph&quot;</span><span class="p">,</span><span class="w">
+        </span><span class="s2">&quot;imageFeatures&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;layering&quot;</span><span class="p">,</span><span class="w">
+        </span><span class="s2">&quot;imageFormat&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2&quot;</span><span class="p">,</span><span class="w">
+        </span><span class="s2">&quot;pool&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;replicapool&quot;</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">&quot;provisioner&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;rook-ceph.rbd.csi.ceph.com&quot;</span><span class="p">,</span><span class="w">
+      </span><span class="s2">&quot;reclaimPolicy&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Delete&quot;</span><span class="p">,</span><span class="w">
+      </span><span class="s2">&quot;volumeBindingMode&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Immediate&quot;</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><code>GET /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/storageclasses/:id?cluster_id=:cluster_id</code></p></p>
+
+<p>Retrieve a storage class and all its info in a given <a href="#administration-environments">environment</a>.</p>
+
+<table><thead>
+<tr>
+<th>Required</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>cluster_id</code> <br/><em>string</em></td>
+<td>The id of the cluster in which to list the storage classes.</td>
+</tr>
+</tbody></table>
+
+<table><thead>
+<tr>
+<th>Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code> <br/><em>string</em></td>
+<td>The id of the storage class. This is the name of the resource</td>
+</tr>
+<tr>
+<td><code>isDefault</code> <br/><em>boolean</em></td>
+<td>Whether or not the storage class is the default one</td>
+</tr>
+<tr>
+<td><code>allowVolumeExpansion</code> <br/><em>boolean</em></td>
+<td>Whether not the storage class allows for expandable volumes.</td>
+</tr>
+<tr>
+<td><code>metadata</code> <br/><em>object</em></td>
+<td>The metadata of the storage class.</td>
+</tr>
+<tr>
+<td><code>parameters</code> <br/><em>object</em></td>
+<td>The parameters for the storage provisioner. These are storage provisioner specific and you will likely have to read external documentation.</td>
+</tr>
+<tr>
+<td><code>provisioner</code> <br/><em>string</em></td>
+<td>The provisioner for the storage class</td>
+</tr>
+<tr>
+<td><code>reclaimPolicy</code> <br/><em>string</em></td>
+<td>The default volume reclaim policy for this storage class. You have a choice between <code>Reclaim</code> or <code>Delete</code>.</td>
+</tr>
+<tr>
+<td><code>volumeBindingMode</code> <br/><em>string</em></td>
+<td>The default volume binding model for this storage class. You have a choice between <code>Immediate</code> or <code>WaitForFirstConsumer</code>.</td>
+</tr>
+</tbody></table>
 <h3 id='gcp-releases'>Releases</h3>
 
 <!-------------------- LIST RELEASES -------------------->
@@ -27969,6 +28206,207 @@ curl -X POST <span class="se">\</span>
 <tr>
 <td><code>type</code> <br/><em>string</em></td>
 <td>A string used to facilitate programmatic handling of a secret&#39;s data.</td>
+</tr>
+</tbody></table>
+<h3 id='kubernetes-storage-classes'>Storage Classes</h3>
+<!-------------------- LIST Storage classes -------------------->
+<h4 id='kubernetes-list-storage-classes'>List storage classes</h4><pre class="highlight shell tab-shell"><code>curl -X GET <span class="se">\</span>
+   -H <span class="s2">"MC-Api-Key: your_api_key"</span> <span class="se">\</span>
+   <span class="s2">"https://cloudmc_endpoint/v1/services/a_service/an_environment/storageclasses?cluster_id=a_cluster_id"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns a JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rook-ceph-block"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"isDefault"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"allowVolumeExpansion"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"annotations"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"storageclass.kubernetes.io/is-default-class"</span><span class="p">:</span><span class="w"> </span><span class="s2">"true"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"creationTimestamp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-04-20T16:08:54.000-04:00"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rook-ceph-block"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"resourceVersion"</span><span class="p">:</span><span class="w"> </span><span class="s2">"107033002"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"selfLink"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/apis/storage.k8s.io/v1/storageclasses/rook-ceph-block"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"uid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"f289c0e6-3f20-4274-8cb8-5db8b34dece6"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"parameters"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"clusterID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rook-ceph"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"csi.storage.k8s.io/controller-expand-secret-name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rook-csi-rbd-provisioner"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"csi.storage.k8s.io/controller-expand-secret-namespace"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rook-ceph"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"csi.storage.k8s.io/fstype"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ext4"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"csi.storage.k8s.io/node-stage-secret-name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rook-csi-rbd-node"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"csi.storage.k8s.io/node-stage-secret-namespace"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rook-ceph"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"csi.storage.k8s.io/provisioner-secret-name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rook-csi-rbd-provisioner"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"csi.storage.k8s.io/provisioner-secret-namespace"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rook-ceph"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"imageFeatures"</span><span class="p">:</span><span class="w"> </span><span class="s2">"layering"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"imageFormat"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"pool"</span><span class="p">:</span><span class="w"> </span><span class="s2">"replicapool"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"provisioner"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rook-ceph.rbd.csi.ceph.com"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"reclaimPolicy"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Delete"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"volumeBindingMode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Immediate"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="s2">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"recordCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><code>GET /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/storageclasses?cluster_id=:cluster_id</code></p>
+
+<p>Retrieve a list of all storage classes in a given <a href="#administration-environments">environment</a>.</p>
+
+<table><thead>
+<tr>
+<th>Required</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>cluster_id</code> <br/><em>string</em></td>
+<td>The id of the cluster in which to list the storage classes.</td>
+</tr>
+</tbody></table>
+
+<table><thead>
+<tr>
+<th>Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code> <br/><em>string</em></td>
+<td>The id of the storage class. This is the name of the resource.</td>
+</tr>
+<tr>
+<td><code>isDefault</code> <br/><em>boolean</em></td>
+<td>Whether or not the storage class is the default one.</td>
+</tr>
+<tr>
+<td><code>allowVolumeExpansion</code> <br/><em>boolean</em></td>
+<td>Whether not the storage class allows for expandable volumes.</td>
+</tr>
+<tr>
+<td><code>metadata</code> <br/><em>object</em></td>
+<td>The metadata of the storage class.</td>
+</tr>
+<tr>
+<td><code>parameters</code> <br/><em>object</em></td>
+<td>The parameters for the storage provisioner. These are storage provisioner specific and you will likely have to read external documentation.</td>
+</tr>
+<tr>
+<td><code>provisioner</code> <br/><em>string</em></td>
+<td>The provisioner for the storage class.</td>
+</tr>
+<tr>
+<td><code>reclaimPolicy</code> <br/><em>string</em></td>
+<td>The default volume reclaim policy for this storage class. You have a choice between <code>Reclaim</code> or <code>Delete</code>.</td>
+</tr>
+<tr>
+<td><code>volumeBindingMode</code> <br/><em>string</em></td>
+<td>The default volume binding model for this storage class. You have a choice between <code>Immediate</code> or <code>WaitForFirstConsumer</code>.</td>
+</tr>
+</tbody></table>
+
+<!-------------------- GET A storage class -------------------->
+<h4 id='kubernetes-get-a-storage-class'>Get a storage class</h4><pre class="highlight shell tab-shell"><code>curl -X GET <span class="se">\</span>
+   -H <span class="s2">"MC-Api-Key: your_api_key"</span> <span class="se">\</span>
+   <span class="s2">"https://cloudmc_endpoint/v1/services/a_service/an_environment/storageclasses/rook-ceph-block?cluster_id=a_cluster_id"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns a JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rook-ceph-block"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"isDefault"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"allowVolumeExpansion"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"annotations"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"storageclass.kubernetes.io/is-default-class"</span><span class="p">:</span><span class="w"> </span><span class="s2">"true"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"creationTimestamp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-04-20T16:08:54.000-04:00"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rook-ceph-block"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"resourceVersion"</span><span class="p">:</span><span class="w"> </span><span class="s2">"107033002"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"selfLink"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/apis/storage.k8s.io/v1/storageclasses/rook-ceph-block"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"uid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"f289c0e6-3f20-4274-8cb8-5db8b34dece6"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"parameters"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"clusterID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rook-ceph"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"csi.storage.k8s.io/controller-expand-secret-name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rook-csi-rbd-provisioner"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"csi.storage.k8s.io/controller-expand-secret-namespace"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rook-ceph"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"csi.storage.k8s.io/fstype"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ext4"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"csi.storage.k8s.io/node-stage-secret-name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rook-csi-rbd-node"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"csi.storage.k8s.io/node-stage-secret-namespace"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rook-ceph"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"csi.storage.k8s.io/provisioner-secret-name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rook-csi-rbd-provisioner"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"csi.storage.k8s.io/provisioner-secret-namespace"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rook-ceph"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"imageFeatures"</span><span class="p">:</span><span class="w"> </span><span class="s2">"layering"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"imageFormat"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"pool"</span><span class="p">:</span><span class="w"> </span><span class="s2">"replicapool"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"provisioner"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rook-ceph.rbd.csi.ceph.com"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"reclaimPolicy"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Delete"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"volumeBindingMode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Immediate"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><code>GET /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/storageclasses/:id?cluster_id=:cluster_id</code></p>
+
+<p>Retrieve a storage class and all its info in a given <a href="#administration-environments">environment</a>.</p>
+
+<table><thead>
+<tr>
+<th>Required</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>cluster_id</code> <br/><em>string</em></td>
+<td>The id of the cluster in which to list the storage classes.</td>
+</tr>
+</tbody></table>
+
+<table><thead>
+<tr>
+<th>Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code> <br/><em>string</em></td>
+<td>The id of the storage class. This is the name of the resource</td>
+</tr>
+<tr>
+<td><code>isDefault</code> <br/><em>boolean</em></td>
+<td>Whether or not the storage class is the default one</td>
+</tr>
+<tr>
+<td><code>allowVolumeExpansion</code> <br/><em>boolean</em></td>
+<td>Whether not the storage class allows for expandable volumes.</td>
+</tr>
+<tr>
+<td><code>metadata</code> <br/><em>object</em></td>
+<td>The metadata of the storage class.</td>
+</tr>
+<tr>
+<td><code>parameters</code> <br/><em>object</em></td>
+<td>The parameters for the storage provisioner. These are storage provisioner specific and you will likely have to read external documentation.</td>
+</tr>
+<tr>
+<td><code>provisioner</code> <br/><em>string</em></td>
+<td>The provsioner for the storage class</td>
+</tr>
+<tr>
+<td><code>reclaimPolicy</code> <br/><em>string</em></td>
+<td>The default volume reclaim policy for this storage class. You have a choice between <code>Reclaim</code> or <code>Delete</code>.</td>
+</tr>
+<tr>
+<td><code>volumeBindingMode</code> <br/><em>string</em></td>
+<td>The default volume binding model for this storage class. You have a choice between <code>Immediate</code> or <code>WaitForFirstConsumer</code>.</td>
 </tr>
 </tbody></table>
 <h2 id='kubernetes-releases'>Releases</h2>
@@ -33822,6 +34260,210 @@ For Windows instances, reset the administrator account and reset the Remote Desk
 <tr>
 <td><code>type</code> <br/><em>string</em></td>
 <td>A string used to facilitate programmatic handling of a secret&#39;s data.</td>
+</tr>
+</tbody></table>
+<h3 id='azure-storage-classes'>Storage Classes</h3>
+
+<!-------------------- LIST Storage classes -------------------->
+
+<p><h4 id='azure-list-storage-classes'>List storage classes</h4><pre class="highlight shell tab-shell"><code>curl -X GET <span class="se">&lt;/span&gt;
+   -H <span class="s2">&quot;MC-Api-Key: your_api_key&quot;</span> <span class="se">&lt;/span&gt;
+   <span class="s2">&quot;https://cloudmc_endpoint/v1/services/a_service/an_environment/storageclasses?cluster_id=a_cluster_id&quot;</span>
+</code></pre>
+<blockquote>
+<p>The above command returns a JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">&quot;data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;rook-ceph-block&quot;</span><span class="p">,</span><span class="w">
+      </span><span class="s2">&quot;isDefault&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="s2">&quot;allowVolumeExpansion&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="s2">&quot;metadata&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">&quot;annotations&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">&quot;storageclass.kubernetes.io/is-default-class&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;true&quot;</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">&quot;creationTimestamp&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2020-04-20T16:08:54.000-04:00&quot;</span><span class="p">,</span><span class="w">
+        </span><span class="s2">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;rook-ceph-block&quot;</span><span class="p">,</span><span class="w">
+        </span><span class="s2">&quot;resourceVersion&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;107033002&quot;</span><span class="p">,</span><span class="w">
+        </span><span class="s2">&quot;selfLink&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/apis/storage.k8s.io/v1/storageclasses/rook-ceph-block&quot;</span><span class="p">,</span><span class="w">
+        </span><span class="s2">&quot;uid&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;f289c0e6-3f20-4274-8cb8-5db8b34dece6&quot;</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">&quot;parameters&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">&quot;clusterID&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;rook-ceph&quot;</span><span class="p">,</span><span class="w">
+        </span><span class="s2">&quot;csi.storage.k8s.io/controller-expand-secret-name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;rook-csi-rbd-provisioner&quot;</span><span class="p">,</span><span class="w">
+        </span><span class="s2">&quot;csi.storage.k8s.io/controller-expand-secret-namespace&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;rook-ceph&quot;</span><span class="p">,</span><span class="w">
+        </span><span class="s2">&quot;csi.storage.k8s.io/fstype&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ext4&quot;</span><span class="p">,</span><span class="w">
+        </span><span class="s2">&quot;csi.storage.k8s.io/node-stage-secret-name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;rook-csi-rbd-node&quot;</span><span class="p">,</span><span class="w">
+        </span><span class="s2">&quot;csi.storage.k8s.io/node-stage-secret-namespace&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;rook-ceph&quot;</span><span class="p">,</span><span class="w">
+        </span><span class="s2">&quot;csi.storage.k8s.io/provisioner-secret-name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;rook-csi-rbd-provisioner&quot;</span><span class="p">,</span><span class="w">
+        </span><span class="s2">&quot;csi.storage.k8s.io/provisioner-secret-namespace&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;rook-ceph&quot;</span><span class="p">,</span><span class="w">
+        </span><span class="s2">&quot;imageFeatures&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;layering&quot;</span><span class="p">,</span><span class="w">
+        </span><span class="s2">&quot;imageFormat&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2&quot;</span><span class="p">,</span><span class="w">
+        </span><span class="s2">&quot;pool&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;replicapool&quot;</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">&quot;provisioner&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;rook-ceph.rbd.csi.ceph.com&quot;</span><span class="p">,</span><span class="w">
+      </span><span class="s2">&quot;reclaimPolicy&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Delete&quot;</span><span class="p">,</span><span class="w">
+      </span><span class="s2">&quot;volumeBindingMode&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Immediate&quot;</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="s2">&quot;metadata&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">&quot;recordCount&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><code>GET /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/storageclasses?cluster_id=:cluster_id</code></p></p>
+
+<p>Retrieve a list of all storage classes in a given <a href="#administration-environments">environment</a>.</p>
+
+<table><thead>
+<tr>
+<th>Required</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>cluster_id</code> <br/><em>string</em></td>
+<td>The id of the cluster in which to list the storage classes.</td>
+</tr>
+</tbody></table>
+
+<table><thead>
+<tr>
+<th>Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code> <br/><em>string</em></td>
+<td>The id of the storage class. This is the name of the resource.</td>
+</tr>
+<tr>
+<td><code>isDefault</code> <br/><em>boolean</em></td>
+<td>Whether or not the storage class is the default one.</td>
+</tr>
+<tr>
+<td><code>allowVolumeExpansion</code> <br/><em>boolean</em></td>
+<td>Whether not the storage class allows for expandable volumes.</td>
+</tr>
+<tr>
+<td><code>metadata</code> <br/><em>object</em></td>
+<td>The metadata of the storage class.</td>
+</tr>
+<tr>
+<td><code>parameters</code> <br/><em>object</em></td>
+<td>The parameters for the storage provisioner. These are storage provisioner specific and you will likely have to read external documentation.</td>
+</tr>
+<tr>
+<td><code>provisioner</code> <br/><em>string</em></td>
+<td>The provisioner for the storage class.</td>
+</tr>
+<tr>
+<td><code>reclaimPolicy</code> <br/><em>string</em></td>
+<td>The default volume reclaim policy for this storage class. You have a choice between <code>Reclaim</code> or <code>Delete</code>.</td>
+</tr>
+<tr>
+<td><code>volumeBindingMode</code> <br/><em>string</em></td>
+<td>The default volume binding model for this storage class. You have a choice between <code>Immediate</code> or <code>WaitForFirstConsumer</code>.</td>
+</tr>
+</tbody></table>
+
+<!-------------------- GET A storage class -------------------->
+
+<p><h4 id='azure-get-a-storage-class'>Get a storage class</h4><pre class="highlight shell tab-shell"><code>curl -X GET <span class="se">&lt;/span&gt;
+   -H <span class="s2">&quot;MC-Api-Key: your_api_key&quot;</span> <span class="se">&lt;/span&gt;
+   <span class="s2">&quot;https://cloudmc_endpoint/v1/services/a_service/an_environment/storageclasses/rook-ceph-block?cluster_id=a_cluster_id&quot;</span>
+</code></pre>
+<blockquote>
+<p>The above command returns a JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">&quot;data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;rook-ceph-block&quot;</span><span class="p">,</span><span class="w">
+      </span><span class="s2">&quot;isDefault&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="s2">&quot;allowVolumeExpansion&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="s2">&quot;metadata&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">&quot;annotations&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">&quot;storageclass.kubernetes.io/is-default-class&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;true&quot;</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">&quot;creationTimestamp&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2020-04-20T16:08:54.000-04:00&quot;</span><span class="p">,</span><span class="w">
+        </span><span class="s2">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;rook-ceph-block&quot;</span><span class="p">,</span><span class="w">
+        </span><span class="s2">&quot;resourceVersion&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;107033002&quot;</span><span class="p">,</span><span class="w">
+        </span><span class="s2">&quot;selfLink&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/apis/storage.k8s.io/v1/storageclasses/rook-ceph-block&quot;</span><span class="p">,</span><span class="w">
+        </span><span class="s2">&quot;uid&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;f289c0e6-3f20-4274-8cb8-5db8b34dece6&quot;</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">&quot;parameters&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">&quot;clusterID&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;rook-ceph&quot;</span><span class="p">,</span><span class="w">
+        </span><span class="s2">&quot;csi.storage.k8s.io/controller-expand-secret-name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;rook-csi-rbd-provisioner&quot;</span><span class="p">,</span><span class="w">
+        </span><span class="s2">&quot;csi.storage.k8s.io/controller-expand-secret-namespace&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;rook-ceph&quot;</span><span class="p">,</span><span class="w">
+        </span><span class="s2">&quot;csi.storage.k8s.io/fstype&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ext4&quot;</span><span class="p">,</span><span class="w">
+        </span><span class="s2">&quot;csi.storage.k8s.io/node-stage-secret-name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;rook-csi-rbd-node&quot;</span><span class="p">,</span><span class="w">
+        </span><span class="s2">&quot;csi.storage.k8s.io/node-stage-secret-namespace&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;rook-ceph&quot;</span><span class="p">,</span><span class="w">
+        </span><span class="s2">&quot;csi.storage.k8s.io/provisioner-secret-name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;rook-csi-rbd-provisioner&quot;</span><span class="p">,</span><span class="w">
+        </span><span class="s2">&quot;csi.storage.k8s.io/provisioner-secret-namespace&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;rook-ceph&quot;</span><span class="p">,</span><span class="w">
+        </span><span class="s2">&quot;imageFeatures&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;layering&quot;</span><span class="p">,</span><span class="w">
+        </span><span class="s2">&quot;imageFormat&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2&quot;</span><span class="p">,</span><span class="w">
+        </span><span class="s2">&quot;pool&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;replicapool&quot;</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">&quot;provisioner&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;rook-ceph.rbd.csi.ceph.com&quot;</span><span class="p">,</span><span class="w">
+      </span><span class="s2">&quot;reclaimPolicy&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Delete&quot;</span><span class="p">,</span><span class="w">
+      </span><span class="s2">&quot;volumeBindingMode&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Immediate&quot;</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><code>GET /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/storageclasses/:id?cluster_id=:cluster_id</code></p></p>
+
+<p>Retrieve a storage class and all its info in a given <a href="#administration-environments">environment</a>.</p>
+
+<table><thead>
+<tr>
+<th>Required</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>cluster_id</code> <br/><em>string</em></td>
+<td>The id of the cluster in which to list the storage classes.</td>
+</tr>
+</tbody></table>
+
+<table><thead>
+<tr>
+<th>Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code> <br/><em>string</em></td>
+<td>The id of the storage class. This is the name of the resource</td>
+</tr>
+<tr>
+<td><code>isDefault</code> <br/><em>boolean</em></td>
+<td>Whether or not the storage class is the default one</td>
+</tr>
+<tr>
+<td><code>allowVolumeExpansion</code> <br/><em>boolean</em></td>
+<td>Whether not the storage class allows for expandable volumes.</td>
+</tr>
+<tr>
+<td><code>metadata</code> <br/><em>object</em></td>
+<td>The metadata of the storage class.</td>
+</tr>
+<tr>
+<td><code>parameters</code> <br/><em>object</em></td>
+<td>The parameters for the storage provisioner. These are storage provisioner specific and you will likely have to read external documentation.</td>
+</tr>
+<tr>
+<td><code>provisioner</code> <br/><em>string</em></td>
+<td>The provisioner for the storage class</td>
+</tr>
+<tr>
+<td><code>reclaimPolicy</code> <br/><em>string</em></td>
+<td>The default volume reclaim policy for this storage class. You have a choice between <code>Reclaim</code> or <code>Delete</code>.</td>
+</tr>
+<tr>
+<td><code>volumeBindingMode</code> <br/><em>string</em></td>
+<td>The default volume binding model for this storage class. You have a choice between <code>Immediate</code> or <code>WaitForFirstConsumer</code>.</td>
 </tr>
 </tbody></table>
 <h1 id='masterportal-plugin'>MasterPortal plugin</h1>
