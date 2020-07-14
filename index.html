@@ -1891,16 +1891,16 @@
                           <li>
                             <a href="#kubernetes-get-a-secret" class="toc-h3 toc-link" data-title="Kubernetes plugin">Get a secret</a>
                           </li>
+                      </ul>
+                  </li>
+                  <li>
+                    <a href="#kubernetes-storage-classes" class="toc-h2 toc-link" data-title="Kubernetes plugin">Storage Classes</a>
+                      <ul class="toc-list-h3">
                           <li>
-                            <a href="#kubernetes-storage-classes" class="toc-h3 toc-link" data-title="Kubernetes plugin">Storage Classes</a>
-                              <ul class="toc-list-h4">
-                                  <li>
-                                    <a href="#kubernetes-list-storage-classes" class="toc-h4 toc-link" data-title="Kubernetes plugin">List storage classes</a>
-                                  </li>
-                                  <li>
-                                    <a href="#kubernetes-get-a-storage-class" class="toc-h4 toc-link" data-title="Kubernetes plugin">Get a storage class</a>
-                                  </li>
-                              </ul>
+                            <a href="#kubernetes-list-storage-classes" class="toc-h3 toc-link" data-title="Kubernetes plugin">List storage classes</a>
+                          </li>
+                          <li>
+                            <a href="#kubernetes-get-a-storage-class" class="toc-h3 toc-link" data-title="Kubernetes plugin">Get a storage class</a>
                           </li>
                       </ul>
                   </li>
@@ -28440,9 +28440,9 @@ curl -X POST <span class="se">\</span>
 <td>A string used to facilitate programmatic handling of a secret&#39;s data.</td>
 </tr>
 </tbody></table>
-<h3 id='kubernetes-storage-classes'>Storage Classes</h3>
+<h2 id='kubernetes-storage-classes'>Storage Classes</h2>
 <!-------------------- LIST Storage classes -------------------->
-<h4 id='kubernetes-list-storage-classes'>List storage classes</h4><pre class="highlight shell tab-shell"><code>curl -X GET <span class="se">\</span>
+<h3 id='kubernetes-list-storage-classes'>List storage classes</h3><pre class="highlight shell tab-shell"><code>curl -X GET <span class="se">\</span>
    -H <span class="s2">"MC-Api-Key: your_api_key"</span> <span class="se">\</span>
    <span class="s2">"https://cloudmc_endpoint/v1/services/a_service/an_environment/storageclasses?cluster_id=a_cluster_id"</span>
 </code></pre>
@@ -28488,21 +28488,9 @@ curl -X POST <span class="se">\</span>
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<p><code>GET /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/storageclasses?cluster_id=:cluster_id</code></p>
+<p><code>GET /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/storageclasses</code></p>
 
 <p>Retrieve a list of all storage classes in a given <a href="#administration-environments">environment</a>.</p>
-
-<table><thead>
-<tr>
-<th>Required</th>
-<th>&nbsp;</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code>cluster_id</code> <br/><em>string</em></td>
-<td>The id of the cluster in which to list the storage classes.</td>
-</tr>
-</tbody></table>
 
 <table><thead>
 <tr>
@@ -28545,7 +28533,7 @@ curl -X POST <span class="se">\</span>
 </tbody></table>
 
 <!-------------------- GET A storage class -------------------->
-<h4 id='kubernetes-get-a-storage-class'>Get a storage class</h4><pre class="highlight shell tab-shell"><code>curl -X GET <span class="se">\</span>
+<h3 id='kubernetes-get-a-storage-class'>Get a storage class</h3><pre class="highlight shell tab-shell"><code>curl -X GET <span class="se">\</span>
    -H <span class="s2">"MC-Api-Key: your_api_key"</span> <span class="se">\</span>
    <span class="s2">"https://cloudmc_endpoint/v1/services/a_service/an_environment/storageclasses/rook-ceph-block?cluster_id=a_cluster_id"</span>
 </code></pre>
@@ -28586,21 +28574,9 @@ curl -X POST <span class="se">\</span>
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<p><code>GET /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/storageclasses/:id?cluster_id=:cluster_id</code></p>
+<p><code>GET /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/storageclasses/:id</code></p>
 
 <p>Retrieve a storage class and all its info in a given <a href="#administration-environments">environment</a>.</p>
-
-<table><thead>
-<tr>
-<th>Required</th>
-<th>&nbsp;</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code>cluster_id</code> <br/><em>string</em></td>
-<td>The id of the cluster in which to list the storage classes.</td>
-</tr>
-</tbody></table>
 
 <table><thead>
 <tr>
