@@ -1611,6 +1611,9 @@
                                   <li>
                                     <a href="#gcp-create-a-stateful-set" class="toc-h4 toc-link" data-title="Google Cloud Platform plugin">Create a stateful set</a>
                                   </li>
+                                  <li>
+                                    <a href="#gcp-delete-a-stateful-set" class="toc-h4 toc-link" data-title="Google Cloud Platform plugin">Delete a stateful set</a>
+                                  </li>
                               </ul>
                           </li>
                           <li>
@@ -1624,6 +1627,9 @@
                                   </li>
                                   <li>
                                     <a href="#gcp-create-a-daemon-set" class="toc-h4 toc-link" data-title="Google Cloud Platform plugin">Create a daemon set</a>
+                                  </li>
+                                  <li>
+                                    <a href="#gcp-delete-a-daemon-set" class="toc-h4 toc-link" data-title="Google Cloud Platform plugin">Delete a daemon set</a>
                                   </li>
                               </ul>
                           </li>
@@ -1640,6 +1646,11 @@
                           </li>
                           <li>
                             <a href="#gcp-create-a-deployment" class="toc-h3 toc-link" data-title="Google Cloud Platform plugin">Create a deployment</a>
+                              <ul class="toc-list-h4">
+                                  <li>
+                                    <a href="#gcp-delete-a-deployment" class="toc-h4 toc-link" data-title="Google Cloud Platform plugin">Delete a deployment</a>
+                                  </li>
+                              </ul>
                           </li>
                           <li>
                             <a href="#gcp-services" class="toc-h3 toc-link" data-title="Google Cloud Platform plugin">Services</a>
@@ -1799,6 +1810,9 @@
                           <li>
                             <a href="#kubernetes-create-a-stateful-set" class="toc-h3 toc-link" data-title="Kubernetes plugin">Create a stateful set</a>
                           </li>
+                          <li>
+                            <a href="#kubernetes-delete-a-stateful-set" class="toc-h3 toc-link" data-title="Kubernetes plugin">Delete a stateful set</a>
+                          </li>
                       </ul>
                   </li>
                   <li>
@@ -1813,6 +1827,9 @@
                           <li>
                             <a href="#kubernetes-create-a-daemon-set" class="toc-h3 toc-link" data-title="Kubernetes plugin">Create a daemon set</a>
                           </li>
+                          <li>
+                            <a href="#kubernetes-delete-a-daemon-set" class="toc-h3 toc-link" data-title="Kubernetes plugin">Delete a daemon set</a>
+                          </li>
                       </ul>
                   </li>
                   <li>
@@ -1826,6 +1843,9 @@
                           </li>
                           <li>
                             <a href="#kubernetes-create-a-deployment" class="toc-h3 toc-link" data-title="Kubernetes plugin">Create a deployment</a>
+                          </li>
+                          <li>
+                            <a href="#kubernetes-delete-a-deployment" class="toc-h3 toc-link" data-title="Kubernetes plugin">Delete a deployment</a>
                           </li>
                       </ul>
                   </li>
@@ -2155,6 +2175,9 @@
                                   <li>
                                     <a href="#azure-create-a-stateful-set" class="toc-h4 toc-link" data-title="Azure plugin">Create a stateful set</a>
                                   </li>
+                                  <li>
+                                    <a href="#azure-delete-a-stateful-set" class="toc-h4 toc-link" data-title="Azure plugin">Delete a stateful set</a>
+                                  </li>
                               </ul>
                           </li>
                           <li>
@@ -2168,6 +2191,9 @@
                                   </li>
                                   <li>
                                     <a href="#azure-create-a-daemon-set" class="toc-h4 toc-link" data-title="Azure plugin">Create a daemon set</a>
+                                  </li>
+                                  <li>
+                                    <a href="#azure-delete-a-daemon-set" class="toc-h4 toc-link" data-title="Azure plugin">Delete a daemon set</a>
                                   </li>
                               </ul>
                           </li>
@@ -2184,6 +2210,11 @@
                           </li>
                           <li>
                             <a href="#azure-create-a-deployment" class="toc-h3 toc-link" data-title="Azure plugin">Create a deployment</a>
+                              <ul class="toc-list-h4">
+                                  <li>
+                                    <a href="#azure-delete-a-deployment" class="toc-h4 toc-link" data-title="Azure plugin">Delete a deployment</a>
+                                  </li>
+                              </ul>
                           </li>
                           <li>
                             <a href="#azure-services" class="toc-h3 toc-link" data-title="Azure plugin">Services</a>
@@ -23097,6 +23128,40 @@ curl -X POST <span class="se">\</span>
 <td>The status of the operation.</td>
 </tr>
 </tbody></table>
+
+<!-------------------- DELETE STATEFUL SET -------------------->
+
+<p><h4 id='gcp-delete-a-stateful-set'>Delete a stateful set</h4><pre class="highlight shell tab-shell"><code>curl -X DELETE <span class="se">&lt;/span&gt;
+   -H <span class="s2">&quot;MC-Api-Key: your_api_key&quot;</span> <span class="se">&lt;/span&gt;
+   <span class="s2">&quot;https://cloudmc_endpoint/v1/services/a_service/an_environment/statefulsets/my-aerospike/default&quot;</span>
+</code></pre>
+<blockquote>
+<p>The above command returns a JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">&quot;taskId&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1542bd45-4732-419b-87b6-4ea6ec695c2b&quot;</span><span class="p">,</span><span class="w">
+  </span><span class="s2">&quot;taskStatus&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;PENDING&quot;</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><code>DELETE /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/statefulsets/:id?cluster_id=:cluster_id</code></p></p>
+
+<p>Delete a stateful set from a given <a href="#administration-environments">environment</a>.</p>
+
+<table><thead>
+<tr>
+<th>Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>taskId</code> <br/><em>string</em></td>
+<td>The id corresponding to the delete stateful set task.</td>
+</tr>
+<tr>
+<td><code>taskStatus</code> <br/><em>string</em></td>
+<td>The status of the operation.</td>
+</tr>
+</tbody></table>
 <h3 id='gcp-daemon-sets'>Daemon Sets</h3>
 
 <!-------------------- LIST DAEMON SETS -------------------->
@@ -23343,6 +23408,40 @@ curl -X POST <span class="se">\</span>
 <tr>
 <td><code>taskId</code> <br/><em>string</em></td>
 <td>The id corresponding to the create daemon set task.</td>
+</tr>
+<tr>
+<td><code>taskStatus</code> <br/><em>string</em></td>
+<td>The status of the operation.</td>
+</tr>
+</tbody></table>
+
+<!-------------------- DELETE DAEMON SET -------------------->
+
+<p><h4 id='gcp-delete-a-daemon-set'>Delete a daemon set</h4><pre class="highlight shell tab-shell"><code>curl -X DELETE <span class="se">&lt;/span&gt;
+   -H <span class="s2">&quot;MC-Api-Key: your_api_key&quot;</span> <span class="se">&lt;/span&gt;
+   <span class="s2">&quot;https://cloudmc_endpoint/v1/services/a_service/an_environment/daemonsets/nginx-ingress-controller/ingress-nginx?cluster_id=a_cluster_id&quot;</span>
+</code></pre>
+<blockquote>
+<p>The above command returns a JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">&quot;taskId&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1542bd45-4732-419b-87b6-4ea6ec695c2b&quot;</span><span class="p">,</span><span class="w">
+  </span><span class="s2">&quot;taskStatus&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;PENDING&quot;</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><code>DELETE /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/daemonsets/:id?cluster_id=:cluster_id</code></p></p>
+
+<p>Delete a daemon set from a given <a href="#administration-environments">environment</a>.</p>
+
+<table><thead>
+<tr>
+<th>Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>taskId</code> <br/><em>string</em></td>
+<td>The id corresponding to the delete daemon set task.</td>
 </tr>
 <tr>
 <td><code>taskStatus</code> <br/><em>string</em></td>
@@ -23614,6 +23713,40 @@ curl -X POST <span class="se">\</span>
 <tr>
 <td><code>taskId</code> <br/><em>string</em></td>
 <td>The id corresponding to the create deployment task.</td>
+</tr>
+<tr>
+<td><code>taskStatus</code> <br/><em>string</em></td>
+<td>The status of the operation.</td>
+</tr>
+</tbody></table>
+
+<!-------------------- DELETE DEPLOYMENT -------------------->
+
+<p><h4 id='gcp-delete-a-deployment'>Delete a deployment</h4><pre class="highlight shell tab-shell"><code>curl -X DELETE <span class="se">&lt;/span&gt;
+   -H <span class="s2">&quot;MC-Api-Key: your_api_key&quot;</span> <span class="se">&lt;/span&gt;
+   <span class="s2">&quot;https://cloudmc_endpoint/v1/services/a_service/an_environment/deployments/dex/auth?cluster_id=a_cluster_id?cluster_id=a_cluster_id&quot;</span>
+</code></pre>
+<blockquote>
+<p>The above command returns a JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">&quot;taskId&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1542bd45-4732-419b-87b6-4ea6ec695c2b&quot;</span><span class="p">,</span><span class="w">
+  </span><span class="s2">&quot;taskStatus&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;PENDING&quot;</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><code>DELETE /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/deployments/:id?cluster_id=:cluster_id</code></p></p>
+
+<p>Delete a deployment from a given <a href="#administration-environments">environment</a>.</p>
+
+<table><thead>
+<tr>
+<th>Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>taskId</code> <br/><em>string</em></td>
+<td>The id corresponding to the delete deployment task.</td>
 </tr>
 <tr>
 <td><code>taskStatus</code> <br/><em>string</em></td>
@@ -27131,6 +27264,39 @@ curl -X POST <span class="se">\</span>
 <td>The status of the operation.</td>
 </tr>
 </tbody></table>
+
+<!-------------------- DELETE STATEFUL SET -------------------->
+<h3 id='kubernetes-delete-a-stateful-set'>Delete a stateful set</h3><pre class="highlight shell tab-shell"><code>curl -X DELETE <span class="se">\</span>
+   -H <span class="s2">"MC-Api-Key: your_api_key"</span> <span class="se">\</span>
+   <span class="s2">"https://cloudmc_endpoint/v1/services/a_service/an_environment/statefulsets/my-aerospike/default"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns a JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"taskId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1542bd45-4732-419b-87b6-4ea6ec695c2b"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"taskStatus"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PENDING"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><code>DELETE /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/statefulsets/:id</code></p>
+
+<p>Delete a stateful set from a given <a href="#administration-environments">environment</a>.</p>
+
+<table><thead>
+<tr>
+<th>Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>taskId</code> <br/><em>string</em></td>
+<td>The id corresponding to the delete stateful set task.</td>
+</tr>
+<tr>
+<td><code>taskStatus</code> <br/><em>string</em></td>
+<td>The status of the operation.</td>
+</tr>
+</tbody></table>
 <h2 id='kubernetes-daemon-sets'>Daemon Sets</h2>
 <!-------------------- LIST DAEMON SETS -------------------->
 <h3 id='kubernetes-list-daemon-sets'>List daemon sets</h3><pre class="highlight shell tab-shell"><code>curl -X GET <span class="se">\</span>
@@ -27346,6 +27512,39 @@ curl -X POST <span class="se">\</span>
 <tr>
 <td><code>taskId</code> <br/><em>string</em></td>
 <td>The id corresponding to the create daemon set task.</td>
+</tr>
+<tr>
+<td><code>taskStatus</code> <br/><em>string</em></td>
+<td>The status of the operation.</td>
+</tr>
+</tbody></table>
+
+<!-------------------- DELETE DAEMON SET -------------------->
+<h3 id='kubernetes-delete-a-daemon-set'>Delete a daemon set</h3><pre class="highlight shell tab-shell"><code>curl -X DELETE <span class="se">\</span>
+   -H <span class="s2">"MC-Api-Key: your_api_key"</span> <span class="se">\</span>
+   <span class="s2">"https://cloudmc_endpoint/v1/services/a_service/an_environment/daemonsets/nginx-ingress-controller/ingress-nginx"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns a JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"taskId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1542bd45-4732-419b-87b6-4ea6ec695c2b"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"taskStatus"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PENDING"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><code>DELETE /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/daemonsets/:id</code></p>
+
+<p>Delete a daemon set from a given <a href="#administration-environments">environment</a>.</p>
+
+<table><thead>
+<tr>
+<th>Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>taskId</code> <br/><em>string</em></td>
+<td>The id corresponding to the delete daemon set task.</td>
 </tr>
 <tr>
 <td><code>taskStatus</code> <br/><em>string</em></td>
@@ -27591,6 +27790,39 @@ curl -X POST <span class="se">\</span>
 <tr>
 <td><code>taskId</code> <br/><em>string</em></td>
 <td>The id corresponding to the create deployment task.</td>
+</tr>
+<tr>
+<td><code>taskStatus</code> <br/><em>string</em></td>
+<td>The status of the operation.</td>
+</tr>
+</tbody></table>
+
+<!-------------------- DELETE DEPLOYMENT -------------------->
+<h3 id='kubernetes-delete-a-deployment'>Delete a deployment</h3><pre class="highlight shell tab-shell"><code>curl -X DELETE <span class="se">\</span>
+   -H <span class="s2">"MC-Api-Key: your_api_key"</span> <span class="se">\</span>
+   <span class="s2">"https://cloudmc_endpoint/v1/services/a_service/an_environment/deployments/dex/auth"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns a JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"taskId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1542bd45-4732-419b-87b6-4ea6ec695c2b"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"taskStatus"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PENDING"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><code>DELETE /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/deployments/:id</code></p>
+
+<p>Delete a deployment from a given <a href="#administration-environments">environment</a>.</p>
+
+<table><thead>
+<tr>
+<th>Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>taskId</code> <br/><em>string</em></td>
+<td>The id corresponding to the delete deployment task.</td>
 </tr>
 <tr>
 <td><code>taskStatus</code> <br/><em>string</em></td>
@@ -33026,6 +33258,40 @@ For Windows instances, reset the administrator account and reset the Remote Desk
 <td>The status of the operation.</td>
 </tr>
 </tbody></table>
+
+<!-------------------- DELETE STATEFUL SET -------------------->
+
+<p><h4 id='azure-delete-a-stateful-set'>Delete a stateful set</h4><pre class="highlight shell tab-shell"><code>curl -X DELETE <span class="se">&lt;/span&gt;
+   -H <span class="s2">&quot;MC-Api-Key: your_api_key&quot;</span> <span class="se">&lt;/span&gt;
+   <span class="s2">&quot;https://cloudmc_endpoint/v1/services/a_service/an_environment/statefulsets/my-aerospike/default&quot;</span>
+</code></pre>
+<blockquote>
+<p>The above command returns a JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">&quot;taskId&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1542bd45-4732-419b-87b6-4ea6ec695c2b&quot;</span><span class="p">,</span><span class="w">
+  </span><span class="s2">&quot;taskStatus&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;PENDING&quot;</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><code>DELETE /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/statefulsets/:id?cluster_id=:cluster_id</code></p></p>
+
+<p>Delete a stateful set from a given <a href="#administration-environments">environment</a>.</p>
+
+<table><thead>
+<tr>
+<th>Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>taskId</code> <br/><em>string</em></td>
+<td>The id corresponding to the delete stateful set task.</td>
+</tr>
+<tr>
+<td><code>taskStatus</code> <br/><em>string</em></td>
+<td>The status of the operation.</td>
+</tr>
+</tbody></table>
 <h3 id='azure-daemon-sets'>Daemon Sets</h3>
 
 <!-------------------- LIST DAEMON SETS -------------------->
@@ -33272,6 +33538,40 @@ For Windows instances, reset the administrator account and reset the Remote Desk
 <tr>
 <td><code>taskId</code> <br/><em>string</em></td>
 <td>The id corresponding to the create daemon set task.</td>
+</tr>
+<tr>
+<td><code>taskStatus</code> <br/><em>string</em></td>
+<td>The status of the operation.</td>
+</tr>
+</tbody></table>
+
+<!-------------------- DELETE DAEMON SET -------------------->
+
+<p><h4 id='azure-delete-a-daemon-set'>Delete a daemon set</h4><pre class="highlight shell tab-shell"><code>curl -X DELETE <span class="se">&lt;/span&gt;
+   -H <span class="s2">&quot;MC-Api-Key: your_api_key&quot;</span> <span class="se">&lt;/span&gt;
+   <span class="s2">&quot;https://cloudmc_endpoint/v1/services/a_service/an_environment/daemonsets/nginx-ingress-controller/ingress-nginx?cluster_id=a_cluster_id&quot;</span>
+</code></pre>
+<blockquote>
+<p>The above command returns a JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">&quot;taskId&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1542bd45-4732-419b-87b6-4ea6ec695c2b&quot;</span><span class="p">,</span><span class="w">
+  </span><span class="s2">&quot;taskStatus&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;PENDING&quot;</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><code>DELETE /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/daemonsets/:id?cluster_id=:cluster_id</code></p></p>
+
+<p>Delete a daemon set from a given <a href="#administration-environments">environment</a>.</p>
+
+<table><thead>
+<tr>
+<th>Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>taskId</code> <br/><em>string</em></td>
+<td>The id corresponding to the delete daemon set task.</td>
 </tr>
 <tr>
 <td><code>taskStatus</code> <br/><em>string</em></td>
@@ -33543,6 +33843,40 @@ For Windows instances, reset the administrator account and reset the Remote Desk
 <tr>
 <td><code>taskId</code> <br/><em>string</em></td>
 <td>The id corresponding to the create deployment task.</td>
+</tr>
+<tr>
+<td><code>taskStatus</code> <br/><em>string</em></td>
+<td>The status of the operation.</td>
+</tr>
+</tbody></table>
+
+<!-------------------- DELETE DEPLOYMENT -------------------->
+
+<p><h4 id='azure-delete-a-deployment'>Delete a deployment</h4><pre class="highlight shell tab-shell"><code>curl -X DELETE <span class="se">&lt;/span&gt;
+   -H <span class="s2">&quot;MC-Api-Key: your_api_key&quot;</span> <span class="se">&lt;/span&gt;
+   <span class="s2">&quot;https://cloudmc_endpoint/v1/services/a_service/an_environment/deployments/dex/auth?cluster_id=a_cluster_id?cluster_id=a_cluster_id&quot;</span>
+</code></pre>
+<blockquote>
+<p>The above command returns a JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">&quot;taskId&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1542bd45-4732-419b-87b6-4ea6ec695c2b&quot;</span><span class="p">,</span><span class="w">
+  </span><span class="s2">&quot;taskStatus&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;PENDING&quot;</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><code>DELETE /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/deployments/:id?cluster_id=:cluster_id</code></p></p>
+
+<p>Delete a deployment from a given <a href="#administration-environments">environment</a>.</p>
+
+<table><thead>
+<tr>
+<th>Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>taskId</code> <br/><em>string</em></td>
+<td>The id corresponding to the delete deployment task.</td>
 </tr>
 <tr>
 <td><code>taskStatus</code> <br/><em>string</em></td>
