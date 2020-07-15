@@ -1705,16 +1705,16 @@
                                   </li>
                               </ul>
                           </li>
-                      </ul>
-                  </li>
-                  <li>
-                    <a href="#gcp-persistent-volumes" class="toc-h2 toc-link" data-title="Google Cloud Platform plugin">Persistent volumes</a>
-                      <ul class="toc-list-h3">
                           <li>
-                            <a href="#gcp-list-persistent-volumes" class="toc-h3 toc-link" data-title="Google Cloud Platform plugin">List persistent volumes</a>
-                          </li>
-                          <li>
-                            <a href="#gcp-get-a-persistent-volume" class="toc-h3 toc-link" data-title="Google Cloud Platform plugin">Get a persistent volume</a>
+                            <a href="#gcp-persistent-volumes" class="toc-h3 toc-link" data-title="Google Cloud Platform plugin">Persistent volumes</a>
+                              <ul class="toc-list-h4">
+                                  <li>
+                                    <a href="#gcp-list-persistent-volumes" class="toc-h4 toc-link" data-title="Google Cloud Platform plugin">List persistent volumes</a>
+                                  </li>
+                                  <li>
+                                    <a href="#gcp-get-a-persistent-volume" class="toc-h4 toc-link" data-title="Google Cloud Platform plugin">Get a persistent volume</a>
+                                  </li>
+                              </ul>
                           </li>
                           <li>
                             <a href="#gcp-releases" class="toc-h3 toc-link" data-title="Google Cloud Platform plugin">Releases</a>
@@ -2289,16 +2289,16 @@
                                   </li>
                               </ul>
                           </li>
-                      </ul>
-                  </li>
-                  <li>
-                    <a href="#azure-persistent-volumes" class="toc-h2 toc-link" data-title="Azure plugin">Persistent volumes</a>
-                      <ul class="toc-list-h3">
                           <li>
-                            <a href="#azure-list-persistent-volumes" class="toc-h3 toc-link" data-title="Azure plugin">List persistent volumes</a>
-                          </li>
-                          <li>
-                            <a href="#azure-get-a-persistent-volume" class="toc-h3 toc-link" data-title="Azure plugin">Get a persistent volume</a>
+                            <a href="#azure-persistent-volumes" class="toc-h3 toc-link" data-title="Azure plugin">Persistent volumes</a>
+                              <ul class="toc-list-h4">
+                                  <li>
+                                    <a href="#azure-list-persistent-volumes" class="toc-h4 toc-link" data-title="Azure plugin">List persistent volumes</a>
+                                  </li>
+                                  <li>
+                                    <a href="#azure-get-a-persistent-volume" class="toc-h4 toc-link" data-title="Azure plugin">Get a persistent volume</a>
+                                  </li>
+                              </ul>
                           </li>
                       </ul>
                   </li>
@@ -24699,7 +24699,7 @@ curl -X POST <span class="se">\</span>
 <td>The default volume binding model for this storage class. You have a choice between <code>Immediate</code> or <code>WaitForFirstConsumer</code>.</td>
 </tr>
 </tbody></table>
-<h2 id='gcp-persistent-volumes'>Persistent volumes</h2>
+<h3 id='gcp-persistent-volumes'>Persistent volumes</h3>
 
 <!-------------------- LIST Persistent volumes -------------------->
 
@@ -24808,7 +24808,7 @@ curl -X POST <span class="se">\</span>
 </tr>
 <tr>
 <td><code>spec.accessModes</code> <br/><em>string</em></td>
-<td>The volume can be mounted on a host in any way supported by the resource provider and will give the provider access to different capabilities. Values is one of <code>ReadWriteOnce</code> (by a single node), <code>ReadOnlyMany</code> (by many nodes) or <code>ReadWriteMany</code> (by many nodes).</td>
+<td>The volume can be mounted on a host in any way supported by the resource provider and will give the provider access to different capabilities. Value is one of <code>ReadWriteOnce</code> (by a single node), <code>ReadOnlyMany</code> (by many nodes) or <code>ReadWriteMany</code> (by many nodes).</td>
 </tr>
 <tr>
 <td><code>spec.capacity.storage</code> <br/><em>string</em></td>
@@ -24816,7 +24816,7 @@ curl -X POST <span class="se">\</span>
 </tr>
 <tr>
 <td><code>spec.persistentVolumeReclaimPolicy</code> <br/><em>string</em></td>
-<td>One of <code>Retain</code> - manual reclamation, <code>Recycle</code> - basic scrub or <code>Delete</code> - associated storage asset such as AWS EBS, GCE PD, Azure Disk, or OpenStack Cinder volume is deleted.</td>
+<td>One of <code>Retain</code> (manual reclamation), <code>Recycle</code> (basic scrub) or <code>Delete</code> (associated storage asset such as AWS EBS, GCE PD, Azure Disk, or OpenStack Cinder volume is deleted).</td>
 </tr>
 <tr>
 <td><code>spec.storageClassName</code> <br/><em>string</em></td>
@@ -24932,7 +24932,7 @@ curl -X POST <span class="se">\</span>
 </tr>
 <tr>
 <td><code>spec.accessModes</code> <br/><em>string</em></td>
-<td>The volume can be mounted on a host in any way supported by the resource provider and will give the provider access to different capabilities. Values is one of <code>ReadWriteOnce</code> (by a single node), <code>ReadOnlyMany</code> (by many nodes) or <code>ReadWriteMany</code> (by many nodes).</td>
+<td>The volume can be mounted on a host in any way supported by the resource provider and will give the provider access to different capabilities. Value is one of <code>ReadWriteOnce</code> (by a single node), <code>ReadOnlyMany</code> (by many nodes) or <code>ReadWriteMany</code> (by many nodes).</td>
 </tr>
 <tr>
 <td><code>spec.capacity.storage</code> <br/><em>string</em></td>
@@ -24940,7 +24940,7 @@ curl -X POST <span class="se">\</span>
 </tr>
 <tr>
 <td><code>spec.persistentVolumeReclaimPolicy</code> <br/><em>string</em></td>
-<td>One of <code>Retain</code> - manual reclamation, <code>Recycle</code> - basic scrub or <code>Delete</code> - associated storage asset such as AWS EBS, GCE PD, Azure Disk, or OpenStack Cinder volume is deleted.</td>
+<td>One of <code>Retain</code> (manual reclamation), <code>Recycle</code> (basic scrub) or <code>Delete</code> (associated storage asset such as AWS EBS, GCE PD, Azure Disk, or OpenStack Cinder volume is deleted).</td>
 </tr>
 <tr>
 <td><code>spec.storageClassName</code> <br/><em>string</em></td>
@@ -28997,7 +28997,7 @@ curl -X POST <span class="se">\</span>
 </tr>
 <tr>
 <td><code>spec.accessModes</code> <br/><em>string</em></td>
-<td>The volume can be mounted on a host in any way supported by the resource provider and will give the provider access to different capabilities. Values is one of <code>ReadWriteOnce</code> (by a single node), <code>ReadOnlyMany</code> (by many nodes) or <code>ReadWriteMany</code> (by many nodes).</td>
+<td>The volume can be mounted on a host in any way supported by the resource provider and will give the provider access to different capabilities. Value is one of <code>ReadWriteOnce</code> (by a single node), <code>ReadOnlyMany</code> (by many nodes) or <code>ReadWriteMany</code> (by many nodes).</td>
 </tr>
 <tr>
 <td><code>spec.capacity.storage</code> <br/><em>string</em></td>
@@ -29005,7 +29005,7 @@ curl -X POST <span class="se">\</span>
 </tr>
 <tr>
 <td><code>spec.persistentVolumeReclaimPolicy</code> <br/><em>string</em></td>
-<td>One of <code>Retain</code> - manual reclamation, <code>Recycle</code> - basic scrub or <code>Delete</code> - associated storage asset such as AWS EBS, GCE PD, Azure Disk, or OpenStack Cinder volume is deleted.</td>
+<td>One of <code>Retain</code> (manual reclamation), <code>Recycle</code> (basic scrub) or <code>Delete</code> (associated storage asset such as AWS EBS, GCE PD, Azure Disk, or OpenStack Cinder volume is deleted).</td>
 </tr>
 <tr>
 <td><code>spec.storageClassName</code> <br/><em>string</em></td>
@@ -29108,7 +29108,7 @@ curl -X POST <span class="se">\</span>
 </tr>
 <tr>
 <td><code>spec.accessModes</code> <br/><em>string</em></td>
-<td>The volume can be mounted on a host in any way supported by the resource provider and will give the provider access to different capabilities. Values is one of <code>ReadWriteOnce</code> (by a single node), <code>ReadOnlyMany</code> (by many nodes) or <code>ReadWriteMany</code> (by many nodes).</td>
+<td>The volume can be mounted on a host in any way supported by the resource provider and will give the provider access to different capabilities. Value is one of <code>ReadWriteOnce</code> (by a single node), <code>ReadOnlyMany</code> (by many nodes) or <code>ReadWriteMany</code> (by many nodes).</td>
 </tr>
 <tr>
 <td><code>spec.capacity.storage</code> <br/><em>string</em></td>
@@ -29116,7 +29116,7 @@ curl -X POST <span class="se">\</span>
 </tr>
 <tr>
 <td><code>spec.persistentVolumeReclaimPolicy</code> <br/><em>string</em></td>
-<td>One of <code>Retain</code> - manual reclamation, <code>Recycle</code> - basic scrub or <code>Delete</code> - associated storage asset such as AWS EBS, GCE PD, Azure Disk, or OpenStack Cinder volume is deleted.</td>
+<td>One of <code>Retain</code> (manual reclamation), <code>Recycle</code> (basic scrub) or <code>Delete</code> (associated storage asset such as AWS EBS, GCE PD, Azure Disk, or OpenStack Cinder volume is deleted).</td>
 </tr>
 <tr>
 <td><code>spec.storageClassName</code> <br/><em>string</em></td>
@@ -35290,7 +35290,7 @@ For Windows instances, reset the administrator account and reset the Remote Desk
 <td>The default volume binding model for this storage class. You have a choice between <code>Immediate</code> or <code>WaitForFirstConsumer</code>.</td>
 </tr>
 </tbody></table>
-<h2 id='azure-persistent-volumes'>Persistent volumes</h2>
+<h3 id='azure-persistent-volumes'>Persistent volumes</h3>
 
 <!-------------------- LIST Persistent volumes -------------------->
 
@@ -35399,7 +35399,7 @@ For Windows instances, reset the administrator account and reset the Remote Desk
 </tr>
 <tr>
 <td><code>spec.accessModes</code> <br/><em>string</em></td>
-<td>The volume can be mounted on a host in any way supported by the resource provider and will give the provider access to different capabilities. Values is one of <code>ReadWriteOnce</code> (by a single node), <code>ReadOnlyMany</code> (by many nodes) or <code>ReadWriteMany</code> (by many nodes).</td>
+<td>The volume can be mounted on a host in any way supported by the resource provider and will give the provider access to different capabilities. Value is one of <code>ReadWriteOnce</code> (by a single node), <code>ReadOnlyMany</code> (by many nodes) or <code>ReadWriteMany</code> (by many nodes).</td>
 </tr>
 <tr>
 <td><code>spec.capacity.storage</code> <br/><em>string</em></td>
@@ -35407,7 +35407,7 @@ For Windows instances, reset the administrator account and reset the Remote Desk
 </tr>
 <tr>
 <td><code>spec.persistentVolumeReclaimPolicy</code> <br/><em>string</em></td>
-<td>One of <code>Retain</code> - manual reclamation, <code>Recycle</code> - basic scrub or <code>Delete</code> - associated storage asset such as AWS EBS, GCE PD, Azure Disk, or OpenStack Cinder volume is deleted.</td>
+<td>One of <code>Retain</code> (manual reclamation), <code>Recycle</code> (basic scrub) or <code>Delete</code> (associated storage asset such as AWS EBS, GCE PD, Azure Disk, or OpenStack Cinder volume is deleted).</td>
 </tr>
 <tr>
 <td><code>spec.storageClassName</code> <br/><em>string</em></td>
@@ -35523,7 +35523,7 @@ For Windows instances, reset the administrator account and reset the Remote Desk
 </tr>
 <tr>
 <td><code>spec.accessModes</code> <br/><em>string</em></td>
-<td>The volume can be mounted on a host in any way supported by the resource provider and will give the provider access to different capabilities. Values is one of <code>ReadWriteOnce</code> (by a single node), <code>ReadOnlyMany</code> (by many nodes) or <code>ReadWriteMany</code> (by many nodes).</td>
+<td>The volume can be mounted on a host in any way supported by the resource provider and will give the provider access to different capabilities. Value is one of <code>ReadWriteOnce</code> (by a single node), <code>ReadOnlyMany</code> (by many nodes) or <code>ReadWriteMany</code> (by many nodes).</td>
 </tr>
 <tr>
 <td><code>spec.capacity.storage</code> <br/><em>string</em></td>
@@ -35531,7 +35531,7 @@ For Windows instances, reset the administrator account and reset the Remote Desk
 </tr>
 <tr>
 <td><code>spec.persistentVolumeReclaimPolicy</code> <br/><em>string</em></td>
-<td>One of <code>Retain</code> - manual reclamation, <code>Recycle</code> - basic scrub or <code>Delete</code> - associated storage asset such as AWS EBS, GCE PD, Azure Disk, or OpenStack Cinder volume is deleted.</td>
+<td>One of <code>Retain</code> (manual reclamation), <code>Recycle</code> (basic scrub) or <code>Delete</code> (associated storage asset such as AWS EBS, GCE PD, Azure Disk, or OpenStack Cinder volume is deleted).</td>
 </tr>
 <tr>
 <td><code>spec.storageClassName</code> <br/><em>string</em></td>
