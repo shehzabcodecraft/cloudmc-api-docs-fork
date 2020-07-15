@@ -1707,6 +1707,17 @@
                                   </li>
                               </ul>
                           </li>
+                      </ul>
+                  </li>
+                  <li>
+                    <a href="#gcp-persistent-volumes" class="toc-h2 toc-link" data-title="Google Cloud Platform plugin">Persistent volumes</a>
+                      <ul class="toc-list-h3">
+                          <li>
+                            <a href="#gcp-list-persistent-volumes" class="toc-h3 toc-link" data-title="Google Cloud Platform plugin">List persistent volumes</a>
+                          </li>
+                          <li>
+                            <a href="#gcp-get-a-persistent-volume" class="toc-h3 toc-link" data-title="Google Cloud Platform plugin">Get a persistent volume</a>
+                          </li>
                           <li>
                             <a href="#gcp-releases" class="toc-h3 toc-link" data-title="Google Cloud Platform plugin">Releases</a>
                               <ul class="toc-list-h4">
@@ -1901,6 +1912,17 @@
                           </li>
                           <li>
                             <a href="#kubernetes-get-a-storage-class" class="toc-h3 toc-link" data-title="Kubernetes plugin">Get a storage class</a>
+                          </li>
+                      </ul>
+                  </li>
+                  <li>
+                    <a href="#kubernetes-persistent-volumes" class="toc-h2 toc-link" data-title="Kubernetes plugin">Persistent volumes</a>
+                      <ul class="toc-list-h3">
+                          <li>
+                            <a href="#kubernetes-list-persistent-volumes" class="toc-h3 toc-link" data-title="Kubernetes plugin">List persistent volumes</a>
+                          </li>
+                          <li>
+                            <a href="#kubernetes-get-a-persistent-volume" class="toc-h3 toc-link" data-title="Kubernetes plugin">Get a persistent volume</a>
                           </li>
                       </ul>
                   </li>
@@ -2270,6 +2292,17 @@
                                     <a href="#azure-get-a-storage-class" class="toc-h4 toc-link" data-title="Azure plugin">Get a storage class</a>
                                   </li>
                               </ul>
+                          </li>
+                      </ul>
+                  </li>
+                  <li>
+                    <a href="#azure-persistent-volumes" class="toc-h2 toc-link" data-title="Azure plugin">Persistent volumes</a>
+                      <ul class="toc-list-h3">
+                          <li>
+                            <a href="#azure-list-persistent-volumes" class="toc-h3 toc-link" data-title="Azure plugin">List persistent volumes</a>
+                          </li>
+                          <li>
+                            <a href="#azure-get-a-persistent-volume" class="toc-h3 toc-link" data-title="Azure plugin">Get a persistent volume</a>
                           </li>
                       </ul>
                   </li>
@@ -24670,6 +24703,262 @@ curl -X POST <span class="se">\</span>
 <td>The default volume binding model for this storage class. You have a choice between <code>Immediate</code> or <code>WaitForFirstConsumer</code>.</td>
 </tr>
 </tbody></table>
+<h2 id='gcp-persistent-volumes'>Persistent volumes</h2>
+
+<!-------------------- LIST Persistent volumes -------------------->
+
+<p><h4 id='gcp-list-persistent-volumes'>List persistent volumes</h4><pre class="highlight shell tab-shell"><code>curl -X GET <span class="se">&lt;/span&gt;
+   -H <span class="s2">&quot;MC-Api-Key: your_api_key&quot;</span> <span class="se">&lt;/span&gt;
+   <span class="s2">&quot;https://cloudmc_endpoint/v1/services/a_service/an_environment/persistentvolumes?cluster_id=a_cluster_id&quot;</span>
+</code></pre>
+<blockquote>
+<p>The above command returns a JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">&quot;data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;pvc-05097a93-120d-45d2-aaab-0f273849fccd&quot;</span><span class="p">,</span><span class="w">
+      </span><span class="s2">&quot;metadata&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">&quot;annotations&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">&quot;pv.kubernetes.io/provisioned-by&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;rook-ceph.rbd.csi.ceph.com&quot;</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">&quot;creationTimestamp&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2020-07-03T09:12:17.000-04:00&quot;</span><span class="p">,</span><span class="w">
+        </span><span class="s2">&quot;finalizers&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="s2">&quot;kubernetes.io/pv-protection&quot;</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="s2">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;pvc-05097a93-120d-45d2-aaab-0f273849fccd&quot;</span><span class="p">,</span><span class="w">
+        </span><span class="s2">&quot;resourceVersion&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;147569183&quot;</span><span class="p">,</span><span class="w">
+        </span><span class="s2">&quot;selfLink&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/api/v1/persistentvolumes/pvc-05097a93-120d-45d2-aaab-0f273849fccd&quot;</span><span class="p">,</span><span class="w">
+        </span><span class="s2">&quot;uid&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2e20a8fb-d90c-4c39-acd8-7007f85e2d8e&quot;</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">&quot;spec&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">&quot;accessModes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="s2">&quot;ReadWriteOnce&quot;</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="s2">&quot;capacity&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">&quot;storage&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;8Gi&quot;</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">&quot;claimRef&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">&quot;apiVersion&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;v1&quot;</span><span class="p">,</span><span class="w">
+          </span><span class="s2">&quot;kind&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;PersistentVolumeClaim&quot;</span><span class="p">,</span><span class="w">
+          </span><span class="s2">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;data-cmc-cluster-zookeeper-1&quot;</span><span class="p">,</span><span class="w">
+          </span><span class="s2">&quot;namespace&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;cmc-kafka&quot;</span><span class="p">,</span><span class="w">
+          </span><span class="s2">&quot;resourceVersion&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;147569124&quot;</span><span class="p">,</span><span class="w">
+          </span><span class="s2">&quot;uid&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;05097a93-120d-45d2-aaab-0f273849fccd&quot;</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">&quot;csi&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">&quot;driver&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;rook-ceph.rbd.csi.ceph.com&quot;</span><span class="p">,</span><span class="w">
+          </span><span class="s2">&quot;fsType&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ext4&quot;</span><span class="p">,</span><span class="w">
+          </span><span class="s2">&quot;nodeStageSecretRef&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;rook-csi-rbd-node&quot;</span><span class="p">,</span><span class="w">
+            </span><span class="s2">&quot;namespace&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;rook-ceph&quot;</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="s2">&quot;volumeAttributes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">&quot;clusterID&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;rook-ceph&quot;</span><span class="p">,</span><span class="w">
+            </span><span class="s2">&quot;imageFeatures&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;layering&quot;</span><span class="p">,</span><span class="w">
+            </span><span class="s2">&quot;imageFormat&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2&quot;</span><span class="p">,</span><span class="w">
+            </span><span class="s2">&quot;pool&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;replicapool&quot;</span><span class="p">,</span><span class="w">
+            </span><span class="s2">&quot;storage.kubernetes.io/csiProvisionerIdentity&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1593101040137-8081-rook-ceph.rbd.csi.ceph.com&quot;</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="s2">&quot;volumeHandle&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0001-0009-rook-ceph-0000000000000001-d11d2a4d-bd2e-11ea-b56e-7a7db811cab1&quot;</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">&quot;persistentVolumeReclaimPolicy&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Delete&quot;</span><span class="p">,</span><span class="w">
+        </span><span class="s2">&quot;storageClassName&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;rook-ceph-block&quot;</span><span class="p">,</span><span class="w">
+        </span><span class="s2">&quot;volumeMode&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Filesystem&quot;</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">&quot;phase&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Bound&quot;</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+  </span><span class="s2">&quot;metadata&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">&quot;recordCount&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><code>GET /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/persistentvolumes?cluster_id=:cluster_id</code></p></p>
+
+<p>Retrieve a list of all persistent volumes in a given <a href="#administration-environments">environment</a>.</p>
+
+<table><thead>
+<tr>
+<th>Required</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>cluster_id</code> <br/><em>string</em></td>
+<td>The id of the cluster in which to list the persistent volumes.</td>
+</tr>
+</tbody></table>
+
+<table><thead>
+<tr>
+<th>Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code> <br/><em>string</em></td>
+<td>The id of the persistent volume. This is the name of the resource.</td>
+</tr>
+<tr>
+<td><code>metadata</code> <br/><em>object</em></td>
+<td>The metadata of the persistent volume.</td>
+</tr>
+<tr>
+<td><code>spec</code> <br/><em>object</em></td>
+<td>The specification of the persistent volume.</td>
+</tr>
+<tr>
+<td><code>spec.accessModes</code> <br/><em>string</em></td>
+<td>The volume can be mounted on a host in any way supported by the resource provider and will give the provider access to different capabilities. Values is one of <code>ReadWriteOnce</code> (by a single node), <code>ReadOnlyMany</code> (by many nodes) or <code>ReadWriteMany</code> (by many nodes).</td>
+</tr>
+<tr>
+<td><code>spec.capacity.storage</code> <br/><em>string</em></td>
+<td>Storage capacity of the persistent volume.</td>
+</tr>
+<tr>
+<td><code>spec.persistentVolumeReclaimPolicy</code> <br/><em>string</em></td>
+<td>One of <code>Retain</code> - manual reclamation, <code>Recycle</code> - basic scrub or <code>Delete</code> - associated storage asset such as AWS EBS, GCE PD, Azure Disk, or OpenStack Cinder volume is deleted.</td>
+</tr>
+<tr>
+<td><code>spec.storageClassName</code> <br/><em>string</em></td>
+<td>Storage class associated to the volume.</td>
+</tr>
+<tr>
+<td><code>spec.capacity.volumeMode</code> <br/><em>string</em></td>
+<td>If set to <code>Filesystem</code> (default value), the volume is mounted into Pods into a directory. If set to <code>Block</code>, then the volume is used as a raw block device.</td>
+</tr>
+<tr>
+<td><code>status.phase</code> <br/><em>string</em></td>
+<td>Volume is in one of the following phases: <code>Available</code>, <code>Bound</code>, <code>Released</code> or <code>Failed</code>.</td>
+</tr>
+</tbody></table>
+
+<!-------------------- GET A persistent volume -------------------->
+
+<p><h4 id='gcp-get-a-persistent-volume'>Get a persistent volume</h4><pre class="highlight shell tab-shell"><code>curl -X GET <span class="se">&lt;/span&gt;
+   -H <span class="s2">&quot;MC-Api-Key: your_api_key&quot;</span> <span class="se">&lt;/span&gt;
+   <span class="s2">&quot;https://cloudmc_endpoint/v1/services/a_service/an_environment/persistentvolumes/pvc-05097a93-120d-45d2?cluster_id=a_cluster_id&quot;</span>
+</code></pre>
+<blockquote>
+<p>The above command returns a JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;pvc-05097a93-120d-45d2&quot;</span><span class="p">,</span><span class="w">
+  </span><span class="s2">&quot;metadata&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">&quot;annotations&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">&quot;pv.kubernetes.io/provisioned-by&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;rook-ceph.rbd.csi.ceph.com&quot;</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">&quot;creationTimestamp&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2020-07-03T09:12:17.000-04:00&quot;</span><span class="p">,</span><span class="w">
+    </span><span class="s2">&quot;finalizers&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="s2">&quot;kubernetes.io/pv-protection&quot;</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;pvc-05097a93-120d-45d2-aaab-0f273849fccd&quot;</span><span class="p">,</span><span class="w">
+    </span><span class="s2">&quot;resourceVersion&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;147569183&quot;</span><span class="p">,</span><span class="w">
+    </span><span class="s2">&quot;selfLink&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/api/v1/persistentvolumes/pvc-05097a93-120d-45d2-aaab-0f273849fccd&quot;</span><span class="p">,</span><span class="w">
+    </span><span class="s2">&quot;uid&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2e20a8fb-d90c-4c39-acd8-7007f85e2d8e&quot;</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">&quot;spec&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">&quot;accessModes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="s2">&quot;ReadWriteOnce&quot;</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">&quot;capacity&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">&quot;storage&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;8Gi&quot;</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">&quot;claimRef&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">&quot;apiVersion&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;v1&quot;</span><span class="p">,</span><span class="w">
+      </span><span class="s2">&quot;kind&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;PersistentVolumeClaim&quot;</span><span class="p">,</span><span class="w">
+      </span><span class="s2">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;data-cmc-cluster-zookeeper-1&quot;</span><span class="p">,</span><span class="w">
+      </span><span class="s2">&quot;namespace&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;cmc-kafka&quot;</span><span class="p">,</span><span class="w">
+      </span><span class="s2">&quot;resourceVersion&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;147569124&quot;</span><span class="p">,</span><span class="w">
+      </span><span class="s2">&quot;uid&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;05097a93-120d-45d2-aaab-0f273849fccd&quot;</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">&quot;csi&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">&quot;driver&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;rook-ceph.rbd.csi.ceph.com&quot;</span><span class="p">,</span><span class="w">
+      </span><span class="s2">&quot;fsType&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ext4&quot;</span><span class="p">,</span><span class="w">
+      </span><span class="s2">&quot;nodeStageSecretRef&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;rook-csi-rbd-node&quot;</span><span class="p">,</span><span class="w">
+        </span><span class="s2">&quot;namespace&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;rook-ceph&quot;</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">&quot;volumeAttributes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">&quot;clusterID&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;rook-ceph&quot;</span><span class="p">,</span><span class="w">
+        </span><span class="s2">&quot;imageFeatures&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;layering&quot;</span><span class="p">,</span><span class="w">
+        </span><span class="s2">&quot;imageFormat&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2&quot;</span><span class="p">,</span><span class="w">
+        </span><span class="s2">&quot;pool&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;replicapool&quot;</span><span class="p">,</span><span class="w">
+        </span><span class="s2">&quot;storage.kubernetes.io/csiProvisionerIdentity&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1593101040137-8081-rook-ceph.rbd.csi.ceph.com&quot;</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">&quot;volumeHandle&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0001-0009-rook-ceph-0000000000000001-d11d2a4d-bd2e-11ea-b56e-7a7db811cab1&quot;</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">&quot;persistentVolumeReclaimPolicy&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Delete&quot;</span><span class="p">,</span><span class="w">
+    </span><span class="s2">&quot;storageClassName&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;rook-ceph-block&quot;</span><span class="p">,</span><span class="w">
+    </span><span class="s2">&quot;volumeMode&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Filesystem&quot;</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">&quot;phase&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Bound&quot;</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><code>GET /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/persistentvolumes/:id?cluster_id=:cluster_id</code></p></p>
+
+<p>Retrieve a persistent volume and all its info in a given <a href="#administration-environments">environment</a>.</p>
+
+<table><thead>
+<tr>
+<th>Required</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>cluster_id</code> <br/><em>string</em></td>
+<td>The id of the cluster in which to get the persistent volume.</td>
+</tr>
+</tbody></table>
+
+<table><thead>
+<tr>
+<th>Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code> <br/><em>string</em></td>
+<td>The id of the persistent volume. This is the name of the resource.</td>
+</tr>
+<tr>
+<td><code>metadata</code> <br/><em>object</em></td>
+<td>The metadata of the persistent volume.</td>
+</tr>
+<tr>
+<td><code>spec</code> <br/><em>object</em></td>
+<td>The specification of the persistent volume.</td>
+</tr>
+<tr>
+<td><code>spec.accessModes</code> <br/><em>string</em></td>
+<td>The volume can be mounted on a host in any way supported by the resource provider and will give the provider access to different capabilities. Values is one of <code>ReadWriteOnce</code> (by a single node), <code>ReadOnlyMany</code> (by many nodes) or <code>ReadWriteMany</code> (by many nodes).</td>
+</tr>
+<tr>
+<td><code>spec.capacity.storage</code> <br/><em>string</em></td>
+<td>Storage capacity of the persistent volume.</td>
+</tr>
+<tr>
+<td><code>spec.persistentVolumeReclaimPolicy</code> <br/><em>string</em></td>
+<td>One of <code>Retain</code> - manual reclamation, <code>Recycle</code> - basic scrub or <code>Delete</code> - associated storage asset such as AWS EBS, GCE PD, Azure Disk, or OpenStack Cinder volume is deleted.</td>
+</tr>
+<tr>
+<td><code>spec.storageClassName</code> <br/><em>string</em></td>
+<td>Storage class associated to the volume.</td>
+</tr>
+<tr>
+<td><code>spec.capacity.volumeMode</code> <br/><em>string</em></td>
+<td>If set to <code>Filesystem</code> (default value), the volume is mounted into Pods into a directory. If set to <code>Block</code>, then the volume is used as a raw block device.</td>
+</tr>
+<tr>
+<td><code>status.phase</code> <br/><em>string</em></td>
+<td>Volume is in one of the following phases: <code>Available</code>, <code>Bound</code>, <code>Released</code> or <code>Failed</code>.</td>
+</tr>
+</tbody></table>
 <h3 id='gcp-releases'>Releases</h3>
 
 <!-------------------- LIST RELEASES -------------------->
@@ -28615,6 +28904,235 @@ curl -X POST <span class="se">\</span>
 <tr>
 <td><code>volumeBindingMode</code> <br/><em>string</em></td>
 <td>The default volume binding model for this storage class. You have a choice between <code>Immediate</code> or <code>WaitForFirstConsumer</code>.</td>
+</tr>
+</tbody></table>
+<h2 id='kubernetes-persistent-volumes'>Persistent volumes</h2>
+<!-------------------- LIST Persistent volumes -------------------->
+<h4 id='kubernetes-list-persistent-volumes'>List persistent volumes</h4><pre class="highlight shell tab-shell"><code>curl -X GET <span class="se">\</span>
+   -H <span class="s2">"MC-Api-Key: your_api_key"</span> <span class="se">\</span>
+   <span class="s2">"https://cloudmc_endpoint/v1/services/a_service/an_environment/persistentvolumes"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns a JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"pvc-05097a93-120d-45d2-aaab-0f273849fccd"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"annotations"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"pv.kubernetes.io/provisioned-by"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rook-ceph.rbd.csi.ceph.com"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"creationTimestamp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-07-03T09:12:17.000-04:00"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"finalizers"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="s2">"kubernetes.io/pv-protection"</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"pvc-05097a93-120d-45d2-aaab-0f273849fccd"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"resourceVersion"</span><span class="p">:</span><span class="w"> </span><span class="s2">"147569183"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"selfLink"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/api/v1/persistentvolumes/pvc-05097a93-120d-45d2-aaab-0f273849fccd"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"uid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2e20a8fb-d90c-4c39-acd8-7007f85e2d8e"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"spec"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"accessModes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="s2">"ReadWriteOnce"</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="s2">"capacity"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"storage"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8Gi"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"claimRef"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"apiVersion"</span><span class="p">:</span><span class="w"> </span><span class="s2">"v1"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"kind"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PersistentVolumeClaim"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"data-cmc-cluster-zookeeper-1"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"namespace"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cmc-kafka"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"resourceVersion"</span><span class="p">:</span><span class="w"> </span><span class="s2">"147569124"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"uid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"05097a93-120d-45d2-aaab-0f273849fccd"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"csi"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"driver"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rook-ceph.rbd.csi.ceph.com"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"fsType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ext4"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"nodeStageSecretRef"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rook-csi-rbd-node"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"namespace"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rook-ceph"</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="s2">"volumeAttributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"clusterID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rook-ceph"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"imageFeatures"</span><span class="p">:</span><span class="w"> </span><span class="s2">"layering"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"imageFormat"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"pool"</span><span class="p">:</span><span class="w"> </span><span class="s2">"replicapool"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"storage.kubernetes.io/csiProvisionerIdentity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1593101040137-8081-rook-ceph.rbd.csi.ceph.com"</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="s2">"volumeHandle"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0001-0009-rook-ceph-0000000000000001-d11d2a4d-bd2e-11ea-b56e-7a7db811cab1"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"persistentVolumeReclaimPolicy"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Delete"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"storageClassName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rook-ceph-block"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"volumeMode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Filesystem"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"phase"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bound"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+  </span><span class="s2">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"recordCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><code>GET /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/persistentvolumes</code></p>
+
+<p>Retrieve a list of all persistent volumes in a given <a href="#administration-environments">environment</a>.</p>
+
+<table><thead>
+<tr>
+<th>Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code> <br/><em>string</em></td>
+<td>The id of the persistent volume. This is the name of the resource.</td>
+</tr>
+<tr>
+<td><code>metadata</code> <br/><em>object</em></td>
+<td>The metadata of the persistent volume.</td>
+</tr>
+<tr>
+<td><code>spec</code> <br/><em>object</em></td>
+<td>The specification of the persistent volume.</td>
+</tr>
+<tr>
+<td><code>spec.accessModes</code> <br/><em>string</em></td>
+<td>The volume can be mounted on a host in any way supported by the resource provider and will give the provider access to different capabilities. Values is one of <code>ReadWriteOnce</code> (by a single node), <code>ReadOnlyMany</code> (by many nodes) or <code>ReadWriteMany</code> (by many nodes).</td>
+</tr>
+<tr>
+<td><code>spec.capacity.storage</code> <br/><em>string</em></td>
+<td>Storage capacity of the persistent volume.</td>
+</tr>
+<tr>
+<td><code>spec.persistentVolumeReclaimPolicy</code> <br/><em>string</em></td>
+<td>One of <code>Retain</code> - manual reclamation, <code>Recycle</code> - basic scrub or <code>Delete</code> - associated storage asset such as AWS EBS, GCE PD, Azure Disk, or OpenStack Cinder volume is deleted.</td>
+</tr>
+<tr>
+<td><code>spec.storageClassName</code> <br/><em>string</em></td>
+<td>Storage class associated to the volume.</td>
+</tr>
+<tr>
+<td><code>spec.capacity.volumeMode</code> <br/><em>string</em></td>
+<td>If set to <code>Filesystem</code> (default value), the volume is mounted into Pods into a directory. If set to <code>Block</code>, then the volume is used as a raw block device.</td>
+</tr>
+<tr>
+<td><code>status.phase</code> <br/><em>string</em></td>
+<td>Volume is in one of the following phases: <code>Available</code>, <code>Bound</code>, <code>Released</code> or <code>Failed</code>.</td>
+</tr>
+</tbody></table>
+
+<!-------------------- GET A persistent volume -------------------->
+<h4 id='kubernetes-get-a-persistent-volume'>Get a persistent volume</h4><pre class="highlight shell tab-shell"><code>curl -X GET <span class="se">\</span>
+   -H <span class="s2">"MC-Api-Key: your_api_key"</span> <span class="se">\</span>
+   <span class="s2">"https://cloudmc_endpoint/v1/services/a_service/an_environment/persistentvolumes/pvc-05097a93-120d-45d2?cluster_id=a_cluster_id"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns a JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"pvc-05097a93-120d-45d2"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"annotations"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"pv.kubernetes.io/provisioned-by"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rook-ceph.rbd.csi.ceph.com"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"creationTimestamp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-07-03T09:12:17.000-04:00"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"finalizers"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"kubernetes.io/pv-protection"</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"pvc-05097a93-120d-45d2-aaab-0f273849fccd"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"resourceVersion"</span><span class="p">:</span><span class="w"> </span><span class="s2">"147569183"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"selfLink"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/api/v1/persistentvolumes/pvc-05097a93-120d-45d2-aaab-0f273849fccd"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"uid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2e20a8fb-d90c-4c39-acd8-7007f85e2d8e"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"spec"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"accessModes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"ReadWriteOnce"</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"capacity"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"storage"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8Gi"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"claimRef"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"apiVersion"</span><span class="p">:</span><span class="w"> </span><span class="s2">"v1"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"kind"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PersistentVolumeClaim"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"data-cmc-cluster-zookeeper-1"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"namespace"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cmc-kafka"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"resourceVersion"</span><span class="p">:</span><span class="w"> </span><span class="s2">"147569124"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"uid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"05097a93-120d-45d2-aaab-0f273849fccd"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"csi"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"driver"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rook-ceph.rbd.csi.ceph.com"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"fsType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ext4"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"nodeStageSecretRef"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rook-csi-rbd-node"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"namespace"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rook-ceph"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"volumeAttributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"clusterID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rook-ceph"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"imageFeatures"</span><span class="p">:</span><span class="w"> </span><span class="s2">"layering"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"imageFormat"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"pool"</span><span class="p">:</span><span class="w"> </span><span class="s2">"replicapool"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"storage.kubernetes.io/csiProvisionerIdentity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1593101040137-8081-rook-ceph.rbd.csi.ceph.com"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"volumeHandle"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0001-0009-rook-ceph-0000000000000001-d11d2a4d-bd2e-11ea-b56e-7a7db811cab1"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"persistentVolumeReclaimPolicy"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Delete"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"storageClassName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rook-ceph-block"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"volumeMode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Filesystem"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"phase"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bound"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><code>GET /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/persistentvolumes/:id</code></p>
+
+<p>Retrieve a persistent volume and all its info in a given <a href="#administration-environments">environment</a>.</p>
+
+<table><thead>
+<tr>
+<th>Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code> <br/><em>string</em></td>
+<td>The id of the persistent volume. This is the name of the resource.</td>
+</tr>
+<tr>
+<td><code>metadata</code> <br/><em>object</em></td>
+<td>The metadata of the persistent volume.</td>
+</tr>
+<tr>
+<td><code>spec</code> <br/><em>object</em></td>
+<td>The specification of the persistent volume.</td>
+</tr>
+<tr>
+<td><code>spec.accessModes</code> <br/><em>string</em></td>
+<td>The volume can be mounted on a host in any way supported by the resource provider and will give the provider access to different capabilities. Values is one of <code>ReadWriteOnce</code> (by a single node), <code>ReadOnlyMany</code> (by many nodes) or <code>ReadWriteMany</code> (by many nodes).</td>
+</tr>
+<tr>
+<td><code>spec.capacity.storage</code> <br/><em>string</em></td>
+<td>Storage capacity of the persistent volume.</td>
+</tr>
+<tr>
+<td><code>spec.persistentVolumeReclaimPolicy</code> <br/><em>string</em></td>
+<td>One of <code>Retain</code> - manual reclamation, <code>Recycle</code> - basic scrub or <code>Delete</code> - associated storage asset such as AWS EBS, GCE PD, Azure Disk, or OpenStack Cinder volume is deleted.</td>
+</tr>
+<tr>
+<td><code>spec.storageClassName</code> <br/><em>string</em></td>
+<td>Storage class associated to the volume.</td>
+</tr>
+<tr>
+<td><code>spec.capacity.volumeMode</code> <br/><em>string</em></td>
+<td>If set to <code>Filesystem</code> (default value), the volume is mounted into Pods into a directory. If set to <code>Block</code>, then the volume is used as a raw block device.</td>
+</tr>
+<tr>
+<td><code>status.phase</code> <br/><em>string</em></td>
+<td>Volume is in one of the following phases: <code>Available</code>, <code>Bound</code>, <code>Released</code> or <code>Failed</code>.</td>
 </tr>
 </tbody></table>
 <h2 id='kubernetes-releases'>Releases</h2>
@@ -34774,6 +35292,262 @@ For Windows instances, reset the administrator account and reset the Remote Desk
 <tr>
 <td><code>volumeBindingMode</code> <br/><em>string</em></td>
 <td>The default volume binding model for this storage class. You have a choice between <code>Immediate</code> or <code>WaitForFirstConsumer</code>.</td>
+</tr>
+</tbody></table>
+<h2 id='azure-persistent-volumes'>Persistent volumes</h2>
+
+<!-------------------- LIST Persistent volumes -------------------->
+
+<p><h4 id='azure-list-persistent-volumes'>List persistent volumes</h4><pre class="highlight shell tab-shell"><code>curl -X GET <span class="se">&lt;/span&gt;
+   -H <span class="s2">&quot;MC-Api-Key: your_api_key&quot;</span> <span class="se">&lt;/span&gt;
+   <span class="s2">&quot;https://cloudmc_endpoint/v1/services/a_service/an_environment/persistentvolumes?cluster_id=a_cluster_id&quot;</span>
+</code></pre>
+<blockquote>
+<p>The above command returns a JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">&quot;data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;pvc-05097a93-120d-45d2-aaab-0f273849fccd&quot;</span><span class="p">,</span><span class="w">
+      </span><span class="s2">&quot;metadata&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">&quot;annotations&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">&quot;pv.kubernetes.io/provisioned-by&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;rook-ceph.rbd.csi.ceph.com&quot;</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">&quot;creationTimestamp&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2020-07-03T09:12:17.000-04:00&quot;</span><span class="p">,</span><span class="w">
+        </span><span class="s2">&quot;finalizers&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="s2">&quot;kubernetes.io/pv-protection&quot;</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="s2">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;pvc-05097a93-120d-45d2-aaab-0f273849fccd&quot;</span><span class="p">,</span><span class="w">
+        </span><span class="s2">&quot;resourceVersion&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;147569183&quot;</span><span class="p">,</span><span class="w">
+        </span><span class="s2">&quot;selfLink&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/api/v1/persistentvolumes/pvc-05097a93-120d-45d2-aaab-0f273849fccd&quot;</span><span class="p">,</span><span class="w">
+        </span><span class="s2">&quot;uid&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2e20a8fb-d90c-4c39-acd8-7007f85e2d8e&quot;</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">&quot;spec&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">&quot;accessModes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="s2">&quot;ReadWriteOnce&quot;</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="s2">&quot;capacity&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">&quot;storage&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;8Gi&quot;</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">&quot;claimRef&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">&quot;apiVersion&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;v1&quot;</span><span class="p">,</span><span class="w">
+          </span><span class="s2">&quot;kind&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;PersistentVolumeClaim&quot;</span><span class="p">,</span><span class="w">
+          </span><span class="s2">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;data-cmc-cluster-zookeeper-1&quot;</span><span class="p">,</span><span class="w">
+          </span><span class="s2">&quot;namespace&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;cmc-kafka&quot;</span><span class="p">,</span><span class="w">
+          </span><span class="s2">&quot;resourceVersion&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;147569124&quot;</span><span class="p">,</span><span class="w">
+          </span><span class="s2">&quot;uid&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;05097a93-120d-45d2-aaab-0f273849fccd&quot;</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">&quot;csi&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">&quot;driver&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;rook-ceph.rbd.csi.ceph.com&quot;</span><span class="p">,</span><span class="w">
+          </span><span class="s2">&quot;fsType&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ext4&quot;</span><span class="p">,</span><span class="w">
+          </span><span class="s2">&quot;nodeStageSecretRef&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;rook-csi-rbd-node&quot;</span><span class="p">,</span><span class="w">
+            </span><span class="s2">&quot;namespace&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;rook-ceph&quot;</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="s2">&quot;volumeAttributes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">&quot;clusterID&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;rook-ceph&quot;</span><span class="p">,</span><span class="w">
+            </span><span class="s2">&quot;imageFeatures&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;layering&quot;</span><span class="p">,</span><span class="w">
+            </span><span class="s2">&quot;imageFormat&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2&quot;</span><span class="p">,</span><span class="w">
+            </span><span class="s2">&quot;pool&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;replicapool&quot;</span><span class="p">,</span><span class="w">
+            </span><span class="s2">&quot;storage.kubernetes.io/csiProvisionerIdentity&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1593101040137-8081-rook-ceph.rbd.csi.ceph.com&quot;</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="s2">&quot;volumeHandle&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0001-0009-rook-ceph-0000000000000001-d11d2a4d-bd2e-11ea-b56e-7a7db811cab1&quot;</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">&quot;persistentVolumeReclaimPolicy&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Delete&quot;</span><span class="p">,</span><span class="w">
+        </span><span class="s2">&quot;storageClassName&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;rook-ceph-block&quot;</span><span class="p">,</span><span class="w">
+        </span><span class="s2">&quot;volumeMode&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Filesystem&quot;</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">&quot;phase&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Bound&quot;</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+  </span><span class="s2">&quot;metadata&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">&quot;recordCount&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><code>GET /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/persistentvolumes?cluster_id=:cluster_id</code></p></p>
+
+<p>Retrieve a list of all persistent volumes in a given <a href="#administration-environments">environment</a>.</p>
+
+<table><thead>
+<tr>
+<th>Required</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>cluster_id</code> <br/><em>string</em></td>
+<td>The id of the cluster in which to list the persistent volumes.</td>
+</tr>
+</tbody></table>
+
+<table><thead>
+<tr>
+<th>Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code> <br/><em>string</em></td>
+<td>The id of the persistent volume. This is the name of the resource.</td>
+</tr>
+<tr>
+<td><code>metadata</code> <br/><em>object</em></td>
+<td>The metadata of the persistent volume.</td>
+</tr>
+<tr>
+<td><code>spec</code> <br/><em>object</em></td>
+<td>The specification of the persistent volume.</td>
+</tr>
+<tr>
+<td><code>spec.accessModes</code> <br/><em>string</em></td>
+<td>The volume can be mounted on a host in any way supported by the resource provider and will give the provider access to different capabilities. Values is one of <code>ReadWriteOnce</code> (by a single node), <code>ReadOnlyMany</code> (by many nodes) or <code>ReadWriteMany</code> (by many nodes).</td>
+</tr>
+<tr>
+<td><code>spec.capacity.storage</code> <br/><em>string</em></td>
+<td>Storage capacity of the persistent volume.</td>
+</tr>
+<tr>
+<td><code>spec.persistentVolumeReclaimPolicy</code> <br/><em>string</em></td>
+<td>One of <code>Retain</code> - manual reclamation, <code>Recycle</code> - basic scrub or <code>Delete</code> - associated storage asset such as AWS EBS, GCE PD, Azure Disk, or OpenStack Cinder volume is deleted.</td>
+</tr>
+<tr>
+<td><code>spec.storageClassName</code> <br/><em>string</em></td>
+<td>Storage class associated to the volume.</td>
+</tr>
+<tr>
+<td><code>spec.capacity.volumeMode</code> <br/><em>string</em></td>
+<td>If set to <code>Filesystem</code> (default value), the volume is mounted into Pods into a directory. If set to <code>Block</code>, then the volume is used as a raw block device.</td>
+</tr>
+<tr>
+<td><code>status.phase</code> <br/><em>string</em></td>
+<td>Volume is in one of the following phases: <code>Available</code>, <code>Bound</code>, <code>Released</code> or <code>Failed</code>.</td>
+</tr>
+</tbody></table>
+
+<!-------------------- GET A persistent volume -------------------->
+
+<p><h4 id='azure-get-a-persistent-volume'>Get a persistent volume</h4><pre class="highlight shell tab-shell"><code>curl -X GET <span class="se">&lt;/span&gt;
+   -H <span class="s2">&quot;MC-Api-Key: your_api_key&quot;</span> <span class="se">&lt;/span&gt;
+   <span class="s2">&quot;https://cloudmc_endpoint/v1/services/a_service/an_environment/persistentvolumes/pvc-05097a93-120d-45d2?cluster_id=a_cluster_id&quot;</span>
+</code></pre>
+<blockquote>
+<p>The above command returns a JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;pvc-05097a93-120d-45d2&quot;</span><span class="p">,</span><span class="w">
+  </span><span class="s2">&quot;metadata&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">&quot;annotations&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">&quot;pv.kubernetes.io/provisioned-by&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;rook-ceph.rbd.csi.ceph.com&quot;</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">&quot;creationTimestamp&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2020-07-03T09:12:17.000-04:00&quot;</span><span class="p">,</span><span class="w">
+    </span><span class="s2">&quot;finalizers&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="s2">&quot;kubernetes.io/pv-protection&quot;</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;pvc-05097a93-120d-45d2-aaab-0f273849fccd&quot;</span><span class="p">,</span><span class="w">
+    </span><span class="s2">&quot;resourceVersion&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;147569183&quot;</span><span class="p">,</span><span class="w">
+    </span><span class="s2">&quot;selfLink&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/api/v1/persistentvolumes/pvc-05097a93-120d-45d2-aaab-0f273849fccd&quot;</span><span class="p">,</span><span class="w">
+    </span><span class="s2">&quot;uid&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2e20a8fb-d90c-4c39-acd8-7007f85e2d8e&quot;</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">&quot;spec&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">&quot;accessModes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="s2">&quot;ReadWriteOnce&quot;</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">&quot;capacity&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">&quot;storage&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;8Gi&quot;</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">&quot;claimRef&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">&quot;apiVersion&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;v1&quot;</span><span class="p">,</span><span class="w">
+      </span><span class="s2">&quot;kind&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;PersistentVolumeClaim&quot;</span><span class="p">,</span><span class="w">
+      </span><span class="s2">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;data-cmc-cluster-zookeeper-1&quot;</span><span class="p">,</span><span class="w">
+      </span><span class="s2">&quot;namespace&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;cmc-kafka&quot;</span><span class="p">,</span><span class="w">
+      </span><span class="s2">&quot;resourceVersion&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;147569124&quot;</span><span class="p">,</span><span class="w">
+      </span><span class="s2">&quot;uid&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;05097a93-120d-45d2-aaab-0f273849fccd&quot;</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">&quot;csi&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">&quot;driver&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;rook-ceph.rbd.csi.ceph.com&quot;</span><span class="p">,</span><span class="w">
+      </span><span class="s2">&quot;fsType&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ext4&quot;</span><span class="p">,</span><span class="w">
+      </span><span class="s2">&quot;nodeStageSecretRef&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;rook-csi-rbd-node&quot;</span><span class="p">,</span><span class="w">
+        </span><span class="s2">&quot;namespace&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;rook-ceph&quot;</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">&quot;volumeAttributes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">&quot;clusterID&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;rook-ceph&quot;</span><span class="p">,</span><span class="w">
+        </span><span class="s2">&quot;imageFeatures&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;layering&quot;</span><span class="p">,</span><span class="w">
+        </span><span class="s2">&quot;imageFormat&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2&quot;</span><span class="p">,</span><span class="w">
+        </span><span class="s2">&quot;pool&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;replicapool&quot;</span><span class="p">,</span><span class="w">
+        </span><span class="s2">&quot;storage.kubernetes.io/csiProvisionerIdentity&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1593101040137-8081-rook-ceph.rbd.csi.ceph.com&quot;</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">&quot;volumeHandle&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0001-0009-rook-ceph-0000000000000001-d11d2a4d-bd2e-11ea-b56e-7a7db811cab1&quot;</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">&quot;persistentVolumeReclaimPolicy&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Delete&quot;</span><span class="p">,</span><span class="w">
+    </span><span class="s2">&quot;storageClassName&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;rook-ceph-block&quot;</span><span class="p">,</span><span class="w">
+    </span><span class="s2">&quot;volumeMode&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Filesystem&quot;</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">&quot;phase&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Bound&quot;</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><code>GET /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/persistentvolumes/:id?cluster_id=:cluster_id</code></p></p>
+
+<p>Retrieve a persistent volume and all its info in a given <a href="#administration-environments">environment</a>.</p>
+
+<table><thead>
+<tr>
+<th>Required</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>cluster_id</code> <br/><em>string</em></td>
+<td>The id of the cluster in which to get the persistent volume.</td>
+</tr>
+</tbody></table>
+
+<table><thead>
+<tr>
+<th>Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code> <br/><em>string</em></td>
+<td>The id of the persistent volume. This is the name of the resource.</td>
+</tr>
+<tr>
+<td><code>metadata</code> <br/><em>object</em></td>
+<td>The metadata of the persistent volume.</td>
+</tr>
+<tr>
+<td><code>spec</code> <br/><em>object</em></td>
+<td>The specification of the persistent volume.</td>
+</tr>
+<tr>
+<td><code>spec.accessModes</code> <br/><em>string</em></td>
+<td>The volume can be mounted on a host in any way supported by the resource provider and will give the provider access to different capabilities. Values is one of <code>ReadWriteOnce</code> (by a single node), <code>ReadOnlyMany</code> (by many nodes) or <code>ReadWriteMany</code> (by many nodes).</td>
+</tr>
+<tr>
+<td><code>spec.capacity.storage</code> <br/><em>string</em></td>
+<td>Storage capacity of the persistent volume.</td>
+</tr>
+<tr>
+<td><code>spec.persistentVolumeReclaimPolicy</code> <br/><em>string</em></td>
+<td>One of <code>Retain</code> - manual reclamation, <code>Recycle</code> - basic scrub or <code>Delete</code> - associated storage asset such as AWS EBS, GCE PD, Azure Disk, or OpenStack Cinder volume is deleted.</td>
+</tr>
+<tr>
+<td><code>spec.storageClassName</code> <br/><em>string</em></td>
+<td>Storage class associated to the volume.</td>
+</tr>
+<tr>
+<td><code>spec.capacity.volumeMode</code> <br/><em>string</em></td>
+<td>If set to <code>Filesystem</code> (default value), the volume is mounted into Pods into a directory. If set to <code>Block</code>, then the volume is used as a raw block device.</td>
+</tr>
+<tr>
+<td><code>status.phase</code> <br/><em>string</em></td>
+<td>Volume is in one of the following phases: <code>Available</code>, <code>Bound</code>, <code>Released</code> or <code>Failed</code>.</td>
 </tr>
 </tbody></table>
 <h1 id='masterportal-plugin'>MasterPortal plugin</h1>
