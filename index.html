@@ -1818,16 +1818,16 @@
                                           </li>
                                       </ul>
                                   </li>
-                              </ul>
-                          </li>
-                          <li>
-                            <a href="#gcp-persistent-volume-claims" class="toc-h3 toc-link" data-title="Google Cloud Platform plugin">Persistent Volume Claims</a>
-                              <ul class="toc-list-h4">
                                   <li>
-                                    <a href="#gcp-list-persistent-volume-claims" class="toc-h4 toc-link" data-title="Google Cloud Platform plugin">List persistent volume claims</a>
-                                  </li>
-                                  <li>
-                                    <a href="#gcp-get-a-persistent-volume-claim" class="toc-h4 toc-link" data-title="Google Cloud Platform plugin">Get a persistent volume claim</a>
+                                    <a href="#gcp-persistent-volume-claims" class="toc-h4 toc-link" data-title="Google Cloud Platform plugin">Persistent Volume Claims</a>
+                                      <ul class="toc-list-h5">
+                                          <li>
+                                            <a href="#gcp-list-persistent-volume-claims" class="toc-h5 toc-link" data-title="Google Cloud Platform plugin">List persistent volume claims</a>
+                                          </li>
+                                          <li>
+                                            <a href="#gcp-get-a-persistent-volume-claim" class="toc-h5 toc-link" data-title="Google Cloud Platform plugin">Get a persistent volume claim</a>
+                                          </li>
+                                      </ul>
                                   </li>
                               </ul>
                           </li>
@@ -2458,16 +2458,16 @@
                                           </li>
                                       </ul>
                                   </li>
-                              </ul>
-                          </li>
-                          <li>
-                            <a href="#azure-persistent-volume-claims" class="toc-h3 toc-link" data-title="Azure plugin">Persistent Volume Claims</a>
-                              <ul class="toc-list-h4">
                                   <li>
-                                    <a href="#azure-list-persistent-volume-claims" class="toc-h4 toc-link" data-title="Azure plugin">List persistent volume claims</a>
-                                  </li>
-                                  <li>
-                                    <a href="#azure-get-a-persistent-volume-claim" class="toc-h4 toc-link" data-title="Azure plugin">Get a persistent volume claim</a>
+                                    <a href="#azure-persistent-volume-claims" class="toc-h4 toc-link" data-title="Azure plugin">Persistent Volume Claims</a>
+                                      <ul class="toc-list-h5">
+                                          <li>
+                                            <a href="#azure-list-persistent-volume-claims" class="toc-h5 toc-link" data-title="Azure plugin">List persistent volume claims</a>
+                                          </li>
+                                          <li>
+                                            <a href="#azure-get-a-persistent-volume-claim" class="toc-h5 toc-link" data-title="Azure plugin">Get a persistent volume claim</a>
+                                          </li>
+                                      </ul>
                                   </li>
                               </ul>
                           </li>
@@ -25130,11 +25130,11 @@ curl -X POST <span class="se">\</span>
 <td>Volume is in one of the following phases: <code>Available</code>, <code>Bound</code>, <code>Released</code> or <code>Failed</code>.</td>
 </tr>
 </tbody></table>
-<h3 id='gcp-persistent-volume-claims'>Persistent Volume Claims</h3>
+<h4 id='gcp-persistent-volume-claims'>Persistent Volume Claims</h4>
 
 <!-------------------- LIST Persistent volume claims -------------------->
 
-<p><h4 id='gcp-list-persistent-volume-claims'>List persistent volume claims</h4><pre class="highlight shell tab-shell"><code>curl -X GET <span class="se">&lt;/span&gt;
+<p><h5 id='gcp-list-persistent-volume-claims'>List persistent volume claims</h5><pre class="highlight shell tab-shell"><code>curl -X GET <span class="se">&lt;/span&gt;
    -H <span class="s2">&quot;MC-Api-Key: your_api_key&quot;</span> <span class="se">&lt;/span&gt;
    <span class="s2">&quot;https://cloudmc_endpoint/v1/services/a_service/an_environment/persistentvolumeclaims?cluster_id=a_cluster_id&quot;</span>
 </code></pre>
@@ -25266,7 +25266,7 @@ curl -X POST <span class="se">\</span>
 
 <!-------------------- GET A persistent volume claim -------------------->
 
-<p><h4 id='gcp-get-a-persistent-volume-claim'>Get a persistent volume claim</h4><pre class="highlight shell tab-shell"><code>curl -X GET <span class="se">&lt;/span&gt;
+<p><h5 id='gcp-get-a-persistent-volume-claim'>Get a persistent volume claim</h5><pre class="highlight shell tab-shell"><code>curl -X GET <span class="se">&lt;/span&gt;
    -H <span class="s2">&quot;MC-Api-Key: your_api_key&quot;</span> <span class="se">&lt;/span&gt;
    <span class="s2">&quot;https://cloudmc_endpoint/v1/services/a_service/an_environment/persistentvolumeclaims/cmc-staging-mysql/cmc-stg&quot;</span>
 </code></pre>
@@ -36222,11 +36222,11 @@ For Windows instances, reset the administrator account and reset the Remote Desk
 <td>Volume is in one of the following phases: <code>Available</code>, <code>Bound</code>, <code>Released</code> or <code>Failed</code>.</td>
 </tr>
 </tbody></table>
-<h3 id='azure-persistent-volume-claims'>Persistent Volume Claims</h3>
+<h4 id='azure-persistent-volume-claims'>Persistent Volume Claims</h4>
 
 <!-------------------- LIST Persistent volume claims -------------------->
 
-<p><h4 id='azure-list-persistent-volume-claims'>List persistent volume claims</h4><pre class="highlight shell tab-shell"><code>curl -X GET <span class="se">&lt;/span&gt;
+<p><h5 id='azure-list-persistent-volume-claims'>List persistent volume claims</h5><pre class="highlight shell tab-shell"><code>curl -X GET <span class="se">&lt;/span&gt;
    -H <span class="s2">&quot;MC-Api-Key: your_api_key&quot;</span> <span class="se">&lt;/span&gt;
    <span class="s2">&quot;https://cloudmc_endpoint/v1/services/a_service/an_environment/persistentvolumeclaims?cluster_id=a_cluster_id&quot;</span>
 </code></pre>
@@ -36358,7 +36358,7 @@ For Windows instances, reset the administrator account and reset the Remote Desk
 
 <!-------------------- GET A persistent volume claim -------------------->
 
-<p><h4 id='azure-get-a-persistent-volume-claim'>Get a persistent volume claim</h4><pre class="highlight shell tab-shell"><code>curl -X GET <span class="se">&lt;/span&gt;
+<p><h5 id='azure-get-a-persistent-volume-claim'>Get a persistent volume claim</h5><pre class="highlight shell tab-shell"><code>curl -X GET <span class="se">&lt;/span&gt;
    -H <span class="s2">&quot;MC-Api-Key: your_api_key&quot;</span> <span class="se">&lt;/span&gt;
    <span class="s2">&quot;https://cloudmc_endpoint/v1/services/a_service/an_environment/persistentvolumeclaims/cmc-staging-mysql/cmc-stg&quot;</span>
 </code></pre>
