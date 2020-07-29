@@ -6105,6 +6105,7 @@ curl <span class="s2">"https://cloudmc_endpoint/v1/identity_providers"</span> <s
       </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"02b3cbd5-9286-4cd7-b47e-22b2fb9ceae5"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"connectionName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Google"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OIDC"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"rank"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"parameters"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
         </span><span class="p">{</span><span class="w">
           </span><span class="s2">"parameter"</span><span class="p">:</span><span class="w"> </span><span class="s2">"issuerURL"</span><span class="p">,</span><span class="w">
@@ -6169,6 +6170,10 @@ curl <span class="s2">"https://cloudmc_endpoint/v1/identity_providers"</span> <s
 <td><code>parameters</code><br/><em>Array</em></td>
 <td>A list of parameters associated with the identity provider.</td>
 </tr>
+<tr>
+<td><code>rank</code><br/><em>int</em></td>
+<td>If provided, this integer sorts identity providers on the Login page in ascending order.</td>
+</tr>
 </tbody></table>
 
 <!-------------------- CREATE IDPS -------------------->
@@ -6213,6 +6218,7 @@ curl -X POST <span class="s2">"https://cloudmc_endpoint/rest/identity_providers"
     <span class="s2">"displayName"</span><span class="p">:</span> <span class="s2">"Google"</span><span class="p">,</span>
     <span class="s2">"connectionName"</span><span class="p">:</span> <span class="s2">"CloudMC Google"</span><span class="p">,</span>
     <span class="s2">"type"</span><span class="p">:</span> <span class="s2">"OIDC"</span><span class="p">,</span>
+    <span class="s2">"rank"</span><span class="p">:</span> <span class="s2">"1"</span><span class="p">,</span>
     <span class="s2">"parameters"</span><span class="p">:</span> <span class="p">[</span>
       <span class="p">{</span>
         <span class="s2">"parameter"</span><span class="p">:</span> <span class="s2">"issuerURL"</span><span class="p">,</span>
@@ -6266,6 +6272,10 @@ curl -X POST <span class="s2">"https://cloudmc_endpoint/rest/identity_providers"
 <tr>
 <td><code>parameters</code><br/><em>Array</em></td>
 <td>A list of parameters associated with the identity provider. The issuerURL will be set if of a default provider type.</td>
+</tr>
+<tr>
+<td><code>rank</code><br/><em>int</em></td>
+<td>If provided, this integer sorts identity providers on the Login page in ascending order.</td>
 </tr>
 </tbody></table>
 
@@ -6325,6 +6335,7 @@ curl -X PUT <span class="s2">"https://cloudmc_endpoint/rest/identity_providers/c
     <span class="s2">"id"</span><span class="p">:</span> <span class="s2">"da33bf85-6ba3-4214-a258-9442de149eff"</span><span class="p">,</span>
     <span class="s2">"connectionName"</span><span class="p">:</span> <span class="s2">"CloudMC Google"</span><span class="p">,</span>
     <span class="s2">"type"</span><span class="p">:</span> <span class="s2">"OIDC"</span><span class="p">,</span>
+    <span class="s2">"rank"</span><span class="p">:</span> <span class="s2">"1"</span><span class="p">,</span>
     <span class="s2">"parameters"</span><span class="p">:</span> <span class="p">[</span>
       <span class="p">{</span>
         <span class="s2">"parameter"</span><span class="p">:</span> <span class="s2">"issuerURL"</span><span class="p">,</span>
@@ -6378,6 +6389,10 @@ curl -X PUT <span class="s2">"https://cloudmc_endpoint/rest/identity_providers/c
 <tr>
 <td><code>parameters</code><br/><em>Array</em></td>
 <td>A list of parameters associated with the identity provider. The issuerURL will be set if of a default provider type.</td>
+</tr>
+<tr>
+<td><code>rank</code><br/><em>int</em></td>
+<td>If provided, this integer sorts identity providers on the Login page in ascending order.</td>
 </tr>
 </tbody></table>
 
