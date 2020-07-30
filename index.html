@@ -16206,8 +16206,8 @@ curl -X PUT <span class="se">\</span>
       </span><span class="s2">"project"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test-area-oox"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"internalIp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10.162.0.7"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"externalIp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"35.203.99.102"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"networkName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"default"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"subnetworkName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"default"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"shortNetwork"</span><span class="p">:</span><span class="w"> </span><span class="s2">"default"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"shortSubnetwork"</span><span class="p">:</span><span class="w"> </span><span class="s2">"default"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"iconUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/rest/services/assets/gcp/os_logo/debian.png"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"osImageName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"debian-9-stretch"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"osImageSelfLink"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.googleapis.com/compute/v1/projects/debian-cloud/global/images/debian-9-stretch-v20190514"</span><span class="p">,</span><span class="w">
@@ -16309,11 +16309,11 @@ curl -X PUT <span class="se">\</span>
 <td>The instance&#39;s internal IP.</td>
 </tr>
 <tr>
-<td><code>networkName</code><br/><em>string</em></td>
+<td><code>shortNetwork</code><br/><em>string</em></td>
 <td>The network to which the instance is connected to.</td>
 </tr>
 <tr>
-<td><code>subnetworkName</code><br/><em>string</em></td>
+<td><code>shortSubnetwork</code><br/><em>string</em></td>
 <td>The sub-network within the network the instance is connected to.</td>
 </tr>
 <tr>
@@ -16444,8 +16444,8 @@ curl -X PUT <span class="se">\</span>
     </span><span class="s2">"project"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test-area-oox"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"internalIp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10.162.0.7"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"externalIp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"35.203.99.102"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"networkName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"default"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"subnetworkName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"default"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"shortNetwork"</span><span class="p">:</span><span class="w"> </span><span class="s2">"default"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"shortSubnetwork"</span><span class="p">:</span><span class="w"> </span><span class="s2">"default"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"iconUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/rest/services/assets/gcp/os_logo/debian.png"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"osImageName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"debian-9-stretch"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"osImageSelfLink"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.googleapis.com/compute/v1/projects/debian-cloud/global/images/debian-9-stretch-v20190514"</span><span class="p">,</span><span class="w">
@@ -16543,11 +16543,11 @@ curl -X PUT <span class="se">\</span>
 <td>The instance&#39;s internal IP.</td>
 </tr>
 <tr>
-<td><code>networkName</code><br/><em>string</em></td>
+<td><code>shortNetwork</code><br/><em>string</em></td>
 <td>The network to which the instance is connected to.</td>
 </tr>
 <tr>
-<td><code>subnetworkName</code><br/><em>string</em></td>
+<td><code>shortSubnetwork</code><br/><em>string</em></td>
 <td>The sub-network within the network the instance is connected to.</td>
 </tr>
 <tr>
@@ -16616,7 +16616,7 @@ curl -X PUT <span class="se">\</span>
   <span class="s2">"cpuCount"</span><span class="p">:</span> <span class="s2">"2"</span><span class="p">,</span>
   <span class="s2">"memoryInGB"</span><span class="p">:</span> <span class="s2">"4.5"</span><span class="p">,</span>
   <span class="s2">"osImageSelfLink"</span><span class="p">:</span> <span class="s2">"https://www.googleapis.com/compute/v1/projects/debian-cloud/global/images/debian-9-stretch-v20190514"</span><span class="p">,</span>
-  <span class="s2">"subnetworkName"</span><span class="p">:</span> <span class="s2">"production-net"</span><span class="p">,</span>
+  <span class="s2">"shortSubnetwork"</span><span class="p">:</span> <span class="s2">"production-net"</span><span class="p">,</span>
   <span class="s2">"shortIP"</span><span class="p">:</span> <span class="s2">"my-ip-name"</span><span class="p">,</span>
   <span class="s2">"startupScript"</span><span class="p">:</span> <span class="s2">"#! /bin/bash\napt-get update\nEOF"</span>
 <span class="p">}</span>
@@ -16631,7 +16631,7 @@ curl -X PUT <span class="se">\</span>
   <span class="s2">"cpuCount"</span><span class="p">:</span> <span class="s2">"2"</span><span class="p">,</span>
   <span class="s2">"memoryInGB"</span><span class="p">:</span> <span class="s2">"4.5"</span><span class="p">,</span>
   <span class="s2">"osImageSelfLink"</span><span class="p">:</span> <span class="s2">"https://www.googleapis.com/compute/v1/projects/debian-cloud/global/images/debian-9-stretch-v20190514"</span><span class="p">,</span>
-  <span class="s2">"subnetworkName"</span><span class="p">:</span> <span class="s2">"staging-net"</span><span class="p">,</span>
+  <span class="s2">"shortSubnetwork"</span><span class="p">:</span> <span class="s2">"staging-net"</span><span class="p">,</span>
   <span class="s2">"reserveStaticIP"</span><span class="p">:</span> <span class="kc">true</span>
 <span class="p">}</span>
 
@@ -16645,7 +16645,7 @@ curl -X PUT <span class="se">\</span>
   <span class="s2">"cpuCount"</span><span class="p">:</span> <span class="s2">"2"</span><span class="p">,</span>
   <span class="s2">"memoryInGB"</span><span class="p">:</span> <span class="s2">"4.5"</span><span class="p">,</span>
   <span class="s2">"osImageSelfLink"</span><span class="p">:</span> <span class="s2">"https://www.googleapis.com/compute/v1/projects/debian-cloud/global/images/debian-9-stretch-v20190514"</span><span class="p">,</span>
-  <span class="s2">"subnetworkName"</span><span class="p">:</span> <span class="s2">"development-net"</span><span class="p">,</span>
+  <span class="s2">"shortSubnetwork"</span><span class="p">:</span> <span class="s2">"development-net"</span><span class="p">,</span>
   <span class="s2">"ephemeralIP"</span><span class="p">:</span> <span class="kc">true</span>
 <span class="p">}</span>
 
@@ -16659,7 +16659,7 @@ curl -X PUT <span class="se">\</span>
   <span class="s2">"cpuCount"</span><span class="p">:</span> <span class="s2">"2"</span><span class="p">,</span>
   <span class="s2">"memoryInGB"</span><span class="p">:</span> <span class="s2">"4.5"</span><span class="p">,</span>
   <span class="s2">"osImageSelfLink"</span><span class="p">:</span> <span class="s2">"https://www.googleapis.com/compute/v1/projects/debian-cloud/global/images/debian-9-stretch-v20190514"</span><span class="p">,</span>
-  <span class="s2">"subnetworkName"</span><span class="p">:</span> <span class="s2">"demo-net"</span><span class="p">,</span>
+  <span class="s2">"shortSubnetwork"</span><span class="p">:</span> <span class="s2">"demo-net"</span><span class="p">,</span>
 <span class="p">}</span>
 </code></pre>
 <p><code>POST /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/instances</code></p>
@@ -16705,7 +16705,7 @@ curl -X PUT <span class="se">\</span>
 <td>The full URL to the OS image.</td>
 </tr>
 <tr>
-<td><code>subnetworkName</code><br/><em>string</em></td>
+<td><code>shortSubnetwork</code><br/><em>string</em></td>
 <td>The subnet that the instance is attached to upon creation. <em>(Note that the subnet must be in the same region as the instance)</em>.</td>
 </tr>
 </tbody></table>
@@ -17238,7 +17238,7 @@ An instance can only belong to one load balanced instance group. But you can add
 </thead><tbody>
 <tr>
 <td><code>shortInstances</code><br/><em>array[string]</em></td>
-<td>Array of instance names to add to the instance group upon creation.</td>
+<td>Array of instance names to add to the instance group upon creation. All these instances should belong to the zone provided and should be in the same subnet.</td>
 </tr>
 <tr>
 <td><code>shortNetwork</code><br/><em>string</em></td>
@@ -17250,7 +17250,7 @@ An instance can only belong to one load balanced instance group. But you can add
 </tr>
 <tr>
 <td><code>shortSubnetwork</code><br/><em>string</em></td>
-<td>The sub-network within the network the instance group is connected to.</td>
+<td>The sub-network within the network the instance group is connected to. This will only be applied to the instance group if instances are being bound at creation time, if not, only the network will be applied to the instance group.</td>
 </tr>
 </tbody></table>
 
