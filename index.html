@@ -3211,8 +3211,32 @@ curl <span class="s2">"https://cloudmc_endpoint/v1/organizations"</span> <span c
 <td>The services for which the organization is allowed to provision resources.<br/><em>includes</em>: <code>id</code>,<code>serviceCode</code></td>
 </tr>
 <tr>
+<td><code>resourceCommitments</code></br><em>Array[<a href="#administration-retrieve-a-resource-commitment">ResourceCommitment</a>]</em></td>
+<td>The resource commitments applied on the organization.</td>
+</tr>
+<tr>
 <td><code>users</code><br/><em>Array[<a href="#administration-users">User</a>]</em></td>
 <td>The users of the organization.<br/><em>includes</em>: <code>id</code></td>
+</tr>
+<tr>
+<td><code>notes</code><br/><em>string</em></td>
+<td>Organization notes.</td>
+</tr>
+<tr>
+<td><code>isDbAuthentication</code><br/><em>boolean</em></td>
+<td>Whether or not the organization supports database authentication.</td>
+</tr>
+<tr>
+<td><code>isLdapAuthentication</code><br/><em>boolean</em></td>
+<td>Whether or not LDAP authentication is enabled on this organization.</td>
+</tr>
+<tr>
+<td><code>isTrial</code><br/><em>boolean</em></td>
+<td>Whether or not this is a trial organization.</td>
+</tr>
+<tr>
+<td><code>customDomain</code><br/><em><a href="#administration-get-verified-domains">VerifiedDomain</a></em></td>
+<td>The custom domain for the organization.</td>
 </tr>
 </tbody></table>
 
@@ -3312,8 +3336,32 @@ curl <span class="s2">"https://cloudmc_endpoint/v1/organizations/03bc22bd-adc4-4
 <td>The services for which the organization is allowed to provision resources.<br/><em>includes</em>: <code>id</code>,<code>serviceCode</code></td>
 </tr>
 <tr>
+<td><code>resourceCommitments</code></br><em>Array[<a href="#administration-retrieve-a-resource-commitment">ResourceCommitment</a>]</em></td>
+<td>The resource commitments applied on the organization.</td>
+</tr>
+<tr>
 <td><code>users</code><br/><em>Array[<a href="#administration-users">User</a>]</em></td>
 <td>The users of the organization.<br/><em>includes</em>: <code>id</code></td>
+</tr>
+<tr>
+<td><code>notes</code><br/><em>string</em></td>
+<td>Organization notes.</td>
+</tr>
+<tr>
+<td><code>isDbAuthentication</code><br/><em>boolean</em></td>
+<td>Whether or not the organization supports database authentication.</td>
+</tr>
+<tr>
+<td><code>isLdapAuthentication</code><br/><em>boolean</em></td>
+<td>Whether or not LDAP authentication is enabled on this organization.</td>
+</tr>
+<tr>
+<td><code>isTrial</code><br/><em>boolean</em></td>
+<td>Whether or not this is a trial organization.</td>
+</tr>
+<tr>
+<td><code>customDomain</code><br/><em><a href="#administration-get-verified-domains">VerifiedDomain</a></em></td>
+<td>The custom domain for the organization.</td>
 </tr>
 </tbody></table>
 
@@ -3404,7 +3452,7 @@ curl -X PUT <span class="s2">"https://cloudmc_endpoint/v1/organizations/03bc22bd
 </span></code></pre>
 <table><thead>
 <tr>
-<th>Required</th>
+<th>Optional</th>
 <th>&nbsp;</th>
 </tr>
 </thead><tbody>
@@ -3416,17 +3464,37 @@ curl -X PUT <span class="s2">"https://cloudmc_endpoint/v1/organizations/03bc22bd
 <td><code>entryPoint</code><br/><em>string</em></td>
 <td>The entry point of the organization is the subdomain of the organization in the CloudMC URL : <code>[entryPoint].CloudMC</code>.</td>
 </tr>
-</tbody></table>
-
-<table><thead>
-<tr>
-<th>Optional</th>
-<th>&nbsp;</th>
-</tr>
-</thead><tbody>
 <tr>
 <td><code>serviceConnections</code><br/>Array[<a href="#administration-service-connections">ServiceConnection</a>]</td>
 <td>A list of service connections for which the organization may provision resources. The caller must have access to all connections that are provided. <strong>NB :</strong> Service connection access may be added but not revoked at this time.<br/><em>required :</em> <code>id</code></td>
+</tr>
+<tr>
+<td><code>tags</code><br/><em>Array[string]</em></td>
+<td>Tags associated to the organization.</td>
+</tr>
+<tr>
+<td><code>resourceCommitments</code></br><em>Array[<a href="#administration-retrieve-a-resource-commitment">ResourceCommitment</a>]</em></td>
+<td>The resource commitments applied on the organization.</td>
+</tr>
+<tr>
+<td><code>users</code><br/><em>Array[<a href="#administration-users">User</a>]</em></td>
+<td>The users of the organization.<br/><em>required</em> : <code>id</code></td>
+</tr>
+<tr>
+<td><code>notes</code><br/><em>string</em></td>
+<td>Organization notes. Must have the <code>Organization metadata: Manage</code> permission.</td>
+</tr>
+<tr>
+<td><code>isDbAuthentication</code><br/><em>boolean</em></td>
+<td>Whether or not the organization supports database authentication.</td>
+</tr>
+<tr>
+<td><code>isLdapAuthentication</code><br/><em>boolean</em></td>
+<td>Whether or not LDAP authentication is enabled on this organization.</td>
+</tr>
+<tr>
+<td><code>customDomain</code><br/><em><a href="#administration-get-verified-domains">VerifiedDomain</a></em></td>
+<td>An object describing a verified domain. Must have the <code>Organization: Manage reseller features</code> permission. <br/><em>required</em> : <code>id</code></td>
 </tr>
 </tbody></table>
 
