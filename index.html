@@ -1678,11 +1678,12 @@
                                   </li>
                                   <li>
                                     <a href="#gcp-get-a-namespace" class="toc-h4 toc-link" data-title="Google Cloud Platform plugin">Get a namespace</a>
-                                      <ul class="toc-list-h5">
-                                          <li>
-                                            <a href="#gcp-delete-a-namespace" class="toc-h5 toc-link" data-title="Google Cloud Platform plugin">Delete a namespace</a>
-                                          </li>
-                                      </ul>
+                                  </li>
+                                  <li>
+                                    <a href="#gcp-create-a-namespace" class="toc-h4 toc-link" data-title="Google Cloud Platform plugin">Create a namespace</a>
+                                  </li>
+                                  <li>
+                                    <a href="#gcp-delete-a-namespace" class="toc-h4 toc-link" data-title="Google Cloud Platform plugin">Delete a namespace</a>
                                   </li>
                               </ul>
                           </li>
@@ -1774,6 +1775,9 @@
                                           <li>
                                             <a href="#gcp-create-a-service" class="toc-h5 toc-link" data-title="Google Cloud Platform plugin">Create a service</a>
                                           </li>
+                                          <li>
+                                            <a href="#gcp-delete-a-service" class="toc-h5 toc-link" data-title="Google Cloud Platform plugin">Delete a service</a>
+                                          </li>
                                       </ul>
                                   </li>
                                   <li>
@@ -1787,6 +1791,9 @@
                                           </li>
                                           <li>
                                             <a href="#gcp-create-an-ingress" class="toc-h5 toc-link" data-title="Google Cloud Platform plugin">Create an ingress</a>
+                                          </li>
+                                          <li>
+                                            <a href="#gcp-delete-an-ingress" class="toc-h5 toc-link" data-title="Google Cloud Platform plugin">Delete an ingress</a>
                                           </li>
                                       </ul>
                                   </li>
@@ -1955,11 +1962,12 @@
                           </li>
                           <li>
                             <a href="#kubernetes-get-a-namespace" class="toc-h3 toc-link" data-title="Kubernetes plugin">Get a namespace</a>
-                              <ul class="toc-list-h4">
-                                  <li>
-                                    <a href="#kubernetes-delete-a-namespace" class="toc-h4 toc-link" data-title="Kubernetes plugin">Delete a namespace</a>
-                                  </li>
-                              </ul>
+                          </li>
+                          <li>
+                            <a href="#kubernetes-create-a-namespace" class="toc-h3 toc-link" data-title="Kubernetes plugin">Create a namespace</a>
+                          </li>
+                          <li>
+                            <a href="#kubernetes-delete-a-namespace" class="toc-h3 toc-link" data-title="Kubernetes plugin">Delete a namespace</a>
                           </li>
                       </ul>
                   </li>
@@ -2045,6 +2053,9 @@
                                   <li>
                                     <a href="#kubernetes-create-a-service" class="toc-h4 toc-link" data-title="Kubernetes plugin">Create a service</a>
                                   </li>
+                                  <li>
+                                    <a href="#kubernetes-delete-a-service" class="toc-h4 toc-link" data-title="Kubernetes plugin">Delete a service</a>
+                                  </li>
                               </ul>
                           </li>
                           <li>
@@ -2058,6 +2069,9 @@
                                   </li>
                                   <li>
                                     <a href="#kubernetes-create-an-ingress" class="toc-h4 toc-link" data-title="Kubernetes plugin">Create an ingress</a>
+                                  </li>
+                                  <li>
+                                    <a href="#kubernetes-delete-a-ingress" class="toc-h4 toc-link" data-title="Kubernetes plugin">Delete a ingress</a>
                                   </li>
                               </ul>
                           </li>
@@ -2394,11 +2408,12 @@
                                   </li>
                                   <li>
                                     <a href="#azure-get-a-namespace" class="toc-h4 toc-link" data-title="Azure plugin">Get a namespace</a>
-                                      <ul class="toc-list-h5">
-                                          <li>
-                                            <a href="#azure-delete-a-namespace" class="toc-h5 toc-link" data-title="Azure plugin">Delete a namespace</a>
-                                          </li>
-                                      </ul>
+                                  </li>
+                                  <li>
+                                    <a href="#azure-create-a-namespace" class="toc-h4 toc-link" data-title="Azure plugin">Create a namespace</a>
+                                  </li>
+                                  <li>
+                                    <a href="#azure-delete-a-namespace" class="toc-h4 toc-link" data-title="Azure plugin">Delete a namespace</a>
                                   </li>
                               </ul>
                           </li>
@@ -2490,6 +2505,9 @@
                                           <li>
                                             <a href="#azure-create-a-service" class="toc-h5 toc-link" data-title="Azure plugin">Create a service</a>
                                           </li>
+                                          <li>
+                                            <a href="#azure-delete-a-service" class="toc-h5 toc-link" data-title="Azure plugin">Delete a service</a>
+                                          </li>
                                       </ul>
                                   </li>
                                   <li>
@@ -2503,6 +2521,9 @@
                                           </li>
                                           <li>
                                             <a href="#azure-create-an-ingress" class="toc-h5 toc-link" data-title="Azure plugin">Create an ingress</a>
+                                          </li>
+                                          <li>
+                                            <a href="#azure-delete-an-ingress" class="toc-h5 toc-link" data-title="Azure plugin">Delete an ingress</a>
                                           </li>
                                       </ul>
                                   </li>
@@ -22910,9 +22931,97 @@ curl -X POST <span class="se">\</span>
 </tr>
 </tbody></table>
 
+<!-------------------- CREATE A NAMESPACE -------------------->
+
+<p><h4 id='gcp-create-a-namespace'>Create a namespace</h4><pre class="highlight shell tab-shell"><code>curl -X POST <span class="se">&lt;/span&gt;
+  -H <span class="s2">&quot;MC-Api-Key: your_api_key&quot;</span> <span class="se">&lt;/span&gt;
+   <span class="s2">&quot;https://cloudmc_endpoint/v1/services/a_service/an_environment/namespaces?cluster_id=test-cluster&quot;</span>
+  Content-Type: application/json
+  <span class="o">{</span>
+  <span class="s2">&quot;apiVersion&quot;</span>: <span class="s2">&quot;v1&quot;</span>,
+  <span class="s2">&quot;kind&quot;</span>: <span class="s2">&quot;Namespace&quot;</span>,
+  <span class="s2">&quot;metadata&quot;</span>: <span class="o">{</span>
+    <span class="s2">&quot;name&quot;</span>: <span class="s2">&quot;test-namespace&quot;</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</code></pre>
+<blockquote>
+<p>The above command returns a JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">&quot;taskId&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1542bd45-4732-419b-87b6-4ea6ec695c2b&quot;</span><span class="p">,</span><span class="w">
+  </span><span class="s2">&quot;taskStatus&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;PENDING&quot;</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><code>POST /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/namespaces?cluster_id=:cluster_id</code></p></p>
+
+<p>Create a namespace in a given <a href="#administration-environments">environment</a>.</p>
+
+<table><thead>
+<tr>
+<th>Required</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>cluster_id</code> <br/><em>string</em></td>
+<td>The id of the cluster in which to get the namespace.</td>
+</tr>
+</tbody></table>
+
+<table><thead>
+<tr>
+<th>Required Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>apiVersion</code> <br/> <em>string</em></td>
+<td>The api version (versioned schema) of the namespace.</td>
+</tr>
+<tr>
+<td><code>metadata</code> <br/><em>object</em></td>
+<td>The metadata of the namespace.</td>
+</tr>
+<tr>
+<td><code>metadata.name</code> <br/><em>string</em></td>
+<td>The name of the namespace.</td>
+</tr>
+</tbody></table>
+
+<table><thead>
+<tr>
+<th>Optional Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>kind</code><br/><em>string</em></td>
+<td>The string value of the REST resource that this object represents.</td>
+</tr>
+</tbody></table>
+
+<p>Return value:</p>
+
+<table><thead>
+<tr>
+<th>Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>taskId</code> <br/><em>string</em></td>
+<td>The id corresponding to the create namespace task.</td>
+</tr>
+<tr>
+<td><code>taskStatus</code> <br/><em>string</em></td>
+<td>The status of the operation.</td>
+</tr>
+</tbody></table>
+
 <!-------------------- DELETE A NAMESPACE -------------------->
 
-<p><h5 id='gcp-delete-a-namespace'>Delete a namespace</h5><pre class="highlight shell tab-shell"><code>curl -X DELETE <span class="se">&lt;/span&gt;
+<p><h4 id='gcp-delete-a-namespace'>Delete a namespace</h4><pre class="highlight shell tab-shell"><code>curl -X DELETE <span class="se">&lt;/span&gt;
    -H <span class="s2">&quot;MC-Api-Key: your_api_key&quot;</span> <span class="se">&lt;/span&gt;
    <span class="s2">&quot;https://cloudmc_endpoint/v1/services/a_service/an_environment/namespaces/test-namespace?cluster_id=test-cluster&quot;</span>
 </code></pre>
@@ -24867,6 +24976,44 @@ curl -X POST <span class="se">\</span>
 <td>The status of the operation.</td>
 </tr>
 </tbody></table>
+
+<!-------------------- DELETE A SERVICE -------------------->
+
+<p><h5 id='gcp-delete-a-service'>Delete a service</h5><pre class="highlight shell tab-shell"><code>curl -X DELETE <span class="se">&lt;/span&gt;
+   -H <span class="s2">&quot;MC-Api-Key: your_api_key&quot;</span> <span class="se">&lt;/span&gt;
+   <span class="s2">&quot;https://cloudmc_endpoint/v1/services/a_service/an_environment/services/test-service/default?cluster_id=test-cluster&quot;</span>
+</code></pre>
+<p><code>DELETE /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/services/:id?cluster_id=:cluster_id</code></p></p>
+
+<p>Delete a service from a given <a href="#administration-environments">environment</a>.</p>
+
+<table><thead>
+<tr>
+<th>Required</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>cluster_id</code> <br/><em>string</em></td>
+<td>The id of the cluster in which to get the service.</td>
+</tr>
+</tbody></table>
+
+<table><thead>
+<tr>
+<th>Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>taskId</code> <br/><em>string</em></td>
+<td>The id corresponding to the delete service task.</td>
+</tr>
+<tr>
+<td><code>taskStatus</code> <br/><em>string</em></td>
+<td>The status of the operation.</td>
+</tr>
+</tbody></table>
 <h4 id='gcp-ingresses'>Ingresses</h4>
 
 <!-------------------- LIST INGRESSES -------------------->
@@ -25224,6 +25371,52 @@ curl -X POST <span class="se">\</span>
 <tr>
 <td><code>taskId</code> <br/><em>string</em></td>
 <td>The id corresponding to the create ingress task.</td>
+</tr>
+<tr>
+<td><code>taskStatus</code> <br/><em>string</em></td>
+<td>The status of the operation.</td>
+</tr>
+</tbody></table>
+
+<!-------------------- DELETE AN INGRESS -------------------->
+
+<p><h5 id='gcp-delete-an-ingress'>Delete an ingress</h5><pre class="highlight shell tab-shell"><code>curl -X DELETE <span class="se">&lt;/span&gt;
+   -H <span class="s2">&quot;MC-Api-Key: your_api_key&quot;</span> <span class="se">&lt;/span&gt;
+   <span class="s2">&quot;https://cloudmc_endpoint/v1/services/a_service/an_environment/ingresses/test-ingress/default?cluster_id=test-cluster&quot;</span>
+</code></pre>
+<blockquote>
+<p>The above command returns a JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">&quot;taskId&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1542bd45-4732-419b-87b6-4ea6ec695c2b&quot;</span><span class="p">,</span><span class="w">
+  </span><span class="s2">&quot;taskStatus&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;PENDING&quot;</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><code>DELETE /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/ingresses/:id?cluster_id=:cluster_id</code></p></p>
+
+<p>Delete an ingress from a given <a href="#administration-environments">environment</a>.</p>
+
+<table><thead>
+<tr>
+<th>Required</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>cluster_id</code> <br/><em>string</em></td>
+<td>The id of the cluster in which to get the ingress.</td>
+</tr>
+</tbody></table>
+
+<table><thead>
+<tr>
+<th>Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>taskId</code> <br/><em>string</em></td>
+<td>The id corresponding to the delete ingress task.</td>
 </tr>
 <tr>
 <td><code>taskStatus</code> <br/><em>string</em></td>
@@ -28575,8 +28768,83 @@ curl -X POST <span class="se">\</span>
 </tr>
 </tbody></table>
 
+<!-------------------- CREATE A NAMESPACE -------------------->
+<h3 id='kubernetes-create-a-namespace'>Create a namespace</h3><pre class="highlight shell tab-shell"><code>curl -X POST <span class="se">\</span>
+  -H <span class="s2">"MC-Api-Key: your_api_key"</span> <span class="se">\</span>
+   <span class="s2">"https://cloudmc_endpoint/v1/services/a_service/an_environment/namespaces"</span>
+  Content-Type: application/json
+  <span class="o">{</span>
+  <span class="s2">"apiVersion"</span>: <span class="s2">"v1"</span>,
+  <span class="s2">"kind"</span>: <span class="s2">"Namespace"</span>,
+  <span class="s2">"metadata"</span>: <span class="o">{</span>
+    <span class="s2">"name"</span>: <span class="s2">"test-namespace"</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</code></pre>
+<blockquote>
+<p>The above command returns a JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"taskId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1542bd45-4732-419b-87b6-4ea6ec695c2b"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"taskStatus"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PENDING"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><code>POST /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/namespaces</code></p>
+
+<p>Create a namespace in a given <a href="#administration-environments">environment</a>.</p>
+
+<table><thead>
+<tr>
+<th>Required Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>apiVersion</code> <br/> <em>string</em></td>
+<td>The api version (versioned schema) of the namespace.</td>
+</tr>
+<tr>
+<td><code>metadata</code> <br/><em>object</em></td>
+<td>The metadata of the namespace.</td>
+</tr>
+<tr>
+<td><code>metadata.name</code> <br/><em>string</em></td>
+<td>The name of the namespace.</td>
+</tr>
+</tbody></table>
+
+<table><thead>
+<tr>
+<th>Optional Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>kind</code><br/><em>string</em></td>
+<td>The string value of the REST resource that this object represents.</td>
+</tr>
+</tbody></table>
+
+<p>Return value:</p>
+
+<table><thead>
+<tr>
+<th>Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>taskId</code> <br/><em>string</em></td>
+<td>The id corresponding to the create namespace task.</td>
+</tr>
+<tr>
+<td><code>taskStatus</code> <br/><em>string</em></td>
+<td>The status of the operation.</td>
+</tr>
+</tbody></table>
+
 <!-------------------- DELETE A NAMESPACE -------------------->
-<h4 id='kubernetes-delete-a-namespace'>Delete a namespace</h4><pre class="highlight shell tab-shell"><code>curl -X DELETE <span class="se">\</span>
+<h3 id='kubernetes-delete-a-namespace'>Delete a namespace</h3><pre class="highlight shell tab-shell"><code>curl -X DELETE <span class="se">\</span>
    -H <span class="s2">"MC-Api-Key: your_api_key"</span> <span class="se">\</span>
    <span class="s2">"https://cloudmc_endpoint/v1/services/a_service/an_environment/namespaces/test-namespace"</span>
 </code></pre>
@@ -30213,7 +30481,7 @@ curl -X POST <span class="se">\</span>
 
 <p>Note that the list is not complete, since it is refering to the <a href="https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md">kubernetes api details</a>.</p>
 
-<!-------------------- CREATE SERVICE -------------------->
+<!-------------------- CREATE A SERVICE -------------------->
 <h4 id='kubernetes-create-a-service'>Create a service</h4><pre class="highlight shell tab-shell"><code>curl -X POST <span class="se">\</span>
   -H <span class="s2">"MC-Api-Key: your_api_key"</span> <span class="se">\</span>
    <span class="s2">"https://cloudmc_endpoint/v1/services/a_service/an_environment/services"</span>
@@ -30306,6 +30574,15 @@ curl -X POST <span class="se">\</span>
 
 <p>Return value:</p>
 
+<!-------------------- DELETE A SERVICE -------------------->
+<h4 id='kubernetes-delete-a-service'>Delete a service</h4><pre class="highlight shell tab-shell"><code>curl -X DELETE <span class="se">\</span>
+   -H <span class="s2">"MC-Api-Key: your_api_key"</span> <span class="se">\</span>
+   <span class="s2">"https://cloudmc_endpoint/v1/services/a_service/an_environment/services/test-service/default"</span>
+</code></pre>
+<p><code>DELETE /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/services/:id</code></p>
+
+<p>Delete a service from a given <a href="#administration-environments">environment</a>.</p>
+
 <table><thead>
 <tr>
 <th>Attributes</th>
@@ -30314,7 +30591,7 @@ curl -X POST <span class="se">\</span>
 </thead><tbody>
 <tr>
 <td><code>taskId</code> <br/><em>string</em></td>
-<td>The id corresponding to the create service task.</td>
+<td>The id corresponding to the delete service task.</td>
 </tr>
 <tr>
 <td><code>taskStatus</code> <br/><em>string</em></td>
@@ -30638,6 +30915,39 @@ curl -X POST <span class="se">\</span>
 <tr>
 <td><code>taskId</code> <br/><em>string</em></td>
 <td>The id corresponding to the create ingress task.</td>
+</tr>
+<tr>
+<td><code>taskStatus</code> <br/><em>string</em></td>
+<td>The status of the operation.</td>
+</tr>
+</tbody></table>
+
+<!-------------------- DELETE AN INGRESS -------------------->
+<h4 id='kubernetes-delete-a-ingress'>Delete a ingress</h4><pre class="highlight shell tab-shell"><code>curl -X DELETE <span class="se">\</span>
+   -H <span class="s2">"MC-Api-Key: your_api_key"</span> <span class="se">\</span>
+   <span class="s2">"https://cloudmc_endpoint/v1/services/a_service/an_environment/ingresses/test-ingress/default"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns a JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"taskId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1542bd45-4732-419b-87b6-4ea6ec695c2b"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"taskStatus"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PENDING"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><code>DELETE /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/ingresses/:id</code></p>
+
+<p>Delete an ingress from a given <a href="#administration-environments">environment</a>.</p>
+
+<table><thead>
+<tr>
+<th>Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>taskId</code> <br/><em>string</em></td>
+<td>The id corresponding to the delete ingress task.</td>
 </tr>
 <tr>
 <td><code>taskStatus</code> <br/><em>string</em></td>
@@ -35708,9 +36018,97 @@ For Windows instances, reset the administrator account and reset the Remote Desk
 </tr>
 </tbody></table>
 
+<!-------------------- CREATE A NAMESPACE -------------------->
+
+<p><h4 id='azure-create-a-namespace'>Create a namespace</h4><pre class="highlight shell tab-shell"><code>curl -X POST <span class="se">&lt;/span&gt;
+  -H <span class="s2">&quot;MC-Api-Key: your_api_key&quot;</span> <span class="se">&lt;/span&gt;
+   <span class="s2">&quot;https://cloudmc_endpoint/v1/services/a_service/an_environment/namespaces?cluster_id=test-cluster&quot;</span>
+  Content-Type: application/json
+  <span class="o">{</span>
+  <span class="s2">&quot;apiVersion&quot;</span>: <span class="s2">&quot;v1&quot;</span>,
+  <span class="s2">&quot;kind&quot;</span>: <span class="s2">&quot;Namespace&quot;</span>,
+  <span class="s2">&quot;metadata&quot;</span>: <span class="o">{</span>
+    <span class="s2">&quot;name&quot;</span>: <span class="s2">&quot;test-namespace&quot;</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</code></pre>
+<blockquote>
+<p>The above command returns a JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">&quot;taskId&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1542bd45-4732-419b-87b6-4ea6ec695c2b&quot;</span><span class="p">,</span><span class="w">
+  </span><span class="s2">&quot;taskStatus&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;PENDING&quot;</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><code>POST /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/namespaces?cluster_id=:cluster_id</code></p></p>
+
+<p>Create a namespace in a given <a href="#administration-environments">environment</a>.</p>
+
+<table><thead>
+<tr>
+<th>Required</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>cluster_id</code> <br/><em>string</em></td>
+<td>The id of the cluster in which to get the namespace.</td>
+</tr>
+</tbody></table>
+
+<table><thead>
+<tr>
+<th>Required Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>apiVersion</code> <br/> <em>string</em></td>
+<td>The api version (versioned schema) of the namespace.</td>
+</tr>
+<tr>
+<td><code>metadata</code> <br/><em>object</em></td>
+<td>The metadata of the namespace.</td>
+</tr>
+<tr>
+<td><code>metadata.name</code> <br/><em>string</em></td>
+<td>The name of the namespace.</td>
+</tr>
+</tbody></table>
+
+<table><thead>
+<tr>
+<th>Optional Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>kind</code><br/><em>string</em></td>
+<td>The string value of the REST resource that this object represents.</td>
+</tr>
+</tbody></table>
+
+<p>Return value:</p>
+
+<table><thead>
+<tr>
+<th>Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>taskId</code> <br/><em>string</em></td>
+<td>The id corresponding to the create namespace task.</td>
+</tr>
+<tr>
+<td><code>taskStatus</code> <br/><em>string</em></td>
+<td>The status of the operation.</td>
+</tr>
+</tbody></table>
+
 <!-------------------- DELETE A NAMESPACE -------------------->
 
-<p><h5 id='azure-delete-a-namespace'>Delete a namespace</h5><pre class="highlight shell tab-shell"><code>curl -X DELETE <span class="se">&lt;/span&gt;
+<p><h4 id='azure-delete-a-namespace'>Delete a namespace</h4><pre class="highlight shell tab-shell"><code>curl -X DELETE <span class="se">&lt;/span&gt;
    -H <span class="s2">&quot;MC-Api-Key: your_api_key&quot;</span> <span class="se">&lt;/span&gt;
    <span class="s2">&quot;https://cloudmc_endpoint/v1/services/a_service/an_environment/namespaces/test-namespace?cluster_id=test-cluster&quot;</span>
 </code></pre>
@@ -37665,6 +38063,44 @@ For Windows instances, reset the administrator account and reset the Remote Desk
 <td>The status of the operation.</td>
 </tr>
 </tbody></table>
+
+<!-------------------- DELETE A SERVICE -------------------->
+
+<p><h5 id='azure-delete-a-service'>Delete a service</h5><pre class="highlight shell tab-shell"><code>curl -X DELETE <span class="se">&lt;/span&gt;
+   -H <span class="s2">&quot;MC-Api-Key: your_api_key&quot;</span> <span class="se">&lt;/span&gt;
+   <span class="s2">&quot;https://cloudmc_endpoint/v1/services/a_service/an_environment/services/test-service/default?cluster_id=test-cluster&quot;</span>
+</code></pre>
+<p><code>DELETE /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/services/:id?cluster_id=:cluster_id</code></p></p>
+
+<p>Delete a service from a given <a href="#administration-environments">environment</a>.</p>
+
+<table><thead>
+<tr>
+<th>Required</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>cluster_id</code> <br/><em>string</em></td>
+<td>The id of the cluster in which to get the service.</td>
+</tr>
+</tbody></table>
+
+<table><thead>
+<tr>
+<th>Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>taskId</code> <br/><em>string</em></td>
+<td>The id corresponding to the delete service task.</td>
+</tr>
+<tr>
+<td><code>taskStatus</code> <br/><em>string</em></td>
+<td>The status of the operation.</td>
+</tr>
+</tbody></table>
 <h4 id='azure-ingresses'>Ingresses</h4>
 
 <!-------------------- LIST INGRESSES -------------------->
@@ -38022,6 +38458,52 @@ For Windows instances, reset the administrator account and reset the Remote Desk
 <tr>
 <td><code>taskId</code> <br/><em>string</em></td>
 <td>The id corresponding to the create ingress task.</td>
+</tr>
+<tr>
+<td><code>taskStatus</code> <br/><em>string</em></td>
+<td>The status of the operation.</td>
+</tr>
+</tbody></table>
+
+<!-------------------- DELETE AN INGRESS -------------------->
+
+<p><h5 id='azure-delete-an-ingress'>Delete an ingress</h5><pre class="highlight shell tab-shell"><code>curl -X DELETE <span class="se">&lt;/span&gt;
+   -H <span class="s2">&quot;MC-Api-Key: your_api_key&quot;</span> <span class="se">&lt;/span&gt;
+   <span class="s2">&quot;https://cloudmc_endpoint/v1/services/a_service/an_environment/ingresses/test-ingress/default?cluster_id=test-cluster&quot;</span>
+</code></pre>
+<blockquote>
+<p>The above command returns a JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">&quot;taskId&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1542bd45-4732-419b-87b6-4ea6ec695c2b&quot;</span><span class="p">,</span><span class="w">
+  </span><span class="s2">&quot;taskStatus&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;PENDING&quot;</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><code>DELETE /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/ingresses/:id?cluster_id=:cluster_id</code></p></p>
+
+<p>Delete an ingress from a given <a href="#administration-environments">environment</a>.</p>
+
+<table><thead>
+<tr>
+<th>Required</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>cluster_id</code> <br/><em>string</em></td>
+<td>The id of the cluster in which to get the ingress.</td>
+</tr>
+</tbody></table>
+
+<table><thead>
+<tr>
+<th>Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>taskId</code> <br/><em>string</em></td>
+<td>The id corresponding to the delete ingress task.</td>
 </tr>
 <tr>
 <td><code>taskStatus</code> <br/><em>string</em></td>
