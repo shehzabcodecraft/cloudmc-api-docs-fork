@@ -1776,6 +1776,9 @@
                                             <a href="#gcp-create-a-service" class="toc-h5 toc-link" data-title="Google Cloud Platform plugin">Create a service</a>
                                           </li>
                                           <li>
+                                            <a href="#gcp-replace-a-service" class="toc-h5 toc-link" data-title="Google Cloud Platform plugin">Replace a service</a>
+                                          </li>
+                                          <li>
                                             <a href="#gcp-delete-a-service" class="toc-h5 toc-link" data-title="Google Cloud Platform plugin">Delete a service</a>
                                           </li>
                                       </ul>
@@ -1791,6 +1794,9 @@
                                           </li>
                                           <li>
                                             <a href="#gcp-create-an-ingress" class="toc-h5 toc-link" data-title="Google Cloud Platform plugin">Create an ingress</a>
+                                          </li>
+                                          <li>
+                                            <a href="#gcp-replace-an-ingress" class="toc-h5 toc-link" data-title="Google Cloud Platform plugin">Replace an ingress</a>
                                           </li>
                                           <li>
                                             <a href="#gcp-delete-an-ingress" class="toc-h5 toc-link" data-title="Google Cloud Platform plugin">Delete an ingress</a>
@@ -2057,6 +2063,9 @@
                                     <a href="#kubernetes-create-a-service" class="toc-h4 toc-link" data-title="Kubernetes plugin">Create a service</a>
                                   </li>
                                   <li>
+                                    <a href="#kubernetes-replace-a-service" class="toc-h4 toc-link" data-title="Kubernetes plugin">Replace a service</a>
+                                  </li>
+                                  <li>
                                     <a href="#kubernetes-delete-a-service" class="toc-h4 toc-link" data-title="Kubernetes plugin">Delete a service</a>
                                   </li>
                               </ul>
@@ -2072,6 +2081,9 @@
                                   </li>
                                   <li>
                                     <a href="#kubernetes-create-an-ingress" class="toc-h4 toc-link" data-title="Kubernetes plugin">Create an ingress</a>
+                                  </li>
+                                  <li>
+                                    <a href="#kubernetes-replace-an-ingress" class="toc-h4 toc-link" data-title="Kubernetes plugin">Replace an ingress</a>
                                   </li>
                                   <li>
                                     <a href="#kubernetes-delete-an-ingress" class="toc-h4 toc-link" data-title="Kubernetes plugin">Delete an ingress</a>
@@ -2512,6 +2524,9 @@
                                             <a href="#azure-create-a-service" class="toc-h5 toc-link" data-title="Azure plugin">Create a service</a>
                                           </li>
                                           <li>
+                                            <a href="#azure-replace-a-service" class="toc-h5 toc-link" data-title="Azure plugin">Replace a service</a>
+                                          </li>
+                                          <li>
                                             <a href="#azure-delete-a-service" class="toc-h5 toc-link" data-title="Azure plugin">Delete a service</a>
                                           </li>
                                       </ul>
@@ -2527,6 +2542,9 @@
                                           </li>
                                           <li>
                                             <a href="#azure-create-an-ingress" class="toc-h5 toc-link" data-title="Azure plugin">Create an ingress</a>
+                                          </li>
+                                          <li>
+                                            <a href="#azure-replace-an-ingress" class="toc-h5 toc-link" data-title="Azure plugin">Replace an ingress</a>
                                           </li>
                                           <li>
                                             <a href="#azure-delete-an-ingress" class="toc-h5 toc-link" data-title="Azure plugin">Delete an ingress</a>
@@ -24986,6 +25004,116 @@ curl -X POST <span class="se">\</span>
 </tr>
 </tbody></table>
 
+<!-------------------- REPLACE A SERVICE -------------------->
+
+<p><h5 id='gcp-replace-a-service'>Replace a service</h5><pre class="highlight shell tab-shell"><code>curl -X PUT <span class="se">&lt;/span&gt;
+   -H <span class="s2">&quot;MC-Api-Key: your_api_key&quot;</span> <span class="se">&lt;/span&gt;
+   <span class="s2">&quot;https://cloudmc_endpoint/v1/services/a_service/an_environment/services/service-name/default?cluster_id=test-cluster&quot;</span>
+</code></pre>
+<blockquote>
+<p>Request body example:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;LoadBalancer&quot;</span><span class="p">,</span><span class="w">
+    </span><span class="s2">&quot;ports&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="s2">&quot;4000/TCP&quot;</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">&quot;apiVersion&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;v1&quot;</span><span class="p">,</span><span class="w">
+    </span><span class="s2">&quot;kind&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Service&quot;</span><span class="p">,</span><span class="w">
+    </span><span class="s2">&quot;metadata&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">&quot;creationTimestamp&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2020-08-13T11:05:00.000-04:00&quot;</span><span class="p">,</span><span class="w">
+        </span><span class="s2">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;service-name&quot;</span><span class="p">,</span><span class="w">
+        </span><span class="s2">&quot;namespace&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;default&quot;</span><span class="p">,</span><span class="w">
+        </span><span class="s2">&quot;resourceVersion&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;170742452&quot;</span><span class="p">,</span><span class="w">
+        </span><span class="s2">&quot;selfLink&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/api/v1/namespaces/default/services/service-name&quot;</span><span class="p">,</span><span class="w">
+        </span><span class="s2">&quot;uid&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;a84c8fea-f9d9-47ab-8e58-37059e9f18bd&quot;</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">&quot;spec&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">&quot;clusterIP&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;10.245.44.45&quot;</span><span class="p">,</span><span class="w">
+        </span><span class="s2">&quot;externalTrafficPolicy&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Cluster&quot;</span><span class="p">,</span><span class="w">
+        </span><span class="s2">&quot;ports&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="s2">&quot;nodePort&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">31167</span><span class="p">,</span><span class="w">
+                </span><span class="s2">&quot;port&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">3000</span><span class="p">,</span><span class="w">
+                </span><span class="s2">&quot;protocol&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;TCP&quot;</span><span class="p">,</span><span class="w">
+                </span><span class="s2">&quot;targetPort&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">306</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="s2">&quot;sessionAffinity&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ClientIP&quot;</span><span class="p">,</span><span class="w">
+        </span><span class="s2">&quot;sessionAffinityConfig&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">&quot;clientIP&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">&quot;timeoutSeconds&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">10555</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;LoadBalancer&quot;</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">&quot;loadBalancer&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><code>PUT /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/services/:id?cluster_id=:cluster_id</code></p></p>
+
+<p>Replace a service in a given <a href="#administration-environments">environment</a>.</p>
+
+<table><thead>
+<tr>
+<th>Required</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>cluster_id</code> <br/><em>string</em></td>
+<td>The id of the cluster in which to get the service.</td>
+</tr>
+</tbody></table>
+
+<table><thead>
+<tr>
+<th>Required Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>apiVersion</code> <br/> <em>string</em></td>
+<td>The api version (versioned schema) of the service.</td>
+</tr>
+<tr>
+<td><code>kind</code><br/><em>string</em></td>
+<td>The string value of the REST resource that this object represents.</td>
+</tr>
+<tr>
+<td><code>metadata</code> <br/><em>object</em></td>
+<td>The metadata of the service.</td>
+</tr>
+<tr>
+<td><code>metadata.name</code> <br/><em>string</em></td>
+<td>The name of the service.</td>
+</tr>
+<tr>
+<td><code>spec</code><br/><em>object</em></td>
+<td>The specification used to create and run the service.</td>
+</tr>
+</tbody></table>
+
+<p>Return value:</p>
+
+<table><thead>
+<tr>
+<th>Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>taskId</code> <br/><em>string</em></td>
+<td>The id corresponding to the replace service task.</td>
+</tr>
+<tr>
+<td><code>taskStatus</code> <br/><em>string</em></td>
+<td>The status of the operation.</td>
+</tr>
+</tbody></table>
+
 <!-------------------- DELETE A SERVICE -------------------->
 
 <p><h5 id='gcp-delete-a-service'>Delete a service</h5><pre class="highlight shell tab-shell"><code>curl -X DELETE <span class="se">&lt;/span&gt;
@@ -25387,6 +25515,132 @@ curl -X POST <span class="se">\</span>
 </tr>
 </tbody></table>
 
+<!-------------------- REPLACE AN INGRESS -------------------->
+
+<p><h5 id='gcp-replace-an-ingress'>Replace an ingress</h5><pre class="highlight shell tab-shell"><code>curl -X PUT <span class="se">&lt;/span&gt;
+   -H <span class="s2">&quot;MC-Api-Key: your_api_key&quot;</span> <span class="se">&lt;/span&gt;
+   <span class="s2">&quot;https://cloudmc_endpoint/v1/services/a_service/an_environment/ingresses/ingress-name/default?cluster_id=test-cluster&quot;</span>
+</code></pre>
+<blockquote>
+<p>Request body example:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">&quot;endpoint&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http://my-endpoint.com&quot;</span><span class="p">,</span><span class="w">
+  </span><span class="s2">&quot;service&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">&quot;port&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;6556&quot;</span><span class="p">,</span><span class="w">
+    </span><span class="s2">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;test&quot;</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">&quot;apiVersion&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;extensions/v1beta1&quot;</span><span class="p">,</span><span class="w">
+  </span><span class="s2">&quot;kind&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Ingress&quot;</span><span class="p">,</span><span class="w">
+  </span><span class="s2">&quot;metadata&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">&quot;creationTimestamp&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2020-08-13T14:13:42.000-04:00&quot;</span><span class="p">,</span><span class="w">
+    </span><span class="s2">&quot;generation&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+    </span><span class="s2">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ingress-name&quot;</span><span class="p">,</span><span class="w">
+    </span><span class="s2">&quot;namespace&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;default&quot;</span><span class="p">,</span><span class="w">
+    </span><span class="s2">&quot;resourceVersion&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;170302224&quot;</span><span class="p">,</span><span class="w">
+    </span><span class="s2">&quot;selfLink&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/apis/extensions/v1beta1/namespaces/default/ingresses/ingress-name&quot;</span><span class="p">,</span><span class="w">
+    </span><span class="s2">&quot;uid&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;c67e6a6a-2b07-4976-8b3d-2ec9fd91ae5d&quot;</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">&quot;spec&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">&quot;rules&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">&quot;host&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;my-endpoint.com&quot;</span><span class="p">,</span><span class="w">
+        </span><span class="s2">&quot;http&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">&quot;paths&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+              </span><span class="s2">&quot;backend&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">&quot;serviceName&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;test&quot;</span><span class="p">,</span><span class="w">
+                </span><span class="s2">&quot;servicePort&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">6556</span><span class="w">
+              </span><span class="p">},</span><span class="w">
+              </span><span class="s2">&quot;path&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/testpath&quot;</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+          </span><span class="p">]</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">&quot;loadBalancer&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">&quot;ingress&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">&quot;hostname&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;hostname-worker-01&quot;</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">&quot;hostname&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;hostname-worker-02&quot;</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">&quot;hostname&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;hostname-worker-03&quot;</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">&quot;hostname&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;hostname-worker-04&quot;</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><code>PUT /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/ingresses/:id?cluster_id=:cluster_id</code></p></p>
+
+<p>Replace an ingress in a given <a href="#administration-environments">environment</a>.</p>
+
+<table><thead>
+<tr>
+<th>Required</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>cluster_id</code> <br/><em>string</em></td>
+<td>The id of the cluster in which to get the ingress.</td>
+</tr>
+</tbody></table>
+
+<table><thead>
+<tr>
+<th>Required Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>apiVersion</code> <br/> <em>string</em></td>
+<td>The api version (versioned schema) of the ingress.</td>
+</tr>
+<tr>
+<td><code>kind</code><br/><em>string</em></td>
+<td>The string value of the REST resource that this object represents.</td>
+</tr>
+<tr>
+<td><code>metadata</code> <br/><em>object</em></td>
+<td>The metadata of the ingress.</td>
+</tr>
+<tr>
+<td><code>metadata.name</code> <br/><em>string</em></td>
+<td>The name of the ingress.</td>
+</tr>
+<tr>
+<td><code>spec</code><br/><em>object</em></td>
+<td>The specification used to create and run the ingress.</td>
+</tr>
+</tbody></table>
+
+<p>Return value:</p>
+
+<table><thead>
+<tr>
+<th>Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>taskId</code> <br/><em>string</em></td>
+<td>The id corresponding to the replace ingress task.</td>
+</tr>
+<tr>
+<td><code>taskStatus</code> <br/><em>string</em></td>
+<td>The status of the operation.</td>
+</tr>
+</tbody></table>
+
 <!-------------------- DELETE AN INGRESS -------------------->
 
 <p><h5 id='gcp-delete-an-ingress'>Delete an ingress</h5><pre class="highlight shell tab-shell"><code>curl -X DELETE <span class="se">&lt;/span&gt;
@@ -25416,6 +25670,8 @@ curl -X POST <span class="se">\</span>
 <td>The id of the cluster in which to get the ingress.</td>
 </tr>
 </tbody></table>
+
+<p>Return value:</p>
 
 <table><thead>
 <tr>
@@ -30678,10 +30934,6 @@ curl -X POST <span class="se">\</span>
 <td>The specification used to create and run the service.</td>
 </tr>
 <tr>
-<td><code>spec.selector</code><br/><em>object</em></td>
-<td>The label query over the service&#39;s set of resources.</td>
-</tr>
-<tr>
 <td><code>spec.ports</code><br/><em>object</em></td>
 <td>The list of ports that are exposed by this service.</td>
 </tr>
@@ -30706,12 +30958,129 @@ curl -X POST <span class="se">\</span>
 <td>The namespace in which the service is created.</td>
 </tr>
 <tr>
+<td><code>spec.selector</code><br/><em>object</em></td>
+<td>The label query over the service&#39;s set of resources.</td>
+</tr>
+<tr>
 <td><code>spec.selector.matchLabels</code><br/><em>object</em></td>
 <td>The key value pairs retrieved by a label query from a service.</td>
 </tr>
 </tbody></table>
 
 <p>Return value:</p>
+
+<table><thead>
+<tr>
+<th>Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>taskId</code> <br/><em>string</em></td>
+<td>The id corresponding to the create service task.</td>
+</tr>
+<tr>
+<td><code>taskStatus</code> <br/><em>string</em></td>
+<td>The status of the operation.</td>
+</tr>
+</tbody></table>
+
+<!-------------------- REPLACE A SERVICE -------------------->
+<h4 id='kubernetes-replace-a-service'>Replace a service</h4><pre class="highlight shell tab-shell"><code>curl -X PUT <span class="se">\</span>
+   -H <span class="s2">"MC-Api-Key: your_api_key"</span> <span class="se">\</span>
+   <span class="s2">"https://cloudmc_endpoint/v1/services/a_service/an_environment/services/service-name/default"</span>
+</code></pre>
+<blockquote>
+<p>Request body example:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LoadBalancer"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"ports"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="s2">"4000/TCP"</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"apiVersion"</span><span class="p">:</span><span class="w"> </span><span class="s2">"v1"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"kind"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Service"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"creationTimestamp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-08-13T11:05:00.000-04:00"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"service-name"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"namespace"</span><span class="p">:</span><span class="w"> </span><span class="s2">"default"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"resourceVersion"</span><span class="p">:</span><span class="w"> </span><span class="s2">"170742452"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"selfLink"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/api/v1/namespaces/default/services/service-name"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"uid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"a84c8fea-f9d9-47ab-8e58-37059e9f18bd"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"spec"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"clusterIP"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10.245.44.45"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"externalTrafficPolicy"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Cluster"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"ports"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"nodePort"</span><span class="p">:</span><span class="w"> </span><span class="mi">31167</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"port"</span><span class="p">:</span><span class="w"> </span><span class="mi">3000</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"protocol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TCP"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"targetPort"</span><span class="p">:</span><span class="w"> </span><span class="mi">306</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="s2">"sessionAffinity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ClientIP"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"sessionAffinityConfig"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"clientIP"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"timeoutSeconds"</span><span class="p">:</span><span class="w"> </span><span class="mi">10555</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LoadBalancer"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"loadBalancer"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><code>PUT /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/services/:id</code></p>
+
+<p>Replace a service in a given <a href="#administration-environments">environment</a>.</p>
+
+<table><thead>
+<tr>
+<th>Required Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>apiVersion</code> <br/> <em>string</em></td>
+<td>The api version (versioned schema) of the service.</td>
+</tr>
+<tr>
+<td><code>kind</code><br/><em>string</em></td>
+<td>The string value of the REST resource that this object represents.</td>
+</tr>
+<tr>
+<td><code>metadata</code> <br/><em>object</em></td>
+<td>The metadata of the service.</td>
+</tr>
+<tr>
+<td><code>metadata.name</code> <br/><em>string</em></td>
+<td>The name of the service.</td>
+</tr>
+<tr>
+<td><code>spec</code><br/><em>object</em></td>
+<td>The specification used to create and run the service.</td>
+</tr>
+</tbody></table>
+
+<p>Return value:</p>
+
+<table><thead>
+<tr>
+<th>Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>taskId</code> <br/><em>string</em></td>
+<td>The id corresponding to the replace service task.</td>
+</tr>
+<tr>
+<td><code>taskStatus</code> <br/><em>string</em></td>
+<td>The status of the operation.</td>
+</tr>
+</tbody></table>
 
 <!-------------------- DELETE A SERVICE -------------------->
 <h4 id='kubernetes-delete-a-service'>Delete a service</h4><pre class="highlight shell tab-shell"><code>curl -X DELETE <span class="se">\</span>
@@ -31054,6 +31423,119 @@ curl -X POST <span class="se">\</span>
 <tr>
 <td><code>taskId</code> <br/><em>string</em></td>
 <td>The id corresponding to the create ingress task.</td>
+</tr>
+<tr>
+<td><code>taskStatus</code> <br/><em>string</em></td>
+<td>The status of the operation.</td>
+</tr>
+</tbody></table>
+
+<!-------------------- REPLACE AN INGRESS -------------------->
+<h4 id='kubernetes-replace-an-ingress'>Replace an ingress</h4><pre class="highlight shell tab-shell"><code>curl -X PUT <span class="se">\</span>
+   -H <span class="s2">"MC-Api-Key: your_api_key"</span> <span class="se">\</span>
+   <span class="s2">"https://cloudmc_endpoint/v1/services/a_service/an_environment/ingresses/ingress-name/default"</span>
+</code></pre>
+<blockquote>
+<p>Request body example:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"endpoint"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://my-endpoint.com"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"service"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"port"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6556"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"apiVersion"</span><span class="p">:</span><span class="w"> </span><span class="s2">"extensions/v1beta1"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"kind"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Ingress"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"creationTimestamp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-08-13T14:13:42.000-04:00"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"generation"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ingress-name"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"namespace"</span><span class="p">:</span><span class="w"> </span><span class="s2">"default"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"resourceVersion"</span><span class="p">:</span><span class="w"> </span><span class="s2">"170302224"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"selfLink"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/apis/extensions/v1beta1/namespaces/default/ingresses/ingress-name"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"uid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c67e6a6a-2b07-4976-8b3d-2ec9fd91ae5d"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"spec"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"rules"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"host"</span><span class="p">:</span><span class="w"> </span><span class="s2">"my-endpoint.com"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"http"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"paths"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"backend"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"serviceName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"servicePort"</span><span class="p">:</span><span class="w"> </span><span class="mi">6556</span><span class="w">
+              </span><span class="p">},</span><span class="w">
+              </span><span class="s2">"path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/testpath"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+          </span><span class="p">]</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"loadBalancer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"ingress"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"hostname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"hostname-worker-01"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"hostname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"hostname-worker-02"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"hostname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"hostname-worker-03"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"hostname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"hostname-worker-04"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><code>PUT /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/ingresses/:id</code></p>
+
+<p>Replace an ingress in a given <a href="#administration-environments">environment</a>.</p>
+
+<table><thead>
+<tr>
+<th>Required Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>apiVersion</code> <br/> <em>string</em></td>
+<td>The api version (versioned schema) of the ingress.</td>
+</tr>
+<tr>
+<td><code>kind</code><br/><em>string</em></td>
+<td>The string value of the REST resource that this object represents.</td>
+</tr>
+<tr>
+<td><code>metadata</code> <br/><em>object</em></td>
+<td>The metadata of the ingress.</td>
+</tr>
+<tr>
+<td><code>metadata.name</code> <br/><em>string</em></td>
+<td>The name of the ingress.</td>
+</tr>
+<tr>
+<td><code>spec</code><br/><em>object</em></td>
+<td>The specification used to create and run the ingress.</td>
+</tr>
+</tbody></table>
+
+<p>Return value:</p>
+
+<table><thead>
+<tr>
+<th>Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>taskId</code> <br/><em>string</em></td>
+<td>The id corresponding to the replace ingress task.</td>
 </tr>
 <tr>
 <td><code>taskStatus</code> <br/><em>string</em></td>
@@ -38332,6 +38814,116 @@ For Windows instances, reset the administrator account and reset the Remote Desk
 </tr>
 </tbody></table>
 
+<!-------------------- REPLACE A SERVICE -------------------->
+
+<p><h5 id='azure-replace-a-service'>Replace a service</h5><pre class="highlight shell tab-shell"><code>curl -X PUT <span class="se">&lt;/span&gt;
+   -H <span class="s2">&quot;MC-Api-Key: your_api_key&quot;</span> <span class="se">&lt;/span&gt;
+   <span class="s2">&quot;https://cloudmc_endpoint/v1/services/a_service/an_environment/services/service-name/default?cluster_id=test-cluster&quot;</span>
+</code></pre>
+<blockquote>
+<p>Request body example:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;LoadBalancer&quot;</span><span class="p">,</span><span class="w">
+    </span><span class="s2">&quot;ports&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="s2">&quot;4000/TCP&quot;</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">&quot;apiVersion&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;v1&quot;</span><span class="p">,</span><span class="w">
+    </span><span class="s2">&quot;kind&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Service&quot;</span><span class="p">,</span><span class="w">
+    </span><span class="s2">&quot;metadata&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">&quot;creationTimestamp&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2020-08-13T11:05:00.000-04:00&quot;</span><span class="p">,</span><span class="w">
+        </span><span class="s2">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;service-name&quot;</span><span class="p">,</span><span class="w">
+        </span><span class="s2">&quot;namespace&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;default&quot;</span><span class="p">,</span><span class="w">
+        </span><span class="s2">&quot;resourceVersion&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;170742452&quot;</span><span class="p">,</span><span class="w">
+        </span><span class="s2">&quot;selfLink&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/api/v1/namespaces/default/services/service-name&quot;</span><span class="p">,</span><span class="w">
+        </span><span class="s2">&quot;uid&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;a84c8fea-f9d9-47ab-8e58-37059e9f18bd&quot;</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">&quot;spec&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">&quot;clusterIP&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;10.245.44.45&quot;</span><span class="p">,</span><span class="w">
+        </span><span class="s2">&quot;externalTrafficPolicy&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Cluster&quot;</span><span class="p">,</span><span class="w">
+        </span><span class="s2">&quot;ports&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="s2">&quot;nodePort&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">31167</span><span class="p">,</span><span class="w">
+                </span><span class="s2">&quot;port&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">3000</span><span class="p">,</span><span class="w">
+                </span><span class="s2">&quot;protocol&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;TCP&quot;</span><span class="p">,</span><span class="w">
+                </span><span class="s2">&quot;targetPort&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">306</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="s2">&quot;sessionAffinity&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ClientIP&quot;</span><span class="p">,</span><span class="w">
+        </span><span class="s2">&quot;sessionAffinityConfig&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">&quot;clientIP&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">&quot;timeoutSeconds&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">10555</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;LoadBalancer&quot;</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">&quot;loadBalancer&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><code>PUT /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/services/:id?cluster_id=:cluster_id</code></p></p>
+
+<p>Replace a service in a given <a href="#administration-environments">environment</a>.</p>
+
+<table><thead>
+<tr>
+<th>Required</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>cluster_id</code> <br/><em>string</em></td>
+<td>The id of the cluster in which to get the service.</td>
+</tr>
+</tbody></table>
+
+<table><thead>
+<tr>
+<th>Required Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>apiVersion</code> <br/> <em>string</em></td>
+<td>The api version (versioned schema) of the service.</td>
+</tr>
+<tr>
+<td><code>kind</code><br/><em>string</em></td>
+<td>The string value of the REST resource that this object represents.</td>
+</tr>
+<tr>
+<td><code>metadata</code> <br/><em>object</em></td>
+<td>The metadata of the service.</td>
+</tr>
+<tr>
+<td><code>metadata.name</code> <br/><em>string</em></td>
+<td>The name of the service.</td>
+</tr>
+<tr>
+<td><code>spec</code><br/><em>object</em></td>
+<td>The specification used to create and run the service.</td>
+</tr>
+</tbody></table>
+
+<p>Return value:</p>
+
+<table><thead>
+<tr>
+<th>Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>taskId</code> <br/><em>string</em></td>
+<td>The id corresponding to the replace service task.</td>
+</tr>
+<tr>
+<td><code>taskStatus</code> <br/><em>string</em></td>
+<td>The status of the operation.</td>
+</tr>
+</tbody></table>
+
 <!-------------------- DELETE A SERVICE -------------------->
 
 <p><h5 id='azure-delete-a-service'>Delete a service</h5><pre class="highlight shell tab-shell"><code>curl -X DELETE <span class="se">&lt;/span&gt;
@@ -38733,6 +39325,132 @@ For Windows instances, reset the administrator account and reset the Remote Desk
 </tr>
 </tbody></table>
 
+<!-------------------- REPLACE AN INGRESS -------------------->
+
+<p><h5 id='azure-replace-an-ingress'>Replace an ingress</h5><pre class="highlight shell tab-shell"><code>curl -X PUT <span class="se">&lt;/span&gt;
+   -H <span class="s2">&quot;MC-Api-Key: your_api_key&quot;</span> <span class="se">&lt;/span&gt;
+   <span class="s2">&quot;https://cloudmc_endpoint/v1/services/a_service/an_environment/ingresses/ingress-name/default?cluster_id=test-cluster&quot;</span>
+</code></pre>
+<blockquote>
+<p>Request body example:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">&quot;endpoint&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http://my-endpoint.com&quot;</span><span class="p">,</span><span class="w">
+  </span><span class="s2">&quot;service&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">&quot;port&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;6556&quot;</span><span class="p">,</span><span class="w">
+    </span><span class="s2">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;test&quot;</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">&quot;apiVersion&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;extensions/v1beta1&quot;</span><span class="p">,</span><span class="w">
+  </span><span class="s2">&quot;kind&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Ingress&quot;</span><span class="p">,</span><span class="w">
+  </span><span class="s2">&quot;metadata&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">&quot;creationTimestamp&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2020-08-13T14:13:42.000-04:00&quot;</span><span class="p">,</span><span class="w">
+    </span><span class="s2">&quot;generation&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+    </span><span class="s2">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ingress-name&quot;</span><span class="p">,</span><span class="w">
+    </span><span class="s2">&quot;namespace&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;default&quot;</span><span class="p">,</span><span class="w">
+    </span><span class="s2">&quot;resourceVersion&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;170302224&quot;</span><span class="p">,</span><span class="w">
+    </span><span class="s2">&quot;selfLink&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/apis/extensions/v1beta1/namespaces/default/ingresses/ingress-name&quot;</span><span class="p">,</span><span class="w">
+    </span><span class="s2">&quot;uid&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;c67e6a6a-2b07-4976-8b3d-2ec9fd91ae5d&quot;</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">&quot;spec&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">&quot;rules&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">&quot;host&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;my-endpoint.com&quot;</span><span class="p">,</span><span class="w">
+        </span><span class="s2">&quot;http&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">&quot;paths&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+              </span><span class="s2">&quot;backend&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">&quot;serviceName&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;test&quot;</span><span class="p">,</span><span class="w">
+                </span><span class="s2">&quot;servicePort&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">6556</span><span class="w">
+              </span><span class="p">},</span><span class="w">
+              </span><span class="s2">&quot;path&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/testpath&quot;</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+          </span><span class="p">]</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">&quot;loadBalancer&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">&quot;ingress&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">&quot;hostname&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;hostname-worker-01&quot;</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">&quot;hostname&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;hostname-worker-02&quot;</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">&quot;hostname&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;hostname-worker-03&quot;</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">&quot;hostname&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;hostname-worker-04&quot;</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><code>PUT /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/ingresses/:id?cluster_id=:cluster_id</code></p></p>
+
+<p>Replace an ingress in a given <a href="#administration-environments">environment</a>.</p>
+
+<table><thead>
+<tr>
+<th>Required</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>cluster_id</code> <br/><em>string</em></td>
+<td>The id of the cluster in which to get the ingress.</td>
+</tr>
+</tbody></table>
+
+<table><thead>
+<tr>
+<th>Required Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>apiVersion</code> <br/> <em>string</em></td>
+<td>The api version (versioned schema) of the ingress.</td>
+</tr>
+<tr>
+<td><code>kind</code><br/><em>string</em></td>
+<td>The string value of the REST resource that this object represents.</td>
+</tr>
+<tr>
+<td><code>metadata</code> <br/><em>object</em></td>
+<td>The metadata of the ingress.</td>
+</tr>
+<tr>
+<td><code>metadata.name</code> <br/><em>string</em></td>
+<td>The name of the ingress.</td>
+</tr>
+<tr>
+<td><code>spec</code><br/><em>object</em></td>
+<td>The specification used to create and run the ingress.</td>
+</tr>
+</tbody></table>
+
+<p>Return value:</p>
+
+<table><thead>
+<tr>
+<th>Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>taskId</code> <br/><em>string</em></td>
+<td>The id corresponding to the replace ingress task.</td>
+</tr>
+<tr>
+<td><code>taskStatus</code> <br/><em>string</em></td>
+<td>The status of the operation.</td>
+</tr>
+</tbody></table>
+
 <!-------------------- DELETE AN INGRESS -------------------->
 
 <p><h5 id='azure-delete-an-ingress'>Delete an ingress</h5><pre class="highlight shell tab-shell"><code>curl -X DELETE <span class="se">&lt;/span&gt;
@@ -38762,6 +39480,8 @@ For Windows instances, reset the administrator account and reset the Remote Desk
 <td>The id of the cluster in which to get the ingress.</td>
 </tr>
 </tbody></table>
+
+<p>Return value:</p>
 
 <table><thead>
 <tr>
