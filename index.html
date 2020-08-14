@@ -2004,6 +2004,12 @@
                             <a href="#kubernetes-deployments" class="toc-h3 toc-link" data-title="Kubernetes plugin">Deployments</a>
                               <ul class="toc-list-h4">
                                   <li>
+                                    <a href="#kubernetes-list-deployments" class="toc-h4 toc-link" data-title="Kubernetes plugin">List deployments</a>
+                                  </li>
+                                  <li>
+                                    <a href="#kubernetes-get-a-deployment" class="toc-h4 toc-link" data-title="Kubernetes plugin">Get a deployment</a>
+                                  </li>
+                                  <li>
                                     <a href="#kubernetes-create-a-deployment" class="toc-h4 toc-link" data-title="Kubernetes plugin">Create a deployment</a>
                                   </li>
                                   <li>
@@ -29925,7 +29931,7 @@ curl -X POST <span class="se">\</span>
 </tbody></table>
 <h3 id='kubernetes-deployments'>Deployments</h3>
 <!-------------------- LIST DEPLOYMENTS -------------------->
-<h6 id='kubernetes-list-deployments'>List deployments</h6><pre class="highlight shell tab-shell"><code>curl -X GET <span class="se">\</span>
+<h4 id='kubernetes-list-deployments'>List deployments</h4><pre class="highlight shell tab-shell"><code>curl -X GET <span class="se">\</span>
    -H <span class="s2">"MC-Api-Key: your_api_key"</span> <span class="se">\</span>
    <span class="s2">"https://cloudmc_endpoint/v1/services/a_service/an_environment/deployments"</span>
 </code></pre>
@@ -29995,7 +30001,7 @@ curl -X POST <span class="se">\</span>
 <p>Note that the list is not complete, since it is refering to the <a href="https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md">kubernetes api details</a>.</p>
 
 <!-------------------- GET A DEPLOYMENT -------------------->
-<h6 id='kubernetes-get-a-deployment'>Get a deployment</h6><pre class="highlight shell tab-shell"><code>curl -X GET <span class="se">\</span>
+<h4 id='kubernetes-get-a-deployment'>Get a deployment</h4><pre class="highlight shell tab-shell"><code>curl -X GET <span class="se">\</span>
    -H <span class="s2">"MC-Api-Key: your_api_key"</span> <span class="se">\</span>
    <span class="s2">"https://cloudmc_endpoint/v1/services/a_service/an_environment/deployments/test-aerospike/auth"</span>
 </code></pre>
