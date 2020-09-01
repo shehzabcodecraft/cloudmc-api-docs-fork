@@ -440,6 +440,12 @@
                                   <li>
                                     <a href="#administration-create-pricing" class="toc-h4 toc-link" data-title="Administration">Create pricing</a>
                                   </li>
+                                  <li>
+                                    <a href="#administration-update-pricing" class="toc-h4 toc-link" data-title="Administration">Update pricing</a>
+                                  </li>
+                                  <li>
+                                    <a href="#administration-delete-pricing" class="toc-h4 toc-link" data-title="Administration">Delete pricing</a>
+                                  </li>
                               </ul>
                           </li>
                           <li>
@@ -6832,7 +6838,124 @@ curl -X POST <span class="s2">"https://cloudmc_endpoint/rest/pricings"</span> <s
 <td>A map of language language keys to the description in the specified language.</td>
 </tr>
 </tbody></table>
-<h3 id='administration-applied-pricings'>Applied Pricings</h3>
+
+<!-------------------- UPDATE PRICING -------------------->
+<h4 id='administration-update-pricing'>Update pricing</h4>
+<p><code>PUT /pricings/:id</code></p>
+
+<p>Update an existing pricing&#39;s name and description.</p>
+<pre class="highlight shell tab-shell"><code><span class="c"># Creates a new pricing</span>
+curl -X PUT <span class="s2">"https://cloudmc_endpoint/rest/pricings/03bc22bd-adc4-46b8-988d-afddc24c0cb5"</span> <span class="se">\</span>
+   -H <span class="s2">"MC-Api-Key: your_api_key"</span>
+</code></pre>
+<blockquote>
+<p>Request body example:</p>
+</blockquote>
+<pre class="highlight javascript"><code><span class="p">{</span>
+  <span class="s2">"name"</span><span class="p">:</span> <span class="p">{</span>
+      <span class="s2">"en"</span><span class="p">:</span> <span class="s2">"name-updated"</span><span class="p">,</span>
+      <span class="s2">"fr"</span><span class="p">:</span> <span class="s2">"nom-updated"</span><span class="p">,</span>
+      <span class="s2">"es"</span><span class="p">:</span> <span class="s2">"nombre-updated"</span>
+  <span class="p">},</span>
+  <span class="s2">"description"</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s2">"en"</span><span class="p">:</span> <span class="s2">"pricing-desc-updated"</span><span class="p">,</span>
+    <span class="s2">"fr"</span><span class="p">:</span> <span class="s2">"desc_fr"</span><span class="p">,</span>
+    <span class="s2">"es"</span><span class="p">:</span> <span class="s2">"desc_es"</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+<blockquote>
+<p>The above command return JSON structured like this:</p>
+</blockquote>
+<pre class="highlight javascript"><code><span class="p">{</span>
+  <span class="s2">"data"</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s2">"supportedCurrencies"</span><span class="p">:</span> <span class="p">[</span>
+      <span class="s2">"CAD"</span><span class="p">,</span>
+      <span class="s2">"USD"</span>
+    <span class="p">],</span>
+    <span class="s2">"productCatalogs"</span><span class="p">:</span> <span class="p">[</span>
+      <span class="p">{</span>
+        <span class="s2">"id"</span><span class="p">:</span> <span class="s2">"b6c89a59-34bf-4be4-a9bf-4414de84f5f7"</span>
+      <span class="p">}</span>
+    <span class="p">],</span>
+    <span class="s2">"organization"</span><span class="p">:</span> <span class="p">{</span>
+      <span class="s2">"id"</span><span class="p">:</span> <span class="s2">"1d37a999-6ac6-4193-acb2-49df5c43ff31"</span>
+    <span class="p">},</span>
+    <span class="s2">"pricingProducts"</span><span class="p">:</span> <span class="p">[</span>
+      <span class="p">{</span>
+        <span class="s2">"unitPrice"</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
+        <span class="s2">"product"</span><span class="p">:</span> <span class="p">{</span>
+          <span class="s2">"id"</span><span class="p">:</span> <span class="s2">"c14daee2-4678-4710-b9af-fc26fbd3c7f3"</span><span class="p">,</span>
+        <span class="p">},</span>
+        <span class="s2">"cogs"</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span>
+        <span class="s2">"currency"</span><span class="p">:</span> <span class="s2">"CAD"</span><span class="p">,</span>
+        <span class="s2">"id"</span><span class="p">:</span> <span class="s2">"45301951-59cb-461e-b0d0-85c46a7abb69"</span>
+      <span class="p">},</span>
+      <span class="p">{</span>
+        <span class="s2">"unitPrice"</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
+        <span class="s2">"product"</span><span class="p">:</span> <span class="p">{</span>
+          <span class="s2">"id"</span><span class="p">:</span> <span class="s2">"c14daee2-4678-4710-b9af-fc26fbd3c7f3"</span><span class="p">,</span>
+        <span class="p">},</span>
+        <span class="s2">"cogs"</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span>
+        <span class="s2">"currency"</span><span class="p">:</span> <span class="s2">"USD"</span><span class="p">,</span>
+        <span class="s2">"id"</span><span class="p">:</span> <span class="s2">"30ec5361-0044-44d5-a8b1-68dca07d274e"</span>
+      <span class="p">}</span>
+    <span class="p">],</span>
+    <span class="s2">"name"</span><span class="p">:</span> <span class="p">{</span>
+      <span class="s2">"en"</span><span class="p">:</span> <span class="s2">"name-updated"</span><span class="p">,</span>
+      <span class="s2">"fr"</span><span class="p">:</span> <span class="s2">"nom-updated"</span><span class="p">,</span>
+      <span class="s2">"es"</span><span class="p">:</span> <span class="s2">"nombre-updated"</span>
+    <span class="p">},</span>
+    <span class="s2">"changes"</span><span class="p">:</span> <span class="p">[],</span>
+    <span class="s2">"description"</span><span class="p">:</span> <span class="p">{</span>
+      <span class="s2">"en"</span><span class="p">:</span> <span class="s2">"pricing-desc-updated"</span><span class="p">,</span>
+      <span class="s2">"fr"</span><span class="p">:</span> <span class="s2">"desc_fr"</span><span class="p">,</span>
+      <span class="s2">"es"</span><span class="p">:</span> <span class="s2">"desc_es"</span>
+    <span class="p">},</span>
+    <span class="s2">"id"</span><span class="p">:</span> <span class="s2">"03bc22bd-adc4-46b8-988d-afddc24c0cb5"</span><span class="p">,</span>
+    <span class="s2">"effectiveDate"</span><span class="p">:</span> <span class="s2">"2020-05-06T00:00:00Z"</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+<table><thead>
+<tr>
+<th>Required</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>name</code> <br/><em>Object</em></td>
+<td>A map of language keys to a name in the specified language.</td>
+</tr>
+</tbody></table>
+
+<table><thead>
+<tr>
+<th>Optional</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>description</code> <br/><em>Object</em></td>
+<td>A map of language language keys to the description in the specified language.</td>
+</tr>
+</tbody></table>
+<h4 id='administration-delete-pricing'>Delete pricing</h4>
+<p><code>DELETE /pricings/:id</code></p>
+
+<p>Delete an extisting pricing. A pricing cannot be deleted if it is associated to an applied pricing.</p>
+<pre class="highlight shell tab-shell"><code><span class="c"># Creates a new pricing</span>
+curl -X DELETE <span class="s2">"https://cloudmc_endpoint/rest/pricings/03bc22bd-adc4-46b8-988d-afddc24c0cb5"</span> <span class="se">\</span>
+   -H <span class="s2">"MC-Api-Key: your_api_key"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns a JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"taskId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"85df8dfb-b904-42dc-bb76-4824e6b50c83"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"taskStatus"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SUCCESS"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h3 id='administration-applied-pricings'>Applied Pricings</h3>
 <p>The applied pricing allows the assignment of pricing to organization with a determined scope.</p>
 
 <!-------------------- LIST APPLIED PRICINGS -------------------->
