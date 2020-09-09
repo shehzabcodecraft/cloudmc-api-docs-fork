@@ -460,6 +460,12 @@
                                   <li>
                                     <a href="#administration-create-applied-pricing" class="toc-h4 toc-link" data-title="Administration">Create applied pricing</a>
                                   </li>
+                                  <li>
+                                    <a href="#administration-update-applied-pricing" class="toc-h4 toc-link" data-title="Administration">Update applied pricing</a>
+                                  </li>
+                                  <li>
+                                    <a href="#administration-delete-applied-pricing" class="toc-h4 toc-link" data-title="Administration">Delete applied pricing</a>
+                                  </li>
                               </ul>
                           </li>
                       </ul>
@@ -6944,8 +6950,7 @@ curl -X PUT <span class="s2">"https://cloudmc_endpoint/rest/pricings/03bc22bd-ad
 <p><code>DELETE /pricings/:id</code></p>
 
 <p>Delete an existing pricing. A pricing cannot be deleted if it is associated to an applied pricing.</p>
-<pre class="highlight shell tab-shell"><code><span class="c"># Creates a new pricing</span>
-curl -X DELETE <span class="s2">"https://cloudmc_endpoint/rest/pricings/03bc22bd-adc4-46b8-988d-afddc24c0cb5"</span> <span class="se">\</span>
+<pre class="highlight shell tab-shell"><code>curl -X DELETE <span class="s2">"https://cloudmc_endpoint/rest/pricings/03bc22bd-adc4-46b8-988d-afddc24c0cb5"</span> <span class="se">\</span>
    -H <span class="s2">"MC-Api-Key: your_api_key"</span>
 </code></pre>
 <blockquote>
@@ -7333,7 +7338,138 @@ curl -X POST <span class="s2">"https://cloudmc_endpoint/rest/applied_pricings"</
 <td>The UUID of the organization that the scope is targeting. Only required for scopes : ORG_BASE, ORG_TREE, ORG_SUBS.</td>
 </tr>
 </tbody></table>
-<h2 id='administration-authentication'>Authentication</h2><h3 id='administration-identity-providers'>Identity providers</h3>
+
+<!-------------------- UPDATE APPLIED PRICING -------------------->
+<h4 id='administration-update-applied-pricing'>Update applied pricing</h4>
+<p><code>PUT /applied_pricings/:id</code></p>
+
+<p>Update an applied pricing. Updates to the pricing, the scope, start date and end date may cause charges to be rolled back.</p>
+<pre class="highlight shell tab-shell"><code><span class="c"># Update an applied pricing</span>
+curl -X PUT <span class="s2">"https://cloudmc_endpoint/rest/applied_pricings/8bb5e457-41c3-410b-aced-b9c694ff141a"</span> <span class="se">\</span>
+   -H <span class="s2">"MC-Api-Key: your_api_key"</span>
+</code></pre>
+<blockquote>
+<p>Request body example:</p>
+</blockquote>
+<pre class="highlight javascript"><code><span class="p">{</span>
+  <span class="s2">"pricingDefinition"</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s2">"id"</span><span class="p">:</span> <span class="s2">"f786b9c5-177b-4cbc-9011-331282485d05"</span>
+  <span class="p">},</span>
+  <span class="s2">"organization"</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s2">"id"</span><span class="p">:</span> <span class="s2">"23910576-d29f-4c14-b663-31d728ff49a5"</span>
+  <span class="p">},</span>
+  <span class="s2">"billingDay"</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
+  <span class="s2">"currency"</span><span class="p">:</span> <span class="s2">"USD"</span><span class="p">,</span>
+  <span class="s2">"scopeQualifier"</span><span class="p">:</span> <span class="s2">"ORG_BASE"</span><span class="p">,</span>
+  <span class="s2">"scopeOrganization"</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s2">"id"</span><span class="p">:</span> <span class="s2">"d2e467f8-3a33-441a-b074-aec960758452"</span>
+  <span class="p">},</span>
+  <span class="s2">"startDate"</span><span class="p">:</span> <span class="s2">"2020-06-05T00:00:00Z"</span><span class="p">,</span>
+  <span class="s2">"endDate"</span><span class="p">:</span> <span class="s2">"2021-06-05T23:59:59.999Z"</span>
+<span class="p">}</span>
+</code></pre>
+<blockquote>
+<p>The above command return JSON structured like this:</p>
+</blockquote>
+<pre class="highlight javascript"><code><span class="p">{</span>
+  <span class="s2">"data"</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s2">"pricingDefinition"</span><span class="p">:</span> <span class="p">{</span>
+      <span class="s2">"supportedCurrencies"</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">"CAD"</span><span class="p">,</span>
+        <span class="s2">"USD"</span>
+      <span class="p">],</span>
+      <span class="s2">"organization"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">"id"</span><span class="p">:</span> <span class="s2">"23910576-d29f-4c14-b663-31d728ff49a5"</span>
+      <span class="p">},</span>
+      <span class="s2">"name"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">"en"</span><span class="p">:</span> <span class="s2">"my-pricing"</span><span class="p">,</span>
+        <span class="s2">"fr"</span><span class="p">:</span> <span class="s2">"mon-pricing"</span>
+      <span class="p">},</span>
+      <span class="s2">"changes"</span><span class="p">:</span> <span class="p">[],</span>
+      <span class="s2">"description"</span><span class="p">:</span> <span class="p">{},</span>
+      <span class="s2">"id"</span><span class="p">:</span> <span class="s2">"f786b9c5-177b-4cbc-9011-331282485d05"</span><span class="p">,</span>
+      <span class="s2">"effectiveDate"</span><span class="p">:</span> <span class="s2">"2020-05-06T00:00:00Z"</span>
+    <span class="p">},</span>
+    <span class="s2">"endDate"</span><span class="p">:</span> <span class="s2">"2021-06-05T23:59:59.999Z"</span><span class="p">,</span>
+    <span class="s2">"organization"</span><span class="p">:</span> <span class="p">{</span>
+      <span class="s2">"name"</span><span class="p">:</span> <span class="s2">"Systemer"</span><span class="p">,</span>
+      <span class="s2">"id"</span><span class="p">:</span> <span class="s2">"52fd201e-aa82-4a27-86b3-ea9650a7fb1e"</span>
+    <span class="p">},</span>
+    <span class="s2">"billingDay"</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
+    <span class="s2">"currency"</span><span class="p">:</span> <span class="s2">"CAD"</span><span class="p">,</span>
+    <span class="s2">"id"</span><span class="p">:</span> <span class="s2">"d08b9332-d26e-42fe-b272-3071f2d64839"</span><span class="p">,</span>
+    <span class="s2">"creationDate"</span><span class="p">:</span> <span class="s2">"2020-09-08T17:44:18.000Z"</span><span class="p">,</span>
+    <span class="s2">"scopeQualifier"</span><span class="p">:</span> <span class="s2">"ORG_BASE"</span><span class="p">,</span>
+    <span class="s2">"scopeOrganization"</span><span class="p">:</span> <span class="p">{</span>
+      <span class="s2">"id"</span><span class="p">:</span> <span class="s2">"d2e467f8-3a33-441a-b074-aec960758452"</span><span class="p">,</span>
+      <span class="s2">"name"</span><span class="p">:</span> <span class="s2">"scoped-organization"</span><span class="p">,</span>
+    <span class="p">},</span>
+    <span class="s2">"startDate"</span><span class="p">:</span> <span class="s2">"2020-06-05T00:00:00Z"</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+<table><thead>
+<tr>
+<th>Required</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>organization.id</code> <br/><em>UUID</em></td>
+<td>The UUID of the organization the applied pricing belongs to.</td>
+</tr>
+<tr>
+<td><code>pricingDefinition.id</code> <br/><em>UUID</em></td>
+<td>the UUID of the pricing that will be used in the applied pricing.</td>
+</tr>
+<tr>
+<td><code>scopeQualifier</code> <br/><em>string</em></td>
+<td>The scope qualifier for the applied pricing. Possible values are : ORG_BASE, ORG_TREE, ORG_SUB, ORG_TOPLEVEL, GLOBAL.</td>
+</tr>
+<tr>
+<td><code>currency</code> <br/><em>String</em></td>
+<td>The currency used for the applied pricing. The value is a ISO 4217 currency code that is part of the pricing selected.</td>
+</tr>
+<tr>
+<td><code>startDate</code> <br/><em>Date</em></td>
+<td>The start date for the applied pricing.</td>
+</tr>
+<tr>
+<td><code>billingDay</code> <br/><em>int</em></td>
+<td>The billing day that the applied pricing will be applied.</td>
+</tr>
+</tbody></table>
+
+<table><thead>
+<tr>
+<th>Optional</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>endDate</code> <br/><em>Date</em></td>
+<td>The end date for the applied pricing.</td>
+</tr>
+<tr>
+<td><code>scopeOrganization.id</code> <br/><em>UUID</em></td>
+<td>The UUID of the organization that the scope is targeting. Only required for scopes : ORG_BASE, ORG_TREE, ORG_SUBS.</td>
+</tr>
+</tbody></table>
+<h4 id='administration-delete-applied-pricing'>Delete applied pricing</h4>
+<p><code>DELETE /applied_pricings/:id</code></p>
+
+<p>Delete an existing applied pricing. Deleting an applied pricing that is ACTIVE or EXPIRED may cause charges to be rolled back.</p>
+<pre class="highlight shell tab-shell"><code>curl -X DELETE <span class="s2">"https://cloudmc_endpoint/rest/applied_pricings/d08b9332-d26e-42fe-b272-3071f2d64839"</span> <span class="se">\</span>
+   -H <span class="s2">"MC-Api-Key: your_api_key"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns a JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"taskId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"85df8dfb-b904-42dc-bb76-4824e6b50c83"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"taskStatus"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SUCCESS"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h2 id='administration-authentication'>Authentication</h2><h3 id='administration-identity-providers'>Identity providers</h3>
 <p>Configure methods of authentication for your organizations.</p>
 
 <!-------------------- LIST IDPS -------------------->
