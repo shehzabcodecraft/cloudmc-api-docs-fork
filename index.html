@@ -20453,7 +20453,7 @@ Snapshots are incremental to avoid billing for redundant data and minimize use o
 <td>Priority for this rule. This is an integer between 0 and 65535, both inclusive. The default value is 1000.</td>
 </tr>
 <tr>
-<td><code>range</code><br/><em>string</em></td>
+<td><code>range</code><br/><em>Array[string]</em></td>
 <td>The source or destination range depending on the <code>direction</code> specified. The firewall rule applies only to traffic that has a source/destination IP address in these ranges. These ranges must be expressed in CIDR format.</td>
 </tr>
 </tbody></table>
@@ -20469,15 +20469,15 @@ Snapshots are incremental to avoid billing for redundant data and minimize use o
 <td>Specifies if the firewall rule is an allow all or deny all rule.</td>
 </tr>
 <tr>
-<td><code>tcpPorts</code><br/><em>string</em></td>
-<td>The tcp ports on which to apply the rule. These must be in the range [0, 65535). They may be specified as combination of comma seperated values and port ranges i.e. 3,6,9,10-22.</td>
+<td><code>tcpPorts</code><br/><em>Array[string]</em></td>
+<td>The tcp ports on which to apply the rule. These must be in the range [0, 65535).</td>
 </tr>
 <tr>
-<td><code>udpPorts</code><br/><em>string</em></td>
-<td>The udp ports on which to apply the rule. These must be in the range [0, 65535). They may be specified as combination of comma seperated values and port ranges i.e. 3,6,9,10-22.</td>
+<td><code>udpPorts</code><br/><em>Array[string]</em></td>
+<td>The udp ports on which to apply the rule. These must be in the range [0, 65535).</td>
 </tr>
 <tr>
-<td><code>protocols</code><br/><em>string</em></td>
+<td><code>protocols</code><br/><em>Array[string]</em></td>
 <td>Supported protocols are: icmp, esp, ah, sctp, ipip or a valid <a href="https://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml">decimal IP protocol number</a>.</td>
 </tr>
 </tbody></table>
