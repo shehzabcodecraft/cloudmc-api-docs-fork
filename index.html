@@ -36629,6 +36629,22 @@ curl -X PUT <span class="se">\</span>
 
 <p>Delete an existing instance.</p>
 
+<aside class="notice">
+This will not delete the disks (OS/Data) attached to the instance but will leave them in detached state. To delete the OS disk attached to the instance `deleteOsDisk` query parameter can be used.
+</aside>
+
+<table><thead>
+<tr>
+<th>Query Parameter</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>deleteOsDisk</code><br/><em>boolean</em></td>
+<td>Will delete the OS disk attached to this instance. Default value is <code>false</code>.</td>
+</tr>
+</tbody></table>
+
 <!-------------------- CHANGE MACHINE TYPE -------------------->
 <h4 id='azure-change-machine-type'>Change machine type</h4>
 <p>A machine type determines the number of vCPUs and the size of the memory allocated to the <a href="#azure-instances">instances</a>.</p>
