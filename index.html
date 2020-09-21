@@ -1437,6 +1437,9 @@
                                   <li>
                                     <a href="#gcp-create-a-snapshot" class="toc-h4 toc-link" data-title="Google Cloud Platform plugin">Create a snapshot</a>
                                   </li>
+                                  <li>
+                                    <a href="#gcp-delete-a-snapshot" class="toc-h4 toc-link" data-title="Google Cloud Platform plugin">Delete a snapshot</a>
+                                  </li>
                               </ul>
                           </li>
                       </ul>
@@ -19886,6 +19889,15 @@ Snapshots are incremental to avoid billing for redundant data and minimize use o
 <!-------------------- CREATE A SNAPSHOT -------------------->
 <h4 id='gcp-create-a-snapshot'>Create a snapshot</h4>
 <p>See <a href="#gcp-take-a-snapshot-of-a-disk">take a snapshot of a disk</a> to create a snapshot.</p>
+
+<!-------------------- DELETE A SNAPSHOT -------------------->
+<h4 id='gcp-delete-a-snapshot'>Delete a snapshot</h4><pre class="highlight shell tab-shell"><code>curl -X DELETE <span class="se">\</span>
+   -H <span class="s2">"MC-Api-Key: your_api_key"</span> <span class="se">\</span>
+   <span class="s2">"https://cloudmc_endpoint/v1/services/gcp/test-area/snapshots/463325715266630842"</span>
+</code></pre>
+<p><code>DELETE /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/snapshots/:id</code></p>
+
+<p>Destroy an existing snapshot. A snapshot can only be deleted if it is in READY state.</p>
 <h2 id='gcp-networking'>Networking</h2><h3 id='gcp-networks'>Networks</h3>
 <p>A network is an isolated network where you can place groups of resources, such as <a href="#gcp-instances">instances</a>.</p>
 
