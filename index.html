@@ -1901,11 +1901,9 @@
                                           <li>
                                             <a href="#gcp-create-a-storage-class" class="toc-h5 toc-link" data-title="Google Cloud Platform plugin">Create a storage class</a>
                                           </li>
-                                      </ul>
-                                  </li>
-                                  <li>
-                                    <a href="#gcp-replace-a-storage-class" class="toc-h4 toc-link" data-title="Google Cloud Platform plugin">Replace a storage class</a>
-                                      <ul class="toc-list-h5">
+                                          <li>
+                                            <a href="#gcp-replace-a-storage-class" class="toc-h5 toc-link" data-title="Google Cloud Platform plugin">Replace a storage class</a>
+                                          </li>
                                           <li>
                                             <a href="#gcp-delete-a-storage-class" class="toc-h5 toc-link" data-title="Google Cloud Platform plugin">Delete a storage class</a>
                                           </li>
@@ -1923,11 +1921,9 @@
                                           <li>
                                             <a href="#gcp-create-a-persistent-volume" class="toc-h5 toc-link" data-title="Google Cloud Platform plugin">Create a persistent volume</a>
                                           </li>
-                                      </ul>
-                                  </li>
-                                  <li>
-                                    <a href="#gcp-replace-a-persistent-volume" class="toc-h4 toc-link" data-title="Google Cloud Platform plugin">Replace a persistent volume</a>
-                                      <ul class="toc-list-h5">
+                                          <li>
+                                            <a href="#gcp-replace-a-persistent-volume" class="toc-h5 toc-link" data-title="Google Cloud Platform plugin">Replace a persistent volume</a>
+                                          </li>
                                           <li>
                                             <a href="#gcp-delete-a-persistent-volume" class="toc-h5 toc-link" data-title="Google Cloud Platform plugin">Delete a persistent volume</a>
                                           </li>
@@ -1945,11 +1941,9 @@
                                           <li>
                                             <a href="#gcp-create-a-persistent-volume-claim" class="toc-h5 toc-link" data-title="Google Cloud Platform plugin">Create a persistent volume claim</a>
                                           </li>
-                                      </ul>
-                                  </li>
-                                  <li>
-                                    <a href="#gcp-replace-a-persistent-volume-claim" class="toc-h4 toc-link" data-title="Google Cloud Platform plugin">Replace a persistent volume claim</a>
-                                      <ul class="toc-list-h5">
+                                          <li>
+                                            <a href="#gcp-replace-a-persistent-volume-claim" class="toc-h5 toc-link" data-title="Google Cloud Platform plugin">Replace a persistent volume claim</a>
+                                          </li>
                                           <li>
                                             <a href="#gcp-delete-a-persistent-volume-claim" class="toc-h5 toc-link" data-title="Google Cloud Platform plugin">Delete a persistent volume claim</a>
                                           </li>
@@ -2715,11 +2709,9 @@
                                           <li>
                                             <a href="#azure-create-a-storage-class" class="toc-h5 toc-link" data-title="Azure plugin">Create a storage class</a>
                                           </li>
-                                      </ul>
-                                  </li>
-                                  <li>
-                                    <a href="#azure-replace-a-storage-class" class="toc-h4 toc-link" data-title="Azure plugin">Replace a storage class</a>
-                                      <ul class="toc-list-h5">
+                                          <li>
+                                            <a href="#azure-replace-a-storage-class" class="toc-h5 toc-link" data-title="Azure plugin">Replace a storage class</a>
+                                          </li>
                                           <li>
                                             <a href="#azure-delete-a-storage-class" class="toc-h5 toc-link" data-title="Azure plugin">Delete a storage class</a>
                                           </li>
@@ -2737,11 +2729,9 @@
                                           <li>
                                             <a href="#azure-create-a-persistent-volume" class="toc-h5 toc-link" data-title="Azure plugin">Create a persistent volume</a>
                                           </li>
-                                      </ul>
-                                  </li>
-                                  <li>
-                                    <a href="#azure-replace-a-persistent-volume" class="toc-h4 toc-link" data-title="Azure plugin">Replace a persistent volume</a>
-                                      <ul class="toc-list-h5">
+                                          <li>
+                                            <a href="#azure-replace-a-persistent-volume" class="toc-h5 toc-link" data-title="Azure plugin">Replace a persistent volume</a>
+                                          </li>
                                           <li>
                                             <a href="#azure-delete-a-persistent-volume" class="toc-h5 toc-link" data-title="Azure plugin">Delete a persistent volume</a>
                                           </li>
@@ -2759,11 +2749,9 @@
                                           <li>
                                             <a href="#azure-create-a-persistent-volume-claim" class="toc-h5 toc-link" data-title="Azure plugin">Create a persistent volume claim</a>
                                           </li>
-                                      </ul>
-                                  </li>
-                                  <li>
-                                    <a href="#azure-replace-a-persistent-volume-claim" class="toc-h4 toc-link" data-title="Azure plugin">Replace a persistent volume claim</a>
-                                      <ul class="toc-list-h5">
+                                          <li>
+                                            <a href="#azure-replace-a-persistent-volume-claim" class="toc-h5 toc-link" data-title="Azure plugin">Replace a persistent volume claim</a>
+                                          </li>
                                           <li>
                                             <a href="#azure-delete-a-persistent-volume-claim" class="toc-h5 toc-link" data-title="Azure plugin">Delete a persistent volume claim</a>
                                           </li>
@@ -28097,7 +28085,7 @@ curl -X POST <span class="se">\</span>
 
 <!-------------------- REPLACE STORAGE CLASS -------------------->
 
-<p><h4 id='gcp-replace-a-storage-class'>Replace a storage class</h4><pre class="highlight shell tab-shell"><code>curl -X PUT <span class="se">&lt;/span&gt;
+<p><h5 id='gcp-replace-a-storage-class'>Replace a storage class</h5><pre class="highlight shell tab-shell"><code>curl -X PUT <span class="se">&lt;/span&gt;
   -H <span class="s2">&quot;MC-Api-Key: your_api_key&quot;</span> <span class="se">&lt;/span&gt;
    <span class="s2">&quot;https://cloudmc_endpoint/v1/services/a_service/an_environment/storageclasses/rook-ceph-block?cluster_id=a_cluster_id&quot;</span>
   Content-Type: application/json
@@ -28603,7 +28591,7 @@ curl -X POST <span class="se">\</span>
 
 <!-------------------- REPLACE PERSISTENT VOLUME -------------------->
 
-<p><h4 id='gcp-replace-a-persistent-volume'>Replace a persistent volume</h4><pre class="highlight shell tab-shell"><code>curl -X PUT <span class="se">&lt;/span&gt;
+<p><h5 id='gcp-replace-a-persistent-volume'>Replace a persistent volume</h5><pre class="highlight shell tab-shell"><code>curl -X PUT <span class="se">&lt;/span&gt;
   -H <span class="s2">&quot;MC-Api-Key: your_api_key&quot;</span> <span class="se">&lt;/span&gt;
    <span class="s2">&quot;https://cloudmc_endpoint/v1/services/a_service/an_environment/persistentvolumes/my-persistent-volume?cluster_id=a_cluster_id&quot;</span>
   Content-Type: application/json
@@ -29153,7 +29141,7 @@ curl -X POST <span class="se">\</span>
 
 <!-------------------- REPLACE PERSISTENT VOLUME CLAIM -------------------->
 
-<p><h4 id='gcp-replace-a-persistent-volume-claim'>Replace a persistent volume claim</h4><pre class="highlight shell tab-shell"><code>curl -X PUT <span class="se">&lt;/span&gt;
+<p><h5 id='gcp-replace-a-persistent-volume-claim'>Replace a persistent volume claim</h5><pre class="highlight shell tab-shell"><code>curl -X PUT <span class="se">&lt;/span&gt;
   -H <span class="s2">&quot;MC-Api-Key: your_api_key&quot;</span> <span class="se">&lt;/span&gt;
    <span class="s2">&quot;https://cloudmc_endpoint/v1/services/a_service/an_environment/persistentvolumeclaims/my-persistent-volume-claim/default?cluster_id=a_cluster_id&quot;</span>
   Content-Type: application/json
@@ -43758,7 +43746,7 @@ For Windows instances, reset the administrator account and reset the Remote Desk
 
 <!-------------------- REPLACE STORAGE CLASS -------------------->
 
-<p><h4 id='azure-replace-a-storage-class'>Replace a storage class</h4><pre class="highlight shell tab-shell"><code>curl -X PUT <span class="se">&lt;/span&gt;
+<p><h5 id='azure-replace-a-storage-class'>Replace a storage class</h5><pre class="highlight shell tab-shell"><code>curl -X PUT <span class="se">&lt;/span&gt;
   -H <span class="s2">&quot;MC-Api-Key: your_api_key&quot;</span> <span class="se">&lt;/span&gt;
    <span class="s2">&quot;https://cloudmc_endpoint/v1/services/a_service/an_environment/storageclasses/rook-ceph-block?cluster_id=a_cluster_id&quot;</span>
   Content-Type: application/json
@@ -44264,7 +44252,7 @@ For Windows instances, reset the administrator account and reset the Remote Desk
 
 <!-------------------- REPLACE PERSISTENT VOLUME -------------------->
 
-<p><h4 id='azure-replace-a-persistent-volume'>Replace a persistent volume</h4><pre class="highlight shell tab-shell"><code>curl -X PUT <span class="se">&lt;/span&gt;
+<p><h5 id='azure-replace-a-persistent-volume'>Replace a persistent volume</h5><pre class="highlight shell tab-shell"><code>curl -X PUT <span class="se">&lt;/span&gt;
   -H <span class="s2">&quot;MC-Api-Key: your_api_key&quot;</span> <span class="se">&lt;/span&gt;
    <span class="s2">&quot;https://cloudmc_endpoint/v1/services/a_service/an_environment/persistentvolumes/my-persistent-volume?cluster_id=a_cluster_id&quot;</span>
   Content-Type: application/json
@@ -44814,7 +44802,7 @@ For Windows instances, reset the administrator account and reset the Remote Desk
 
 <!-------------------- REPLACE PERSISTENT VOLUME CLAIM -------------------->
 
-<p><h4 id='azure-replace-a-persistent-volume-claim'>Replace a persistent volume claim</h4><pre class="highlight shell tab-shell"><code>curl -X PUT <span class="se">&lt;/span&gt;
+<p><h5 id='azure-replace-a-persistent-volume-claim'>Replace a persistent volume claim</h5><pre class="highlight shell tab-shell"><code>curl -X PUT <span class="se">&lt;/span&gt;
   -H <span class="s2">&quot;MC-Api-Key: your_api_key&quot;</span> <span class="se">&lt;/span&gt;
    <span class="s2">&quot;https://cloudmc_endpoint/v1/services/a_service/an_environment/persistentvolumeclaims/my-persistent-volume-claim/default?cluster_id=a_cluster_id&quot;</span>
   Content-Type: application/json
