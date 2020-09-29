@@ -1952,6 +1952,19 @@
                               </ul>
                           </li>
                           <li>
+                            <a href="#gcp-access-control" class="toc-h3 toc-link" data-title="Google Cloud Platform plugin">Access control</a>
+                              <ul class="toc-list-h4">
+                                  <li>
+                                    <a href="#gcp-service-accounts" class="toc-h4 toc-link" data-title="Google Cloud Platform plugin">Service accounts</a>
+                                      <ul class="toc-list-h5">
+                                          <li>
+                                            <a href="#gcp-list-service-accounts" class="toc-h5 toc-link" data-title="Google Cloud Platform plugin">List service accounts</a>
+                                          </li>
+                                      </ul>
+                                  </li>
+                              </ul>
+                          </li>
+                          <li>
                             <a href="#gcp-releases" class="toc-h3 toc-link" data-title="Google Cloud Platform plugin">Releases</a>
                               <ul class="toc-list-h4">
                                   <li>
@@ -2266,6 +2279,19 @@
                                   </li>
                                   <li>
                                     <a href="#kubernetes-delete-a-persistent-volume-claim" class="toc-h4 toc-link" data-title="Kubernetes plugin">Delete a persistent volume claim</a>
+                                  </li>
+                              </ul>
+                          </li>
+                      </ul>
+                  </li>
+                  <li>
+                    <a href="#kubernetes-access-control" class="toc-h2 toc-link" data-title="Kubernetes plugin">Access control</a>
+                      <ul class="toc-list-h3">
+                          <li>
+                            <a href="#kubernetes-service-accounts" class="toc-h3 toc-link" data-title="Kubernetes plugin">Service accounts</a>
+                              <ul class="toc-list-h4">
+                                  <li>
+                                    <a href="#kubernetes-list-service-accounts" class="toc-h4 toc-link" data-title="Kubernetes plugin">List service accounts</a>
                                   </li>
                               </ul>
                           </li>
@@ -2754,6 +2780,19 @@
                                           </li>
                                           <li>
                                             <a href="#azure-delete-a-persistent-volume-claim" class="toc-h5 toc-link" data-title="Azure plugin">Delete a persistent volume claim</a>
+                                          </li>
+                                      </ul>
+                                  </li>
+                              </ul>
+                          </li>
+                          <li>
+                            <a href="#azure-access-control" class="toc-h3 toc-link" data-title="Azure plugin">Access control</a>
+                              <ul class="toc-list-h4">
+                                  <li>
+                                    <a href="#azure-service-accounts" class="toc-h4 toc-link" data-title="Azure plugin">Service accounts</a>
+                                      <ul class="toc-list-h5">
+                                          <li>
+                                            <a href="#azure-list-service-accounts" class="toc-h5 toc-link" data-title="Azure plugin">List service accounts</a>
                                           </li>
                                       </ul>
                                   </li>
@@ -29341,6 +29380,88 @@ curl -X POST <span class="se">\</span>
 <td>The status of the operation.</td>
 </tr>
 </tbody></table>
+<h3 id='gcp-access-control'>Access control</h3>
+<h4 id='gcp-service-accounts'>Service accounts</h4>
+
+<!-------------------- LIST SERVICE ACCOUNTS -------------------->
+
+<p><h5 id='gcp-list-service-accounts'>List service accounts</h5><pre class="highlight shell tab-shell"><code>curl -X GET <span class="se">&lt;/span&gt;
+   -H <span class="s2">&quot;MC-Api-Key: your_api_key&quot;</span> <span class="se">&lt;/span&gt;
+   <span class="s2">&quot;https://cloudmc_endpoint/v1/services/a_service/an_environment/serviceaccounts?cluster_id=:cluster_id&quot;</span>
+</code></pre>
+<blockquote>
+<p>The above command returns a JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+      </span><span class="s2">&quot;metadata&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;vpnkit-controller&quot;</span><span class="p">,</span><span class="w">
+        </span><span class="s2">&quot;namespace&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;kube-system&quot;</span><span class="p">,</span><span class="w">
+        </span><span class="s2">&quot;selfLink&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/api/v1/namespaces/kube-system/serviceaccounts/vpnkit-controller&quot;</span><span class="p">,</span><span class="w">
+        </span><span class="s2">&quot;uid&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;b9afa8a8-3d64-4605-959f-12bb5c6cfba2&quot;</span><span class="p">,</span><span class="w">
+        </span><span class="s2">&quot;resourceVersion&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;481&quot;</span><span class="p">,</span><span class="w">
+        </span><span class="s2">&quot;creationTimestamp&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2020-09-18T14:47:48Z&quot;</span><span class="p">,</span><span class="w">
+        </span><span class="s2">&quot;annotations&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">&quot;kubectl.kubernetes.io/last-applied-configuration&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;{</span><span class="se">\&quot;</span><span class="s2">apiVersion</span><span class="se">\&quot;</span><span class="s2">:</span><span class="se">\&quot;</span><span class="s2">v1</span><span class="se">\&quot;</span><span class="s2">,</span><span class="se">\&quot;</span><span class="s2">kind</span><span class="se">\&quot;</span><span class="s2">:</span><span class="se">\&quot;</span><span class="s2">ServiceAccount</span><span class="se">\&quot;</span><span class="s2">,</span><span class="se">\&quot;</span><span class="s2">metadata</span><span class="se">\&quot;</span><span class="s2">:{</span><span class="se">\&quot;</span><span class="s2">annotations</span><span class="se">\&quot;</span><span class="s2">:{},</span><span class="se">\&quot;</span><span class="s2">name</span><span class="se">\&quot;</span><span class="s2">:</span><span class="se">\&quot;</span><span class="s2">vpnkit-controller</span><span class="se">\&quot;</span><span class="s2">,</span><span class="se">\&quot;</span><span class="s2">namespace</span><span class="se">\&quot;</span><span class="s2">:</span><span class="se">\&quot;</span><span class="s2">kube-system</span><span class="se">\&quot;</span><span class="s2">}}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">&quot;secrets&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;vpnkit-controller-token-hl674&quot;</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><code>GET /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/serviceaccounts?cluster_id=:cluster_id</code></p></p>
+
+<p>Retrieve a list of all service accounts in a given <a href="#administration-environments">environment</a>.</p>
+
+<table><thead>
+<tr>
+<th>Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code> <br/><em>string</em></td>
+<td>The id of the service account.</td>
+</tr>
+<tr>
+<td><code>metadata.annotations</code> <br/><em>map</em></td>
+<td>The annotations of the service account.</td>
+</tr>
+<tr>
+<td><code>metadata</code> <br/><em>object</em></td>
+<td>The metadata of the service account.</td>
+</tr>
+<tr>
+<td><code>metadata.creationTimestamp</code> <br/><em>string</em></td>
+<td>The date of creation of the service account as a string.</td>
+</tr>
+<tr>
+<td><code>metadata.name</code> <br/><em>string</em></td>
+<td>The name of the service account.</td>
+</tr>
+<tr>
+<td><code>metadata.namespace</code> <br/><em>string</em></td>
+<td>The namespace in which the service account is created.</td>
+</tr>
+<tr>
+<td><code>metadata.uid</code> <br/><em>object</em></td>
+<td>The UUID of the service account.</td>
+</tr>
+<tr>
+<td><code>metadata.secrets</code> <br/><em>List&lt;object&gt;</em></td>
+<td>The secrets of the service account.</td>
+</tr>
+<tr>
+<td><code>secretsSize</code> <br/><em>integer</em></td>
+<td>The number of secrets of the service account.</td>
+</tr>
+</tbody></table>
+
+<p>Note that the list is not complete, since it is refering to the <a href="https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md">kubernetes api details</a>.</p>
 <h3 id='gcp-releases'>Releases</h3>
 
 <!-------------------- LIST RELEASES -------------------->
@@ -35911,6 +36032,85 @@ curl -X PUT <span class="se">\</span>
 <td>The status of the operation.</td>
 </tr>
 </tbody></table>
+<h2 id='kubernetes-access-control'>Access control</h2><h3 id='kubernetes-service-accounts'>Service accounts</h3>
+<!-------------------- LIST SERVICE ACCOUNTS -------------------->
+<h4 id='kubernetes-list-service-accounts'>List service accounts</h4><pre class="highlight shell tab-shell"><code>curl -X GET <span class="se">\</span>
+   -H <span class="s2">"MC-Api-Key: your_api_key"</span> <span class="se">\</span>
+   <span class="s2">"https://cloudmc_endpoint/v1/services/a_service/an_environment/serviceaccounts"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns a JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+      </span><span class="s2">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"vpnkit-controller"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"namespace"</span><span class="p">:</span><span class="w"> </span><span class="s2">"kube-system"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"selfLink"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/api/v1/namespaces/kube-system/serviceaccounts/vpnkit-controller"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"uid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"b9afa8a8-3d64-4605-959f-12bb5c6cfba2"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"resourceVersion"</span><span class="p">:</span><span class="w"> </span><span class="s2">"481"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"creationTimestamp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-09-18T14:47:48Z"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"annotations"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"kubectl.kubernetes.io/last-applied-configuration"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{</span><span class="se">\"</span><span class="s2">apiVersion</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">v1</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">kind</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">ServiceAccount</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">metadata</span><span class="se">\"</span><span class="s2">:{</span><span class="se">\"</span><span class="s2">annotations</span><span class="se">\"</span><span class="s2">:{},</span><span class="se">\"</span><span class="s2">name</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">vpnkit-controller</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">namespace</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">kube-system</span><span class="se">\"</span><span class="s2">}}</span><span class="se">\n</span><span class="s2">"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"secrets"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"vpnkit-controller-token-hl674"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><code>GET /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/serviceaccounts</code></p>
+
+<p>Retrieve a list of all service accounts in a given <a href="#administration-environments">environment</a>.</p>
+
+<table><thead>
+<tr>
+<th>Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code> <br/><em>string</em></td>
+<td>The id of the service account.</td>
+</tr>
+<tr>
+<td><code>metadata.annotations</code> <br/><em>map</em></td>
+<td>The annotations of the service account.</td>
+</tr>
+<tr>
+<td><code>metadata</code> <br/><em>object</em></td>
+<td>The metadata of the service account.</td>
+</tr>
+<tr>
+<td><code>metadata.creationTimestamp</code> <br/><em>string</em></td>
+<td>The date of creation of the service account as a string.</td>
+</tr>
+<tr>
+<td><code>metadata.name</code> <br/><em>string</em></td>
+<td>The name of the service account.</td>
+</tr>
+<tr>
+<td><code>metadata.namespace</code> <br/><em>string</em></td>
+<td>The namespace in which the service account is created.</td>
+</tr>
+<tr>
+<td><code>metadata.uid</code> <br/><em>object</em></td>
+<td>The UUID of the service account.</td>
+</tr>
+<tr>
+<td><code>metadata.secrets</code> <br/><em>List&lt;object&gt;</em></td>
+<td>The secrets of the service account.</td>
+</tr>
+<tr>
+<td><code>secretsSize</code> <br/><em>integer</em></td>
+<td>The number of secrets of the service account.</td>
+</tr>
+</tbody></table>
+
+<p>Note that the list is not complete, since it is refering to the <a href="https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md">kubernetes api details</a>.</p>
 <h2 id='kubernetes-releases'>Releases</h2>
 <!-------------------- LIST RELEASES -------------------->
 <h3 id='kubernetes-list-releases'>List releases</h3><pre class="highlight shell tab-shell"><code>curl -X GET <span class="se">\</span>
@@ -45002,6 +45202,88 @@ For Windows instances, reset the administrator account and reset the Remote Desk
 <td>The status of the operation.</td>
 </tr>
 </tbody></table>
+<h3 id='azure-access-control'>Access control</h3>
+<h4 id='azure-service-accounts'>Service accounts</h4>
+
+<!-------------------- LIST SERVICE ACCOUNTS -------------------->
+
+<p><h5 id='azure-list-service-accounts'>List service accounts</h5><pre class="highlight shell tab-shell"><code>curl -X GET <span class="se">&lt;/span&gt;
+   -H <span class="s2">&quot;MC-Api-Key: your_api_key&quot;</span> <span class="se">&lt;/span&gt;
+   <span class="s2">&quot;https://cloudmc_endpoint/v1/services/a_service/an_environment/serviceaccounts?cluster_id=:cluster_id&quot;</span>
+</code></pre>
+<blockquote>
+<p>The above command returns a JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+      </span><span class="s2">&quot;metadata&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;vpnkit-controller&quot;</span><span class="p">,</span><span class="w">
+        </span><span class="s2">&quot;namespace&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;kube-system&quot;</span><span class="p">,</span><span class="w">
+        </span><span class="s2">&quot;selfLink&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/api/v1/namespaces/kube-system/serviceaccounts/vpnkit-controller&quot;</span><span class="p">,</span><span class="w">
+        </span><span class="s2">&quot;uid&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;b9afa8a8-3d64-4605-959f-12bb5c6cfba2&quot;</span><span class="p">,</span><span class="w">
+        </span><span class="s2">&quot;resourceVersion&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;481&quot;</span><span class="p">,</span><span class="w">
+        </span><span class="s2">&quot;creationTimestamp&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2020-09-18T14:47:48Z&quot;</span><span class="p">,</span><span class="w">
+        </span><span class="s2">&quot;annotations&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">&quot;kubectl.kubernetes.io/last-applied-configuration&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;{</span><span class="se">\&quot;</span><span class="s2">apiVersion</span><span class="se">\&quot;</span><span class="s2">:</span><span class="se">\&quot;</span><span class="s2">v1</span><span class="se">\&quot;</span><span class="s2">,</span><span class="se">\&quot;</span><span class="s2">kind</span><span class="se">\&quot;</span><span class="s2">:</span><span class="se">\&quot;</span><span class="s2">ServiceAccount</span><span class="se">\&quot;</span><span class="s2">,</span><span class="se">\&quot;</span><span class="s2">metadata</span><span class="se">\&quot;</span><span class="s2">:{</span><span class="se">\&quot;</span><span class="s2">annotations</span><span class="se">\&quot;</span><span class="s2">:{},</span><span class="se">\&quot;</span><span class="s2">name</span><span class="se">\&quot;</span><span class="s2">:</span><span class="se">\&quot;</span><span class="s2">vpnkit-controller</span><span class="se">\&quot;</span><span class="s2">,</span><span class="se">\&quot;</span><span class="s2">namespace</span><span class="se">\&quot;</span><span class="s2">:</span><span class="se">\&quot;</span><span class="s2">kube-system</span><span class="se">\&quot;</span><span class="s2">}}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">&quot;secrets&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;vpnkit-controller-token-hl674&quot;</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><code>GET /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/serviceaccounts?cluster_id=:cluster_id</code></p></p>
+
+<p>Retrieve a list of all service accounts in a given <a href="#administration-environments">environment</a>.</p>
+
+<table><thead>
+<tr>
+<th>Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code> <br/><em>string</em></td>
+<td>The id of the service account.</td>
+</tr>
+<tr>
+<td><code>metadata.annotations</code> <br/><em>map</em></td>
+<td>The annotations of the service account.</td>
+</tr>
+<tr>
+<td><code>metadata</code> <br/><em>object</em></td>
+<td>The metadata of the service account.</td>
+</tr>
+<tr>
+<td><code>metadata.creationTimestamp</code> <br/><em>string</em></td>
+<td>The date of creation of the service account as a string.</td>
+</tr>
+<tr>
+<td><code>metadata.name</code> <br/><em>string</em></td>
+<td>The name of the service account.</td>
+</tr>
+<tr>
+<td><code>metadata.namespace</code> <br/><em>string</em></td>
+<td>The namespace in which the service account is created.</td>
+</tr>
+<tr>
+<td><code>metadata.uid</code> <br/><em>object</em></td>
+<td>The UUID of the service account.</td>
+</tr>
+<tr>
+<td><code>metadata.secrets</code> <br/><em>List&lt;object&gt;</em></td>
+<td>The secrets of the service account.</td>
+</tr>
+<tr>
+<td><code>secretsSize</code> <br/><em>integer</em></td>
+<td>The number of secrets of the service account.</td>
+</tr>
+</tbody></table>
+
+<p>Note that the list is not complete, since it is refering to the <a href="https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md">kubernetes api details</a>.</p>
 <h1 id='masterportal-plugin'>MasterPortal plugin</h1>
 <p>The MasterPortal plugin allows users to add applications to an environment and to request an automatic login allowing for a single sign-on experience. </p>
 <h3 id='masterportal-applications'>Applications</h3>
