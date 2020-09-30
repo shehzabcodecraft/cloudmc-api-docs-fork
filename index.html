@@ -1962,6 +1962,17 @@
                                           </li>
                                       </ul>
                                   </li>
+                                  <li>
+                                    <a href="#gcp-roles" class="toc-h4 toc-link" data-title="Google Cloud Platform plugin">Roles</a>
+                                      <ul class="toc-list-h5">
+                                          <li>
+                                            <a href="#gcp-list-namespace-roles" class="toc-h5 toc-link" data-title="Google Cloud Platform plugin">List (namespace) Roles</a>
+                                          </li>
+                                          <li>
+                                            <a href="#gcp-get-a-role" class="toc-h5 toc-link" data-title="Google Cloud Platform plugin">Get a role</a>
+                                          </li>
+                                      </ul>
+                                  </li>
                               </ul>
                           </li>
                           <li>
@@ -2292,6 +2303,17 @@
                               <ul class="toc-list-h4">
                                   <li>
                                     <a href="#kubernetes-list-service-accounts" class="toc-h4 toc-link" data-title="Kubernetes plugin">List service accounts</a>
+                                  </li>
+                              </ul>
+                          </li>
+                          <li>
+                            <a href="#kubernetes-roles" class="toc-h3 toc-link" data-title="Kubernetes plugin">Roles</a>
+                              <ul class="toc-list-h4">
+                                  <li>
+                                    <a href="#kubernetes-list-namespace-roles" class="toc-h4 toc-link" data-title="Kubernetes plugin">List (namespace) Roles</a>
+                                  </li>
+                                  <li>
+                                    <a href="#kubernetes-get-a-role" class="toc-h4 toc-link" data-title="Kubernetes plugin">Get a role</a>
                                   </li>
                               </ul>
                           </li>
@@ -2793,6 +2815,17 @@
                                       <ul class="toc-list-h5">
                                           <li>
                                             <a href="#azure-list-service-accounts" class="toc-h5 toc-link" data-title="Azure plugin">List service accounts</a>
+                                          </li>
+                                      </ul>
+                                  </li>
+                                  <li>
+                                    <a href="#azure-roles" class="toc-h4 toc-link" data-title="Azure plugin">Roles</a>
+                                      <ul class="toc-list-h5">
+                                          <li>
+                                            <a href="#azure-list-namespace-roles" class="toc-h5 toc-link" data-title="Azure plugin">List (namespace) Roles</a>
+                                          </li>
+                                          <li>
+                                            <a href="#azure-get-a-role" class="toc-h5 toc-link" data-title="Azure plugin">Get a role</a>
                                           </li>
                                       </ul>
                                   </li>
@@ -29462,6 +29495,146 @@ curl -X POST <span class="se">\</span>
 </tbody></table>
 
 <p>Note that the list is not complete, since it is refering to the <a href="https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md">kubernetes api details</a>.</p>
+<h4 id='gcp-roles'>Roles</h4>
+
+<!-------------------- LIST ROLES -------------------->
+
+<p><h5 id='gcp-list-namespace-roles'>List (namespace) Roles</h5><pre class="highlight shell tab-shell"><code>curl -X GET <span class="se">&lt;/span&gt;
+   -H <span class="s2">&quot;MC-Api-Key: your_api_key&quot;</span> <span class="se">&lt;/span&gt;
+   <span class="s2">&quot;https://cloudmc_endpoint/v1/services/a_service/an_environment/roles?cluster_id=projects/cmc-k8s-enabled-llb/locations/us-central1-a/clusters/standard-cluster-1&quot;</span>
+</code></pre>
+<blockquote>
+<p>The above command returns a JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">&quot;data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;role-id&quot;</span><span class="p">,</span><span class="w">
+            </span><span class="s2">&quot;age&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1w4d&quot;</span><span class="p">,</span><span class="w">
+            </span><span class="s2">&quot;metadata&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">&quot;creationTimestamp&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2020-09-18T10:01:26.000-04:00&quot;</span><span class="p">,</span><span class="w">
+                </span><span class="s2">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;kubeadm:bootstrap-signer-clusterinfo&quot;</span><span class="p">,</span><span class="w">
+                </span><span class="s2">&quot;namespace&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;kube-public&quot;</span><span class="p">,</span><span class="w">
+                </span><span class="s2">&quot;uid&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;57ef0321-e44a-43c9-9f2a-e448c3a66a46&quot;</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="s2">&quot;rules&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">&quot;apiGroups&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+                    </span><span class="s2">&quot;resourceNames&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+                    </span><span class="s2">&quot;resources&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+                    </span><span class="s2">&quot;verbs&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+            </span><span class="p">]</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">&quot;metadata&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">&quot;recordCount&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><code>GET /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/roles?cluster_id=:cluster_id</code></p></p>
+
+<p>Retrieve a list of all roles in a given <a href="#administration-environments">environment</a>.</p>
+
+<table><thead>
+<tr>
+<th>Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code> <br/><em>string</em></td>
+<td>The id of the role.</td>
+</tr>
+<tr>
+<td><code>metadata</code> <br/><em>object</em></td>
+<td>The metadata of the role.</td>
+</tr>
+<tr>
+<td><code>metadata.creationTimestamp</code> <br/><em>string</em></td>
+<td>The date of creation of the service account as a string.</td>
+</tr>
+<tr>
+<td><code>metadata.name</code> <br/><em>string</em></td>
+<td>The name of the role.</td>
+</tr>
+<tr>
+<td><code>metadata.namespace</code> <br/><em>string</em></td>
+<td>The namespace in which the role is created.</td>
+</tr>
+<tr>
+<td><code>metadata.uid</code> <br/><em>object</em></td>
+<td>The UUID of the role.</td>
+</tr>
+<tr>
+<td><code>rules</code> <br/><em>array</em></td>
+<td>The array of rules assocaited with this role.</td>
+</tr>
+</tbody></table>
+
+<p>Note that the list is not complete, since it is refering to the <a href="https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md">kubernetes api details</a>.</p>
+
+<!-------------------- GET A ROLE -------------------->
+
+<p><h5 id='gcp-get-a-role'>Get a role</h5><pre class="highlight shell tab-shell"><code>curl -X GET <span class="se">&lt;/span&gt;
+   -H <span class="s2">&quot;MC-Api-Key: your_api_key&quot;</span> <span class="se">&lt;/span&gt;
+   <span class="s2">&quot;https://cloudmc_endpoint/v1/services/a_service/an_environment/roles/role-name/role-namespace?cluster_id=projects/cmc-k8s-enabled-llb/locations/us-central1-a/clusters/standard-cluster-1&quot;</span>
+</code></pre>
+<blockquote>
+<p>The above command returns a JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">&quot;data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;kubeadm:bootstrap-signer-clusterinfo&quot;</span><span class="p">,</span><span class="w">
+        </span><span class="s2">&quot;age&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1w4d&quot;</span><span class="p">,</span><span class="w">
+        </span><span class="s2">&quot;apiVersion&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;rbac.authorization.k8s.io/v1&quot;</span><span class="p">,</span><span class="w">
+        </span><span class="s2">&quot;kind&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Role&quot;</span><span class="p">,</span><span class="w">
+        </span><span class="s2">&quot;metadata&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">&quot;creationTimestamp&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2020-09-18T10:01:26.000-04:00&quot;</span><span class="p">,</span><span class="w">
+            </span><span class="s2">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;kubeadm:bootstrap-signer-clusterinfo&quot;</span><span class="p">,</span><span class="w">
+            </span><span class="s2">&quot;namespace&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;kube-public&quot;</span><span class="p">,</span><span class="w">
+            </span><span class="s2">&quot;uid&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;57ef0321-e44a-43c9-9f2a-e448c3a66a47&quot;</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">&quot;rules&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="s2">&quot;apiGroups&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+                </span><span class="s2">&quot;resourceNames&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+                </span><span class="s2">&quot;resources&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+                </span><span class="s2">&quot;verbs&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><code>GET /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/roles/:id/:namespace?cluster_id=:cluster_id</code></p></p>
+
+<p>Retrieve a role and all its info in a given <a href="#administration-environments">environment</a>.</p>
+
+<table><thead>
+<tr>
+<th>Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code> <br/><em>string</em></td>
+<td>The id of the role.</td>
+</tr>
+<tr>
+<td><code>apiVersion</code> <br/><em>string</em></td>
+<td>The API version used to retrieve this role.</td>
+</tr>
+<tr>
+<td><code>metadata</code> <br/><em>object</em></td>
+<td>The metadata of the role.</td>
+</tr>
+<tr>
+<td><code>rules</code> <br/><em>array</em></td>
+<td>The array of rules assocaited with this role.</td>
+</tr>
+</tbody></table>
+
+<p>Note that the list is not complete, since it is refering to the <a href="https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md">kubernetes api details</a>.</p>
 <h3 id='gcp-releases'>Releases</h3>
 
 <!-------------------- LIST RELEASES -------------------->
@@ -36107,6 +36280,143 @@ curl -X PUT <span class="se">\</span>
 <tr>
 <td><code>secretsSize</code> <br/><em>integer</em></td>
 <td>The number of secrets of the service account.</td>
+</tr>
+</tbody></table>
+
+<p>Note that the list is not complete, since it is refering to the <a href="https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md">kubernetes api details</a>.</p>
+<h3 id='kubernetes-roles'>Roles</h3>
+<!-------------------- LIST ROLES -------------------->
+<h4 id='kubernetes-list-namespace-roles'>List (namespace) Roles</h4><pre class="highlight shell tab-shell"><code>curl -X GET <span class="se">\</span>
+   -H <span class="s2">"MC-Api-Key: your_api_key"</span> <span class="se">\</span>
+   <span class="s2">"https://cloudmc_endpoint/v1/services/a_service/an_environment/roles"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns a JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"role-id"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"age"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1w4d"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"creationTimestamp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-09-18T10:01:26.000-04:00"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"kubeadm:bootstrap-signer-clusterinfo"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"namespace"</span><span class="p">:</span><span class="w"> </span><span class="s2">"kube-public"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"uid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"57ef0321-e44a-43c9-9f2a-e448c3a66a46"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="s2">"rules"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"apiGroups"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+                    </span><span class="s2">"resourceNames"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+                    </span><span class="s2">"resources"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+                    </span><span class="s2">"verbs"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+            </span><span class="p">]</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"recordCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><code>GET /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/roles</code></p>
+
+<p>Retrieve a list of all roles in a given <a href="#administration-environments">environment</a>.</p>
+
+<table><thead>
+<tr>
+<th>Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code> <br/><em>string</em></td>
+<td>The id of the role.</td>
+</tr>
+<tr>
+<td><code>metadata</code> <br/><em>object</em></td>
+<td>The metadata of the role.</td>
+</tr>
+<tr>
+<td><code>metadata.creationTimestamp</code> <br/><em>string</em></td>
+<td>The date of creation of the service account as a string.</td>
+</tr>
+<tr>
+<td><code>metadata.name</code> <br/><em>string</em></td>
+<td>The name of the role.</td>
+</tr>
+<tr>
+<td><code>metadata.namespace</code> <br/><em>string</em></td>
+<td>The namespace in which the role is created.</td>
+</tr>
+<tr>
+<td><code>metadata.uid</code> <br/><em>object</em></td>
+<td>The UUID of the role.</td>
+</tr>
+<tr>
+<td><code>rules</code> <br/><em>array</em></td>
+<td>The array of rules assocaited with this role.</td>
+</tr>
+</tbody></table>
+
+<p>Note that the list is not complete, since it is refering to the <a href="https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md">kubernetes api details</a>.</p>
+
+<!-------------------- GET A ROLE -------------------->
+<h4 id='kubernetes-get-a-role'>Get a role</h4><pre class="highlight shell tab-shell"><code>curl -X GET <span class="se">\</span>
+   -H <span class="s2">"MC-Api-Key: your_api_key"</span> <span class="se">\</span>
+   <span class="s2">"https://cloudmc_endpoint/v1/services/a_service/an_environment/roles/role-name/role-namespace"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns a JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"kubeadm:bootstrap-signer-clusterinfo"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"age"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1w4d"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"apiVersion"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rbac.authorization.k8s.io/v1"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"kind"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Role"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"creationTimestamp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-09-18T10:01:26.000-04:00"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"kubeadm:bootstrap-signer-clusterinfo"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"namespace"</span><span class="p">:</span><span class="w"> </span><span class="s2">"kube-public"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"uid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"57ef0321-e44a-43c9-9f2a-e448c3a66a47"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"rules"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"apiGroups"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+                </span><span class="s2">"resourceNames"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+                </span><span class="s2">"resources"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+                </span><span class="s2">"verbs"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><code>GET /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/roles/:id/:namespace</code></p>
+
+<p>Retrieve a role and all its info in a given <a href="#administration-environments">environment</a>.</p>
+
+<table><thead>
+<tr>
+<th>Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code> <br/><em>string</em></td>
+<td>The id of the role.</td>
+</tr>
+<tr>
+<td><code>apiVersion</code> <br/><em>string</em></td>
+<td>The API version used to retrieve this role.</td>
+</tr>
+<tr>
+<td><code>metadata</code> <br/><em>object</em></td>
+<td>The metadata of the role.</td>
+</tr>
+<tr>
+<td><code>rules</code> <br/><em>array</em></td>
+<td>The array of rules assocaited with this role.</td>
 </tr>
 </tbody></table>
 
@@ -45280,6 +45590,146 @@ For Windows instances, reset the administrator account and reset the Remote Desk
 <tr>
 <td><code>secretsSize</code> <br/><em>integer</em></td>
 <td>The number of secrets of the service account.</td>
+</tr>
+</tbody></table>
+
+<p>Note that the list is not complete, since it is refering to the <a href="https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md">kubernetes api details</a>.</p>
+<h4 id='azure-roles'>Roles</h4>
+
+<!-------------------- LIST ROLES -------------------->
+
+<p><h5 id='azure-list-namespace-roles'>List (namespace) Roles</h5><pre class="highlight shell tab-shell"><code>curl -X GET <span class="se">&lt;/span&gt;
+   -H <span class="s2">&quot;MC-Api-Key: your_api_key&quot;</span> <span class="se">&lt;/span&gt;
+   <span class="s2">&quot;https://cloudmc_endpoint/v1/services/a_service/an_environment/roles?cluster_id=projects/cmc-k8s-enabled-llb/locations/us-central1-a/clusters/standard-cluster-1&quot;</span>
+</code></pre>
+<blockquote>
+<p>The above command returns a JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">&quot;data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;role-id&quot;</span><span class="p">,</span><span class="w">
+            </span><span class="s2">&quot;age&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1w4d&quot;</span><span class="p">,</span><span class="w">
+            </span><span class="s2">&quot;metadata&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">&quot;creationTimestamp&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2020-09-18T10:01:26.000-04:00&quot;</span><span class="p">,</span><span class="w">
+                </span><span class="s2">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;kubeadm:bootstrap-signer-clusterinfo&quot;</span><span class="p">,</span><span class="w">
+                </span><span class="s2">&quot;namespace&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;kube-public&quot;</span><span class="p">,</span><span class="w">
+                </span><span class="s2">&quot;uid&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;57ef0321-e44a-43c9-9f2a-e448c3a66a46&quot;</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="s2">&quot;rules&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">&quot;apiGroups&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+                    </span><span class="s2">&quot;resourceNames&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+                    </span><span class="s2">&quot;resources&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+                    </span><span class="s2">&quot;verbs&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+            </span><span class="p">]</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">&quot;metadata&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">&quot;recordCount&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><code>GET /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/roles?cluster_id=:cluster_id</code></p></p>
+
+<p>Retrieve a list of all roles in a given <a href="#administration-environments">environment</a>.</p>
+
+<table><thead>
+<tr>
+<th>Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code> <br/><em>string</em></td>
+<td>The id of the role.</td>
+</tr>
+<tr>
+<td><code>metadata</code> <br/><em>object</em></td>
+<td>The metadata of the role.</td>
+</tr>
+<tr>
+<td><code>metadata.creationTimestamp</code> <br/><em>string</em></td>
+<td>The date of creation of the service account as a string.</td>
+</tr>
+<tr>
+<td><code>metadata.name</code> <br/><em>string</em></td>
+<td>The name of the role.</td>
+</tr>
+<tr>
+<td><code>metadata.namespace</code> <br/><em>string</em></td>
+<td>The namespace in which the role is created.</td>
+</tr>
+<tr>
+<td><code>metadata.uid</code> <br/><em>object</em></td>
+<td>The UUID of the role.</td>
+</tr>
+<tr>
+<td><code>rules</code> <br/><em>array</em></td>
+<td>The array of rules assocaited with this role.</td>
+</tr>
+</tbody></table>
+
+<p>Note that the list is not complete, since it is refering to the <a href="https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md">kubernetes api details</a>.</p>
+
+<!-------------------- GET A ROLE -------------------->
+
+<p><h5 id='azure-get-a-role'>Get a role</h5><pre class="highlight shell tab-shell"><code>curl -X GET <span class="se">&lt;/span&gt;
+   -H <span class="s2">&quot;MC-Api-Key: your_api_key&quot;</span> <span class="se">&lt;/span&gt;
+   <span class="s2">&quot;https://cloudmc_endpoint/v1/services/a_service/an_environment/roles/role-name/role-namespace?cluster_id=projects/cmc-k8s-enabled-llb/locations/us-central1-a/clusters/standard-cluster-1&quot;</span>
+</code></pre>
+<blockquote>
+<p>The above command returns a JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">&quot;data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;kubeadm:bootstrap-signer-clusterinfo&quot;</span><span class="p">,</span><span class="w">
+        </span><span class="s2">&quot;age&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1w4d&quot;</span><span class="p">,</span><span class="w">
+        </span><span class="s2">&quot;apiVersion&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;rbac.authorization.k8s.io/v1&quot;</span><span class="p">,</span><span class="w">
+        </span><span class="s2">&quot;kind&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Role&quot;</span><span class="p">,</span><span class="w">
+        </span><span class="s2">&quot;metadata&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">&quot;creationTimestamp&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2020-09-18T10:01:26.000-04:00&quot;</span><span class="p">,</span><span class="w">
+            </span><span class="s2">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;kubeadm:bootstrap-signer-clusterinfo&quot;</span><span class="p">,</span><span class="w">
+            </span><span class="s2">&quot;namespace&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;kube-public&quot;</span><span class="p">,</span><span class="w">
+            </span><span class="s2">&quot;uid&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;57ef0321-e44a-43c9-9f2a-e448c3a66a47&quot;</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">&quot;rules&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="s2">&quot;apiGroups&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+                </span><span class="s2">&quot;resourceNames&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+                </span><span class="s2">&quot;resources&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+                </span><span class="s2">&quot;verbs&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><code>GET /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/roles/:id/:namespace?cluster_id=:cluster_id</code></p></p>
+
+<p>Retrieve a role and all its info in a given <a href="#administration-environments">environment</a>.</p>
+
+<table><thead>
+<tr>
+<th>Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code> <br/><em>string</em></td>
+<td>The id of the role.</td>
+</tr>
+<tr>
+<td><code>apiVersion</code> <br/><em>string</em></td>
+<td>The API version used to retrieve this role.</td>
+</tr>
+<tr>
+<td><code>metadata</code> <br/><em>object</em></td>
+<td>The metadata of the role.</td>
+</tr>
+<tr>
+<td><code>rules</code> <br/><em>array</em></td>
+<td>The array of rules assocaited with this role.</td>
 </tr>
 </tbody></table>
 
