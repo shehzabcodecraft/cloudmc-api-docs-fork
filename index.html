@@ -1961,6 +1961,9 @@
                                             <a href="#gcp-list-service-accounts" class="toc-h5 toc-link" data-title="Google Cloud Platform plugin">List service accounts</a>
                                           </li>
                                           <li>
+                                            <a href="#gcp-get-a-service-account" class="toc-h5 toc-link" data-title="Google Cloud Platform plugin">Get a service account</a>
+                                          </li>
+                                          <li>
                                             <a href="#gcp-delete-a-service-account" class="toc-h5 toc-link" data-title="Google Cloud Platform plugin">Delete a service account</a>
                                           </li>
                                       </ul>
@@ -2317,6 +2320,9 @@
                               <ul class="toc-list-h4">
                                   <li>
                                     <a href="#kubernetes-list-service-accounts" class="toc-h4 toc-link" data-title="Kubernetes plugin">List service accounts</a>
+                                  </li>
+                                  <li>
+                                    <a href="#kubernetes-get-a-service-account" class="toc-h4 toc-link" data-title="Kubernetes plugin">Get a service account</a>
                                   </li>
                                   <li>
                                     <a href="#kubernetes-delete-a-service-account" class="toc-h4 toc-link" data-title="Kubernetes plugin">Delete a service account</a>
@@ -2843,6 +2849,9 @@
                                       <ul class="toc-list-h5">
                                           <li>
                                             <a href="#azure-list-service-accounts" class="toc-h5 toc-link" data-title="Azure plugin">List service accounts</a>
+                                          </li>
+                                          <li>
+                                            <a href="#azure-get-a-service-account" class="toc-h5 toc-link" data-title="Azure plugin">Get a service account</a>
                                           </li>
                                           <li>
                                             <a href="#azure-delete-a-service-account" class="toc-h5 toc-link" data-title="Azure plugin">Delete a service account</a>
@@ -29538,6 +29547,82 @@ curl -X POST <span class="se">\</span>
 
 <p>Note that the list is not complete, since it is refering to the <a href="https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md">kubernetes api details</a>.</p>
 
+<!-------------------- GET A SERVICE ACCOUNT -------------------->
+
+<p><h5 id='gcp-get-a-service-account'>Get a service account</h5><pre class="highlight shell tab-shell"><code>curl -X GET <span class="se">&lt;/span&gt;
+   -H <span class="s2">&quot;MC-Api-Key: your_api_key&quot;</span> <span class="se">&lt;/span&gt;
+   <span class="s2">&quot;https://cloudmc_endpoint/v1/services/a_service/an_environment/serviceaccounts/serviceaccount-name/serviceaccount-namespace?cluster_id=:cluster_id&quot;</span>
+</code></pre>
+<blockquote>
+<p>The above command returns a JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">&quot;data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;default&quot;</span><span class="p">,</span><span class="w">
+            </span><span class="s2">&quot;age&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1w5d&quot;</span><span class="p">,</span><span class="w">
+            </span><span class="s2">&quot;secretsSize&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+            </span><span class="s2">&quot;metadata&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+              </span><span class="s2">&quot;creationTimestamp&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2020-09-18T10:46:40.000-04:00&quot;</span><span class="p">,</span><span class="w">
+              </span><span class="s2">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;default&quot;</span><span class="p">,</span><span class="w">
+              </span><span class="s2">&quot;namespace&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;default&quot;</span><span class="p">,</span><span class="w">
+              </span><span class="s2">&quot;uid&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;80a0de4d-a187-44c3-b691-1481220a5817&quot;</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="s2">&quot;secrets&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+              </span><span class="p">{</span><span class="w">
+                </span><span class="s2">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;default-token-lrth9&quot;</span><span class="w">
+              </span><span class="p">}</span><span class="w">
+            </span><span class="p">]</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="s2">&quot;fieldTransitions&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+          </span><span class="s2">&quot;operations&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><code>GET /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/serviceaccounts/:id?cluster_id=:cluster_id</code></p></p>
+
+<p>Retrieve a service account and all its info in a given <a href="#administration-environments">environment</a>.</p>
+
+<table><thead>
+<tr>
+<th>Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code> <br/><em>string</em></td>
+<td>The id of the service account.</td>
+</tr>
+<tr>
+<td><code>metadata</code> <br/><em>object</em></td>
+<td>The metadata of the service account.</td>
+</tr>
+<tr>
+<td><code>metadata.creationTimestamp</code> <br/><em>string</em></td>
+<td>The date of creation of the service account as a string.</td>
+</tr>
+<tr>
+<td><code>metadata.name</code> <br/><em>string</em></td>
+<td>The name of the service account.</td>
+</tr>
+<tr>
+<td><code>metadata.namespace</code> <br/><em>string</em></td>
+<td>The namespace in which the service account is created.</td>
+</tr>
+<tr>
+<td><code>metadata.uid</code> <br/><em>object</em></td>
+<td>The UUID of the service account.</td>
+</tr>
+<tr>
+<td><code>metadata.secrets</code> <br/><em>List&lt;object&gt;</em></td>
+<td>The secrets of the service account.</td>
+</tr>
+<tr>
+<td><code>secretsSize</code> <br/><em>integer</em></td>
+<td>The number of secrets of the service account.</td>
+</tr>
+</tbody></table>
+
+<p>Note that the list is not complete, since it is refering to the <a href="https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md">kubernetes api details</a>.</p>
+
 <!-------------------- DELETE SERVICE ACCOUNT -------------------->
 
 <p><h5 id='gcp-delete-a-service-account'>Delete a service account</h5><pre class="highlight shell tab-shell"><code>curl -X DELETE <span class="se">&lt;/span&gt;
@@ -36487,6 +36572,81 @@ curl -X PUT <span class="se">\</span>
 <tr>
 <td><code>metadata.annotations</code> <br/><em>map</em></td>
 <td>The annotations of the service account.</td>
+</tr>
+<tr>
+<td><code>metadata</code> <br/><em>object</em></td>
+<td>The metadata of the service account.</td>
+</tr>
+<tr>
+<td><code>metadata.creationTimestamp</code> <br/><em>string</em></td>
+<td>The date of creation of the service account as a string.</td>
+</tr>
+<tr>
+<td><code>metadata.name</code> <br/><em>string</em></td>
+<td>The name of the service account.</td>
+</tr>
+<tr>
+<td><code>metadata.namespace</code> <br/><em>string</em></td>
+<td>The namespace in which the service account is created.</td>
+</tr>
+<tr>
+<td><code>metadata.uid</code> <br/><em>object</em></td>
+<td>The UUID of the service account.</td>
+</tr>
+<tr>
+<td><code>metadata.secrets</code> <br/><em>List&lt;object&gt;</em></td>
+<td>The secrets of the service account.</td>
+</tr>
+<tr>
+<td><code>secretsSize</code> <br/><em>integer</em></td>
+<td>The number of secrets of the service account.</td>
+</tr>
+</tbody></table>
+
+<p>Note that the list is not complete, since it is refering to the <a href="https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md">kubernetes api details</a>.</p>
+
+<!-------------------- GET A SERVICE ACCOUNT -------------------->
+<h4 id='kubernetes-get-a-service-account'>Get a service account</h4><pre class="highlight shell tab-shell"><code>curl -X GET <span class="se">\</span>
+   -H <span class="s2">"MC-Api-Key: your_api_key"</span> <span class="se">\</span>
+   <span class="s2">"https://cloudmc_endpoint/v1/services/a_service/an_environment/serviceaccounts/serviceaccount-name/serviceaccount-namespace"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns a JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"default"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"age"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1w5d"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"secretsSize"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"creationTimestamp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-09-18T10:46:40.000-04:00"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"default"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"namespace"</span><span class="p">:</span><span class="w"> </span><span class="s2">"default"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"uid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"80a0de4d-a187-44c3-b691-1481220a5817"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="s2">"secrets"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+              </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"default-token-lrth9"</span><span class="w">
+              </span><span class="p">}</span><span class="w">
+            </span><span class="p">]</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="s2">"fieldTransitions"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+          </span><span class="s2">"operations"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><code>GET /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/serviceaccounts/:id</code></p>
+
+<p>Retrieve a service account and all its info in a given <a href="#administration-environments">environment</a>.</p>
+
+<table><thead>
+<tr>
+<th>Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code> <br/><em>string</em></td>
+<td>The id of the service account.</td>
 </tr>
 <tr>
 <td><code>metadata</code> <br/><em>object</em></td>
@@ -45974,6 +46134,82 @@ For Windows instances, reset the administrator account and reset the Remote Desk
 <tr>
 <td><code>metadata.annotations</code> <br/><em>map</em></td>
 <td>The annotations of the service account.</td>
+</tr>
+<tr>
+<td><code>metadata</code> <br/><em>object</em></td>
+<td>The metadata of the service account.</td>
+</tr>
+<tr>
+<td><code>metadata.creationTimestamp</code> <br/><em>string</em></td>
+<td>The date of creation of the service account as a string.</td>
+</tr>
+<tr>
+<td><code>metadata.name</code> <br/><em>string</em></td>
+<td>The name of the service account.</td>
+</tr>
+<tr>
+<td><code>metadata.namespace</code> <br/><em>string</em></td>
+<td>The namespace in which the service account is created.</td>
+</tr>
+<tr>
+<td><code>metadata.uid</code> <br/><em>object</em></td>
+<td>The UUID of the service account.</td>
+</tr>
+<tr>
+<td><code>metadata.secrets</code> <br/><em>List&lt;object&gt;</em></td>
+<td>The secrets of the service account.</td>
+</tr>
+<tr>
+<td><code>secretsSize</code> <br/><em>integer</em></td>
+<td>The number of secrets of the service account.</td>
+</tr>
+</tbody></table>
+
+<p>Note that the list is not complete, since it is refering to the <a href="https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md">kubernetes api details</a>.</p>
+
+<!-------------------- GET A SERVICE ACCOUNT -------------------->
+
+<p><h5 id='azure-get-a-service-account'>Get a service account</h5><pre class="highlight shell tab-shell"><code>curl -X GET <span class="se">&lt;/span&gt;
+   -H <span class="s2">&quot;MC-Api-Key: your_api_key&quot;</span> <span class="se">&lt;/span&gt;
+   <span class="s2">&quot;https://cloudmc_endpoint/v1/services/a_service/an_environment/serviceaccounts/serviceaccount-name/serviceaccount-namespace?cluster_id=:cluster_id&quot;</span>
+</code></pre>
+<blockquote>
+<p>The above command returns a JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">&quot;data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;default&quot;</span><span class="p">,</span><span class="w">
+            </span><span class="s2">&quot;age&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1w5d&quot;</span><span class="p">,</span><span class="w">
+            </span><span class="s2">&quot;secretsSize&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+            </span><span class="s2">&quot;metadata&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+              </span><span class="s2">&quot;creationTimestamp&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2020-09-18T10:46:40.000-04:00&quot;</span><span class="p">,</span><span class="w">
+              </span><span class="s2">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;default&quot;</span><span class="p">,</span><span class="w">
+              </span><span class="s2">&quot;namespace&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;default&quot;</span><span class="p">,</span><span class="w">
+              </span><span class="s2">&quot;uid&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;80a0de4d-a187-44c3-b691-1481220a5817&quot;</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="s2">&quot;secrets&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+              </span><span class="p">{</span><span class="w">
+                </span><span class="s2">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;default-token-lrth9&quot;</span><span class="w">
+              </span><span class="p">}</span><span class="w">
+            </span><span class="p">]</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="s2">&quot;fieldTransitions&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+          </span><span class="s2">&quot;operations&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><code>GET /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/serviceaccounts/:id?cluster_id=:cluster_id</code></p></p>
+
+<p>Retrieve a service account and all its info in a given <a href="#administration-environments">environment</a>.</p>
+
+<table><thead>
+<tr>
+<th>Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code> <br/><em>string</em></td>
+<td>The id of the service account.</td>
 </tr>
 <tr>
 <td><code>metadata</code> <br/><em>object</em></td>
