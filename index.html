@@ -1976,6 +1976,17 @@
                                           </li>
                                       </ul>
                                   </li>
+                                  <li>
+                                    <a href="#gcp-role-bindings" class="toc-h4 toc-link" data-title="Google Cloud Platform plugin">Role bindings</a>
+                                      <ul class="toc-list-h5">
+                                          <li>
+                                            <a href="#gcp-list-namespace-role-bindings" class="toc-h5 toc-link" data-title="Google Cloud Platform plugin">List (namespace) role bindings</a>
+                                          </li>
+                                          <li>
+                                            <a href="#gcp-get-a-role-binding" class="toc-h5 toc-link" data-title="Google Cloud Platform plugin">Get a role binding</a>
+                                          </li>
+                                      </ul>
+                                  </li>
                               </ul>
                           </li>
                           <li>
@@ -2320,6 +2331,17 @@
                                   </li>
                                   <li>
                                     <a href="#kubernetes-get-a-role" class="toc-h4 toc-link" data-title="Kubernetes plugin">Get a role</a>
+                                  </li>
+                              </ul>
+                          </li>
+                          <li>
+                            <a href="#kubernetes-role-bindings" class="toc-h3 toc-link" data-title="Kubernetes plugin">Role bindings</a>
+                              <ul class="toc-list-h4">
+                                  <li>
+                                    <a href="#kubernetes-list-role-bindings" class="toc-h4 toc-link" data-title="Kubernetes plugin">List role bindings</a>
+                                  </li>
+                                  <li>
+                                    <a href="#kubernetes-get-a-role-binding" class="toc-h4 toc-link" data-title="Kubernetes plugin">Get a role binding</a>
                                   </li>
                               </ul>
                           </li>
@@ -2835,6 +2857,17 @@
                                           </li>
                                           <li>
                                             <a href="#azure-get-a-role" class="toc-h5 toc-link" data-title="Azure plugin">Get a role</a>
+                                          </li>
+                                      </ul>
+                                  </li>
+                                  <li>
+                                    <a href="#azure-role-bindings" class="toc-h4 toc-link" data-title="Azure plugin">Role bindings</a>
+                                      <ul class="toc-list-h5">
+                                          <li>
+                                            <a href="#azure-list-namespace-role-bindings" class="toc-h5 toc-link" data-title="Azure plugin">List (namespace) role bindings</a>
+                                          </li>
+                                          <li>
+                                            <a href="#azure-get-a-role-binding" class="toc-h5 toc-link" data-title="Azure plugin">Get a role binding</a>
                                           </li>
                                       </ul>
                                   </li>
@@ -29690,6 +29723,153 @@ curl -X POST <span class="se">\</span>
 </tbody></table>
 
 <p>Note that the list is not complete, since it is refering to the <a href="https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md">kubernetes api details</a>.</p>
+<h4 id='gcp-role-bindings'>Role bindings</h4>
+
+<!-------------------- LIST ROLE BINDINGS -------------------->
+
+<p><h5 id='gcp-list-namespace-role-bindings'>List (namespace) role bindings</h5><pre class="highlight shell tab-shell"><code>curl -X GET <span class="se">&lt;/span&gt;
+   -H <span class="s2">&quot;MC-Api-Key: your_api_key&quot;</span> <span class="se">&lt;/span&gt;
+   <span class="s2">&quot;https://cloudmc_endpoint/v1/services/a_service/an_environment/rolebindings?cluster_id=projects/cmc-k8s-enabled-llb/locations/us-central1-a/clusters/standard-cluster-1&quot;</span>
+</code></pre>
+<blockquote>
+<p>The above command returns a JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w"></p>
+
+<p></span><span class="s2">&quot;data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">&quot;entity&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;kubeadm:bootstrap-signer-clusterinfo&quot;</span><span class="p">,</span><span class="w">
+          </span><span class="s2">&quot;age&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1w5d&quot;</span><span class="p">,</span><span class="w">
+          </span><span class="s2">&quot;metadata&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">&quot;creationTimestamp&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2020-09-18T10:46:32.000-04:00&quot;</span><span class="p">,</span><span class="w">
+            </span><span class="s2">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;kubeadm:bootstrap-signer-clusterinfo&quot;</span><span class="p">,</span><span class="w">
+            </span><span class="s2">&quot;namespace&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;kube-public&quot;</span><span class="p">,</span><span class="w">
+            </span><span class="s2">&quot;uid&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;4fcfe5b9-a1c3-4b3b-9cb6-6df4a1da945f&quot;</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="s2">&quot;roleRef&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">&quot;apiGroup&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;rbac.authorization.k8s.io&quot;</span><span class="p">,</span><span class="w">
+            </span><span class="s2">&quot;kind&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Role&quot;</span><span class="p">,</span><span class="w">
+            </span><span class="s2">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;kubeadm:bootstrap-signer-clusterinfo&quot;</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="s2">&quot;subjects&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+              </span><span class="s2">&quot;apiGroup&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;rbac.authorization.k8s.io&quot;</span><span class="p">,</span><span class="w">
+              </span><span class="s2">&quot;kind&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;User&quot;</span><span class="p">,</span><span class="w">
+              </span><span class="s2">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;system:anonymous&quot;</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+          </span><span class="p">]</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">&quot;fieldTransitions&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+        </span><span class="s2">&quot;operations&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><code>GET /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/rolebindings?cluster_id=:cluster_id</code></p></p>
+
+<p>Retrieve a list of all role bindings in a given <a href="#administration-environments">environment</a>.</p>
+
+<table><thead>
+<tr>
+<th>Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code> <br/><em>string</em></td>
+<td>The id of the role binding.</td>
+</tr>
+<tr>
+<td><code>metadata</code> <br/><em>object</em></td>
+<td>The metadata of the role binding.</td>
+</tr>
+<tr>
+<td><code>metadata.creationTimestamp</code> <br/><em>string</em></td>
+<td>The date of creation of the role binding as a string.</td>
+</tr>
+<tr>
+<td><code>metadata.name</code> <br/><em>string</em></td>
+<td>The name of the role binding.</td>
+</tr>
+<tr>
+<td><code>metadata.namespace</code> <br/><em>string</em></td>
+<td>The namespace in which the role binding is created.</td>
+</tr>
+<tr>
+<td><code>metadata.uid</code> <br/><em>object</em></td>
+<td>The UUID of the role binding.</td>
+</tr>
+</tbody></table>
+
+<p>Note that the list is not complete, since it is refering to the <a href="https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md">kubernetes api details</a>.</p>
+
+<!-------------------- GET A ROLE BINDING -------------------->
+
+<p><h5 id='gcp-get-a-role-binding'>Get a role binding</h5><pre class="highlight shell tab-shell"><code>curl -X GET <span class="se">&lt;/span&gt;
+   -H <span class="s2">&quot;MC-Api-Key: your_api_key&quot;</span> <span class="se">&lt;/span&gt;
+   <span class="s2">&quot;https://cloudmc_endpoint/v1/services/a_service/an_environment/rolebindings/rolebinding-name/rolebinding-namespace?cluster_id=projects/cmc-k8s-enabled-llb/locations/us-central1-a/clusters/standard-cluster-1&quot;</span>
+</code></pre>
+<blockquote>
+<p>The above command returns a JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w"></p>
+
+<p></span><span class="s2">&quot;data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></p>
+
+<p></span><span class="s2">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;kubeadm:bootstrap-signer-clusterinfo&quot;</span><span class="p">,</span><span class="w">
+          </span><span class="s2">&quot;age&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1w5d&quot;</span><span class="p">,</span><span class="w">
+          </span><span class="s2">&quot;metadata&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">&quot;creationTimestamp&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2020-09-18T10:46:32.000-04:00&quot;</span><span class="p">,</span><span class="w">
+            </span><span class="s2">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;kubeadm:bootstrap-signer-clusterinfo&quot;</span><span class="p">,</span><span class="w">
+            </span><span class="s2">&quot;namespace&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;kube-public&quot;</span><span class="p">,</span><span class="w">
+            </span><span class="s2">&quot;uid&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;4fcfe5b9-a1c3-4b3b-9cb6-6df4a1da945f&quot;</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="s2">&quot;roleRef&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">&quot;apiGroup&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;rbac.authorization.k8s.io&quot;</span><span class="p">,</span><span class="w">
+            </span><span class="s2">&quot;kind&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Role&quot;</span><span class="p">,</span><span class="w">
+            </span><span class="s2">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;kubeadm:bootstrap-signer-clusterinfo&quot;</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="s2">&quot;subjects&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+              </span><span class="s2">&quot;apiGroup&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;rbac.authorization.k8s.io&quot;</span><span class="p">,</span><span class="w">
+              </span><span class="s2">&quot;kind&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;User&quot;</span><span class="p">,</span><span class="w">
+              </span><span class="s2">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;system:anonymous&quot;</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+          </span><span class="p">]</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">&quot;fieldTransitions&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+        </span><span class="s2">&quot;operations&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><code>GET /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/rolebindings/:id?cluster_id=:cluster_id</code></p></p>
+
+<p>Retrieve a role binding and all its info in a given <a href="#administration-environments">environment</a>.</p>
+
+<table><thead>
+<tr>
+<th>Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code> <br/><em>string</em></td>
+<td>The id of the role binding.</td>
+</tr>
+<tr>
+<td><code>apiVersion</code> <br/><em>string</em></td>
+<td>The API version used to retrieve this role binding.</td>
+</tr>
+<tr>
+<td><code>metadata</code> <br/><em>object</em></td>
+<td>The metadata of the role binding.</td>
+</tr>
+<tr>
+<td><code>subjects</code> <br/><em>array</em></td>
+<td>The array of subjects associated with this role binding.</td>
+</tr>
+</tbody></table>
+
+<p>Note that the list is not complete, since it is refering to the <a href="https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md">kubernetes api details</a>.</p>
 <h3 id='gcp-releases'>Releases</h3>
 
 <!-------------------- LIST RELEASES -------------------->
@@ -36505,6 +36685,150 @@ curl -X PUT <span class="se">\</span>
 <tr>
 <td><code>rules</code> <br/><em>array</em></td>
 <td>The array of rules assocaited with this role.</td>
+</tr>
+</tbody></table>
+
+<p>Note that the list is not complete, since it is refering to the <a href="https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md">kubernetes api details</a>.</p>
+<h3 id='kubernetes-role-bindings'>Role bindings</h3>
+<!-------------------- LIST ROLE BINDINGS -------------------->
+<h4 id='kubernetes-list-role-bindings'>List role bindings</h4><pre class="highlight shell tab-shell"><code>curl -X GET <span class="se">\</span>
+   -H <span class="s2">"MC-Api-Key: your_api_key"</span> <span class="se">\</span>
+   <span class="s2">"https://cloudmc_endpoint/v1/services/a_service/an_environment/rolebindings"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns a JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+
+    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"entity"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"kubeadm:bootstrap-signer-clusterinfo"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"age"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1w5d"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"creationTimestamp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-09-18T10:46:32.000-04:00"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"kubeadm:bootstrap-signer-clusterinfo"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"namespace"</span><span class="p">:</span><span class="w"> </span><span class="s2">"kube-public"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"uid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4fcfe5b9-a1c3-4b3b-9cb6-6df4a1da945f"</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="s2">"roleRef"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"apiGroup"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rbac.authorization.k8s.io"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"kind"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Role"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"kubeadm:bootstrap-signer-clusterinfo"</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="s2">"subjects"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"apiGroup"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rbac.authorization.k8s.io"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"kind"</span><span class="p">:</span><span class="w"> </span><span class="s2">"User"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"system:anonymous"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+          </span><span class="p">]</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"fieldTransitions"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+        </span><span class="s2">"operations"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><code>GET /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/rolebindings</code></p>
+
+<p>Retrieve a list of all role bindings in a given <a href="#administration-environments">environment</a>.</p>
+
+<table><thead>
+<tr>
+<th>Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code> <br/><em>string</em></td>
+<td>The id of the role binding.</td>
+</tr>
+<tr>
+<td><code>metadata</code> <br/><em>object</em></td>
+<td>The metadata of the role binding.</td>
+</tr>
+<tr>
+<td><code>metadata.creationTimestamp</code> <br/><em>string</em></td>
+<td>The date of creation of the role binding as a string.</td>
+</tr>
+<tr>
+<td><code>metadata.name</code> <br/><em>string</em></td>
+<td>The name of the role binding.</td>
+</tr>
+<tr>
+<td><code>metadata.namespace</code> <br/><em>string</em></td>
+<td>The namespace in which the role binding is created.</td>
+</tr>
+<tr>
+<td><code>metadata.uid</code> <br/><em>object</em></td>
+<td>The UUID of the role binding.</td>
+</tr>
+</tbody></table>
+
+<p>Note that the list is not complete, since it is refering to the <a href="https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md">kubernetes api details</a>.</p>
+
+<!-------------------- GET A ROLE BINDING -------------------->
+<h4 id='kubernetes-get-a-role-binding'>Get a role binding</h4><pre class="highlight shell tab-shell"><code>curl -X GET <span class="se">\</span>
+   -H <span class="s2">"MC-Api-Key: your_api_key"</span> <span class="se">\</span>
+   <span class="s2">"https://cloudmc_endpoint/v1/services/a_service/an_environment/rolebindings/rolebinding-name/rolebinding-namespace"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns a JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+
+    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+
+          </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"kubeadm:bootstrap-signer-clusterinfo"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"age"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1w5d"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"creationTimestamp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-09-18T10:46:32.000-04:00"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"kubeadm:bootstrap-signer-clusterinfo"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"namespace"</span><span class="p">:</span><span class="w"> </span><span class="s2">"kube-public"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"uid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4fcfe5b9-a1c3-4b3b-9cb6-6df4a1da945f"</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="s2">"roleRef"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"apiGroup"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rbac.authorization.k8s.io"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"kind"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Role"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"kubeadm:bootstrap-signer-clusterinfo"</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="s2">"subjects"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"apiGroup"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rbac.authorization.k8s.io"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"kind"</span><span class="p">:</span><span class="w"> </span><span class="s2">"User"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"system:anonymous"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+          </span><span class="p">]</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"fieldTransitions"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+        </span><span class="s2">"operations"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><code>GET /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/rolebindings/:id</code></p>
+
+<p>Retrieve a role binding and all its info in a given <a href="#administration-environments">environment</a>.</p>
+
+<table><thead>
+<tr>
+<th>Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code> <br/><em>string</em></td>
+<td>The id of the role binding.</td>
+</tr>
+<tr>
+<td><code>apiVersion</code> <br/><em>string</em></td>
+<td>The API version used to retrieve this role binding.</td>
+</tr>
+<tr>
+<td><code>metadata</code> <br/><em>object</em></td>
+<td>The metadata of the role binding.</td>
+</tr>
+<tr>
+<td><code>subjects</code> <br/><em>array</em></td>
+<td>The array of subjects associated with this role binding.</td>
 </tr>
 </tbody></table>
 
@@ -45864,6 +46188,153 @@ For Windows instances, reset the administrator account and reset the Remote Desk
 <tr>
 <td><code>rules</code> <br/><em>array</em></td>
 <td>The array of rules assocaited with this role.</td>
+</tr>
+</tbody></table>
+
+<p>Note that the list is not complete, since it is refering to the <a href="https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md">kubernetes api details</a>.</p>
+<h4 id='azure-role-bindings'>Role bindings</h4>
+
+<!-------------------- LIST ROLE BINDINGS -------------------->
+
+<p><h5 id='azure-list-namespace-role-bindings'>List (namespace) role bindings</h5><pre class="highlight shell tab-shell"><code>curl -X GET <span class="se">&lt;/span&gt;
+   -H <span class="s2">&quot;MC-Api-Key: your_api_key&quot;</span> <span class="se">&lt;/span&gt;
+   <span class="s2">&quot;https://cloudmc_endpoint/v1/services/a_service/an_environment/rolebindings?cluster_id=projects/cmc-k8s-enabled-llb/locations/us-central1-a/clusters/standard-cluster-1&quot;</span>
+</code></pre>
+<blockquote>
+<p>The above command returns a JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w"></p>
+
+<p></span><span class="s2">&quot;data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">&quot;entity&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;kubeadm:bootstrap-signer-clusterinfo&quot;</span><span class="p">,</span><span class="w">
+          </span><span class="s2">&quot;age&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1w5d&quot;</span><span class="p">,</span><span class="w">
+          </span><span class="s2">&quot;metadata&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">&quot;creationTimestamp&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2020-09-18T10:46:32.000-04:00&quot;</span><span class="p">,</span><span class="w">
+            </span><span class="s2">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;kubeadm:bootstrap-signer-clusterinfo&quot;</span><span class="p">,</span><span class="w">
+            </span><span class="s2">&quot;namespace&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;kube-public&quot;</span><span class="p">,</span><span class="w">
+            </span><span class="s2">&quot;uid&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;4fcfe5b9-a1c3-4b3b-9cb6-6df4a1da945f&quot;</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="s2">&quot;roleRef&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">&quot;apiGroup&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;rbac.authorization.k8s.io&quot;</span><span class="p">,</span><span class="w">
+            </span><span class="s2">&quot;kind&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Role&quot;</span><span class="p">,</span><span class="w">
+            </span><span class="s2">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;kubeadm:bootstrap-signer-clusterinfo&quot;</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="s2">&quot;subjects&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+              </span><span class="s2">&quot;apiGroup&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;rbac.authorization.k8s.io&quot;</span><span class="p">,</span><span class="w">
+              </span><span class="s2">&quot;kind&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;User&quot;</span><span class="p">,</span><span class="w">
+              </span><span class="s2">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;system:anonymous&quot;</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+          </span><span class="p">]</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">&quot;fieldTransitions&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+        </span><span class="s2">&quot;operations&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><code>GET /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/rolebindings?cluster_id=:cluster_id</code></p></p>
+
+<p>Retrieve a list of all role bindings in a given <a href="#administration-environments">environment</a>.</p>
+
+<table><thead>
+<tr>
+<th>Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code> <br/><em>string</em></td>
+<td>The id of the role binding.</td>
+</tr>
+<tr>
+<td><code>metadata</code> <br/><em>object</em></td>
+<td>The metadata of the role binding.</td>
+</tr>
+<tr>
+<td><code>metadata.creationTimestamp</code> <br/><em>string</em></td>
+<td>The date of creation of the role binding as a string.</td>
+</tr>
+<tr>
+<td><code>metadata.name</code> <br/><em>string</em></td>
+<td>The name of the role binding.</td>
+</tr>
+<tr>
+<td><code>metadata.namespace</code> <br/><em>string</em></td>
+<td>The namespace in which the role binding is created.</td>
+</tr>
+<tr>
+<td><code>metadata.uid</code> <br/><em>object</em></td>
+<td>The UUID of the role binding.</td>
+</tr>
+</tbody></table>
+
+<p>Note that the list is not complete, since it is refering to the <a href="https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md">kubernetes api details</a>.</p>
+
+<!-------------------- GET A ROLE BINDING -------------------->
+
+<p><h5 id='azure-get-a-role-binding'>Get a role binding</h5><pre class="highlight shell tab-shell"><code>curl -X GET <span class="se">&lt;/span&gt;
+   -H <span class="s2">&quot;MC-Api-Key: your_api_key&quot;</span> <span class="se">&lt;/span&gt;
+   <span class="s2">&quot;https://cloudmc_endpoint/v1/services/a_service/an_environment/rolebindings/rolebinding-name/rolebinding-namespace?cluster_id=projects/cmc-k8s-enabled-llb/locations/us-central1-a/clusters/standard-cluster-1&quot;</span>
+</code></pre>
+<blockquote>
+<p>The above command returns a JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w"></p>
+
+<p></span><span class="s2">&quot;data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></p>
+
+<p></span><span class="s2">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;kubeadm:bootstrap-signer-clusterinfo&quot;</span><span class="p">,</span><span class="w">
+          </span><span class="s2">&quot;age&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1w5d&quot;</span><span class="p">,</span><span class="w">
+          </span><span class="s2">&quot;metadata&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">&quot;creationTimestamp&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2020-09-18T10:46:32.000-04:00&quot;</span><span class="p">,</span><span class="w">
+            </span><span class="s2">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;kubeadm:bootstrap-signer-clusterinfo&quot;</span><span class="p">,</span><span class="w">
+            </span><span class="s2">&quot;namespace&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;kube-public&quot;</span><span class="p">,</span><span class="w">
+            </span><span class="s2">&quot;uid&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;4fcfe5b9-a1c3-4b3b-9cb6-6df4a1da945f&quot;</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="s2">&quot;roleRef&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">&quot;apiGroup&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;rbac.authorization.k8s.io&quot;</span><span class="p">,</span><span class="w">
+            </span><span class="s2">&quot;kind&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Role&quot;</span><span class="p">,</span><span class="w">
+            </span><span class="s2">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;kubeadm:bootstrap-signer-clusterinfo&quot;</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="s2">&quot;subjects&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+              </span><span class="s2">&quot;apiGroup&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;rbac.authorization.k8s.io&quot;</span><span class="p">,</span><span class="w">
+              </span><span class="s2">&quot;kind&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;User&quot;</span><span class="p">,</span><span class="w">
+              </span><span class="s2">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;system:anonymous&quot;</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+          </span><span class="p">]</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">&quot;fieldTransitions&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+        </span><span class="s2">&quot;operations&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><code>GET /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/rolebindings/:id?cluster_id=:cluster_id</code></p></p>
+
+<p>Retrieve a role binding and all its info in a given <a href="#administration-environments">environment</a>.</p>
+
+<table><thead>
+<tr>
+<th>Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code> <br/><em>string</em></td>
+<td>The id of the role binding.</td>
+</tr>
+<tr>
+<td><code>apiVersion</code> <br/><em>string</em></td>
+<td>The API version used to retrieve this role binding.</td>
+</tr>
+<tr>
+<td><code>metadata</code> <br/><em>object</em></td>
+<td>The metadata of the role binding.</td>
+</tr>
+<tr>
+<td><code>subjects</code> <br/><em>array</em></td>
+<td>The array of subjects associated with this role binding.</td>
 </tr>
 </tbody></table>
 
