@@ -1997,6 +1997,9 @@
                                           <li>
                                             <a href="#gcp-get-a-role-binding" class="toc-h5 toc-link" data-title="Google Cloud Platform plugin">Get a role binding</a>
                                           </li>
+                                          <li>
+                                            <a href="#gcp-create-a-role-binding" class="toc-h5 toc-link" data-title="Google Cloud Platform plugin">Create a role binding</a>
+                                          </li>
                                       </ul>
                                   </li>
                               </ul>
@@ -2366,6 +2369,9 @@
                                   </li>
                                   <li>
                                     <a href="#kubernetes-get-a-role-binding" class="toc-h4 toc-link" data-title="Kubernetes plugin">Get a role binding</a>
+                                  </li>
+                                  <li>
+                                    <a href="#kubernetes-create-a-role-binding" class="toc-h4 toc-link" data-title="Kubernetes plugin">Create a role binding</a>
                                   </li>
                               </ul>
                           </li>
@@ -2904,6 +2910,9 @@
                                           </li>
                                           <li>
                                             <a href="#azure-get-a-role-binding" class="toc-h5 toc-link" data-title="Azure plugin">Get a role binding</a>
+                                          </li>
+                                          <li>
+                                            <a href="#azure-create-a-role-binding" class="toc-h5 toc-link" data-title="Azure plugin">Create a role binding</a>
                                           </li>
                                       </ul>
                                   </li>
@@ -30210,6 +30219,100 @@ curl -X POST <span class="se">\</span>
 </tbody></table>
 
 <p>Note that the list is not complete, since it is refering to the <a href="https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md">kubernetes api details</a>.</p>
+
+<!-------------------- CREATE ROLE BINDING -------------------->
+
+<p><h5 id='gcp-create-a-role-binding'>Create a role binding</h5><pre class="highlight shell tab-shell"><code>curl -X POST <span class="se">&lt;/span&gt;
+  -H <span class="s2">&quot;MC-Api-Key: your_api_key&quot;</span> <span class="se">&lt;/span&gt;
+   <span class="s2">&quot;https://cloudmc_endpoint/v1/services/a_service/an_environment/rolebindings?cluster_id=:cluster_id&quot;</span>
+  Content-Type: application/json
+  <span class="o">{</span>
+    <span class="s2">&quot;kind&quot;</span>: <span class="s2">&quot;Rolebinding&quot;</span>,
+    <span class="s2">&quot;metadata&quot;</span>: <span class="o">{</span>
+        <span class="s2">&quot;name&quot;</span>: <span class="s2">&quot;rolebinding-name&quot;</span>,
+        <span class="s2">&quot;namespace&quot;</span>: <span class="s2">&quot;namespace-name&quot;</span>
+    <span class="o">}</span>,
+    <span class="s2">&quot;roleRef&quot;</span>: <span class="o">{</span>
+        <span class="s2">&quot;apiGroup&quot;</span>: <span class="s2">&quot;rbac.authorization.k8s.io&quot;</span>,
+        <span class="s2">&quot;kind&quot;</span>: <span class="s2">&quot;Role&quot;</span>,
+        <span class="s2">&quot;name&quot;</span>: <span class="s2">&quot;role-name&quot;</span>
+    <span class="o">}</span>,
+    <span class="s2">&quot;subjects&quot;</span>: <span class="o">[</span>
+        <span class="o">{</span>
+            <span class="s2">&quot;kind&quot;</span>: <span class="s2">&quot;ServiceAccount&quot;</span>,
+            <span class="s2">&quot;name&quot;</span>: <span class="s2">&quot;service-account-name&quot;</span>,
+            <span class="s2">&quot;namespace&quot;</span>: <span class="s2">&quot;service-account-namespace&quot;</span>
+        <span class="o">}</span>,
+        <span class="o">{</span>
+            <span class="s2">&quot;kind&quot;</span>: <span class="s2">&quot;Group&quot;</span>,
+            <span class="s2">&quot;name&quot;</span>: <span class="s2">&quot;group-name&quot;</span>,
+            <span class="s2">&quot;namespace&quot;</span>: <span class="s2">&quot;group-namespace&quot;</span>
+        <span class="o">}</span>,
+        <span class="o">{</span>
+            <span class="s2">&quot;kind&quot;</span>: <span class="s2">&quot;User&quot;</span>,
+            <span class="s2">&quot;name&quot;</span>: <span class="s2">&quot;user-name&quot;</span>,
+        <span class="o">}</span></p>
+
+<p><span class="o">]</span>
+  <span class="o">}</span>
+</code></pre>
+<blockquote>
+<p>The above command returns a JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">&quot;taskId&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1542bd45-4732-419b-87b6-4ea6ec695c2b&quot;</span><span class="p">,</span><span class="w">
+  </span><span class="s2">&quot;taskStatus&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;PENDING&quot;</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><code>POST /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/rolebindings?cluster_id=:cluster_id</code></p></p>
+
+<p>Create a role binding in a given <a href="#administration-environments">environment</a>.</p>
+
+<table><thead>
+<tr>
+<th>Required Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>metadata</code> <br/><em>object</em></td>
+<td>The metadata of the role binding.</td>
+</tr>
+<tr>
+<td><code>metadata.name</code> <br/><em>string</em></td>
+<td>The name of the role binding.</td>
+</tr>
+<tr>
+<td><code>metadata.namespace</code> <br/><em>string</em></td>
+<td>The namespace of the role binding.</td>
+</tr>
+<tr>
+<td><code>roleRef</code><br/><em>object</em></td>
+<td>The role to bind. Can reference a Role in the current namespace or a ClusterRole in the global namespace.</td>
+</tr>
+<tr>
+<td><code>subjects</code><br/><em>array</em></td>
+<td>Subjects hold references to the objets the role applies to. Can be users, groups, or service accounts.</td>
+</tr>
+</tbody></table>
+
+<p>Return value:</p>
+
+<table><thead>
+<tr>
+<th>Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>taskId</code> <br/><em>string</em></td>
+<td>The id corresponding to the create role binding task.</td>
+</tr>
+<tr>
+<td><code>taskStatus</code> <br/><em>string</em></td>
+<td>The status of the operation.</td>
+</tr>
+</tbody></table>
 <h3 id='gcp-releases'>Releases</h3>
 
 <!-------------------- LIST RELEASES -------------------->
@@ -37465,6 +37568,99 @@ curl -X PUT <span class="se">\</span>
 </tbody></table>
 
 <p>Note that the list is not complete, since it is refering to the <a href="https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md">kubernetes api details</a>.</p>
+
+<!-------------------- CREATE ROLE BINDING -------------------->
+<h4 id='kubernetes-create-a-role-binding'>Create a role binding</h4><pre class="highlight shell tab-shell"><code>curl -X POST <span class="se">\</span>
+  -H <span class="s2">"MC-Api-Key: your_api_key"</span> <span class="se">\</span>
+   <span class="s2">"https://cloudmc_endpoint/v1/services/a_service/an_environment/rolebindings"</span>
+  Content-Type: application/json
+  <span class="o">{</span>
+    <span class="s2">"kind"</span>: <span class="s2">"Rolebinding"</span>,
+    <span class="s2">"metadata"</span>: <span class="o">{</span>
+        <span class="s2">"name"</span>: <span class="s2">"rolebinding-name"</span>,
+        <span class="s2">"namespace"</span>: <span class="s2">"namespace-name"</span>
+    <span class="o">}</span>,
+    <span class="s2">"roleRef"</span>: <span class="o">{</span>
+        <span class="s2">"apiGroup"</span>: <span class="s2">"rbac.authorization.k8s.io"</span>,
+        <span class="s2">"kind"</span>: <span class="s2">"Role"</span>,
+        <span class="s2">"name"</span>: <span class="s2">"role-name"</span>
+    <span class="o">}</span>,
+    <span class="s2">"subjects"</span>: <span class="o">[</span>
+        <span class="o">{</span>
+            <span class="s2">"kind"</span>: <span class="s2">"ServiceAccount"</span>,
+            <span class="s2">"name"</span>: <span class="s2">"service-account-name"</span>,
+            <span class="s2">"namespace"</span>: <span class="s2">"service-account-namespace"</span>
+        <span class="o">}</span>,
+        <span class="o">{</span>
+            <span class="s2">"kind"</span>: <span class="s2">"Group"</span>,
+            <span class="s2">"name"</span>: <span class="s2">"group-name"</span>,
+            <span class="s2">"namespace"</span>: <span class="s2">"group-namespace"</span>
+        <span class="o">}</span>,
+        <span class="o">{</span>
+            <span class="s2">"kind"</span>: <span class="s2">"User"</span>,
+            <span class="s2">"name"</span>: <span class="s2">"user-name"</span>,
+        <span class="o">}</span>
+
+    <span class="o">]</span>
+  <span class="o">}</span>
+</code></pre>
+<blockquote>
+<p>The above command returns a JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"taskId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1542bd45-4732-419b-87b6-4ea6ec695c2b"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"taskStatus"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PENDING"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><code>POST /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/rolebindings</code></p>
+
+<p>Create a role binding in a given <a href="#administration-environments">environment</a>.</p>
+
+<table><thead>
+<tr>
+<th>Required Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>metadata</code> <br/><em>object</em></td>
+<td>The metadata of the role binding.</td>
+</tr>
+<tr>
+<td><code>metadata.name</code> <br/><em>string</em></td>
+<td>The name of the role binding.</td>
+</tr>
+<tr>
+<td><code>metadata.namespace</code> <br/><em>string</em></td>
+<td>The namespace of the role binding.</td>
+</tr>
+<tr>
+<td><code>roleRef</code><br/><em>object</em></td>
+<td>The role to bind. Can reference a Role in the current namespace or a ClusterRole in the global namespace.</td>
+</tr>
+<tr>
+<td><code>subjects</code><br/><em>array</em></td>
+<td>Subjects hold references to the objets the role applies to. Can be users, groups, or service accounts.</td>
+</tr>
+</tbody></table>
+
+<p>Return value:</p>
+
+<table><thead>
+<tr>
+<th>Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>taskId</code> <br/><em>string</em></td>
+<td>The id corresponding to the create role binding task.</td>
+</tr>
+<tr>
+<td><code>taskStatus</code> <br/><em>string</em></td>
+<td>The status of the operation.</td>
+</tr>
+</tbody></table>
 <h2 id='kubernetes-releases'>Releases</h2>
 <!-------------------- LIST RELEASES -------------------->
 <h3 id='kubernetes-list-releases'>List releases</h3><pre class="highlight shell tab-shell"><code>curl -X GET <span class="se">\</span>
@@ -47267,6 +47463,100 @@ For Windows instances, reset the administrator account and reset the Remote Desk
 </tbody></table>
 
 <p>Note that the list is not complete, since it is refering to the <a href="https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md">kubernetes api details</a>.</p>
+
+<!-------------------- CREATE ROLE BINDING -------------------->
+
+<p><h5 id='azure-create-a-role-binding'>Create a role binding</h5><pre class="highlight shell tab-shell"><code>curl -X POST <span class="se">&lt;/span&gt;
+  -H <span class="s2">&quot;MC-Api-Key: your_api_key&quot;</span> <span class="se">&lt;/span&gt;
+   <span class="s2">&quot;https://cloudmc_endpoint/v1/services/a_service/an_environment/rolebindings?cluster_id=:cluster_id&quot;</span>
+  Content-Type: application/json
+  <span class="o">{</span>
+    <span class="s2">&quot;kind&quot;</span>: <span class="s2">&quot;Rolebinding&quot;</span>,
+    <span class="s2">&quot;metadata&quot;</span>: <span class="o">{</span>
+        <span class="s2">&quot;name&quot;</span>: <span class="s2">&quot;rolebinding-name&quot;</span>,
+        <span class="s2">&quot;namespace&quot;</span>: <span class="s2">&quot;namespace-name&quot;</span>
+    <span class="o">}</span>,
+    <span class="s2">&quot;roleRef&quot;</span>: <span class="o">{</span>
+        <span class="s2">&quot;apiGroup&quot;</span>: <span class="s2">&quot;rbac.authorization.k8s.io&quot;</span>,
+        <span class="s2">&quot;kind&quot;</span>: <span class="s2">&quot;Role&quot;</span>,
+        <span class="s2">&quot;name&quot;</span>: <span class="s2">&quot;role-name&quot;</span>
+    <span class="o">}</span>,
+    <span class="s2">&quot;subjects&quot;</span>: <span class="o">[</span>
+        <span class="o">{</span>
+            <span class="s2">&quot;kind&quot;</span>: <span class="s2">&quot;ServiceAccount&quot;</span>,
+            <span class="s2">&quot;name&quot;</span>: <span class="s2">&quot;service-account-name&quot;</span>,
+            <span class="s2">&quot;namespace&quot;</span>: <span class="s2">&quot;service-account-namespace&quot;</span>
+        <span class="o">}</span>,
+        <span class="o">{</span>
+            <span class="s2">&quot;kind&quot;</span>: <span class="s2">&quot;Group&quot;</span>,
+            <span class="s2">&quot;name&quot;</span>: <span class="s2">&quot;group-name&quot;</span>,
+            <span class="s2">&quot;namespace&quot;</span>: <span class="s2">&quot;group-namespace&quot;</span>
+        <span class="o">}</span>,
+        <span class="o">{</span>
+            <span class="s2">&quot;kind&quot;</span>: <span class="s2">&quot;User&quot;</span>,
+            <span class="s2">&quot;name&quot;</span>: <span class="s2">&quot;user-name&quot;</span>,
+        <span class="o">}</span></p>
+
+<p><span class="o">]</span>
+  <span class="o">}</span>
+</code></pre>
+<blockquote>
+<p>The above command returns a JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">&quot;taskId&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1542bd45-4732-419b-87b6-4ea6ec695c2b&quot;</span><span class="p">,</span><span class="w">
+  </span><span class="s2">&quot;taskStatus&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;PENDING&quot;</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><code>POST /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/rolebindings?cluster_id=:cluster_id</code></p></p>
+
+<p>Create a role binding in a given <a href="#administration-environments">environment</a>.</p>
+
+<table><thead>
+<tr>
+<th>Required Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>metadata</code> <br/><em>object</em></td>
+<td>The metadata of the role binding.</td>
+</tr>
+<tr>
+<td><code>metadata.name</code> <br/><em>string</em></td>
+<td>The name of the role binding.</td>
+</tr>
+<tr>
+<td><code>metadata.namespace</code> <br/><em>string</em></td>
+<td>The namespace of the role binding.</td>
+</tr>
+<tr>
+<td><code>roleRef</code><br/><em>object</em></td>
+<td>The role to bind. Can reference a Role in the current namespace or a ClusterRole in the global namespace.</td>
+</tr>
+<tr>
+<td><code>subjects</code><br/><em>array</em></td>
+<td>Subjects hold references to the objets the role applies to. Can be users, groups, or service accounts.</td>
+</tr>
+</tbody></table>
+
+<p>Return value:</p>
+
+<table><thead>
+<tr>
+<th>Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>taskId</code> <br/><em>string</em></td>
+<td>The id corresponding to the create role binding task.</td>
+</tr>
+<tr>
+<td><code>taskStatus</code> <br/><em>string</em></td>
+<td>The status of the operation.</td>
+</tr>
+</tbody></table>
 <h1 id='masterportal-plugin'>MasterPortal plugin</h1>
 <p>The MasterPortal plugin allows users to add applications to an environment and to request an automatic login allowing for a single sign-on experience. </p>
 <h3 id='masterportal-applications'>Applications</h3>
