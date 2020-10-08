@@ -30590,6 +30590,12 @@ curl -X POST <span class="se">\</span>
 </code></pre>
 <blockquote>
 <p>The above command returns a JSON structured like this:
+<code>json
+{
+  &quot;taskId&quot;: &quot;1542bd45-4732-419b-87b6-4ea6ec695c2b&quot;,
+  &quot;taskStatus&quot;: &quot;PENDING&quot;
+}
+</code>
 <code>DELETE /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/rolebindings/:id?cluster_id=:cluster_id</code></p>
 </blockquote></p>
 
@@ -38096,10 +38102,15 @@ curl -X PUT <span class="se">\</span>
    <span class="s2">"https://cloudmc_endpoint/v1/services/a_service/an_environment/rolebindings/default-token-xxxmt/default"</span>
 </code></pre>
 <blockquote>
-<p>The above command returns a JSON structured like this:</p>
+<p>The above command returns a JSON structured like this:
+<code>json
+{
+  &quot;taskId&quot;: &quot;1542bd45-4732-419b-87b6-4ea6ec695c2b&quot;,
+  &quot;taskStatus&quot;: &quot;PENDING&quot;
+}
+</code>
+<code>DELETE /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/rolebindings/:id</code></p>
 </blockquote>
-
-<p><code>DELETE /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/rolebindings/:id</code></p>
 
 <p>Delete a role binding from a given <a href="#administration-environments">environment</a>.</p>
 
@@ -38112,14 +38123,6 @@ curl -X PUT <span class="se">\</span>
 <tr>
 <td><code>taskId</code> <br/><em>string</em></td>
 <td>The id corresponding to the delete role binding task.</td>
-</tr>
-<tr>
-<td><code>taskStatus</code> <br/><em>string</em></td>
-<td>The status of the operation.</td>
-</tr>
-<tr>
-<td><code>taskId</code> <br/><em>string</em></td>
-<td>The id corresponding to the replace role binding operation.</td>
 </tr>
 <tr>
 <td><code>taskStatus</code> <br/><em>string</em></td>
@@ -48168,6 +48171,12 @@ For Windows instances, reset the administrator account and reset the Remote Desk
 </code></pre>
 <blockquote>
 <p>The above command returns a JSON structured like this:
+<code>json
+{
+  &quot;taskId&quot;: &quot;1542bd45-4732-419b-87b6-4ea6ec695c2b&quot;,
+  &quot;taskStatus&quot;: &quot;PENDING&quot;
+}
+</code>
 <code>DELETE /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/rolebindings/:id?cluster_id=:cluster_id</code></p>
 </blockquote></p>
 
