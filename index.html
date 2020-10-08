@@ -2004,6 +2004,9 @@
                                             <a href="#gcp-create-a-role-binding" class="toc-h5 toc-link" data-title="Google Cloud Platform plugin">Create a role binding</a>
                                           </li>
                                           <li>
+                                            <a href="#gcp-replace-a-role-binding" class="toc-h5 toc-link" data-title="Google Cloud Platform plugin">Replace a role binding</a>
+                                          </li>
+                                          <li>
                                             <a href="#gcp-delete-a-role-binding" class="toc-h5 toc-link" data-title="Google Cloud Platform plugin">Delete a role binding</a>
                                           </li>
                                       </ul>
@@ -2381,6 +2384,9 @@
                                   </li>
                                   <li>
                                     <a href="#kubernetes-create-a-role-binding" class="toc-h4 toc-link" data-title="Kubernetes plugin">Create a role binding</a>
+                                  </li>
+                                  <li>
+                                    <a href="#kubernetes-replace-a-role-binding" class="toc-h4 toc-link" data-title="Kubernetes plugin">Replace a role binding</a>
                                   </li>
                                   <li>
                                     <a href="#kubernetes-delete-a-role-binding" class="toc-h4 toc-link" data-title="Kubernetes plugin">Delete a role binding</a>
@@ -2928,6 +2934,9 @@
                                           </li>
                                           <li>
                                             <a href="#azure-create-a-role-binding" class="toc-h5 toc-link" data-title="Azure plugin">Create a role binding</a>
+                                          </li>
+                                          <li>
+                                            <a href="#azure-replace-a-role-binding" class="toc-h5 toc-link" data-title="Azure plugin">Replace a role binding</a>
                                           </li>
                                           <li>
                                             <a href="#azure-delete-a-role-binding" class="toc-h5 toc-link" data-title="Azure plugin">Delete a role binding</a>
@@ -30381,6 +30390,10 @@ curl -X POST <span class="se">\</span>
 <td>The metadata of the role binding.</td>
 </tr>
 <tr>
+<td><code>roleRef</code><br/><em>object</em></td>
+<td>The role to bind. Can reference a Role in the current namespace or a ClusterRole in the global namespace.</td>
+</tr>
+<tr>
 <td><code>subjects</code> <br/><em>array</em></td>
 <td>The array of subjects associated with this role binding.</td>
 </tr>
@@ -30482,6 +30495,93 @@ curl -X POST <span class="se">\</span>
 </tr>
 </tbody></table>
 
+<!-------------------- REPLACE ROLE BINDING -------------------->
+
+<p><h5 id='gcp-replace-a-role-binding'>Replace a role binding</h5><pre class="highlight shell tab-shell"><code>curl -X PUT <span class="se">&lt;/span&gt;
+  -H <span class="s2">&quot;MC-Api-Key: your_api_key&quot;</span> <span class="se">&lt;/span&gt;
+   <span class="s2">&quot;https://cloudmc_endpoint/v1/services/a_service/an_environment/rolebindings/rolebinding-name/namespace-name?cluster_id=:cluster_id&quot;</span>
+  Content-Type: application/json
+  <span class="o">{</span>
+    <span class="s2">&quot;metadata&quot;</span>: <span class="o">{</span>
+        <span class="s2">&quot;name&quot;</span>: <span class="s2">&quot;service-account-name&quot;</span>,
+        <span class="s2">&quot;namespace&quot;</span>: <span class="s2">&quot;namespace-name&quot;</span>
+    <span class="o">}</span>,
+    <span class="s2">&quot;roleRef&quot;</span>: <span class="o">{</span>
+      <span class="s2">&quot;apiGroup&quot;</span>: <span class="s2">&quot;&quot;</span>,
+      <span class="s2">&quot;kind&quot;</span>: <span class="s2">&quot;Role&quot;</span>,
+      <span class="s2">&quot;name&quot;</span>: <span class="s2">&quot;role-name&quot;</span>
+    <span class="o">}</span>,
+    <span class="s2">&quot;subjects&quot;</span>: <span class="o">[</span>
+      <span class="o">{</span>
+        <span class="s2">&quot;kind&quot;</span>: <span class="s2">&quot;ServiceAccount&quot;</span>,
+        <span class="s2">&quot;name&quot;</span>: <span class="s2">&quot;default&quot;</span>,
+        <span class="s2">&quot;namespace&quot;</span>: <span class="s2">&quot;default&quot;</span>
+      <span class="o">}</span>,
+      <span class="o">{</span>
+        <span class="s2">&quot;kind&quot;</span>: <span class="s2">&quot;user&quot;</span>,
+        <span class="s2">&quot;name&quot;</span>: <span class="s2">&quot;user1&quot;</span>,
+      <span class="o">}</span>
+    <span class="o">]</span>
+  <span class="o">}</span>
+</code></pre>
+<blockquote>
+<p>The above command returns a JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">&quot;taskId&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1542bd45-4732-419b-87b6-4ea6ec695c2b&quot;</span><span class="p">,</span><span class="w">
+  </span><span class="s2">&quot;taskStatus&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;PENDING&quot;</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><code>PUT /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/rolebindings/:id?cluster_id=:cluster_id</code></p></p>
+
+<p>Replace a role binding in a given <a href="#administration-environments">environment</a>.</p>
+
+<table><thead>
+<tr>
+<th>Required Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>metadata</code> <br/><em>object</em></td>
+<td>The metadata of the role binding.</td>
+</tr>
+<tr>
+<td><code>metadata.name</code> <br/><em>string</em></td>
+<td>The name of the role binding.</td>
+</tr>
+<tr>
+<td><code>metadata.namespace</code> <br/><em>string</em></td>
+<td>The namespace of the role binding.</td>
+</tr>
+<tr>
+<td><code>roleRef</code><br/><em>object</em></td>
+<td>The role to bind. Can reference a Role in the current namespace or a ClusterRole in the global namespace.</td>
+</tr>
+<tr>
+<td><code>subjects</code><br/><em>array</em></td>
+<td>Subjects hold references to the objets the role applies to. Can be users, groups, or service accounts.</td>
+</tr>
+</tbody></table>
+
+<p>Return value:</p>
+
+<table><thead>
+<tr>
+<th>Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>taskId</code> <br/><em>string</em></td>
+<td>The id corresponding to the replace role binding operation.</td>
+</tr>
+<tr>
+<td><code>taskStatus</code> <br/><em>string</em></td>
+<td>The status of the operation.</td>
+</tr>
+</tbody></table>
+
 <!-------------------- DELETE A ROLE BINDING -------------------->
 
 <p><h5 id='gcp-delete-a-role-binding'>Delete a role binding</h5><pre class="highlight shell tab-shell"><code>curl -X DELETE <span class="se">&lt;/span&gt;
@@ -30490,15 +30590,8 @@ curl -X POST <span class="se">\</span>
 </code></pre>
 <blockquote>
 <p>The above command returns a JSON structured like this:
-<code>json
-{
-  &quot;taskId&quot;: &quot;1542bd45-4732-419b-87b6-4ea6ec695c2b&quot;,
-  &quot;taskStatus&quot;: &quot;PENDING&quot;
-}
-</code></p>
+<code>DELETE /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/rolebindings/:id?cluster_id=:cluster_id</code></p>
 </blockquote></p>
-
-<p><code>DELETE /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/rolebindings/:id?cluster_id=:cluster_id</code></p>
 
 <p>Delete a role binding from a given <a href="#administration-environments">environment</a>.</p>
 
@@ -37911,19 +38004,99 @@ curl -X PUT <span class="se">\</span>
 </tr>
 </tbody></table>
 
+<!-------------------- REPLACE ROLE BINDING -------------------->
+<h4 id='kubernetes-replace-a-role-binding'>Replace a role binding</h4><pre class="highlight shell tab-shell"><code>curl -X PUT <span class="se">\</span>
+  -H <span class="s2">"MC-Api-Key: your_api_key"</span> <span class="se">\</span>
+   <span class="s2">"https://cloudmc_endpoint/v1/services/a_service/an_environment/rolebindings/rolebinding-name/namespace-name"</span>
+  Content-Type: application/json
+  <span class="o">{</span>
+    <span class="s2">"metadata"</span>: <span class="o">{</span>
+        <span class="s2">"name"</span>: <span class="s2">"service-account-name"</span>,
+        <span class="s2">"namespace"</span>: <span class="s2">"namespace-name"</span>
+    <span class="o">}</span>,
+    <span class="s2">"roleRef"</span>: <span class="o">{</span>
+      <span class="s2">"apiGroup"</span>: <span class="s2">""</span>,
+      <span class="s2">"kind"</span>: <span class="s2">"Role"</span>,
+      <span class="s2">"name"</span>: <span class="s2">"role-name"</span>
+    <span class="o">}</span>,
+    <span class="s2">"subjects"</span>: <span class="o">[</span>
+      <span class="o">{</span>
+        <span class="s2">"kind"</span>: <span class="s2">"ServiceAccount"</span>,
+        <span class="s2">"name"</span>: <span class="s2">"default"</span>,
+        <span class="s2">"namespace"</span>: <span class="s2">"default"</span>
+      <span class="o">}</span>,
+      <span class="o">{</span>
+        <span class="s2">"kind"</span>: <span class="s2">"user"</span>,
+        <span class="s2">"name"</span>: <span class="s2">"user1"</span>,
+      <span class="o">}</span>
+    <span class="o">]</span>
+  <span class="o">}</span>
+</code></pre>
+<blockquote>
+<p>The above command returns a JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"taskId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1542bd45-4732-419b-87b6-4ea6ec695c2b"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"taskStatus"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PENDING"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><code>PUT /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/rolebindings/:id</code></p>
+
+<p>Replace a role binding in a given <a href="#administration-environments">environment</a>.</p>
+
+<table><thead>
+<tr>
+<th>Required Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>metadata</code> <br/><em>object</em></td>
+<td>The metadata of the role binding.</td>
+</tr>
+<tr>
+<td><code>metadata.name</code> <br/><em>string</em></td>
+<td>The name of the role binding.</td>
+</tr>
+<tr>
+<td><code>metadata.namespace</code> <br/><em>string</em></td>
+<td>The namespace of the role binding.</td>
+</tr>
+<tr>
+<td><code>roleRef</code><br/><em>object</em></td>
+<td>The role to bind. Can reference a Role in the current namespace or a ClusterRole in the global namespace.</td>
+</tr>
+<tr>
+<td><code>subjects</code><br/><em>array</em></td>
+<td>Subjects hold references to the objets the role applies to. Can be users, groups, or service accounts.</td>
+</tr>
+</tbody></table>
+
+<p>Return value:</p>
+
+<table><thead>
+<tr>
+<th>Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>taskId</code> <br/><em>string</em></td>
+<td>The id corresponding to the replace role binding operation.</td>
+</tr>
+<tr>
+<td><code>taskStatus</code> <br/><em>string</em></td>
+<td>The status of the operation.</td>
+</tr>
+</tbody></table>
+
 <!-------------------- DELETE ROLE BINDING -------------------->
 <h4 id='kubernetes-delete-a-role-binding'>Delete a role binding</h4><pre class="highlight shell tab-shell"><code>curl -X DELETE <span class="se">\</span>
    -H <span class="s2">"MC-Api-Key: your_api_key"</span> <span class="se">\</span>
    <span class="s2">"https://cloudmc_endpoint/v1/services/a_service/an_environment/rolebindings/default-token-xxxmt/default"</span>
 </code></pre>
 <blockquote>
-<p>The above command returns a JSON structured like this:
-<code>json
-{
-  &quot;taskId&quot;: &quot;1542bd45-4732-419b-87b6-4ea6ec695c2b&quot;,
-  &quot;taskStatus&quot;: &quot;PENDING&quot;
-}
-</code></p>
+<p>The above command returns a JSON structured like this:</p>
 </blockquote>
 
 <p><code>DELETE /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/rolebindings/:id</code></p>
@@ -37939,6 +38112,14 @@ curl -X PUT <span class="se">\</span>
 <tr>
 <td><code>taskId</code> <br/><em>string</em></td>
 <td>The id corresponding to the delete role binding task.</td>
+</tr>
+<tr>
+<td><code>taskStatus</code> <br/><em>string</em></td>
+<td>The status of the operation.</td>
+</tr>
+<tr>
+<td><code>taskId</code> <br/><em>string</em></td>
+<td>The id corresponding to the replace role binding operation.</td>
 </tr>
 <tr>
 <td><code>taskStatus</code> <br/><em>string</em></td>
@@ -47787,6 +47968,10 @@ For Windows instances, reset the administrator account and reset the Remote Desk
 <td>The metadata of the role binding.</td>
 </tr>
 <tr>
+<td><code>roleRef</code><br/><em>object</em></td>
+<td>The role to bind. Can reference a Role in the current namespace or a ClusterRole in the global namespace.</td>
+</tr>
+<tr>
 <td><code>subjects</code> <br/><em>array</em></td>
 <td>The array of subjects associated with this role binding.</td>
 </tr>
@@ -47888,6 +48073,93 @@ For Windows instances, reset the administrator account and reset the Remote Desk
 </tr>
 </tbody></table>
 
+<!-------------------- REPLACE ROLE BINDING -------------------->
+
+<p><h5 id='azure-replace-a-role-binding'>Replace a role binding</h5><pre class="highlight shell tab-shell"><code>curl -X PUT <span class="se">&lt;/span&gt;
+  -H <span class="s2">&quot;MC-Api-Key: your_api_key&quot;</span> <span class="se">&lt;/span&gt;
+   <span class="s2">&quot;https://cloudmc_endpoint/v1/services/a_service/an_environment/rolebindings/rolebinding-name/namespace-name?cluster_id=:cluster_id&quot;</span>
+  Content-Type: application/json
+  <span class="o">{</span>
+    <span class="s2">&quot;metadata&quot;</span>: <span class="o">{</span>
+        <span class="s2">&quot;name&quot;</span>: <span class="s2">&quot;service-account-name&quot;</span>,
+        <span class="s2">&quot;namespace&quot;</span>: <span class="s2">&quot;namespace-name&quot;</span>
+    <span class="o">}</span>,
+    <span class="s2">&quot;roleRef&quot;</span>: <span class="o">{</span>
+      <span class="s2">&quot;apiGroup&quot;</span>: <span class="s2">&quot;&quot;</span>,
+      <span class="s2">&quot;kind&quot;</span>: <span class="s2">&quot;Role&quot;</span>,
+      <span class="s2">&quot;name&quot;</span>: <span class="s2">&quot;role-name&quot;</span>
+    <span class="o">}</span>,
+    <span class="s2">&quot;subjects&quot;</span>: <span class="o">[</span>
+      <span class="o">{</span>
+        <span class="s2">&quot;kind&quot;</span>: <span class="s2">&quot;ServiceAccount&quot;</span>,
+        <span class="s2">&quot;name&quot;</span>: <span class="s2">&quot;default&quot;</span>,
+        <span class="s2">&quot;namespace&quot;</span>: <span class="s2">&quot;default&quot;</span>
+      <span class="o">}</span>,
+      <span class="o">{</span>
+        <span class="s2">&quot;kind&quot;</span>: <span class="s2">&quot;user&quot;</span>,
+        <span class="s2">&quot;name&quot;</span>: <span class="s2">&quot;user1&quot;</span>,
+      <span class="o">}</span>
+    <span class="o">]</span>
+  <span class="o">}</span>
+</code></pre>
+<blockquote>
+<p>The above command returns a JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">&quot;taskId&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1542bd45-4732-419b-87b6-4ea6ec695c2b&quot;</span><span class="p">,</span><span class="w">
+  </span><span class="s2">&quot;taskStatus&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;PENDING&quot;</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><code>PUT /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/rolebindings/:id?cluster_id=:cluster_id</code></p></p>
+
+<p>Replace a role binding in a given <a href="#administration-environments">environment</a>.</p>
+
+<table><thead>
+<tr>
+<th>Required Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>metadata</code> <br/><em>object</em></td>
+<td>The metadata of the role binding.</td>
+</tr>
+<tr>
+<td><code>metadata.name</code> <br/><em>string</em></td>
+<td>The name of the role binding.</td>
+</tr>
+<tr>
+<td><code>metadata.namespace</code> <br/><em>string</em></td>
+<td>The namespace of the role binding.</td>
+</tr>
+<tr>
+<td><code>roleRef</code><br/><em>object</em></td>
+<td>The role to bind. Can reference a Role in the current namespace or a ClusterRole in the global namespace.</td>
+</tr>
+<tr>
+<td><code>subjects</code><br/><em>array</em></td>
+<td>Subjects hold references to the objets the role applies to. Can be users, groups, or service accounts.</td>
+</tr>
+</tbody></table>
+
+<p>Return value:</p>
+
+<table><thead>
+<tr>
+<th>Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>taskId</code> <br/><em>string</em></td>
+<td>The id corresponding to the replace role binding operation.</td>
+</tr>
+<tr>
+<td><code>taskStatus</code> <br/><em>string</em></td>
+<td>The status of the operation.</td>
+</tr>
+</tbody></table>
+
 <!-------------------- DELETE A ROLE BINDING -------------------->
 
 <p><h5 id='azure-delete-a-role-binding'>Delete a role binding</h5><pre class="highlight shell tab-shell"><code>curl -X DELETE <span class="se">&lt;/span&gt;
@@ -47896,15 +48168,8 @@ For Windows instances, reset the administrator account and reset the Remote Desk
 </code></pre>
 <blockquote>
 <p>The above command returns a JSON structured like this:
-<code>json
-{
-  &quot;taskId&quot;: &quot;1542bd45-4732-419b-87b6-4ea6ec695c2b&quot;,
-  &quot;taskStatus&quot;: &quot;PENDING&quot;
-}
-</code></p>
+<code>DELETE /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/rolebindings/:id?cluster_id=:cluster_id</code></p>
 </blockquote></p>
-
-<p><code>DELETE /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/rolebindings/:id?cluster_id=:cluster_id</code></p>
 
 <p>Delete a role binding from a given <a href="#administration-environments">environment</a>.</p>
 
