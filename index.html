@@ -1692,6 +1692,9 @@
                                   <li>
                                     <a href="#gcp-retrieve-a-cluster" class="toc-h4 toc-link" data-title="Google Cloud Platform plugin">Retrieve a cluster</a>
                                   </li>
+                                  <li>
+                                    <a href="#gcp-create-a-cluster" class="toc-h4 toc-link" data-title="Google Cloud Platform plugin">Create a cluster</a>
+                                  </li>
                               </ul>
                           </li>
                           <li>
@@ -24071,6 +24074,80 @@ curl -X POST <span class="se">\</span>
 <tr>
 <td><code>name</code> <br/> <em>string</em></td>
 <td>The name of the cluster.</td>
+</tr>
+<tr>
+<td><code>caCert</code> <br/> <em>string</em></td>
+<td>The <em>base64 encoded</em> certificate authority certificate for the cluster.</td>
+</tr>
+</tbody></table>
+
+<!-------------------- CREATE A CLUSTER -------------------->
+<h4 id='gcp-create-a-cluster'>Create a cluster</h4><pre class="highlight shell tab-shell"><code>curl -X POST <span class="se">\</span>
+   -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+   -H <span class="s2">"MC-Api-Key: your_api_key"</span> <span class="se">\</span>
+   -d <span class="s2">"request_body"</span> <span class="se">\</span>
+   <span class="s2">"https://cloudmc_endpoint/v1/services/gcp/test-area/clusters"</span>
+</code></pre>
+<blockquote>
+<p>Request body examples:</p>
+</blockquote>
+<pre class="highlight javascript"><code><span class="c1">// Create a cluster</span>
+<span class="p">{</span>
+  <span class="s2">"name"</span><span class="p">:</span> <span class="s2">"my-cluster"</span><span class="p">,</span>
+  <span class="s2">"shortRegion"</span><span class="p">:</span> <span class="s2">"northamerica-northeast1"</span><span class="p">,</span>
+  <span class="s2">"shortZone"</span><span class="p">:</span> <span class="s2">"northamerica-northeast1-a"</span><span class="p">,</span>
+  <span class="s2">"initialClusterVersion"</span><span class="p">:</span> <span class="s2">"1.17.12-gke.500"</span><span class="p">,</span>
+  <span class="s2">"nodePools"</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s2">"initialNodeCount"</span><span class="p">:</span><span class="s2">"3"</span><span class="p">,</span>
+    <span class="s2">"nodeConfig"</span><span class="p">:{</span>
+      <span class="s2">"machineType"</span><span class="p">:</span><span class="s2">"e2-highcpu-16"</span>
+    <span class="p">}</span>
+  <span class="p">},</span>
+  <span class="s2">"network"</span><span class="p">:</span> <span class="s2">"default"</span><span class="p">,</span>
+  <span class="s2">"subnetwork"</span><span class="p">:</span> <span class="s2">"default"</span>
+  <span class="p">}</span>
+</code></pre>
+<p><code>POST /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/clusters</code></p>
+
+<p>Create a new cluster.</p>
+
+<table><thead>
+<tr>
+<th>Required</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>name</code><br/><em>string</em></td>
+<td>The display name of the cluster.</td>
+</tr>
+<tr>
+<td><code>shortRegion</code><br/><em>string</em></td>
+<td>A short version of the region name.</td>
+</tr>
+<tr>
+<td><code>shortZone</code><br/><em>string</em></td>
+<td>A short version of the zone name.</td>
+</tr>
+<tr>
+<td><code>initialClusterVersion</code><br/><em>string</em></td>
+<td>The version of GKE used for this cluster.</td>
+</tr>
+<tr>
+<td><code>initialNodeCount</code> <br/><em>string</em></td>
+<td>The number of nodes in the primary node pool of this cluster. This must be greater than 0.</td>
+</tr>
+<tr>
+<td><code>nodeType</code><br/><em>string</em></td>
+<td>The machine types of the nodes in the default node pool of this cluster.</td>
+</tr>
+<tr>
+<td><code>network</code><br/><em>string</em></td>
+<td>The network that the Kubernetes cluster is in.</td>
+</tr>
+<tr>
+<td><code>subnetwork</code><br/><em>string</em></td>
+<td>Subnetwork to which the cluster will belong. The subnetwork specified must belong the network specified.</td>
 </tr>
 </tbody></table>
 <h3 id='gcp-namespaces'>Namespaces</h3>
