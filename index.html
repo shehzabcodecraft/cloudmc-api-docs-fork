@@ -300,6 +300,9 @@
                           <li>
                             <a href="#administration-update-security-settings" class="toc-h3 toc-link" data-title="Administration">Update security settings</a>
                           </li>
+                          <li>
+                            <a href="#administration-mark-organization-as-reseller" class="toc-h3 toc-link" data-title="Administration">Mark organization as reseller</a>
+                          </li>
                       </ul>
                   </li>
                   <li>
@@ -3522,6 +3525,7 @@ curl <span class="s2">"https://cloudmc_endpoint/v1/organizations"</span> <span c
          </span><span class="s2">"entryPoint"</span><span class="p">:</span><span class="w"> </span><span class="s2">"umbrella"</span><span class="p">,</span><span class="w">
          </span><span class="s2">"billableStartDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-08-15T12:00:00.000Z"</span><span class="p">,</span><span class="w">
          </span><span class="s2">"isBillable"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"isReseller"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
          </span><span class="s2">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"a-tag"</span><span class="p">],</span><span class="w">
          </span><span class="s2">"parent"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
             </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8e3393ce-ee63-4f32-9e0f-7b0200fa655a"</span><span class="p">,</span><span class="w">
@@ -3624,6 +3628,10 @@ curl <span class="s2">"https://cloudmc_endpoint/v1/organizations"</span> <span c
 <td>Whether or not this is a trial organization.</td>
 </tr>
 <tr>
+<td><code>isReseller</code><br/><em>boolean</em></td>
+<td>Whether or not this organization is a reseller or not.</td>
+</tr>
+<tr>
 <td><code>customDomain</code><br/><em><a href="#administration-get-verified-domains">VerifiedDomain</a></em></td>
 <td>The custom domain for the organization.</td>
 </tr>
@@ -3648,6 +3656,7 @@ curl <span class="s2">"https://cloudmc_endpoint/v1/organizations/03bc22bd-adc4-4
       </span><span class="s2">"entryPoint"</span><span class="p">:</span><span class="w"> </span><span class="s2">"nintendo-us"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"billableStartDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-08-15T12:00:00.000Z"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"isBillable"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"isReseller"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
       </span><span class="s2">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"a-tag"</span><span class="p">],</span><span class="w">
       </span><span class="s2">"parent"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
          </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8e3393ce-ee63-4f32-9e0f-7b0200fa655a"</span><span class="p">,</span><span class="w">
@@ -3747,6 +3756,10 @@ curl <span class="s2">"https://cloudmc_endpoint/v1/organizations/03bc22bd-adc4-4
 <tr>
 <td><code>isTrial</code><br/><em>boolean</em></td>
 <td>Whether or not this is a trial organization.</td>
+</tr>
+<tr>
+<td><code>isReseller</code><br/><em>boolean</em></td>
+<td>Whether or not this organization is a reseller or not.</td>
 </tr>
 <tr>
 <td><code>customDomain</code><br/><em><a href="#administration-get-verified-domains">VerifiedDomain</a></em></td>
@@ -4168,6 +4181,15 @@ curl -X PUT <span class="s2">"https://cloudmc_endpoint/v1/organizations/03bc22bd
 </tbody></table>
 
 <p>Returns an HTTP status code 200, with an empty response body.</p>
+
+<!-------------------- MARK AS RESELLER -------------------->
+<h3 id='administration-mark-organization-as-reseller'>Mark organization as reseller</h3>
+<p><code>POST /organizations/:organization_id/mark_reseller</code></p>
+<pre class="highlight shell tab-shell"><code><span class="c"># Mark an organization as reseller</span>
+curl -X POST <span class="s2">"https://cloudmc_endpoint/v1/organizations/03bc22bd-adc4-46b8-988d-afddc24c0cb5/mark_reseller"</span> <span class="se">\</span>
+   -H <span class="s2">"MC-Api-Key: your_api_key"</span> <span class="se">\</span>
+</code></pre>
+<p>Mark the organization as a reseller. Returns an HTTP status code 200, with an empty response body.</p>
 <h2 id='administration-users'>Users</h2>
 <p>A user account allows users to authenticate to an <a href="#administration-organizations">organization</a> and to have access to the resources in it. You can restrict user access to the system and environments by assigning them specific <a href="#administration-roles">roles</a>. Additionally, every user is given an API key which is needed to use our APIs. All operations done by users are persisted and can be accessed through the activity log.</p>
 
