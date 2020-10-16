@@ -1698,6 +1698,9 @@
                                   <li>
                                     <a href="#gcp-create-a-cluster" class="toc-h4 toc-link" data-title="Google Cloud Platform plugin">Create a cluster</a>
                                   </li>
+                                  <li>
+                                    <a href="#gcp-delete-a-cluster" class="toc-h4 toc-link" data-title="Google Cloud Platform plugin">Delete a cluster</a>
+                                  </li>
                               </ul>
                           </li>
                           <li>
@@ -24182,7 +24185,24 @@ curl -X POST <span class="se">\</span>
 <td>Subnetwork to which the cluster will belong. The subnetwork specified must belong the network specified.</td>
 </tr>
 </tbody></table>
-<h3 id='gcp-namespaces'>Namespaces</h3>
+
+<!-------------------- DELETE A CLUSTER -------------------->
+<h4 id='gcp-delete-a-cluster'>Delete a cluster</h4><pre class="highlight shell tab-shell"><code>curl -X DELETE <span class="se">\</span>
+   -H <span class="s2">"MC-Api-Key: your_api_key"</span> <span class="se">\</span>
+   <span class="s2">"https://cloudmc_endpoint/v1/services/gcp/test-area/clusters/projects/cmc-test-area-ugx/locations/us-central1-c/clusters/cluster-1"</span>
+</code></pre>
+<p><code>DELETE /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/clusters/:id</code></p>
+
+<p>Delete a cluster. A cluster can only be deleted if it is in RUNNING or ERROR state.</p>
+
+<blockquote>
+<p>The above command returns a JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"taskId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3e4d4466-ce4b-404b-ada5-ee5a3fb76f4e"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"taskStatus"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PENDING"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h3 id='gcp-namespaces'>Namespaces</h3>
 
 <!-------------------- LIST NAMESPACES -------------------->
 
