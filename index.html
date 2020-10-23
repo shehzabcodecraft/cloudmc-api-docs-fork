@@ -3536,6 +3536,7 @@ curl <span class="s2">"https://cloudmc_endpoint/v1/organizations"</span> <span c
          </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Umbrella Corporation"</span><span class="p">,</span><span class="w">
          </span><span class="s2">"entryPoint"</span><span class="p">:</span><span class="w"> </span><span class="s2">"umbrella"</span><span class="p">,</span><span class="w">
          </span><span class="s2">"billableStartDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-08-15T12:00:00.000Z"</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"billingDay"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
          </span><span class="s2">"isBillable"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
          </span><span class="s2">"isReseller"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
          </span><span class="s2">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"a-tag"</span><span class="p">],</span><span class="w">
@@ -3590,6 +3591,10 @@ curl <span class="s2">"https://cloudmc_endpoint/v1/organizations"</span> <span c
 <tr>
 <td><code>billableStartDate</code><br/><em>string</em></td>
 <td>The billable start date in <a href="https://en.wikipedia.org/wiki/ISO_8601">ISO 8601</a> of the organization.</td>
+</tr>
+<tr>
+<td><code>billingDay</code><br/><em>int</em></td>
+<td>The billing day of the organization. Default value is 1.</td>
 </tr>
 <tr>
 <td><code>isBillable</code><br/><em>boolean</em></td>
@@ -3667,6 +3672,7 @@ curl <span class="s2">"https://cloudmc_endpoint/v1/organizations/03bc22bd-adc4-4
       </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Nintendo US"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"entryPoint"</span><span class="p">:</span><span class="w"> </span><span class="s2">"nintendo-us"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"billableStartDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-08-15T12:00:00.000Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"billingDay"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
       </span><span class="s2">"isBillable"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
       </span><span class="s2">"isReseller"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
       </span><span class="s2">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"a-tag"</span><span class="p">],</span><span class="w">
@@ -3720,6 +3726,10 @@ curl <span class="s2">"https://cloudmc_endpoint/v1/organizations/03bc22bd-adc4-4
 <tr>
 <td><code>billableStartDate</code><br/><em>string</em></td>
 <td>The billable start date in <a href="https://en.wikipedia.org/wiki/ISO_8601">ISO 8601</a> of the organization.</td>
+</tr>
+<tr>
+<td><code>billingDay</code><br/><em>int</em></td>
+<td>The billing day of the organization. Default value is 1.</td>
 </tr>
 <tr>
 <td><code>isBillable</code><br/><em>boolean</em></td>
@@ -3836,6 +3846,10 @@ curl -X POST <span class="s2">"https://cloudmc_endpoint/v1/organizations"</span>
 <td><code>parent</code><br/><a href="#administration-organization">Organization</a></td>
 <td>The organization that will be the parent of the new organization. By default, it will default to the caller&#39;s organization.<br/><em>required :</em><code>id</code></td>
 </tr>
+<tr>
+<td><code>billingDay</code><br/><em>int</em></td>
+<td>The billing day of the organization. Must be between 1 and 28 (inclusive), the default value is 1.</td>
+</tr>
 </tbody></table>
 
 <p>The responses&#39; <code>data</code> field contains the created <a href="#administration-organizations">organization</a> with its <code>id</code>.</p>
@@ -3909,6 +3923,10 @@ curl -X PUT <span class="s2">"https://cloudmc_endpoint/v1/organizations/03bc22bd
 <tr>
 <td><code>customDomain</code><br/><em><a href="#administration-get-verified-domains">VerifiedDomain</a></em></td>
 <td>An object describing a verified domain. Must have the <code>Organization: Manage reseller features</code> permission. <br/><em>required</em> : <code>id</code></td>
+</tr>
+<tr>
+<td><code>billingDay</code><br/><em>int</em></td>
+<td>The billing day of the organization. Must be between 1 and 28 (inclusive), the default value is 1.</td>
 </tr>
 </tbody></table>
 
@@ -7261,7 +7279,6 @@ curl <span class="s2">"https://cloudmc_endpoint/rest/applied_pricings"</span> <s
         </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"System"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"23910576-d29f-4c14-b663-31d728ff49a5"</span><span class="w">
       </span><span class="p">},</span><span class="w">
-      </span><span class="s2">"billingDay"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
       </span><span class="s2">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USD"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"47c4993a-a131-4365-a427-02de95bad85b"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"creationDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-06-04T18:30:21.000Z"</span><span class="p">,</span><span class="w">
@@ -7335,10 +7352,6 @@ curl <span class="s2">"https://cloudmc_endpoint/rest/applied_pricings"</span> <s
 <td>The currency associated to the applied pricing.</td>
 </tr>
 <tr>
-<td><code>billingDay</code><br/><em>int</em></td>
-<td>The billing day that the applied pricing will be applied.</td>
-</tr>
-<tr>
 <td><code>scopeQualifier</code><br/><em>string</em></td>
 <td>Scope qualifier of the applied pricing. Possible values are : GLOBAL, ORG_TOPLEVEL, ORG_SUBS, ORG_BASE, ORG_TREE.</td>
 </tr>
@@ -7400,7 +7413,6 @@ curl <span class="s2">"https://cloudmc_endpoint/rest/applied_pricings/03bc22bd-a
       </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"System"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"23910576-d29f-4c14-b663-31d728ff49a5"</span><span class="w">
     </span><span class="p">},</span><span class="w">
-    </span><span class="s2">"billingDay"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
     </span><span class="s2">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USD"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"47c4993a-a131-4365-a427-02de95bad85b"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"creationDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-06-04T18:30:21.000Z"</span><span class="p">,</span><span class="w">
@@ -7473,10 +7485,6 @@ curl <span class="s2">"https://cloudmc_endpoint/rest/applied_pricings/03bc22bd-a
 <td>The currency associated to the applied pricing.</td>
 </tr>
 <tr>
-<td><code>billingDay</code><br/><em>int</em></td>
-<td>The billing day that the applied pricing will be applied.</td>
-</tr>
-<tr>
 <td><code>scopeQualifier</code><br/><em>string</em></td>
 <td>Scope qualifier of the applied pricing. Possible values are : GLOBAL, ORG_TOPLEVEL, ORG_SUBS, ORG_BASE, ORG_TREE.</td>
 </tr>
@@ -7521,7 +7529,6 @@ curl -X POST <span class="s2">"https://cloudmc_endpoint/rest/applied_pricings"</
   <span class="s2">"organization"</span><span class="p">:</span> <span class="p">{</span>
     <span class="s2">"id"</span><span class="p">:</span> <span class="s2">"23910576-d29f-4c14-b663-31d728ff49a5"</span>
   <span class="p">},</span>
-  <span class="s2">"billingDay"</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
   <span class="s2">"currency"</span><span class="p">:</span> <span class="s2">"USD"</span><span class="p">,</span>
   <span class="s2">"scopeQualifier"</span><span class="p">:</span> <span class="s2">"GLOBAL"</span><span class="p">,</span>
   <span class="s2">"startDate"</span><span class="p">:</span> <span class="s2">"2020-06-05T00:00:00Z"</span><span class="p">,</span>
@@ -7543,7 +7550,6 @@ curl -X POST <span class="s2">"https://cloudmc_endpoint/rest/applied_pricings"</
     <span class="s2">"organization"</span><span class="p">:</span> <span class="p">{</span>
       <span class="s2">"id"</span><span class="p">:</span> <span class="s2">"23910576-d29f-4c14-b663-31d728ff49a5"</span>
     <span class="p">},</span>
-    <span class="s2">"billingDay"</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
     <span class="s2">"currency"</span><span class="p">:</span> <span class="s2">"USD"</span><span class="p">,</span>
     <span class="s2">"id"</span><span class="p">:</span> <span class="s2">"8bb5e457-41c3-410b-aced-b9c694ff141a"</span><span class="p">,</span>
     <span class="s2">"creationDate"</span><span class="p">:</span> <span class="s2">"2020-06-04T19:31:31.178Z"</span><span class="p">,</span>
@@ -7577,10 +7583,6 @@ curl -X POST <span class="s2">"https://cloudmc_endpoint/rest/applied_pricings"</
 <tr>
 <td><code>startDate</code> <br/><em>Date</em></td>
 <td>The start date for the applied pricing.</td>
-</tr>
-<tr>
-<td><code>billingDay</code> <br/><em>int</em></td>
-<td>The billing day that the applied pricing will be applied.</td>
 </tr>
 </tbody></table>
 
@@ -7619,7 +7621,6 @@ curl -X PUT <span class="s2">"https://cloudmc_endpoint/rest/applied_pricings/8bb
   <span class="s2">"organization"</span><span class="p">:</span> <span class="p">{</span>
     <span class="s2">"id"</span><span class="p">:</span> <span class="s2">"23910576-d29f-4c14-b663-31d728ff49a5"</span>
   <span class="p">},</span>
-  <span class="s2">"billingDay"</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
   <span class="s2">"currency"</span><span class="p">:</span> <span class="s2">"USD"</span><span class="p">,</span>
   <span class="s2">"scopeQualifier"</span><span class="p">:</span> <span class="s2">"ORG_BASE"</span><span class="p">,</span>
   <span class="s2">"scopeOrganization"</span><span class="p">:</span> <span class="p">{</span>
@@ -7656,7 +7657,6 @@ curl -X PUT <span class="s2">"https://cloudmc_endpoint/rest/applied_pricings/8bb
       <span class="s2">"name"</span><span class="p">:</span> <span class="s2">"Systemer"</span><span class="p">,</span>
       <span class="s2">"id"</span><span class="p">:</span> <span class="s2">"52fd201e-aa82-4a27-86b3-ea9650a7fb1e"</span>
     <span class="p">},</span>
-    <span class="s2">"billingDay"</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
     <span class="s2">"currency"</span><span class="p">:</span> <span class="s2">"CAD"</span><span class="p">,</span>
     <span class="s2">"id"</span><span class="p">:</span> <span class="s2">"d08b9332-d26e-42fe-b272-3071f2d64839"</span><span class="p">,</span>
     <span class="s2">"creationDate"</span><span class="p">:</span> <span class="s2">"2020-09-08T17:44:18.000Z"</span><span class="p">,</span>
@@ -7694,10 +7694,6 @@ curl -X PUT <span class="s2">"https://cloudmc_endpoint/rest/applied_pricings/8bb
 <tr>
 <td><code>startDate</code> <br/><em>Date</em></td>
 <td>The start date for the applied pricing.</td>
-</tr>
-<tr>
-<td><code>billingDay</code> <br/><em>int</em></td>
-<td>The billing day that the applied pricing will be applied.</td>
 </tr>
 </tbody></table>
 
