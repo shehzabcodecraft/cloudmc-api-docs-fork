@@ -549,6 +549,47 @@
                                   </li>
                               </ul>
                           </li>
+                          <li>
+                            <a href="#administration-trials-management" class="toc-h3 toc-link" data-title="Administration">Trials Management</a>
+                              <ul class="toc-list-h4">
+                                  <li>
+                                    <a href="#administration-list-trials" class="toc-h4 toc-link" data-title="Administration">List trials</a>
+                                  </li>
+                                  <li>
+                                    <a href="#administration-retrieve-trial" class="toc-h4 toc-link" data-title="Administration">Retrieve trial</a>
+                                  </li>
+                                  <li>
+                                    <a href="#administration-trial-remaining-slots" class="toc-h4 toc-link" data-title="Administration">Trial remaining slots</a>
+                                  </li>
+                                  <li>
+                                    <a href="#administration-activate-trial" class="toc-h4 toc-link" data-title="Administration">Activate trial</a>
+                                  </li>
+                                  <li>
+                                    <a href="#administration-extend-trial" class="toc-h4 toc-link" data-title="Administration">Extend trial</a>
+                                  </li>
+                                  <li>
+                                    <a href="#administration-terminal-trial" class="toc-h4 toc-link" data-title="Administration">Terminal trial</a>
+                                  </li>
+                                  <li>
+                                    <a href="#administration-deny-trial" class="toc-h4 toc-link" data-title="Administration">Deny trial</a>
+                                  </li>
+                                  <li>
+                                    <a href="#administration-convert-to-billable" class="toc-h4 toc-link" data-title="Administration">Convert to billable</a>
+                                  </li>
+                                  <li>
+                                    <a href="#administration-retrieve-trial-activities" class="toc-h4 toc-link" data-title="Administration">Retrieve trial activities</a>
+                                  </li>
+                                  <li>
+                                    <a href="#administration-retrieve-trial-users" class="toc-h4 toc-link" data-title="Administration">Retrieve trial users</a>
+                                  </li>
+                                  <li>
+                                    <a href="#administration-resend-trial-email" class="toc-h4 toc-link" data-title="Administration">Resend trial email</a>
+                                  </li>
+                                  <li>
+                                    <a href="#administration-retrieve-trial-statuses" class="toc-h4 toc-link" data-title="Administration">Retrieve trial statuses</a>
+                                  </li>
+                              </ul>
+                          </li>
                       </ul>
                   </li>
               </ul>
@@ -8745,7 +8786,7 @@ curl -X POST <span class="s2">"https://cloudmc_endpoint/rest/saml_settings/:id"<
 <h4 id='administration-list-trials-settings'>List trials settings</h4>
 <p><code>GET /trials_settings</code></p>
 <pre class="highlight shell tab-shell"><code><span class="c"># Retrieve trials settings</span>
-curl <span class="s2">"https://cloudmc_endpoint/v1/trials_settings"</span> <span class="se">\</span>
+curl <span class="s2">"https://cloudmc_endpoint/rest/trials_settings"</span> <span class="se">\</span>
    -H <span class="s2">"MC-Api-Key: your_api_key"</span>
 </code></pre>
 <blockquote>
@@ -8755,6 +8796,9 @@ curl <span class="s2">"https://cloudmc_endpoint/v1/trials_settings"</span> <span
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
       </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"b41f2aa3-e2d1-48d8-9760-8b874c20e8ae"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"organization"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"23910576-d29f-4c14-b663-31d728ff49a5"</span><span class="p">,</span><span class="w">     
+      </span><span class="p">},</span><span class="w">
       </span><span class="s2">"duration"</span><span class="p">:</span><span class="w"> </span><span class="mi">14</span><span class="p">,</span><span class="w">
       </span><span class="s2">"extensionDays"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span><span class="w">
       </span><span class="s2">"maxConcurrentTrials"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
@@ -8782,6 +8826,18 @@ curl <span class="s2">"https://cloudmc_endpoint/v1/trials_settings"</span> <span
 
 <table><thead>
 <tr>
+<th>Query Params</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>organization_id</code><br/><em>UUID</em></td>
+<td>Return only settings for the provided organization id. If not provided, will default to the user organization.</td>
+</tr>
+</tbody></table>
+
+<table><thead>
+<tr>
 <th>Attributes</th>
 <th>&nbsp;</th>
 </tr>
@@ -8789,6 +8845,10 @@ curl <span class="s2">"https://cloudmc_endpoint/v1/trials_settings"</span> <span
 <tr>
 <td><code>id</code><br/><em>UUID</em></td>
 <td>The id of the trial settings.</td>
+</tr>
+<tr>
+<td><code>organization.id</code><br/><em>UUID</em></td>
+<td>The organization id that the trial settings is linked to.</td>
 </tr>
 <tr>
 <td><code>duration</code><br/><em>integer</em></td>
@@ -8848,7 +8908,7 @@ curl <span class="s2">"https://cloudmc_endpoint/v1/trials_settings"</span> <span
 <h4 id='administration-retrieve-trial-settings'>Retrieve trial settings</h4>
 <p><code>GET /trials_settings/:id</code></p>
 <pre class="highlight shell tab-shell"><code><span class="c"># Retrieve trial settings</span>
-curl <span class="s2">"https://cloudmc_endpoint/v1/trials_settings/b41f2aa3-e2d1-48d8-9760-8b874c20e8ae"</span> <span class="se">\</span>
+curl <span class="s2">"https://cloudmc_endpoint/rest/trials_settings/b41f2aa3-e2d1-48d8-9760-8b874c20e8ae"</span> <span class="se">\</span>
    -H <span class="s2">"MC-Api-Key: your_api_key"</span>
 </code></pre>
 <blockquote>
@@ -8857,6 +8917,9 @@ curl <span class="s2">"https://cloudmc_endpoint/v1/trials_settings/b41f2aa3-e2d1
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"b41f2aa3-e2d1-48d8-9760-8b874c20e8ae"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"organization"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"23910576-d29f-4c14-b663-31d728ff49a5"</span><span class="p">,</span><span class="w">     
+    </span><span class="p">},</span><span class="w">
     </span><span class="s2">"duration"</span><span class="p">:</span><span class="w"> </span><span class="mi">14</span><span class="p">,</span><span class="w">
     </span><span class="s2">"extensionDays"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span><span class="w">
     </span><span class="s2">"maxConcurrentTrials"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
@@ -8879,7 +8942,7 @@ curl <span class="s2">"https://cloudmc_endpoint/v1/trials_settings/b41f2aa3-e2d1
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<p>Return the trial settings configured associated to the id on the system.</p>
+<p>Retrieve the trial settings configured associated to the id on the system.</p>
 
 <table><thead>
 <tr>
@@ -8890,6 +8953,10 @@ curl <span class="s2">"https://cloudmc_endpoint/v1/trials_settings/b41f2aa3-e2d1
 <tr>
 <td><code>id</code><br/><em>UUID</em></td>
 <td>The id of the trial settings.</td>
+</tr>
+<tr>
+<td><code>organization.id</code><br/><em>UUID</em></td>
+<td>The organization id that the trial settings is linked to.</td>
 </tr>
 <tr>
 <td><code>duration</code><br/><em>integer</em></td>
@@ -8955,57 +9022,64 @@ curl -X PUT <span class="s2">"https://cloudmc_endpoint/rest/trials_settings/:id"
 <blockquote>
 <p>Request body example:</p>
 </blockquote>
-<pre class="highlight javascript"><code><span class="p">{</span>
-  <span class="s2">"id"</span><span class="p">:</span> <span class="s2">"b41f2aa3-e2d1-48d8-9760-8b874c20e8ae"</span><span class="p">,</span>
-  <span class="s2">"duration"</span><span class="p">:</span> <span class="mi">14</span><span class="p">,</span>
-  <span class="s2">"extensionDays"</span><span class="p">:</span> <span class="mi">7</span><span class="p">,</span>
-  <span class="s2">"maxConcurrentTrials"</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
-  <span class="s2">"cleanupDelayDays"</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
-  <span class="s2">"expirationReminderDays"</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
-  <span class="s2">"allowMultipleTrialSameEmail"</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
-  <span class="s2">"enableRecaptcha"</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
-  <span class="s2">"recaptchaSitekey"</span><span class="p">:</span> <span class="s2">"6Lfg9rkZAAAAAHAwlr6_qs4QBTFRHVFgLhK3XXX"</span><span class="p">,</span>
-  <span class="s2">"recaptchaSecretkey"</span><span class="p">:</span> <span class="s2">"6Lfg9rkZAAAAAOSjYqghXeQ7zfagZTqXXXRmXXE"</span><span class="p">,</span>
-  <span class="s2">"contactUsEmail"</span><span class="p">:</span> <span class="s2">"email@gmail.com"</span><span class="p">,</span>
-  <span class="s2">"contactUsPhone"</span><span class="p">:</span> <span class="s2">"555-555-555"</span><span class="p">,</span>
-  <span class="s2">"registrationHTML"</span><span class="p">:</span> <span class="p">{</span>
-    <span class="s2">"en"</span><span class="p">:</span> <span class="s2">"&lt;div&gt;Registration HTML EN&lt;/div&gt;"</span><span class="p">,</span>
-    <span class="s2">"fr"</span><span class="p">:</span> <span class="s2">"&lt;div&gt;Registration HTML FR&lt;/div&gt;"</span><span class="p">,</span>
-  <span class="p">},</span>
-  <span class="s2">"termsAndConditionsHTML"</span><span class="p">:</span> <span class="p">{</span>
-    <span class="s2">"en"</span><span class="p">:</span> <span class="s2">"&lt;div&gt;Terms and conditions HTML EN&lt;/div&gt;"</span><span class="p">,</span>
-    <span class="s2">"fr"</span><span class="p">:</span> <span class="s2">"&lt;div&gt;Terms and conditions HTML FR&lt;/div&gt;"</span><span class="p">,</span>
-  <span class="p">}</span>
-<span class="p">}</span>
-</code></pre>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"b41f2aa3-e2d1-48d8-9760-8b874c20e8ae"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"organization"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"23910576-d29f-4c14-b663-31d728ff49a5"</span><span class="p">,</span><span class="w">     
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"organizationId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"23910576-d29f-4c14-b663-31d728ff49a5"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"duration"</span><span class="p">:</span><span class="w"> </span><span class="mi">14</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"extensionDays"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"maxConcurrentTrials"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"cleanupDelayDays"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"expirationReminderDays"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"allowMultipleTrialSameEmail"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"enableRecaptcha"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"recaptchaSitekey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6Lfg9rkZAAAAAHAwlr6_qs4QBTFRHVFgLhK3XXX"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"recaptchaSecretkey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6Lfg9rkZAAAAAOSjYqghXeQ7zfagZTqXXXRmXXE"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"contactUsEmail"</span><span class="p">:</span><span class="w"> </span><span class="s2">"email@gmail.com"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"contactUsPhone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"555-555-555"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"registrationHTML"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"en"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;div&gt;Registration HTML EN&lt;/div&gt;"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"fr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;div&gt;Registration HTML FR&lt;/div&gt;"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"termsAndConditionsHTML"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"en"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;div&gt;Terms and conditions HTML EN&lt;/div&gt;"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"fr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;div&gt;Terms and conditions HTML FR&lt;/div&gt;"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
 <blockquote>
 <p>The above command return JSON structured like this:</p>
 </blockquote>
-<pre class="highlight javascript"><code><span class="p">{</span>
-  <span class="s2">"data"</span><span class="p">:</span> <span class="p">{</span>
-    <span class="s2">"id"</span><span class="p">:</span> <span class="s2">"b41f2aa3-e2d1-48d8-9760-8b874c20e8ae"</span><span class="p">,</span>
-    <span class="s2">"duration"</span><span class="p">:</span> <span class="mi">14</span><span class="p">,</span>
-    <span class="s2">"extensionDays"</span><span class="p">:</span> <span class="mi">7</span><span class="p">,</span>
-    <span class="s2">"maxConcurrentTrials"</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
-    <span class="s2">"cleanupDelayDays"</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
-    <span class="s2">"expirationReminderDays"</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
-    <span class="s2">"allowMultipleTrialSameEmail"</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
-    <span class="s2">"enableRecaptcha"</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
-    <span class="s2">"recaptchaSitekey"</span><span class="p">:</span> <span class="s2">"6Lfg9rkZAAAAAHAwlr6_qs4QBTFRHVFgLhK3XXX"</span><span class="p">,</span>
-    <span class="s2">"recaptchaSecretkey"</span><span class="p">:</span> <span class="s2">"6Lfg9rkZAAAAAOSjYqghXeQ7zfagZTqXXXRmXXE"</span><span class="p">,</span>
-    <span class="s2">"contactUsEmail"</span><span class="p">:</span> <span class="s2">"email@gmail.com"</span><span class="p">,</span>
-    <span class="s2">"contactUsPhone"</span><span class="p">:</span> <span class="s2">"555-555-555"</span><span class="p">,</span>
-    <span class="s2">"registrationHTML"</span><span class="p">:</span> <span class="p">{</span>
-      <span class="s2">"en"</span><span class="p">:</span> <span class="s2">"&lt;div&gt;Registration HTML EN&lt;/div&gt;"</span><span class="p">,</span>
-      <span class="s2">"fr"</span><span class="p">:</span> <span class="s2">"&lt;div&gt;Registration HTML FR&lt;/div&gt;"</span><span class="p">,</span>
-    <span class="p">},</span>
-    <span class="s2">"termsAndConditionsHTML"</span><span class="p">:</span> <span class="p">{</span>
-      <span class="s2">"en"</span><span class="p">:</span> <span class="s2">"&lt;div&gt;Terms and conditions HTML EN&lt;/div&gt;"</span><span class="p">,</span>
-      <span class="s2">"fr"</span><span class="p">:</span> <span class="s2">"&lt;div&gt;Terms and conditions HTML FR&lt;/div&gt;"</span><span class="p">,</span>
-    <span class="p">}</span>
-  <span class="p">}</span>
-<span class="p">}</span>
-</code></pre>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"b41f2aa3-e2d1-48d8-9760-8b874c20e8ae"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"organization"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"23910576-d29f-4c14-b663-31d728ff49a5"</span><span class="p">,</span><span class="w">     
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"duration"</span><span class="p">:</span><span class="w"> </span><span class="mi">14</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"extensionDays"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"maxConcurrentTrials"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"cleanupDelayDays"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"expirationReminderDays"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"allowMultipleTrialSameEmail"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"enableRecaptcha"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"recaptchaSitekey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6Lfg9rkZAAAAAHAwlr6_qs4QBTFRHVFgLhK3XXX"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"recaptchaSecretkey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6Lfg9rkZAAAAAOSjYqghXeQ7zfagZTqXXXRmXXE"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"contactUsEmail"</span><span class="p">:</span><span class="w"> </span><span class="s2">"email@gmail.com"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"contactUsPhone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"555-555-555"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"registrationHTML"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"en"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;div&gt;Registration HTML EN&lt;/div&gt;"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"fr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;div&gt;Registration HTML FR&lt;/div&gt;"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"termsAndConditionsHTML"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"en"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;div&gt;Terms and conditions HTML EN&lt;/div&gt;"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"fr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;div&gt;Terms and conditions HTML FR&lt;/div&gt;"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
 <p>Updates a specific trial&#39;s settings.</p>
 
 <table><thead>
@@ -9017,6 +9091,10 @@ curl -X PUT <span class="s2">"https://cloudmc_endpoint/rest/trials_settings/:id"
 <tr>
 <td><code>id</code><br/><em>UUID</em></td>
 <td>The id of the trial settings.</td>
+</tr>
+<tr>
+<td><code>organization.id</code><br/><em>UUID</em></td>
+<td>The organization id that the trial settings is linked to. It cannot be changed.</td>
 </tr>
 <tr>
 <td><code>duration</code><br/><em>integer</em></td>
@@ -9043,18 +9121,6 @@ curl -X PUT <span class="s2">"https://cloudmc_endpoint/rest/trials_settings/:id"
 <td>If more than one trial account can be created using the same email address.</td>
 </tr>
 <tr>
-<td><code>enableRecaptcha</code><br/><em>boolean</em></td>
-<td>If the reCAPTCHA verification on the sign up form is displayed. The reCAPTCHA site key and secret key must be present.</td>
-</tr>
-<tr>
-<td><code>recaptchaSitekey</code><br/><em>string</em></td>
-<td>The site key obtained from the reCAPTCHA admin console (Google).</td>
-</tr>
-<tr>
-<td><code>recaptchaSecretkey</code><br/><em>string</em></td>
-<td>The secret key obtained from the reCAPTCHA admin console (Google).</td>
-</tr>
-<tr>
 <td><code>contactUsEmail</code><br/><em>string</em></td>
 <td>The email address that trial user can contact for more info/support.</td>
 </tr>
@@ -9078,7 +9144,696 @@ curl -X PUT <span class="s2">"https://cloudmc_endpoint/rest/trials_settings/:id"
 <td><code>contactUsPhone</code><br/><em>string</em></td>
 <td>The phone number that trial user can contact for more info/support.</td>
 </tr>
+<tr>
+<td><code>enableRecaptcha</code><br/><em>boolean</em></td>
+<td>If the reCAPTCHA verification on the sign up form is displayed. The reCAPTCHA site key and secret key must be present. Default is false.</td>
+</tr>
+<tr>
+<td><code>recaptchaSitekey</code><br/><em>string</em></td>
+<td>The site key obtained from the reCAPTCHA admin console (Google). Mandatory if recaptcha is enabled.</td>
+</tr>
+<tr>
+<td><code>recaptchaSecretkey</code><br/><em>string</em></td>
+<td>The secret key obtained from the reCAPTCHA admin console (Google). Mandatory if recaptcha is enabled.</td>
+</tr>
 </tbody></table>
+<h3 id='administration-trials-management'>Trials Management</h3>
+<p>Manage trials through it lifecycle.</p>
+
+<!-------------------- LIST TRIALS -------------------->
+<h4 id='administration-list-trials'>List trials</h4>
+<p><code>GET /trials</code></p>
+<pre class="highlight shell tab-shell"><code><span class="c"># Retrieve trials</span>
+curl <span class="s2">"https://cloudmc_endpoint/rest/trials"</span> <span class="se">\</span>
+   -H <span class="s2">"MC-Api-Key: your_api_key"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"expiryDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-10-24T13:38:57.000Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"hasActivatedUser"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"firstName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"lastName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Doe"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"persistedOrganizationId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0518842d-1ad6-4b66-abc4-2cf48d502b4c"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"resellerOrganization"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"23910576-d29f-4c14-b663-31d728ff49a5"</span><span class="p">,</span><span class="w">     
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"createdDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-10-19T13:36:25.000Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"organizationName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John Doe Corp"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"activity"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="mi">5</span><span class="p">,</span><span class="w">
+        </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="kc">null</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="s2">"organization"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"serviceConnections"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"commitmentTrackingEnabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"metricsTrackingEnabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"serviceCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"gcp"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"iconOverrideUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"gcp"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"locations"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"749e314b-d979-4882-9ba8-417862381266"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PROVISIONED"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"gcp"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"reachable"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"trialEnvironmentLimit"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John Doe Corp"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0518842d-1ad6-4b66-abc4-2cf48d502b4c"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"019d31ed-fae2-4c83-96e6-1e67c5ac5192"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"john.doe@yahoo.com"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ONGOING"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>List the trials configured on the system.</p>
+
+<table><thead>
+<tr>
+<th>Query Params</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>organization_id</code><br/><em>UUID</em></td>
+<td>Return only settings for the provided organization id. If not provided, will default to the user organization.</td>
+</tr>
+</tbody></table>
+
+<table><thead>
+<tr>
+<th>Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code><br/><em>UUID</em></td>
+<td>The id of the trial.</td>
+</tr>
+<tr>
+<td><code>resellerOrganization.id</code><br/><em>UUID</em></td>
+<td>The reseller organization id that the trial belongs to.</td>
+</tr>
+<tr>
+<td><code>status</code><br/><em>string</em></td>
+<td>The status of the trial. Possible values are:  SUBMITTED, PENDING, DENIED, ONGOING, EXPIRED, PURGED, CONVERTED.</td>
+</tr>
+<tr>
+<td><code>firstName</code><br/><em>string</em></td>
+<td>The first name of the person that requested the trial.</td>
+</tr>
+<tr>
+<td><code>lastName</code><br/><em>string</em></td>
+<td>The last name of the person that requested the trial.</td>
+</tr>
+<tr>
+<td><code>email</code><br/><em>string</em></td>
+<td>The email address of the person that requested the trial.</td>
+</tr>
+<tr>
+<td><code>organizationName</code><br/><em>string</em></td>
+<td>The name of the organization for which the requester is doing the trial for.</td>
+</tr>
+<tr>
+<td><code>createdDate</code><br/><em>string</em></td>
+<td>The creation date of the trial.</td>
+</tr>
+<tr>
+<td><code>expiryDate</code><br/><em>string</em></td>
+<td>The expiration date of the trial.</td>
+</tr>
+<tr>
+<td><code>persistedOrganizationId</code><br/><em>UUID</em></td>
+<td>The id of the organization created in the system once the trial is approved.</td>
+</tr>
+<tr>
+<td><code>organization</code><br/><em>Object</em></td>
+<td>The organization object created in the system for this organization once the trial is approved.</td>
+</tr>
+</tbody></table>
+
+<!-------------------- GET TRIAL -------------------->
+<h4 id='administration-retrieve-trial'>Retrieve trial</h4>
+<p><code>GET /trials/:id</code></p>
+<pre class="highlight shell tab-shell"><code><span class="c"># Retrieve trial</span>
+curl <span class="s2">"https://cloudmc_endpoint/rest/trials/b41f2aa3-e2d1-48d8-9760-8b874c20e8ae"</span> <span class="se">\</span>
+   -H <span class="s2">"MC-Api-Key: your_api_key"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"b41f2aa3-e2d1-48d8-9760-8b874c20e8ae"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"resellerOrganization"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"23910576-d29f-4c14-b663-31d728ff49a5"</span><span class="p">,</span><span class="w">     
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"lastName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Doe"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"approvalDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-10-19T13:38:57.000Z"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"activity"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="mi">5</span><span class="p">,</span><span class="w">
+      </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="kc">null</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"extensionEmailDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-10-21T14:09:18.000Z"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"language"</span><span class="p">:</span><span class="w"> </span><span class="s2">"en"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"blurb"</span><span class="p">:</span><span class="w"> </span><span class="s2">"We need CloudMC services"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"expiryDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-10-24T13:38:57.000Z"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"john.doe@yahoo.com"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"organizationName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John Doe Corp"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"manuallyApproved"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"extensionCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"hasActivatedUser"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"firstName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"persistedOrganizationId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0518842d-1ad6-4b66-abc4-2cf48d502b4c"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"createdDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-10-19T13:36:25.000Z"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"phoneNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5144436363"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"organization"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"serviceConnections"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"commitmentTrackingEnabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"metricsTrackingEnabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"serviceCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"gcp"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"iconOverrideUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"gcp"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"locations"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+          </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"749e314b-d979-4882-9ba8-417862381266"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PROVISIONED"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"gcp"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"reachable"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"trialEnvironmentLimit"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John Doe Corp"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0518842d-1ad6-4b66-abc4-2cf48d502b4c"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"john.doe@yahoo.com"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ONGOING"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>Retrieve the trial associated to the id on the system.</p>
+
+<table><thead>
+<tr>
+<th>Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code><br/><em>UUID</em></td>
+<td>The id of the trial.</td>
+</tr>
+<tr>
+<td><code>resellerOrganization.id</code><br/><em>UUID</em></td>
+<td>The reseller organization id that the trial belongs to.</td>
+</tr>
+<tr>
+<td><code>status</code><br/><em>string</em></td>
+<td>The status of the trial. Possible values are:  SUBMITTED, PENDING, DENIED, ONGOING, EXPIRED, PURGED, CONVERTED.</td>
+</tr>
+<tr>
+<td><code>firstName</code><br/><em>string</em></td>
+<td>The first name of the person that requested the trial.</td>
+</tr>
+<tr>
+<td><code>lastName</code><br/><em>string</em></td>
+<td>The last name of the person that requested the trial.</td>
+</tr>
+<tr>
+<td><code>email</code><br/><em>string</em></td>
+<td>The email address of the person that requested the trial.</td>
+</tr>
+<tr>
+<td><code>phoneNumber</code><br/><em>string</em></td>
+<td>The phone number of the person that requested the trial.</td>
+</tr>
+<tr>
+<td><code>organizationName</code><br/><em>string</em></td>
+<td>The name of the organization for which the requester is doing the trial for.</td>
+</tr>
+<tr>
+<td><code>createdDate</code><br/><em>string</em></td>
+<td>The creation date of the trial.</td>
+</tr>
+<tr>
+<td><code>expiryDate</code><br/><em>string</em></td>
+<td>The expiration date of the trial.</td>
+</tr>
+<tr>
+<td><code>persistedOrganizationId</code><br/><em>UUID</em></td>
+<td>The id of the organization created in the system once the trial is approved.</td>
+</tr>
+<tr>
+<td><code>organization</code><br/><em>Object</em></td>
+<td>The organization object created in the system for this organization once the trial is approved.</td>
+</tr>
+<tr>
+<td><code>username</code><br/><em>string</em></td>
+<td>The username associated to the creator of the trial.</td>
+</tr>
+<tr>
+<td><code>approvalDate</code><br/><em>string</em></td>
+<td>The approval date of the trial.</td>
+</tr>
+<tr>
+<td><code>denialDate</code><br/><em>string</em></td>
+<td>The denial date of the trial.</td>
+</tr>
+<tr>
+<td><code>denialReason</code><br/><em>string</em></td>
+<td>The reason the trial is denied.</td>
+</tr>
+<tr>
+<td><code>extensionCount</code><br/><em>integer</em></td>
+<td>The number of times the trial was extended.</td>
+</tr>
+<tr>
+<td><code>language</code><br/><em>string</em></td>
+<td>The language used when creating the trial.</td>
+</tr>
+<tr>
+<td><code>manuallyApproved</code><br/><em>boolean</em></td>
+<td>If the trial is manually approved.</td>
+</tr>
+<tr>
+<td><code>extensionEmailDate</code><br/><em>string</em></td>
+<td>The date the extension email notification was sent.</td>
+</tr>
+<tr>
+<td><code>extensionDate</code><br/><em>string</em></td>
+<td>The date the trial was extended.</td>
+</tr>
+<tr>
+<td><code>shutdownDate</code><br/><em>string</em></td>
+<td>The date the trial was shutdown.</td>
+</tr>
+<tr>
+<td><code>purgeDate</code><br/><em>string</em></td>
+<td>The date the trial was purged.</td>
+</tr>
+<tr>
+<td><code>conversionDate</code><br/><em>string</em></td>
+<td>The date the trial was converted to an active organization.</td>
+</tr>
+<tr>
+<td><code>blurb</code><br/><em>string</em></td>
+<td>The cloud requirements entered in the trial registration.</td>
+</tr>
+</tbody></table>
+
+<!-------------------- REMAINING SLOTS TRIAL -------------------->
+<h4 id='administration-trial-remaining-slots'>Trial remaining slots</h4>
+<p><code>POST /trials/:id/remaining</code></p>
+<pre class="highlight shell tab-shell"><code><span class="c"># Get trial remaining slots</span>
+curl -X GET <span class="s2">"https://cloudmc_endpoint/rest/trials/remaining"</span> <span class="se">\</span>
+   -H <span class="s2">"MC-Api-Key: your_api_key"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>Indicates how many organizations can concurrently have an active trial with automatic approval.</p>
+
+<table><thead>
+<tr>
+<th>Query Params</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>organization_id</code><br/><em>UUID</em></td>
+<td>Return only settings for the provided organization id. If not provided, it will default to the reseller configuration matching the url.</td>
+</tr>
+</tbody></table>
+
+<!-------------------- ACTIVATE TRIAL -------------------->
+<h4 id='administration-activate-trial'>Activate trial</h4>
+<p><code>POST /trials/:id/activate</code></p>
+<pre class="highlight shell tab-shell"><code><span class="c"># Activate a trial</span>
+curl -X PUT <span class="s2">"https://cloudmc_endpoint/rest/trials/:id/activate"</span> <span class="se">\</span>
+   -H <span class="s2">"MC-Api-Key: your_api_key"</span>
+</code></pre>
+<p>Activate the trial for the provided id.</p>
+
+<!-------------------- EXTEND TRIAL -------------------->
+<h4 id='administration-extend-trial'>Extend trial</h4>
+<p><code>POST /trials/:id/extend</code></p>
+<pre class="highlight shell tab-shell"><code><span class="c"># Extend a trial</span>
+curl -X PUT <span class="s2">"https://cloudmc_endpoint/rest/trials/:id/extend"</span> <span class="se">\</span>
+   -H <span class="s2">"MC-Api-Key: your_api_key"</span>
+</code></pre>
+<p>Extend the trial for the provided id.</p>
+
+<table><thead>
+<tr>
+<th>Query Params</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>extendDate</code><br/><em>long</em></td>
+<td>The date in a long format to which the trial will be extend to. Default value is the expired date adding with the number of days for an extension defined in the trial settings.</td>
+</tr>
+</tbody></table>
+
+<!-------------------- TERMINATE TRIAL -------------------->
+<h4 id='administration-terminal-trial'>Terminal trial</h4>
+<p><code>POST /trials/:id/terminate</code></p>
+<pre class="highlight shell tab-shell"><code><span class="c"># Extend a trial</span>
+curl -X PUT <span class="s2">"https://cloudmc_endpoint/rest/trials/:id/terminate"</span> <span class="se">\</span>
+   -H <span class="s2">"MC-Api-Key: your_api_key"</span>
+</code></pre>
+<p>Terminate the trial for the provided id.</p>
+
+<table><thead>
+<tr>
+<th>Query Params</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>purge</code><br/><em>boolean</em></td>
+<td>Indicate if the trial needs to be purge as well. Default is false.</td>
+</tr>
+</tbody></table>
+
+<!-------------------- DENY TRIAL -------------------->
+<h4 id='administration-deny-trial'>Deny trial</h4>
+<p><code>POST /trials/:id/deny</code></p>
+<pre class="highlight shell tab-shell"><code><span class="c"># Deny a trial</span>
+curl -X PUT <span class="s2">"https://cloudmc_endpoint/rest/trials/:id/deny"</span> <span class="se">\</span>
+   -H <span class="s2">"MC-Api-Key: your_api_key"</span>
+</code></pre>
+<blockquote>
+<p>Request body example:</p>
+</blockquote>
+<pre class="highlight plaintext"><code>As per client request
+</code></pre>
+<p>Deny the trial for the provided id. The body of the request is the reason for being denied.</p>
+
+<!-------------------- CONVERT TO BILLABLE -------------------->
+<h4 id='administration-convert-to-billable'>Convert to billable</h4>
+<p><code>POST /trials/:id/convertToBillable</code></p>
+<pre class="highlight shell tab-shell"><code><span class="c"># Cnvert to billable a trial</span>
+curl -X PUT <span class="s2">"https://cloudmc_endpoint/rest/trials/:id/convertToBillable"</span> <span class="se">\</span>
+   -H <span class="s2">"MC-Api-Key: your_api_key"</span>
+</code></pre>
+<p>Convert to billable the trial for the provided id.</p>
+
+<table><thead>
+<tr>
+<th>Query Params</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>billableStartDate</code><br/><em>long</em></td>
+<td>The date time in a long format for which the trial will be converted. It is mandatory.</td>
+</tr>
+</tbody></table>
+
+<!-------------------- GET TRIAL ACTIVITIES -------------------->
+<h4 id='administration-retrieve-trial-activities'>Retrieve trial activities</h4>
+<p><code>GET /trials/:id/activity</code></p>
+<pre class="highlight shell tab-shell"><code><span class="c"># Retrieve trial activities</span>
+curl <span class="s2">"https://cloudmc_endpoint/rest/trials/b41f2aa3-e2d1-48d8-9760-8b874c20e8ae/activity"</span> <span class="se">\</span>
+   -H <span class="s2">"MC-Api-Key: your_api_key"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"userLastname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Doe"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"organizationId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0518842d-1ad6-4b66-abc4-2cf48d502b4c"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"requesterIp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"127.0.0.1"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"userEmail"</span><span class="p">:</span><span class="w"> </span><span class="s2">"john.doe@yahoo.com"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5e854a75-11d2-47ea-a1b4-df7d5886294c"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"userOrganizationId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"23910576-d29f-4c14-b663-31d728ff49a5"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"organizationName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John Doe corpo"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-10-20T15:41:18.666Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"userId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"39f2b0ea-85f0-49a0-b005-c34fa62baf27"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"eventContext"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{...}"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"eventCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"email_template.preview"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"userFirstname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"userOrganizationName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"System"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SYSTEM"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"updated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-10-20T15:41:19.149Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SUCCESS"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"john.doe@yahoo.com"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>Retrieve the activities related to the trial associated to the id on the system.</p>
+
+<table><thead>
+<tr>
+<th>Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code><br/><em>UUID</em></td>
+<td>The activity Id.</td>
+</tr>
+<tr>
+<td><code>organizationId</code><br/><em>UUID</em></td>
+<td>The id of the organization impacted by the activity.</td>
+</tr>
+<tr>
+<td><code>organizationName</code><br/><em>UUID</em></td>
+<td>The name of the organization impacted by the activity.</td>
+</tr>
+<tr>
+<td><code>userId</code><br/><em>UUID</em></td>
+<td>The id of the person that made the activity.</td>
+</tr>
+<tr>
+<td><code>username</code><br/><em>string</em></td>
+<td>The username of the person that made the activity.</td>
+</tr>
+<tr>
+<td><code>userOrganizationId</code><br/><em>UUID</em></td>
+<td>The organization id of the user that made the activity.</td>
+</tr>
+<tr>
+<td><code>userOrganizationName</code><br/><em>string</em></td>
+<td>The organization name of the user that made the activity.</td>
+</tr>
+<tr>
+<td><code>userFirstName</code><br/><em>string</em></td>
+<td>The last name of the person that made the activity.</td>
+</tr>
+<tr>
+<td><code>userLastName</code><br/><em>string</em></td>
+<td>The last name of the person that made the activity.</td>
+</tr>
+<tr>
+<td><code>userEmail</code><br/><em>string</em></td>
+<td>The email address of the person that made the activity.</td>
+</tr>
+<tr>
+<td><code>createdDate</code><br/><em>string</em></td>
+<td>The creation date of the activity.</td>
+</tr>
+<tr>
+<td><code>updatedDate</code><br/><em>string</em></td>
+<td>The update date of the activity.</td>
+</tr>
+<tr>
+<td><code>requesterIp</code><br/><em>string</em></td>
+<td>The requester ip address</td>
+</tr>
+<tr>
+<td><code>parentId</code><br/><em>UUID</em></td>
+<td>The organization object created in the system for this organization once the trial is approved.</td>
+</tr>
+<tr>
+<td><code>environmentId</code><br/><em>UUID</em></td>
+<td>The id of the impacted environment.</td>
+</tr>
+<tr>
+<td><code>environmentName</code><br/><em>string</em></td>
+<td>The name of the impacted environment.</td>
+</tr>
+<tr>
+<td><code>serviceConnectionId</code><br/><em>UUID</em></td>
+<td>The id of the impacted service connection.</td>
+</tr>
+<tr>
+<td><code>serviceConnectionName</code><br/><em>string</em></td>
+<td>The name of the impacted service connection.</td>
+</tr>
+<tr>
+<td><code>serviceConnectionType</code><br/><em>string</em></td>
+<td>The type of the impacted service connection.</td>
+</tr>
+<tr>
+<td><code>category</code><br/><em>string</em></td>
+<td>The category of the activity. Possible values: SYSTEM, SERVICE_OPERATION.</td>
+</tr>
+<tr>
+<td><code>status</code><br/><em>string</em></td>
+<td>The status of the activity. Possible values: PENDING, SUCCESS, FAILURE, PARTIAL_SUCCESS.</td>
+</tr>
+<tr>
+<td><code>eventContext</code><br/><em>string</em></td>
+<td>Information link to the context of the activity in a JSON format.</td>
+</tr>
+<tr>
+<td><code>serviceError</code><br/><em>string</em></td>
+<td>Description of an error in the service operation activities.</td>
+</tr>
+<tr>
+<td><code>apiKeyId</code><br/><em>UUID</em></td>
+<td>The ID of the api key used to make this activity.</td>
+</tr>
+<tr>
+<td><code>apiKeyName</code><br/><em>string</em></td>
+<td>The name of the api key used to make this activity.</td>
+</tr>
+</tbody></table>
+
+<!-------------------- GET TRIAL USERS-------------------->
+<h4 id='administration-retrieve-trial-users'>Retrieve trial users</h4>
+<p><code>GET /trials/:id/users</code></p>
+<pre class="highlight shell tab-shell"><code><span class="c"># Retrieve trial users</span>
+curl <span class="s2">"https://cloudmc_endpoint/rest/trials/b41f2aa3-e2d1-48d8-9760-8b874c20e8ae/users"</span> <span class="se">\</span>
+   -H <span class="s2">"MC-Api-Key: your_api_key"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"firstName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"lastName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Doe"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"failedLoginCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"11391f05-3828-49d7-b7f8-eca7f353cbc2"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"userName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"john.doe@yahoo.com"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"loginCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>Retrieve the users related to the trial associated to the id on the system.</p>
+
+<table><thead>
+<tr>
+<th>Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code><br/><em>UUID</em></td>
+<td>The id of the trial.</td>
+</tr>
+<tr>
+<td><code>firstName</code><br/><em>string</em></td>
+<td>The first name of the user.</td>
+</tr>
+<tr>
+<td><code>lastName</code><br/><em>string</em></td>
+<td>The last name of the user.</td>
+</tr>
+<tr>
+<td><code>username</code><br/><em>string</em></td>
+<td>The username of the user.</td>
+</tr>
+<tr>
+<td><code>failedLoginCount</code><br/><em>integer</em></td>
+<td>The count of failed login for that user.</td>
+</tr>
+<tr>
+<td><code>loginCount</code><br/><em>integer</em></td>
+<td>The count of successful login for that user.</td>
+</tr>
+<tr>
+<td><code>failedLoginCount</code><br/><em>integer</em></td>
+<td>The count of failed login for that user.</td>
+</tr>
+<tr>
+<td><code>lastLogin</code><br/><em>string</em></td>
+<td>The date of the last login</td>
+</tr>
+<tr>
+<td><code>lastFailedLogin</code><br/><em>string</em></td>
+<td>The date of the last failed login</td>
+</tr>
+</tbody></table>
+
+<!-------------------- RESEND EMAIL -------------------->
+<h4 id='administration-resend-trial-email'>Resend trial email</h4>
+<p><code>GET /trials/:id/resend_email</code></p>
+<pre class="highlight shell tab-shell"><code><span class="c"># Resend trial email</span>
+curl <span class="s2">"https://cloudmc_endpoint/rest/trials/b41f2aa3-e2d1-48d8-9760-8b874c20e8ae/resend_email"</span> <span class="se">\</span>
+   -H <span class="s2">"MC-Api-Key: your_api_key"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>Resend a trial email based on the status and type provided. If no email is send, it returns false.</p>
+
+<table><thead>
+<tr>
+<th>Query Param</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>email</code><br/><em>UUID</em></td>
+<td>The type of email to resend. Possible values: validation, user_activation.</td>
+</tr>
+</tbody></table>
+
+<!-------------------- GET TRIAL STATUSES -------------------->
+<h4 id='administration-retrieve-trial-statuses'>Retrieve trial statuses</h4>
+<p><code>GET /trials/statuses</code></p>
+<pre class="highlight shell tab-shell"><code><span class="c"># Retrieve trial statuses</span>
+curl <span class="s2">"https://cloudmc_endpoint/rest/trials/statuses"</span> <span class="se">\</span>
+   -H <span class="s2">"MC-Api-Key: your_api_key"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="s2">"SUBMITTED"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"PENDING"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"DENIED"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"ONGOING"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"EXPIRED"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"PURGED"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"CONVERTED"</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>Retrieve the possible trial statuses in the application.</p>
 <h1 id='cloudstack-plugin'>CloudStack plugin</h1>
 <p>The CloudStack plugin provides endpoints for carrying out operations on CloudMC compute and networking entities. While each operation has its own validation and required fields, all operations need to specify the service code and environment in which they should be carried out. The following example URL describes how to specify this information for all entities.</p>
 
