@@ -178,6 +178,7 @@ includes:
   - swift
   - swift/containers
   - swift/objects
+  - stackpath
 
 search: true
 ---
