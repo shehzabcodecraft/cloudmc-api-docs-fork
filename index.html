@@ -410,7 +410,45 @@
                   </li>
                   <li>
                     <a href="#administration-monetization" class="toc-h2 toc-link" data-title="Administration">Monetization</a>
+                  </li>
+                  <li>
+                    <a href="#administration-notification-categories" class="toc-h2 toc-link" data-title="Administration">Notification Categories</a>
                       <ul class="toc-list-h3">
+                          <li>
+                            <a href="#administration-list-notification-categories" class="toc-h3 toc-link" data-title="Administration">List notification categories</a>
+                          </li>
+                          <li>
+                            <a href="#administration-retrieve-notification-category" class="toc-h3 toc-link" data-title="Administration">Retrieve notification category</a>
+                          </li>
+                          <li>
+                            <a href="#administration-create-notification-category" class="toc-h3 toc-link" data-title="Administration">Create notification category</a>
+                          </li>
+                          <li>
+                            <a href="#administration-update-notification-category" class="toc-h3 toc-link" data-title="Administration">Update notification category</a>
+                          </li>
+                          <li>
+                            <a href="#administration-delete-notification-category" class="toc-h3 toc-link" data-title="Administration">Delete notification category</a>
+                          </li>
+                      </ul>
+                  </li>
+                  <li>
+                    <a href="#administration-notifications" class="toc-h2 toc-link" data-title="Administration">Notifications</a>
+                      <ul class="toc-list-h3">
+                          <li>
+                            <a href="#administration-list-notifications" class="toc-h3 toc-link" data-title="Administration">List notifications</a>
+                          </li>
+                          <li>
+                            <a href="#administration-retrieve-notification" class="toc-h3 toc-link" data-title="Administration">Retrieve notification</a>
+                          </li>
+                          <li>
+                            <a href="#administration-create-notification" class="toc-h3 toc-link" data-title="Administration">Create notification</a>
+                          </li>
+                          <li>
+                            <a href="#administration-update-notification" class="toc-h3 toc-link" data-title="Administration">Update notification</a>
+                          </li>
+                          <li>
+                            <a href="#administration-delete-notification" class="toc-h3 toc-link" data-title="Administration">Delete notification</a>
+                          </li>
                           <li>
                             <a href="#administration-product-catalogs" class="toc-h3 toc-link" data-title="Administration">Product Catalogs</a>
                               <ul class="toc-list-h4">
@@ -5742,7 +5780,955 @@ curl -X GET <span class="se">\</span>
 <td>Will find usage of an organization that may have been deleted.</td>
 </tr>
 </tbody></table>
-<h2 id='administration-monetization'>Monetization</h2><h3 id='administration-product-catalogs'>Product Catalogs</h3>
+<h2 id='administration-monetization'>Monetization</h2><h2 id='administration-notification-categories'>Notification Categories</h2>
+<p>Manage notification categories.</p>
+
+<!-------------------- LIST NOTIFICATION CATEGORIES -------------------->
+<h4 id='administration-list-notification-categories'>List notification categories</h4>
+<p><code>GET /content/categories</code></p>
+<pre class="highlight shell tab-shell"><code><span class="c"># Retrieve notification categories</span>
+curl <span class="s2">"https://cloudmc_endpoint/v2/rest/content/categories?language=:language&amp;organization_id=:organizationId"</span> <span class="se">\</span>
+   -H <span class="s2">"MC-Api-Key: your_api_key"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"organizationId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3e824205-f507-4ffe-9891-a8addf3cf0e9"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-10-29T14:06:50.000Z"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"translations"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"language"</span><span class="p">:</span><span class="w"> </span><span class="s2">"en"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1cea5fe9-3bfa-4eea-a9aa-8e8aa8f85346"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Test-notif-reseller"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"title"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"version"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"language"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fr"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d4044366-2bf9-4c1f-9da5-e2e47b719714"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test-notif-reseller"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"title"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"version"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+            </span><span class="p">],</span><span class="w">
+            </span><span class="s2">"icon"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fa fa-envelope"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"dc921a2a-16c2-4bc3-8ed6-bcb571bae241"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"version"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"updatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-10-29T14:06:50.000Z"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>List the notification categories configured for the organization.</p>
+
+<table><thead>
+<tr>
+<th>Optional Query Parameters</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>organization_id</code><br/><em>UUID</em></td>
+<td>The id of the organization we wish to display notification categories for. If not provided, the current user&#39;s organization id will be used.</td>
+</tr>
+<tr>
+<td><code>language</code><br/><em>UUID</em></td>
+<td>Language of the notification categories. Expected values are &quot;en&quot; (English), &quot;fr&quot; (French) or &quot;es&quot; (Spanish).</td>
+</tr>
+</tbody></table>
+
+<table><thead>
+<tr>
+<th>Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code><br/><em>UUID</em></td>
+<td>The id of the notification category.</td>
+</tr>
+<tr>
+<td><code>organizationId</code><br/><em>UUID</em></td>
+<td>The organization id of the notification category.</td>
+</tr>
+<tr>
+<td><code>createdAt</code><br/><em>string</em></td>
+<td>The date on which the notification category was created.</td>
+</tr>
+<tr>
+<td><code>updatedAt</code><br/><em>string</em></td>
+<td>The date on which the notification category was updated.</td>
+</tr>
+<tr>
+<td><code>icon</code><br/><em>string</em></td>
+<td>The icon used when displaying the notification category.</td>
+</tr>
+<tr>
+<td><code>version</code><br/><em>integer</em></td>
+<td>The notification category&#39;s version.</td>
+</tr>
+<tr>
+<td><code>translations</code><br/><em>Array[Object]</em></td>
+<td>The translations of the notification category content.</td>
+</tr>
+<tr>
+<td><code>translations.language</code><br/><em>string</em></td>
+<td>The language of the translation.</td>
+</tr>
+<tr>
+<td><code>translations.text</code><br/><em>string</em></td>
+<td>The content of the notification.</td>
+</tr>
+<tr>
+<td><code>translations.type</code><br/><em>string</em></td>
+<td>The content that we are translating. For a notification category, this can only be &quot;title&quot;.</td>
+</tr>
+<tr>
+<td><code>translations.id</code><br/><em>UUID</em></td>
+<td>The translation&#39;s id.</td>
+</tr>
+<tr>
+<td><code>translations.version</code><br/><em>integer</em></td>
+<td>The translation&#39;s version.</td>
+</tr>
+</tbody></table>
+
+<!-------------------- GET NOTIFICATION CATEGORY -------------------->
+<h4 id='administration-retrieve-notification-category'>Retrieve notification category</h4>
+<p><code>GET /content/categories/:id</code></p>
+<pre class="highlight shell tab-shell"><code><span class="c"># Retrieve notification category</span>
+curl <span class="s2">"https://cloudmc_endpoint/v2/rest/content/categories/:id?language=:language"</span> <span class="se">\</span>
+   -H <span class="s2">"MC-Api-Key: your_api_key"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"organizationId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3e824205-f507-4ffe-9891-a8addf3cf0e9"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-10-29T14:06:50.000Z"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"translations"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"language"</span><span class="p">:</span><span class="w"> </span><span class="s2">"en"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1cea5fe9-3bfa-4eea-a9aa-8e8aa8f85346"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Test-notif-reseller"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"title"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"version"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"language"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fr"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d4044366-2bf9-4c1f-9da5-e2e47b719714"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test-notif-reseller"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"title"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"version"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="s2">"icon"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fa fa-envelope"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"dc921a2a-16c2-4bc3-8ed6-bcb571bae241"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"version"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"updatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-10-29T14:06:50.000Z"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>Get a specific notification category.</p>
+
+<table><thead>
+<tr>
+<th>Optional Query Parameters</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>language</code><br/><em>UUID</em></td>
+<td>Language of the notification categories. Expected values are &quot;en&quot; (English), &quot;fr&quot; (French) or &quot;es&quot; (Spanish).</td>
+</tr>
+</tbody></table>
+
+<table><thead>
+<tr>
+<th>Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code><br/><em>UUID</em></td>
+<td>The id of the notification category.</td>
+</tr>
+<tr>
+<td><code>organizationId</code><br/><em>UUID</em></td>
+<td>The organization id of the notification category.</td>
+</tr>
+<tr>
+<td><code>createdAt</code><br/><em>string</em></td>
+<td>The date on which the notification category was created.</td>
+</tr>
+<tr>
+<td><code>updatedAt</code><br/><em>string</em></td>
+<td>The date on which the notification category was updated.</td>
+</tr>
+<tr>
+<td><code>icon</code><br/><em>string</em></td>
+<td>The icon used when displaying the notification category.</td>
+</tr>
+<tr>
+<td><code>version</code><br/><em>integer</em></td>
+<td>The notification category&#39;s version.</td>
+</tr>
+<tr>
+<td><code>translations</code><br/><em>Array[Object]</em></td>
+<td>The translations of the notification category&#39;s content.</td>
+</tr>
+<tr>
+<td><code>translations.language</code><br/><em>string</em></td>
+<td>The language of the translation.</td>
+</tr>
+<tr>
+<td><code>translations.text</code><br/><em>string</em></td>
+<td>The content of the notification.</td>
+</tr>
+<tr>
+<td><code>translations.type</code><br/><em>string</em></td>
+<td>The content that we are translating. For a notification category, this can only be &quot;title&quot;.</td>
+</tr>
+<tr>
+<td><code>translations.id</code><br/><em>UUID</em></td>
+<td>The translation&#39;s id.</td>
+</tr>
+<tr>
+<td><code>translations.version</code><br/><em>integer</em></td>
+<td>The translation&#39;s version.</td>
+</tr>
+</tbody></table>
+
+<!-------------------- CREATE NOTIFICATION CATEGORY -------------------->
+<h4 id='administration-create-notification-category'>Create notification category</h4>
+<p><code>POST /content/categories/</code></p>
+<pre class="highlight shell tab-shell"><code><span class="c"># Create notification category</span>
+curl -X POST <span class="s2">"https://cloudmc_endpoint/v2/rest/content/categories/"</span> <span class="se">\</span>
+   -H <span class="s2">"MC-Api-Key: your_api_key"</span> <span class="se">\</span>
+   -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+   -d <span class="s2">"request-body"</span>
+</code></pre>
+<blockquote>
+<p>Request body example:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"organizationId"</span><span class="p">:</span><span class="s2">"2cc1b5ba-2cfb-4bf9-9cb9-c67d34ba27b1"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"icon"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fa fa-envelope"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"translations"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"language"</span><span class="p">:</span><span class="s2">"en"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"type"</span><span class="p">:</span><span class="s2">"title"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"text"</span><span class="p">:</span><span class="s2">"trial-ttt"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"language"</span><span class="p">:</span><span class="s2">"fr"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"type"</span><span class="p">:</span><span class="s2">"title"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"text"</span><span class="p">:</span><span class="s2">"trial-tt"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>Create a notification category.</p>
+
+<table><thead>
+<tr>
+<th>Required</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>organizationId</code><br/><em>UUID</em></td>
+<td>The organization id of the notification category.</td>
+</tr>
+<tr>
+<td><code>icon</code><br/><em>string</em></td>
+<td>The icon used when displaying the notification category.</td>
+</tr>
+<tr>
+<td><code>translations</code><br/><em>Array[Object]</em></td>
+<td>The translations of the notification category&#39;s content.</td>
+</tr>
+<tr>
+<td><code>translations.language</code><br/><em>string</em></td>
+<td>The language of the translation.</td>
+</tr>
+<tr>
+<td><code>translations.text</code><br/><em>string</em></td>
+<td>The content of the notification.</td>
+</tr>
+<tr>
+<td><code>translations.type</code><br/><em>string</em></td>
+<td>The content that we are translating. For a notification category, this can only be &quot;title&quot;.</td>
+</tr>
+</tbody></table>
+
+<!-------------------- UPDATE NOTIFICATION CATEGORY -------------------->
+<h4 id='administration-update-notification-category'>Update notification category</h4>
+<p><code>PUT /content/categories/:id</code></p>
+<pre class="highlight shell tab-shell"><code><span class="c"># Update notification category</span>
+curl -X PUT <span class="s2">"https://cloudmc_endpoint/v2/rest/content/categories/:id"</span> <span class="se">\</span>
+   -H <span class="s2">"MC-Api-Key: your_api_key"</span> <span class="se">\</span>
+   -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+   -d <span class="s2">"request-body"</span>
+</code></pre>
+<blockquote>
+<p>Request body example:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"dc921a2a-16c2-4bc3-8ed6-bcb571bae241"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"organizationId"</span><span class="p">:</span><span class="s2">"3e824205-f507-4ffe-9891-a8addf3cf0e9"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"icon"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fa fa-envelope"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"translations"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"language"</span><span class="p">:</span><span class="w"> </span><span class="s2">"en"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Test-notif-reseller"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"title"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"language"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fr"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test-notif-reseller"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"title"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>Update a notification category.</p>
+
+<table><thead>
+<tr>
+<th>Required</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code><br/><em>UUID</em></td>
+<td>The id of the notification category.</td>
+</tr>
+<tr>
+<td><code>organizationId</code><br/><em>UUID</em></td>
+<td>The organization id of the notification category.</td>
+</tr>
+<tr>
+<td><code>icon</code><br/><em>string</em></td>
+<td>The icon used when displaying the notification category.</td>
+</tr>
+<tr>
+<td><code>translations</code><br/><em>Array[Object]</em></td>
+<td>The translations of the notification category&#39;s content.</td>
+</tr>
+<tr>
+<td><code>translations.language</code><br/><em>string</em></td>
+<td>The language of the translation.</td>
+</tr>
+<tr>
+<td><code>translations.text</code><br/><em>string</em></td>
+<td>The content of the notification.</td>
+</tr>
+<tr>
+<td><code>translations.type</code><br/><em>string</em></td>
+<td>The content that we are translating. For a notification category, this can only be &quot;title&quot;.</td>
+</tr>
+</tbody></table>
+
+<table><thead>
+<tr>
+<th>Optional</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>translations.id</code><br/><em>UUID</em></td>
+<td>When specified, the existing translation will be modified. If not provided, a new translation will replace the existing one.</td>
+</tr>
+</tbody></table>
+
+<!-------------------- DELETE NOTIFICATION CATEGORY -------------------->
+<h3 id='administration-delete-notification-category'>Delete notification category</h3>
+<p><code>DELETE /content/categories/:id</code></p>
+<pre class="highlight shell tab-shell"><code><span class="c"># Delete a notification category</span>
+curl <span class="s2">"https://cloudmc_endpoint/v2/content/categories/:id"</span> <span class="se">\</span>
+   -X DELETE -H <span class="s2">"MC-Api-Key: your_api_key"</span>
+
+</code></pre>
+<p>Delete a notification category. You must ensure that this category has no associated notification.</p>
+<h2 id='administration-notifications'>Notifications</h2>
+<p>Manage notifications.</p>
+
+<!-------------------- LIST NOTIFICATIONS -------------------->
+<h4 id='administration-list-notifications'>List notifications</h4>
+<p><code>GET /content/notifications</code></p>
+<pre class="highlight shell tab-shell"><code><span class="c"># Retrieve notification categories</span>
+curl <span class="s2">"https://cloudmc_endpoint/v2/rest/content/notifications?language=:language&amp;organization_id=:organiationId"</span> <span class="se">\</span>
+   -H <span class="s2">"MC-Api-Key: your_api_key"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"publishedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-10-29T19:27:34.299Z"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"authorId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"15419d47-0ec4-47d5-8622-4fbb1948844f"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"version"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-10-29T15:04:36.134Z"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"authorLastName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Root"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"authorFirstName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Root"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"translations"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"language"</span><span class="p">:</span><span class="w"> </span><span class="s2">"en"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"99f815c6-2aba-4462-9419-63daa67712e2"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"system-notification"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"title"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"version"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"language"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fr"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"812f3b76-bc6b-4816-ace8-3e69c6e1efcd"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"en français"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"title"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"version"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"language"</span><span class="p">:</span><span class="w"> </span><span class="s2">"en"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"94c4bedb-df83-49f0-beb3-8e672e28c316"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"system"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"body"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"version"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"language"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fr"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"98c1f48c-1f2b-4dc6-a43c-3f239a2473a7"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"system"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"body"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"version"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+            </span><span class="p">],</span><span class="w">
+            </span><span class="s2">"deprecatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-11-03T20:57:00.000Z"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"sticky"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"b7c6d7ca-6fef-406b-a911-bba873a99773"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"category"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"organizationId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1384d793-dae5-441c-8cc2-e78168c94018"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-10-29T15:01:44.000Z"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"translations"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                    </span><span class="p">{</span><span class="w">
+                        </span><span class="s2">"language"</span><span class="p">:</span><span class="w"> </span><span class="s2">"en"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4840af1e-1d74-4b4f-bdda-6e04f4569142"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"system-category"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"title"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"version"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+                    </span><span class="p">},</span><span class="w">
+                    </span><span class="p">{</span><span class="w">
+                        </span><span class="s2">"language"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fr"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0bc8f49c-8f65-4319-be57-ad70cdfe144d"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"en français"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"title"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"version"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+                    </span><span class="p">}</span><span class="w">
+                </span><span class="p">],</span><span class="w">
+                </span><span class="s2">"icon"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fa fa-envelope"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2569f2cc-f1d7-4664-8439-173fedfab1c3"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"version"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"updatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-10-29T19:28:22.000Z"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="s2">"splash"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"updatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-10-29T19:27:34.462Z"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"published"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>List the notifications configured for the organization.</p>
+
+<table><thead>
+<tr>
+<th>Optional Query Parameters</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>organization_id</code><br/><em>UUID</em></td>
+<td>The id of the organization we wish to display notifications for. If not provided, the current user&#39;s organization id will be used.</td>
+</tr>
+<tr>
+<td><code>language</code><br/><em>UUID</em></td>
+<td>Language of the notification.Expected values are &quot;en&quot; (English), &quot;fr&quot; (French) or &quot;es&quot; (Spanish).</td>
+</tr>
+</tbody></table>
+
+<table><thead>
+<tr>
+<th>Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code><br/><em>UUID</em></td>
+<td>The id of the notification.</td>
+</tr>
+<tr>
+<td><code>authorId</code><br/><em>UUID</em></td>
+<td>The author&#39;s id.</td>
+</tr>
+<tr>
+<td><code>authorFirstName</code><br/><em>string</em></td>
+<td>The author&#39;s first name.</td>
+</tr>
+<tr>
+<td><code>authorLastName</code><br/><em>string</em></td>
+<td>The author&#39;s last name.</td>
+</tr>
+<tr>
+<td><code>splash</code><br/><em>boolean</em></td>
+<td>When set to true, the notification will be displayed in the home screen until it reaches its deprecated date. Only one of splash and sticky can be set to true.</td>
+</tr>
+<tr>
+<td><code>sticky</code><br/><em>boolean</em></td>
+<td>When set to true, the notification will be displayed upon logging in. Only one of splash and sticky can be set to true.</td>
+</tr>
+<tr>
+<td><code>status</code><br/><em>string</em></td>
+<td>The status of the notification within it&#39;s lifecycle (draft, published, deprecated).</td>
+</tr>
+<tr>
+<td><code>createdAt</code><br/><em>string</em></td>
+<td>The date on which the notification was created.</td>
+</tr>
+<tr>
+<td><code>updatedAt</code><br/><em>string</em></td>
+<td>The date on which the notification was updated.</td>
+</tr>
+<tr>
+<td><code>publishedAt</code><br/><em>string</em></td>
+<td>The date on which the notification was published.</td>
+</tr>
+<tr>
+<td><code>depricatedAt</code><br/><em>string</em></td>
+<td>The date on which the notification will be deprecated.</td>
+</tr>
+<tr>
+<td><code>version</code><br/><em>integer</em></td>
+<td>The notification&#39;s version.</td>
+</tr>
+<tr>
+<td><code>category</code><br/><em>Array[<a href="#administration-notification-categories">Notification Category</a>]</em></td>
+<td>The notification category that the notification belongs to.<br/><em>includes</em>: <code>id</code>, <code>organizationId</code>, <code>createdAt</code>, <code>updatedAt</code>, <code>translations</code>, <code>icon</code>, <code>version</code></td>
+</tr>
+<tr>
+<td><code>translations</code><br/><em>Array[Object]</em></td>
+<td>The translations of the notification category&#39;s content.</td>
+</tr>
+<tr>
+<td><code>translations.language</code><br/><em>string</em></td>
+<td>The language of the translation.</td>
+</tr>
+<tr>
+<td><code>translations.text</code><br/><em>string</em></td>
+<td>The content of the notification.</td>
+</tr>
+<tr>
+<td><code>translations.type</code><br/><em>string</em></td>
+<td>The content that we are translating. For a notification, this can only be &quot;title&quot; or &quot;body&quot;.</td>
+</tr>
+<tr>
+<td><code>translations.id</code><br/><em>UUID</em></td>
+<td>The translation&#39;s id.</td>
+</tr>
+<tr>
+<td><code>translations.version</code><br/><em>integer</em></td>
+<td>The translation&#39;s version.</td>
+</tr>
+</tbody></table>
+
+<!-------------------- GET NOTIFICATION -------------------->
+<h4 id='administration-retrieve-notification'>Retrieve notification</h4>
+<p><code>GET /content/notifications/:id</code></p>
+<pre class="highlight shell tab-shell"><code><span class="c"># Retrieve notification category</span>
+curl <span class="s2">"https://cloudmc_endpoint/v2/rest/content/notifications/:id?language=:language"</span> <span class="se">\</span>
+   -H <span class="s2">"MC-Api-Key: your_api_key"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"publishedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-10-29T19:27:34.299Z"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"authorId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"15419d47-0ec4-47d5-8622-4fbb1948844f"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"version"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-10-29T15:04:36.134Z"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"authorLastName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Root"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"authorFirstName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Root"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"translations"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"language"</span><span class="p">:</span><span class="w"> </span><span class="s2">"en"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"99f815c6-2aba-4462-9419-63daa67712e2"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"system-notification"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"title"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"version"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"language"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fr"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"812f3b76-bc6b-4816-ace8-3e69c6e1efcd"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"en français"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"title"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"version"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"language"</span><span class="p">:</span><span class="w"> </span><span class="s2">"en"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"94c4bedb-df83-49f0-beb3-8e672e28c316"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"system"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"body"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"version"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"language"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fr"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"98c1f48c-1f2b-4dc6-a43c-3f239a2473a7"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"system"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"body"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"version"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="s2">"deprecatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-11-03T20:57:00.000Z"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"sticky"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"b7c6d7ca-6fef-406b-a911-bba873a99773"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"category"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"organizationId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1384d793-dae5-441c-8cc2-e78168c94018"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-10-29T15:01:44.000Z"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"translations"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"language"</span><span class="p">:</span><span class="w"> </span><span class="s2">"en"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4840af1e-1d74-4b4f-bdda-6e04f4569142"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"system-category"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"title"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"version"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"language"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fr"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0bc8f49c-8f65-4319-be57-ad70cdfe144d"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"en français"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"title"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"version"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+            </span><span class="p">],</span><span class="w">
+            </span><span class="s2">"icon"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fa fa-envelope"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2569f2cc-f1d7-4664-8439-173fedfab1c3"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"version"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"updatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-10-29T19:28:22.000Z"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"splash"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"updatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-10-29T19:27:34.462Z"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"published"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>Get a specific notification.</p>
+
+<table><thead>
+<tr>
+<th>Optional Query Parameters</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>language</code><br/><em>UUID</em></td>
+<td>Language of the notification. Expected values are &quot;en&quot; (English), &quot;fr&quot; (French) or &quot;es&quot; (Spanish).</td>
+</tr>
+</tbody></table>
+
+<table><thead>
+<tr>
+<th>Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code><br/><em>UUID</em></td>
+<td>The id of the notification.</td>
+</tr>
+<tr>
+<td><code>authorId</code><br/><em>UUID</em></td>
+<td>The author&#39;s id.</td>
+</tr>
+<tr>
+<td><code>authorFirstName</code><br/><em>string</em></td>
+<td>The author&#39;s first name.</td>
+</tr>
+<tr>
+<td><code>authorLastName</code><br/><em>string</em></td>
+<td>The author&#39;s last name.</td>
+</tr>
+<tr>
+<td><code>splash</code><br/><em>boolean</em></td>
+<td>When set to true, the notification will be displayed in the home screen until it reaches its deprecated date. Only one of splash and sticky can be set to true.</td>
+</tr>
+<tr>
+<td><code>sticky</code><br/><em>boolean</em></td>
+<td>When set to true, the notification will be displayed upon logging in. Only one of splash and sticky can be set to true.</td>
+</tr>
+<tr>
+<td><code>status</code><br/><em>string</em></td>
+<td>The status of the notification.</td>
+</tr>
+<tr>
+<td><code>createdAt</code><br/><em>string</em></td>
+<td>The date on which the notification was created.</td>
+</tr>
+<tr>
+<td><code>updatedAt</code><br/><em>string</em></td>
+<td>The date on which the notification was updated.</td>
+</tr>
+<tr>
+<td><code>publishedAt</code><br/><em>string</em></td>
+<td>The date on which the notification was published.</td>
+</tr>
+<tr>
+<td><code>depricatedAt</code><br/><em>string</em></td>
+<td>The date on which the notification will be deprecated.</td>
+</tr>
+<tr>
+<td><code>version</code><br/><em>integer</em></td>
+<td>The notification&#39;s version.</td>
+</tr>
+<tr>
+<td><code>category</code><br/><em>Array[<a href="#administration-notification-categories">Notification Category</a>]</em></td>
+<td>The notification category that the notification belongs to.<br/><em>includes</em>: <code>id</code>, <code>organizationId</code>, <code>createdAt</code>, <code>updatedAt</code>, <code>translations</code>, <code>icon</code>, <code>version</code></td>
+</tr>
+<tr>
+<td><code>translations</code><br/><em>Array[Object]</em></td>
+<td>The translations of the notification category&#39;s title.</td>
+</tr>
+<tr>
+<td><code>translations.language</code><br/><em>string</em></td>
+<td>The language of the translation.</td>
+</tr>
+<tr>
+<td><code>translations.text</code><br/><em>string</em></td>
+<td>The content of the notification.</td>
+</tr>
+<tr>
+<td><code>translations.type</code><br/><em>string</em></td>
+<td>The content that we are translating. For a notification, this can only be &quot;title&quot; or &quot;body&quot;.</td>
+</tr>
+<tr>
+<td><code>translations.id</code><br/><em>UUID</em></td>
+<td>The translation&#39;s id.</td>
+</tr>
+<tr>
+<td><code>translations.version</code><br/><em>integer</em></td>
+<td>The translation&#39;s version.</td>
+</tr>
+</tbody></table>
+
+<!-------------------- CREATE NOTIFICATION -------------------->
+<h4 id='administration-create-notification'>Create notification</h4>
+<p><code>POST /content/notifications/</code></p>
+<pre class="highlight shell tab-shell"><code><span class="c"># Create notification</span>
+curl -X POST <span class="s2">"https://cloudmc_endpoint/v2/rest/content/notifications/"</span> <span class="se">\</span>
+   -H <span class="s2">"MC-Api-Key: your_api_key"</span> <span class="se">\</span>
+   -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+   -d <span class="s2">"request-body"</span>
+</code></pre>
+<blockquote>
+<p>Request body example:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"translations"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"language"</span><span class="p">:</span><span class="w"> </span><span class="s2">"en"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"system-notification-create-no-author"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"title"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"language"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fr"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"en français"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"title"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"language"</span><span class="p">:</span><span class="w"> </span><span class="s2">"en"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"system notification create"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"body"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"language"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fr"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"en français"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"body"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"category"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2569f2cc-f1d7-4664-8439-173fedfab1c3"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>Create a notification.</p>
+
+<table><thead>
+<tr>
+<th>Required</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>category</code><br/><em><a href="#administration-notification-categories">Notification Category</a>]</em></td>
+<td>The notification category that the notification belongs to.<br/><em>includes</em>: <code>id</code></td>
+</tr>
+<tr>
+<td><code>translations</code><br/><em>Array[Object]</em></td>
+<td>The translations of the notification category&#39;s content.</td>
+</tr>
+<tr>
+<td><code>translations.language</code><br/><em>string</em></td>
+<td>The language of the translation.</td>
+</tr>
+<tr>
+<td><code>translations.text</code><br/><em>string</em></td>
+<td>The content of the notification.</td>
+</tr>
+<tr>
+<td><code>translations.type</code><br/><em>string</em></td>
+<td>The content that we are translating. For a notification, this can only be &quot;title&quot; or &quot;body&quot;.</td>
+</tr>
+</tbody></table>
+
+<table><thead>
+<tr>
+<th>Optional</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>publishedAt</code><br/><em>string</em></td>
+<td>The date on which the notification has been/will be published.</td>
+</tr>
+<tr>
+<td><code>deprecatedAt</code><br/><em>string</em></td>
+<td>The date on which the notification has been/will be deprecated.</td>
+</tr>
+<tr>
+<td><code>splash</code><br/><em>boolean</em></td>
+<td>When set to true, the notification will be displayed in the home screen until it reaches its deprecated date. Only one of splash and sticky can be set to true.</td>
+</tr>
+<tr>
+<td><code>sticky</code><br/><em>boolean</em></td>
+<td>When set to true, the notification will be displayed upon logging in. Only one of splash and sticky can be set to true.</td>
+</tr>
+</tbody></table>
+
+<!-------------------- UPDATE NOTIFICATION -------------------->
+<h4 id='administration-update-notification'>Update notification</h4>
+<p><code>PUT /content/notifications/:id</code></p>
+<pre class="highlight shell tab-shell"><code><span class="c"># Update notification</span>
+curl -X PUT <span class="s2">"https://cloudmc_endpoint/v2/rest/content/notifications/:id"</span> <span class="se">\</span>
+   -H <span class="s2">"MC-Api-Key: your_api_key"</span> <span class="se">\</span>
+   -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+   -d <span class="s2">"request-body"</span>
+</code></pre>
+<blockquote>
+<p>Request body example:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="s2">"e5412e1d-64ac-40b2-a1a1-05780584fc71"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"translations"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"language"</span><span class="p">:</span><span class="w"> </span><span class="s2">"en"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"system-notification-create-no-autho"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"title"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"language"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fr"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"en français"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"title"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"language"</span><span class="p">:</span><span class="w"> </span><span class="s2">"en"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"system notification create"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"body"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"language"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fr"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"en français"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"body"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"category"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"dc921a2a-16c2-4bc3-8ed6-bcb571bae241"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>Update a notification.</p>
+
+<table><thead>
+<tr>
+<th>Required</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code><br/><em>UUID</em></td>
+<td>The id of the notification.</td>
+</tr>
+<tr>
+<td><code>category</code><br/><em><a href="#administration-notification-categories">Notification Category</a>]</em></td>
+<td>The notification category that the notification belongs to.<br/><em>includes</em>: <code>id</code></td>
+</tr>
+<tr>
+<td><code>translations</code><br/><em>Array[Object]</em></td>
+<td>The translations of the notification category&#39;s content.</td>
+</tr>
+<tr>
+<td><code>translations.language</code><br/><em>string</em></td>
+<td>The language of the translation.</td>
+</tr>
+<tr>
+<td><code>translations.text</code><br/><em>string</em></td>
+<td>The content of the notification.</td>
+</tr>
+<tr>
+<td><code>translations.type</code><br/><em>string</em></td>
+<td>The content that we are translating. For a notification, this can only be &quot;title&quot; or &quot;body&quot;.</td>
+</tr>
+</tbody></table>
+
+<table><thead>
+<tr>
+<th>Optional</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>publishedAt</code><br/><em>string</em></td>
+<td>The date on which the notification has been/will be published.</td>
+</tr>
+<tr>
+<td><code>deprecatedAt</code><br/><em>string</em></td>
+<td>The date on which the notification has been/will be deprecated.</td>
+</tr>
+<tr>
+<td><code>splash</code><br/><em>boolean</em></td>
+<td>When set to true, the notification will be displayed in the home screen until it reaches its deprecated date. Only one of splash and sticky can be set to true.</td>
+</tr>
+<tr>
+<td><code>sticky</code><br/><em>boolean</em></td>
+<td>When set to true, the notification will be displayed upon logging in. Only one of splash and sticky can be set to true.</td>
+</tr>
+<tr>
+<td><code>translations.id</code><br/><em>UUID</em></td>
+<td>When specified, the existing translation will be modified. If not provided, a new translation will replace the existing one.</td>
+</tr>
+</tbody></table>
+
+<!-------------------- DELETE NOTIFICATION -------------------->
+<h3 id='administration-delete-notification'>Delete notification</h3>
+<p><code>DELETE /content/notifications/:id</code></p>
+<pre class="highlight shell tab-shell"><code><span class="c"># Delete a notification category</span>
+curl <span class="s2">"https://cloudmc_endpoint/v2/content/notifications/:id"</span> <span class="se">\</span>
+   -X DELETE -H <span class="s2">"MC-Api-Key: your_api_key"</span>
+
+</code></pre>
+<p>Delete a notification.</p>
+<h3 id='administration-product-catalogs'>Product Catalogs</h3>
 <p>The product catalogs determine the product configured for a service type and optionally for specific connections.</p>
 
 <!-------------------- LIST PRODUCT CATALOGS -------------------->
