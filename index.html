@@ -571,6 +571,28 @@
                       </ul>
                   </li>
                   <li>
+                    <a href="#administration-branding" class="toc-h2 toc-link" data-title="Administration">Branding</a>
+                      <ul class="toc-list-h3">
+                          <li>
+                            <a href="#administration-list-brandings" class="toc-h3 toc-link" data-title="Administration">List brandings</a>
+                          </li>
+                          <li>
+                            <a href="#administration-retrieve-branding" class="toc-h3 toc-link" data-title="Administration">Retrieve branding</a>
+                          </li>
+                      </ul>
+                  </li>
+                  <li>
+                    <a href="#administration-knowledge-base" class="toc-h2 toc-link" data-title="Administration">Knowledge Base</a>
+                      <ul class="toc-list-h3">
+                          <li>
+                            <a href="#administration-list-knowledge-base" class="toc-h3 toc-link" data-title="Administration">List knowledge base</a>
+                          </li>
+                          <li>
+                            <a href="#administration-retrieve-knowledge-base" class="toc-h3 toc-link" data-title="Administration">Retrieve knowledge base</a>
+                          </li>
+                      </ul>
+                  </li>
+                  <li>
                     <a href="#administration-trials" class="toc-h2 toc-link" data-title="Administration">Trials</a>
                       <ul class="toc-list-h3">
                           <li>
@@ -9761,6 +9783,722 @@ curl -X POST <span class="s2">"https://cloudmc_endpoint/rest/saml_settings/:id"<
 <tr>
 <td><code>privateKey</code><br/><em>string</em></td>
 <td>The private key used to sign the SAML request. It must be an RSA key of 2048 bits</td>
+</tr>
+</tbody></table>
+<h2 id='administration-branding'>Branding</h2>
+<p>Manage branding.</p>
+
+<!-------------------- LIST BRANDINGS -------------------->
+<h3 id='administration-list-brandings'>List brandings</h3>
+<p><code>GET /brandings</code></p>
+<pre class="highlight shell tab-shell"><code><span class="c"># Retrieve branding</span>
+curl <span class="s2">"https://cloudmc_endpoint/rest/brandings"</span> <span class="se">\</span>
+   -H <span class="s2">"MC-Api-Key: your_api_key"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"671f113c-dbbb-4478-be9c-90765b3259e5"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"factory"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"defaultLanguage"</span><span class="p">:</span><span class="w"> </span><span class="s2">"en"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"organization"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"23910576-d29f-4c14-b663-31d728ff49a5"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"activeLanguages"</span><span class="p">:</span><span class="w"> </span><span class="s2">"en,fr,es"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"defaultTimezone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"America/Montreal"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"applicationName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CloudMC application"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"artifacts"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-09-14T11:42:52.000Z"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"android-chrome-144x144.png"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"642c73cf-d675-4b6f-826b-72d1a240542e"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"mimeType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"image/png"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FAVICON"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"content"</span><span class="p">:</span><span class="w"> </span><span class="s2">"iVBOR...kJggg=="</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"updatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-09-14T11:42:52.000Z"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>List the branding configured for the organization.</p>
+
+<table><thead>
+<tr>
+<th>Query Params</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>organization_id</code><br/><em>UUID</em></td>
+<td>Return only the branding for the provided organization id. If not provided, will default to the user&#39;s organization.</td>
+</tr>
+</tbody></table>
+
+<table><thead>
+<tr>
+<th>Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code><br/><em>UUID</em></td>
+<td>The id of the branding.</td>
+</tr>
+<tr>
+<td><code>organization.id</code><br/><em>UUID</em></td>
+<td>The organization id that the branding is linked to.</td>
+</tr>
+<tr>
+<td><code>defaultLanguage</code><br/><em>string</em></td>
+<td>The default language.</td>
+</tr>
+<tr>
+<td><code>activeLanguages</code><br/><em>Array[string]</em></td>
+<td>List of the possible languages.</td>
+</tr>
+<tr>
+<td><code>defaultTimezone</code><br/><em>string</em></td>
+<td>The default timezone.</td>
+</tr>
+<tr>
+<td><code>applicationName</code><br/><em>string</em></td>
+<td>The application name displayed to the user.</td>
+</tr>
+<tr>
+<td><code>factory</code><br/><em>boolean</em></td>
+<td>If the branding is the factory branding.</td>
+</tr>
+<tr>
+<td><code>artifacts</code><br/><em>Array[Object]</em></td>
+<td>The list of artifacts linked to the branding. This includes the custom css, colours css, logos, favicons.</td>
+</tr>
+<tr>
+<td><code>artifacts.id</code><br/><em>UUID</em></td>
+<td>The artifact id.</td>
+</tr>
+<tr>
+<td><code>artifacts.name</code><br/><em>string</em></td>
+<td>The artifact name.</td>
+</tr>
+<tr>
+<td><code>artifacts.mimeType</code><br/><em>string</em></td>
+<td>The mime type of the artifact.</td>
+</tr>
+<tr>
+<td><code>artifacts.type</code><br/><em>string</em></td>
+<td>The artifact type. The possibles values are: LOGO, LOGO_SQUARE, FAVICON, CUSTOM_CSS, COLORS.</td>
+</tr>
+<tr>
+<td><code>artifacts.content</code><br/><em>string</em></td>
+<td>The artifact content.</td>
+</tr>
+<tr>
+<td><code>artifacts.createdAt</code><br/><em>string</em></td>
+<td>The artifact creation date.</td>
+</tr>
+<tr>
+<td><code>artifacts.updatedAt</code><br/><em>string</em></td>
+<td>The artifact update date.</td>
+</tr>
+</tbody></table>
+
+<!-------------------- GET BRANDING -------------------->
+<h3 id='administration-retrieve-branding'>Retrieve branding</h3>
+<p><code>GET /brandings/:id</code></p>
+<pre class="highlight shell tab-shell"><code><span class="c"># Retrieve knowledge base</span>
+curl <span class="s2">"https://cloudmc_endpoint/rest/brandings/671f113c-dbbb-4478-be9c-90765b3259e5"</span> <span class="se">\</span>
+   -H <span class="s2">"MC-Api-Key: your_api_key"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"671f113c-dbbb-4478-be9c-90765b3259e5"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"factory"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"defaultLanguage"</span><span class="p">:</span><span class="w"> </span><span class="s2">"en"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"organization"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"23910576-d29f-4c14-b663-31d728ff49a5"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"activeLanguages"</span><span class="p">:</span><span class="w"> </span><span class="s2">"en,fr,es"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"defaultTimezone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"America/Montreal"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"applicationName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CloudMC application"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"artifacts"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-09-14T11:42:52.000Z"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"android-chrome-144x144.png"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"642c73cf-d675-4b6f-826b-72d1a240542e"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"mimeType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"image/png"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FAVICON"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"content"</span><span class="p">:</span><span class="w"> </span><span class="s2">"iVBOR...kJggg=="</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"updatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-09-14T11:42:52.000Z"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>Retrieve the branding associated to the id.</p>
+
+<table><thead>
+<tr>
+<th>Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code><br/><em>UUID</em></td>
+<td>The id of the branding.</td>
+</tr>
+<tr>
+<td><code>organization.id</code><br/><em>UUID</em></td>
+<td>The organization id that the branding is linked to.</td>
+</tr>
+<tr>
+<td><code>defaultLanguage</code><br/><em>string</em></td>
+<td>The default language.</td>
+</tr>
+<tr>
+<td><code>activeLanguages</code><br/><em>Array[string]</em></td>
+<td>List of the possible languages.</td>
+</tr>
+<tr>
+<td><code>defaultTimezone</code><br/><em>string</em></td>
+<td>The default timezone.</td>
+</tr>
+<tr>
+<td><code>applicationName</code><br/><em>string</em></td>
+<td>The application name displayed to the user.</td>
+</tr>
+<tr>
+<td><code>factory</code><br/><em>boolean</em></td>
+<td>If the branding is the factory branding.</td>
+</tr>
+<tr>
+<td><code>artifacts</code><br/><em>Array[Object]</em></td>
+<td>The list of artifacts linked to the branding. This includes the custom css, colours css, logos, favicons.</td>
+</tr>
+<tr>
+<td><code>artifacts.id</code><br/><em>UUID</em></td>
+<td>The artifact id.</td>
+</tr>
+<tr>
+<td><code>artifacts.name</code><br/><em>string</em></td>
+<td>The artifact name.</td>
+</tr>
+<tr>
+<td><code>artifacts.mimeType</code><br/><em>string</em></td>
+<td>The mime type of the artifact.</td>
+</tr>
+<tr>
+<td><code>artifacts.type</code><br/><em>string</em></td>
+<td>The artifact type. The possibles values are: LOGO, LOGO_SQUARE, FAVICON, CUSTOM_CSS, COLORS.</td>
+</tr>
+<tr>
+<td><code>artifacts.content</code><br/><em>string</em></td>
+<td>The artifact content.</td>
+</tr>
+<tr>
+<td><code>artifacts.createdAt</code><br/><em>string</em></td>
+<td>The artifact creation date.</td>
+</tr>
+<tr>
+<td><code>artifacts.updatedAt</code><br/><em>string</em></td>
+<td>The artifact update date.</td>
+</tr>
+</tbody></table>
+<h2 id='administration-knowledge-base'>Knowledge Base</h2>
+<p>Manage knowledge base.</p>
+
+<!-------------------- LIST KNOWLEDGE BASES -------------------->
+<h3 id='administration-list-knowledge-base'>List knowledge base</h3>
+<p><code>GET /content/kb</code></p>
+<pre class="highlight shell tab-shell"><code><span class="c"># Retrieve branding</span>
+curl <span class="s2">"https://cloudmc_endpoint/rest/content/kb"</span> <span class="se">\</span>
+   -H <span class="s2">"MC-Api-Key: your_api_key"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"organizationId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"23910576-d29f-4c14-b663-31d728ff49a5"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"sources"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"createdDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-07-27T15:46:58Z"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"lastSyncDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-09-24T15:54:32Z"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"585bd805-5b85-44af-9800-a9e55b2f619c"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"branch"</span><span class="p">:</span><span class="w"> </span><span class="s2">"master"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://github.com/cloudops/cloudmc-standard-kb"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1de30074-dac8-4c8b-8eda-585f9fad9c49"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"READY"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"categories"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-07-27T15:46:59.000Z"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"featured"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"translations"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"language"</span><span class="p">:</span><span class="w"> </span><span class="s2">"en"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"35b2b5e0-4944-4f92-9ddb-68eb980a31b2"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CloudStack Service"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"title"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"version"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"language"</span><span class="p">:</span><span class="w"> </span><span class="s2">"en"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"27cb1d2d-d624-4fe7-b0d1-8677c5f3200a"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cloudstack-compute-service"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"url_slug"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"version"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+          </span><span class="p">],</span><span class="w">
+          </span><span class="s2">"icon"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fa fa-cloud"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"rank"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"47789e16-ef75-4cf8-82f7-747098533e63"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"gitKey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cloudstack-compute-service"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"articles"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-07-27T15:47:01.000Z"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"translations"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                  </span><span class="s2">"language"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fr"</span><span class="p">,</span><span class="w">
+                  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"83297d87-e984-42b8-9356-2edef188b6c5"</span><span class="p">,</span><span class="w">
+                  </span><span class="s2">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Gestion des modèles"</span><span class="p">,</span><span class="w">
+                  </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"title"</span><span class="p">,</span><span class="w">
+                  </span><span class="s2">"version"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                  </span><span class="s2">"language"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fr"</span><span class="p">,</span><span class="w">
+                  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"07bec89a-870e-4506-9d45-8ea977b2f9f2"</span><span class="p">,</span><span class="w">
+                  </span><span class="s2">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"gestion-des-modeles"</span><span class="p">,</span><span class="w">
+                  </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"url_slug"</span><span class="p">,</span><span class="w">
+                  </span><span class="s2">"version"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                  </span><span class="s2">"language"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fr"</span><span class="p">,</span><span class="w">
+                  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"aa2deeee-39a6-40f8-886b-1779c8bdbfa0"</span><span class="p">,</span><span class="w">
+                  </span><span class="s2">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"</span><span class="se">\n\n</span><span class="s2">### Créer un modèle à partir d'une instance existante..."</span><span class="p">,</span><span class="w">
+                  </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"body"</span><span class="p">,</span><span class="w">
+                  </span><span class="s2">"version"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+              </span><span class="p">],</span><span class="w">
+              </span><span class="s2">"rank"</span><span class="p">:</span><span class="w"> </span><span class="mi">9</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"05353b4b-5675-4631-b91a-6872f385c3b5"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"published"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"gitKey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cloudstack-compute-service/working-with-instance-templates"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"updatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-09-24T15:54:36.000Z"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+          </span><span class="p">],</span><span class="w">
+          </span><span class="s2">"updatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-09-24T15:54:34.000Z"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>List the knowledge base configured for the organization.</p>
+
+<table><thead>
+<tr>
+<th>Query Params</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>organization_id</code><br/><em>UUID</em></td>
+<td>Return only the knowledge base for the provided organization id. If not provided, will default to the user&#39;s organization.</td>
+</tr>
+</tbody></table>
+
+<table><thead>
+<tr>
+<th>Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code><br/><em>UUID</em></td>
+<td>The id of the knowledge base.</td>
+</tr>
+<tr>
+<td><code>organization.id</code><br/><em>UUID</em></td>
+<td>The organization id that the knowledge base is linked to.</td>
+</tr>
+<tr>
+<td><code>state</code><br/><em>string</em></td>
+<td>The source state. Possible values:  IMPORTING, SYNCHING, READY, ERROR.</td>
+</tr>
+<tr>
+<td><code>sources</code><br/><em>Array[Object]</em></td>
+<td>List of sources associated to the knowledge base</td>
+</tr>
+<tr>
+<td><code>sources.id</code><br/><em>UUID</em></td>
+<td>The source id.</td>
+</tr>
+<tr>
+<td><code>sources.url</code><br/><em>string</em></td>
+<td>The source URL.</td>
+</tr>
+<tr>
+<td><code>sources.branch</code><br/><em>string</em></td>
+<td>The source branch.</td>
+</tr>
+<tr>
+<td><code>sources.createdDate</code><br/><em>string</em></td>
+<td>The date the source was created.</td>
+</tr>
+<tr>
+<td><code>sources.lastSyncDate</code><br/><em>string</em></td>
+<td>The last date the source was synchronized.</td>
+</tr>
+<tr>
+<td><code>categories.id</code><br/><em>UUID</em></td>
+<td>The category id.</td>
+</tr>
+<tr>
+<td><code>categories.gitKey</code><br/><em>string</em></td>
+<td>The category git key.</td>
+</tr>
+<tr>
+<td><code>categories.rank</code><br/><em>integer</em></td>
+<td>The category rank.</td>
+</tr>
+<tr>
+<td><code>categories.icon</code><br/><em>string</em></td>
+<td>The category icon.</td>
+</tr>
+<tr>
+<td><code>categories.createdAt</code><br/><em>string</em></td>
+<td>The creation date.</td>
+</tr>
+<tr>
+<td><code>categories.updatedAt</code><br/><em>string</em></td>
+<td>The update date.</td>
+</tr>
+<tr>
+<td><code>categories.featured</code><br/><em>boolean</em></td>
+<td>If the category needs to be displayed.</td>
+</tr>
+<tr>
+<td><code>categories.translations</code><br/><em>Array[Object]</em></td>
+<td>The translation objects for the category.</td>
+</tr>
+<tr>
+<td><code>categories.translations.id</code><br/><em>UUID</em></td>
+<td>The id of the translation.</td>
+</tr>
+<tr>
+<td><code>categories.translations.language</code><br/><em>string</em></td>
+<td>The language of the translation.</td>
+</tr>
+<tr>
+<td><code>categories.translations.text</code><br/><em>string</em></td>
+<td>The content of the translation.</td>
+</tr>
+<tr>
+<td><code>categories.translations.type</code><br/><em>string</em></td>
+<td>The type of translation. Possible values are: title or url_slug.</td>
+</tr>
+<tr>
+<td><code>categories.translations.version</code><br/><em>integer</em></td>
+<td>The version of the translation.</td>
+</tr>
+<tr>
+<td><code>categories.articles</code><br/><em>Array[Object]</em></td>
+<td>The list of articles in the category.</td>
+</tr>
+<tr>
+<td><code>categories.articles.id</code><br/><em>UUID</em></td>
+<td>The id of the article.</td>
+</tr>
+<tr>
+<td><code>categories.articles.published</code><br/><em>boolean</em></td>
+<td>If the article is published.</td>
+</tr>
+<tr>
+<td><code>categories.articles.rank</code><br/><em>integer</em></td>
+<td>The article rank.</td>
+</tr>
+<tr>
+<td><code>categories.articles.gitKey</code><br/><em>string</em></td>
+<td>The article git key.</td>
+</tr>
+<tr>
+<td><code>categories.articles.createdAt</code><br/><em>string</em></td>
+<td>The creation date.</td>
+</tr>
+<tr>
+<td><code>categories.articles.updatedAt</code><br/><em>string</em></td>
+<td>The update date.</td>
+</tr>
+<tr>
+<td><code>categories.articles.translations</code><br/><em>Array[Object]</em></td>
+<td>The translation objects for the article.</td>
+</tr>
+<tr>
+<td><code>categories.articles.translations.id</code><br/><em>UUID</em></td>
+<td>The id of the translation.</td>
+</tr>
+<tr>
+<td><code>categories.articles.translations.language</code><br/><em>string</em></td>
+<td>The language of the translation.</td>
+</tr>
+<tr>
+<td><code>categories.articles.translations.text</code><br/><em>string</em></td>
+<td>The content of the translation.</td>
+</tr>
+<tr>
+<td><code>categories.articles.translations.type</code><br/><em>string</em></td>
+<td>The type of translation. Possible values are: title, body or url_slug.</td>
+</tr>
+<tr>
+<td><code>categories.articles.translations.version</code><br/><em>integer</em></td>
+<td>The version of the translation.</td>
+</tr>
+</tbody></table>
+
+<!-------------------- GET KNOWLEDGE BASES -------------------->
+<h3 id='administration-retrieve-knowledge-base'>Retrieve knowledge base</h3>
+<p><code>GET /content/kb/:id</code></p>
+<pre class="highlight shell tab-shell"><code><span class="c"># Retrieve trial settings</span>
+curl <span class="s2">"https://cloudmc_endpoint/rest/content/kb/671f113c-dbbb-4478-be9c-90765b3259e5"</span> <span class="se">\</span>
+   -H <span class="s2">"MC-Api-Key: your_api_key"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"organizationId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"23910576-d29f-4c14-b663-31d728ff49a5"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"sources"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"createdDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-07-27T15:46:58Z"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"lastSyncDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-09-24T15:54:32Z"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"585bd805-5b85-44af-9800-a9e55b2f619c"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"branch"</span><span class="p">:</span><span class="w"> </span><span class="s2">"master"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://github.com/cloudops/cloudmc-standard-kb"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1de30074-dac8-4c8b-8eda-585f9fad9c49"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"READY"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"categories"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-07-27T15:46:59.000Z"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"featured"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"translations"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+           </span><span class="s2">"language"</span><span class="p">:</span><span class="w"> </span><span class="s2">"en"</span><span class="p">,</span><span class="w">
+           </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"35b2b5e0-4944-4f92-9ddb-68eb980a31b2"</span><span class="p">,</span><span class="w">
+           </span><span class="s2">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CloudStack Service"</span><span class="p">,</span><span class="w">
+           </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"title"</span><span class="p">,</span><span class="w">
+           </span><span class="s2">"version"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"language"</span><span class="p">:</span><span class="w"> </span><span class="s2">"en"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"27cb1d2d-d624-4fe7-b0d1-8677c5f3200a"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cloudstack-compute-service"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"url_slug"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"version"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="s2">"icon"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fa fa-cloud"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"rank"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"47789e16-ef75-4cf8-82f7-747098533e63"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"gitKey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cloudstack-compute-service"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"articles"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-07-27T15:47:01.000Z"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"translations"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+              </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"language"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fr"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"83297d87-e984-42b8-9356-2edef188b6c5"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Gestion des modèles"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"title"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"version"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+              </span><span class="p">},</span><span class="w">
+              </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"language"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fr"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"07bec89a-870e-4506-9d45-8ea977b2f9f2"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"gestion-des-modeles"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"url_slug"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"version"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+              </span><span class="p">},</span><span class="w">
+              </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"language"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fr"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"aa2deeee-39a6-40f8-886b-1779c8bdbfa0"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"</span><span class="se">\n\n</span><span class="s2">### Créer un modèle à partir d'une instance existante..."</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"body"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"version"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w">
+              </span><span class="p">}</span><span class="w">
+            </span><span class="p">],</span><span class="w">
+            </span><span class="s2">"rank"</span><span class="p">:</span><span class="w"> </span><span class="mi">9</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"05353b4b-5675-4631-b91a-6872f385c3b5"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"published"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"gitKey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cloudstack-compute-service/working-with-instance-templates"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"updatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-09-24T15:54:36.000Z"</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="s2">"updatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-09-24T15:54:34.000Z"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>Retrieve the branding associated to the id.</p>
+
+<table><thead>
+<tr>
+<th>Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code><br/><em>UUID</em></td>
+<td>The id of the knowledge base.</td>
+</tr>
+<tr>
+<td><code>organization.id</code><br/><em>UUID</em></td>
+<td>The organization id that the knowledge base is linked to.</td>
+</tr>
+<tr>
+<td><code>state</code><br/><em>string</em></td>
+<td>The source state. Possible values:  IMPORTING, SYNCHING, READY, ERROR.</td>
+</tr>
+<tr>
+<td><code>sources</code><br/><em>Array[Object]</em></td>
+<td>List of sources associated to the knowledge base</td>
+</tr>
+<tr>
+<td><code>sources.id</code><br/><em>UUID</em></td>
+<td>The source id.</td>
+</tr>
+<tr>
+<td><code>sources.url</code><br/><em>string</em></td>
+<td>The source URL.</td>
+</tr>
+<tr>
+<td><code>sources.branch</code><br/><em>string</em></td>
+<td>The source branch.</td>
+</tr>
+<tr>
+<td><code>sources.createdDate</code><br/><em>string</em></td>
+<td>The date the source was created.</td>
+</tr>
+<tr>
+<td><code>sources.lastSyncDate</code><br/><em>string</em></td>
+<td>The last date the source was synchronized.</td>
+</tr>
+<tr>
+<td><code>categories.id</code><br/><em>UUID</em></td>
+<td>The category id.</td>
+</tr>
+<tr>
+<td><code>categories.gitKey</code><br/><em>string</em></td>
+<td>The category git key.</td>
+</tr>
+<tr>
+<td><code>categories.rank</code><br/><em>integer</em></td>
+<td>The category rank.</td>
+</tr>
+<tr>
+<td><code>categories.icon</code><br/><em>string</em></td>
+<td>The category icon.</td>
+</tr>
+<tr>
+<td><code>categories.createdAt</code><br/><em>string</em></td>
+<td>The creation date.</td>
+</tr>
+<tr>
+<td><code>categories.updatedAt</code><br/><em>string</em></td>
+<td>The update date.</td>
+</tr>
+<tr>
+<td><code>categories.featured</code><br/><em>boolean</em></td>
+<td>If the category needs to be displayed.</td>
+</tr>
+<tr>
+<td><code>categories.translations</code><br/><em>Array[Object]</em></td>
+<td>The translation objects for the category.</td>
+</tr>
+<tr>
+<td><code>categories.translations.id</code><br/><em>UUID</em></td>
+<td>The id of the translation.</td>
+</tr>
+<tr>
+<td><code>categories.translations.language</code><br/><em>string</em></td>
+<td>The language of the translation.</td>
+</tr>
+<tr>
+<td><code>categories.translations.text</code><br/><em>string</em></td>
+<td>The content of the translation.</td>
+</tr>
+<tr>
+<td><code>categories.translations.type</code><br/><em>string</em></td>
+<td>The type of translation. Possible values are: title or url_slug.</td>
+</tr>
+<tr>
+<td><code>categories.translations.version</code><br/><em>integer</em></td>
+<td>The version of the translation.</td>
+</tr>
+<tr>
+<td><code>categories.articles</code><br/><em>Array[Object]</em></td>
+<td>The list of articles in the category.</td>
+</tr>
+<tr>
+<td><code>categories.articles.id</code><br/><em>UUID</em></td>
+<td>The id of the article.</td>
+</tr>
+<tr>
+<td><code>categories.articles.published</code><br/><em>boolean</em></td>
+<td>If the article is published.</td>
+</tr>
+<tr>
+<td><code>categories.articles.rank</code><br/><em>integer</em></td>
+<td>The article rank.</td>
+</tr>
+<tr>
+<td><code>categories.articles.gitKey</code><br/><em>string</em></td>
+<td>The article git key.</td>
+</tr>
+<tr>
+<td><code>categories.articles.createdAt</code><br/><em>string</em></td>
+<td>The creation date.</td>
+</tr>
+<tr>
+<td><code>categories.articles.updatedAt</code><br/><em>string</em></td>
+<td>The update date.</td>
+</tr>
+<tr>
+<td><code>categories.articles.translations</code><br/><em>Array[Object]</em></td>
+<td>The translation objects for the article.</td>
+</tr>
+<tr>
+<td><code>categories.articles.translations.id</code><br/><em>UUID</em></td>
+<td>The id of the translation.</td>
+</tr>
+<tr>
+<td><code>categories.articles.translations.language</code><br/><em>string</em></td>
+<td>The language of the translation.</td>
+</tr>
+<tr>
+<td><code>categories.articles.translations.text</code><br/><em>string</em></td>
+<td>The content of the translation.</td>
+</tr>
+<tr>
+<td><code>categories.articles.translations.type</code><br/><em>string</em></td>
+<td>The type of translation. Possible values are: title, body or url_slug.</td>
+</tr>
+<tr>
+<td><code>categories.articles.translations.version</code><br/><em>integer</em></td>
+<td>The version of the translation.</td>
 </tr>
 </tbody></table>
 <h2 id='administration-trials'>Trials</h2>
