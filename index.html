@@ -3144,7 +3144,7 @@
                             <a href="#stackpath-list-workloads" class="toc-h3 toc-link" data-title="Stackpath plugin">List workloads</a>
                           </li>
                           <li>
-                            <a href="#stackpath-retrieve-an-instance" class="toc-h3 toc-link" data-title="Stackpath plugin">Retrieve an instance</a>
+                            <a href="#stackpath-retrieve-a-workload" class="toc-h3 toc-link" data-title="Stackpath plugin">Retrieve a workload</a>
                           </li>
                       </ul>
                   </li>
@@ -52054,7 +52054,7 @@ If the secret <code>X-Account-Meta-Temp-URL-Key</code> key does not already exis
 </tbody></table>
 
 <!-------------------- RETRIEVE A WORKLOAD -------------------->
-<h3 id='stackpath-retrieve-an-instance'>Retrieve an instance</h3><pre class="highlight shell tab-shell"><code>curl -X GET <span class="se">\</span>
+<h3 id='stackpath-retrieve-a-workload'>Retrieve a workload</h3><pre class="highlight shell tab-shell"><code>curl -X GET <span class="se">\</span>
    -H <span class="s2">"MC-Api-Key: your_api_key"</span> <span class="se">\</span>
    <span class="s2">"https://cloudmc_endpoint/v1/services/stackpath/test-area/workloads/1b932678-1038-4ab4-9fa4-c4c06e696e20"</span>
 </code></pre>
@@ -52082,7 +52082,7 @@ If the secret <code>X-Account-Meta-Temp-URL-Key</code> key does not already exis
 </span></code></pre>
 <p><code>GET /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/workloads/:id</code></p>
 
-<p>Retrieve an instance in a given <a href="#administration-environments">environment</a>.</p>
+<p>Retrieve a workload in a given <a href="#administration-environments">environment</a>.</p>
 
 <table><thead>
 <tr>
