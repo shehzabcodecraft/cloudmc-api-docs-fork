@@ -3148,6 +3148,20 @@
                           </li>
                       </ul>
                   </li>
+                  <li>
+                    <a href="#stackpath-instances" class="toc-h2 toc-link" data-title="Stackpath plugin">Instances</a>
+                      <ul class="toc-list-h3">
+                          <li>
+                            <a href="#stackpath-list-instances" class="toc-h3 toc-link" data-title="Stackpath plugin">List instances</a>
+                          </li>
+                          <li>
+                            <a href="#stackpath-retrieve-an-instance" class="toc-h3 toc-link" data-title="Stackpath plugin">Retrieve an instance</a>
+                          </li>
+                          <li>
+                            <a href="#stackpath-restart-an-instance" class="toc-h3 toc-link" data-title="Stackpath plugin">Restart an instance</a>
+                          </li>
+                      </ul>
+                  </li>
               </ul>
           </li>
       </div>
@@ -52147,6 +52161,184 @@ If the secret <code>X-Account-Meta-Temp-URL-Key</code> key does not already exis
 <td>The workload&#39;s instance operating system image.</td>
 </tr>
 </tbody></table>
+<h2 id='stackpath-instances'>Instances</h2>
+<p>Manage your workload instances.</p>
+
+<!-------------------- LIST INSTANCES -------------------->
+<h3 id='stackpath-list-instances'>List instances</h3><pre class="highlight shell tab-shell"><code>curl -X GET <span class="se">\</span>
+   -H <span class="s2">"MC-Api-Key: your_api_key"</span> <span class="se">\</span>
+   <span class="s2">"https://cloudmc_endpoint/v1/services/stackpath/test-area/instances?workloadId=e485fe8c-e1de-40f7-b3b3-a43700441e0e"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns a JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"stackId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"asd04459-1ccf-4a0d-8aaa-98d0f52dd2f3"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"workloadId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"e485fe8c-e1de-40f7-b3b3-a43700441e0e"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test-dep1-lax-0"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"ipAddress"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10.128.16.2"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"publicIpAddress"</span><span class="p">:</span><span class="w"> </span><span class="s2">"151.139.71.25"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"location"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Los Angeles"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"createdDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-11-10T16:52:15Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"startedDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-11-10T16:52:15Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"e485fe8c-e1de-40f7-b3b3-a43700441e0e/instance-name-1"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RUNNING"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="s2">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"recordCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><code>GET /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/instance?workloadId=:workloadId</code></p>
+
+<p>Retrieve a list of all workload instance in a given <a href="#administration-environments">environment</a> for a given workload ID.</p>
+
+<table><thead>
+<tr>
+<th>Query Params</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>workloadId</code><br/><em>string</em></td>
+<td>The workload ID to get the instances for. It is mandatory.</td>
+</tr>
+</tbody></table>
+
+<table><thead>
+<tr>
+<th>Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code><br/><em>string</em></td>
+<td>The instance ID. It is the combination of <workloadId>/<name>.</td>
+</tr>
+<tr>
+<td><code>name</code><br/><em>string</em></td>
+<td>The instance name.</td>
+</tr>
+<tr>
+<td><code>status</code><br/><em>string</em></td>
+<td>The instance status. Possible values are: RUNNING, STARTING, SCHEDULING.</td>
+</tr>
+<tr>
+<td><code>stackId</code><br/><em>UUID</em></td>
+<td>The stack ID to which this instance belongs.</td>
+</tr>
+<tr>
+<td><code>workloadId</code><br/><em>UUID</em></td>
+<td>The workload ID to which this instance belongs.</td>
+</tr>
+<tr>
+<td><code>ipAddress</code><br/><em>string</em></td>
+<td>The internal IP address associated with the instance.</td>
+</tr>
+<tr>
+<td><code>publicIpAddress</code><br/><em>string</em></td>
+<td>The public IP address associated with the instance.</td>
+</tr>
+<tr>
+<td><code>location</code><br/><em>string</em></td>
+<td>The instance location.</td>
+</tr>
+<tr>
+<td><code>createdDate</code><br/><em>string</em></td>
+<td>The instance creation date.</td>
+</tr>
+<tr>
+<td><code>startedDate</code><br/><em>string</em></td>
+<td>The instance started date.</td>
+</tr>
+</tbody></table>
+
+<!-------------------- RETRIEVE AN INSTANCE -------------------->
+<h3 id='stackpath-retrieve-an-instance'>Retrieve an instance</h3><pre class="highlight shell tab-shell"><code>curl -X GET <span class="se">\</span>
+   -H <span class="s2">"MC-Api-Key: your_api_key"</span> <span class="se">\</span>
+   <span class="s2">"https://cloudmc_endpoint/v1/services/stackpath/test-area/instances/e485fe8c-e1de-40f7-b3b3-a43700441e0e/instance-name-1"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns a JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"stackId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"asd04459-1ccf-4a0d-8aaa-98d0f52dd2f3"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"workloadId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"e485fe8c-e1de-40f7-b3b3-a43700441e0e"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"instance-name-1"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"ipAddress"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10.128.16.2"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"publicIpAddress"</span><span class="p">:</span><span class="w"> </span><span class="s2">"151.139.71.25"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"location"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Los Angeles"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"createdDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-11-10T16:52:15Z"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"startedDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-11-10T16:52:15Z"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"e485fe8c-e1de-40f7-b3b3-a43700441e0e/instance-name-1"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RUNNING"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><code>GET /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/instances/:id</code></p>
+
+<p>Retrieve an instance in a given <a href="#administration-environments">environment</a> with the specific ID.</p>
+
+<table><thead>
+<tr>
+<th>Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code><br/><em>string</em></td>
+<td>The instance ID. It is the combination of <workloadId>/<name>.</td>
+</tr>
+<tr>
+<td><code>name</code><br/><em>string</em></td>
+<td>The instance name.</td>
+</tr>
+<tr>
+<td><code>status</code><br/><em>string</em></td>
+<td>The instance status. Possible values are: RUNNING, STARTING, SCHEDULING.</td>
+</tr>
+<tr>
+<td><code>stackId</code><br/><em>UUID</em></td>
+<td>The stack ID to which this instance belongs.</td>
+</tr>
+<tr>
+<td><code>workloadId</code><br/><em>UUID</em></td>
+<td>The workload ID to which this instance belongs.</td>
+</tr>
+<tr>
+<td><code>ipAddress</code><br/><em>string</em></td>
+<td>The internal IP address associated with the instance.</td>
+</tr>
+<tr>
+<td><code>publicIpAddress</code><br/><em>string</em></td>
+<td>The public IP address associated with the instance.</td>
+</tr>
+<tr>
+<td><code>location</code><br/><em>string</em></td>
+<td>The instance location.</td>
+</tr>
+<tr>
+<td><code>createdDate</code><br/><em>string</em></td>
+<td>The instance creation date.</td>
+</tr>
+<tr>
+<td><code>startedDate</code><br/><em>string</em></td>
+<td>The instance started date.</td>
+</tr>
+</tbody></table>
+
+<!-------------------- RESTART AN INSTANCE -------------------->
+<h3 id='stackpath-restart-an-instance'>Restart an instance</h3><pre class="highlight shell tab-shell"><code>curl -X POST <span class="se">\</span>
+   -H <span class="s2">"MC-Api-Key: your_api_key"</span> <span class="se">\</span>
+   <span class="s2">"https://cloudmc_endpoint/v1/services/stackpath/test-area/instances/workload-id1/instance-name-1?operation=restart"</span>
+</code></pre>
+<p><code>POST /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/instances/:id?operation=restartt</code></p>
+
+<p>Restart an instance in a given <a href="#administration-environments">environment</a> with the specific ID.</p>
 
       </div>
       <div class="dark-box">
