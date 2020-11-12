@@ -3165,6 +3165,17 @@
                           </li>
                       </ul>
                   </li>
+                  <li>
+                    <a href="#stackpath-images" class="toc-h2 toc-link" data-title="Stackpath plugin">Images</a>
+                      <ul class="toc-list-h3">
+                          <li>
+                            <a href="#stackpath-list-images" class="toc-h3 toc-link" data-title="Stackpath plugin">List images</a>
+                          </li>
+                          <li>
+                            <a href="#stackpath-retrieve-an-image" class="toc-h3 toc-link" data-title="Stackpath plugin">Retrieve an image</a>
+                          </li>
+                      </ul>
+                  </li>
               </ul>
           </li>
       </div>
@@ -52375,6 +52386,164 @@ If the secret <code>X-Account-Meta-Temp-URL-Key</code> key does not already exis
 <p><code>POST /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/instances/:id?operation=restartt</code></p>
 
 <p>Restart an instance in a given <a href="#administration-environments">environment</a> with the specific ID.</p>
+<h2 id='stackpath-images'>Images</h2>
+<p>StackPath Edge Computing makes use of images to deploy virtual machines within a workload. The image can be from StackPath default images or
+a custom one. Only non-deprecated images are returned by default.</p>
+
+<p>Deploy and manage your images.</p>
+
+<!-------------------- LIST IMAGES -------------------->
+<h3 id='stackpath-list-images'>List images</h3><pre class="highlight shell tab-shell"><code>curl -X GET <span class="se">\</span>
+   -H <span class="s2">"MC-Api-Key: your_api_key"</span> <span class="se">\</span>
+   <span class="s2">"https://cloudmc_endpoint/v1/services/stackpath/test-area/images"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns a JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"stackId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"a8050b2b-39eb-4929-bce5-1af42055903e"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"a8050b2b-39eb-4929-bce5-1af42055903e/centos7/v20201110"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"family"</span><span class="p">:</span><span class="w"> </span><span class="s2">"centos7"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"tag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"v20201110"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-11-10T20:33:32.609434Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Image using centos7"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"reference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"a8050b2b-39eb-4929-bce5-1af42055903e/centos7:v20201110"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"READY"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"stackId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"a8050b2b-39eb-4929-bce5-1af42055903e"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"a8050b2b-39eb-4929-bce5-1af42055903e/ubuntu/v20201110"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"family"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ubuntu"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"tag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"v20201110"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-11-10T20:34:11.328575Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Image using ubuntu"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"reference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"a8050b2b-39eb-4929-bce5-1af42055903e/ubuntu:v20201110"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"READY"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="s2">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"recordCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><code>GET /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/images</code></p>
+
+<p>Retrieve a list of all images in a given <a href="#administration-environments">environment</a>.</p>
+
+<table><thead>
+<tr>
+<th>Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code><br/><em>string</em></td>
+<td>An image&#39;s unique identifier. It is the combination of stackId/family/tag.</td>
+</tr>
+<tr>
+<td><code>stackId</code><br/><em>string</em></td>
+<td>The ID of the stack that an image belongs to.</td>
+</tr>
+<tr>
+<td><code>family</code><br/><em>string</em></td>
+<td>The family of the image.</td>
+</tr>
+<tr>
+<td><code>tag</code><br/><em>string</em></td>
+<td>The tag of the image.</td>
+</tr>
+<tr>
+<td><code>slug</code><br/><em>string</em></td>
+<td>A workload&#39;s programmatic name. Workload slugs are used to build its instances names.</td>
+</tr>
+<tr>
+<td><code>status</code><br/><em>string</em></td>
+<td>The status of the workload. It can be either READY, PENDING, PROCESSING, FAILED or IMAGE_STATUS_UNKNOWN.</td>
+</tr>
+<tr>
+<td><code>createdAt</code><br/><em>string</em></td>
+<td>Creation timestamp of the image.</td>
+</tr>
+<tr>
+<td><code>description</code><br/><em>string</em></td>
+<td>The description of the image.</td>
+</tr>
+<tr>
+<td><code>reference</code><br/><em>string</em></td>
+<td>The reference of the image.</td>
+</tr>
+</tbody></table>
+
+<!-------------------- RETRIEVE AN IMAGE -------------------->
+<h3 id='stackpath-retrieve-an-image'>Retrieve an image</h3><pre class="highlight shell tab-shell"><code>curl -X GET <span class="se">\</span>
+   -H <span class="s2">"MC-Api-Key: your_api_key"</span> <span class="se">\</span>
+   <span class="s2">"https://cloudmc_endpoint/v1/services/stackpath/test-area/images/a8050b2b-39eb-4929-bce5-1af42055903e/ubuntu/v20201110"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns a JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"stackId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"a8050b2b-39eb-4929-bce5-1af42055903e"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"a8050b2b-39eb-4929-bce5-1af42055903e/ubuntu/v20201110"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"family"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ubuntu"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"tag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"v20201110"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-11-10T20:34:11.328575Z"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test 2"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"reference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"a8050b2b-39eb-4929-bce5-1af42055903e/ubuntu:v20201110"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"READY"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><code>GET /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/images/:id</code></p>
+
+<p>Retrieve an image in a given <a href="#administration-environments">environment</a>.</p>
+
+<table><thead>
+<tr>
+<th>Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code><br/><em>string</em></td>
+<td>An image&#39;s unique identifier. It is the combination of stackId/family/tag.</td>
+</tr>
+<tr>
+<td><code>stackId</code><br/><em>string</em></td>
+<td>The ID of the stack that an image belongs to.</td>
+</tr>
+<tr>
+<td><code>family</code><br/><em>string</em></td>
+<td>The family of the image.</td>
+</tr>
+<tr>
+<td><code>tag</code><br/><em>string</em></td>
+<td>The tag of the image.</td>
+</tr>
+<tr>
+<td><code>slug</code><br/><em>string</em></td>
+<td>A workload&#39;s programmatic name. Workload slugs are used to build its instances names.</td>
+</tr>
+<tr>
+<td><code>status</code><br/><em>string</em></td>
+<td>The status of the workload. It can be either READY, PENDING, PROCESSING, FAILED or IMAGE_STATUS_UNKNOWN.</td>
+</tr>
+<tr>
+<td><code>createdAt</code><br/><em>string</em></td>
+<td>Creation timestamp of the image.</td>
+</tr>
+<tr>
+<td><code>description</code><br/><em>string</em></td>
+<td>The description of the image.</td>
+</tr>
+<tr>
+<td><code>reference</code><br/><em>string</em></td>
+<td>The reference of the image.</td>
+</tr>
+</tbody></table>
 
       </div>
       <div class="dark-box">
