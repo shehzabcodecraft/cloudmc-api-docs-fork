@@ -3146,6 +3146,9 @@
                           <li>
                             <a href="#stackpath-retrieve-a-workload" class="toc-h3 toc-link" data-title="Stackpath plugin">Retrieve a workload</a>
                           </li>
+                          <li>
+                            <a href="#stackpath-delete-a-workload" class="toc-h3 toc-link" data-title="Stackpath plugin">Delete a workload</a>
+                          </li>
                       </ul>
                   </li>
                   <li>
@@ -52159,6 +52162,39 @@ If the secret <code>X-Account-Meta-Temp-URL-Key</code> key does not already exis
 <tr>
 <td><code>image</code><br/><em>string</em></td>
 <td>The workload&#39;s instance operating system image.</td>
+</tr>
+</tbody></table>
+
+<!-------------------- DELETE A WORKLOAD -------------------->
+<h3 id='stackpath-delete-a-workload'>Delete a workload</h3><pre class="highlight shell tab-shell"><code>curl -X DELETE <span class="se">\</span>
+   -H <span class="s2">"MC-Api-Key: your_api_key"</span> <span class="se">\</span>
+   <span class="s2">"https://cloudmc_endpoint/v1/services/stackpath/test-area/workloads/1b932678-1038-4ab4-9fa4-c4c06e696e20"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns a JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"taskId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ef70cafa-0544-4709-a66a-c68595ee105a"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"taskStatus"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SUCCESS"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><code>DELETE /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/workloads/:id</code></p>
+
+<p>Delete a workload in a given <a href="#administration-environments">environment</a>.</p>
+
+<table><thead>
+<tr>
+<th>Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>taskId</code> <br/><em>string</em></td>
+<td>The task id related to the workload deletion.</td>
+</tr>
+<tr>
+<td><code>taskStatus</code> <br/><em>string</em></td>
+<td>The status of the operation.</td>
 </tr>
 </tbody></table>
 <h2 id='stackpath-instances'>Instances</h2>
