@@ -257,6 +257,18 @@
                             <a href="#administration-retrieve-a-service-connection" class="toc-h3 toc-link" data-title="Administration">Retrieve a service connection</a>
                           </li>
                           <li>
+                            <a href="#administration-retrieve-connection-parameters" class="toc-h3 toc-link" data-title="Administration">Retrieve connection parameters</a>
+                          </li>
+                          <li>
+                            <a href="#administration-create-service-connection" class="toc-h3 toc-link" data-title="Administration">Create service connection</a>
+                          </li>
+                          <li>
+                            <a href="#administration-test-new-service-connection" class="toc-h3 toc-link" data-title="Administration">Test new service connection</a>
+                          </li>
+                          <li>
+                            <a href="#administration-test-existing-service-connection" class="toc-h3 toc-link" data-title="Administration">Test existing service connection</a>
+                          </li>
+                          <li>
                             <a href="#administration-retrieve-connection-policy-descriptors" class="toc-h3 toc-link" data-title="Administration">Retrieve connection policy descriptors</a>
                           </li>
                           <li>
@@ -299,6 +311,9 @@
                           </li>
                           <li>
                             <a href="#administration-update-security-settings" class="toc-h3 toc-link" data-title="Administration">Update security settings</a>
+                          </li>
+                          <li>
+                            <a href="#administration-get-manageable-connections-of-an-organization" class="toc-h3 toc-link" data-title="Administration">Get manageable connections of an organization</a>
                           </li>
                           <li>
                             <a href="#administration-mark-organization-as-reseller" class="toc-h3 toc-link" data-title="Administration">Mark organization as reseller</a>
@@ -3398,11 +3413,11 @@ Name | Description
 If you are not familiar with the CloudMC API response structures, it would be valuable to read <a href="#responses">this</a> first.
 </aside></p>
 <h2 id='administration-service-connections'>Service connections</h2>
-<p>Service connections are the services that you can create resources for (e.g. compute, object storage). <a href="#administration-environments">Environments</a> are created for a specific service which allows you to create and manage resources within that service.</p>
+<p>Service connections are the services that you can create resources for (e.g. compute, object storage). Service connections are scoped to <a href="#administration-organizations">Organizations</a>. Thus, the relationship between a service connection and an organization can be either <strong>ownership</strong> <em>(where the organization owns the connection)</em> or <strong>assignation</strong> <em>(where the connection is assigned to an organization but is owned by another)</em> <a href="#administration-environments">Environments</a> are created for a specific service which allows you to create and manage resources within that service.</p>
 
 <!-------------------- LIST SERVICE CONNECTIONS -------------------->
 <h3 id='administration-list-service-connections'>List service connections</h3>
-<p><code>GET /services/connections</code></p>
+<p><code>GET /services/connections?organizationId=9571b279-abaf-4a37-9f39-85d1a915af7d</code></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:[{</span><span class="w">
     </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"adfbdb51-493b-45b1-8802-3f6327afb9e6"</span><span class="p">,</span><span class="w">
@@ -3441,6 +3456,18 @@ If you are not familiar with the CloudMC API response structures, it would be va
 <tr>
 <td><code>status</code><br/><em>Object</em></td>
 <td>Status of the service connection. Tells you if the service is up.<br/><em>includes</em>: <code>lastUpdated</code>, <code>reachable</code>.</td>
+</tr>
+</tbody></table>
+
+<table><thead>
+<tr>
+<th>Optional query parameters</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>organizationId</code><br/><em>string</em></td>
+<td>The organization whose connections are to be retreived. If this is not provided then the request defaults to the user&#39;s organization.</td>
 </tr>
 </tbody></table>
 
@@ -3487,6 +3514,200 @@ If you are not familiar with the CloudMC API response structures, it would be va
 <td>Status of the service connection. Tells you if the service is up.<br/><em>includes</em>: <code>lastUpdated</code>, <code>reachable</code>.</td>
 </tr>
 </tbody></table>
+
+<!-------------------- GET SERVICE CONNECTION PARAMETERS -------------------->
+<h3 id='administration-retrieve-connection-parameters'>Retrieve connection parameters</h3>
+<p><code>GET /services/descriptors/:pluginType/parameters</code></p>
+<pre class="highlight shell tab-shell"><code><span class="c"># Retreive service connection parameters</span>
+
+curl -X GET <span class="se">\</span>
+   -H <span class="s2">"MC-Api-Key: your_api_key"</span> <span class="se">\</span>
+   <span class="s2">"https://cloudmc_endpoint/v1/services/descriptors/gcp/parameters"</span>
+</code></pre>
+<blockquote>
+<p>Request body example:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"field"</span><span class="p">:</span><span class="w"> </span><span class="s2">"parentType"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"gcp.service_configuration.parameters.parent_type.label"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"options"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"folder"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"option"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"gcp.service_configuration.parameters.parent_type.folder"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"is18n"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"organization"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"option"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"gcp.service_configuration.parameters.parent_type.organization"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"is18n"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="s2">"required"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"select"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"field"</span><span class="p">:</span><span class="w"> </span><span class="s2">"parentId"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"gcp.service_configuration.parameters.parent_id.label"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"descriptionLabel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"gcp.service_configuration.parameters.parent_id.description"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"required"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"text"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"field"</span><span class="p">:</span><span class="w"> </span><span class="s2">"jsonCredentials"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"gcp.service_configuration.parameters.json_credentials.label"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"required"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"textarea"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"field"</span><span class="p">:</span><span class="w"> </span><span class="s2">"billingAccountId"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"gcp.service_configuration.parameters.billing_account.label"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"descriptionLabel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"gcp.service_configuration.parameters.billing_account.description"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"required"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"text"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<table><thead>
+<tr>
+<th>Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>data</code><br/><em>Array</em></td>
+<td>An array of connection parameters, each with the following properties.</td>
+</tr>
+<tr>
+<td><code>field</code><br/><em>string</em></td>
+<td>The name of connection parameter.</td>
+</tr>
+<tr>
+<td><code>type</code><br/><em>string</em></td>
+<td>The type of the connection parameter. Possible values are <code>text</code>, <code>textarea</code>, <code>select</code>, <code>checkbox</code>.</td>
+</tr>
+<tr>
+<td><code>options</code><br/><em>Array[select options]</em></td>
+<td>A list of possible options for parameters of <code>type</code> = <code>select</code></td>
+</tr>
+<tr>
+<td><code>required</code><br/><em>boolean</em></td>
+<td>An indication as to whether or not this parameter is a required one when creating a service connection.</td>
+</tr>
+</tbody></table>
+
+<p>This call returns a list of parameters that must be provided <em>(when creating a new <code>ServiceConnection</code>)</em> for CloudMc to be able to successfully connect to service. While, the response includes a variety of information, the <code>field</code> attribute of each paramter object returned is the parameter identifier. This is used together with some value to provide the connection parameters when <a href="#administration-create-service-connection">creating a new <code>ServiceConnection</code></a>.</p>
+
+<!-------------------- CREATE SERVICE CONNECTION -------------------->
+<h3 id='administration-create-service-connection'>Create service connection</h3>
+<p><code>POST /services/connections</code></p>
+<pre class="highlight shell tab-shell"><code><span class="c"># Create a service connection</span>
+
+curl -X POST <span class="s2">"https://cloudmc_endpoint/v1/services/connections"</span> <span class="se">\</span>
+   -H <span class="s2">"MC-Api-Key: your_api_key"</span> <span class="se">\</span>
+   -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+   -d <span class="s2">"request_body"</span>
+</code></pre>
+<blockquote>
+<p>Request body example:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+   </span><span class="s2">"name"</span><span class="p">:</span><span class="s2">"GCP-AmericasRegion"</span><span class="p">,</span><span class="w">
+     </span><span class="s2">"type"</span><span class="p">:</span><span class="s2">"gcp"</span><span class="p">,</span><span class="w">
+     </span><span class="s2">"serviceCode"</span><span class="p">:</span><span class="s2">"gcp-americas"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"organization"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+         </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9571b279-abaf-4a37-9f39-85d1a915af7d"</span><span class="w">
+     </span><span class="p">},</span><span class="w">
+   </span><span class="s2">"parameters"</span><span class="p">:[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+         </span><span class="s2">"parameter"</span><span class="p">:</span><span class="s2">"parentType"</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"value"</span><span class="p">:</span><span class="s2">"folder"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+         </span><span class="s2">"parameter"</span><span class="p">:</span><span class="s2">"parentId"</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"value"</span><span class="p">:</span><span class="s2">"9123843023"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+         </span><span class="s2">"parameter"</span><span class="p">:</span><span class="s2">"jsonCredentials"</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"value"</span><span class="p">:</span><span class="s2">"&lt;GCP-SERVICE-ACCOUNT-CREDENTIALS&gt;"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+         </span><span class="s2">"parameter"</span><span class="p">:</span><span class="s2">"billingAccountId"</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"value"</span><span class="p">:</span><span class="s2">"141F7D-FDK3D0-F99HW2"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+         </span><span class="s2">"parameter"</span><span class="p">:</span><span class="s2">"billingSubAccountsEnabled"</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"value"</span><span class="p">:</span><span class="s2">""</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+         </span><span class="s2">"parameter"</span><span class="p">:</span><span class="s2">"billingDatasetName"</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"value"</span><span class="p">:</span><span class="s2">"cmc_usage"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+   </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>Create a new service connection in a specific organization. You will need the <code>Reseller connections</code> permission to execute this operation.</p>
+
+<table><thead>
+<tr>
+<th>Required</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>name</code><br/><em>string</em></td>
+<td>The name of the new service connection.</td>
+</tr>
+<tr>
+<td><code>type</code><br/><em>string</em></td>
+<td>The type of new service connection. <em>(e.g. gcp, azure, aws, cloudca, swift, etc.)</em></td>
+</tr>
+<tr>
+<td><code>serviceCode</code><br/><em>string</em></td>
+<td>A globally unique code that identifies this service connection.</td>
+</tr>
+<tr>
+<td><code>organization</code><br/><em><a href="#administration-organizations">Organization</a></em></td>
+<td>The organization that the service connection should be created in. <br/><em>required attributes of the organization</em>: <code>id</code></td>
+</tr>
+<tr>
+<td><code>parameters</code><br/><em>Array[<a href="#administration-retrieve-connection-parameters">connection parameters</a>]</em></td>
+<td>An array of connection parameters specific to this connection type along with their values. This array should contain all <code>required</code> parameters from the list returned from the <a href="#administration-retrieve-connection-parameters">retrieve connection parameters</a> API. <br/><em>required attributes per parameter</em>: <code>parameter</code>, <code>value</code>.</td>
+</tr>
+</tbody></table>
+
+<!-------------------- TEST NEW SERVICE CONNECTION -------------------->
+<h3 id='administration-test-new-service-connection'>Test new service connection</h3>
+<p><code>POST /services/connections/test</code></p>
+<pre class="highlight shell tab-shell"><code><span class="c"># Test a new service connection</span>
+
+curl -X POST <span class="s2">"https://cloudmc_endpoint/v1/services/connections/test"</span> <span class="se">\</span>
+   -H <span class="s2">"MC-Api-Key: your_api_key"</span> <span class="se">\</span>
+   -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+   -d <span class="s2">"request_body"</span>
+</code></pre>
+<blockquote>
+<p>Request body example:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="err">#</span><span class="w"> </span><span class="err">requires</span><span class="w"> </span><span class="err">the</span><span class="w"> </span><span class="err">same</span><span class="w"> </span><span class="err">request</span><span class="w"> </span><span class="err">body</span><span class="w"> 
+</span><span class="err">#</span><span class="w"> </span><span class="err">as</span><span class="w"> </span><span class="err">outlined</span><span class="w"> </span><span class="err">in</span><span class="w"> </span><span class="err">the</span><span class="w"> </span><span class="err">'Create</span><span class="w"> </span><span class="err">service</span><span class="w"> </span><span class="err">connection'</span><span class="w"> </span><span class="err">section</span><span class="w">
+</span></code></pre>
+<p>Test a new service connection before creating it. The request body is the same as that which is used when creating a new service connection.</p>
+
+<!-------------------- TEST EXISTING SERVICE CONNECTION -------------------->
+<h3 id='administration-test-existing-service-connection'>Test existing service connection</h3>
+<p><code>POST /services/connections/:id/test</code></p>
+<pre class="highlight shell tab-shell"><code><span class="c"># Test a new service connection</span>
+
+curl -X POST <span class="s2">"https://cloudmc_endpoint/v1/services/connections/9571b279-abaf-4a37-9f39-85d1a915af7d/test"</span> <span class="se">\</span>
+   -H <span class="s2">"MC-Api-Key: your_api_key"</span> <span class="se">\</span>
+   -H <span class="s2">"Content-Type: application/json"</span>
+</code></pre>
+<p>Test an existing service connection. This request does not require a body. The <code>connection id</code> is passed as a path parameter in the request.</p>
 
 <!-------------------- GET CONNECTION POLICY DESCRIPTORS -------------------->
 <h3 id='administration-retrieve-connection-policy-descriptors'>Retrieve connection policy descriptors</h3>
@@ -3628,7 +3849,7 @@ curl <span class="s2">"https://cloudmc_endpoint/v1/services/connections/03bc22bd
 
 <!-------------------- LIST ASSIGNED ORGANIZATIONS CONNECTIONS -------------------->
 <h3 id='administration-list-organizations-assigned-to-a-service-connection'>List organizations assigned to a service connection</h3>
-<p><code>GET /services/connections/:id/assigned_orgs</code></p>
+<p><code>GET /services/connections/:id/assigned_organizations?organizationId=:orgId</code></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
@@ -3640,11 +3861,31 @@ curl <span class="s2">"https://cloudmc_endpoint/v1/services/connections/03bc22bd
         </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"90c3e469-71c7-4231-b27b-31dcf3a820ad"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Unlimited"</span><span class="w">
       </span><span class="p">}</span><span class="w">
-    </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9571b279-abaf-4a37-9f39-85d1a915af7d"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Sysco Labs"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"entryPoint"</span><span class="p">:</span><span class="w"> </span><span class="s2">"syscolab"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PROVISIONED"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"quota"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"66a773e8-a7e9-498b-a01d-68c8f9df2fd4"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"trial"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d84125c6-1417-4aa3-8293-a5ddde2bfeac"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Symcentric"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"entryPoint"</span><span class="p">:</span><span class="w"> </span><span class="s2">"symcentric"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PROVISIONED"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"quota"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"66a773e8-a7e9-498b-a01d-68c8f9df2fd4"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"trial"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<p>Returns the list of organizations that are assigned to the service connection. Only organizations that the caller has access to will be returned.</p>
+<p>Returns a list of organizations to which the service connection is assigned. Only organizations that the caller has access to will be returned. <em>Read description of the <code>organizationId</code> query parameter below for more details about the returned list.</em></p>
 
 <table><thead>
 <tr>
@@ -3671,6 +3912,18 @@ curl <span class="s2">"https://cloudmc_endpoint/v1/services/connections/03bc22bd
 <tr>
 <td><code>quota</code><br/><em>Object</em></td>
 <td>The quota assigned to the organization (may be null depending on if the connection supports quotas or not).<br/><em>includes</em>: <code>id</code>, <code>name</code></td>
+</tr>
+</tbody></table>
+
+<table><thead>
+<tr>
+<th>Optional query parameters</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>organizationId</code><br/><em>string</em></td>
+<td>The organization from whose scope the request is being made. Based on this the returned list may vary. Organizations that are above this organization <em>(represented by the id)</em> in the organization tree hierarchy will be filtered from the returned list even if they have the connection assigned to them. If this is not provided then the request defaults to the user&#39;s organization.</td>
 </tr>
 </tbody></table>
 <h2 id='administration-organizations'>Organizations</h2>
@@ -4053,7 +4306,7 @@ curl -X PUT <span class="s2">"https://cloudmc_endpoint/v1/organizations/03bc22bd
 </tr>
 <tr>
 <td><code>serviceConnections</code><br/>Array[<a href="#administration-service-connections">ServiceConnection</a>]</td>
-<td>A list of service connections for which the organization may provision resources. The caller must have access to all connections that are provided. <strong>NB :</strong> Service connection access may be added but not revoked at this time.<br/><em>required :</em> <code>id</code></td>
+<td>A list of service connections for which the organization may provision resources. The caller must have access to all connections that are provided. <br/><em>Read below (after the request parameter list) for more details.</em><br/><em>required attributes of the service connection:</em> <code>id</code></td>
 </tr>
 <tr>
 <td><code>tags</code><br/><em>Array[string]</em></td>
@@ -4065,7 +4318,7 @@ curl -X PUT <span class="s2">"https://cloudmc_endpoint/v1/organizations/03bc22bd
 </tr>
 <tr>
 <td><code>users</code><br/><em>Array[<a href="#administration-users">User</a>]</em></td>
-<td>The users of the organization.<br/><em>required</em> : <code>id</code></td>
+<td>The users of the organization.<br/><em>required attributes of the organization</em> : <code>id</code></td>
 </tr>
 <tr>
 <td><code>notes</code><br/><em>string</em></td>
@@ -4089,7 +4342,13 @@ curl -X PUT <span class="s2">"https://cloudmc_endpoint/v1/organizations/03bc22bd
 </tr>
 </tbody></table>
 
-<p>The responses&#39; <code>data</code> field contains the updated <a href="#administration-organizations">organization</a>.</p>
+<p>The responses&#39; <code>data</code> field contains the updated <a href="#administration-organizations">organization</a>.</br>
+<strong>NB :</strong> At this time the API only enables adding access to Service connections but not revoking it. A Service connection can be assigned to an organization only if: </p>
+
+<ul>
+<li>The organization owns the service connection <em>(i.e. the organizationId of the service connection is this organization&#39;s id)</em></li>
+<li>If the organization is a sub-organization in some organization hierachy, then the service connection must be either <strong>owned by</strong> or <strong>assigned to</strong> its immediate parent organization</li>
+</ul>
 
 <!-------------------- DELETE ORGANIZATION -------------------->
 <h3 id='administration-delete-organization'>Delete organization</h3>
@@ -4370,6 +4629,109 @@ curl -X PUT <span class="s2">"https://cloudmc_endpoint/v1/organizations/03bc22bd
 </tbody></table>
 
 <p>Returns an HTTP status code 200, with an empty response body.</p>
+
+<!-------------------- GET MANAGEABLE CONNECTIONS OF ORGANIZATION -------------------->
+<h3 id='administration-get-manageable-connections-of-an-organization'>Get manageable connections of an organization</h3>
+<p><code>GET /organizations/:id/manageable_connections</code></p>
+
+<p>Get a list of Service connections that can be managed by the current user on the given organization.</p>
+<pre class="highlight shell tab-shell"><code><span class="c"># Update an organization</span>
+curl -X GET <span class="s2">"https://cloudmc_endpoint/v1/organizations/03bc22bd-adc4-46b8-988d-afddc24c0cb5/manageable_connections"</span> <span class="se">\</span>
+   -H <span class="s2">"MC-Api-Key: your_api_key"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns a JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2f7b4d49-b426-424f-b272-396b66947bb1"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Microsoft Azure"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"azure"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"serviceCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"azure-dev"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"97b3f5fa-1bda-4dae-b716-8039d9b89a56"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"serviceConnection"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"reachable"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"lastUpdated"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"version"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"quotas"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"b1dc9202-4e1a-4180-9ed6-28025b5aacdd"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Objects Lab"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"swiftstack"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"serviceCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"objects-lab"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"74a78d2b-c0da-475e-9bb7-218adc745d81"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"serviceConnection"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"reachable"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"lastUpdated"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"version"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"quotas"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="p">},</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre>
+<table><thead>
+<tr>
+<th>Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code><br/><em>string</em></td>
+<td>The id of the service connection.</td>
+</tr>
+<tr>
+<td><code>name</code><br/><em>string</em></td>
+<td>The name of the service connection.</td>
+</tr>
+<tr>
+<td><code>type</code><br/><em>string</em></td>
+<td>The type of the service connection. <em>(e.g. gcp, azure, aws, cloudca, swift, etc.)</em></td>
+</tr>
+<tr>
+<td><code>serviceCode</code><br/><em>string</em></td>
+<td>The globally unique serviceCode that identifies the service connection.</td>
+</tr>
+<tr>
+<td><code>status</code><br/><em>Object</em></td>
+<td>The status object describing the status of connectivity to this service from CloudMc.</td>
+</tr>
+<tr>
+<td><code>quotas</code><br/><em>Array[Quotas]</em></td>
+<td>A list of quotas that can be associated to the service connnection.</td>
+</tr>
+</tbody></table>
+
+<p>The user should have <code>Connections reseller</code> permission on the organization. This list includes the following types of Service connections:</p>
+
+<ul>
+<li>If the API user is from this organization:
+
+<ul>
+<li>Service connections <code>owned by</code> and <code>assigned to</code> this organization</li>
+</ul></li>
+<li>If the API user is from this organization&#39;s immediate parent organization:
+
+<ul>
+<li>Service connections <code>assigned to</code> this organization</li>
+<li>Service connections <code>owned by</code> and <code>assigned to</code> this organization&#39;s immediate parent organization <em>(i.e. the user&#39;s organization)</em></li>
+</ul></li>
+<li>If the API user is from any organization between this organization&#39;s immediate parent organization and the root organization:
+
+<ul>
+<li>Service connections <code>assigned to</code> this organization</li>
+<li>Service connections <code>owned by</code> the user&#39;s organization <strong>and</strong> is <code>assigned to</code> this organization&#39;s immediate parent organization</li>
+<li>Service connections <code>assigned to</code> the user&#39;s organization <strong>and</strong> is <code>assigned to</code> this organization&#39;s immediate parent organization</li>
+</ul></li>
+</ul>
 
 <!-------------------- MARK AS RESELLER -------------------->
 <h3 id='administration-mark-organization-as-reseller'>Mark organization as reseller</h3>
