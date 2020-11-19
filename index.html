@@ -3195,6 +3195,12 @@
                     <a href="#stackpath-network-policy-rules" class="toc-h2 toc-link" data-title="Stackpath plugin">Network policy rules</a>
                       <ul class="toc-list-h3">
                           <li>
+                            <a href="#stackpath-list-network-policy-rules" class="toc-h3 toc-link" data-title="Stackpath plugin">List network policy rules</a>
+                          </li>
+                          <li>
+                            <a href="#stackpath-retrieve-a-network-policy-rule" class="toc-h3 toc-link" data-title="Stackpath plugin">Retrieve a network policy rule</a>
+                          </li>
+                          <li>
                             <a href="#stackpath-create-a-network-policy-rule" class="toc-h3 toc-link" data-title="Stackpath plugin">Create a network policy rule</a>
                           </li>
                       </ul>
@@ -3475,7 +3481,7 @@ If you are not familiar with the CloudMC API response structures, it would be va
 </thead><tbody>
 <tr>
 <td><code>organizationId</code><br/><em>string</em></td>
-<td>The organization whose connections are to be retreived. If this is not provided then the request defaults to the user&#39;s organization.</td>
+<td>The organization whose connections are to be retrieved. If this is not provided then the request defaults to the user&#39;s organization.</td>
 </tr>
 </tbody></table>
 
@@ -3526,7 +3532,7 @@ If you are not familiar with the CloudMC API response structures, it would be va
 <!-------------------- GET SERVICE CONNECTION PARAMETERS -------------------->
 <h3 id='administration-retrieve-connection-parameters'>Retrieve connection parameters</h3>
 <p><code>GET /services/descriptors/:pluginType/parameters</code></p>
-<pre class="highlight shell tab-shell"><code><span class="c"># Retreive service connection parameters</span>
+<pre class="highlight shell tab-shell"><code><span class="c"># Retrieve service connection parameters</span>
 
 curl -X GET <span class="se">\</span>
    -H <span class="s2">"MC-Api-Key: your_api_key"</span> <span class="se">\</span>
@@ -23912,7 +23918,7 @@ Snapshots are incremental to avoid billing for redundant data and minimize use o
   </span><span class="s2">"range"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0.0.0/0"</span><span class="p">,</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<p><code>CREATE /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/firewallrule</code></p>
+<p><code>POST /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/firewallrule</code></p>
 
 <p>Create a new firewall rule.</p>
 
@@ -52917,6 +52923,189 @@ a custom one. Only non-deprecated images are returned by default.</p>
 <h2 id='stackpath-network-policy-rules'>Network policy rules</h2>
 <p>Network policy rules allows you to control inbound and outbound traffic to your <a href="#stackpath-workloads">workload</a>.</p>
 
+<!-------------------- LIST NETWORK POLICY RULES -------------------->
+<h3 id='stackpath-list-network-policy-rules'>List network policy rules</h3><pre class="highlight shell tab-shell"><code>curl -X GET <span class="se">\</span>
+  -H <span class="s2">"MC-Api-Key: your_api_key"</span> <span class="se">\</span>
+  <span class="s2">"https://cloudmc_endpoint/v1/services/stackpath/test-area/networkpolicyrules"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns a JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"stackId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bcc60174-50e6-44e4-bd45-463845124d87"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"workloadId"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"networkPolicyId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"f89e80ed-1208-4607-82b2-df2779d90f21"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"f89e80ed-1208-4607-82b2-df2779d90f21/701825869"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Allow ICMP packets"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"INGRESS"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"source"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0.0.0/0"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"action"</span><span class="p">:</span><span class="w"> </span><span class="s2">"inbound"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"protocol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"icmp"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"portRange"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"stackId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bcc60174-50e6-44e4-bd45-463845124d87"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"workloadId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6ca53aff-8930-46d6-ba86-afbeb0b46bb7"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"networkPolicyId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2ac958f2-0976-4de9-95f6-3546fc10f8d0"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2ac958f2-0976-4de9-95f6-3546fc10f8d0/-812331665"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"custom-inbound"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"inbound"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"source"</span><span class="p">:</span><span class="w"> </span><span class="s2">"192.168.0.1/32"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"action"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ALLOW"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"protocol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tcp"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"portRange"</span><span class="p">:</span><span class="w"> </span><span class="s2">"80"</span><span class="p">,</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="s2">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"recordCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><code>GET /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/networkpolicyrules</code></p>
+
+<p>Retrieve a list of all network policy rules in a given <a href="#administration-environments">environment</a>.</p>
+
+<table><thead>
+<tr>
+<th>Query Params</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>workloadId</code><br/><em>string</em></td>
+<td>The workload ID to get the network policy rules for. It is optional.</td>
+</tr>
+<tr>
+<td><code>type</code><br/><em>string</em></td>
+<td>The type of network policy rule, either <code>INBOUND</code> or <code>OUTBOUND</code>. It is optional.</td>
+</tr>
+</tbody></table>
+
+<table><thead>
+<tr>
+<th>Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code><br/><em>string</em></td>
+<td>The ID of the network policy rule, in the form <code>workloadId/hashCode</code>.</td>
+</tr>
+<tr>
+<td><code>stackId</code><br/><em>UUID</em></td>
+<td>The UUID of the stack to which the network policy belongs.</td>
+</tr>
+<tr>
+<td><code>workloadId</code><br/><em>UUID</em></td>
+<td>The UUID of the workload to which the network policy rule is applied. Corresponds to the first workload ID in the network policy&#39;s list of instance selectors.</td>
+</tr>
+<tr>
+<td><code>networkPolicyId</code><br/><em>UUID</em></td>
+<td>The UUID of the network policy to which the network policy rule belongs.</td>
+</tr>
+<tr>
+<td><code>description</code><br/><em>string</em></td>
+<td>A summary of what this rule does or a name of this rule. It is highly recommended to give a unique description to easily identify a rule.</td>
+</tr>
+<tr>
+<td><code>type</code><br/><em>string</em></td>
+<td>The type of network policy rule, either <code>inbound</code> or <code>outbound</code>.</td>
+</tr>
+<tr>
+<td><code>source</code><br/><em>string</em></td>
+<td>A subnet that will define all the IPs allowed or denied by this rule.</td>
+</tr>
+<tr>
+<td><code>action</code><br/><em>string</em></td>
+<td>The network policy rule action: <code>ALLOW</code> (allow traffic) or <code>BLOCK</code> (deny traffic).</td>
+</tr>
+<tr>
+<td><code>protocol</code><br/><em>string</em></td>
+<td>Supported protocols are: <code>TCP</code>, <code>UDP</code>, <code>TCP_UDP</code>, <code>ESP</code>, <code>AH</code>, <code>ICMP</code> or <code>GRE</code>.</td>
+</tr>
+<tr>
+<td><code>portRange</code><br/><em>string</em></td>
+<td>This specifies on which ports traffic will be allowed or denied by this rule. It can be a range of ports separated by a hyphen.</td>
+</tr>
+</tbody></table>
+
+<!-------------------- GET A NETWORK POLICY RULE -------------------->
+<h3 id='stackpath-retrieve-a-network-policy-rule'>Retrieve a network policy rule</h3><pre class="highlight shell tab-shell"><code>curl -X GET <span class="se">\</span>
+  -H <span class="s2">"MC-Api-Key: your_api_key"</span> <span class="se">\</span>
+  <span class="s2">"https://cloudmc_endpoint/v1/services/stackpath/test-area/networkpolicyrules/2ac958f2-0976-4de9-95f6-3546fc10f8d0/-812331665"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns a JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"stackId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bcc60174-50e6-44e4-bd45-463845124d87"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"workloadId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6ca53aff-8930-46d6-ba86-afbeb0b46bb7"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"networkPolicyId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2ac958f2-0976-4de9-95f6-3546fc10f8d0"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2ac958f2-0976-4de9-95f6-3546fc10f8d0/-812331665"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"custom-inbound"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ingress"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"source"</span><span class="p">:</span><span class="w"> </span><span class="s2">"192.168.0.1/32"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"action"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ALLOW"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"protocol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tcp"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"portRange"</span><span class="p">:</span><span class="w"> </span><span class="s2">"80"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><code>GET /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/networkpolicyrules/:id</code></p>
+
+<p>Retrieve a network policy rule in a given <a href="#administration-environments">environment</a>.</p>
+
+<table><thead>
+<tr>
+<th>Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code><br/><em>string</em></td>
+<td>The ID of the network policy rule, in the form <code>workloadId/hashCode</code>.</td>
+</tr>
+<tr>
+<td><code>stackId</code><br/><em>UUID</em></td>
+<td>The UUID of the stack to which the network policy belongs.</td>
+</tr>
+<tr>
+<td><code>workloadId</code><br/><em>UUID</em></td>
+<td>The UUID of the workload to which the network policy rule is applied. Corresponds to the first workload ID in the network policy&#39;s list of instance selectors.</td>
+</tr>
+<tr>
+<td><code>networkPolicyId</code><br/><em>UUID</em></td>
+<td>The UUID of the network policy to which the network policy rule belongs.</td>
+</tr>
+<tr>
+<td><code>description</code><br/><em>string</em></td>
+<td>A summary of what this rule does or a name of this rule. It is highly recommended to give a unique description to easily identify a rule.</td>
+</tr>
+<tr>
+<td><code>type</code><br/><em>string</em></td>
+<td>The type of network policy rule, either <code>inbound</code> or <code>outbound</code>.</td>
+</tr>
+<tr>
+<td><code>source</code><br/><em>string</em></td>
+<td>A subnet that will define all the IPs allowed or denied by this rule.</td>
+</tr>
+<tr>
+<td><code>action</code><br/><em>string</em></td>
+<td>The network policy rule action: <code>ALLOW</code> (allow traffic) or <code>BLOCK</code> (deny traffic).</td>
+</tr>
+<tr>
+<td><code>protocol</code><br/><em>string</em></td>
+<td>Supported protocols are: <code>TCP</code>, <code>UDP</code>, <code>TCP_UDP</code>, <code>ESP</code>, <code>AH</code>, <code>ICMP</code> or <code>GRE</code>.</td>
+</tr>
+<tr>
+<td><code>portRange</code><br/><em>string</em></td>
+<td>This specifies on which ports traffic will be allowed or denied by this rule. It can be a range of ports separated by a hyphen.</td>
+</tr>
+</tbody></table>
+
 <!-------------------- CREATE A NETWORK POLICY RULE -------------------->
 <h3 id='stackpath-create-a-network-policy-rule'>Create a network policy rule</h3><pre class="highlight shell tab-shell"><code>curl -X POST <span class="se">\</span>
   -H <span class="s2">"MC-Api-Key: your_api_key"</span> <span class="se">\</span>
@@ -52935,7 +53124,7 @@ a custom one. Only non-deprecated images are returned by default.</p>
   </span><span class="s2">"portRange"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8080"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<p><code>CREATE /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/networkpolicyrules?workloadId=:workloadId</code></p>
+<p><code>POST /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/networkpolicyrules?workloadId=:workloadId</code></p>
 
 <p>Create a new network policy rule.</p>
 
