@@ -53116,12 +53116,13 @@ a custom one. Only non-deprecated images are returned by default.</p>
 <h3 id='stackpath-create-a-network-policy-rule'>Create a network policy rule</h3><pre class="highlight shell tab-shell"><code>curl -X POST <span class="se">\</span>
   -H <span class="s2">"MC-Api-Key: your_api_key"</span> <span class="se">\</span>
   -d <span class="s2">"request_body"</span> <span class="se">\</span>
-  <span class="s2">"https://cloudmc_endpoint/v1/services/stackpath/test-area/networkpolicyrules?workloadId=bf9fd2ac-f761-46ef-88e0-b61ef68f8619"</span>
+  <span class="s2">"https://cloudmc_endpoint/v1/services/stackpath/test-area/networkpolicyrules"</span>
 </code></pre>
 <blockquote>
 <p>Request body example:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"workloadId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bf9fd2ac-f761-46ef-88e0-b61ef68f8619"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"npr_cloudmc_isk"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"protocol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tcp"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"INBOUND"</span><span class="p">,</span><span class="w">
@@ -53130,21 +53131,9 @@ a custom one. Only non-deprecated images are returned by default.</p>
   </span><span class="s2">"portRange"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8080"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<p><code>POST /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/networkpolicyrules?workloadId=:workloadId</code></p>
+<p><code>POST /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/networkpolicyrules</code></p>
 
 <p>Create a new network policy rule.</p>
-
-<table><thead>
-<tr>
-<th>Query Params</th>
-<th>&nbsp;</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code>workloadId</code><br/><em>string</em></td>
-<td>The workload ID to create a network policy for. It is mandatory.</td>
-</tr>
-</tbody></table>
 
 <table><thead>
 <tr>
@@ -53152,6 +53141,10 @@ a custom one. Only non-deprecated images are returned by default.</p>
 <th>&nbsp;</th>
 </tr>
 </thead><tbody>
+<tr>
+<td><code>workloadId</code><br/><em>UUID</em></td>
+<td>The workload UUID to create a network policy for.</td>
+</tr>
 <tr>
 <td><code>description</code><br/><em>string</em></td>
 <td>A summary of what this rule does or a name of this rule. It is highly recommended to give a unique description to easily identify a rule.</td>
