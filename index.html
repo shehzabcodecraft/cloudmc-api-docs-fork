@@ -53124,7 +53124,7 @@ a custom one. Only non-deprecated images are returned by default.</p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"workloadId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bf9fd2ac-f761-46ef-88e0-b61ef68f8619"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"npr_cloudmc_isk"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"protocol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tcp"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"protocol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TCP"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"INBOUND"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"action"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ALLOW"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"source"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0.0.0/0"</span><span class="p">,</span><span class="w">
@@ -53155,7 +53155,7 @@ a custom one. Only non-deprecated images are returned by default.</p>
 </tr>
 <tr>
 <td><code>type</code><br/><em>string</em></td>
-<td>Either Inbound or Outbound</td>
+<td>The type of network policy rule. Supported types are: <code>INBOUND</code> (Ingress) and <code>OUTBOUND</code> (Egress).</td>
 </tr>
 <tr>
 <td><code>action</code><br/><em>string</em></td>
@@ -53219,7 +53219,7 @@ a custom one. Only non-deprecated images are returned by default.</p>
 </tr>
 <tr>
 <td><code>type</code><br/><em>string</em></td>
-<td>The type of network policy rule, either <code>INBOUND</code> or <code>OUTBOUND</code>.</td>
+<td>The type of network policy rule. Supported types are: <code>INBOUND</code> (Ingress) and <code>OUTBOUND</code> (Egress).</td>
 </tr>
 <tr>
 <td><code>source</code><br/><em>string</em></td>
