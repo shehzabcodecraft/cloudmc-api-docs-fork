@@ -3204,6 +3204,9 @@
                             <a href="#stackpath-create-a-network-policy-rule" class="toc-h3 toc-link" data-title="Stackpath plugin">Create a network policy rule</a>
                           </li>
                           <li>
+                            <a href="#stackpath-delete-a-network-policy-rule" class="toc-h3 toc-link" data-title="Stackpath plugin">Delete a network policy rule</a>
+                          </li>
+                          <li>
                             <a href="#stackpath-edit-a-network-policy-rule" class="toc-h3 toc-link" data-title="Stackpath plugin">EDIT a network policy rule</a>
                           </li>
                       </ul>
@@ -53171,9 +53174,18 @@ a custom one. Only non-deprecated images are returned by default.</p>
 </tr>
 <tr>
 <td><code>portRange</code><br/><em>string</em></td>
-<td>This specifies on which ports traffic will be allowed or denied by this rule. It can be a range of ports separated by a hyphen. Not required for protocol for <code>ESP</code> or <code>AH</code>.</td>
+<td>This specifies on which ports traffic will be allowed or denied by this rule. It can be a range of ports separated by a hyphen.</td>
 </tr>
 </tbody></table>
+
+<!-------------------- DELETE A NETWORK POLICY RULE -------------------->
+<h3 id='stackpath-delete-a-network-policy-rule'>Delete a network policy rule</h3><pre class="highlight shell tab-shell"><code>curl -X POST <span class="se">\</span>
+  -H <span class="s2">"MC-Api-Key: your_api_key"</span> <span class="se">\</span>
+  <span class="s2">"https://cloudmc_endpoint/v1/services/stack/razine-test-env/networkpolicyrules/93cf3029-3657-44c4-add1-22c4ee2bcb94/INBOUND/1617554972/0"</span>
+</code></pre>
+<p><code>DELETE /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/networkpolicyrules/:id</code></p>
+
+<p>Delete a network policy rule.</p>
 
 <!-------------------- EDIT A NETWORK POLICY RULE -------------------->
 <h3 id='stackpath-edit-a-network-policy-rule'>EDIT a network policy rule</h3><pre class="highlight shell tab-shell"><code>curl -X PUT <span class="se">\</span>
