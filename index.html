@@ -3162,6 +3162,9 @@
                             <a href="#stackpath-retrieve-a-workload" class="toc-h3 toc-link" data-title="StackPath plugin">Retrieve a workload</a>
                           </li>
                           <li>
+                            <a href="#stackpath-edit-a-workload" class="toc-h3 toc-link" data-title="StackPath plugin">Edit a workload</a>
+                          </li>
+                          <li>
                             <a href="#stackpath-delete-a-workload" class="toc-h3 toc-link" data-title="StackPath plugin">Delete a workload</a>
                           </li>
                       </ul>
@@ -52379,7 +52382,7 @@ If the secret <code>X-Account-Meta-Temp-URL-Key</code> key does not already exis
       </span><span class="s2">"stackId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3e651d2e-b1f4-44ad-b21a-ebcd0bf79ca1"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"stackpath-workload-01"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ACTIVE"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"spec"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SP-2"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"specs"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SP-2"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-11-06T18:48:36.850115786Z"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"VM"</span><span class="p">,</span><span class="w">
@@ -52426,7 +52429,7 @@ If the secret <code>X-Account-Meta-Temp-URL-Key</code> key does not already exis
 <td>The status of the workload. It can be either ACTIVE or DISABLED.</td>
 </tr>
 <tr>
-<td><code>spec</code><br/><em>string</em></td>
+<td><code>specs</code><br/><em>string</em></td>
 <td>Specification type for resources which are allocated to each instance in a workload.</td>
 </tr>
 <tr>
@@ -52478,7 +52481,7 @@ If the secret <code>X-Account-Meta-Temp-URL-Key</code> key does not already exis
     </span><span class="s2">"stackId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3e651d2e-b1f4-44ad-b21a-ebcd0bf79ca1"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"stackpath-workload-01"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ACTIVE"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"spec"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SP-1"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"specs"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SP-1"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-11-09T08:28:45.185278507Z"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Container"</span><span class="p">,</span><span class="w">
@@ -52521,7 +52524,7 @@ If the secret <code>X-Account-Meta-Temp-URL-Key</code> key does not already exis
 <td>The status of the workload. It can be either ACTIVE or DISABLED.</td>
 </tr>
 <tr>
-<td><code>spec</code><br/><em>string</em></td>
+<td><code>specs</code><br/><em>string</em></td>
 <td>Specification type for resources which are allocated to each instance in a workload.</td>
 </tr>
 <tr>
@@ -52555,6 +52558,182 @@ If the secret <code>X-Account-Meta-Temp-URL-Key</code> key does not already exis
 <tr>
 <td><code>image</code><br/><em>string</em></td>
 <td>The workload&#39;s instance operating system image.</td>
+</tr>
+</tbody></table>
+
+<!-------------------- EDIT A WORKLOAD -------------------->
+<h3 id='stackpath-edit-a-workload'>Edit a workload</h3><pre class="highlight shell tab-shell"><code>curl -X PUT <span class="se">\</span>
+  -H <span class="s2">"MC-Api-Key: your_api_key"</span> <span class="se">\</span>
+  -d <span class="s2">"request_body"</span> <span class="se">\</span>
+  <span class="s2">"https://cloudmc_endpoint/v1/services/stackpath/test-area/workloads/1b932678-1038-4ab4-9fa4-c4c06e696e20"</span>
+</code></pre>
+<blockquote>
+<p>Request body example:
+```js
+// Request body example for a VM
+{
+  &quot;name&quot;: &quot;my-vm-workload&quot;,
+  &quot;id&quot;: &quot;4b23edf3-9847-4400-b779-f94203227324&quot;,
+  &quot;stackId&quot;: &quot;2f661cf6-8d08-42d0-918c-c20362fc9940&quot;,
+  &quot;slug&quot;: &quot;my-vm-workload&quot;,
+  &quot;type&quot;: &quot;VM&quot;,
+  &quot;cpu&quot;: &quot;1&quot;,
+  &quot;memory&quot;: &quot;2Gi&quot;,
+  &quot;specs&quot;: &quot;SP-1&quot;,
+  &quot;deploymentName&quot;: &quot;chicago-1&quot;,
+  &quot;deploymentPops&quot;: &quot;ORD&quot;,
+  &quot;enableAutoScaling&quot;: true,
+  &quot;cpuUtilization&quot;: 50,
+  &quot;minInstancesPerPop&quot;: 2,
+  &quot;maxInstancesPerPop&quot;: 3
+}</p>
+</blockquote>
+
+<p>// Request body example for a Container:</p>
+
+<p>{
+  &quot;name&quot;: &quot;my-container-workload&quot;,
+  &quot;id&quot;: &quot;e5f95455-1b50-4da1-86e1-6f9293f818a9&quot;,
+  &quot;stackId&quot;: &quot;2f661cf6-8d08-42d0-918c-c20362fc9940&quot;,
+  &quot;slug&quot;: &quot;my-container-workload&quot;,
+  &quot;type&quot;: &quot;Container&quot;,
+  &quot;image&quot;: &quot;redis:alpine&quot;,
+  &quot;environmentVariableKey&quot;: &quot;env-key&quot;,
+  &quot;environmentVariableValue&quot;: &quot;env-value&quot;,
+  &quot;secretEnvironmentVariableKey&quot;: &quot;secret-key&quot;,
+  &quot;secretEnvironmentVariableValue&quot;: &quot;secret-value&quot;,
+  &quot;addImagePullCredentialsOption&quot;: true,
+  &quot;containerUsername&quot;: &quot;username&quot;,
+  &quot;containerServer&quot;: &quot;container.server.io&quot;,
+  &quot;containerEmail&quot;: &quot;myemail@email.com&quot;,
+  &quot;containerPassword&quot;: &quot;my-password&quot;,
+  &quot;cpu&quot;: &quot;2&quot;,
+  &quot;memory&quot;: &quot;4Gi&quot;,
+  &quot;specs&quot;: &quot;SP-2&quot;,
+  &quot;deploymentName&quot;: &quot;toronto-1&quot;,
+  &quot;deploymentPops&quot;: &quot;YYZ&quot;,
+  &quot;enableAutoScaling&quot;: false,
+  &quot;deploymentInstancePerPops&quot;: 2
+}
+```</p>
+
+<p><code>PUT /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/workloads/:id</code></p>
+
+<p>Edit a workload in a given <a href="#administration-environments">environment</a>.</p>
+
+<table><thead>
+<tr>
+<th>Required</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>name</code><br/><em>string</em></td>
+<td>The name of the workload.</td>
+</tr>
+<tr>
+<td><code>id</code><br/><em>string</em></td>
+<td>A workload&#39;s unique identifier.</td>
+</tr>
+<tr>
+<td><code>stackId</code><br/><em>UUID</em></td>
+<td>The ID of the stack that a workload belongs to.</td>
+</tr>
+<tr>
+<td><code>slug</code><br/><em>string</em></td>
+<td>A workload&#39;s programmatic name. Workload slugs are used to build its instances names.</td>
+</tr>
+<tr>
+<td><code>type</code><br/><em>string</em></td>
+<td>Specify whether a workload is a VM-based workload or container-based. Can be either &#39;VM&#39; or &#39;CONTAINER&#39;.</td>
+</tr>
+<tr>
+<td><code>image</code><br/><em>string</em></td>
+<td>The location of a Docker image to run as a container. Only available when <code>type</code>is equal to &#39;CONTAINER&#39;.</td>
+</tr>
+<tr>
+<td><code>cpu</code><br/><em>string</em></td>
+<td>The number of vCPUs for the workload&#39;s instance.</td>
+</tr>
+<tr>
+<td><code>memory</code><br/><em>string</em></td>
+<td>The memory size for the workload&#39;s instance.</td>
+</tr>
+<tr>
+<td><code>specs</code><br/><em>string</em></td>
+<td>Specification type for resources which are allocated to each instance in a workload.</td>
+</tr>
+<tr>
+<td><code>deploymentName</code><br/><em>string</em></td>
+<td>The name of the deployment.</td>
+</tr>
+<tr>
+<td><code>deploymentPops</code><br/><em>string</em></td>
+<td>The point of presence of a deployment. In the format [A-Z][A-Z][A-Z]. I</td>
+</tr>
+<tr>
+<td><code>enableAutoScaling</code> <br/><em>boolean</em></td>
+<td>Specify if you would like to enable autoscaling. If enabled, then <code>cpuUtilization</code> , <code>minInstancesPerPop</code> and <code>maxInstancesPerPop</code> are required.</td>
+</tr>
+</tbody></table>
+
+<table><thead>
+<tr>
+<th>Optional</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>environmentVariableKey</code><br/><em>string</em></td>
+<td>The key of the environmental variable you would like to edit. Only available when <code>type</code>is equal to &#39;CONTAINER&#39;.</td>
+</tr>
+<tr>
+<td><code>environmentVariableValue</code><br/><em>string</em></td>
+<td>The value of the environmental variable you would like to edit. Only available when <code>type</code>is equal to &#39;CONTAINER&#39;.</td>
+</tr>
+<tr>
+<td><code>secretEnvironmentVariableKey</code><br/><em>string</em></td>
+<td>The key of the secret environmental variable you would like to edit. Only available when <code>type</code>is equal to &#39;CONTAINER&#39;.</td>
+</tr>
+<tr>
+<td><code>secretEnvironmentVariableValue</code><br/><em>string</em></td>
+<td>The value of the secret environmental variable you would like to edit. Only available when <code>type</code>is equal to &#39;CONTAINER&#39;.</td>
+</tr>
+<tr>
+<td><code>addImagePullCredentialsOption</code><br/><em>boolean</em></td>
+<td>It is used to indicate if additional credentials to pull container image are provided or not. Only available when <code>type</code>is equal to &#39;CONTAINER&#39;.</td>
+</tr>
+<tr>
+<td><code>containerUsername</code><br/><em>string</em></td>
+<td>The username that should be used for authenticate the image pull. Only available when <code>type</code>is equal to &#39;CONTAINER&#39;.</td>
+</tr>
+<tr>
+<td><code>containerEmail</code><br/><em>string</em></td>
+<td>The password that should be used to authenticate the image pull. Only available when <code>type</code>is equal to &#39;CONTAINER&#39;.</td>
+</tr>
+<tr>
+<td><code>containerServer</code><br/><em>string</em></td>
+<td>The server that the credentials should be used with. This value will default to the docker hub registry when not set. Only available when <code>type</code>is equal to &#39;CONTAINER&#39;.</td>
+</tr>
+<tr>
+<td><code>containerPassword</code><br/><em>string</em></td>
+<td>The password that should be used to authenticate the image pull. Only available when <code>type</code>is equal to &#39;CONTAINER&#39;.</td>
+</tr>
+<tr>
+<td><code>deploymentInstancePerPops</code><br/><em>integer</em></td>
+<td>The number of deployments per point of presence. Only required if autoscaling is not enabled.</td>
+</tr>
+<tr>
+<td><code>cpuUtilization</code><br/><em>integer</em></td>
+<td>The average CPU utlilization threshold to be reached before deploying a new instance. Only required if autoscaling is enabled.</td>
+</tr>
+<tr>
+<td><code>minInstancesPerPop</code><br/><em>integer</em></td>
+<td>The minimum number of instances per point of presence. Only required if autoscaling is enabled.</td>
+</tr>
+<tr>
+<td><code>maxInstancesPerPop</code><br/><em>integer</em></td>
+<td>The maximum number of instances per point of presence. Only required if autoscaling is enabled.</td>
 </tr>
 </tbody></table>
 
