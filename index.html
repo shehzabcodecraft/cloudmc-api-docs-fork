@@ -52568,55 +52568,53 @@ If the secret <code>X-Account-Meta-Temp-URL-Key</code> key does not already exis
   <span class="s2">"https://cloudmc_endpoint/v1/services/stackpath/test-area/workloads/1b932678-1038-4ab4-9fa4-c4c06e696e20"</span>
 </code></pre>
 <blockquote>
-<p>Request body example:
-```js
-// Request body example for a VM
-{
-  &quot;name&quot;: &quot;my-vm-workload&quot;,
-  &quot;id&quot;: &quot;4b23edf3-9847-4400-b779-f94203227324&quot;,
-  &quot;stackId&quot;: &quot;2f661cf6-8d08-42d0-918c-c20362fc9940&quot;,
-  &quot;slug&quot;: &quot;my-vm-workload&quot;,
-  &quot;type&quot;: &quot;VM&quot;,
-  &quot;cpu&quot;: &quot;1&quot;,
-  &quot;memory&quot;: &quot;2Gi&quot;,
-  &quot;specs&quot;: &quot;SP-1&quot;,
-  &quot;deploymentName&quot;: &quot;chicago-1&quot;,
-  &quot;deploymentPops&quot;: &quot;ORD&quot;,
-  &quot;enableAutoScaling&quot;: true,
-  &quot;cpuUtilization&quot;: 50,
-  &quot;minInstancesPerPop&quot;: 2,
-  &quot;maxInstancesPerPop&quot;: 3
-}</p>
+<p>Request body example for a VM Workload type:</p>
 </blockquote>
-
-<p>// Request body example for a Container:</p>
-
-<p>{
-  &quot;name&quot;: &quot;my-container-workload&quot;,
-  &quot;id&quot;: &quot;e5f95455-1b50-4da1-86e1-6f9293f818a9&quot;,
-  &quot;stackId&quot;: &quot;2f661cf6-8d08-42d0-918c-c20362fc9940&quot;,
-  &quot;slug&quot;: &quot;my-container-workload&quot;,
-  &quot;type&quot;: &quot;Container&quot;,
-  &quot;image&quot;: &quot;redis:alpine&quot;,
-  &quot;environmentVariableKey&quot;: &quot;env-key&quot;,
-  &quot;environmentVariableValue&quot;: &quot;env-value&quot;,
-  &quot;secretEnvironmentVariableKey&quot;: &quot;secret-key&quot;,
-  &quot;secretEnvironmentVariableValue&quot;: &quot;secret-value&quot;,
-  &quot;addImagePullCredentialsOption&quot;: true,
-  &quot;containerUsername&quot;: &quot;username&quot;,
-  &quot;containerServer&quot;: &quot;container.server.io&quot;,
-  &quot;containerEmail&quot;: &quot;myemail@email.com&quot;,
-  &quot;containerPassword&quot;: &quot;my-password&quot;,
-  &quot;cpu&quot;: &quot;2&quot;,
-  &quot;memory&quot;: &quot;4Gi&quot;,
-  &quot;specs&quot;: &quot;SP-2&quot;,
-  &quot;deploymentName&quot;: &quot;toronto-1&quot;,
-  &quot;deploymentPops&quot;: &quot;YYZ&quot;,
-  &quot;enableAutoScaling&quot;: false,
-  &quot;deploymentInstancePerPops&quot;: 2
-}
-```</p>
-
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"my-vm-workload"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4b23edf3-9847-4400-b779-f94203227324"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"stackId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2f661cf6-8d08-42d0-918c-c20362fc9940"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"my-vm-workload"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"VM"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"cpu"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"memory"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2Gi"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"specs"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SP-1"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"deploymentName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"chicago-1"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"deploymentPops"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ORD"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"enableAutoScaling"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"cpuUtilization"</span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"minInstancesPerPop"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"maxInstancesPerPop"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<blockquote>
+<p>Request body example for a CONTAINER Workload type:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"my-container-workload"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"e5f95455-1b50-4da1-86e1-6f9293f818a9"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"stackId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2f661cf6-8d08-42d0-918c-c20362fc9940"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"my-container-workload"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Container"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"image"</span><span class="p">:</span><span class="w"> </span><span class="s2">"redis:alpine"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"environmentVariableKey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"env-key"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"environmentVariableValue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"env-value"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"secretEnvironmentVariableKey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"secret-key"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"secretEnvironmentVariableValue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"secret-value"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"addImagePullCredentialsOption"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"containerUsername"</span><span class="p">:</span><span class="w"> </span><span class="s2">"username"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"containerServer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"container.server.io"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"containerEmail"</span><span class="p">:</span><span class="w"> </span><span class="s2">"myemail@email.com"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"containerPassword"</span><span class="p">:</span><span class="w"> </span><span class="s2">"my-password"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"cpu"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"memory"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4Gi"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"specs"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SP-2"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"deploymentName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"toronto-1"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"deploymentPops"</span><span class="p">:</span><span class="w"> </span><span class="s2">"YYZ"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"enableAutoScaling"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"deploymentInstancePerPops"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
 <p><code>PUT /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/workloads/:id</code></p>
 
 <p>Edit a workload in a given <a href="#administration-environments">environment</a>.</p>
