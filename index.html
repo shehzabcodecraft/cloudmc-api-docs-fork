@@ -3162,6 +3162,9 @@
                             <a href="#stackpath-retrieve-a-workload" class="toc-h3 toc-link" data-title="StackPath plugin">Retrieve a workload</a>
                           </li>
                           <li>
+                            <a href="#stackpath-create-a-workload" class="toc-h3 toc-link" data-title="StackPath plugin">Create a workload</a>
+                          </li>
+                          <li>
                             <a href="#stackpath-edit-a-workload" class="toc-h3 toc-link" data-title="StackPath plugin">Edit a workload</a>
                           </li>
                           <li>
@@ -52558,6 +52561,204 @@ If the secret <code>X-Account-Meta-Temp-URL-Key</code> key does not already exis
 <tr>
 <td><code>image</code><br/><em>string</em></td>
 <td>The workload&#39;s instance operating system image.</td>
+</tr>
+</tbody></table>
+
+<!-------------------- CREATE A WORKLOAD -------------------->
+<h3 id='stackpath-create-a-workload'>Create a workload</h3><pre class="highlight shell tab-shell"><code>curl -X POST <span class="se">\</span>
+    -H <span class="s2">"MC-Api-Key: your_api_key"</span> <span class="se">\</span>
+    -d <span class="s2">"request_body"</span> <span class="se">\</span>
+    <span class="s2">"https://cloudmc_endpoint/v1/services/stackpath/test-area/workloads"</span>
+</code></pre>
+<blockquote>
+<p>Request body example(s):
+```js
+// Request body example for a VM:
+{
+   &quot;name&quot;:&quot;w-user-zwg&quot;,
+   &quot;slug&quot;:&quot;w-user-zwg&quot;,
+   &quot;type&quot;:&quot;VM&quot;,
+   &quot;image&quot;:&quot;stackpath-edge/centos-7-cpanel:v201905241955&quot;,
+   &quot;vpc&quot;:&quot;Default&quot;,
+   &quot;addAnyCastIpAddress&quot;:false,
+   &quot;publicPorts&quot;:&quot;80&quot;,
+   &quot;protocol&quot;:&quot;TCP&quot;,
+   &quot;firstBootSshKey&quot;:&quot;ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDcYr9OnzsDfYVW2I1kX/iYJ0mPG490bI5mbxbOAKPLMuWLguxRohX804j1XbwZJ+Sna+9rSfxaYA8vgd1MoYX10l9cnMLx/MMbYp4ZquauN4pGY3WoDeCqsTss3VUMW+7RFBILpU3SJTlDV02FI36D3IXb4A8XymCyU3KC99XXTfTQsuKC+WFRMsTWtklrasqCVd5yEG90i/aJc6A3TZGOYgPFNEeVYvNDaJmIkb3y4FfShoBIMgZRt0ay7SvWZUvyfvyNmK5W9ePdhZZ58R+7tQNmCzjQ4v0suWRuGJ/XL3+03w3HEsDdQx+noL+R+qAjoNFwc0spBBhJK+Q4ADqr nothing@gmail.com&quot;,
+   &quot;specs&quot;:&quot;SP-1&quot;,
+   &quot;persistenceStoragePath&quot;:&quot;/lib/data/newFolder&quot;,
+   &quot;persistenceStorageSize&quot;:1,
+   &quot;deploymentName&quot;:&quot;wi-root-ion&quot;,
+   &quot;deploymentInstancePerPops&quot;:1,
+   &quot;enableAutoScaling&quot;:false,
+   &quot;deploymentPops&quot;:&quot;YYZ&quot;
+}</p>
+</blockquote>
+
+<p>// Request body example for a Container:
+{
+   &quot;name&quot;:&quot;w-user-pah&quot;,
+   &quot;type&quot;:&quot;CONTAINER&quot;,
+   &quot;image&quot;:&quot;nginx:latest&quot;,
+   &quot;addImagePullCredentialsOption&quot;:true,
+   &quot;containerUsername&quot;:&quot;test.username&quot;,
+   &quot;containerPassword&quot;:&quot;test-password&quot;,
+   &quot;containerServer&quot;:null,
+   &quot;containerEmail&quot;:null,
+   &quot;environmentVariableKey&quot;: null,
+   &quot;environmentVariableValue&quot;: null,
+   &quot;secretEnvironmentVariableKey&quot;:null,
+   &quot;secretEnvironmentVariableValue&quot;:null,
+   &quot;vpc&quot;:&quot;Default&quot;,
+   &quot;addAnyCastIpAddress&quot;:false,
+   &quot;publicPorts&quot;:&quot;80-200&quot;,
+   &quot;protocol&quot;:&quot;UDP&quot;,
+   &quot;specs&quot;:&quot;SP-3&quot;,
+   &quot;persistenceStoragePath&quot;:null,
+   &quot;persistenceStorageSize&quot;:1,
+   &quot;deploymentName&quot;:&quot;wi-root-pxa&quot;,
+   &quot;deploymentInstancePerPops&quot;:1,
+   &quot;deploymentPops&quot;:&quot;FRA&quot;,
+   &quot;enableAutoScaling&quot;:true,
+   &quot;cpuUtilization&quot;:50,
+   &quot;minInstancesPerPop&quot;:1,
+   &quot;maxInstancesPerPop&quot;:2
+}
+```</p>
+
+<blockquote>
+<p>The above commands return a JSON structured like this:
+<code>json
+{
+  &quot;taskId&quot;: &quot;7135ae25-8488-4bc5-a289-285c84a00a84&quot;,
+  &quot;taskStatus&quot;: &quot;PENDING&quot;
+}
+</code>
+<code>POST /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/workloads</code></p>
+</blockquote>
+
+<p>Create a new workload in a given <a href="#administration-environments">environment</a>.</p>
+
+<table><thead>
+<tr>
+<th>Required</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>name</code><br/><em>string</em></td>
+<td>The name of the workload.</td>
+</tr>
+<tr>
+<td><code>type</code><br/><em>string</em></td>
+<td>Specify whether a workload is a VM-based workload or container-based.</td>
+</tr>
+<tr>
+<td><code>image</code><br/><em>string</em></td>
+<td>Either the location of a Docker image to run as a container or the image to use for the virtual machine. If for a virtual machine, this is in the format of /[:]. If the image tag portion is omitted, &#39;default&#39; is assumed which is the most recently created, ready, and non-deprecated image of that slug. A set of common images is present on the &#39;stackpath-edge&#39; stack.</td>
+</tr>
+<tr>
+<td><code>vpc</code><br/><em>string</em></td>
+<td>The virtual private cloud option for now supports default vpc only.</td>
+</tr>
+<tr>
+<td><code>protocol</code><br/><em>string</em></td>
+<td>Supported protocols are: <code>TCP</code>, <code>UDP</code> and <code>TCP_UDP</code>.</td>
+</tr>
+<tr>
+<td><code>firstBootSshKey(s)</code><br/><em>string</em></td>
+<td>If creating a VM-based workload, SSH keys are required. Multiple SSH keys can be separated by commas.</td>
+</tr>
+<tr>
+<td><code>specs</code><br/><em>string</em></td>
+<td>Specification type for resources which are allocated to each instance in a workload. Supported specifications are <code>SP-1 (1 vCPU, 2 GB RAM)</code>,<code>SP-2 (2 vCPU, 4 GB RAM)</code>,<code>SP-3 (2 vCPU, 8GB RAM)</code>,<code>SP-4 (4 vCPU, 16 GB RAM)</code>,<code>SP-5 (8 vCPU, 32 GB RAM)</code>.</td>
+</tr>
+<tr>
+<td><code>deploymentName</code><br/><em>string</em></td>
+<td>The name of the deployment.</td>
+</tr>
+<tr>
+<td><code>deploymentPops</code><br/><em>string</em></td>
+<td>The point of presence of a deployment. In the format [A-Z][A-Z][A-Z].</td>
+</tr>
+<tr>
+<td><code>enableAutoScaling</code> <br/><em>boolean</em></td>
+<td>Specify if you would like to enable autoscaling. If enabled, then <code>cpuUtilization</code> , <code>minInstancesPerPop</code> and <code>maxInstancesPerPop</code> are required.</td>
+</tr>
+<tr>
+<td><code>cpuUtilization</code> <br/><em>int</em></td>
+<td>Specify the percentage of CPU utilization.</td>
+</tr>
+<tr>
+<td><code>minInstancesPerPop</code> <br/><em>int</em></td>
+<td>The minimum number of instances per PoP.</td>
+</tr>
+<tr>
+<td><code>maxInstancesPerPop</code> <br/><em>int</em></td>
+<td>The maximum number of instances per PoP.</td>
+</tr>
+</tbody></table>
+
+<table><thead>
+<tr>
+<th>Optional</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>addAnyCastIpAddress</code><br/><em>boolean</em></td>
+<td>Option to AnyCast IP Address.</td>
+</tr>
+<tr>
+<td><code>slug</code><br/><em>string</em></td>
+<td>A workload&#39;s programmatic name. Workload slugs are used to build its instances names. If not provided, defaults to workload&#39;s name.</td>
+</tr>
+<tr>
+<td><code>publicPorts</code><br/><em>string</em></td>
+<td>A single port, such as 80 or a port range, such as 1024-65535.</td>
+</tr>
+<tr>
+<td><code>persistenceStoragePath</code><br/><em>string</em></td>
+<td>The path in an instance to mount a volume.</td>
+</tr>
+<tr>
+<td><code>persistenceStorageSize</code><br/><em>int</em></td>
+<td>The size of the mounted volume (in GB).</td>
+</tr>
+<tr>
+<td><code>addImagePullCredentialsOption</code> <br/><em>boolean</em></td>
+<td>It is used to indicate if additional credentials to pull container image are provided or not.</td>
+</tr>
+<tr>
+<td><code>containerUsername</code> <br/><em>string</em></td>
+<td>The username used to authenticate the image pull.</td>
+</tr>
+<tr>
+<td><code>containerPassword</code> <br/><em>string</em></td>
+<td>The password used to authenticate the image pull.</td>
+</tr>
+<tr>
+<td><code>containerServer</code> <br/><em>string</em></td>
+<td>The server that the credentials should be used with. This value will default to the docker hub registry when not set.</td>
+</tr>
+<tr>
+<td><code>containerEmail</code> <br/><em>string</em></td>
+<td>The email address to use for the docker registry account</td>
+</tr>
+<tr>
+<td><code>environmentVariableKey</code> <br/><em>string</em></td>
+<td>The location to obtain a value for an environment variable.</td>
+</tr>
+<tr>
+<td><code>environmentVariableValue</code> <br/><em>string</em></td>
+<td>An environment variable&#39;s value.</td>
+</tr>
+<tr>
+<td><code>secretEnvironmentVariableKey</code> <br/><em>string</em></td>
+<td>The secret environment variable&#39;s key.</td>
+</tr>
+<tr>
+<td><code>secretEnvironmentVariableValue</code> <br/><em>string</em></td>
+<td>A sensitive environment variable that should not be exposed.</td>
 </tr>
 </tbody></table>
 
