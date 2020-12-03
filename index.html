@@ -52571,30 +52571,31 @@ If the secret <code>X-Account-Meta-Temp-URL-Key</code> key does not already exis
     <span class="s2">"https://cloudmc_endpoint/api/v1/services/stackpath/test-area/workloads"</span>
 </code></pre>
 <blockquote>
-<p>Request body example for a VM Workload type:
-<code>json
-{
-   &quot;name&quot;:&quot;w-user-zwg&quot;,
-   &quot;slug&quot;:&quot;w-user-zwg&quot;,
-   &quot;type&quot;:&quot;VM&quot;,
-   &quot;image&quot;:&quot;stackpath-edge/centos-7-cpanel:v201905241955&quot;,
-   &quot;vpc&quot;:&quot;Default&quot;,
-   &quot;addAnyCastIpAddress&quot;:false,
-   &quot;publicPort&quot;: &quot;80&quot;,
-   &quot;publicPortSrc&quot;: &quot;0.0.0.0/0&quot;,
-   &quot;publicPortDesc&quot;: &quot;npr_root_btd&quot;,
-   &quot;protocol&quot;: &quot;TCP&quot;,
-   &quot;firstBootSshKey&quot;:&quot;ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDcYr9OnzsDfYVW2I1kX/iYJ0mPG490bI5mbxbOAKPLMuWLguxRohX804j1XbwZJ+Sna+9rSfxaYA8vgd1MoYX10l9cnMLx/MMbYp4ZquauN4pGY3WoDeCqsTss3VUMW+7RFBILpU3SJTlDV02FI36D3IXb4A8XymCyU3KC99XXTfTQsuKC+WFRMsTWtklrasqCVd5yEG90i/aJc6A3TZGOYgPFNEeVYvNDaJmIkb3y4FfShoBIMgZRt0ay7SvWZUvyfvyNmK5W9ePdhZZ58R+7tQNmCzjQ4v0suWRuGJ/XL3+03w3HEsDdQx+noL+R+qAjoNFwc0spBBhJK+Q4ADqr nothing@gmail.com&quot;,
-   &quot;specs&quot;:&quot;SP-1&quot;,
-   &quot;persistenceStoragePath&quot;:&quot;/lib/data/newFolder&quot;,
-   &quot;persistenceStorageSize&quot;:1,
-   &quot;deploymentName&quot;:&quot;wi-root-ion&quot;,
-   &quot;deploymentInstancePerPops&quot;:1,
-   &quot;enableAutoScaling&quot;:false,
-   &quot;deploymentPops&quot;:&quot;YYZ&quot;
-}
-</code>
-Request body example for a CONTAINER Workload type:</p>
+<p>Request body example for a VM Workload type:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+   </span><span class="s2">"name"</span><span class="p">:</span><span class="s2">"w-user-zwg"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"slug"</span><span class="p">:</span><span class="s2">"w-user-zwg"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"type"</span><span class="p">:</span><span class="s2">"VM"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"image"</span><span class="p">:</span><span class="s2">"stackpath-edge/centos-7-cpanel:v201905241955"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"vpc"</span><span class="p">:</span><span class="s2">"Default"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"addAnyCastIpAddress"</span><span class="p">:</span><span class="kc">false</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"publicPort"</span><span class="p">:</span><span class="w"> </span><span class="s2">"80"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"publicPortSrc"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0.0.0/0"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"publicPortDesc"</span><span class="p">:</span><span class="w"> </span><span class="s2">"npr_root_btd"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"protocol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TCP"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"firstBootSshKey"</span><span class="p">:</span><span class="s2">"ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDcYr9OnzsDfYVW2I1kX/iYJ0mPG490bI5mbxbOAKPLMuWLguxRohX804j1XbwZJ+Sna+9rSfxaYA8vgd1MoYX10l9cnMLx/MMbYp4ZquauN4pGY3WoDeCqsTss3VUMW+7RFBILpU3SJTlDV02FI36D3IXb4A8XymCyU3KC99XXTfTQsuKC+WFRMsTWtklrasqCVd5yEG90i/aJc6A3TZGOYgPFNEeVYvNDaJmIkb3y4FfShoBIMgZRt0ay7SvWZUvyfvyNmK5W9ePdhZZ58R+7tQNmCzjQ4v0suWRuGJ/XL3+03w3HEsDdQx+noL+R+qAjoNFwc0spBBhJK+Q4ADqr nothing@gmail.com"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"specs"</span><span class="p">:</span><span class="s2">"SP-1"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"persistenceStoragePath"</span><span class="p">:</span><span class="s2">"/lib/data/newFolder"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"persistenceStorageSize"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"deploymentName"</span><span class="p">:</span><span class="s2">"wi-root-ion"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"deploymentInstancePerPops"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"enableAutoScaling"</span><span class="p">:</span><span class="kc">false</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"deploymentPops"</span><span class="p">:</span><span class="s2">"YYZ"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<blockquote>
+<p>Request body example for a CONTAINER Workload type:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
    </span><span class="s2">"name"</span><span class="p">:</span><span class="s2">"w-user-pah"</span><span class="p">,</span><span class="w">
@@ -52628,15 +52629,14 @@ Request body example for a CONTAINER Workload type:</p>
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <blockquote>
-<p>The above commands return a JSON structured like this:
-<code>json
-{
-  &quot;taskId&quot;: &quot;7135ae25-8488-4bc5-a289-285c84a00a84&quot;,
-  &quot;taskStatus&quot;: &quot;PENDING&quot;
-}
-</code>
-<code>POST /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/workloads</code></p>
+<p>The above commands return a JSON structured like this:</p>
 </blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"taskId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"7135ae25-8488-4bc5-a289-285c84a00a84"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"taskStatus"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PENDING"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><code>POST /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/workloads</code></p>
 
 <p>Create a new workload in a given <a href="#administration-environments">environment</a>.</p>
 
