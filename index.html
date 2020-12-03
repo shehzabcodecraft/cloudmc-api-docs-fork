@@ -52568,7 +52568,7 @@ If the secret <code>X-Account-Meta-Temp-URL-Key</code> key does not already exis
 <h3 id='stackpath-create-a-workload'>Create a workload</h3><pre class="highlight shell tab-shell"><code>curl -X POST <span class="se">\</span>
     -H <span class="s2">"MC-Api-Key: your_api_key"</span> <span class="se">\</span>
     -d <span class="s2">"request_body"</span> <span class="se">\</span>
-    <span class="s2">"https://cloudmc_endpoint/v1/services/stackpath/test-area/workloads"</span>
+    <span class="s2">"https://cloudmc_endpoint/api/v1/services/stackpath/test-area/workloads"</span>
 </code></pre>
 <blockquote>
 <p>Request body example(s):
@@ -52581,8 +52581,10 @@ If the secret <code>X-Account-Meta-Temp-URL-Key</code> key does not already exis
    &quot;image&quot;:&quot;stackpath-edge/centos-7-cpanel:v201905241955&quot;,
    &quot;vpc&quot;:&quot;Default&quot;,
    &quot;addAnyCastIpAddress&quot;:false,
-   &quot;publicPorts&quot;:&quot;80&quot;,
-   &quot;protocol&quot;:&quot;TCP&quot;,
+   &quot;publicPort&quot;: &quot;80&quot;,
+   &quot;publicPortSrc&quot;: &quot;0.0.0.0/0&quot;,
+   &quot;publicPortDesc&quot;: &quot;npr_root_btd&quot;,
+   &quot;protocol&quot;: &quot;TCP&quot;,
    &quot;firstBootSshKey&quot;:&quot;ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDcYr9OnzsDfYVW2I1kX/iYJ0mPG490bI5mbxbOAKPLMuWLguxRohX804j1XbwZJ+Sna+9rSfxaYA8vgd1MoYX10l9cnMLx/MMbYp4ZquauN4pGY3WoDeCqsTss3VUMW+7RFBILpU3SJTlDV02FI36D3IXb4A8XymCyU3KC99XXTfTQsuKC+WFRMsTWtklrasqCVd5yEG90i/aJc6A3TZGOYgPFNEeVYvNDaJmIkb3y4FfShoBIMgZRt0ay7SvWZUvyfvyNmK5W9ePdhZZ58R+7tQNmCzjQ4v0suWRuGJ/XL3+03w3HEsDdQx+noL+R+qAjoNFwc0spBBhJK+Q4ADqr nothing@gmail.com&quot;,
    &quot;specs&quot;:&quot;SP-1&quot;,
    &quot;persistenceStoragePath&quot;:&quot;/lib/data/newFolder&quot;,
@@ -52610,8 +52612,10 @@ If the secret <code>X-Account-Meta-Temp-URL-Key</code> key does not already exis
    &quot;secretEnvironmentVariableValue&quot;:null,
    &quot;vpc&quot;:&quot;Default&quot;,
    &quot;addAnyCastIpAddress&quot;:false,
-   &quot;publicPorts&quot;:&quot;80-200&quot;,
-   &quot;protocol&quot;:&quot;UDP&quot;,
+   &quot;publicPort&quot;: &quot;80&quot;,
+   &quot;publicPortSrc&quot;: &quot;0.0.0.0/0&quot;,
+   &quot;publicPortDesc&quot;: &quot;npr_root_btd&quot;,
+   &quot;protocol&quot;: &quot;TCP&quot;,
    &quot;specs&quot;:&quot;SP-3&quot;,
    &quot;persistenceStoragePath&quot;:null,
    &quot;persistenceStorageSize&quot;:1,
@@ -52661,10 +52665,6 @@ If the secret <code>X-Account-Meta-Temp-URL-Key</code> key does not already exis
 <td>The virtual private cloud option for now supports default vpc only.</td>
 </tr>
 <tr>
-<td><code>protocol</code><br/><em>string</em></td>
-<td>Supported protocols are: <code>TCP</code>, <code>UDP</code> and <code>TCP_UDP</code>.</td>
-</tr>
-<tr>
 <td><code>firstBootSshKey(s)</code><br/><em>string</em></td>
 <td>If creating a VM-based workload, SSH keys are required. Multiple SSH keys can be separated by commas.</td>
 </tr>
@@ -52682,19 +52682,7 @@ If the secret <code>X-Account-Meta-Temp-URL-Key</code> key does not already exis
 </tr>
 <tr>
 <td><code>enableAutoScaling</code> <br/><em>boolean</em></td>
-<td>Specify if you would like to enable autoscaling. If enabled, then <code>cpuUtilization</code> , <code>minInstancesPerPop</code> and <code>maxInstancesPerPop</code> are required.</td>
-</tr>
-<tr>
-<td><code>cpuUtilization</code> <br/><em>int</em></td>
-<td>Specify the percentage of CPU utilization.</td>
-</tr>
-<tr>
-<td><code>minInstancesPerPop</code> <br/><em>int</em></td>
-<td>The minimum number of instances per PoP.</td>
-</tr>
-<tr>
-<td><code>maxInstancesPerPop</code> <br/><em>int</em></td>
-<td>The maximum number of instances per PoP.</td>
+<td>Specify if you would like to enable autoscaling. If enabled, then <code>cpuUtilization</code> , <code>minInstancesPerPop</code> and <code>maxInstancesPerPop</code> are required else <code>deploymentInstancePerPops</code> is required.</td>
 </tr>
 </tbody></table>
 
@@ -52711,10 +52699,6 @@ If the secret <code>X-Account-Meta-Temp-URL-Key</code> key does not already exis
 <tr>
 <td><code>slug</code><br/><em>string</em></td>
 <td>A workload&#39;s programmatic name. Workload slugs are used to build its instances names. If not provided, defaults to workload&#39;s name.</td>
-</tr>
-<tr>
-<td><code>publicPorts</code><br/><em>string</em></td>
-<td>A single port, such as 80 or a port range, such as 1024-65535.</td>
 </tr>
 <tr>
 <td><code>persistenceStoragePath</code><br/><em>string</em></td>
@@ -52760,7 +52744,43 @@ If the secret <code>X-Account-Meta-Temp-URL-Key</code> key does not already exis
 <td><code>secretEnvironmentVariableValue</code> <br/><em>string</em></td>
 <td>A sensitive environment variable that should not be exposed.</td>
 </tr>
+<tr>
+<td><code>deploymentInstancePerPops</code><br/><em>integer</em></td>
+<td>The number of deployments per point of presence. Only required if autoscaling is not enabled.</td>
+</tr>
+<tr>
+<td><code>cpuUtilization</code> <br/><em>int</em></td>
+<td>Specify the percentage of CPU utilization.</td>
+</tr>
+<tr>
+<td><code>minInstancesPerPop</code> <br/><em>int</em></td>
+<td>The minimum number of instances per PoP.</td>
+</tr>
+<tr>
+<td><code>maxInstancesPerPop</code> <br/><em>int</em></td>
+<td>The maximum number of instances per PoP.</td>
+</tr>
+<tr>
+<td><code>publicPort</code><br/><em>string</em></td>
+<td>A single port, such as 80 or a port range, such as 1024-65535 for which a network policy rule will be created for the workload.</td>
+</tr>
+<tr>
+<td><code>publicPortSrc</code><br/><em>string</em></td>
+<td>A subnet that will define all the IPs allowed by the network policy rule.</td>
+</tr>
+<tr>
+<td><code>publicPortDesc</code><br/><em>string</em></td>
+<td>A summary of what the network policy rule does or a name for it. It is highly recommended to give a unique description to easily identify a network policy rule.</td>
+</tr>
+<tr>
+<td><code>protocol</code><br/><em>string</em></td>
+<td>Protocol for the network policy rule. Supported protocols are: <code>TCP</code>, <code>UDP</code> and <code>TCP_UDP</code>.</td>
+</tr>
 </tbody></table>
+
+<aside class="notice">
+A workload can be created without `publicPort`, `publicPortSrc`, `publicPortDesc` and `protocol` as part of the payload. But all these fields are required to open a port/port-range on the created workload.
+</aside>
 
 <!-------------------- EDIT A WORKLOAD -------------------->
 <h3 id='stackpath-edit-a-workload'>Edit a workload</h3><pre class="highlight shell tab-shell"><code>curl -X PUT <span class="se">\</span>
@@ -52872,7 +52892,7 @@ If the secret <code>X-Account-Meta-Temp-URL-Key</code> key does not already exis
 </tr>
 <tr>
 <td><code>enableAutoScaling</code> <br/><em>boolean</em></td>
-<td>Specify if you would like to enable autoscaling. If enabled, then <code>cpuUtilization</code> , <code>minInstancesPerPop</code> and <code>maxInstancesPerPop</code> are required.</td>
+<td>Specify if you would like to enable autoscaling. If enabled, then <code>cpuUtilization</code> , <code>minInstancesPerPop</code> and <code>maxInstancesPerPop</code> are required else <code>deploymentInstancePerPops</code> is required.</td>
 </tr>
 </tbody></table>
 
