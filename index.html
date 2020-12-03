@@ -52571,9 +52571,8 @@ If the secret <code>X-Account-Meta-Temp-URL-Key</code> key does not already exis
     <span class="s2">"https://cloudmc_endpoint/api/v1/services/stackpath/test-area/workloads"</span>
 </code></pre>
 <blockquote>
-<p>Request body example(s):
-```js
-// Request body example for a VM:
+<p>Request body example for a VM Workload type:
+<code>json
 {
    &quot;name&quot;:&quot;w-user-zwg&quot;,
    &quot;slug&quot;:&quot;w-user-zwg&quot;,
@@ -52593,42 +52592,41 @@ If the secret <code>X-Account-Meta-Temp-URL-Key</code> key does not already exis
    &quot;deploymentInstancePerPops&quot;:1,
    &quot;enableAutoScaling&quot;:false,
    &quot;deploymentPops&quot;:&quot;YYZ&quot;
-}</p>
-</blockquote>
-
-<p>// Request body example for a Container:
-{
-   &quot;name&quot;:&quot;w-user-pah&quot;,
-   &quot;type&quot;:&quot;CONTAINER&quot;,
-   &quot;image&quot;:&quot;nginx:latest&quot;,
-   &quot;addImagePullCredentialsOption&quot;:true,
-   &quot;containerUsername&quot;:&quot;test.username&quot;,
-   &quot;containerPassword&quot;:&quot;test-password&quot;,
-   &quot;containerServer&quot;:null,
-   &quot;containerEmail&quot;:null,
-   &quot;environmentVariableKey&quot;: null,
-   &quot;environmentVariableValue&quot;: null,
-   &quot;secretEnvironmentVariableKey&quot;:null,
-   &quot;secretEnvironmentVariableValue&quot;:null,
-   &quot;vpc&quot;:&quot;Default&quot;,
-   &quot;addAnyCastIpAddress&quot;:false,
-   &quot;publicPort&quot;: &quot;80&quot;,
-   &quot;publicPortSrc&quot;: &quot;0.0.0.0/0&quot;,
-   &quot;publicPortDesc&quot;: &quot;npr_root_btd&quot;,
-   &quot;protocol&quot;: &quot;TCP&quot;,
-   &quot;specs&quot;:&quot;SP-3&quot;,
-   &quot;persistenceStoragePath&quot;:null,
-   &quot;persistenceStorageSize&quot;:1,
-   &quot;deploymentName&quot;:&quot;wi-root-pxa&quot;,
-   &quot;deploymentInstancePerPops&quot;:1,
-   &quot;deploymentPops&quot;:&quot;FRA&quot;,
-   &quot;enableAutoScaling&quot;:true,
-   &quot;cpuUtilization&quot;:50,
-   &quot;minInstancesPerPop&quot;:1,
-   &quot;maxInstancesPerPop&quot;:2
 }
-```</p>
-
+</code>
+Request body example for a CONTAINER Workload type:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+   </span><span class="s2">"name"</span><span class="p">:</span><span class="s2">"w-user-pah"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"type"</span><span class="p">:</span><span class="s2">"CONTAINER"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"image"</span><span class="p">:</span><span class="s2">"nginx:latest"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"addImagePullCredentialsOption"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"containerUsername"</span><span class="p">:</span><span class="s2">"test.username"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"containerPassword"</span><span class="p">:</span><span class="s2">"test-password"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"containerServer"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"containerEmail"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"environmentVariableKey"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"environmentVariableValue"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"secretEnvironmentVariableKey"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"secretEnvironmentVariableValue"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"vpc"</span><span class="p">:</span><span class="s2">"Default"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"addAnyCastIpAddress"</span><span class="p">:</span><span class="kc">false</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"publicPort"</span><span class="p">:</span><span class="w"> </span><span class="s2">"80"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"publicPortSrc"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0.0.0/0"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"publicPortDesc"</span><span class="p">:</span><span class="w"> </span><span class="s2">"npr_root_btd"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"protocol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TCP"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"specs"</span><span class="p">:</span><span class="s2">"SP-3"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"persistenceStoragePath"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"persistenceStorageSize"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"deploymentName"</span><span class="p">:</span><span class="s2">"wi-root-pxa"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"deploymentInstancePerPops"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"deploymentPops"</span><span class="p">:</span><span class="s2">"FRA"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"enableAutoScaling"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"cpuUtilization"</span><span class="p">:</span><span class="mi">50</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"minInstancesPerPop"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"maxInstancesPerPop"</span><span class="p">:</span><span class="mi">2</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
 <blockquote>
 <p>The above commands return a JSON structured like this:
 <code>json
