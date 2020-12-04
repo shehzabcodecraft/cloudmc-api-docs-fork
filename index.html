@@ -3219,6 +3219,27 @@
                   </li>
               </ul>
           </li>
+          <li>            
+            <a href="#amazon-web-services-plugin" class="toc-h1 toc-link" data-title="Amazon Web Services plugin">Amazon Web Services plugin</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#aws-compute" class="toc-h2 toc-link" data-title="Amazon Web Services plugin">Compute</a>
+                      <ul class="toc-list-h3">
+                          <li>
+                            <a href="#aws-instances" class="toc-h3 toc-link" data-title="Amazon Web Services plugin">Instances</a>
+                              <ul class="toc-list-h4">
+                                  <li>
+                                    <a href="#aws-list-instances" class="toc-h4 toc-link" data-title="Amazon Web Services plugin">List instances</a>
+                                  </li>
+                                  <li>
+                                    <a href="#aws-retrieve-an-instance" class="toc-h4 toc-link" data-title="Amazon Web Services plugin">Retrieve an instance</a>
+                                  </li>
+                              </ul>
+                          </li>
+                      </ul>
+                  </li>
+              </ul>
+          </li>
       </div>
     </div>
     <div class="page-wrapper">
@@ -53822,6 +53843,265 @@ a custom one. Only non-deprecated images are returned by default.</p>
 <tr>
 <td><code>portRange</code><br/><em>string</em></td>
 <td>This specifies on which ports traffic will be allowed or denied by this rule. It can be a range of ports separated by a hyphen. Not required for protocol for <code>ESP</code> or <code>AH</code>.</td>
+</tr>
+</tbody></table>
+<h1 id='amazon-web-services-plugin'>Amazon Web Services plugin</h1>
+<p>The Amazon Web Services (AWS) plugin provides endpoints for carrying out operations on CloudMC compute and networking entities. It also enforces CloudMC&#39;s environment-centric multi-tenancy model and RBAC over top of AWS.</p>
+<h2 id='aws-compute'>Compute</h2><h3 id='aws-instances'>Instances</h3>
+<p>Deploy and manage your instances.</p>
+
+<!-------------------- LIST INSTANCES -------------------->
+<h4 id='aws-list-instances'>List instances</h4><pre class="highlight shell tab-shell"><code>curl -X GET <span class="se">\</span>
+   -H <span class="s2">"MC-Api-Key: your_api_key"</span> <span class="se">\</span>
+   <span class="s2">"https://cloudmc_endpoint/v1/services/aws/test-env/instances"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns a JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"i-0d1f9106cd0e0dff7"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"rootDeviceName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/dev/xvda"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"imageId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ami-0947d2ba12ee1ff75"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"instanceType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"t2.micro"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"launchTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-11-19T03:41:51Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"availabilityZone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"us-east-1e"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"privateDnsName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ip-172-31-55-223.ec2.internal"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"privateIpAddress"</span><span class="p">:</span><span class="w"> </span><span class="s2">"172.31.55.223"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"publicDnsName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ec2-54-237-115-182.compute-1.amazonaws.com"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"publicIpAddress"</span><span class="p">:</span><span class="w"> </span><span class="s2">"54.237.115.182"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"running"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"subnetId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"subnet-775e9c46"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"vpcId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"vpc-4aaf6537"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"architecture"</span><span class="p">:</span><span class="w"> </span><span class="s2">"x86_64"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"clientToken"</span><span class="p">:</span><span class="w"> </span><span class="s2">"be7d840f-09e5-46b7-96ed-e6eb9fsaf133"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"rootDeviceType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ebs"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"virtualizationType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"hvm"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+      </span><span class="s2">"coreCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"threadsPerCore"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="s2">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"recordCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><code>GET /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/instances</code></p>
+
+<p>Retrieve a list of all instances in a given <a href="#administration-environments">environment</a>.</p>
+
+<table><thead>
+<tr>
+<th>Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code><br/><em>string</em></td>
+<td>The ID of the instance.</td>
+</tr>
+<tr>
+<td><code>rootDeviceName</code><br/><em>string</em></td>
+<td>The device name of the root device volume (for example, /dev/sda1 ).</td>
+</tr>
+<tr>
+<td><code>imageId</code><br/><em>string</em></td>
+<td>The ID of the AMI used to launch the instance.</td>
+</tr>
+<tr>
+<td><code>instanceType</code><br/><em>string</em></td>
+<td>The instance type.</td>
+</tr>
+<tr>
+<td><code>launchTime</code><br/><em>string</em></td>
+<td>The time the instance was launched.</td>
+</tr>
+<tr>
+<td><code>availabilityZone</code><br/><em>string</em></td>
+<td>The Availability Zone of the instance.</td>
+</tr>
+<tr>
+<td><code>privateDnsName</code><br/><em>string</em></td>
+<td>(IPv4 only) The private DNS hostname name assigned to the instance. This DNS hostname can only be used inside the Amazon EC2 network. This name is not available until the instance enters the running state.</td>
+</tr>
+<tr>
+<td><code>privateIpAddress</code><br/><em>string</em></td>
+<td>The private IPv4 address assigned to the instance.</td>
+</tr>
+<tr>
+<td><code>publicDnsName</code><br/><em>string</em></td>
+<td>(IPv4 only) The public DNS name assigned to the instance. This name is not available until the instance enters the running state. For EC2-VPC, this name is only available if you&#39;ve enabled DNS hostnames for your VPC.</td>
+</tr>
+<tr>
+<td><code>publicIpAddress</code><br/><em>string</em></td>
+<td>The public IPv4 address, or the Carrier IP address assigned to the instance, if applicable.</td>
+</tr>
+<tr>
+<td><code>state</code><br/><em>string</em></td>
+<td>The current state of the instance.</td>
+</tr>
+<tr>
+<td><code>subnetId</code><br/><em>string</em></td>
+<td>[EC2-VPC] The ID of the subnet in which the instance is running.</td>
+</tr>
+<tr>
+<td><code>vpcId</code><br/><em>string</em></td>
+<td>[EC2-VPC] The ID of the VPC in which the instance is running.</td>
+</tr>
+<tr>
+<td><code>architecture</code><br/><em>string</em></td>
+<td>The architecture of the image.</td>
+</tr>
+<tr>
+<td><code>clientToken</code><br/><em>string</em></td>
+<td>The idempotency token you provided when you launched the instance, if applicable.</td>
+</tr>
+<tr>
+<td><code>rootDeviceType</code><br/><em>string</em></td>
+<td>The root device type used by the AMI. The AMI can use an EBS volume or an instance store volume.</td>
+</tr>
+<tr>
+<td><code>virtualizationType</code><br/><em>string</em></td>
+<td>The virtualization type of the instance.</td>
+</tr>
+<tr>
+<td><code>tags</code><br/><em>Array[object]</em></td>
+<td>Any tags assigned to the instance. Tags are key value pairs.</td>
+</tr>
+<tr>
+<td><code>coreCount</code><br/><em>int</em></td>
+<td>The number of CPU cores for the instance.</td>
+</tr>
+<tr>
+<td><code>threadsPerCore</code><br/>&gt;<em>int</em></td>
+<td>The number of threads per CPU core.</td>
+</tr>
+</tbody></table>
+
+<!-------------------- RETRIEVE AN INSTANCE -------------------->
+<h4 id='aws-retrieve-an-instance'>Retrieve an instance</h4><pre class="highlight shell tab-shell"><code>curl -X GET <span class="se">\</span>
+   -H <span class="s2">"MC-Api-Key: your_api_key"</span> <span class="se">\</span>
+   <span class="s2">"https://cloudmc_endpoint/v1/services/aws/test-area/instances/i-0d1f9106cd0e0dff7"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns a JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"i-0d1f9106cdde0dff7"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"rootDeviceName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/dev/xvda"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"imageId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ami-0947d2ba12ee1ff75"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"instanceType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"t2.micro"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"launchTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-11-19T03:41:51Z"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"availabilityZone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"us-east-1e"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"privateDnsName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ip-172-31-55-223.ec2.internal"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"privateIpAddress"</span><span class="p">:</span><span class="w"> </span><span class="s2">"172.31.55.223"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"publicDnsName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ec2-54-237-115-182.compute-1.amazonaws.com"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"publicIpAddress"</span><span class="p">:</span><span class="w"> </span><span class="s2">"54.237.115.182"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"running"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"subnetId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"subnet-775e9c46"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"vpcId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"vpc-4aaf6537"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"architecture"</span><span class="p">:</span><span class="w"> </span><span class="s2">"x86_64"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"clientToken"</span><span class="p">:</span><span class="w"> </span><span class="s2">"be7d840f-09e5-46b7-96ed-e6eb9f0af133"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"rootDeviceType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ebs"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"virtualizationType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"hvm"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+    </span><span class="s2">"coreCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"threadsPerCore"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><code>GET /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/instances/:id</code></p>
+
+<p>Retrieve an instance in a given <a href="#administration-environments">environment</a>.</p>
+
+<table><thead>
+<tr>
+<th>Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code><br/><em>string</em></td>
+<td>The ID of the instance.</td>
+</tr>
+<tr>
+<td><code>rootDeviceName</code><br/><em>string</em></td>
+<td>The device name of the root device volume (for example, /dev/sda1 ).</td>
+</tr>
+<tr>
+<td><code>imageId</code><br/><em>string</em></td>
+<td>The ID of the AMI used to launch the instance.</td>
+</tr>
+<tr>
+<td><code>instanceType</code><br/><em>string</em></td>
+<td>The instance type.</td>
+</tr>
+<tr>
+<td><code>launchTime</code><br/><em>string</em></td>
+<td>The time the instance was launched.</td>
+</tr>
+<tr>
+<td><code>availabilityZone</code><br/><em>string</em></td>
+<td>The Availability Zone of the instance.</td>
+</tr>
+<tr>
+<td><code>privateDnsName</code><br/><em>string</em></td>
+<td>(IPv4 only) The private DNS hostname name assigned to the instance. This DNS hostname can only be used inside the Amazon EC2 network. This name is not available until the instance enters the running state.</td>
+</tr>
+<tr>
+<td><code>privateIpAddress</code><br/><em>string</em></td>
+<td>The private IPv4 address assigned to the instance.</td>
+</tr>
+<tr>
+<td><code>publicDnsName</code><br/><em>string</em></td>
+<td>(IPv4 only) The public DNS name assigned to the instance. This name is not available until the instance enters the running state. For EC2-VPC, this name is only available if you&#39;ve enabled DNS hostnames for your VPC.</td>
+</tr>
+<tr>
+<td><code>publicIpAddress</code><br/><em>string</em></td>
+<td>The public IPv4 address, or the Carrier IP address assigned to the instance, if applicable.</td>
+</tr>
+<tr>
+<td><code>state</code><br/><em>string</em></td>
+<td>The current state of the instance.</td>
+</tr>
+<tr>
+<td><code>subnetId</code><br/><em>string</em></td>
+<td>[EC2-VPC] The ID of the subnet in which the instance is running.</td>
+</tr>
+<tr>
+<td><code>vpcId</code><br/><em>string</em></td>
+<td>[EC2-VPC] The ID of the VPC in which the instance is running.</td>
+</tr>
+<tr>
+<td><code>architecture</code><br/><em>string</em></td>
+<td>The architecture of the image.</td>
+</tr>
+<tr>
+<td><code>clientToken</code><br/><em>string</em></td>
+<td>The idempotency token you provided when you launched the instance, if applicable.</td>
+</tr>
+<tr>
+<td><code>rootDeviceType</code><br/><em>string</em></td>
+<td>The root device type used by the AMI. The AMI can use an EBS volume or an instance store volume.</td>
+</tr>
+<tr>
+<td><code>virtualizationType</code><br/><em>string</em></td>
+<td>The virtualization type of the instance.</td>
+</tr>
+<tr>
+<td><code>tags</code><br/><em>Array[object]</em></td>
+<td>Any tags assigned to the instance. Tags are key value pairs.</td>
+</tr>
+<tr>
+<td><code>coreCount</code><br/><em>int</em></td>
+<td>The number of CPU cores for the instance.</td>
+</tr>
+<tr>
+<td><code>threadsPerCore</code><br/>&gt;<em>int</em></td>
+<td>The number of threads per CPU core.</td>
 </tr>
 </tbody></table>
 
