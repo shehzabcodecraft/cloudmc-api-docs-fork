@@ -52408,6 +52408,7 @@ If the secret <code>X-Account-Meta-Temp-URL-Key</code> key does not already exis
       </span><span class="s2">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-11-26T16:07:42.788665965Z"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CONTAINER"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"commands"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/bin/sh -c </span><span class="se">\"</span><span class="s2">sleep 50</span><span class="se">\"</span><span class="s2">"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"network"</span><span class="p">:</span><span class="w"> </span><span class="s2">"default"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"specs"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SP-1"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"cpu"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
@@ -52527,6 +52528,10 @@ If the secret <code>X-Account-Meta-Temp-URL-Key</code> key does not already exis
 <td>The workload&#39;s instance operating system image.</td>
 </tr>
 <tr>
+<td><code>commands</code><br/><em>string</em></td>
+<td>The commands that start a container. Only applicable to workloads of <code>type</code> &#39;CONTAINER&#39;.</td>
+</tr>
+<tr>
 <td><code>addImagePullCredentialsOption</code><br/><em>boolean</em></td>
 <td>It is used to indicate if additional credentials to pull container image are provided or not. Only applicable to workloads of <code>type</code> &#39;CONTAINER&#39;.</td>
 </tr>
@@ -52556,7 +52561,7 @@ If the secret <code>X-Account-Meta-Temp-URL-Key</code> key does not already exis
 </tr>
 <tr>
 <td><code>firstBootSshKey</code><br/><em>string</em></td>
-<td>The ssh key for the VM image. Only applicable to workloads of <code>type</code> &#39;VM&#39;.</td>
+<td>The ssh key(s) for the VM image. Keys are delimited by a newline, <code>\n</code>. Only applicable to workloads of <code>type</code> &#39;VM&#39;.</td>
 </tr>
 <tr>
 <td><code>persistenceStoragePath</code><br/><em>string</em></td>
@@ -52700,6 +52705,10 @@ If the secret <code>X-Account-Meta-Temp-URL-Key</code> key does not already exis
 <td>The workload&#39;s instance operating system image.</td>
 </tr>
 <tr>
+<td><code>commands</code><br/><em>string</em></td>
+<td>The commands that start a container. Only applicable to workloads of <code>type</code> &#39;CONTAINER&#39;.</td>
+</tr>
+<tr>
 <td><code>addImagePullCredentialsOption</code><br/><em>boolean</em></td>
 <td>It is used to indicate if additional credentials to pull container image are provided or not. Only applicable to workloads of <code>type</code> &#39;CONTAINER&#39;.</td>
 </tr>
@@ -52729,7 +52738,7 @@ If the secret <code>X-Account-Meta-Temp-URL-Key</code> key does not already exis
 </tr>
 <tr>
 <td><code>firstBootSshKey</code><br/><em>string</em></td>
-<td>The ssh key for the VM image. Only applicable to workloads of <code>type</code> &#39;VM&#39;.</td>
+<td>The ssh key(s) for the VM image. Keys are delimited by a newline, <code>\n</code>. Only applicable to workloads of <code>type</code> &#39;VM&#39;.</td>
 </tr>
 <tr>
 <td><code>persistenceStoragePath</code><br/><em>string</em></td>
@@ -52793,7 +52802,7 @@ If the secret <code>X-Account-Meta-Temp-URL-Key</code> key does not already exis
    </span><span class="s2">"publicPortSrc"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0.0.0/0"</span><span class="p">,</span><span class="w">
    </span><span class="s2">"publicPortDesc"</span><span class="p">:</span><span class="w"> </span><span class="s2">"npr_root_btd"</span><span class="p">,</span><span class="w">
    </span><span class="s2">"protocol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TCP"</span><span class="p">,</span><span class="w">
-   </span><span class="s2">"firstBootSshKey"</span><span class="p">:</span><span class="s2">"ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDcYr9OnzsDfYVW2I1kX/iYJ0mPG490bI5mbxbOAKPLMuWLguxRohX804j1XbwZJ+Sna+9rSfxaYA8vgd1MoYX10l9cnMLx/MMbYp4ZquauN4pGY3WoDeCqsTss3VUMW+7RFBILpU3SJTlDV02FI36D3IXb4A8XymCyU3KC99XXTfTQsuKC+WFRMsTWtklrasqCVd5yEG90i/aJc6A3TZGOYgPFNEeVYvNDaJmIkb3y4FfShoBIMgZRt0ay7SvWZUvyfvyNmK5W9ePdhZZ58R+7tQNmCzjQ4v0suWRuGJ/XL3+03w3HEsDdQx+noL+R+qAjoNFwc0spBBhJK+Q4ADqr nothing@gmail.com"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"firstBootSshKey"</span><span class="p">:</span><span class="s2">"ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDcYr9OnzsDfYVW2I1kX/iYJ0mPG490bI5mbxbOAKPLMuWLguxRohX804j1XbwZJ+Sna+9rSfxaYA8vgd1MoYX10l9cnMLx/MMbYp4ZquauN4pGY3WoDeCqsTss3VUMW+7RFBILpU3SJTlDV02FI36D3IXb4A8XymCyU3KC99XXTfTQsuKC+WFRMsTWtklrasqCVd5yEG90i/aJc6A3TZGOYgPFNEeVYvNDaJmIkb3y4FfShoBIMgZRt0ay7SvWZUvyfvyNmK5W9ePdhZZ58R+7tQNmCzjQ4v0suWRuGJ/XL3+03w3HEsDdQx+noL+R+qAjoNFwc0spBBhJK+Q4ADqr nothing@gmail.com </span><span class="se">\n</span><span class="s2">ssh-rsa..."</span><span class="p">,</span><span class="w">
    </span><span class="s2">"specs"</span><span class="p">:</span><span class="s2">"SP-1"</span><span class="p">,</span><span class="w">
    </span><span class="s2">"persistenceStoragePath"</span><span class="p">:</span><span class="s2">"/lib/data/newFolder"</span><span class="p">,</span><span class="w">
    </span><span class="s2">"persistenceStorageSize"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
@@ -52872,8 +52881,8 @@ If the secret <code>X-Account-Meta-Temp-URL-Key</code> key does not already exis
 <td>The virtual private cloud option for now supports default vpc only.</td>
 </tr>
 <tr>
-<td><code>firstBootSshKey(s)</code><br/><em>string</em></td>
-<td>If creating a VM-based workload, SSH keys are required. Multiple SSH keys can be separated by commas.</td>
+<td><code>firstBootSshKey</code><br/><em>string</em></td>
+<td>If creating a VM-based workload, SSH keys are required. Multiple SSH keys can be separated by newlines <code>\n</code>.</td>
 </tr>
 <tr>
 <td><code>specs</code><br/><em>string</em></td>
@@ -52912,12 +52921,32 @@ If the secret <code>X-Account-Meta-Temp-URL-Key</code> key does not already exis
 </tr>
 </thead><tbody>
 <tr>
+<td><code>slug</code><br/><em>string</em></td>
+<td>A workload&#39;s programmatic name. Workload slugs are used to build its instances names. If not provided, defaults to workload&#39;s name.</td>
+</tr>
+<tr>
 <td><code>addAnyCastIpAddress</code><br/><em>boolean</em></td>
 <td>Option to AnyCast IP Address.</td>
 </tr>
 <tr>
-<td><code>slug</code><br/><em>string</em></td>
-<td>A workload&#39;s programmatic name. Workload slugs are used to build its instances names. If not provided, defaults to workload&#39;s name.</td>
+<td><code>publicPort</code><br/><em>string</em></td>
+<td>A single port, such as 80 or a port range, such as 1024-65535 for which a network policy rule will be created for the workload.</td>
+</tr>
+<tr>
+<td><code>publicPortSrc</code><br/><em>string</em></td>
+<td>A subnet that will define all the IPs allowed by the network policy rule.</td>
+</tr>
+<tr>
+<td><code>publicPortDesc</code><br/><em>string</em></td>
+<td>A summary of what the network policy rule does or a name for it. It is highly recommended to give a unique description to easily identify a network policy rule.</td>
+</tr>
+<tr>
+<td><code>protocol</code><br/><em>string</em></td>
+<td>Protocol for the network policy rule. Supported protocols are: <code>TCP</code>, <code>UDP</code> and <code>TCP_UDP</code>.</td>
+</tr>
+<tr>
+<td><code>commands</code><br/><em>string</em></td>
+<td>The commands that start a container. Only applicable to workloads of <code>type</code> &#39;CONTAINER&#39;.</td>
 </tr>
 <tr>
 <td><code>persistenceStoragePath</code><br/><em>string</em></td>
@@ -52979,22 +53008,6 @@ If the secret <code>X-Account-Meta-Temp-URL-Key</code> key does not already exis
 <td><code>maxInstancesPerPop</code> <br/><em>int</em></td>
 <td>The maximum number of instances per PoP.</td>
 </tr>
-<tr>
-<td><code>publicPort</code><br/><em>string</em></td>
-<td>A single port, such as 80 or a port range, such as 1024-65535 for which a network policy rule will be created for the workload.</td>
-</tr>
-<tr>
-<td><code>publicPortSrc</code><br/><em>string</em></td>
-<td>A subnet that will define all the IPs allowed by the network policy rule.</td>
-</tr>
-<tr>
-<td><code>publicPortDesc</code><br/><em>string</em></td>
-<td>A summary of what the network policy rule does or a name for it. It is highly recommended to give a unique description to easily identify a network policy rule.</td>
-</tr>
-<tr>
-<td><code>protocol</code><br/><em>string</em></td>
-<td>Protocol for the network policy rule. Supported protocols are: <code>TCP</code>, <code>UDP</code> and <code>TCP_UDP</code>.</td>
-</tr>
 </tbody></table>
 
 <aside class="notice">
@@ -53013,8 +53026,6 @@ A workload can be created without `publicPort`, `publicPortSrc`, `publicPortDesc
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"my-vm-workload"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"VM"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"cpu"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"memory"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2Gi"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"specs"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SP-1"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"deploymentName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"chicago-1"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"deploymentPops"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"ORD"</span><span class="p">],</span><span class="w">
@@ -53040,8 +53051,6 @@ A workload can be created without `publicPort`, `publicPortSrc`, `publicPortDesc
   </span><span class="s2">"containerServer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"container.server.io"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"containerEmail"</span><span class="p">:</span><span class="w"> </span><span class="s2">"myemail@email.com"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"containerPassword"</span><span class="p">:</span><span class="w"> </span><span class="s2">"my-password"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"cpu"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"memory"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4Gi"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"specs"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SP-2"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"deploymentName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"toronto-1"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"deploymentPops"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"YYZ"</span><span class="p">],</span><span class="w">
@@ -53078,14 +53087,6 @@ A workload can be created without `publicPort`, `publicPortSrc`, `publicPortDesc
 <tr>
 <td><code>image</code><br/><em>string</em></td>
 <td>The location of a Docker image to run as a container. Only editable when <code>type</code>is equal to &#39;CONTAINER&#39;.</td>
-</tr>
-<tr>
-<td><code>cpu</code><br/><em>string</em></td>
-<td>The number of vCPUs for the workload&#39;s instance.</td>
-</tr>
-<tr>
-<td><code>memory</code><br/><em>string</em></td>
-<td>The memory size for the workload&#39;s instance.</td>
 </tr>
 <tr>
 <td><code>specs</code><br/><em>string</em></td>
