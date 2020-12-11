@@ -52822,12 +52822,12 @@ If the secret <code>X-Account-Meta-Temp-URL-Key</code> key does not already exis
    </span><span class="s2">"addImagePullCredentialsOption"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w">
    </span><span class="s2">"containerUsername"</span><span class="p">:</span><span class="s2">"test.username"</span><span class="p">,</span><span class="w">
    </span><span class="s2">"containerPassword"</span><span class="p">:</span><span class="s2">"test-password"</span><span class="p">,</span><span class="w">
-   </span><span class="s2">"containerServer"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
-   </span><span class="s2">"containerEmail"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
-   </span><span class="s2">"environmentVariableKey"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-   </span><span class="s2">"environmentVariableValue"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-   </span><span class="s2">"secretEnvironmentVariableKey"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
-   </span><span class="s2">"secretEnvironmentVariableValue"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"containerServer"</span><span class="p">:</span><span class="s2">"container.server.io"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"containerEmail"</span><span class="p">:</span><span class="s2">"mytestEmail@email.com"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"environmentVariableKey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"env-key"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"environmentVariableValue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"env-value"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"secretEnvironmentVariableKey"</span><span class="p">:</span><span class="s2">"secret-key"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"secretEnvironmentVariableValue"</span><span class="p">:</span><span class="s2">"secret-value"</span><span class="p">,</span><span class="w">
    </span><span class="s2">"vpc"</span><span class="p">:</span><span class="s2">"Default"</span><span class="p">,</span><span class="w">
    </span><span class="s2">"addAnyCastIpAddress"</span><span class="p">:</span><span class="kc">false</span><span class="p">,</span><span class="w">
    </span><span class="s2">"publicPort"</span><span class="p">:</span><span class="w"> </span><span class="s2">"80"</span><span class="p">,</span><span class="w">
@@ -52866,11 +52866,11 @@ If the secret <code>X-Account-Meta-Temp-URL-Key</code> key does not already exis
 </thead><tbody>
 <tr>
 <td><code>name</code><br/><em>string</em></td>
-<td>The name of the workload.</td>
+<td>The name of the workload. The workload name must not exceed 18 characters.</td>
 </tr>
 <tr>
 <td><code>type</code><br/><em>string</em></td>
-<td>Specify whether a workload is a VM-based workload or container-based.</td>
+<td>Specify whether a workload is a VM-based workload or container-based. Can be either <code>VM</code> or <code>CONTAINER</code>.</td>
 </tr>
 <tr>
 <td><code>image</code><br/><em>string</em></td>
@@ -52890,7 +52890,7 @@ If the secret <code>X-Account-Meta-Temp-URL-Key</code> key does not already exis
 </tr>
 <tr>
 <td><code>deploymentName</code><br/><em>string</em></td>
-<td>The name of the deployment.</td>
+<td>The name of the deployment. The deployment name must not exceed 18 characters.</td>
 </tr>
 <tr>
 <td><code>deploymentPops</code><br/><em>Array[string]</em></td>
@@ -52922,7 +52922,7 @@ If the secret <code>X-Account-Meta-Temp-URL-Key</code> key does not already exis
 </thead><tbody>
 <tr>
 <td><code>slug</code><br/><em>string</em></td>
-<td>A workload&#39;s programmatic name. Workload slugs are used to build its instances names. If not provided, defaults to workload&#39;s name.</td>
+<td>A workload&#39;s programmatic name. Workload slugs are used to build its instances names. If not provided, defaults to workload&#39;s name. It must not exceed 18 characters.</td>
 </tr>
 <tr>
 <td><code>addAnyCastIpAddress</code><br/><em>boolean</em></td>
@@ -52946,7 +52946,7 @@ If the secret <code>X-Account-Meta-Temp-URL-Key</code> key does not already exis
 </tr>
 <tr>
 <td><code>commands</code><br/><em>string</em></td>
-<td>The commands that start a container. Only applicable to workloads of <code>type</code> &#39;CONTAINER&#39;.</td>
+<td>The commands that start a container. Only applicable to workloads of type <code>CONTAINER</code>.</td>
 </tr>
 <tr>
 <td><code>persistenceStoragePath</code><br/><em>string</em></td>
@@ -53078,15 +53078,15 @@ A workload can be created without `publicPort`, `publicPortSrc`, `publicPortDesc
 </thead><tbody>
 <tr>
 <td><code>name</code><br/><em>string</em></td>
-<td>The name of the workload.</td>
+<td>The name of the workload. The workload name must not exceed 18 characters.</td>
 </tr>
 <tr>
 <td><code>type</code><br/><em>string</em></td>
-<td>Specify whether a workload is a VM-based workload or container-based. Can be either &#39;VM&#39; or &#39;CONTAINER&#39;.</td>
+<td>Specify whether a workload is a VM-based workload or container-based. Can be either <code>VM</code> or <code>CONTAINER</code>.</td>
 </tr>
 <tr>
 <td><code>image</code><br/><em>string</em></td>
-<td>The location of a Docker image to run as a container. Only editable when <code>type</code>is equal to &#39;CONTAINER&#39;.</td>
+<td>The location of a Docker image to run as a container. Only editable when <code>type</code> is equal to <code>CONTAINER</code>.</td>
 </tr>
 <tr>
 <td><code>specs</code><br/><em>string</em></td>
@@ -53094,7 +53094,7 @@ A workload can be created without `publicPort`, `publicPortSrc`, `publicPortDesc
 </tr>
 <tr>
 <td><code>deploymentName</code><br/><em>string</em></td>
-<td>The name of the deployment.</td>
+<td>The name of the deployment. The deployment name must not exceed 18 characters.</td>
 </tr>
 <tr>
 <td><code>deploymentPops</code><br/><em>Array[string]</em></td>
@@ -53114,39 +53114,39 @@ A workload can be created without `publicPort`, `publicPortSrc`, `publicPortDesc
 </thead><tbody>
 <tr>
 <td><code>environmentVariableKey</code><br/><em>string</em></td>
-<td>The key of the environmental variable you would like to edit. Only available when <code>type</code>is equal to &#39;CONTAINER&#39;.</td>
+<td>The key of the environmental variable you would like to edit. Only available when <code>type</code> is equal to <code>CONTAINER</code>.</td>
 </tr>
 <tr>
 <td><code>environmentVariableValue</code><br/><em>string</em></td>
-<td>The value of the environmental variable you would like to edit. Only available when <code>type</code>is equal to &#39;CONTAINER&#39;.</td>
+<td>The value of the environmental variable you would like to edit. Only available when <code>type</code> is equal to <code>CONTAINER</code>.</td>
 </tr>
 <tr>
 <td><code>secretEnvironmentVariableKey</code><br/><em>string</em></td>
-<td>The key of the secret environmental variable you would like to edit. Only available when <code>type</code>is equal to &#39;CONTAINER&#39;.</td>
+<td>The key of the secret environmental variable you would like to edit. Only available when <code>type</code> is equal to <code>CONTAINER</code>.</td>
 </tr>
 <tr>
 <td><code>secretEnvironmentVariableValue</code><br/><em>string</em></td>
-<td>The value of the secret environmental variable you would like to edit. Only available when <code>type</code>is equal to &#39;CONTAINER&#39;.</td>
+<td>The value of the secret environmental variable you would like to edit. Only available when <code>type</code> is equal to <code>CONTAINER</code>.</td>
 </tr>
 <tr>
 <td><code>addImagePullCredentialsOption</code><br/><em>boolean</em></td>
-<td>It is used to indicate if additional credentials to pull container image are provided or not. Only available when <code>type</code>is equal to &#39;CONTAINER&#39;.</td>
+<td>It is used to indicate if additional credentials to pull container image are provided or not. Only available when <code>type</code> is equal to <code>CONTAINER</code>.</td>
 </tr>
 <tr>
 <td><code>containerUsername</code><br/><em>string</em></td>
-<td>The username that should be used for authenticate the image pull. Only available when <code>type</code>is equal to &#39;CONTAINER&#39;.</td>
+<td>The username that should be used for authenticate the image pull. Only available when <code>type</code> is equal to <code>CONTAINER</code>.</td>
 </tr>
 <tr>
 <td><code>containerEmail</code><br/><em>string</em></td>
-<td>The password that should be used to authenticate the image pull. Only available when <code>type</code>is equal to &#39;CONTAINER&#39;.</td>
+<td>The password that should be used to authenticate the image pull. Only available when <code>type</code> is equal to <code>CONTAINER</code>.</td>
 </tr>
 <tr>
 <td><code>containerServer</code><br/><em>string</em></td>
-<td>The server that the credentials should be used with. This value will default to the docker hub registry when not set. Only available when <code>type</code>is equal to &#39;CONTAINER&#39;.</td>
+<td>The server that the credentials should be used with. This value will default to the docker hub registry when not set. Only available when <code>type</code> is equal to <code>CONTAINER</code>.</td>
 </tr>
 <tr>
 <td><code>containerPassword</code><br/><em>string</em></td>
-<td>The password that should be used to authenticate the image pull. Only available when <code>type</code>is equal to &#39;CONTAINER&#39;.</td>
+<td>The password that should be used to authenticate the image pull. Only available when <code>type</code> is equal to <code>CONTAINER</code>.</td>
 </tr>
 <tr>
 <td><code>deploymentInstancePerPops</code><br/><em>integer</em></td>
