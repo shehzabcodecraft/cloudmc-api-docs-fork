@@ -52796,7 +52796,6 @@ If the secret <code>X-Account-Meta-Temp-URL-Key</code> key does not already exis
    </span><span class="s2">"slug"</span><span class="p">:</span><span class="s2">"w-user-zwg"</span><span class="p">,</span><span class="w">
    </span><span class="s2">"type"</span><span class="p">:</span><span class="s2">"VM"</span><span class="p">,</span><span class="w">
    </span><span class="s2">"image"</span><span class="p">:</span><span class="s2">"stackpath-edge/centos-7-cpanel:v201905241955"</span><span class="p">,</span><span class="w">
-   </span><span class="s2">"vpc"</span><span class="p">:</span><span class="s2">"Default"</span><span class="p">,</span><span class="w">
    </span><span class="s2">"addAnyCastIpAddress"</span><span class="p">:</span><span class="kc">false</span><span class="p">,</span><span class="w">
    </span><span class="s2">"publicPort"</span><span class="p">:</span><span class="w"> </span><span class="s2">"80"</span><span class="p">,</span><span class="w">
    </span><span class="s2">"publicPortSrc"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0.0.0/0"</span><span class="p">,</span><span class="w">
@@ -52828,7 +52827,6 @@ If the secret <code>X-Account-Meta-Temp-URL-Key</code> key does not already exis
    </span><span class="s2">"environmentVariableValue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"env-value"</span><span class="p">,</span><span class="w">
    </span><span class="s2">"secretEnvironmentVariableKey"</span><span class="p">:</span><span class="s2">"secret-key"</span><span class="p">,</span><span class="w">
    </span><span class="s2">"secretEnvironmentVariableValue"</span><span class="p">:</span><span class="s2">"secret-value"</span><span class="p">,</span><span class="w">
-   </span><span class="s2">"vpc"</span><span class="p">:</span><span class="s2">"Default"</span><span class="p">,</span><span class="w">
    </span><span class="s2">"addAnyCastIpAddress"</span><span class="p">:</span><span class="kc">false</span><span class="p">,</span><span class="w">
    </span><span class="s2">"publicPort"</span><span class="p">:</span><span class="w"> </span><span class="s2">"80"</span><span class="p">,</span><span class="w">
    </span><span class="s2">"publicPortSrc"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0.0.0/0"</span><span class="p">,</span><span class="w">
@@ -52875,10 +52873,6 @@ If the secret <code>X-Account-Meta-Temp-URL-Key</code> key does not already exis
 <tr>
 <td><code>image</code><br/><em>string</em></td>
 <td>Either the location of a Docker image to run as a container or the image to use for the virtual machine. If for a virtual machine, this is in the format of /[:]. If the image tag portion is omitted, &#39;default&#39; is assumed which is the most recently created, ready, and non-deprecated image of that slug. A set of common images is present on the &#39;stackpath-edge&#39; stack.</td>
-</tr>
-<tr>
-<td><code>vpc</code><br/><em>string</em></td>
-<td>The virtual private cloud option for now supports default vpc only.</td>
 </tr>
 <tr>
 <td><code>firstBootSshKey</code><br/><em>string</em></td>
