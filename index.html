@@ -318,6 +318,9 @@
                           <li>
                             <a href="#administration-mark-organization-as-reseller" class="toc-h3 toc-link" data-title="Administration">Mark organization as reseller</a>
                           </li>
+                          <li>
+                            <a href="#administration-get-identity-providers" class="toc-h3 toc-link" data-title="Administration">Get identity providers</a>
+                          </li>
                       </ul>
                   </li>
                   <li>
@@ -4788,6 +4791,77 @@ curl -X POST <span class="s2">"https://cloudmc_endpoint/api/v1/organizations/03b
    -H <span class="s2">"MC-Api-Key: your_api_key"</span> <span class="se">\</span>
 </code></pre>
 <p>Mark the organization as a reseller. Returns an HTTP status code 200, with an empty response body.</p>
+
+<!-------------------- GET IDENTITY PROVIDERS -------------------->
+<h3 id='administration-get-identity-providers'>Get identity providers</h3>
+<p><code>GET /organizations/organization_id/identity_providers</code></p>
+
+<p>Retrieve the identity providers for the organization.</p>
+<pre class="highlight shell tab-shell"><code><span class="c"># Retrieve the organization's identity providers</span>
+curl <span class="s2">"https://cloudmc_endpoint/api/v1/organizations/87895f43-51c1-43cc-b987-7e301bf5b86a/identity_providers"</span> <span class="se">\</span>
+   -H <span class="s2">"MC-Api-Key: your_api_key"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns a JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"32a5640c-b366-44b1-882a-ee2e1951c592"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"organization"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"my organization"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"87895f43-51c1-43cc-b987-7e301bf5b86a"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"entryPoint"</span><span class="p">:</span><span class="w"> </span><span class="s2">"myOrg"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OIDC"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"css"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"provider"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GOOGLE"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"displayName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Google"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"logo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/static/img/google_signin.svg"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"rank"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<table><thead>
+<tr>
+<th>Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code><br/><em>UUID</em></td>
+<td>The id of the identity provider.</td>
+</tr>
+<tr>
+<td><code>organization</code><br/><em><a href="#administration-organizations">Organization</a></em></td>
+<td>The organization to which the verified domain belongs. <em>includes</em>:<code>id</code>,<code>name</code>, <code>entryPoint</code>.</td>
+</tr>
+<tr>
+<td><code>type</code><br/><em>string</em></td>
+<td>The type of authentication protocol. Possible values: OIDC, SAML.</td>
+</tr>
+<tr>
+<td><code>css</code><br/><em>string</em></td>
+<td>Custom css for the login button of the identity provider.</td>
+</tr>
+<tr>
+<td><code>provider</code><br/><em>string</em></td>
+<td>The name of the provider. Possible values include the default providers (e.g GOOGLE), or CUSTOM for a custom user-defined provider.</td>
+</tr>
+<tr>
+<td><code>displayName</code><br/><em>string</em></td>
+<td>The display name of the identity provider that will appear on the login screen.</td>
+</tr>
+<tr>
+<td><code>logo</code><br/><em>string</em></td>
+<td>A base64 encoded data URL or URL to an image for the logo to display on the login screen.</td>
+</tr>
+<tr>
+<td><code>rank</code><br/><em>int</em></td>
+<td>If provided, this integer sorts identity providers on the Login page in ascending order.</td>
+</tr>
+</tbody></table>
 <h2 id='administration-users'>Users</h2>
 <p>A user account allows users to authenticate to an <a href="#administration-organizations">organization</a> and to have access to the resources in it. You can restrict user access to the system and environments by assigning them specific <a href="#administration-roles">roles</a>. Additionally, every user is given an API key which is needed to use our APIs. All operations done by users are persisted and can be accessed through the activity log.</p>
 
