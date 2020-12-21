@@ -684,6 +684,32 @@
                           </li>
                       </ul>
                   </li>
+                  <li>
+                    <a href="#administration-feedback-settings" class="toc-h2 toc-link" data-title="Administration">Feedback Settings</a>
+                      <ul class="toc-list-h3">
+                          <li>
+                            <a href="#administration-find-feedback-settings-associated-to-an-organization" class="toc-h3 toc-link" data-title="Administration">Find feedback settings associated to an organization</a>
+                          </li>
+                          <li>
+                            <a href="#administration-retrieve-feedback-settings" class="toc-h3 toc-link" data-title="Administration">Retrieve feedback settings</a>
+                          </li>
+                          <li>
+                            <a href="#administration-create-feedback" class="toc-h3 toc-link" data-title="Administration">Create feedback</a>
+                          </li>
+                          <li>
+                            <a href="#administration-update-feedback-settings" class="toc-h3 toc-link" data-title="Administration">Update feedback settings</a>
+                          </li>
+                          <li>
+                            <a href="#administration-delete-feedback-settings" class="toc-h3 toc-link" data-title="Administration">Delete feedback settings</a>
+                          </li>
+                          <li>
+                            <a href="#administration-check-if-feedback-settings-is-configured-for-an-organization" class="toc-h3 toc-link" data-title="Administration">Check if feedback settings is configured for an organization</a>
+                          </li>
+                          <li>
+                            <a href="#administration-check-if-a-support-email-is-configured-for-an-organization" class="toc-h3 toc-link" data-title="Administration">Check if a support email is configured for an organization</a>
+                          </li>
+                      </ul>
+                  </li>
               </ul>
           </li>
           <li>            
@@ -12372,7 +12398,293 @@ curl -X PUT <span class="s2">"https://cloudmc_endpoint/rest/email_settings/dc30f
 <td>Private key for the MailGun service.</td>
 </tr>
 </tbody></table>
-<h1 id='cloudstack-plugin'>CloudStack plugin</h1>
+<h2 id='administration-feedback-settings'>Feedback Settings</h2>
+<!-------------------- FIND FEEDBACK SETTINGS -------------------->
+<h3 id='administration-find-feedback-settings-associated-to-an-organization'>Find feedback settings associated to an organization</h3>
+<p><code>GET /feedback/find?organizationId=:id</code></p>
+
+<p>Retrieve the feedback settings associated to an organization. If the <code>organizationId</code> is omitted, the authenticated user&#39;s organization will be used.</p>
+<pre class="highlight shell tab-shell"><code><span class="c"># Retrieve the feedback settings</span>
+curl <span class="s2">"https://cloudmc_endpoint/api/v1/feedback/find?organizationId=fcda8d5a-0276-4de3-908f-b3bd0aff2491"</span> <span class="se">\</span>
+   -H <span class="s2">"MC-Api-Key: your_api_key"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"supportEmail"</span><span class="p">:</span><span class="w"> </span><span class="s2">"support@company.com"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"organization"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fcda8d5a-0276-4de3-908f-b3bd0aff2491"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"feedbackSlackWebhookUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://hooks.slack.com/services/T00000000/B00000000/XXXXXXXXXXXXXXXXXXXXXXXX"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"f4be2785-ec67-474c-af3a-38ffecfa4094"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"version"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"feedbackEmail"</span><span class="p">:</span><span class="w"> </span><span class="s2">"feedback@company.com"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<!-------------------- GET FEEDBACK SETTINGS -------------------->
+<h3 id='administration-retrieve-feedback-settings'>Retrieve feedback settings</h3>
+<p><code>GET /feedback/:id</code></p>
+
+<p>Retrieve the feedback settings associated to a feedback setting id.</p>
+<pre class="highlight shell tab-shell"><code><span class="c"># Retrieve feedback settings</span>
+curl <span class="s2">"https://cloudmc_endpoint/api/v1/feedback/f4be2785-ec67-474c-af3a-38ffecfa4094"</span> <span class="se">\</span>
+   -H <span class="s2">"MC-Api-Key: your_api_key"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"supportEmail"</span><span class="p">:</span><span class="w"> </span><span class="s2">"support@company.com"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"organization"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fcda8d5a-0276-4de3-908f-b3bd0aff2491"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"feedbackSlackWebhookUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://hooks.slack.com/services/T00000000/B00000000/XXXXXXXXXXXXXXXXXXXXXXXX"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"f4be2785-ec67-474c-af3a-38ffecfa4094"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"version"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"feedbackEmail"</span><span class="p">:</span><span class="w"> </span><span class="s2">"feedback@company.com"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>Retrieve the feedback settings associated to the feedback settings id.</p>
+
+<table><thead>
+<tr>
+<th>Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code><br/><em>UUID</em></td>
+<td>The configured feedback settings&#39; id.</td>
+</tr>
+<tr>
+<td><code>organization.id</code><br/><em>UUID</em></td>
+<td>The organization id that the feedback settings are linked to. It cannot be changed.</td>
+</tr>
+<tr>
+<td><code>supportEmail</code><br/><em>string</em></td>
+<td>Email address used for support requests.</td>
+</tr>
+<tr>
+<td><code>feedbackEmail</code><br/><em>string</em></td>
+<td>Email address used for feedback.</td>
+</tr>
+<tr>
+<td><code>feedbackSlackWebhookUrl</code><br/><em>string</em></td>
+<td>The slack webhook url used for feedback. Please refer to <a href="https://api.slack.com/messaging/webhooks">https://api.slack.com/messaging/webhooks</a>.</td>
+</tr>
+<tr>
+<td><code>version</code><br/><em>integer</em></td>
+<td>The feedback settings version.</td>
+</tr>
+</tbody></table>
+
+<!-------------------- CREATE FEEDBACK SETTINGS -------------------->
+<h3 id='administration-create-feedback'>Create feedback</h3>
+<p><code>POST /feedback</code></p>
+
+<p>Create a new feedback settings.</p>
+<pre class="highlight shell tab-shell"><code><span class="c"># Creates a new feedback settings</span>
+curl -X POST <span class="s2">"https://cloudmc_endpoint/api/v1/feedback"</span> <span class="se">\</span>
+   -H <span class="s2">"MC-Api-Key: your_api_key"</span>
+</code></pre>
+<blockquote>
+<p>Request body example:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"f4be2785-ec67-474c-af3a-38ffecfa4094"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"organization"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fcda8d5a-0276-4de3-908f-b3bd0aff2491"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"feedbackEmail"</span><span class="p">:</span><span class="w"> </span><span class="s2">"feedback@company.com"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"feedbackSlackWebhookUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://hooks.slack.com/services/T00000000/B00000000/XXXXXXXXXXXXXXXXXXXXXXXX"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"supportEmail"</span><span class="p">:</span><span class="w"> </span><span class="s2">"support@company.com"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<blockquote>
+<p>The above command return JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"supportEmail"</span><span class="p">:</span><span class="w"> </span><span class="s2">"support@company.com"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"organization"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fcda8d5a-0276-4de3-908f-b3bd0aff2491"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"feedbackSlackWebhookUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://hooks.slack.com/services/T00000000/B00000000/XXXXXXXXXXXXXXXXXXXXXXXX"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"f4be2785-ec67-474c-af3a-38ffecfa4094"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"version"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"feedbackEmail"</span><span class="p">:</span><span class="w"> </span><span class="s2">"feedback@company.com"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<table><thead>
+<tr>
+<th>Required</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code><br/><em>UUID</em></td>
+<td>The configured feedback settings&#39; id.</td>
+</tr>
+<tr>
+<td><code>organization.id</code><br/><em>UUID</em></td>
+<td>The organization id that the feedback settings are linked to. It cannot be changed.</td>
+</tr>
+</tbody></table>
+
+<table><thead>
+<tr>
+<th>Optional</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>supportEmail</code><br/><em>string</em></td>
+<td>Email address used for support requests.</td>
+</tr>
+<tr>
+<td><code>feedbackEmail</code><br/><em>string</em></td>
+<td>Email address used for feedback.</td>
+</tr>
+<tr>
+<td><code>feedbackSlackWebhookUrl</code><br/><em>string</em></td>
+<td>The slack webhook url used for feedback. Please refer to <a href="https://api.slack.com/messaging/webhooks">https://api.slack.com/messaging/webhooks</a>.</td>
+</tr>
+<tr>
+<td><code>version</code><br/><em>integer</em></td>
+<td>The feedback settings version.</td>
+</tr>
+</tbody></table>
+
+<!-------------------- UPDATE FEEDBACK SETTINGS -------------------->
+<h3 id='administration-update-feedback-settings'>Update feedback settings</h3>
+<p><code>PUT /feedback/:id</code></p>
+
+<p>Updates the feedback settings of an organization.</p>
+<pre class="highlight shell tab-shell"><code><span class="c"># Updates an existing feedback settings for an organization</span>
+curl -X PUT <span class="s2">"https://cloudmc_endpoint/api/v1/feedback/f4be2785-ec67-474c-af3a-38ffecfa4094 </span><span class="se">\</span><span class="s2">
+   -H "</span>MC-Api-Key: your_api_key<span class="s2">"
+   -H "</span>Content-Type: application/json<span class="s2">" </span><span class="se">\</span><span class="s2">
+   -d "</span>request-body<span class="s2">"
+</span></code></pre>
+<blockquote>
+<p>Request body example:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"f4be2785-ec67-474c-af3a-38ffecfa4094"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"organization"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fcda8d5a-0276-4de3-908f-b3bd0aff2491"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"feedbackEmail"</span><span class="p">:</span><span class="w"> </span><span class="s2">"feedback@company.com"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"feedbackSlackWebhookUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://hooks.slack.com/services/T00000000/B00000000/XXXXXXXXXXXXXXXXXXXXXXXX"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"supportEmail"</span><span class="p">:</span><span class="w"> </span><span class="s2">"support@company.com"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<blockquote>
+<p>The above command return JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"supportEmail"</span><span class="p">:</span><span class="w"> </span><span class="s2">"support@company.com"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"organization"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fcda8d5a-0276-4de3-908f-b3bd0aff2491"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"feedbackSlackWebhookUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://hooks.slack.com/services/T00000000/B00000000/XXXXXXXXXXXXXXXXXXXXXXXX"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"f4be2785-ec67-474c-af3a-38ffecfa4094"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"version"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"feedbackEmail"</span><span class="p">:</span><span class="w"> </span><span class="s2">"feedback@company.com"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<table><thead>
+<tr>
+<th>Required</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code><br/><em>UUID</em></td>
+<td>The configured feedback settings&#39; id.</td>
+</tr>
+<tr>
+<td><code>organization.id</code><br/><em>UUID</em></td>
+<td>The organization id that the feedback settings are linked to. It cannot be changed.</td>
+</tr>
+</tbody></table>
+
+<table><thead>
+<tr>
+<th>Optional</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>supportEmail</code><br/><em>string</em></td>
+<td>Email address used for support requests.</td>
+</tr>
+<tr>
+<td><code>feedbackEmail</code><br/><em>string</em></td>
+<td>Email address used for feedback.</td>
+</tr>
+<tr>
+<td><code>feedbackSlackWebhookUrl</code><br/><em>string</em></td>
+<td>The slack webhook url used for feedback. Please refer to <a href="https://api.slack.com/messaging/webhooks">https://api.slack.com/messaging/webhooks</a>.</td>
+</tr>
+<tr>
+<td><code>version</code><br/><em>integer</em></td>
+<td>The feedback settings version.</td>
+</tr>
+</tbody></table>
+
+<!-------------------- DELETE FEEDBACK SETTINGS -------------------->
+<h3 id='administration-delete-feedback-settings'>Delete feedback settings</h3>
+<p><code>DELETE /feedback/:id</code></p>
+
+<p>Delete an existing feedback settings.</p>
+<pre class="highlight shell tab-shell"><code>curl -X DELETE <span class="s2">"https://cloudmc_endpoint/api/v1/feedback/f4be2785-ec67-474c-af3a-38ffecfa4094"</span> <span class="se">\</span>
+   -H <span class="s2">"MC-Api-Key: your_api_key"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns a JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"taskId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"85df8dfb-b904-42dc-bb76-4824e6b50c83"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"taskStatus"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SUCCESS"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<!-------------------- CHECKING IF FEEDBACK SETTINGS EXISTS -------------------->
+<h3 id='administration-check-if-feedback-settings-is-configured-for-an-organization'>Check if feedback settings is configured for an organization</h3>
+<p><code>GET /feedback/exists?organizationId=:id</code></p>
+
+<p>Checks if feedback settings is configured for an organization. If the <code>organizationId</code> is omitted, the authenticated user&#39;s organization will be used.</p>
+<pre class="highlight shell tab-shell"><code><span class="c"># Check if feedback settings is configured</span>
+curl <span class="s2">"https://cloudmc_endpoint/api/v1/feedback/exists?organizationId=fcda8d5a-0276-4de3-908f-b3bd0aff2491"</span> <span class="se">\</span>
+   -H <span class="s2">"MC-Api-Key: your_api_key"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{}</span><span class="w">
+</span></code></pre>
+<!-------------------- CHECKING IF SUPPORT SETTINGS EXISTS -------------------->
+<h3 id='administration-check-if-a-support-email-is-configured-for-an-organization'>Check if a support email is configured for an organization</h3>
+<p><code>GET /support/exists?organizationId=:id</code></p>
+
+<p>Check if a support email is configured for an organization. If the <code>organizationId</code> is omitted, the authenticated user&#39;s organization will be used.</p>
+<pre class="highlight shell tab-shell"><code><span class="c"># Check if support email is configured</span>
+curl <span class="s2">"https://cloudmc_endpoint/api/v1/support/exists?organizationId=fcda8d5a-0276-4de3-908f-b3bd0aff2491"</span> <span class="se">\</span>
+   -H <span class="s2">"MC-Api-Key: your_api_key"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{}</span><span class="w">
+</span></code></pre><h1 id='cloudstack-plugin'>CloudStack plugin</h1>
 <p>The CloudStack plugin provides endpoints for carrying out operations on CloudMC compute and networking entities. While each operation has its own validation and required fields, all operations need to specify the service code and environment in which they should be carried out. The following example URL describes how to specify this information for all entities.</p>
 
 <p><code>https://cloudmc_endpoint/api/v1/services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/:entity_type</code></p>
