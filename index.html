@@ -710,6 +710,17 @@
                           </li>
                       </ul>
                   </li>
+                  <li>
+                    <a href="#administration-custom-fields" class="toc-h2 toc-link" data-title="Administration">Custom fields</a>
+                      <ul class="toc-list-h3">
+                          <li>
+                            <a href="#administration-list-custom-fields" class="toc-h3 toc-link" data-title="Administration">List custom fields</a>
+                          </li>
+                          <li>
+                            <a href="#administration-retrieve-custom-field" class="toc-h3 toc-link" data-title="Administration">Retrieve custom field</a>
+                          </li>
+                      </ul>
+                  </li>
               </ul>
           </li>
           <li>            
@@ -12684,7 +12695,143 @@ curl <span class="s2">"https://cloudmc_endpoint/api/v1/support/exists?organizati
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{}</span><span class="w">
-</span></code></pre><h1 id='cloudstack-plugin'>CloudStack plugin</h1>
+</span></code></pre><h2 id='administration-custom-fields'>Custom fields</h2>
+<p>Custom fields allow administrators to define new fields on the organization and user models. This allows for additional metadata to be defined on these models.</p>
+<h3 id='administration-list-custom-fields'>List custom fields</h3>
+<p><code>GET /custom_fields</code></p>
+<pre class="highlight shell tab-shell"><code><span class="c"># Retrieve custom fields</span>
+curl <span class="s2">"https://cloudmc_endpoint/rest/custom_fields?organization_id=fb0eeef9-eddd-48bc-949c-871481777ff9"</span> <span class="se">\</span>
+  -h <span class="s2">"Mc-Api-Key: your_api_key"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"field"</span><span class="p">:</span><span class="w"> </span><span class="s2">"username"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"organization"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fb0eeef9-eddd-48bc-949c-871481777ff9"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"f9a2b02b-7d67-4910-8353-c4bfcbdeaa7e"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ORGANIZATION"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"nameTranslations"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"en"</span><span class="p">:</span><span class="w"> </span><span class="s2">"username"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"fr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"username fr"</span><span class="p">,</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"descriptionTranslations"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"en"</span><span class="p">:</span><span class="w"> </span><span class="s2">"username desc"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"fr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"username desc fr"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>Retrieves a list of custom fields for the given organization.</p>
+
+<table><thead>
+<tr>
+<th>Query Params</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>organization_id</code><br/><em>UUID</em></td>
+<td>Return only the custom fileds for the provided organization id. If not provided, will default to the user&#39;s organization.</td>
+</tr>
+</tbody></table>
+
+<table><thead>
+<tr>
+<th>Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code><br/><em>UUID</em></td>
+<td>The custom field&#39;s id.</td>
+</tr>
+<tr>
+<td><code>organization.id</code><br/><em>UUID</em></td>
+<td>The organization id that the custom field belongs to.</td>
+</tr>
+<tr>
+<td><code>field</code><br/><em>UUID</em></td>
+<td>The field you&#39;re defining, this is <em>not</em> the UI-facing name.</td>
+</tr>
+<tr>
+<td><code>type</code><br/><em>string</em></td>
+<td>The type of model for the field. Possible values: ORGANIZATION, USER.</td>
+</tr>
+<tr>
+<td><code>nameTranslations</code><br/><em>map</em></td>
+<td>Map of language short codes to name translations for the field.</td>
+</tr>
+<tr>
+<td><code>descriptionTranslations</code><br/><em>map</em></td>
+<td>Map of language short codes to description translations for the field.</td>
+</tr>
+</tbody></table>
+<h3 id='administration-retrieve-custom-field'>Retrieve custom field</h3>
+<p><code>GET /custom_fields/:id</code></p>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://localhost:8080/rest/custom_fields/f9a2b02b-7d67-4910-8353-c4bfcbdeaa7e"</span> <span class="se">\</span>
+  -h <span class="s2">"Mc-Api-Key: your_api_key"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"field"</span><span class="p">:</span><span class="w"> </span><span class="s2">"username"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"organization"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fb0eeef9-eddd-48bc-949c-871481777ff9"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"f9a2b02b-7d67-4910-8353-c4bfcbdeaa7e"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ORGANIZATION"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"nameTranslations"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"en"</span><span class="p">:</span><span class="w"> </span><span class="s2">"username"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"fr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"username fr"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"es"</span><span class="p">:</span><span class="w"> </span><span class="s2">"username es"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"descriptionTranslations"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"en"</span><span class="p">:</span><span class="w"> </span><span class="s2">"username desc"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"fr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"username desc fr"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<table><thead>
+<tr>
+<th>Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code><br/><em>UUID</em></td>
+<td>The custom field&#39;s id.</td>
+</tr>
+<tr>
+<td><code>organization.id</code><br/><em>UUID</em></td>
+<td>The organization id that the custom field belongs to.</td>
+</tr>
+<tr>
+<td><code>field</code><br/><em>UUID</em></td>
+<td>The field you&#39;re defining, this is <em>not</em> the UI-facing name.</td>
+</tr>
+<tr>
+<td><code>type</code><br/><em>string</em></td>
+<td>The type of model for the field. Possible values: ORGANIZATION, USER.</td>
+</tr>
+<tr>
+<td><code>nameTranslations</code><br/><em>map</em></td>
+<td>Map of language short codes to name translations for the field.</td>
+</tr>
+<tr>
+<td><code>descriptionTranslations</code><br/><em>map</em></td>
+<td>Map of language short codes to description translations for the field.</td>
+</tr>
+</tbody></table>
+<h1 id='cloudstack-plugin'>CloudStack plugin</h1>
 <p>The CloudStack plugin provides endpoints for carrying out operations on CloudMC compute and networking entities. While each operation has its own validation and required fields, all operations need to specify the service code and environment in which they should be carried out. The following example URL describes how to specify this information for all entities.</p>
 
 <p><code>https://cloudmc_endpoint/api/v1/services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/:entity_type</code></p>
