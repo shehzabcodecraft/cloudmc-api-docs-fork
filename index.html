@@ -17654,7 +17654,7 @@ For rules with protocol <code>ALL</code>, no protocol-specific information is re
 </code></pre>
 <p><code>DELETE /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/nics/:id</code></p>
 
-<p>Delete an existing NIC. The NIC you&#39;re trying to delete must not be the default one.</p>
+<p>Delete an existing NIC. The NIC you&#39;re trying to delete must not be the default one and must not be associated to a load balancing rule and/or a port forwarding rule.</p>
 
 <!-------------------- SET A NIC AS DEFAULT -------------------->
 <h4 id='cloudstack-set-a-nic-as-default'>Set a NIC as default</h4><pre class="highlight shell tab-shell"><code>curl -X POST <span class="se">\</span>
