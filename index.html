@@ -719,6 +719,9 @@
                           <li>
                             <a href="#administration-retrieve-custom-field" class="toc-h3 toc-link" data-title="Administration">Retrieve custom field</a>
                           </li>
+                          <li>
+                            <a href="#administration-create-a-custom-field" class="toc-h3 toc-link" data-title="Administration">Create a custom field</a>
+                          </li>
                       </ul>
                   </li>
               </ul>
@@ -12713,6 +12716,7 @@ curl <span class="s2">"https://cloudmc_endpoint/rest/custom_fields?organization_
       </span><span class="s2">"organization"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fb0eeef9-eddd-48bc-949c-871481777ff9"</span><span class="w">
       </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"required"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
       </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"f9a2b02b-7d67-4910-8353-c4bfcbdeaa7e"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ORGANIZATION"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"nameTranslations"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -12760,6 +12764,10 @@ curl <span class="s2">"https://cloudmc_endpoint/rest/custom_fields?organization_
 <td>The field you&#39;re defining, this is <em>not</em> the UI-facing name.</td>
 </tr>
 <tr>
+<td><code>required</code><br/><em>boolean</em></td>
+<td>Whether or not the field is required on the field.</td>
+</tr>
+<tr>
 <td><code>type</code><br/><em>string</em></td>
 <td>The type of model for the field. Possible values: ORGANIZATION, USER.</td>
 </tr>
@@ -12786,6 +12794,7 @@ curl <span class="s2">"https://cloudmc_endpoint/rest/custom_fields?organization_
     </span><span class="s2">"organization"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fb0eeef9-eddd-48bc-949c-871481777ff9"</span><span class="w">
     </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"required"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
     </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"f9a2b02b-7d67-4910-8353-c4bfcbdeaa7e"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ORGANIZATION"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"nameTranslations"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -12819,6 +12828,10 @@ curl <span class="s2">"https://cloudmc_endpoint/rest/custom_fields?organization_
 <td>The field you&#39;re defining, this is <em>not</em> the UI-facing name.</td>
 </tr>
 <tr>
+<td><code>required</code><br/><em>boolean</em></td>
+<td>Whether or not the field is required on the field.</td>
+</tr>
+<tr>
 <td><code>type</code><br/><em>string</em></td>
 <td>The type of model for the field. Possible values: ORGANIZATION, USER.</td>
 </tr>
@@ -12829,6 +12842,67 @@ curl <span class="s2">"https://cloudmc_endpoint/rest/custom_fields?organization_
 <tr>
 <td><code>descriptionTranslations</code><br/><em>map</em></td>
 <td>Map of language short codes to description translations for the field.</td>
+</tr>
+</tbody></table>
+<h3 id='administration-create-a-custom-field'>Create a custom field</h3>
+<p><code>POST /custom_fields</code></p>
+<pre class="highlight shell tab-shell"><code>curl --request POST <span class="se">\</span>
+  --url https://cloudmc_endpoint/rest/custom_fields <span class="se">\</span>
+  --header <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  --header <span class="s2">"Mc-Api-Key: your_api_key"</span> <span class="se">\</span>
+  --data <span class="s2">"request_body"</span>
+</code></pre>
+<blockquote>
+<p>Request body example:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ORGANIZATION"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"field"</span><span class="p">:</span><span class="w"> </span><span class="s2">"adminEmail"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"nameTranslations"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"en"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Administrator's email"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"fr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Courriel de l'administrateur"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>Create a new custom field.</p>
+
+<table><thead>
+<tr>
+<th>Required</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>field</code><br/><em>UUID</em></td>
+<td>The field you&#39;re defining, this is <em>not</em> the UI-facing name.</td>
+</tr>
+<tr>
+<td><code>nameTranslations</code><br/><em>map</em></td>
+<td>Map of language short codes to name translations for the field. Translations for all languages are required.</td>
+</tr>
+<tr>
+<td><code>type</code><br/><em>string</em></td>
+<td>The type of model for the field. Possible values: ORGANIZATION, USER. You will need the <code>Custom fields: Manage</code> permission to execute this operation.</td>
+</tr>
+</tbody></table>
+
+<table><thead>
+<tr>
+<th>Optional</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>descriptionTranslations</code><br/><em>map</em></td>
+<td>Map of language short codes to description translations for the field. If passed, translations for all languages are required.</td>
+</tr>
+<tr>
+<td><code>organization.id</code><br/><em>UUID</em></td>
+<td>The organization id that the email settings are linked to. It cannot be changed. If not passed, will default to the calling user&#39;s organization.</td>
+</tr>
+<tr>
+<td><code>required</code><br/><em>boolean</em></td>
+<td>Whether or not the field is required on the field. Defaults to false.</td>
 </tr>
 </tbody></table>
 <h1 id='cloudstack-plugin'>CloudStack plugin</h1>
