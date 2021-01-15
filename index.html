@@ -722,6 +722,9 @@
                           <li>
                             <a href="#administration-create-a-custom-field" class="toc-h3 toc-link" data-title="Administration">Create a custom field</a>
                           </li>
+                          <li>
+                            <a href="#administration-delete-a-custom-field" class="toc-h3 toc-link" data-title="Administration">Delete a custom field</a>
+                          </li>
                       </ul>
                   </li>
               </ul>
@@ -12721,7 +12724,7 @@ curl <span class="s2">"https://cloudmc_endpoint/rest/custom_fields?organization_
       </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ORGANIZATION"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"nameTranslations"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="s2">"en"</span><span class="p">:</span><span class="w"> </span><span class="s2">"username"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"fr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"username fr"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"fr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"username fr"</span><span class="w">
       </span><span class="p">},</span><span class="w">
       </span><span class="s2">"descriptionTranslations"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="s2">"en"</span><span class="p">:</span><span class="w"> </span><span class="s2">"username desc"</span><span class="p">,</span><span class="w">
@@ -12905,6 +12908,14 @@ curl <span class="s2">"https://cloudmc_endpoint/rest/custom_fields?organization_
 <td>Whether or not the field is required on the field. Defaults to false.</td>
 </tr>
 </tbody></table>
+<h3 id='administration-delete-a-custom-field'>Delete a custom field</h3>
+<p><code>DELETE /custom_fields/:id</code></p>
+<pre class="highlight shell tab-shell"><code>curl --request DELETE <span class="se">\</span>
+  --url https://cloudmc_endpoint/rest/custom_fields/f9a2b02b-7d67-4910-8353-c4bfcbdeaa7e <span class="se">\</span>
+  --header <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  --header <span class="s2">"Mc-Api-Key: your_api_key"</span> 
+</code></pre>
+<p>Delete a custom field.</p>
 <h1 id='cloudstack-plugin'>CloudStack plugin</h1>
 <p>The CloudStack plugin provides endpoints for carrying out operations on CloudMC compute and networking entities. While each operation has its own validation and required fields, all operations need to specify the service code and environment in which they should be carried out. The following example URL describes how to specify this information for all entities.</p>
 
