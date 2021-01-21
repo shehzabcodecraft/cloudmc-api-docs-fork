@@ -54007,21 +54007,23 @@ a custom one. Only non-deprecated images are returned by default.</p>
     </span><span class="p">{</span><span class="w">
       </span><span class="s2">"stackId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"a8050b2b-39eb-4929-bce5-1af42055903e"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"a8050b2b-39eb-4929-bce5-1af42055903e/centos7/v20201110"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"stackpath-edge"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"family"</span><span class="p">:</span><span class="w"> </span><span class="s2">"centos7"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"tag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"v20201110"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-11-10T20:33:32.609434Z"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Image using centos7"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"reference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"a8050b2b-39eb-4929-bce5-1af42055903e/centos7:v20201110"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"reference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"stackpath-edge/centos7:v20201110"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"READY"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="p">{</span><span class="w">
       </span><span class="s2">"stackId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"a8050b2b-39eb-4929-bce5-1af42055903e"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"a8050b2b-39eb-4929-bce5-1af42055903e/ubuntu/v20201110"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"stackpath-edge"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"family"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ubuntu"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"tag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"v20201110"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-11-10T20:34:11.328575Z"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Image using ubuntu"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"reference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"a8050b2b-39eb-4929-bce5-1af42055903e/ubuntu:v20201110"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"reference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"stackpath-edge/ubuntu:v20201110"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"READY"</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">],</span><span class="w">
@@ -54033,6 +54035,18 @@ a custom one. Only non-deprecated images are returned by default.</p>
 <p><code>GET /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/images</code></p>
 
 <p>Retrieve a list of all images in a given <a href="#administration-environments">environment</a>.</p>
+
+<table><thead>
+<tr>
+<th>Optional</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>includeOnlySystemImages</code><br/><em>boolean</em></td>
+<td>Setting the query parameter to <strong>true</strong> will return only the default <strong>stackpath images</strong>.</td>
+</tr>
+</tbody></table>
 
 <table><thead>
 <tr>
@@ -54090,11 +54104,12 @@ a custom one. Only non-deprecated images are returned by default.</p>
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"stackId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"a8050b2b-39eb-4929-bce5-1af42055903e"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"a8050b2b-39eb-4929-bce5-1af42055903e/ubuntu/v20201110"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"stackpath-edge"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"family"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ubuntu"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"tag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"v20201110"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-11-10T20:34:11.328575Z"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test 2"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"reference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"a8050b2b-39eb-4929-bce5-1af42055903e/ubuntu:v20201110"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"reference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"stackpath-edge/ubuntu:v20201110"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"READY"</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
