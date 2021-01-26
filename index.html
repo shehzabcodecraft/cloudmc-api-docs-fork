@@ -723,6 +723,9 @@
                             <a href="#administration-create-a-custom-field" class="toc-h3 toc-link" data-title="Administration">Create a custom field</a>
                           </li>
                           <li>
+                            <a href="#administration-edit-a-custom-field" class="toc-h3 toc-link" data-title="Administration">Edit a custom field</a>
+                          </li>
+                          <li>
                             <a href="#administration-delete-a-custom-field" class="toc-h3 toc-link" data-title="Administration">Delete a custom field</a>
                           </li>
                       </ul>
@@ -12901,11 +12904,84 @@ curl <span class="s2">"https://cloudmc_endpoint/rest/custom_fields?organization_
 </tr>
 <tr>
 <td><code>organization.id</code><br/><em>UUID</em></td>
-<td>The organization id that the email settings are linked to. It cannot be changed. If not passed, will default to the calling user&#39;s organization.</td>
+<td>The organization id that the custom fields are linked to. It cannot be changed. If not passed, will default to the calling user&#39;s organization.</td>
 </tr>
 <tr>
 <td><code>required</code><br/><em>boolean</em></td>
 <td>Whether or not the field is required on the field. Defaults to false.</td>
+</tr>
+</tbody></table>
+<h3 id='administration-edit-a-custom-field'>Edit a custom field</h3>
+<p><code>PUT /custom_fields/:id</code></p>
+<pre class="highlight shell tab-shell"><code>curl --request PUT <span class="se">\</span>
+  --url https://cloudmc_endpoint/rest/custom_fields/f9a2b02b-7d67-4910-8353-c4bfcbdeaa7e <span class="se">\</span>
+  --header <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  --header <span class="s2">"Mc-Api-Key: your_api_key"</span> <span class="se">\</span>
+  --data <span class="s2">"request_body"</span>
+</code></pre>
+<blockquote>
+<p>Request body example:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"f9a2b02b-7d67-4910-8353-c4bfcbdeaa7e"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ORGANIZATION"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"field"</span><span class="p">:</span><span class="w"> </span><span class="s2">"adminEmail"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"nameTranslations"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"en"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Administrator's email"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"fr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Courriel de l'administrateur"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"descriptionTranslations"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"en"</span><span class="p">:</span><span class="w"> </span><span class="s2">"username desc"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"fr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"username desc fr"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"organization"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2e481375-98e6-4963-adee-5067584f1580"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>Edit an existing custom field.</p>
+
+<table><thead>
+<tr>
+<th>Required</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code><br/><em>UUID</em></td>
+<td>The ID of the custom field.</td>
+</tr>
+<tr>
+<td><code>field</code><br/><em>UUID</em></td>
+<td>The field you&#39;re defining, this is <em>not</em> the UI-facing name. It cannot be changed.</td>
+</tr>
+<tr>
+<td><code>nameTranslations</code><br/><em>map</em></td>
+<td>Map of language short codes to name translations for the field. Translations for all languages are required.</td>
+</tr>
+<tr>
+<td><code>type</code><br/><em>string</em></td>
+<td>The type of model for the field. Possible values: ORGANIZATION, USER. It cannot be changed.</td>
+</tr>
+<tr>
+<td><code>organization.id</code><br/><em>UUID</em></td>
+<td>The organization id that the custom fields are linked to. It cannot be changed.</td>
+</tr>
+<tr>
+<td><code>required</code><br/><em>boolean</em></td>
+<td>Whether or not the field is required on the field. Defaults to false.</td>
+</tr>
+</tbody></table>
+
+<table><thead>
+<tr>
+<th>Optional</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>descriptionTranslations</code><br/><em>map</em></td>
+<td>Map of language short codes to description translations for the field. If passed, translations for all languages are required.</td>
 </tr>
 </tbody></table>
 <h3 id='administration-delete-a-custom-field'>Delete a custom field</h3>
