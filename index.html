@@ -736,6 +736,20 @@
                           </li>
                       </ul>
                   </li>
+                  <li>
+                    <a href="#administration-quotas" class="toc-h2 toc-link" data-title="Administration">Quotas</a>
+                      <ul class="toc-list-h3">
+                          <li>
+                            <a href="#administration-list-quotas" class="toc-h3 toc-link" data-title="Administration">List quotas</a>
+                          </li>
+                          <li>
+                            <a href="#administration-retrieve-a-quota" class="toc-h3 toc-link" data-title="Administration">Retrieve a quota</a>
+                          </li>
+                          <li>
+                            <a href="#administration-delete-a-quota" class="toc-h3 toc-link" data-title="Administration">Delete a quota</a>
+                          </li>
+                      </ul>
+                  </li>
               </ul>
           </li>
           <li>            
@@ -13246,6 +13260,361 @@ curl <span class="s2">"https://cloudmc_endpoint/rest/custom_fields?organization_
   --header <span class="s2">"Mc-Api-Key: your_api_key"</span> 
 </code></pre>
 <p>Delete a custom field.</p>
+<h2 id='administration-quotas'>Quotas</h2>
+<p>Quotas are used to limit the resource usage on a service connection consumed by an organization. The primary use case for CloudMC is to enforce limited quotas on trial accounts. Quotas can target different resources. For example, number of vCPUs, allocated memory, disk size, network bandwidth, number of public IPs and more.</p>
+
+<!------------------- LIST QUOTAS --------------------->
+<h3 id='administration-list-quotas'>List quotas</h3>
+<p><code>GET /quotas?organization_id=:id&amp;type=[owned|assigned]</code></p>
+
+<p>Retrieves a list of quotas configured for a given organization. An optional <code>type</code> can be specified to retrieve either only the <code>assigned</code> or <code>owned</code> quotas.</p>
+
+<p><strong>Query Parameters</strong></p>
+
+<table><thead>
+<tr>
+<th>Optional</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>organization_id</code><br/><em>UUID</em></td>
+<td>The organization id for which we want to get the quotas from. When not specified, the quotas for the organization the current user is associated to will be returned.</td>
+</tr>
+<tr>
+<td><code>type</code><br/><em>UUID</em></td>
+<td>The type of quotas. This can be <code>assigned</code> (quotas assigned to an organization) or <code>owned</code> (quotas managed by an organization). When not specified, both types are returned.</td>
+</tr>
+</tbody></table>
+<pre class="highlight shell tab-shell"><code><span class="c"># Retrieve quotas list</span>
+curl <span class="s2">"https://cloudmc_endpoint/api/v2/quotas"</span> <span class="se">\</span>
+   -H <span class="s2">"MC-Api-Key: your_api_key"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns a JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"ownerOrganization"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"System"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"a21debb5-b4ac-4e4b-9491-d0f4df6cd4f9"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"deleted"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"quotaDetails"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"ceiling"</span><span class="p">:</span><span class="w"> </span><span class="mf">1.0</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"deleted"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"limitSize"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"metricIdentifier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"metric-id"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1c005444-6ea2-4ebc-85f7-d75f5b1943d3"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"INSTANCE_MEMORY"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"labelKey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"quotas.memory"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"version"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"ceiling"</span><span class="p">:</span><span class="w"> </span><span class="mf">1.0</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"deleted"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"limitSize"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"metricIdentifier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"metric-id"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"674f4755-640b-4697-87bb-8a5d03704552"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DISK_SIZE"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"labelKey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"quotas.disk_size"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"version"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"ceiling"</span><span class="p">:</span><span class="w"> </span><span class="mf">1.0</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"deleted"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"limitSize"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"metricIdentifier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"metric-id"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"691c55b5-ecaf-434d-b509-97c4fb554d1d"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"INSTANCE_VCPUS"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"labelKey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"quotas.vcpus"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"version"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Quota Name"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"defaultForService"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Quota Description"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"numberOfOrganizationsAppliedTo"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"24330f70-9845-4851-acc0-ecd5d9b13613"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"creationDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-01-06T19:17:06.000Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"version"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"serviceConnection"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"serviceCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"service-code"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"service-name"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"52fb6687-44cb-4db3-9e63-bdfabfe2faf1"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"gcp"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"defaultForTrial"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>An array of quotas with the following attributes are returned.</p>
+
+<table><thead>
+<tr>
+<th>Quota Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code><br/><em>UUID</em></td>
+<td>The id of the quota.</td>
+</tr>
+<tr>
+<td><code>name</code><br/><em>string</em></td>
+<td>The name of the quota.</td>
+</tr>
+<tr>
+<td><code>description</code><br/><em>string</em></td>
+<td>The description of the quota.</td>
+</tr>
+<tr>
+<td><code>creationDate</code><br/><em>string</em></td>
+<td>The date in <a href="https://en.wikipedia.org/wiki/ISO_8601">ISO 8601</a> that the quota was created.</td>
+</tr>
+<tr>
+<td><code>numberOfOrganizationsAppliedTo</code><br/><em>number</em></td>
+<td>The number of organizations the quota is assigned to.</td>
+</tr>
+<tr>
+<td><code>defaultForService</code><br/><em>boolean</em></td>
+<td>Weather or not the quota is the default for service connections.</td>
+</tr>
+<tr>
+<td><code>defaultForTrial</code><br/><em>boolean</em></td>
+<td>Weather or not the quota is the default for trials.</td>
+</tr>
+<tr>
+<td><code>ownerOrganization</code><br/><em><a href="#administration-organizations">Organization</a></em></td>
+<td>The organization that manages the quota.<br/><em>includes</em>: <code>id</code> and <code>name</code>.</td>
+</tr>
+<tr>
+<td><code>serviceConnection</code><br/><em><a href="#administration-service-connections">ServiceConnection</a></em></td>
+<td>The service connection associated to the quota.<br/><em>includes</em>: <code>id</code> and <code>name</code>.</td>
+</tr>
+<tr>
+<td><code>quotaDetails</code><br/><em>Array [QuotaDetail]</em></td>
+<td>The quota details.</td>
+</tr>
+</tbody></table>
+
+<p>The following table lists the attributes for <code>QuotaDetail</code>:</p>
+
+<table><thead>
+<tr>
+<th>QuotaDetail Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code><br/><em>UUID</em></td>
+<td>The id of the quota detail.</td>
+</tr>
+<tr>
+<td><code>type</code><br/><em>string</em></td>
+<td>The type of quota (metric).</td>
+</tr>
+<tr>
+<td><code>labelKey</code><br/><em>string</em></td>
+<td>The key used for the label.</td>
+</tr>
+<tr>
+<td><code>metricIdentifier</code><br/><em>string</em></td>
+<td>Id matching the metric identifiers provided by the plugin writer.</td>
+</tr>
+<tr>
+<td><code>ceiling</code><br/><em>number</em></td>
+<td>The ceiling value (metric).</td>
+</tr>
+<tr>
+<td><code>limitsize</code><br/><em>number</em></td>
+<td><code>DEPRECATED</code> The maximum for the type (metric).</td>
+</tr>
+</tbody></table>
+
+<!-------------------- GET A QUOTA -------------------->
+<h3 id='administration-retrieve-a-quota'>Retrieve a quota</h3>
+<p><code>GET /quotas/:id</code></p>
+<pre class="highlight shell tab-shell"><code><span class="c"># Retrieve a specific quota</span>
+curl <span class="s2">"https://cloudmc_endpoint/api/v2/quotas/:id"</span> <span class="se">\</span>
+   -H <span class="s2">"MC-Api-Key: your_api_key"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns a JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"ownerOrganization"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"System"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"a21debb5-b4ac-4e4b-9491-d0f4df6cd4f9"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"deleted"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"quotaDetails"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"ceiling"</span><span class="p">:</span><span class="w"> </span><span class="mf">1.0</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"deleted"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"limitSize"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"metricIdentifier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"metric-id"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1c005444-6ea2-4ebc-85f7-d75f5b1943d3"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"INSTANCE_MEMORY"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"labelKey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"quotas.memory"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"version"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"ceiling"</span><span class="p">:</span><span class="w"> </span><span class="mf">1.0</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"deleted"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"limitSize"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"metricIdentifier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"metric-id"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"674f4755-640b-4697-87bb-8a5d03704552"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DISK_SIZE"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"labelKey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"quotas.disk_size"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"version"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"ceiling"</span><span class="p">:</span><span class="w"> </span><span class="mf">1.0</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"deleted"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"limitSize"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"metricIdentifier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"metric-id"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"691c55b5-ecaf-434d-b509-97c4fb554d1d"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"INSTANCE_VCPUS"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"labelKey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"quotas.vcpus"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"version"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Quota Name"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"defaultForService"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Quota Description"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"numberOfOrganizationsAppliedTo"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"24330f70-9845-4851-acc0-ecd5d9b13613"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"creationDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-01-06T19:17:06.000Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"version"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"serviceConnection"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"serviceCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"service-code"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"service-name"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"52fb6687-44cb-4db3-9e63-bdfabfe2faf1"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"gcp"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"defaultForTrial"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>A quota with the following attributes are returned.</p>
+
+<table><thead>
+<tr>
+<th>Quota Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code><br/><em>UUID</em></td>
+<td>The id of the quota.</td>
+</tr>
+<tr>
+<td><code>name</code><br/><em>string</em></td>
+<td>The name of the quota.</td>
+</tr>
+<tr>
+<td><code>description</code><br/><em>string</em></td>
+<td>The description of the quota.</td>
+</tr>
+<tr>
+<td><code>creationDate</code><br/><em>string</em></td>
+<td>The date in <a href="https://en.wikipedia.org/wiki/ISO_8601">ISO 8601</a> that the quota was created.</td>
+</tr>
+<tr>
+<td><code>numberOfOrganizationsAppliedTo</code><br/><em>number</em></td>
+<td>The number of organizations the quota is assigned to.</td>
+</tr>
+<tr>
+<td><code>defaultForService</code><br/><em>boolean</em></td>
+<td>Weather or not the quota is the default for service connections.</td>
+</tr>
+<tr>
+<td><code>defaultForTrial</code><br/><em>boolean</em></td>
+<td>Weather or not the quota is the default for trials.</td>
+</tr>
+<tr>
+<td><code>ownerOrganization</code><br/><em><a href="#administration-organizations">Organization</a></em></td>
+<td>The organization that manages the quota.<br/><em>includes</em>: <code>id</code> and <code>name</code>.</td>
+</tr>
+<tr>
+<td><code>serviceConnection</code><br/><em><a href="#administration-service-connections">ServiceConnection</a></em></td>
+<td>The service connection associated to the quota.<br/><em>includes</em>: <code>id</code> and <code>name</code>.</td>
+</tr>
+<tr>
+<td><code>quotaDetails</code><br/><em>Array [QuotaDetail]</em></td>
+<td>The quota details.</td>
+</tr>
+</tbody></table>
+
+<p>The following table lists the attributes for <code>QuotaDetail</code>:</p>
+
+<table><thead>
+<tr>
+<th>QuotaDetail Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code><br/><em>UUID</em></td>
+<td>The id of the quota detail.</td>
+</tr>
+<tr>
+<td><code>type</code><br/><em>string</em></td>
+<td>The type of quota (metric).</td>
+</tr>
+<tr>
+<td><code>labelKey</code><br/><em>string</em></td>
+<td>The key used for the label.</td>
+</tr>
+<tr>
+<td><code>metricIdentifier</code><br/><em>string</em></td>
+<td>Id matching the metric identifiers provided by the plugin writer.</td>
+</tr>
+<tr>
+<td><code>ceiling</code><br/><em>number</em></td>
+<td>The ceiling value (metric).</td>
+</tr>
+<tr>
+<td><code>limitsize</code><br/><em>number</em></td>
+<td><code>DEPRECATED</code> The maximum for the type (metric).</td>
+</tr>
+</tbody></table>
+
+<!-------------------- DELETE A QUOTA -------------------->
+<h3 id='administration-delete-a-quota'>Delete a quota</h3>
+<p><code>DELETE /quotas/:id1?quota_id=:id2</code></p>
+
+<p>Deletes an existing quota. The parameter <code>quota_id</code> is only required when deleting a quota that is currently assigned to an organization. </p>
+<pre class="highlight shell tab-shell"><code><span class="c"># Delete a specific quota </span>
+curl -X DELETE <span class="s2">"https://cloudmc_endpoint/api/v2/quotas/:id"</span> <span class="se">\</span>
+   -H <span class="s2">"MC-Api-Key: your_api_key"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns a JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"taskId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"085b008e-7ee4-444b-8092-350190786147"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"taskStatus"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SUCCESS"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><strong>Query Parameters</strong></p>
+
+<table><thead>
+<tr>
+<th>Optional</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>quota_id</code><br/><em>UUID</em></td>
+<td>The id of the quota that will be used as a substitution for the quota that is being deleted.</td>
+</tr>
+</tbody></table>
 <h1 id='cloudstack-plugin'>CloudStack plugin</h1>
 <p>The CloudStack plugin provides endpoints for carrying out operations on CloudMC compute and networking entities. While each operation has its own validation and required fields, all operations need to specify the service code and environment in which they should be carried out. The following example URL describes how to specify this information for all entities.</p>
 
@@ -53349,39 +53718,60 @@ If the secret <code>X-Account-Meta-Temp-URL-Key</code> key does not already exis
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8531b1ba-1c31-41ab-b0c4-8f65798e5ed7"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"container-workload"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"stackId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4f246958-595d-4ead-ae56-a88cff334b97"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"stackId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"a397735b-66d2-49ba-b665-e77acb944481"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"container-workload"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-11-26T16:07:42.788665965Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-02-22T17:32:27.202428099Z"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CONTAINER"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"commands"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/bin/sh -c </span><span class="se">\"</span><span class="s2">sleep 50</span><span class="se">\"</span><span class="s2">"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"network"</span><span class="p">:</span><span class="w"> </span><span class="s2">"default"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"specs"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SP-1"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"cpu"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"memory"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2Gi"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"isRemoteManagementEnabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"image"</span><span class="p">:</span><span class="w"> </span><span class="s2">"redis"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"image"</span><span class="p">:</span><span class="w"> </span><span class="s2">"nginx"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"addImagePullCredentialsOption"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"containerUsername"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"containerServer"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"containerEmail"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"environmentVariableKey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"key1"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"environmentVariableValue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"new-val"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"deploymentName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"my-deployment"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"deploymentPops"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="s2">"MIA"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"ATL"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"DFW"</span><span class="w">
+      </span><span class="s2">"environmentVariables"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USER"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"my-user"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
       </span><span class="p">],</span><span class="w">
-      </span><span class="s2">"enableAutoScaling"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"cpuUtilization"</span><span class="p">:</span><span class="w"> </span><span class="mi">56</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"minInstancesPerPop"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"maxInstancesPerPop"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"secretEnvironmentVariables"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PASSWORD"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"[REDACTED]"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="s2">"addAnyCastIpAddress"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"commands"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="s2">"/bin/sh -c </span><span class="se">\"</span><span class="s2">sleep 50</span><span class="se">\"</span><span class="s2">"</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="s2">"specs"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SP-1"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"persistenceStoragePath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/lib/data/newFolder"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"persistenceStorageSize"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"deployments"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"deployment-lax"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"pops"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="s2">"LAX"</span><span class="w">
+          </span><span class="p">],</span><span class="w">
+          </span><span class="s2">"enableAutoScaling"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"cpuUtilization"</span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"minInstancesPerPop"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"maxInstancesPerPop"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="w">
+        </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"deployment-mia"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"pops"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="s2">"MIA"</span><span class="w">
+          </span><span class="p">],</span><span class="w">
+          </span><span class="s2">"enableAutoScaling"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"instancesPerPop"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"cpuUtilization"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"af951a00-5d1f-4c0a-85a4-b0714e833cd1"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ACTIVE"</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="p">{</span><span class="w">
+    </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"419be644-b2e7-4574-aad9-52e1cc0e6199"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"vm-workload"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"stackId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4f246958-595d-4ead-ae56-a88cff334b97"</span><span class="p">,</span><span class="w">
@@ -53476,7 +53866,7 @@ If the secret <code>X-Account-Meta-Temp-URL-Key</code> key does not already exis
 <td>The workload&#39;s instance operating system image.</td>
 </tr>
 <tr>
-<td><code>commands</code><br/><em>string</em></td>
+<td><code>commands</code><br/><em>Array[string]</em></td>
 <td>The commands that start a container. Only applicable to workloads of <code>type</code> &#39;CONTAINER&#39;.</td>
 </tr>
 <tr>
@@ -53496,16 +53886,28 @@ If the secret <code>X-Account-Meta-Temp-URL-Key</code> key does not already exis
 <td>The email address to use for the docker registry account. Only applicable to workloads of <code>type</code> &#39;CONTAINER&#39; and <code>addImagePullCredentialsOption</code> is &#39;true&#39;.</td>
 </tr>
 <tr>
-<td><code>environmentVariableKey</code> <br/><em>string</em></td>
-<td>The location to obtain a value for an environment variable. Only applicable to workloads of <code>type</code> &#39;CONTAINER&#39;.</td>
+<td><code>environmentVariables</code> <br/><em>Array[Object]</em></td>
+<td>A list of environment variables. Only applicable to workloads of <code>type</code> &#39;CONTAINER&#39;.</td>
 </tr>
 <tr>
-<td><code>environmentVariableValue</code> <br/><em>string</em></td>
-<td>An environment variable&#39;s value. Only applicable to workloads of <code>type</code> &#39;CONTAINER&#39;.</td>
+<td><code>environmentVariables.key</code> <br/><em>string</em></td>
+<td>The location to obtain a value for an environment variable. When editing a workload, include keys you wish to preserve. Keys not included in the body will be removed.</td>
 </tr>
 <tr>
-<td><code>secretEnvironmentVariableKey</code> <br/><em>string</em></td>
-<td>The location to obtain a value for a secret environment variable. Only applicable to workloads of <code>type</code> &#39;CONTAINER&#39;.</td>
+<td><code>environmentVariables.value</code> <br/><em>string</em></td>
+<td>An environment variable&#39;s value.</td>
+</tr>
+<tr>
+<td><code>secretEnvironmentVariables</code> <br/><em>Array[Object]</em></td>
+<td>A list of sensitive environment variables. Only applicable to workloads of <code>type</code> &#39;CONTAINER&#39;.</td>
+</tr>
+<tr>
+<td><code>secretEnvironmentVariables.key</code> <br/><em>string</em></td>
+<td>The location to obtain a value for a secret environment variable. When editing a workload, include keys you wish to preserve. Keys not included in the body will be removed.</td>
+</tr>
+<tr>
+<td><code>secretEnvironmentVariables.value</code> <br/><em>string</em></td>
+<td>A secret environment variable&#39;s value. When editing a workload, setting an existing environment variable&#39;s value to <code>[REDACTED]</code> will preserve the existing secret.</td>
 </tr>
 <tr>
 <td><code>firstBootSshKey</code><br/><em>string</em></td>
@@ -53520,36 +53922,40 @@ If the secret <code>X-Account-Meta-Temp-URL-Key</code> key does not already exis
 <td>The size of the mounted volume (in GB).</td>
 </tr>
 <tr>
-<td><code>deploymentName</code><br/><em>string</em></td>
+<td><code>deployments</code><br/><em>Array[Object]</em></td>
+<td>The list of deployment targets.</td>
+</tr>
+<tr>
+<td><code>deployments.name</code><br/><em>string</em></td>
 <td>The name of the deployment.</td>
 </tr>
 <tr>
-<td><code>deploymentPops</code><br/><em>Array[string]</em></td>
-<td>The points of presence of a deployment. In the regex format <code>[A-Z][A-Z][A-Z]</code>.</td>
+<td><code>deployments.pops</code><br/><em>Array[string]</em></td>
+<td>The points of presence of a deployment. In the regex format <code>[A-Z]{3, 3}</code>.</td>
 </tr>
 <tr>
-<td><code>enableAutoScaling</code> <br/><em>boolean</em></td>
+<td><code>deployments.enableAutoScaling</code> <br/><em>boolean</em></td>
 <td>Specifies if autoscaling is enabled. If enabled, then <code>cpuUtilization</code> , <code>minInstancesPerPop</code> and <code>maxInstancesPerPop</code> are shown.</td>
 </tr>
 <tr>
-<td><code>deploymentInstancePerPops</code><br/><em>integer</em></td>
-<td>The number of deployments per point of presence. Only applicable if autoscaling is not enabled.</td>
+<td><code>deployments.instancesPerPop</code><br/><em>int</em></td>
+<td>The number of instances per point of presence. Only applicable if autoscaling is not enabled.</td>
 </tr>
 <tr>
-<td><code>cpuUtilization</code> <br/><em>int</em></td>
+<td><code>deployments.cpuUtilization</code> <br/><em>int</em></td>
 <td>The percentage of CPU utilization. Only applicable if autoscaling is enabled.</td>
 </tr>
 <tr>
-<td><code>minInstancesPerPop</code> <br/><em>int</em></td>
-<td>The minimum number of instances per PoP. Only applicable if autoscaling is enabled.</td>
+<td><code>deployments.minInstancesPerPop</code> <br/><em>int</em></td>
+<td>The minimum number of instances per PoP. Only applicable if autoscaling is enabled. Should be greater than zero and less than 50.</td>
 </tr>
 <tr>
-<td><code>maxInstancesPerPop</code> <br/><em>int</em></td>
-<td>The maximum number of instances per PoP. Only applicable if autoscaling is enabled.</td>
+<td><code>deployments.maxInstancesPerPop</code> <br/><em>int</em></td>
+<td>The maximum number of instances per PoP. Only applicable if autoscaling is enabled. Should be greater than zero and less than 50.</td>
 </tr>
 <tr>
 <td><code>status</code><br/><em>string</em></td>
-<td>The status of the workload. It can be either ACTIVE or DISABLED.</td>
+<td>The status of the workload. It can be either <code>ACTIVE</code> or <code>DISABLED</code>.</td>
 </tr>
 </tbody></table>
 
@@ -53563,29 +53969,58 @@ If the secret <code>X-Account-Meta-Temp-URL-Key</code> key does not already exis
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"419be644-b2e7-4574-aad9-52e1cc0e6199"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"vm-workload"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"stackId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4f246958-595d-4ead-ae56-a88cff334b97"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"vm-workload"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-11-27T20:11:09.563675315Z"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"VM"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"container-workload"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"stackId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"a397735b-66d2-49ba-b665-e77acb944481"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"container-workload"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-02-22T17:32:27.202428099Z"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CONTAINER"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"network"</span><span class="p">:</span><span class="w"> </span><span class="s2">"default"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"specs"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SP-1"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"cpu"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"memory"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2Gi"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"isRemoteManagementEnabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"image"</span><span class="p">:</span><span class="w"> </span><span class="s2">"stackpath-edge/centos-7:v202007311835"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"addAnyCastIpAddress"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"firstBootSshKey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ssh-rsa..."</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"persistenceStorageSize"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"persistenceStoragePath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/var/lib/data"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"deploymentName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"deployment-name"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"deploymentPops"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-      </span><span class="s2">"YYZ"</span><span class="w">
+    </span><span class="s2">"image"</span><span class="p">:</span><span class="w"> </span><span class="s2">"nginx"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"addImagePullCredentialsOption"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"environmentVariables"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USER"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"my-user"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
     </span><span class="p">],</span><span class="w">
-    </span><span class="s2">"enableAutoScaling"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"deploymentInstancePerPops"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"secretEnvironmentVariables"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PASSWORD"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"[REDACTED]"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"addAnyCastIpAddress"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"commands"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"/bin/sh -c </span><span class="se">\"</span><span class="s2">sleep 50</span><span class="se">\"</span><span class="s2">"</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"specs"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SP-1"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"persistenceStoragePath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/lib/data/newFolder"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"persistenceStorageSize"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"deployments"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"deployment-lax"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"pops"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="s2">"LAX"</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="s2">"enableAutoScaling"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"cpuUtilization"</span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"minInstancesPerPop"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"maxInstancesPerPop"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="w">
+      </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"deployment-mia"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"pops"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="s2">"MIA"</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="s2">"enableAutoScaling"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"instancesPerPop"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"cpuUtilization"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"af951a00-5d1f-4c0a-85a4-b0714e833cd1"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ACTIVE"</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -53653,12 +54088,8 @@ If the secret <code>X-Account-Meta-Temp-URL-Key</code> key does not already exis
 <td>The workload&#39;s instance operating system image.</td>
 </tr>
 <tr>
-<td><code>commands</code><br/><em>string</em></td>
+<td><code>commands</code><br/><em>Array[string]</em></td>
 <td>The commands that start a container. Only applicable to workloads of <code>type</code> &#39;CONTAINER&#39;.</td>
-</tr>
-<tr>
-<td><code>addImagePullCredentialsOption</code><br/><em>boolean</em></td>
-<td>It is used to indicate if additional credentials to pull container image are provided or not. Only applicable to workloads of <code>type</code> &#39;CONTAINER&#39;.</td>
 </tr>
 <tr>
 <td><code>containerUsername</code> <br/><em>string</em></td>
@@ -53673,16 +54104,28 @@ If the secret <code>X-Account-Meta-Temp-URL-Key</code> key does not already exis
 <td>The email address to use for the docker registry account. Only applicable to workloads of <code>type</code> &#39;CONTAINER&#39; and <code>addImagePullCredentialsOption</code> is &#39;true&#39;.</td>
 </tr>
 <tr>
-<td><code>environmentVariableKey</code> <br/><em>string</em></td>
-<td>The location to obtain a value for an environment variable. Only applicable to workloads of <code>type</code> &#39;CONTAINER&#39;.</td>
+<td><code>environmentVariables</code> <br/><em>Array[Object]</em></td>
+<td>A list of environment variables. Only applicable to workloads of <code>type</code> &#39;CONTAINER&#39;.</td>
 </tr>
 <tr>
-<td><code>environmentVariableValue</code> <br/><em>string</em></td>
-<td>An environment variable&#39;s value. Only applicable to workloads of <code>type</code> &#39;CONTAINER&#39;.</td>
+<td><code>environmentVariables.key</code> <br/><em>string</em></td>
+<td>The location to obtain a value for an environment variable. When editing a workload, include keys you wish to preserve. Keys not included in the body will be removed.</td>
 </tr>
 <tr>
-<td><code>secretEnvironmentVariableKey</code> <br/><em>string</em></td>
-<td>The location to obtain a value for a secret environment variable. Only applicable to workloads of <code>type</code> &#39;CONTAINER&#39;.</td>
+<td><code>environmentVariables.value</code> <br/><em>string</em></td>
+<td>An environment variable&#39;s value.</td>
+</tr>
+<tr>
+<td><code>secretEnvironmentVariables</code> <br/><em>Array[Object]</em></td>
+<td>A list of sensitive environment variables. Only applicable to workloads of <code>type</code> &#39;CONTAINER&#39;.</td>
+</tr>
+<tr>
+<td><code>secretEnvironmentVariables.key</code> <br/><em>string</em></td>
+<td>The location to obtain a value for a secret environment variable. When editing a workload, include keys you wish to preserve. Keys not included in the body will be removed.</td>
+</tr>
+<tr>
+<td><code>secretEnvironmentVariables.value</code> <br/><em>string</em></td>
+<td>A secret environment variable&#39;s value. When editing a workload, setting an existing environment variable&#39;s value to <code>[REDACTED]</code> will preserve the existing secret.</td>
 </tr>
 <tr>
 <td><code>firstBootSshKey</code><br/><em>string</em></td>
@@ -53697,32 +54140,36 @@ If the secret <code>X-Account-Meta-Temp-URL-Key</code> key does not already exis
 <td>The size of the mounted volume (in GB).</td>
 </tr>
 <tr>
-<td><code>deploymentName</code><br/><em>string</em></td>
+<td><code>deployments</code><br/><em>Array[Object]</em></td>
+<td>The list of deployment targets.</td>
+</tr>
+<tr>
+<td><code>deployments.name</code><br/><em>string</em></td>
 <td>The name of the deployment.</td>
 </tr>
 <tr>
-<td><code>deploymentPops</code><br/><em>Array[string]</em></td>
-<td>The points of presence of a deployment. In the format [A-Z][A-Z][A-Z].</td>
+<td><code>deployments.pops</code><br/><em>Array[string]</em></td>
+<td>The points of presence of a deployment. In the regex format <code>[A-Z]{3, 3}</code>.</td>
 </tr>
 <tr>
-<td><code>enableAutoScaling</code> <br/><em>boolean</em></td>
+<td><code>deployments.enableAutoScaling</code> <br/><em>boolean</em></td>
 <td>Specifies if autoscaling is enabled. If enabled, then <code>cpuUtilization</code> , <code>minInstancesPerPop</code> and <code>maxInstancesPerPop</code> are shown.</td>
 </tr>
 <tr>
-<td><code>deploymentInstancePerPops</code><br/><em>integer</em></td>
-<td>The number of deployments per point of presence. Only applicable if autoscaling is not enabled.</td>
+<td><code>deployments.instancesPerPop</code><br/><em>int</em></td>
+<td>The number of instances per point of presence. Only applicable if autoscaling is not enabled.</td>
 </tr>
 <tr>
-<td><code>cpuUtilization</code> <br/><em>int</em></td>
+<td><code>deployments.cpuUtilization</code> <br/><em>int</em></td>
 <td>The percentage of CPU utilization. Only applicable if autoscaling is enabled.</td>
 </tr>
 <tr>
-<td><code>minInstancesPerPop</code> <br/><em>int</em></td>
-<td>The minimum number of instances per PoP. Only applicable if autoscaling is enabled.</td>
+<td><code>deployments.minInstancesPerPop</code> <br/><em>int</em></td>
+<td>The minimum number of instances per PoP. Only applicable if autoscaling is enabled. Should be greater than zero and less than 50.</td>
 </tr>
 <tr>
-<td><code>maxInstancesPerPop</code> <br/><em>int</em></td>
-<td>The maximum number of instances per PoP. Only applicable if autoscaling is enabled.</td>
+<td><code>deployments.maxInstancesPerPop</code> <br/><em>int</em></td>
+<td>The maximum number of instances per PoP. Only applicable if autoscaling is enabled. Should be greater than zero and less than 50.</td>
 </tr>
 <tr>
 <td><code>status</code><br/><em>string</em></td>
@@ -53740,56 +54187,86 @@ If the secret <code>X-Account-Meta-Temp-URL-Key</code> key does not already exis
 <p>Request body example for a VM Workload type:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-   </span><span class="s2">"name"</span><span class="p">:</span><span class="s2">"w-user-zwg"</span><span class="p">,</span><span class="w">
-   </span><span class="s2">"slug"</span><span class="p">:</span><span class="s2">"w-user-zwg"</span><span class="p">,</span><span class="w">
-   </span><span class="s2">"type"</span><span class="p">:</span><span class="s2">"VM"</span><span class="p">,</span><span class="w">
-   </span><span class="s2">"image"</span><span class="p">:</span><span class="s2">"stackpath-edge/centos-7-cpanel:v201905241955"</span><span class="p">,</span><span class="w">
-   </span><span class="s2">"addAnyCastIpAddress"</span><span class="p">:</span><span class="kc">false</span><span class="p">,</span><span class="w">
-   </span><span class="s2">"publicPort"</span><span class="p">:</span><span class="w"> </span><span class="s2">"80"</span><span class="p">,</span><span class="w">
-   </span><span class="s2">"publicPortSrc"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0.0.0/0"</span><span class="p">,</span><span class="w">
-   </span><span class="s2">"publicPortDesc"</span><span class="p">:</span><span class="w"> </span><span class="s2">"npr_root_btd"</span><span class="p">,</span><span class="w">
-   </span><span class="s2">"protocol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TCP"</span><span class="p">,</span><span class="w">
-   </span><span class="s2">"firstBootSshKey"</span><span class="p">:</span><span class="s2">"ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDcYr9OnzsDfYVW2I1kX/iYJ0mPG490bI5mbxbOAKPLMuWLguxRohX804j1XbwZJ+Sna+9rSfxaYA8vgd1MoYX10l9cnMLx/MMbYp4ZquauN4pGY3WoDeCqsTss3VUMW+7RFBILpU3SJTlDV02FI36D3IXb4A8XymCyU3KC99XXTfTQsuKC+WFRMsTWtklrasqCVd5yEG90i/aJc6A3TZGOYgPFNEeVYvNDaJmIkb3y4FfShoBIMgZRt0ay7SvWZUvyfvyNmK5W9ePdhZZ58R+7tQNmCzjQ4v0suWRuGJ/XL3+03w3HEsDdQx+noL+R+qAjoNFwc0spBBhJK+Q4ADqr nothing@gmail.com </span><span class="se">\n</span><span class="s2">ssh-rsa..."</span><span class="p">,</span><span class="w">
-   </span><span class="s2">"specs"</span><span class="p">:</span><span class="s2">"SP-1"</span><span class="p">,</span><span class="w">
-   </span><span class="s2">"persistenceStoragePath"</span><span class="p">:</span><span class="s2">"/lib/data/newFolder"</span><span class="p">,</span><span class="w">
-   </span><span class="s2">"persistenceStorageSize"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
-   </span><span class="s2">"deploymentName"</span><span class="p">:</span><span class="s2">"wi-root-ion"</span><span class="p">,</span><span class="w">
-   </span><span class="s2">"deploymentInstancePerPops"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
-   </span><span class="s2">"enableAutoScaling"</span><span class="p">:</span><span class="kc">false</span><span class="p">,</span><span class="w">
-   </span><span class="s2">"deploymentPops"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"YYZ"</span><span class="p">,</span><span class="w"> </span><span class="s2">"MIA"</span><span class="p">,</span><span class="w"> </span><span class="s2">"LAX"</span><span class="p">]</span><span class="w">
+  </span><span class="s2">"name"</span><span class="p">:</span><span class="s2">"vm-workload"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"slug"</span><span class="p">:</span><span class="s2">"vm-workload"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"type"</span><span class="p">:</span><span class="s2">"VM"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"image"</span><span class="p">:</span><span class="s2">"stackpath-edge/centos-7-cpanel:v201905241955"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"addAnyCastIpAddress"</span><span class="p">:</span><span class="kc">false</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"ports"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"publicPort"</span><span class="p">:</span><span class="w"> </span><span class="s2">"80"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"protocol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TCP"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"publicPortDesc"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rule-name"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="s2">"firstBootSshKey"</span><span class="p">:</span><span class="s2">"ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDcYr9OnzsDfYVW2I1kX/iYJ0mPG490bI5mbxbOAKPLMuWLguxRohX804j1XbwZJ+Sna+9rSfxaYA8vgd1MoYX10l9cnMLx/MMbYp4ZquauN4pGY3WoDeCqsTss3VUMW+7RFBILpU3SJTlDV02FI36D3IXb4A8XymCyU3KC99XXTfTQsuKC+WFRMsTWtklrasqCVd5yEG90i/aJc6A3TZGOYgPFNEeVYvNDaJmIkb3y4FfShoBIMgZRt0ay7SvWZUvyfvyNmK5W9ePdhZZ58R+7tQNmCzjQ4v0suWRuGJ/XL3+03w3HEsDdQx+noL+R+qAjoNFwc0spBBhJK+Q4ADqr nothing@gmail.com </span><span class="se">\n</span><span class="s2">ssh-rsa..."</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"specs"</span><span class="p">:</span><span class="s2">"SP-1"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"persistenceStoragePath"</span><span class="p">:</span><span class="s2">"/lib/data/newFolder"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"persistenceStorageSize"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"deployments"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"deployment-name"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"enableAutoScaling"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"pops"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"MIA"</span><span class="p">],</span><span class="w">
+      </span><span class="s2">"instancesPerPop"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <blockquote>
 <p>Request body example for a CONTAINER Workload type:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-   </span><span class="s2">"name"</span><span class="p">:</span><span class="s2">"w-user-pah"</span><span class="p">,</span><span class="w">
-   </span><span class="s2">"type"</span><span class="p">:</span><span class="s2">"CONTAINER"</span><span class="p">,</span><span class="w">
-   </span><span class="s2">"image"</span><span class="p">:</span><span class="s2">"nginx:latest"</span><span class="p">,</span><span class="w">
-   </span><span class="s2">"addImagePullCredentialsOption"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w">
-   </span><span class="s2">"containerUsername"</span><span class="p">:</span><span class="s2">"test.username"</span><span class="p">,</span><span class="w">
-   </span><span class="s2">"containerPassword"</span><span class="p">:</span><span class="s2">"test-password"</span><span class="p">,</span><span class="w">
-   </span><span class="s2">"containerServer"</span><span class="p">:</span><span class="s2">"container.server.io"</span><span class="p">,</span><span class="w">
-   </span><span class="s2">"containerEmail"</span><span class="p">:</span><span class="s2">"mytestEmail@email.com"</span><span class="p">,</span><span class="w">
-   </span><span class="s2">"environmentVariableKey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"env-key"</span><span class="p">,</span><span class="w">
-   </span><span class="s2">"environmentVariableValue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"env-value"</span><span class="p">,</span><span class="w">
-   </span><span class="s2">"secretEnvironmentVariableKey"</span><span class="p">:</span><span class="s2">"secret-key"</span><span class="p">,</span><span class="w">
-   </span><span class="s2">"secretEnvironmentVariableValue"</span><span class="p">:</span><span class="s2">"secret-value"</span><span class="p">,</span><span class="w">
-   </span><span class="s2">"addAnyCastIpAddress"</span><span class="p">:</span><span class="kc">false</span><span class="p">,</span><span class="w">
-   </span><span class="s2">"publicPort"</span><span class="p">:</span><span class="w"> </span><span class="s2">"80"</span><span class="p">,</span><span class="w">
-   </span><span class="s2">"publicPortSrc"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0.0.0/0"</span><span class="p">,</span><span class="w">
-   </span><span class="s2">"publicPortDesc"</span><span class="p">:</span><span class="w"> </span><span class="s2">"npr_root_btd"</span><span class="p">,</span><span class="w">
-   </span><span class="s2">"protocol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TCP"</span><span class="p">,</span><span class="w">
-   </span><span class="s2">"specs"</span><span class="p">:</span><span class="s2">"SP-3"</span><span class="p">,</span><span class="w">
-   </span><span class="s2">"persistenceStoragePath"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
-   </span><span class="s2">"persistenceStorageSize"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
-   </span><span class="s2">"deploymentName"</span><span class="p">:</span><span class="s2">"wi-root-pxa"</span><span class="p">,</span><span class="w">
-   </span><span class="s2">"deploymentInstancePerPops"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
-   </span><span class="s2">"deploymentPops"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"FRA"</span><span class="p">,</span><span class="w"> </span><span class="s2">"YYZ"</span><span class="p">],</span><span class="w">
-   </span><span class="s2">"enableAutoScaling"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w">
-   </span><span class="s2">"cpuUtilization"</span><span class="p">:</span><span class="mi">50</span><span class="p">,</span><span class="w">
-   </span><span class="s2">"minInstancesPerPop"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
-   </span><span class="s2">"maxInstancesPerPop"</span><span class="p">:</span><span class="mi">2</span><span class="w">
+  </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CONTAINER"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"container-workload"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"container-workload"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"image"</span><span class="p">:</span><span class="w"> </span><span class="s2">"nginx"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"addAnyCastIpAddress"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"ports"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"publicPort"</span><span class="p">:</span><span class="w"> </span><span class="s2">"80"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"protocol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TCP"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"publicPortDesc"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rule-name"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="s2">"specs"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SP-1"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"persistenceStoragePath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/lib/data/newFolder"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"persistenceStorageSize"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"commands"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="s2">"/bin/sh -c </span><span class="se">\"</span><span class="s2">sleep 50</span><span class="se">\"</span><span class="s2">"</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="s2">"environmentVariables"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USER"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"my-user"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="s2">"secretEnvironmentVariables"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PASSWORD"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"my-password"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="s2">"deployments"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"deployment-mia"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"enableAutoScaling"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"pops"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="s2">"MIA"</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="s2">"instancesPerPop"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"deployment-lax"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"pops"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="s2">"LAX"</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="s2">"enableAutoScaling"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"minInstancesPerPop"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"maxInstancesPerPop"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"cpuUtilization"</span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <blockquote>
@@ -53831,28 +54308,20 @@ If the secret <code>X-Account-Meta-Temp-URL-Key</code> key does not already exis
 <td>Specification type for resources which are allocated to each instance in a workload. Supported specifications are <code>SP-1 (1 vCPU, 2 GB RAM)</code>,<code>SP-2 (2 vCPU, 4 GB RAM)</code>,<code>SP-3 (2 vCPU, 8GB RAM)</code>,<code>SP-4 (4 vCPU, 16 GB RAM)</code>,<code>SP-5 (8 vCPU, 32 GB RAM)</code>.</td>
 </tr>
 <tr>
-<td><code>deploymentName</code><br/><em>string</em></td>
-<td>The name of the deployment. The deployment name must not exceed 18 characters.</td>
+<td><code>deployments</code><br/><em>Array[Object]</em></td>
+<td>The list of deployment targets.</td>
 </tr>
 <tr>
-<td><code>deploymentPops</code><br/><em>Array[string]</em></td>
-<td>The points of presence of a deployment. In the regex format <code>[A-Z][A-Z][A-Z]</code>.</td>
+<td><code>deployments.name</code><br/><em>string</em></td>
+<td>The name of the deployment.</td>
 </tr>
 <tr>
-<td><code>enableAutoScaling</code> <br/><em>boolean</em></td>
-<td>Specify if you would like to enable autoscaling. If enabled, then <code>cpuUtilization</code> , <code>minInstancesPerPop</code> and <code>maxInstancesPerPop</code> are required else <code>deploymentInstancePerPops</code> is</td>
+<td><code>deployments.pops</code><br/><em>Array[string]</em></td>
+<td>The points of presence of a deployment. In the regex format <code>[A-Z]{3, 3}</code>.</td>
 </tr>
 <tr>
-<td><code>cpuUtilization</code> <br/><em>int</em></td>
-<td>Specify the percentage of CPU utilization.</td>
-</tr>
-<tr>
-<td><code>minInstancesPerPop</code> <br/><em>int</em></td>
-<td>The minimum number of instances per PoP.</td>
-</tr>
-<tr>
-<td><code>maxInstancesPerPop</code> <br/><em>int</em></td>
-<td>The maximum number of instances per PoP.</td>
+<td><code>deployments.enableAutoScaling</code> <br/><em>boolean</em></td>
+<td>Specifies if autoscaling is enabled. If enabled, then <code>cpuUtilization</code> , <code>minInstancesPerPop</code> and <code>maxInstancesPerPop</code> are required.</td>
 </tr>
 </tbody></table>
 
@@ -53871,24 +54340,28 @@ If the secret <code>X-Account-Meta-Temp-URL-Key</code> key does not already exis
 <td>Option to AnyCast IP Address.</td>
 </tr>
 <tr>
-<td><code>publicPort</code><br/><em>string</em></td>
+<td><code>ports</code> <br/><em>Array[Object]</em></td>
+<td>A list of network interfaces that will be created for each workload instance.</td>
+</tr>
+<tr>
+<td><code>ports.publicPort</code><br/><em>string</em></td>
 <td>A single port, such as 80 or a port range, such as 1024-65535 for which a network policy rule will be created for the workload.</td>
 </tr>
 <tr>
-<td><code>publicPortSrc</code><br/><em>string</em></td>
-<td>A subnet that will define all the IPs allowed by the network policy rule.</td>
-</tr>
-<tr>
-<td><code>publicPortDesc</code><br/><em>string</em></td>
-<td>A summary of what the network policy rule does or a name for it. It is highly recommended to give a unique description to easily identify a network policy rule.</td>
-</tr>
-<tr>
-<td><code>protocol</code><br/><em>string</em></td>
+<td><code>ports.protocol</code><br/><em>string</em></td>
 <td>Protocol for the network policy rule. Supported protocols are: <code>TCP</code>, <code>UDP</code> and <code>TCP_UDP</code>.</td>
 </tr>
 <tr>
-<td><code>commands</code><br/><em>string</em></td>
-<td>The commands that start a container. Only applicable to workloads of type <code>CONTAINER</code>.</td>
+<td><code>ports.publicPortSrc</code><br/><em>string</em></td>
+<td>A subnet that will define all the IPs allowed by the network policy rule. Defaults to <code>0.0.0.0/0</code> if not specified.</td>
+</tr>
+<tr>
+<td><code>ports.publicPortDesc</code><br/><em>string</em></td>
+<td>A summary of what the network policy rule does or a name for it. It is highly recommended to give a unique description to easily identify a network policy rule. Defaults to an empty string if not provided.</td>
+</tr>
+<tr>
+<td><code>commands</code><br/><em>Array[string]</em></td>
+<td>The commands that start a container. Only applicable to workloads of <code>type</code> &#39;CONTAINER&#39;. Commands cannot be updated or removed after workload creation.</td>
 </tr>
 <tr>
 <td><code>persistenceStoragePath</code><br/><em>string</em></td>
@@ -53919,41 +54392,49 @@ If the secret <code>X-Account-Meta-Temp-URL-Key</code> key does not already exis
 <td>The email address to use for the docker registry account</td>
 </tr>
 <tr>
-<td><code>environmentVariableKey</code> <br/><em>string</em></td>
-<td>The location to obtain a value for an environment variable.</td>
+<td><code>environmentVariables</code> <br/><em>Array[Object]</em></td>
+<td>A list of environment variables. Only applicable to workloads of <code>type</code> &#39;CONTAINER&#39;.</td>
 </tr>
 <tr>
-<td><code>environmentVariableValue</code> <br/><em>string</em></td>
+<td><code>environmentVariables.key</code> <br/><em>string</em></td>
+<td>The location to obtain a value for an environment variable. When editing a workload, include keys you wish to preserve. Keys not included in the body will be removed.</td>
+</tr>
+<tr>
+<td><code>environmentVariables.value</code> <br/><em>string</em></td>
 <td>An environment variable&#39;s value.</td>
 </tr>
 <tr>
-<td><code>secretEnvironmentVariableKey</code> <br/><em>string</em></td>
-<td>The secret environment variable&#39;s key.</td>
+<td><code>secretEnvironmentVariables</code> <br/><em>Array[Object]</em></td>
+<td>A list of sensitive environment variables. Only applicable to workloads of <code>type</code> &#39;CONTAINER&#39;.</td>
 </tr>
 <tr>
-<td><code>secretEnvironmentVariableValue</code> <br/><em>string</em></td>
-<td>A sensitive environment variable that should not be exposed.</td>
+<td><code>secretEnvironmentVariables.key</code> <br/><em>string</em></td>
+<td>The location to obtain a value for a secret environment variable. When editing a workload, include keys you wish to preserve. Keys not included in the body will be removed.</td>
 </tr>
 <tr>
-<td><code>deploymentInstancePerPops</code><br/><em>integer</em></td>
-<td>The number of deployments per point of presence. Only required if autoscaling is not enabled.</td>
+<td><code>secretEnvironmentVariables.value</code> <br/><em>string</em></td>
+<td>A secret environment variable&#39;s value. When editing a workload, setting an existing environment variable&#39;s value to <code>[REDACTED]</code> will preserve the existing secret.</td>
 </tr>
 <tr>
-<td><code>cpuUtilization</code> <br/><em>int</em></td>
-<td>Specify the percentage of CPU utilization.</td>
+<td><code>deployments.instancesPerPop</code><br/><em>int</em></td>
+<td>The number of instances per point of presence. Only applicable if autoscaling is not enabled.</td>
 </tr>
 <tr>
-<td><code>minInstancesPerPop</code> <br/><em>int</em></td>
-<td>The minimum number of instances per PoP.</td>
+<td><code>deployments.cpuUtilization</code> <br/><em>int</em></td>
+<td>The percentage of CPU utilization. Only applicable if autoscaling is enabled.</td>
 </tr>
 <tr>
-<td><code>maxInstancesPerPop</code> <br/><em>int</em></td>
-<td>The maximum number of instances per PoP.</td>
+<td><code>deployments.minInstancesPerPop</code> <br/><em>int</em></td>
+<td>The minimum number of instances per PoP. Only applicable if autoscaling is enabled. Should be greater than zero and less than 50.</td>
+</tr>
+<tr>
+<td><code>deployments.maxInstancesPerPop</code> <br/><em>int</em></td>
+<td>The maximum number of instances per PoP. Only applicable if autoscaling is enabled. Should be greater than zero and less than 50.</td>
 </tr>
 </tbody></table>
 
 <aside class="notice">
-A workload can be created without `publicPort`, `publicPortSrc`, `publicPortDesc` and `protocol` as part of the payload. But all these fields are required to open a port/port-range on the created workload.
+A workload can be added without any `ports`. However, `ports.publicPort` and `ports.protocol` are required to open a port or port range at workload creation.
 </aside>
 
 <!-------------------- EDIT A WORKLOAD -------------------->
@@ -53969,37 +54450,56 @@ A workload can be created without `publicPort`, `publicPortSrc`, `publicPortDesc
   </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"my-vm-workload"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"VM"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"specs"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SP-1"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"deploymentName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"chicago-1"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"deploymentPops"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"ORD"</span><span class="p">],</span><span class="w">
-  </span><span class="s2">"enableAutoScaling"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"cpuUtilization"</span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"minInstancesPerPop"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"maxInstancesPerPop"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="w">
+  </span><span class="s2">"deployments"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"toronto-1"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"pops"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="s2">"YYZ"</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="s2">"enableAutoScaling"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"minInstancesPerPop"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"maxInstancesPerPop"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"cpuUtilization"</span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <blockquote>
 <p>Request body example for a CONTAINER Workload type:</p>
 </blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"my-container-workload"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CONTAINER"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"image"</span><span class="p">:</span><span class="w"> </span><span class="s2">"redis:alpine"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"environmentVariableKey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"env-key"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"environmentVariableValue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"env-value"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"secretEnvironmentVariableKey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"secret-key"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"secretEnvironmentVariableValue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"secret-value"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"addImagePullCredentialsOption"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"containerUsername"</span><span class="p">:</span><span class="w"> </span><span class="s2">"username"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"containerServer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"container.server.io"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"containerEmail"</span><span class="p">:</span><span class="w"> </span><span class="s2">"myemail@email.com"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"containerPassword"</span><span class="p">:</span><span class="w"> </span><span class="s2">"my-password"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"specs"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SP-2"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"deploymentName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"toronto-1"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"deploymentPops"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"YYZ"</span><span class="p">],</span><span class="w">
-  </span><span class="s2">"enableAutoScaling"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"deploymentInstancePerPops"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
+<pre class="highlight javascript"><code><span class="p">{</span>
+  <span class="s2">"name"</span><span class="p">:</span> <span class="s2">"my-container-workload"</span><span class="p">,</span>
+  <span class="s2">"type"</span><span class="p">:</span> <span class="s2">"CONTAINER"</span><span class="p">,</span>
+  <span class="s2">"image"</span><span class="p">:</span> <span class="s2">"redis:alpine"</span><span class="p">,</span>
+  <span class="s2">"secretEnvironmentVariables"</span><span class="p">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="s2">"key"</span><span class="p">:</span> <span class="s2">"PASSWORD"</span><span class="p">,</span>
+      <span class="s2">"value"</span><span class="p">:</span> <span class="s2">"my-password"</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="c1">// set value to [REDACTED] to preserve existing secret</span>
+      <span class="s2">"key"</span><span class="p">:</span> <span class="s2">"PRIVATE-KEY"</span><span class="p">,</span>
+      <span class="s2">"value"</span><span class="p">:</span> <span class="s2">"[REDACTED]"</span>
+    <span class="p">}</span>
+  <span class="p">],</span>
+  <span class="s2">"addImagePullCredentialsOption"</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+  <span class="s2">"containerUsername"</span><span class="p">:</span> <span class="s2">"username"</span><span class="p">,</span>
+  <span class="s2">"containerServer"</span><span class="p">:</span> <span class="s2">"container.server.io"</span><span class="p">,</span>
+  <span class="s2">"containerEmail"</span><span class="p">:</span> <span class="s2">"myemail@email.com"</span><span class="p">,</span>
+  <span class="s2">"containerPassword"</span><span class="p">:</span> <span class="s2">"my-password"</span><span class="p">,</span>
+  <span class="s2">"specs"</span><span class="p">:</span> <span class="s2">"SP-2"</span><span class="p">,</span>
+  <span class="s2">"deployments"</span><span class="p">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="s2">"name"</span><span class="p">:</span> <span class="s2">"toronto-1"</span><span class="p">,</span>
+      <span class="s2">"enableAutoScaling"</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+      <span class="s2">"pops"</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">"YYZ"</span>
+      <span class="p">],</span>
+      <span class="s2">"instancesPerPop"</span><span class="p">:</span> <span class="s2">"1"</span>
+    <span class="p">}</span>
+  <span class="p">]</span>
+<span class="p">}</span>
+</code></pre>
 <blockquote>
 <p>The above commands return a JSON structured like this:</p>
 </blockquote>
@@ -54035,16 +54535,20 @@ A workload can be created without `publicPort`, `publicPortSrc`, `publicPortDesc
 <td>Specification type for resources which are allocated to each instance in a workload.</td>
 </tr>
 <tr>
-<td><code>deploymentName</code><br/><em>string</em></td>
-<td>The name of the deployment. The deployment name must not exceed 18 characters.</td>
+<td><code>deployments</code><br/><em>Array[Object]</em></td>
+<td>The list of deployment targets.</td>
 </tr>
 <tr>
-<td><code>deploymentPops</code><br/><em>Array[string]</em></td>
-<td>The points of presence of a deployment. In the regex format <code>[A-Z][A-Z][A-Z]</code>.</td>
+<td><code>deployments.name</code><br/><em>string</em></td>
+<td>The name of the deployment.</td>
 </tr>
 <tr>
-<td><code>enableAutoScaling</code> <br/><em>boolean</em></td>
-<td>Specify if you would like to enable autoscaling. If enabled, then <code>cpuUtilization</code> , <code>minInstancesPerPop</code> and <code>maxInstancesPerPop</code> are required else <code>deploymentInstancePerPops</code> is required.</td>
+<td><code>deployments.pops</code><br/><em>Array[string]</em></td>
+<td>The points of presence of a deployment. In the regex format <code>[A-Z]{3, 3}</code>.</td>
+</tr>
+<tr>
+<td><code>deployments.enableAutoScaling</code> <br/><em>boolean</em></td>
+<td>Specifies if autoscaling is enabled. If enabled, then <code>cpuUtilization</code> , <code>minInstancesPerPop</code> and <code>maxInstancesPerPop</code> are required.</td>
 </tr>
 </tbody></table>
 
@@ -54055,20 +54559,28 @@ A workload can be created without `publicPort`, `publicPortSrc`, `publicPortDesc
 </tr>
 </thead><tbody>
 <tr>
-<td><code>environmentVariableKey</code><br/><em>string</em></td>
-<td>The key of the environmental variable you would like to edit. Only available when <code>type</code> is equal to <code>CONTAINER</code>.</td>
+<td><code>environmentVariables</code> <br/><em>Array[Object]</em></td>
+<td>A list of environment variables. Only applicable to workloads of <code>type</code> &#39;CONTAINER&#39;.</td>
 </tr>
 <tr>
-<td><code>environmentVariableValue</code><br/><em>string</em></td>
-<td>The value of the environmental variable you would like to edit. Only available when <code>type</code> is equal to <code>CONTAINER</code>.</td>
+<td><code>environmentVariables.key</code> <br/><em>string</em></td>
+<td>The location to obtain a value for an environment variable. When editing a workload, include keys you wish to preserve. Keys not included in the body will be removed.</td>
 </tr>
 <tr>
-<td><code>secretEnvironmentVariableKey</code><br/><em>string</em></td>
-<td>The key of the secret environmental variable you would like to edit. Only available when <code>type</code> is equal to <code>CONTAINER</code>.</td>
+<td><code>environmentVariables.value</code> <br/><em>string</em></td>
+<td>An environment variable&#39;s value.</td>
 </tr>
 <tr>
-<td><code>secretEnvironmentVariableValue</code><br/><em>string</em></td>
-<td>The value of the secret environmental variable you would like to edit. Only available when <code>type</code> is equal to <code>CONTAINER</code>.</td>
+<td><code>secretEnvironmentVariables</code> <br/><em>Array[Object]</em></td>
+<td>A list of sensitive environment variables. Only applicable to workloads of <code>type</code> &#39;CONTAINER&#39;.</td>
+</tr>
+<tr>
+<td><code>secretEnvironmentVariables.key</code> <br/><em>string</em></td>
+<td>The location to obtain a value for a secret environment variable. When editing a workload, include keys you wish to preserve. Keys not included in the body will be removed.</td>
+</tr>
+<tr>
+<td><code>secretEnvironmentVariables.value</code> <br/><em>string</em></td>
+<td>A secret environment variable&#39;s value. When editing a workload, setting an existing environment variable&#39;s value to <code>[REDACTED]</code> will preserve the existing secret.</td>
 </tr>
 <tr>
 <td><code>addImagePullCredentialsOption</code><br/><em>boolean</em></td>
@@ -54091,19 +54603,19 @@ A workload can be created without `publicPort`, `publicPortSrc`, `publicPortDesc
 <td>The password that should be used to authenticate the image pull. Only available when <code>type</code> is equal to <code>CONTAINER</code>.</td>
 </tr>
 <tr>
-<td><code>deploymentInstancePerPops</code><br/><em>integer</em></td>
+<td><code>deployments.instancesPerPop</code><br/><em>integer</em></td>
 <td>The number of deployments per point of presence. Only required if autoscaling is not enabled.</td>
 </tr>
 <tr>
-<td><code>cpuUtilization</code><br/><em>integer</em></td>
+<td><code>deployments.cpuUtilization</code><br/><em>integer</em></td>
 <td>The average CPU utlilization threshold to be reached before deploying a new instance. Only required if autoscaling is enabled.</td>
 </tr>
 <tr>
-<td><code>minInstancesPerPop</code><br/><em>integer</em></td>
+<td><code>deployments.minInstancesPerPop</code><br/><em>integer</em></td>
 <td>The minimum number of instances per point of presence. Only required if autoscaling is enabled.</td>
 </tr>
 <tr>
-<td><code>maxInstancesPerPop</code><br/><em>integer</em></td>
+<td><code>deployments.maxInstancesPerPop</code><br/><em>integer</em></td>
 <td>The maximum number of instances per point of presence. Only required if autoscaling is enabled.</td>
 </tr>
 </tbody></table>
