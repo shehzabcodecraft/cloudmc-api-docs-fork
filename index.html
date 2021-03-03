@@ -3248,6 +3248,23 @@
                       </ul>
                   </li>
                   <li>
+                    <a href="#stackpath-sites" class="toc-h2 toc-link" data-title="StackPath plugin">Sites</a>
+                      <ul class="toc-list-h3">
+                          <li>
+                            <a href="#stackpath-list-sites" class="toc-h3 toc-link" data-title="StackPath plugin">List sites</a>
+                          </li>
+                          <li>
+                            <a href="#stackpath-retrieve-a-site" class="toc-h3 toc-link" data-title="StackPath plugin">Retrieve a site</a>
+                          </li>
+                          <li>
+                            <a href="#stackpath-create-a-site" class="toc-h3 toc-link" data-title="StackPath plugin">Create a site</a>
+                          </li>
+                          <li>
+                            <a href="#stackpath-delete-a-site" class="toc-h3 toc-link" data-title="StackPath plugin">Delete a site</a>
+                          </li>
+                      </ul>
+                  </li>
+                  <li>
                     <a href="#stackpath-instances" class="toc-h2 toc-link" data-title="StackPath plugin">Instances</a>
                       <ul class="toc-list-h3">
                           <li>
@@ -54840,6 +54857,291 @@ A workload can be added without any `ports`. However, `ports.publicPort` and `po
 <tr>
 <td><code>taskId</code> <br/><em>string</em></td>
 <td>The task id related to the workload deletion.</td>
+</tr>
+<tr>
+<td><code>taskStatus</code> <br/><em>string</em></td>
+<td>The status of the operation.</td>
+</tr>
+</tbody></table>
+<h2 id='stackpath-sites'>Sites</h2>
+<p>Create and manage your CDN, WAF, and/or Serverless Scripting Delivery sites. </p>
+
+<!-------------------- LIST SITES -------------------->
+<h3 id='stackpath-list-sites'>List sites</h3><pre class="highlight shell tab-shell"><code>curl -X GET <span class="se">\</span>
+   -H <span class="s2">"MC-Api-Key: your_api_key"</span> <span class="se">\</span>
+   <span class="s2">"https://cloudmc_endpoint/api/v1/services/stackpath/test-area/sites"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns a JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"stackId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1415650d-1d02-4097-a79a-8f6e4bb4f483"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"domain"</span><span class="p">:</span><span class="w"> </span><span class="s2">"slow-test.com"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-02-19T19:29:58.713874Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"updatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-02-19T19:30:04.656652Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"services"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="s2">"CDN"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"SERVERLESS_EDGE_ENGINE"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"WAF"</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9ae3717a-006a-4aa7-b64b-8bc8d2f2d6e5"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ACTIVE"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"stackId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1415650d-1d02-4097-a79a-8f6e4bb4f483"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"domain"</span><span class="p">:</span><span class="w"> </span><span class="s2">"speedytest.com"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-02-08T14:57:01.576395Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"updatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-02-08T14:57:09.861832Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"services"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="s2">"CDN"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"WAF"</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"04deb6d1-ad84-425f-8f10-92106a22c3b4"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ACTIVE"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="s2">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"recordCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><code>GET /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/sites</code></p>
+
+<p>Retrieve a list of all sites in a given <a href="#administration-environments">environment</a>.</p>
+
+<table><thead>
+<tr>
+<th>Optional</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>status</code><br/><em>string</em></td>
+<td>Setting the status parameter will return only the <strong>stackpath sites</strong> with that particular status. The site&#39;s status can either be <code>ACTIVE</code>, <code>PENDING</code>, or <code>PROVISIONING</code>.</td>
+</tr>
+</tbody></table>
+
+<table><thead>
+<tr>
+<th>Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code><br/><em>string</em></td>
+<td>A sites&#39;s unique identifier.</td>
+</tr>
+<tr>
+<td><code>stackId</code><br/><em>string</em></td>
+<td>The ID of the stack that a site belongs to.</td>
+</tr>
+<tr>
+<td><code>domain</code><br/><em>string</em></td>
+<td>The domain of the site.</td>
+</tr>
+<tr>
+<td><code>status</code><br/><em>string</em></td>
+<td>The status of the site. It can either be <code>ACTIVE</code>, <code>PENDING</code>, or <code>PROVISIONING</code>.</td>
+</tr>
+<tr>
+<td><code>createdAt</code><br/><em>string</em></td>
+<td>The date on which the site was created.</td>
+</tr>
+<tr>
+<td><code>updatedAt</code><br/><em>string</em></td>
+<td>The date on which the site was last updated.</td>
+</tr>
+<tr>
+<td><code>services</code><br/><em>array</em></td>
+<td>List of services running on the site.</td>
+</tr>
+</tbody></table>
+
+<!-------------------- RETRIEVE A SITE -------------------->
+<h3 id='stackpath-retrieve-a-site'>Retrieve a site</h3><pre class="highlight shell tab-shell"><code>curl -X GET <span class="se">\</span>
+   -H <span class="s2">"MC-Api-Key: your_api_key"</span> <span class="se">\</span>
+   <span class="s2">"https://cloudmc_endpoint/api/v1/services/stackpath/test-area/sites/9ae3717a-006a-4aa7-b64b-8bc8d2f2d6e5"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns a JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"stackId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1415650d-1d02-4097-a79a-8f6e4bb4f483"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"domain"</span><span class="p">:</span><span class="w"> </span><span class="s2">"slow-test.com"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-02-19T19:29:58.713874Z"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"updatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-02-19T19:30:04.656652Z"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"services"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"CDN"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"SERVERLESS_EDGE_ENGINE"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"WAF"</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9ae3717a-006a-4aa7-b64b-8bc8d2f2d6e5"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ACTIVE"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><code>GET /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/sites/:id</code></p>
+
+<p>Retrieve a site in a given <a href="#administration-environments">environment</a>.</p>
+
+<table><thead>
+<tr>
+<th>Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code><br/><em>string</em></td>
+<td>A sites&#39;s unique identifier.</td>
+</tr>
+<tr>
+<td><code>stackId</code><br/><em>string</em></td>
+<td>The ID of the stack that a site belongs to.</td>
+</tr>
+<tr>
+<td><code>domain</code><br/><em>string</em></td>
+<td>The domain of the site.</td>
+</tr>
+<tr>
+<td><code>status</code><br/><em>string</em></td>
+<td>The status of the site. It can either be <code>ACTIVE</code>, <code>PENDING</code>, or <code>PROVISIONING</code>.</td>
+</tr>
+<tr>
+<td><code>createdAt</code><br/><em>string</em></td>
+<td>The date on which the site was created.</td>
+</tr>
+<tr>
+<td><code>updatedAt</code><br/><em>string</em></td>
+<td>The date on which the site was last updated.</td>
+</tr>
+<tr>
+<td><code>services</code><br/><em>array</em></td>
+<td>List of services running on the site.</td>
+</tr>
+</tbody></table>
+
+<!-------------------- CREATE A SITE -------------------->
+<h3 id='stackpath-create-a-site'>Create a site</h3><pre class="highlight shell tab-shell"><code>curl -X POST <span class="se">\</span>
+    -H <span class="s2">"MC-Api-Key: your_api_key"</span> <span class="se">\</span>
+    -d <span class="s2">"request_body"</span> <span class="se">\</span>
+    <span class="s2">"https://cloudmc_endpoint/api/v1/services/stackpath/test-area/sites"</span>
+</code></pre>
+<blockquote>
+<p>Request body example for a site with basic authentication:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"domain"</span><span class="p">:</span><span class="w"> </span><span class="s2">"www.rpgfan.com"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"services"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="s2">"CDN"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"SERVERLESS_EDGE_ENGINE"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"WAF"</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="s2">"protocol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HTTPS"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"hostname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"199.250.204.212"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"authMethod"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BASIC"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"alavoie"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"password"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123456"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<blockquote>
+<p>Request body example for a site with no authentication:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"domain"</span><span class="p">:</span><span class="w"> </span><span class="s2">"www.rpgfan.com"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"services"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="s2">"CDN"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"SERVERLESS_EDGE_ENGINE"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"WAF"</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="s2">"protocol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HTTPS"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"hostname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"199.250.204.212"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<blockquote>
+<p>The above commands return a JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"taskId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"7135ae25-8488-4bc5-a289-285c84a00a84"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"taskStatus"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PENDING"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><code>POST /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/sites</code></p>
+
+<p>Create a site in a given <a href="#administration-environments">environment</a>.</p>
+
+<table><thead>
+<tr>
+<th>Required</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>domain</code><br/><em>string</em></td>
+<td>The domain name that will be used for the site.</td>
+</tr>
+<tr>
+<td><code>services</code><br/><em>Array[string]</em></td>
+<td>Services list that will be used on the site. Possibles values are <code>CDN</code>,<code>SERVERLESS_EDGE_ENGINE</code> or  <code>WAF</code>.</td>
+</tr>
+<tr>
+<td><code>protocol</code><br/><em>string</em></td>
+<td>Protocol that will be used to communicate with the hostname. Possibles values are <code>HTTP</code> or <code>HTTPS</code>.</td>
+</tr>
+<tr>
+<td><code>hostname</code><br/><em>string</em></td>
+<td>The hostname to that will be used to get the information from. The hostname can be an IP or a name. It may include a specific port and a precise path as well (e.g. 199.250.204.212:80/test).</td>
+</tr>
+</tbody></table>
+
+<table><thead>
+<tr>
+<th>Optional</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>authMethod</code><br/><em>string</em></td>
+<td>The authentication method to communicate with the hostname. Possibles values are <code>NONE</code> or <code>BASIC</code>. If not provided, it will default to <code>NONE</code> unless the username or password is provided. It would then default to <code>BASIC</code>.</td>
+</tr>
+<tr>
+<td><code>username</code><br/><em>Array[Object]</em></td>
+<td>The username for the basic authentication. Required if authMethod is <code>BASIC</code> or if the password id provided.</td>
+</tr>
+<tr>
+<td><code>password</code><br/><em>string</em></td>
+<td>The password for the basic authentication. Required if authMethod is <code>BASIC</code> or if the password id provided.</td>
+</tr>
+</tbody></table>
+
+<!-------------------- DELETE A SITE -------------------->
+<h3 id='stackpath-delete-a-site'>Delete a site</h3><pre class="highlight shell tab-shell"><code>curl -X DELETE <span class="se">\</span>
+   -H <span class="s2">"MC-Api-Key: your_api_key"</span> <span class="se">\</span>
+   <span class="s2">"https://cloudmc_endpoint/api/v1/services/stackpath/test-area/sites/f8ad8351-4f07-4b52-92ec-fd2983873853"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns a JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"taskId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"57fc8d89-6f13-451b-8b66-fcd96e1fedbd"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"taskStatus"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PENDING"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><code>DELETE /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/sites/:id</code></p>
+
+<p>Delete a site in a given <a href="#administration-environments">environment</a>.</p>
+
+<table><thead>
+<tr>
+<th>Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>taskId</code> <br/><em>string</em></td>
+<td>The task id related to the site deletion.</td>
 </tr>
 <tr>
 <td><code>taskStatus</code> <br/><em>string</em></td>
