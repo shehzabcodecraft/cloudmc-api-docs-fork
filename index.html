@@ -3309,6 +3309,14 @@
                           </li>
                       </ul>
                   </li>
+                  <li>
+                    <a href="#stackpath-delivery-domains" class="toc-h2 toc-link" data-title="StackPath plugin">Delivery domains</a>
+                      <ul class="toc-list-h3">
+                          <li>
+                            <a href="#stackpath-list-delivery-domains" class="toc-h3 toc-link" data-title="StackPath plugin">List delivery domains</a>
+                          </li>
+                      </ul>
+                  </li>
               </ul>
           </li>
           <li>            
@@ -55809,6 +55817,87 @@ a custom one. Only non-deprecated images are returned by default.</p>
 <tr>
 <td><code>portRange</code><br/><em>string</em></td>
 <td>This specifies on which ports traffic will be allowed or denied by this rule. It can be a range of ports separated by a hyphen. Not required for protocol for <code>ESP</code> or <code>AH</code>.</td>
+</tr>
+</tbody></table>
+<h2 id='stackpath-delivery-domains'>Delivery domains</h2>
+<p>Delivery domains allow the CDN to recognize an HTTP request and associate it with a site.</p>
+
+<!-------------------- LIST DELIVERY DOMAINS -------------------->
+<h3 id='stackpath-list-delivery-domains'>List delivery domains</h3><pre class="highlight shell tab-shell"><code>curl -X GET <span class="se">\</span>
+   -H <span class="s2">"MC-Api-Key: your_api_key"</span> <span class="se">\</span>
+   <span class="s2">"https://cloudmc_endpoint/api/v1/services/stackpath/test-area/deliverydomains?siteId=439b145a-7c55-4a73-8cf2-d8faabfe6d22"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns a JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"439b145a-7c55-4a73-8cf2-d8faabfe6d22/test-domain.com"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"stackId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3deddcbd-3757-44cf-a4a6-93028fc4649a"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"siteId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"439b145a-7c55-4a73-8cf2-d8faabfe6d22"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"domain"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test-domain.com"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"439b145a-7c55-4a73-8cf2-d8faabfe6d22/u7f7rXXX.stackpathcdn.com"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"stackId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3deddcbd-3757-44cf-a4a6-93028fc4649a"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"siteId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"439b145a-7c55-4a73-8cf2-d8faabfe6d22"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"domain"</span><span class="p">:</span><span class="w"> </span><span class="s2">"u7f7rXXX.stackpathcdn.com"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"validatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-02-26T19:00:15.177411Z"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"439b145a-7c55-4a73-8cf2-d8faabfe6d22/www.test-domain.com"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"stackId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3deddcbd-3757-44cf-a4a6-93028fc4649a"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"siteId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"439b145a-7c55-4a73-8cf2-d8faabfe6d22"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"domain"</span><span class="p">:</span><span class="w"> </span><span class="s2">"www.test-domain.com"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="s2">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"recordCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><code>GET /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/deliverydomains?siteId=<a href="#stackpath-sites">:siteId</a></code></p>
+
+<p>Retrieve a list of all delivery domains in a given <a href="#administration-environments">environment</a> for a <a href="#stackpath-sites">site</a>.</p>
+
+<table><thead>
+<tr>
+<th>Query Params</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>siteId</code><br/><em>UUID</em></td>
+<td>The ID of the site for which to list delivery domains. This parameter is required.</td>
+</tr>
+</tbody></table>
+
+<table><thead>
+<tr>
+<th>Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code><br/><em>string</em></td>
+<td>The delivery domain unique identifier.</td>
+</tr>
+<tr>
+<td><code>domain</code><br/><em>string</em></td>
+<td>The site&#39;s domain name.</td>
+</tr>
+<tr>
+<td><code>siteId</code><br/><em>UUID</em></td>
+<td>The ID of the site that the delivery domain belongs to.</td>
+</tr>
+<tr>
+<td><code>stackId</code><br/><em>UUID</em></td>
+<td>The ID of the stack that the site belongs to.</td>
+</tr>
+<tr>
+<td><code>updatedAt</code><br/><em>string</em></td>
+<td>The date the domain was validated to be pointing to Stackpath.</td>
 </tr>
 </tbody></table>
 <h1 id='amazon-web-services-plugin'>Amazon Web Services plugin</h1>
