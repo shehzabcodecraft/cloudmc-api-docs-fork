@@ -3333,6 +3333,12 @@
                           <li>
                             <a href="#stackpath-list-delivery-domains" class="toc-h3 toc-link" data-title="StackPath plugin">List delivery domains</a>
                           </li>
+                          <li>
+                            <a href="#stackpath-retrieve-a-delivery-domain" class="toc-h3 toc-link" data-title="StackPath plugin">Retrieve a delivery domain</a>
+                          </li>
+                          <li>
+                            <a href="#stackpath-delete-a-delivery-domain" class="toc-h3 toc-link" data-title="StackPath plugin">Delete a delivery domain</a>
+                          </li>
                       </ul>
                   </li>
               </ul>
@@ -56114,6 +56120,88 @@ a custom one. Only non-deprecated images are returned by default.</p>
 <tr>
 <td><code>updatedAt</code><br/><em>string</em></td>
 <td>The date the domain was validated to be pointing to Stackpath.</td>
+</tr>
+</tbody></table>
+
+<!-------------------- RETRIEVE A DELIVERY DOMAIN -------------------->
+<h3 id='stackpath-retrieve-a-delivery-domain'>Retrieve a delivery domain</h3><pre class="highlight shell tab-shell"><code>curl -X GET <span class="se">\</span>
+   -H <span class="s2">"MC-Api-Key: your_api_key"</span> <span class="se">\</span>
+   <span class="s2">"https://cloudmc_endpoint/api/v1/services/stackpath/test-area/deliverydomains/439b145a-7c55-4a73-8cf2-d8faabfe6d22/test-domain.com"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns a JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"439b145a-7c55-4a73-8cf2-d8faabfe6d22/test-domain.com"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"stackId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3deddcbd-3757-44cf-a4a6-93028fc4649a"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"siteId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"439b145a-7c55-4a73-8cf2-d8faabfe6d22"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"domain"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test-domain.com"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><code>GET /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/deliverydomains/:id</code></p>
+
+<p>Retrieve a delivery domain of a site in a given <a href="#administration-environments">environment</a>.</p>
+
+<table><thead>
+<tr>
+<th>Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code><br/><em>string</em></td>
+<td>The delivery domain unique identifier.</td>
+</tr>
+<tr>
+<td><code>domain</code><br/><em>string</em></td>
+<td>The site&#39;s domain name.</td>
+</tr>
+<tr>
+<td><code>siteId</code><br/><em>UUID</em></td>
+<td>The ID of the site that the delivery domain belongs to.</td>
+</tr>
+<tr>
+<td><code>stackId</code><br/><em>UUID</em></td>
+<td>The ID of the stack that the site belongs to.</td>
+</tr>
+<tr>
+<td><code>updatedAt</code><br/><em>string</em></td>
+<td>The date the domain was validated to be pointing to Stackpath.</td>
+</tr>
+</tbody></table>
+
+<!-------------------- DELETE A DELIVERY DOMAIN -------------------->
+<h3 id='stackpath-delete-a-delivery-domain'>Delete a delivery domain</h3><pre class="highlight shell tab-shell"><code>curl -X DELETE <span class="se">\</span>
+   -H <span class="s2">"MC-Api-Key: your_api_key"</span> <span class="se">\</span>
+   <span class="s2">"https://cloudmc_endpoint/api/v1/services/stackpath/test-area/deliverydomains/439b145a-7c55-4a73-8cf2-d8faabfe6d22/test-domain.com"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns a JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"taskId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"57fc8d89-6f13-451b-8b66-fcd96e1fedbd"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"taskStatus"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PENDING"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><code>DELETE /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/deliverydomains/:id</code></p>
+
+<p>Delete a delivery domain of a site in a given <a href="#administration-environments">environment</a>.</p>
+
+<table><thead>
+<tr>
+<th>Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>taskId</code> <br/><em>string</em></td>
+<td>The task id related to the site deletion.</td>
+</tr>
+<tr>
+<td><code>taskStatus</code> <br/><em>string</em></td>
+<td>The status of the operation.</td>
 </tr>
 </tbody></table>
 <h1 id='amazon-web-services-plugin'>Amazon Web Services plugin</h1>
