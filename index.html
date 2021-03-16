@@ -3280,6 +3280,9 @@
                           <li>
                             <a href="#stackpath-disable-serverless-scripts" class="toc-h3 toc-link" data-title="StackPath plugin">Disable Serverless Scripts</a>
                           </li>
+                          <li>
+                            <a href="#stackpath-retrieve-waf-settings-for-a-site" class="toc-h3 toc-link" data-title="StackPath plugin">Retrieve WAF Settings for a Site</a>
+                          </li>
                       </ul>
                   </li>
                   <li>
@@ -3338,6 +3341,9 @@
                           </li>
                           <li>
                             <a href="#stackpath-delete-a-delivery-domain" class="toc-h3 toc-link" data-title="StackPath plugin">Delete a delivery domain</a>
+                          </li>
+                          <li>
+                            <a href="#stackpath-create-a-delivery-domain" class="toc-h3 toc-link" data-title="StackPath plugin">Create a delivery domain</a>
                           </li>
                       </ul>
                   </li>
@@ -55378,6 +55384,171 @@ A workload can be added without any `ports`. However, `ports.publicPort` and `po
 <td>The status of the operation.</td>
 </tr>
 </tbody></table>
+
+<!-------------------- List WAF Setting for a Site -------------------->
+<h3 id='stackpath-retrieve-waf-settings-for-a-site'>Retrieve WAF Settings for a Site</h3><pre class="highlight shell tab-shell"><code>curl -X GET <span class="se">\</span>
+   -H <span class="s2">"MC-Api-Key: your_api_key"</span> <span class="se">\</span>
+   <span class="s2">"https://cloudmc_endpoint/api/v1/services/stackpath/test-area/wafsettings/1b1cd7e6-41ab-4e0f-a59a-5c4b89da1b36"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns a JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"siteId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1b1cd7e6-41ab-4e0f-a59a-5c4b89da1b36"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"stackId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1415650d-1d02-4097-a79a-8f6e4bb4f483"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"apiUrls"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"/test/this/way"</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"ddosSettings"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"globalThreshold"</span><span class="p">:</span><span class="w"> </span><span class="mi">5000</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"burstThreshold"</span><span class="p">:</span><span class="w"> </span><span class="mi">110</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"subSecondBurstThreshold"</span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"monitoringEnabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"listPolicyGroups"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"policyGroups"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8365e00f-a6c4-43a4-9f07-b830759737b8"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"User Agents"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"policies"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Invalid User Agent Prevention"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Block requests in which the HTTP header describing the user-agent (browser and platform) seems invalid as it does not fit the client's properties."</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"action"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BLOCK"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"S28158056"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"enabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Unknown User Agent Prevention"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Challenge requests in which the HTTP header describing the user-agent (browser and platform) is missing or unknown."</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"action"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HANDSHAKE"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"S28158057"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"enabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+          </span><span class="p">]</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d694f10e-7faf-4517-bc5b-265e95c04442"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SPAM and Abuse"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"policies"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Form Submission Validation"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Challenge user sessions and activities that seem to be aggressively using forms on your website to post spam content, generate new accounts, and more."</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"action"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HANDSHAKE"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"S28158209"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"enabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+          </span><span class="p">]</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"379521f9-5d82-499e-a1b2-18f23800af1c"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Allow Known Bots"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"policies"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Google bot"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Google bot"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"action"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ALLOW"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"S28158095"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"enabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Google ads bot"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Google ads bot"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"action"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ALLOW"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"S28158096"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"enabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+          </span><span class="p">]</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><code>GET /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/wafsettings/<a href="#administration-sites">:site_id</a></code></p>
+
+<p>Retrieve the WAF Settings for a site.</p>
+
+<table><thead>
+<tr>
+<th>Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>siteId</code><br/><em>string</em></td>
+<td>The ID of the site that the WAF settings belongs to.</td>
+</tr>
+<tr>
+<td><code>stackId</code><br/><em>string</em></td>
+<td>The ID of the stack that a site belongs to.</td>
+</tr>
+<tr>
+<td><code>ddosSettings</code><br/><em>object</em></td>
+<td>The DDoS Setting containing the different threshold values.</td>
+</tr>
+<tr>
+<td><code>ddosSettings.globalThreshold</code><br/><em>Integer</em></td>
+<td>The number of overall requests per ten seconds that can trigger DDoS protection</td>
+</tr>
+<tr>
+<td><code>ddosSettings.burstThreshold</code><br/><em>Integer</em></td>
+<td>The number of requests per two seconds that can trigger DDoS protection</td>
+</tr>
+<tr>
+<td><code>ddosSettings.subSecondBurstThreshold</code><br/><em>Integer</em></td>
+<td>The number of requests per 0.1 seconds that can trigger DDoS protection</td>
+</tr>
+<tr>
+<td><code>apiUrls</code><br/><em>array</em></td>
+<td>List of configured API urls.</td>
+</tr>
+<tr>
+<td><code>isMonitoring</code><br/><em>boolean</em></td>
+<td>If the monitoring mode is enabled.</td>
+</tr>
+<tr>
+<td><code>listPolicyGroups</code><br/><em>object</em></td>
+<td>An object containing the list of policy groups.</td>
+</tr>
+<tr>
+<td><code>policyGroups</code><br/><em>array[object]</em></td>
+<td>A list of policy group object.</td>
+</tr>
+<tr>
+<td><code>policyGroups.id</code><br/><em>string</em></td>
+<td>The ID of the policy group.</td>
+</tr>
+<tr>
+<td><code>policyGroups.name</code><br/><em>string</em></td>
+<td>The name of the policy group.</td>
+</tr>
+<tr>
+<td><code>policyGroups.policies</code><br/><em>array[object]</em></td>
+<td>A list of policies in a policy group.</td>
+</tr>
+<tr>
+<td><code>policyGroups.policies.name</code><br/><em>string</em></td>
+<td>A WAF policy&#39;s name.</td>
+</tr>
+<tr>
+<td><code>policyGroups.policies.id</code><br/><em>string</em></td>
+<td>A WAF policy&#39;s ID.</td>
+</tr>
+<tr>
+<td><code>policyGroups.policies.description</code><br/><em>string</em></td>
+<td>A WAF policy&#39;s description.</td>
+</tr>
+<tr>
+<td><code>policyGroups.policies.action</code><br/><em>string</em></td>
+<td>The potential actions that the WAF will take when a policy is triggered. It can either be <code>ALLOW</code>, <code>BLOCK</code>, <code>HANDSHAKE</code>, <code>MONITOR</code> or <code>CAPTCHA</code>.</td>
+</tr>
+<tr>
+<td><code>policyGroups.policies.enabled</code><br/><em>boolean</em></td>
+<td>If the WAF policy is enabled.</td>
+</tr>
+</tbody></table>
 <h2 id='stackpath-instances'>Instances</h2>
 <p>Manage your workload instances.</p>
 
@@ -56198,6 +56369,59 @@ a custom one. Only non-deprecated images are returned by default.</p>
 <tr>
 <td><code>taskId</code> <br/><em>string</em></td>
 <td>The task id related to the site deletion.</td>
+</tr>
+<tr>
+<td><code>taskStatus</code> <br/><em>string</em></td>
+<td>The status of the operation.</td>
+</tr>
+</tbody></table>
+
+<!-------------------- CREATE A DELIVERY DOMAIN -------------------->
+<h3 id='stackpath-create-a-delivery-domain'>Create a delivery domain</h3><pre class="highlight shell tab-shell"><code>curl -X POST <span class="se">\</span>
+    -H <span class="s2">"MC-Api-Key: your_api_key"</span> <span class="se">\</span>
+    -d <span class="s2">"request_body"</span> <span class="se">\</span>
+    <span class="s2">"https://cloudmc_endpoint/api/v1/services/stackpath/test-area/deliverydomains?siteId=a2fefb15-7e31-4c72-87e0-5a892e91c8d9"</span>
+</code></pre>
+<blockquote>
+<p>Request body example:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"domain"</span><span class="p">:</span><span class="w"> </span><span class="s2">"new-domain.com"</span><span class="p">,</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<blockquote>
+<p>The above command returns a JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"taskId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"57fc8d89-6f13-451b-8b66-fcd96e1fedbd"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"taskStatus"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SUCCESS"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><code>POST /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/deliverydomains?siteId=:id</code></p>
+
+<p>Create a delivery domain of a site in a given <a href="#administration-environments">environment</a>.</p>
+
+<table><thead>
+<tr>
+<th>Required</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>domain</code><br/><em>string</em></td>
+<td>The site&#39;s domain name.</td>
+</tr>
+</tbody></table>
+
+<table><thead>
+<tr>
+<th>Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>taskId</code> <br/><em>string</em></td>
+<td>The task id related to the domain creation.</td>
 </tr>
 <tr>
 <td><code>taskStatus</code> <br/><em>string</em></td>
