@@ -1,0 +1,368 @@
+<h2 id='activity-logs'>Activity Logs</h2>
+<p>Activity logs are used to view the different audited operations on a given organization.</p>
+
+<!------------------- LIST ACTIVITIES --------------------->
+<h3 id='list-activities'>List activities</h3>
+<p><code>GET /activity_log</code></p>
+
+<p>Retrieves a list of activities on a given organization. Optional parameters <code>organizationId</code> and <code>only_mine</code> can be specified to narrow the list of activities being returned.</p>
+
+<table><thead>
+<tr>
+<th>Optional Query Parameters</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>organizationId</code><br/><em>UUID</em></td>
+<td>The organization id for which we want to get the activities from. When not specified, the activities for the organization the current user is associated to will be returned.</td>
+</tr>
+<tr>
+<td><code>only_mine</code><br/><em>boolean</em></td>
+<td>Indicates if the list should include only activities performed by the current user. When not specified, the value is <code>false</code>.</td>
+</tr>
+<tr>
+<td><code>includeSubOrgs</code><br/><em>boolean</em></td>
+<td>Indicates if the list should include the sub-organizations.  When not specified, the value is <code>false</code>.</td>
+</tr>
+<tr>
+<td><code>environmentId</code><br/><em>UUID</em></td>
+<td>The environment id for which we want to get the activities from. When not specified, all environments will be returned.</td>
+</tr>
+<tr>
+<td><code>serviceConnectionId</code><br/><em>UUID</em></td>
+<td>The environment id for which we want to get the activities from. When not specified, all environments will be returned.</td>
+</tr>
+<tr>
+<td><code>userId</code><br/><em>UUID</em></td>
+<td>The user id for which we want to get the activities from. When not specified, all users will be returned.</td>
+</tr>
+<tr>
+<td><code>category</code><br/><em>string</em></td>
+<td>The category for which we want to get the activities from. When not specified, all categories will be returned.</td>
+</tr>
+<tr>
+<td><code>eventCode</code><br/><em>string</em></td>
+<td>The event code for which we want to get the activities from. When not specified, all event codes will be returned.</td>
+</tr>
+<tr>
+<td><code>status</code><br/><em>string</em></td>
+<td>The status for which we want to get the activities from. When not specified, all statuses will be returned.</td>
+</tr>
+<tr>
+<td><code>start</code><br/><em>date</em></td>
+<td>The start timestamp in RFC3339 text format which which we want to get the activities from. When not specified, all events will be returned.</td>
+</tr>
+<tr>
+<td><code>end</code><br/><em>date</em></td>
+<td>The end timestamp in RFC3339 text format which which we want to get the activities from. When not specified, all events will be returned.</td>
+</tr>
+</tbody></table>
+<pre class="highlight shell tab-shell"><code><span class="c"># Retrieve activity list</span>
+curl <span class="s2">"https://cloudmc_endpoint/api/v1/activity_log"</span> <span class="se">\</span>
+   -H <span class="s2">"MC-Api-Key: your_api_key"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns a JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"userLastname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Name"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"organizationId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"856ed38e-da4a-4f51-a7ad-e4981a44c66c"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"requesterIp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"127.0.0.1"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"userEmail"</span><span class="p">:</span><span class="w"> </span><span class="s2">"username@acme.com"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"correlationId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"caa1445a-99d4-4ec2-a6d0-13ea29f12b09"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"000598f3-d538-4b18-a5e7-964696ef8d79"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"userOrganizationId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"a21debb5-b4ac-4e4b-9491-d0f4df6cd4f9"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"organizationName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Acme"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-02-02T14:12:39.422Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"userId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0d7baac6-885a-4c82-9656-77529213223e"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"eventContext"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{</span><span class="se">\"</span><span class="s2">id</span><span class="se">\"</span><span class="s2">:null,</span><span class="se">\"</span><span class="s2">firstName</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">User</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">lastName</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">Name</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">userName</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">username@acme.com</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">timezone</span><span class="se">\"</span><span class="s2">:null,</span><span class="se">\"</span><span class="s2">status</span><span class="se">\"</span><span class="s2">:null,</span><span class="se">\"</span><span class="s2">organization</span><span class="se">\"</span><span class="s2">:{</span><span class="se">\"</span><span class="s2">id</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">856ed38e-da4a-4f51-a7ad-e4981a44c66c</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">name</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">Acme</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">isDbAuthentication</span><span class="se">\"</span><span class="s2">:true},</span><span class="se">\"</span><span class="s2">locale</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">en</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">email</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">username@acme.com</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">lastLogin</span><span class="se">\"</span><span class="s2">:null,</span><span class="se">\"</span><span class="s2">lastFailedLogin</span><span class="se">\"</span><span class="s2">:null,</span><span class="se">\"</span><span class="s2">loginCount</span><span class="se">\"</span><span class="s2">:null,</span><span class="se">\"</span><span class="s2">isTechnicalContact</span><span class="se">\"</span><span class="s2">:null,</span><span class="se">\"</span><span class="s2">isBusinessContact</span><span class="se">\"</span><span class="s2">:null,</span><span class="se">\"</span><span class="s2">creationDate</span><span class="se">\"</span><span class="s2">:null,</span><span class="se">\"</span><span class="s2">tfaEnabled</span><span class="se">\"</span><span class="s2">:false,</span><span class="se">\"</span><span class="s2">receivesEmailNotifications</span><span class="se">\"</span><span class="s2">:true,</span><span class="se">\"</span><span class="s2">primaryRoleBinding</span><span class="se">\"</span><span class="s2">:{</span><span class="se">\"</span><span class="s2">id</span><span class="se">\"</span><span class="s2">:null,</span><span class="se">\"</span><span class="s2">role</span><span class="se">\"</span><span class="s2">:{</span><span class="se">\"</span><span class="s2">id</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">e292f73b-99ff-4677-9aeb-d98b3e196089</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">name</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">guest</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">isFixed</span><span class="se">\"</span><span class="s2">:true,</span><span class="se">\"</span><span class="s2">isSystem</span><span class="se">\"</span><span class="s2">:true},</span><span class="se">\"</span><span class="s2">organization</span><span class="se">\"</span><span class="s2">:{</span><span class="se">\"</span><span class="s2">id</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">856ed38e-da4a-4f51-a7ad-e4981a44c66c</span><span class="se">\"</span><span class="s2">}}}"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"eventCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"users.created"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"userFirstname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"User"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"userOrganizationName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"System"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SYSTEM"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"updated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-02-02T14:12:43.709Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SUCCESS"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"username"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>An array of activities with the following attributes are returned.</p>
+
+<table><thead>
+<tr>
+<th>Activity Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code><br/><em>UUID</em></td>
+<td>The id of the activity.</td>
+</tr>
+<tr>
+<td><code>correlationId</code><br/><em>UUID</em></td>
+<td>The correlation id of the activity.</td>
+</tr>
+<tr>
+<td><code>eventCode</code><br/><em>string</em></td>
+<td>The human readable code for the event.</td>
+</tr>
+<tr>
+<td><code>category</code><br/><em>string</em></td>
+<td>The category the event belongs to.</td>
+</tr>
+<tr>
+<td><code>status</code><br/><em>string</em></td>
+<td>The status of the event.</td>
+</tr>
+<tr>
+<td><code>created</code><br/><em>string</em></td>
+<td>The date in <a href="https://en.wikipedia.org/wiki/ISO_8601">ISO 8601</a> that the activity was created.</td>
+</tr>
+<tr>
+<td><code>updated</code><br/><em>string</em></td>
+<td>The date in <a href="https://en.wikipedia.org/wiki/ISO_8601">ISO 8601</a> that the activity was created.</td>
+</tr>
+<tr>
+<td><code>userId</code><br/><em>UUID</em></td>
+<td>The id of the user who generated the activity.</td>
+</tr>
+<tr>
+<td><code>username</code><br/><em>string</em></td>
+<td>The username of the user who generated the activity.</td>
+</tr>
+<tr>
+<td><code>userFirstname</code><br/><em>string</em></td>
+<td>The first name of the user who generated the activity.</td>
+</tr>
+<tr>
+<td><code>userLastname</code><br/><em>string</em></td>
+<td>The first name of the user who generated the activity.</td>
+</tr>
+<tr>
+<td><code>userEmail</code><br/><em>string</em></td>
+<td>The email of the user who generated the activity.</td>
+</tr>
+<tr>
+<td><code>userOrganizationId</code><br/><em>UUID</em></td>
+<td>The id of the organization of the user who generated the activity.</td>
+</tr>
+<tr>
+<td><code>userOrganizationName</code><br/><em>string</em></td>
+<td>The name of the organization of the user who generated the activity.</td>
+</tr>
+<tr>
+<td><code>organizationId</code><br/><em>UUID</em></td>
+<td>The id of the organization of activity belongs to.</td>
+</tr>
+<tr>
+<td><code>organizationName</code><br/><em>string</em></td>
+<td>The name of the organization of activity belongs to.</td>
+</tr>
+<tr>
+<td><code>requesterIp</code><br/><em>string</em></td>
+<td>The ip address of the requester.</td>
+</tr>
+<tr>
+<td><code>eventContext</code><br/><em>string</em></td>
+<td>The escaped json event context.</td>
+</tr>
+</tbody></table>
+
+<!------------------- LIST ACTIVITY CODES -------------------->
+<h3 id='list-activity-codes'>List activity codes</h3>
+<p><code>GET /activity_log/codes</code></p>
+
+<p>Retrieves a list of activity codes. Optional parameters <code>organizationId</code> and <code>include_subs</code> can be specified to narrow the list of activities being returned.</p>
+
+<table><thead>
+<tr>
+<th>Optional Query Parameters</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>organizationId</code><br/><em>UUID</em></td>
+<td>The organization id for which we want to get the activity codes from. When not specified, the activity codes for the organization the current user is associated to will be returned.</td>
+</tr>
+<tr>
+<td><code>include_subs</code><br/><em>boolean</em></td>
+<td>If we want to include sub-organizations activity codes.</td>
+</tr>
+</tbody></table>
+<pre class="highlight shell tab-shell"><code><span class="c"># Retrieve activity codes</span>
+curl <span class="s2">"https://cloudmc_endpoint/api/v1/activity_log/codes"</span> <span class="se">\</span>
+   -H <span class="s2">"MC-Api-Key: your_api_key"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns a JSON structured like this:</p>
+</blockquote>
+<pre class="highlight javascript"><code><span class="p">{</span>
+  <span class="s2">"data"</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s2">"SYSTEM"</span><span class="p">:</span> <span class="p">[</span>
+      <span class="s2">"res_commitments.update"</span><span class="p">,</span>
+      <span class="s2">"users.autocreated"</span><span class="p">,</span>
+      <span class="s2">"environment_members.purge"</span><span class="p">,</span>
+      <span class="s2">"custom_field.deleted"</span><span class="p">,</span>
+      <span class="s2">"organizations.provision"</span><span class="p">,</span>
+      <span class="s2">"trials.converted_to_billable"</span><span class="p">,</span>
+      <span class="c1">// ...</span>
+    <span class="p">]</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+<p>The list of activity codes is returned grouped by category.</p>
+
+<!------------------- ACTIVITIES SUMMARY -------------------->
+<h3 id='get-activities-summary'>Get activities summary</h3>
+<p><code>GET /activity_log/summary</code></p>
+
+<p>Retrieves a summary of activities. An optional <code>maxNumberOfItems</code> can be passed to narrow the number of items down to be included in the summary.</p>
+
+<table><thead>
+<tr>
+<th>Optional Query Parameters</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>maxNumberOfItems</code><br/><em>number</em></td>
+<td>The number of items to be included in the summary.</td>
+</tr>
+</tbody></table>
+<pre class="highlight shell tab-shell"><code><span class="c"># Retrieve activities summary</span>
+curl <span class="s2">"https://cloudmc_endpoint/api/v1/activity_log/summary"</span> <span class="se">\</span>
+   -H <span class="s2">"MC-Api-Key: your_api_key"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns a JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"userLastname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Name"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"organizationId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"829f0117-4b1f-49bb-8daf-ea4625ea6133"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"environmentId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"e721bb72-e332-4745-b72f-0b15633d2823"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"serviceConnectionName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"service-connection-name"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"environmentName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"env-local"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"userEmail"</span><span class="p">:</span><span class="w"> </span><span class="s2">"username@acme.com"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2fd514fb-bdb8-481c-ad0c-7da683181df5"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"userOrganizationId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"829f0117-4b1f-49bb-8daf-ea4625ea6133"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"serviceConnectionType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"stackpath"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"organizationName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"System"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-03-11T18:45:01.486Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"userId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ff17986e-8a66-4e23-8cb1-f846b1c1deb6"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"parentId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"f5b77da1-9539-446b-8399-94c034604b0f"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"eventContext"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{</span><span class="se">\"</span><span class="s2">userName</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">username@acme.com</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">environmentName</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">env-local</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">organizationName</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">Acme</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">connectionName</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">service-connection-name</span><span class="se">\"</span><span class="s2">}"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"eventCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"environment_members.provision"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"serviceConnectionId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8c77bf1a-3eca-4509-b13d-005bf779df28"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"userFirstname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"User"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"userOrganizationName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"System"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SYSTEM"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"updated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-03-11T18:45:02.340Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SUCCESS"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"username@acme.com"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>An array of activity summaries with the following attributes are returned.</p>
+
+<table><thead>
+<tr>
+<th>Activity Summary Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code><br/><em>UUID</em></td>
+<td>The id of the activity.</td>
+</tr>
+<tr>
+<td><code>parentId</code><br/><em>UUID</em></td>
+<td>The id of the parent activity.</td>
+</tr>
+<tr>
+<td><code>eventCode</code><br/><em>string</em></td>
+<td>The human readable code for the activity event.</td>
+</tr>
+<tr>
+<td><code>category</code><br/><em>string</em></td>
+<td>The category the activity event belongs to.</td>
+</tr>
+<tr>
+<td><code>status</code><br/><em>string</em></td>
+<td>The status of the activity event.</td>
+</tr>
+<tr>
+<td><code>created</code><br/><em>string</em></td>
+<td>The date in <a href="https://en.wikipedia.org/wiki/ISO_8601">ISO 8601</a> that the activity was created.</td>
+</tr>
+<tr>
+<td><code>updated</code><br/><em>string</em></td>
+<td>The date in <a href="https://en.wikipedia.org/wiki/ISO_8601">ISO 8601</a> that the activity was created.</td>
+</tr>
+<tr>
+<td><code>userId</code><br/><em>UUID</em></td>
+<td>The id of the user who generated the activity.</td>
+</tr>
+<tr>
+<td><code>username</code><br/><em>string</em></td>
+<td>The username of the user who generated the activity.</td>
+</tr>
+<tr>
+<td><code>userFirstname</code><br/><em>string</em></td>
+<td>The first name of the user who generated the activity.</td>
+</tr>
+<tr>
+<td><code>userLastname</code><br/><em>string</em></td>
+<td>The first name of the user who generated the activity.</td>
+</tr>
+<tr>
+<td><code>userEmail</code><br/><em>string</em></td>
+<td>The email of the user who generated the activity.</td>
+</tr>
+<tr>
+<td><code>userOrganizationId</code><br/><em>UUID</em></td>
+<td>The id of the organization of the user who generated the activity.</td>
+</tr>
+<tr>
+<td><code>userOrganizationName</code><br/><em>string</em></td>
+<td>The name of the organization of the user who generated the activity.</td>
+</tr>
+<tr>
+<td><code>organizationId</code><br/><em>UUID</em></td>
+<td>The id of the organization the activity belongs to.</td>
+</tr>
+<tr>
+<td><code>organizationName</code><br/><em>string</em></td>
+<td>The name of the organization of activity belongs to.</td>
+</tr>
+<tr>
+<td><code>environmentId</code><br/><em>UUID</em></td>
+<td>The id of the environment the activity belongs to.</td>
+</tr>
+<tr>
+<td><code>environmentName</code><br/><em>string</em></td>
+<td>The name of the environment the activity belongs to.</td>
+</tr>
+<tr>
+<td><code>eventContext</code><br/><em>string</em></td>
+<td>The escaped json event context.</td>
+</tr>
+<tr>
+<td><code>serviceConnectionId</code><br/><em>UUID</em></td>
+<td>The id of the service connection the activity belongs to.</td>
+</tr>
+<tr>
+<td><code>serviceConnectionName</code><br/><em>string</em></td>
+<td>The name of the service connection the activity belongs to.</td>
+</tr>
+<tr>
+<td><code>serviceConnectionType</code><br/><em>string</em></td>
+<td>The type of the service connection the activity belongs to.</td>
+</tr>
+</tbody></table>
