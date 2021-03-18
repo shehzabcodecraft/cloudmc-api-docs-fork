@@ -3373,6 +3373,12 @@
                           <li>
                             <a href="#stackpath-retrieve-cdn-settings" class="toc-h3 toc-link" data-title="StackPath plugin">Retrieve CDN settings</a>
                           </li>
+                          <li>
+                            <a href="#stackpath-purge-all-cdn-cached-content" class="toc-h3 toc-link" data-title="StackPath plugin">Purge all CDN cached content</a>
+                          </li>
+                          <li>
+                            <a href="#stackpath-purge-custom-cdn-cached-content" class="toc-h3 toc-link" data-title="StackPath plugin">Purge custom CDN cached content</a>
+                          </li>
                       </ul>
                   </li>
                   <li>
@@ -57193,6 +57199,137 @@ a custom one. Only non-deprecated images are returned by default.</p>
 <tr>
 <td><code>urlCachingTtl</code><br/><em>Integer</em></td>
 <td>The time to live for the url cache. Only visible if <code>urlCachingEnabled</code> is enabled.</td>
+</tr>
+</tbody></table>
+
+<!-------------------- PURGE ALL CDN CACHED CONTENT -------------------->
+<h3 id='stackpath-purge-all-cdn-cached-content'>Purge all CDN cached content</h3><pre class="highlight shell tab-shell"><code>curl -X POST <span class="se">\</span>
+   -H <span class="s2">"MC-Api-Key: your_api_key"</span> <span class="se">\</span>
+   <span class="s2">"https://cloudmc_endpoint/api/v1/services/stackpath/test-area/cdnsettings/9f236f19-55db-411f-9f05-bd79dc91a69b?operation=purgeAll"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns a JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"taskId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"e6c03893-212f-4e28-b7a1-66ed7b554839"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"taskStatus"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PENDING"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><code>POST /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/cdnsettings/:siteId?operation=purgeAll</a></code></p>
+
+<p>Purge all CDN cached content of a site in a given <a href="#administration-environments">environment</a>.</p>
+
+<table><thead>
+<tr>
+<th>Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>taskId</code> <br/><em>string</em></td>
+<td>The task id related to the purge operation.</td>
+</tr>
+<tr>
+<td><code>taskStatus</code> <br/><em>string</em></td>
+<td>The status of the operation.</td>
+</tr>
+</tbody></table>
+
+<!-------------------- PURGE CUSTOM CDN CACHED CONTENT -------------------->
+<h3 id='stackpath-purge-custom-cdn-cached-content'>Purge custom CDN cached content</h3><pre class="highlight shell tab-shell"><code>curl -X POST <span class="se">\</span>
+   -H <span class="s2">"MC-Api-Key: your_api_key"</span> <span class="se">\</span>
+   -d <span class="s2">"request_body"</span> <span class="se">\</span>
+   <span class="s2">"https://cloudmc_endpoint/api/v1/services/stackpath/test-area/cdnsettings/9f236f19-55db-411f-9f05-bd79dc91a69b?operation=purge"</span>
+</code></pre>
+<blockquote>
+<p>Request body example:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"items"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//&lt;domain_name&gt;/path/to/file"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"recursive"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"purgeAllDynamic"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"headers"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+      </span><span class="s2">"purgeSelector"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"selectorName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"(?i)&lt;header_name&gt;"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"selectorValue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;header_value&gt;"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"selectorType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HEADER"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"selectorValueDelimiter"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<blockquote>
+<p>The above command returns a JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"taskId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"e6c03893-212f-4e28-b7a1-66ed7b554839"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"taskStatus"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PENDING"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><code>POST /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/cdnsettings/:siteId?operation=purge</a></code></p>
+
+<p>Purge custom CDN cached content of a site in a given <a href="#administration-environments">environment</a>.</p>
+
+<table><thead>
+<tr>
+<th>Required</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>items</code><br/><em>Array[Object]</em></td>
+<td>The items to purge from the CDN.</td>
+</tr>
+<tr>
+<td><code>items.url</code><br/><em>String</em></td>
+<td>The URL at which to delete content.</td>
+</tr>
+</tbody></table>
+
+<table><thead>
+<tr>
+<th>Optional</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>items.recursive</code><br/><em>Boolean</em></td>
+<td>Whether or not to recursively delete content from the CDN.</td>
+</tr>
+<tr>
+<td><code>items.invalidateOnly</code><br/><em>Boolean</em></td>
+<td>Whether or not to mark the asset as expired and re-validate instead of deleting.</td>
+</tr>
+<tr>
+<td><code>items.purgeAllDynamic</code><br/><em>Boolean</em></td>
+<td>Whether or not to purge dynamic versions of assets.</td>
+</tr>
+<tr>
+<td><code>items.headers</code><br/><em>Array[String]</em></td>
+<td>A list of HTTP request headers used to construct a cache key to purge content by. These headers must be configured in the site configuration&#39;s DynamicContent.headerFields property.</td>
+</tr>
+<tr>
+<td><code>items.purgeSelector</code><br/><em>Array[Object]</em></td>
+<td>A key/value pair definition of content to purge from the CDN.</td>
+</tr>
+<tr>
+<td><code>items.purgeSelector.selectorType</code><br/><em>String</em></td>
+<td>The kinds of content that can be purged from the CDN. One of: HEADER (Purge content based on an HTTP response header), TAG (Purge content based on an X-TAG HTTP header value. Purging by tag can be useful when content on the origin is tagged).</td>
+</tr>
+<tr>
+<td><code>items.purgeSelector.selectorName</code><br/><em>String</em></td>
+<td>The name of the type of content to purge. For example, the name of the HTTP response header. Names are case sensitive.</td>
+</tr>
+<tr>
+<td><code>items.purgeSelector.selectorValue</code><br/><em>String</em></td>
+<td>The value of the content to purge. For example, the value of the HTTP response header. Values are case sensitive and may be wild-carded, but cannot match a &quot;/&quot;.</td>
+</tr>
+<tr>
+<td><code>items.purgeSelector.selectorValueDelimiter</code><br/><em>String</em></td>
+<td>The delimiter to separate multiple values with. Defaults to &quot;,&quot;.</td>
 </tr>
 </tbody></table>
 <h2 id='stackpath-origin-settings'>Origin settings</h2>
