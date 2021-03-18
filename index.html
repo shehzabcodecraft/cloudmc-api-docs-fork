@@ -3368,6 +3368,14 @@
                       </ul>
                   </li>
                   <li>
+                    <a href="#stackpath-cdn-settings" class="toc-h2 toc-link" data-title="StackPath plugin">CDN settings</a>
+                      <ul class="toc-list-h3">
+                          <li>
+                            <a href="#stackpath-retrieve-cdn-settings" class="toc-h3 toc-link" data-title="StackPath plugin">Retrieve CDN settings</a>
+                          </li>
+                      </ul>
+                  </li>
+                  <li>
                     <a href="#stackpath-origin-settings" class="toc-h2 toc-link" data-title="StackPath plugin">Origin settings</a>
                       <ul class="toc-list-h3">
                           <li>
@@ -3386,6 +3394,9 @@
                           </li>
                           <li>
                             <a href="#stackpath-retrieve-a-script" class="toc-h3 toc-link" data-title="StackPath plugin">Retrieve a script</a>
+                          </li>
+                          <li>
+                            <a href="#stackpath-create-a-script" class="toc-h3 toc-link" data-title="StackPath plugin">Create a script</a>
                           </li>
                           <li>
                             <a href="#stackpath-delete-a-script" class="toc-h3 toc-link" data-title="StackPath plugin">Delete a script</a>
@@ -57036,6 +57047,154 @@ a custom one. Only non-deprecated images are returned by default.</p>
 <td>The status of the operation.</td>
 </tr>
 </tbody></table>
+<h2 id='stackpath-cdn-settings'>CDN settings</h2>
+<p>CDN settings allow you to configure your site&#39;s CDN properties.</p>
+
+<!-------------------- RETRIEVE CDN SETTINGS -------------------->
+<h3 id='stackpath-retrieve-cdn-settings'>Retrieve CDN settings</h3><pre class="highlight shell tab-shell"><code>curl -X GET <span class="se">\</span>
+   -H <span class="s2">"MC-Api-Key: your_api_key"</span> <span class="se">\</span>
+   <span class="s2">"https://cloudmc_endpoint/api/v1/services/stackpath/test-area/cdnsettings/9f236f19-55db-411f-9f05-bd79dc91a69b"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns a JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"siteId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9f236f19-55db-411f-9f05-bd79dc91a69b"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"cacheExpirePolicy"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SPECIFY_CDN_TTL"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"cacheTtl"</span><span class="p">:</span><span class="w"> </span><span class="mi">60</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"queryStringControl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CUSTOM"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"customCachedQueryStrings"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"customQuery"</span><span class="p">,</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"dynamicCachingByHeaderEnabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"customCachedHeaders"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"mydynamicheader"</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"gzipCompressionEnabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"gzipCompressionLevel"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"contentPersistenceEnabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"maximumStaleFileTtl"</span><span class="p">:</span><span class="w"> </span><span class="mi">30</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"varyHeaderEnabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"browserCacheTtl"</span><span class="p">:</span><span class="w"> </span><span class="mi">60</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"corsHeaderEnabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"allowedCorsOrigins"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SPECIFY_ORIGINS"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"originsToAllowCors"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"example.org"</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"http2SupportEnabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"http2ServerPushEnabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"linkHeader"</span><span class="p">:</span><span class="w"> </span><span class="s2">"my-link-header"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"canonicalHeaderEnabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"canonicalHeader"</span><span class="p">:</span><span class="w"> </span><span class="s2">"my-canonical-header"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"urlCachingEnabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"urlCachingTtl"</span><span class="p">:</span><span class="w"> </span><span class="mi">300</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><code>GET /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/cdnsettings/:siteId</a></code></p>
+
+<p>Retrieve CDN settings for a site in a given <a href="#administration-environments">environment</a>.</p>
+
+<table><thead>
+<tr>
+<th>Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>siteId</code><br/><em>UUID</em></td>
+<td>A site&#39;s unique identifier.</td>
+</tr>
+<tr>
+<td><code>cacheExpirePolicy</code><br/><em>String</em></td>
+<td>A site&#39;s cache expiry policy. Can be <code>ORIGIN_CONTROLLED</code>, <code>SPECIFY_CDN_TTL</code>, <code>NEVER_EXPIRE</code>, or <code>DO_NOT_CACHE</code>.</td>
+</tr>
+<tr>
+<td><code>cacheTtl</code><br/><em>Integer</em></td>
+<td>The time to live for the cache. Depends on the cache expiry policy.</td>
+</tr>
+<tr>
+<td><code>queryStringControl</code><br/><em>String</em></td>
+<td>The strategy for caching query strings. Can be <code>IGNORE</code>, <code>CACHE_ALL</code> or <code>CUSTOM</code>.</td>
+</tr>
+<tr>
+<td><code>customCachedQueryStrings</code><br/><em>Array[String]</em></td>
+<td>List of custom cached query strings. Only visible if the <code>queryStringControl</code> attribute is <code>CUSTOM</code></td>
+</tr>
+<tr>
+<td><code>dynamicCachingByHeaderEnabled</code><br/><em>Boolean</em></td>
+<td>Whether or not to enable dynamic caching by headers.</td>
+</tr>
+<tr>
+<td><code>customCachedHeaders</code><br/><em>Array[String]</em></td>
+<td>A list of custom cached headers. Only visible if <code>dynamicCachingByHeaderEnabled</code> is enabled.</td>
+</tr>
+<tr>
+<td><code>gzipCompressionEnabled</code><br/><em>Boolean</em></td>
+<td>Whether or not to enable gzip compression.</td>
+</tr>
+<tr>
+<td><code>gzipCompressionLevel</code><br/><em>Integer</em></td>
+<td>The level for the gzip compression. Values are between <code>1</code> to <code>6</code>. Only visible is <code>gzipCompressionEnabled</code> is enabled.</td>
+</tr>
+<tr>
+<td><code>contentPersistenceEnabled</code><br/><em>Boolean</em></td>
+<td>Whether or not make cached content available after its expiration time.</td>
+</tr>
+<tr>
+<td><code>maximumStaleFileTtl</code><br/><em>Integer</em></td>
+<td>The maximum time to live for stale files. Only visible if <code>contentPersistenceEnabled</code> is enabled.</td>
+</tr>
+<tr>
+<td><code>varyHeaderEnabled</code><br/><em>Boolean</em></td>
+<td>Whether or not to enable honoring the vary header in a request.</td>
+</tr>
+<tr>
+<td><code>browserCacheTtl</code><br/><em>Integer</em></td>
+<td>Sets the default browser expiration time for cached assets.</td>
+</tr>
+<tr>
+<td><code>corsHeaderEnabled</code><br/><em>Boolean</em></td>
+<td>Sets the Access-Control-Allow-Origin header to allow browsers to access this domain from other origins.</td>
+</tr>
+<tr>
+<td><code>allowedCorsOrigins</code><br/><em>String</em></td>
+<td>The strategy for allowing cors origins. Can be <code>SPECIFY_ORIGINS</code> or <code>ALL_ORIGINS</code>.</td>
+</tr>
+<tr>
+<td><code>originsToAllowCors</code><br/><em>Array[String]</em></td>
+<td>A list of origins to allow cors requests from. Only visible if <code>allowedCorsOrigins</code> is set to <code>SPECIFY_ORIGINS</code>.</td>
+</tr>
+<tr>
+<td><code>http2SupportEnabled</code><br/><em>Boolean</em></td>
+<td>Whether or not to enable supporting applications using HTTP/2 protocol.</td>
+</tr>
+<tr>
+<td><code>http2ServerPushEnabled</code><br/><em>Boolean</em></td>
+<td>Whether or not to push assets to the client or browser (user) in advance (before the user requests these assets) which enables faster load times.</td>
+</tr>
+<tr>
+<td><code>linkHeader</code><br/><em>String</em></td>
+<td>The link header for http2ServerPush, only visible if <code>http2ServerPushEnabled</code> is enabled.</td>
+</tr>
+<tr>
+<td><code>canonicalHeaderEnabled</code><br/><em>Boolean</em></td>
+<td>Whether or not to enable setting Link: <a href="http://%7Bhostname%7D/URI">http://{hostname}/URI</a>; rel=&quot;canonical&quot; header on each response.</td>
+</tr>
+<tr>
+<td><code>canonicalHeader</code><br/><em>String</em></td>
+<td>The hostname for the canonicalHeader, only visible if <code>canonicalHeaderEnabled</code> is enabled.</td>
+</tr>
+<tr>
+<td><code>urlCachingEnabled</code><br/><em>Boolean</em></td>
+<td>Whether or not to enable caching of URLs without file extensions.</td>
+</tr>
+<tr>
+<td><code>urlCachingTtl</code><br/><em>Integer</em></td>
+<td>The time to live for the url cache. Only visible if <code>urlCachingEnabled</code> is enabled.</td>
+</tr>
+</tbody></table>
 <h2 id='stackpath-origin-settings'>Origin settings</h2>
 <p>Origin settings allow you to configure your site&#39;s primary and backup origins.</p>
 
@@ -57064,10 +57223,7 @@ a custom one. Only non-deprecated images are returned by default.</p>
       </span><span class="s2">"authenticationEnabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
       </span><span class="s2">"sslValidationEnabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
       </span><span class="s2">"commonCertificateName"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"hostname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"www.test.com"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"port"</span><span class="p">:</span><span class="w"> </span><span class="mi">80</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"securePort"</span><span class="p">:</span><span class="w"> </span><span class="mi">8080</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"www.test.com:80"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"priority"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ZERO"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="s2">"backupOriginEnabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
@@ -57079,10 +57235,7 @@ a custom one. Only non-deprecated images are returned by default.</p>
       </span><span class="s2">"siteId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"eb3ecdbe-d73b-40e6-a263-166accba75ed"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"authenticationEnabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
       </span><span class="s2">"sslValidationEnabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"hostname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.2.3.4"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"port"</span><span class="p">:</span><span class="w"> </span><span class="mi">80</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"securePort"</span><span class="p">:</span><span class="w"> </span><span class="mi">443</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.2.3.4:443/path"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"priority"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ONE"</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">}</span><span class="w">
@@ -57167,20 +57320,8 @@ a custom one. Only non-deprecated images are returned by default.</p>
 <td>Common name to validate SSL origin requests against.</td>
 </tr>
 <tr>
-<td><code>origin.path</code> <br/> <em>string</em></td>
-<td>The origin&#39;s HTTP request path.</td>
-</tr>
-<tr>
-<td><code>origin.hostname</code> <br/> <em>string</em></td>
-<td>The origin&#39;s HTTP request hostname. Can be a valid IPv4 address or a valid domain name.</td>
-</tr>
-<tr>
-<td><code>origin.port</code> <br/> <em>int</em></td>
-<td>The origin&#39;s HTTP port. Must be one of [80, 8080, 443, 1935, 9091].</td>
-</tr>
-<tr>
-<td><code>origin.securePort</code> <br/> <em>int</em></td>
-<td>The origin&#39;s HTTPS port. Must be one of [80, 8080, 443, 1935, 9091].</td>
+<td><code>origin.address</code> <br/> <em>string</em></td>
+<td>The address of the primary origin that the CDN uses to pull content from. Can be a valid IPv4 address or a valid domain name. It may include a specific port and a precise path as well (e.g. 199.250.204.212:80/test). Port must be one of [80, 8080, 443, 1935, 9091].</td>
 </tr>
 <tr>
 <td><code>origin.priority</code> <br/> <em>string</em></td>
@@ -57235,20 +57376,8 @@ a custom one. Only non-deprecated images are returned by default.</p>
 <td>Common name to validate SSL origin requests against.</td>
 </tr>
 <tr>
-<td><code>backupOrigin.path</code> <br/> <em>string</em></td>
-<td>The backup origin&#39;s HTTP request path.</td>
-</tr>
-<tr>
-<td><code>backupOrigin.hostname</code> <br/> <em>string</em></td>
-<td>The backup origin&#39;s HTTP request hostname. Can be a valid IPv4 address or a valid domain name.</td>
-</tr>
-<tr>
-<td><code>backupOrigin.port</code> <br/> <em>int</em></td>
-<td>The backup origin&#39;s HTTP port. Must be one of [80, 8080, 443, 1935, 9091].</td>
-</tr>
-<tr>
-<td><code>backupOrigin.securePort</code> <br/> <em>int</em></td>
-<td>The backup origin&#39;s HTTPS port. Must be one of [80, 8080, 443, 1935, 9091].</td>
+<td><code>backupOrigin.address</code> <br/> <em>string</em></td>
+<td>The address of the secondary origin that the CDN uses to pull content from. Can be a valid IPv4 address or a valid domain name. It may include a specific port and a precise path as well (e.g. 199.250.204.212:80/test). Port must be one of [80, 8080, 443, 1935, 9091].</td>
 </tr>
 <tr>
 <td><code>backupOrigin.priority</code> <br/> <em>string</em></td>
@@ -57277,7 +57406,7 @@ a custom one. Only non-deprecated images are returned by default.</p>
     </span><span class="p">},</span><span class="w"> 
     </span><span class="s2">"backupOriginEnabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"> 
     </span><span class="s2">"backupOrigin"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"hostname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.2.3.4"</span><span class="w">
+        </span><span class="s2">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.2.3.4:80"</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
@@ -57372,20 +57501,8 @@ a custom one. Only non-deprecated images are returned by default.</p>
 <td>Common name to validate SSL origin requests against.</td>
 </tr>
 <tr>
-<td><code>origin.path</code> <br/> <em>string</em></td>
-<td>The origin&#39;s HTTP request path.</td>
-</tr>
-<tr>
-<td><code>origin.hostname</code> <br/> <em>string</em></td>
-<td>The origin&#39;s HTTP request hostname. Can be a valid IPv4 address or a valid domain name.</td>
-</tr>
-<tr>
-<td><code>origin.port</code> <br/> <em>int</em></td>
-<td>The origin&#39;s HTTP port. Must be one of [80, 8080, 443, 1935, 9091].</td>
-</tr>
-<tr>
-<td><code>origin.securePort</code> <br/> <em>int</em></td>
-<td>The origin&#39;s HTTPS port. Must be one of [80, 8080, 443, 1935, 9091].</td>
+<td><code>origin.address</code> <br/> <em>string</em></td>
+<td>The address of the primary origin that the CDN uses to pull content from. Can be a valid IPv4 address or a valid domain name. It may include a specific port and a precise path as well (e.g. 199.250.204.212:80/test). Port must be one of [80, 8080, 443, 1935, 9091].</td>
 </tr>
 <tr>
 <td><code>origin.priority</code> <br/> <em>string</em></td>
@@ -57440,20 +57557,8 @@ a custom one. Only non-deprecated images are returned by default.</p>
 <td>Common name to validate SSL origin requests against.</td>
 </tr>
 <tr>
-<td><code>backupOrigin.path</code> <br/> <em>string</em></td>
-<td>The backup origin&#39;s HTTP request path.</td>
-</tr>
-<tr>
-<td><code>backupOrigin.hostname</code> <br/> <em>string</em></td>
-<td>The backup origin&#39;s HTTP request hostname. Can be a valid IPv4 address or a valid domain name.</td>
-</tr>
-<tr>
-<td><code>backupOrigin.port</code> <br/> <em>int</em></td>
-<td>The backup origin&#39;s HTTP port. Must be one of [80, 8080, 443, 1935, 9091].</td>
-</tr>
-<tr>
-<td><code>backupOrigin.securePort</code> <br/> <em>int</em></td>
-<td>The backup origin&#39;s HTTPS port. Must be one of [80, 8080, 443, 1935, 9091].</td>
+<td><code>backupOrigin.address</code> <br/> <em>string</em></td>
+<td>The address of the secondary origin that the CDN uses to pull content from. Can be a valid IPv4 address or a valid domain name. It may include a specific port and a precise path as well (e.g. 199.250.204.212:80/test). Port must be one of [80, 8080, 443, 1935, 9091].</td>
 </tr>
 <tr>
 <td><code>backupOrigin.priority</code> <br/> <em>string</em></td>
@@ -57466,7 +57571,7 @@ a custom one. Only non-deprecated images are returned by default.</p>
 <!-------------------- LIST SCIPTS -------------------->
 <h3 id='stackpath-list-scripts'>List scripts</h3><pre class="highlight shell tab-shell"><code>curl -X GET <span class="se">\</span>
    -H <span class="s2">"MC-Api-Key: your_api_key"</span> <span class="se">\</span>
-   <span class="s2">"https://cloudmc_endpoint/api/v1/services/stackpath/test-area/scripts/4d13a920-79b7-4129-957b-bd4f006b1ac8?siteId=0a57855b-26d8-4e8f-8b77-429997c7c5fb"</span>
+   <span class="s2">"https://cloudmc_endpoint/api/v1/services/stackpath/test-area/scripts?siteId=0a57855b-26d8-4e8f-8b77-429997c7c5fb"</span>
 </code></pre>
 <blockquote>
 <p>The above command returns a JSON structured like this:</p>
@@ -57561,7 +57666,7 @@ a custom one. Only non-deprecated images are returned by default.</p>
 <!-------------------- RETRIEVE A SCRIPT --------------------->
 <h3 id='stackpath-retrieve-a-script'>Retrieve a script</h3><pre class="highlight shell tab-shell"><code>curl -X GET <span class="se">\</span>
    -H <span class="s2">"MC-Api-Key: your_api_key"</span> <span class="se">\</span>
-   <span class="s2">"https://cloudmc_endpoint/api/v1/services/stackpath/test-area/scripts/439b145a-7c55-4a73-8cf2-d8faabfe6d22/test-domain.com"</span>
+   <span class="s2">"https://cloudmc_endpoint/api/v1/services/stackpath/test-area/scripts/439b145a-7c55-4a73-8cf2-d8faabfe6d22?siteId=0a57855b-26d8-4e8f-8b77-429997c7c5fb"</span>
 </code></pre>
 <blockquote>
 <p>The above command returns a JSON structured like this:</p>
@@ -57574,7 +57679,29 @@ a custom one. Only non-deprecated images are returned by default.</p>
     </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"scriptName1"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-03-15T19:05:45.157987Z"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"updatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-03-15T19:05:45.157987Z"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Ly8gc2FtcGxlIHNjcmlwdAphZGRFdmVudExpc3RlbmVyKCJmZXRjaCIsIGV2ZW50ID0+IHsKICBldmVudC5yZXNwb25kV2l0aChoYW5kbGVSZXF1ZXN0KGV2ZW50LnJlcXVlc3QpKTsKfSk7CgovKioKICogRmV0Y2ggYW5kIHJldHVybiB0aGUgcmVxdWVzdCBib2R5CiAqIEBwYXJhbSB7UmVxdWVzdH0gcmVxdWVzdAogKi8KYXN5bmMgZnVuY3Rpb24gaGFuZGxlUmVxdWVzdChyZXF1ZXN0KSB7CiAgLy8gV3JhcCB5b3VyIHNjcmlwdCBpbiBhIHRyeS9jYXRjaCBhbmQgcmV0dXJuIHRoZSBlcnJvciBzdGFjayB0byB2aWV3IGVycm9yIGluZm9ybWF0aW9uCiAgdHJ5IHsKICAgIC8qIFRoZSByZXF1ZXN0IGNhbiBiZSBtb2RpZmllZCBoZXJlIGJlZm9yZSBzZW5kaW5nIGl0IHdpdGggZmV0Y2ggKi8KCiAgICBjb25zdCByZXNwb25zZSA9IGF3YWl0IGZldGNoKHJlcXVlc3QpOwoKICAgIC8qIFRoZSByZXNwb25zZSBjYW4gYmUgbW9kaWZpZWQgaGVyZSBiZWZvcmUgcmV0dXJuaW5nIGl0ICovCgogICAgcmV0dXJuIHJlc3BvbnNlOwogIH0gY2F0Y2ggKGUpIHsKICAgIHJldHVybiBuZXcgUmVzcG9uc2UoZS5zdGFjayB8fCBlLCB7IHN0YXR1czogNTAwIH0pOwogIH0KfQ=="</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"// sample script
+    addEventListener('fetch', event =&gt; {
+      event.respondWith(handleRequest(event.request));
+    });
+
+    /**
+    * Fetch and return the request body
+    * @param {Request} request
+    */
+    async function handleRequest(request) {
+      // Wrap your script in a try/catch and return the error stack to view error information
+      try {
+        /* The request can be modified here before sending it with fetch */
+
+        const response = await fetch(request);
+
+        /* The response can be modified here before returning it */
+
+        return response;
+      } catch (e) {
+        return new Response(e.stack || e, { status: 500 });
+      }
+    }"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"routes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
       </span><span class="s2">"v1/api"</span><span class="w">
@@ -57630,7 +57757,7 @@ a custom one. Only non-deprecated images are returned by default.</p>
 </tr>
 <tr>
 <td><code>code</code><br/><em>string</em></td>
-<td>Base64 encoded contents of a script.</td>
+<td>The contents of the script.</td>
 </tr>
 <tr>
 <td><code>version</code><br/><em>string</em></td>
@@ -57642,10 +57769,108 @@ a custom one. Only non-deprecated images are returned by default.</p>
 </tr>
 </tbody></table>
 
+<!-------------------- CREATE A SCRIPT -------------------->
+<h3 id='stackpath-create-a-script'>Create a script</h3>
+<p>Create a new serverless script that allows you to run JavaScript code at the Edge, on all of PoPs with real-time access to each of the requests that come in for your site.</p>
+
+<p><code>POST /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/scripts/:id/?siteId=<a href="#stackpath-sites">:siteId</a></code></p>
+
+<table><thead>
+<tr>
+<th>Query Params</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>siteId</code><br/><em>UUID</em></td>
+<td>The ID of the site for which to create the script. This parameter is required.</td>
+</tr>
+</tbody></table>
+
+<table><thead>
+<tr>
+<th>Required</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>name</code><br/><em>string</em></td>
+<td>The name of the script.</td>
+</tr>
+<tr>
+<td><code>routes</code><br/><em>Array[string]</em></td>
+<td>At least one route in the form of a URI.</td>
+</tr>
+<tr>
+<td><code>code</code><br/><em>string</em></td>
+<td>The JavaScript code used for the script.</td>
+</tr>
+</tbody></table>
+<pre class="highlight shell tab-shell"><code>curl -X POST <span class="se">\</span>
+   -H <span class="s2">"MC-Api-Key: your_api_key"</span> <span class="se">\</span>
+   <span class="s2">"https://cloudmc_endpoint/api/v1/services/stackpath/test-area/scripts?siteId=:siteId"</span>
+</code></pre>
+<blockquote>
+<p>Request body example for creating a script:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"siteId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0a57855b-26d8-4e8f-8b77-429997c7c5fb"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"script-name"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"routes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"route"</span><span class="p">],</span><span class="w">
+  </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"// sample script
+addEventListener('fetch', event =&gt; {
+  event.respondWith(handleRequest(event.request));
+});
+
+/**
+ * Fetch and return the request body
+ * @param {Request} request
+ */
+async function handleRequest(request) {
+  // Wrap your script in a try/catch and return the error stack to view error information
+  try {
+    /* The request can be modified here before sending it with fetch */
+
+    const response = await fetch(request);
+
+    /* The response can be modified here before returning it */
+
+    return response;
+  } catch (e) {
+    return new Response(e.stack || e, { status: 500 });
+  }
+}"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><pre class="highlight plaintext"><code>&gt; The above command returns a JSON structured like this:
+
+```json
+{
+  "taskId": "dfc0b899-ac0f-447b-8f50-74bf78d1c034",
+  "taskStatus": "SUCCESS"
+}
+</code></pre>
+<p>There following attributes are returned as part of the response.</p>
+
+<table><thead>
+<tr>
+<th>Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>taskId</code> <br/><em>string</em></td>
+<td>The task id related to creation of the script.</td>
+</tr>
+<tr>
+<td><code>taskStatus</code> <br/><em>string</em></td>
+<td>The status of the operation.</td>
+</tr>
+</tbody></table>
+
 <!-------------------- DELETE A SCRIPT -------------------->
 <h3 id='stackpath-delete-a-script'>Delete a script</h3><pre class="highlight shell tab-shell"><code>curl -X DELETE <span class="se">\</span>
    -H <span class="s2">"MC-Api-Key: your_api_key"</span> <span class="se">\</span>
-   <span class="s2">"https://cloudmc_endpoint/api/v1/services/stackpath/test-area/scripts/dd207010-4570-43ee-9ff2-5421d2306b41?siteId=06ca3df8-8e48-491e-b9f9-4ab4afc355ae"</span>
+   <span class="s2">"https://cloudmc_endpoint/api/v1/services/stackpath/test-area/scripts/dd207010-4570-43ee-9ff2-5421d2306b41?siteId=0a57855b-26d8-4e8f-8b77-429997c7c5fb"</span>
 </code></pre>
 <blockquote>
 <p>The above command returns a JSON structured like this:</p>
