@@ -3301,7 +3301,7 @@
                             <a href="#stackpath-disable-serverless-scripts" class="toc-h3 toc-link" data-title="StackPath plugin">Disable Serverless Scripts</a>
                           </li>
                           <li>
-                            <a href="#stackpath-retrieve-waf-settings-for-a-site" class="toc-h3 toc-link" data-title="StackPath plugin">Retrieve WAF Settings for a Site</a>
+                            <a href="#stackpath-retrieve-waf-settings" class="toc-h3 toc-link" data-title="StackPath plugin">Retrieve WAF Settings</a>
                           </li>
                       </ul>
                   </li>
@@ -56010,8 +56010,8 @@ A workload can be added without any `ports`. However, `ports.publicPort` and `po
 </tr>
 </tbody></table>
 
-<!-------------------- List WAF Setting for a Site -------------------->
-<h3 id='stackpath-retrieve-waf-settings-for-a-site'>Retrieve WAF Settings for a Site</h3><pre class="highlight shell tab-shell"><code>curl -X GET <span class="se">\</span>
+<!-------------------- List WAF Settings -------------------->
+<h3 id='stackpath-retrieve-waf-settings'>Retrieve WAF Settings</h3><pre class="highlight shell tab-shell"><code>curl -X GET <span class="se">\</span>
    -H <span class="s2">"MC-Api-Key: your_api_key"</span> <span class="se">\</span>
    <span class="s2">"https://cloudmc_endpoint/api/v1/services/stackpath/test-area/wafsettings/1b1cd7e6-41ab-4e0f-a59a-5c4b89da1b36"</span>
 </code></pre>
@@ -56093,7 +56093,7 @@ A workload can be added without any `ports`. However, `ports.publicPort` and `po
 </span></code></pre>
 <p><code>GET /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/wafsettings/<a href="#administration-sites">:site_id</a></code></p>
 
-<p>Retrieve the WAF Settings for a site.</p>
+<p>Retrieve WAF Settings.</p>
 
 <table><thead>
 <tr>
