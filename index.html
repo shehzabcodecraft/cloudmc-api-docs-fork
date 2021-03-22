@@ -3303,6 +3303,9 @@
                           <li>
                             <a href="#stackpath-retrieve-waf-settings" class="toc-h3 toc-link" data-title="StackPath plugin">Retrieve WAF Settings</a>
                           </li>
+                          <li>
+                            <a href="#stackpath-edit-waf-settings-for-a-site" class="toc-h3 toc-link" data-title="StackPath plugin">Edit WAF Settings for a Site</a>
+                          </li>
                       </ul>
                   </li>
                   <li>
@@ -56115,22 +56118,141 @@ A workload can be added without any `ports`. However, `ports.publicPort` and `po
 </tr>
 <tr>
 <td><code>ddosSettings.globalThreshold</code><br/><em>Integer</em></td>
-<td>The number of overall requests per ten seconds that can trigger DDoS protection</td>
+<td>The number of overall requests per ten seconds that can trigger DDoS protection.</td>
 </tr>
 <tr>
 <td><code>ddosSettings.burstThreshold</code><br/><em>Integer</em></td>
-<td>The number of requests per two seconds that can trigger DDoS protection</td>
+<td>The number of requests per two seconds that can trigger DDoS protection.</td>
 </tr>
 <tr>
 <td><code>ddosSettings.subSecondBurstThreshold</code><br/><em>Integer</em></td>
-<td>The number of requests per 0.1 seconds that can trigger DDoS protection</td>
+<td>The number of requests per 0.1 seconds that can trigger DDoS protection.</td>
 </tr>
 <tr>
 <td><code>apiUrls</code><br/><em>array</em></td>
 <td>List of configured API urls.</td>
 </tr>
 <tr>
-<td><code>isMonitoring</code><br/><em>boolean</em></td>
+<td><code>monitoringEnabled</code><br/><em>boolean</em></td>
+<td>If the monitoring mode is enabled.</td>
+</tr>
+<tr>
+<td><code>listPolicyGroups</code><br/><em>object</em></td>
+<td>An object containing the list of policy groups.</td>
+</tr>
+<tr>
+<td><code>policyGroups</code><br/><em>array[object]</em></td>
+<td>A list of policy group object.</td>
+</tr>
+<tr>
+<td><code>policyGroups.id</code><br/><em>string</em></td>
+<td>The ID of the policy group.</td>
+</tr>
+<tr>
+<td><code>policyGroups.name</code><br/><em>string</em></td>
+<td>The name of the policy group.</td>
+</tr>
+<tr>
+<td><code>policyGroups.policies</code><br/><em>array[object]</em></td>
+<td>A list of policies in a policy group.</td>
+</tr>
+<tr>
+<td><code>policyGroups.policies.name</code><br/><em>string</em></td>
+<td>A WAF policy&#39;s name.</td>
+</tr>
+<tr>
+<td><code>policyGroups.policies.id</code><br/><em>string</em></td>
+<td>A WAF policy&#39;s ID.</td>
+</tr>
+<tr>
+<td><code>policyGroups.policies.description</code><br/><em>string</em></td>
+<td>A WAF policy&#39;s description.</td>
+</tr>
+<tr>
+<td><code>policyGroups.policies.action</code><br/><em>string</em></td>
+<td>The potential actions that the WAF will take when a policy is triggered. It can either be <code>ALLOW</code>, <code>BLOCK</code>, <code>HANDSHAKE</code>, <code>MONITOR</code> or <code>CAPTCHA</code>.</td>
+</tr>
+<tr>
+<td><code>policyGroups.policies.enabled</code><br/><em>boolean</em></td>
+<td>If the WAF policy is enabled.</td>
+</tr>
+</tbody></table>
+
+<!-------------------- Edit WAF Settings for a Site -------------------->
+<h3 id='stackpath-edit-waf-settings-for-a-site'>Edit WAF Settings for a Site</h3><pre class="highlight shell tab-shell"><code>curl -X PATCH <span class="se">\</span>
+   -H <span class="s2">"MC-Api-Key: your_api_key"</span> <span class="se">\</span>
+   <span class="s2">"https://cloudmc_endpoint/api/v1/services/stackpath/test-area/wafsettings/c0ddc1b3-b390-4f39-b200-5c0323ca306e"</span>
+</code></pre>
+<blockquote>
+<p>Request body example:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"listPolicyGroups"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"policyGroups"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8365e00f-a6c4-43a4-9f07-b830759737b8"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"User Agents"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"policies"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Invalid User Agent Prevention"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Block requests in which the HTTP header describing the user-agent (browser and platform) seems invalid as it does not fit the client's properties."</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"action"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BLOCK"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"S28259696"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"enabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Unknown User Agent Prevention"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Challenge requests in which the HTTP header describing the user-agent (browser and platform) is missing or unknown."</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"action"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HANDSHAKE"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"S28259697"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"enabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<blockquote>
+<p>The above command returns a JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"taskId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"573ca8fa-c5ad-4b19-a315-8ddbbc78d7c0"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"taskStatus"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SUCCESS"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><code>PATCH /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/wafsettings/<a href="#administration-sites">:site_id</a></code></p>
+
+<p>Edit the WAF settings for a site in a given <a href="#administration-environments">environment</a>.</p>
+
+<table><thead>
+<tr>
+<th>Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>ddosSettings</code><br/><em>object</em></td>
+<td>The DDoS Setting containing the different threshold values.</td>
+</tr>
+<tr>
+<td><code>ddosSettings.globalThreshold</code><br/><em>Integer</em></td>
+<td>The number of overall requests per ten seconds that can trigger DDoS protection.</td>
+</tr>
+<tr>
+<td><code>ddosSettings.burstThreshold</code><br/><em>Integer</em></td>
+<td>The number of requests per two seconds that can trigger DDoS protection.</td>
+</tr>
+<tr>
+<td><code>ddosSettings.subSecondBurstThreshold</code><br/><em>Integer</em></td>
+<td>The number of requests per 0.1 seconds that can trigger DDoS protection.</td>
+</tr>
+<tr>
+<td><code>apiUrls</code><br/><em>array</em></td>
+<td>List of configured API urls.</td>
+</tr>
+<tr>
+<td><code>monitoringEnabled</code><br/><em>boolean</em></td>
 <td>If the monitoring mode is enabled.</td>
 </tr>
 <tr>
@@ -57354,26 +57476,18 @@ a custom one. Only non-deprecated images are returned by default.</p>
     </span><span class="s2">"hostHeader"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Host: marvel.com"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"origin"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d92531f4-28f5-456d-9b5f-d1cbb17ccfee"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"stackId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"144c3d16-2879-4286-82b6-75e58a6ec1cb"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"dedicated"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"siteId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"eb3ecdbe-d73b-40e6-a263-166accba75ed"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"www.test.com:80"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"authenticationEnabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
       </span><span class="s2">"sslValidationEnabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"commonCertificateName"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"www.test.com:80"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"priority"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ZERO"</span><span class="w">
+      </span><span class="s2">"commonCertificateName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"commonName"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="s2">"backupOriginEnabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
     </span><span class="s2">"backupOriginExcludeCodes"</span><span class="p">:</span><span class="w"> </span><span class="s2">"415"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"backupOrigin"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"f6766ee9-680d-4c92-b77c-36c60a251061"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"stackId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"144c3d16-2879-4286-82b6-75e58a6ec1cb"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"dedicated"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"siteId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"eb3ecdbe-d73b-40e6-a263-166accba75ed"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"authenticationEnabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"sslValidationEnabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
       </span><span class="s2">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.2.3.4:443/path"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"priority"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ONE"</span><span class="w">
+      </span><span class="s2">"authenticationEnabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"sslValidationEnabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -57425,16 +57539,8 @@ a custom one. Only non-deprecated images are returned by default.</p>
 <td>An origin&#39;s unique identifier.</td>
 </tr>
 <tr>
-<td><code>origin.stackId</code> <br/> <em>UUID</em></td>
-<td>The ID of the stack that a site belongs to.</td>
-</tr>
-<tr>
-<td><code>origin.siteId</code> <br/> <em>UUID</em></td>
-<td>A site&#39;s unique identifier.</td>
-</tr>
-<tr>
-<td><code>origin.dedicated</code> <br/> <em>boolean</em></td>
-<td>Specifies if an origin is dedicated to a CDN site.</td>
+<td><code>origin.address</code> <br/> <em>string</em></td>
+<td>The address of the primary origin that the CDN uses to pull content from. Can be a valid IPv4 address or a valid domain name. It may include a specific port and a precise path as well (e.g. 199.250.204.212:80/test). Port must be one of [80, 8080, 443, 1935, 9091].</td>
 </tr>
 <tr>
 <td><code>origin.authenticationEnabled</code> <br/> <em>boolean</em></td>
@@ -57457,14 +57563,6 @@ a custom one. Only non-deprecated images are returned by default.</p>
 <td>Common name to validate SSL origin requests against.</td>
 </tr>
 <tr>
-<td><code>origin.address</code> <br/> <em>string</em></td>
-<td>The address of the primary origin that the CDN uses to pull content from. Can be a valid IPv4 address or a valid domain name. It may include a specific port and a precise path as well (e.g. 199.250.204.212:80/test). Port must be one of [80, 8080, 443, 1935, 9091].</td>
-</tr>
-<tr>
-<td><code>origin.priority</code> <br/> <em>string</em></td>
-<td>The origin&#39;s priority to the scope. Must be one of [&quot;ZERO&quot;, &quot;ONE&quot;]. &quot;ZERO&quot; has the highest priority.</td>
-</tr>
-<tr>
 <td><code>backupOriginEnabled</code><br/><em>boolean</em></td>
 <td>Specifies if a backup origin for the site is configured.</td>
 </tr>
@@ -57481,16 +57579,8 @@ a custom one. Only non-deprecated images are returned by default.</p>
 <td>A backup origin&#39;s unique identifier.</td>
 </tr>
 <tr>
-<td><code>backupOrigin.stackId</code> <br/> <em>UUID</em></td>
-<td>The ID of the stack that a site belongs to.</td>
-</tr>
-<tr>
-<td><code>backupOrigin.siteId</code> <br/> <em>UUID</em></td>
-<td>A site&#39;s unique identifier.</td>
-</tr>
-<tr>
-<td><code>backupOrigin.dedicated</code> <br/> <em>boolean</em></td>
-<td>Specifies if a backup origin is dedicated to a CDN site.</td>
+<td><code>backupOrigin.address</code> <br/> <em>string</em></td>
+<td>The address of the secondary origin that the CDN uses to pull content from. Can be a valid IPv4 address or a valid domain name. It may include a specific port and a precise path as well (e.g. 199.250.204.212:80/test). Port must be one of [80, 8080, 443, 1935, 9091].</td>
 </tr>
 <tr>
 <td><code>backupOrigin.authenticationEnabled</code> <br/> <em>boolean</em></td>
@@ -57512,14 +57602,6 @@ a custom one. Only non-deprecated images are returned by default.</p>
 <td><code>backupOrigin.commonCertificateName</code> <br/> <em>string</em></td>
 <td>Common name to validate SSL origin requests against.</td>
 </tr>
-<tr>
-<td><code>backupOrigin.address</code> <br/> <em>string</em></td>
-<td>The address of the secondary origin that the CDN uses to pull content from. Can be a valid IPv4 address or a valid domain name. It may include a specific port and a precise path as well (e.g. 199.250.204.212:80/test). Port must be one of [80, 8080, 443, 1935, 9091].</td>
-</tr>
-<tr>
-<td><code>backupOrigin.priority</code> <br/> <em>string</em></td>
-<td>The backup origin&#39;s priority to the scope. Must be one of [&quot;ZERO&quot;, &quot;ONE&quot;]. &quot;ZERO&quot; has the highest priority.</td>
-</tr>
 </tbody></table>
 
 <!-------------------- EDIT ORIGIN SETTINGS -------------------->
@@ -57531,13 +57613,9 @@ a custom one. Only non-deprecated images are returned by default.</p>
 <p>Request body example:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"siteId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"eb3ecdbe-d73b-40e6-a263-166accba75ed"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"stackId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"144c3d16-2879-4286-82b6-75e58a6ec1cb"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"scopeConfigurationId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"45ab2429-ca8d-4145-acc3-f6aea6e8dbef"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"pullProtocol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MATCH"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"hostHeader"</span><span class="p">:</span><span class="w"> </span><span class="s2">"marvel.com"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"origin"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d92531f4-28f5-456d-9b5f-d1cbb17ccfee"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"sslValidationEnabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"> 
         </span><span class="s2">"commonCertificateName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"commonName"</span><span class="w">
     </span><span class="p">},</span><span class="w"> 
@@ -57561,27 +57639,7 @@ a custom one. Only non-deprecated images are returned by default.</p>
 
 <table><thead>
 <tr>
-<th>Required</th>
-<th>&nbsp;</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code>siteId</code><br/><em>UUID</em></td>
-<td>A site&#39;s unique identifier.</td>
-</tr>
-<tr>
-<td><code>stackId</code><br/><em>UUID</em></td>
-<td>The ID of the stack that a site belongs to.</td>
-</tr>
-<tr>
-<td><code>scopeConfigurationId</code><br/><em>UUID</em></td>
-<td>The ID of the scope of the site that the origins are connected to.</td>
-</tr>
-</tbody></table>
-
-<table><thead>
-<tr>
-<th>Attributes</th>
+<th>Optional</th>
 <th>&nbsp;</th>
 </tr>
 </thead><tbody>
@@ -57602,20 +57660,8 @@ a custom one. Only non-deprecated images are returned by default.</p>
 <td>The primary origin that the CDN uses to pull content from.</td>
 </tr>
 <tr>
-<td><code>origin.id</code> <br/> <em>UUID</em></td>
-<td>An origin&#39;s unique identifier. Required when updating the primary origin&#39;s attributes.</td>
-</tr>
-<tr>
-<td><code>origin.stackId</code> <br/> <em>UUID</em></td>
-<td>The ID of the stack that a site belongs to.</td>
-</tr>
-<tr>
-<td><code>origin.siteId</code> <br/> <em>UUID</em></td>
-<td>A site&#39;s unique identifier.</td>
-</tr>
-<tr>
-<td><code>origin.dedicated</code> <br/> <em>boolean</em></td>
-<td>Specifies if an origin is dedicated to a CDN site.</td>
+<td><code>origin.address</code> <br/> <em>string</em></td>
+<td>The address of the primary origin that the CDN uses to pull content from. Can be a valid IPv4 address or a valid domain name. It may include a specific port and a precise path as well (e.g. 199.250.204.212:80/test). Port must be one of [80, 8080, 443, 1935, 9091].</td>
 </tr>
 <tr>
 <td><code>origin.authenticationEnabled</code> <br/> <em>boolean</em></td>
@@ -57638,14 +57684,6 @@ a custom one. Only non-deprecated images are returned by default.</p>
 <td>Common name to validate SSL origin requests against.</td>
 </tr>
 <tr>
-<td><code>origin.address</code> <br/> <em>string</em></td>
-<td>The address of the primary origin that the CDN uses to pull content from. Can be a valid IPv4 address or a valid domain name. It may include a specific port and a precise path as well (e.g. 199.250.204.212:80/test). Port must be one of [80, 8080, 443, 1935, 9091].</td>
-</tr>
-<tr>
-<td><code>origin.priority</code> <br/> <em>string</em></td>
-<td>The origin&#39;s priority to the scope. Must be one of [&quot;ZERO&quot;, &quot;ONE&quot;]. &quot;ZERO&quot; has the highest priority.</td>
-</tr>
-<tr>
 <td><code>backupOriginEnabled</code><br/><em>boolean</em></td>
 <td>Specifies if a backup origin for the site is configured. To configure backupOrigin&#39;s settings, this property must be set to true.</td>
 </tr>
@@ -57658,20 +57696,8 @@ a custom one. Only non-deprecated images are returned by default.</p>
 <td>The secondary origin that the CDN uses to pull content from when the primary origin is not available.</td>
 </tr>
 <tr>
-<td><code>backupOrigin.id</code> <br/> <em>UUID</em></td>
-<td>A backup origin&#39;s unique identifier. If the id of the current secondary origin is not provided, a new secondary gitorigin is configured, replacing the existing one which is disconnected from the site&#39;s scope.</td>
-</tr>
-<tr>
-<td><code>backupOrigin.stackId</code> <br/> <em>UUID</em></td>
-<td>The ID of the stack that a site belongs to.</td>
-</tr>
-<tr>
-<td><code>backupOrigin.siteId</code> <br/> <em>UUID</em></td>
-<td>A site&#39;s unique identifier.</td>
-</tr>
-<tr>
-<td><code>backupOrigin.dedicated</code> <br/> <em>boolean</em></td>
-<td>Specifies if a backup origin is dedicated to a CDN site.</td>
+<td><code>backupOrigin.address</code> <br/> <em>string</em></td>
+<td>The address of the secondary origin that the CDN uses to pull content from. Can be a valid IPv4 address or a valid domain name. It may include a specific port and a precise path as well (e.g. 199.250.204.212:80/test). Port must be one of [80, 8080, 443, 1935, 9091].</td>
 </tr>
 <tr>
 <td><code>backupOrigin.authenticationEnabled</code> <br/> <em>boolean</em></td>
@@ -57692,14 +57718,6 @@ a custom one. Only non-deprecated images are returned by default.</p>
 <tr>
 <td><code>backupOrigin.commonCertificateName</code> <br/> <em>string</em></td>
 <td>Common name to validate SSL origin requests against.</td>
-</tr>
-<tr>
-<td><code>backupOrigin.address</code> <br/> <em>string</em></td>
-<td>The address of the secondary origin that the CDN uses to pull content from. Can be a valid IPv4 address or a valid domain name. It may include a specific port and a precise path as well (e.g. 199.250.204.212:80/test). Port must be one of [80, 8080, 443, 1935, 9091].</td>
-</tr>
-<tr>
-<td><code>backupOrigin.priority</code> <br/> <em>string</em></td>
-<td>The backup origin&#39;s priority to the scope. Must be one of [&quot;ZERO&quot;, &quot;ONE&quot;]. &quot;ZERO&quot; has the highest priority. Priority of a backupOrigin can only be configured while creating a new secondary origin [backupOrigin.id must be set to null]. By default, the priority of a backupOrigin is &quot;ONE&quot;. If the priority is set to &quot;ZERO&quot;, the backupOrigin replaces the primary origin which is disconnected from the site&#39;s scope.</td>
 </tr>
 </tbody></table>
 <h2 id='stackpath-scripts'>Scripts</h2>
@@ -57983,7 +58001,7 @@ async function handleRequest(request) {
 ```json
 {
   "taskId": "dfc0b899-ac0f-447b-8f50-74bf78d1c034",
-  "taskStatus": "SUCCESS"
+  "taskStatus": "PENDING"
 }
 </code></pre>
 <p>There following attributes are returned as part of the response.</p>
