@@ -755,6 +755,9 @@
                             <a href="#administration-create-a-quota" class="toc-h3 toc-link" data-title="Administration">Create a quota</a>
                           </li>
                           <li>
+                            <a href="#administration-update-a-quota" class="toc-h3 toc-link" data-title="Administration">Update a quota</a>
+                          </li>
+                          <li>
                             <a href="#administration-delete-a-quota" class="toc-h3 toc-link" data-title="Administration">Delete a quota</a>
                           </li>
                           <li>
@@ -3289,6 +3292,15 @@
                             <a href="#stackpath-disable-cdn" class="toc-h3 toc-link" data-title="StackPath plugin">Disable CDN</a>
                           </li>
                           <li>
+                            <a href="#stackpath-retrieve-cdn-settings" class="toc-h3 toc-link" data-title="StackPath plugin">Retrieve CDN settings</a>
+                          </li>
+                          <li>
+                            <a href="#stackpath-purge-all-cdn-cached-content" class="toc-h3 toc-link" data-title="StackPath plugin">Purge all CDN cached content</a>
+                          </li>
+                          <li>
+                            <a href="#stackpath-purge-custom-cdn-cached-content" class="toc-h3 toc-link" data-title="StackPath plugin">Purge custom CDN cached content</a>
+                          </li>
+                          <li>
                             <a href="#stackpath-enable-waf" class="toc-h3 toc-link" data-title="StackPath plugin">Enable WAF</a>
                           </li>
                           <li>
@@ -3305,6 +3317,12 @@
                           </li>
                           <li>
                             <a href="#stackpath-edit-waf-settings-for-a-site" class="toc-h3 toc-link" data-title="StackPath plugin">Edit WAF Settings for a Site</a>
+                          </li>
+                          <li>
+                            <a href="#stackpath-retrieve-origin-settings" class="toc-h3 toc-link" data-title="StackPath plugin">Retrieve origin settings</a>
+                          </li>
+                          <li>
+                            <a href="#stackpath-edit-origin-settings" class="toc-h3 toc-link" data-title="StackPath plugin">Edit origin settings</a>
                           </li>
                       </ul>
                   </li>
@@ -3371,31 +3389,6 @@
                       </ul>
                   </li>
                   <li>
-                    <a href="#stackpath-cdn-settings" class="toc-h2 toc-link" data-title="StackPath plugin">CDN settings</a>
-                      <ul class="toc-list-h3">
-                          <li>
-                            <a href="#stackpath-retrieve-cdn-settings" class="toc-h3 toc-link" data-title="StackPath plugin">Retrieve CDN settings</a>
-                          </li>
-                          <li>
-                            <a href="#stackpath-purge-all-cdn-cached-content" class="toc-h3 toc-link" data-title="StackPath plugin">Purge all CDN cached content</a>
-                          </li>
-                          <li>
-                            <a href="#stackpath-purge-custom-cdn-cached-content" class="toc-h3 toc-link" data-title="StackPath plugin">Purge custom CDN cached content</a>
-                          </li>
-                      </ul>
-                  </li>
-                  <li>
-                    <a href="#stackpath-origin-settings" class="toc-h2 toc-link" data-title="StackPath plugin">Origin settings</a>
-                      <ul class="toc-list-h3">
-                          <li>
-                            <a href="#stackpath-retrieve-origin-settings" class="toc-h3 toc-link" data-title="StackPath plugin">Retrieve origin settings</a>
-                          </li>
-                          <li>
-                            <a href="#stackpath-edit-origin-settings" class="toc-h3 toc-link" data-title="StackPath plugin">Edit origin settings</a>
-                          </li>
-                      </ul>
-                  </li>
-                  <li>
                     <a href="#stackpath-scripts" class="toc-h2 toc-link" data-title="StackPath plugin">Scripts</a>
                       <ul class="toc-list-h3">
                           <li>
@@ -3406,6 +3399,9 @@
                           </li>
                           <li>
                             <a href="#stackpath-create-a-script" class="toc-h3 toc-link" data-title="StackPath plugin">Create a script</a>
+                          </li>
+                          <li>
+                            <a href="#stackpath-edit-a-script" class="toc-h3 toc-link" data-title="StackPath plugin">Edit a script</a>
                           </li>
                           <li>
                             <a href="#stackpath-delete-a-script" class="toc-h3 toc-link" data-title="StackPath plugin">Delete a script</a>
@@ -13915,7 +13911,7 @@ curl <span class="s2">"https://cloudmc_endpoint/api/v2/quotas/:id"</span> <span 
 <!------------------- CREATE QUOTA -------------------->
 <h3 id='administration-create-a-quota'>Create a quota</h3>
 <p><code>POST /quotas</code></p>
-<pre class="highlight shell tab-shell"><code>curl -X GET <span class="s2">"https://cloudmc_endpoint/rest/quotas"</span> <span class="se">\</span>
+<pre class="highlight shell tab-shell"><code>curl -X POST <span class="s2">"https://cloudmc_endpoint/api/v2/quotas"</span> <span class="se">\</span>
    -H <span class="s2">"MC-Api-Key: your_api_key"</span>
 </code></pre>
 <blockquote>
@@ -14000,6 +13996,145 @@ curl <span class="s2">"https://cloudmc_endpoint/api/v2/quotas/:id"</span> <span 
 </tbody></table>
 
 <p>The responses&#39; <code>data</code> field contains the created <a href="#administration-quota">quota</a> with its <code>id</code>.</p>
+
+<!------------------- UPDATE QUOTA -------------------->
+<h3 id='administration-update-a-quota'>Update a quota</h3>
+<p><code>PUT /quotas/:id</code></p>
+<pre class="highlight shell tab-shell"><code>curl -X PUT <span class="s2">"https://cloudmc_endpoint/api/v2/quotas"</span> <span class="se">\</span>
+   -H <span class="s2">"MC-Api-Key: your_api_key"</span>
+</code></pre>
+<blockquote>
+<p>Request body example:
+<code>json
+{
+  &quot;name&quot;: &quot;my-quota-name&quot;,
+  &quot;description&quot;: &quot;Quotas for trials&quot;,
+  &quot;quotaDetails&quot;: [
+    {
+      &quot;metricIdentifier&quot;: &quot;instance.cpu.count&quot;,
+      &quot;ceiling&quot;: 5
+    },
+    {
+      &quot;metricIdentifier&quot;: &quot;disk.size.gb&quot;,
+      &quot;ceiling&quot;: 300
+    }
+  ],
+}
+</code>
+Notes:
+- An existing quotas, owner organization and service connection cannot be changed.
+- The <code>quotaDetails</code> in the request will <em>entirely</em> replace the previous <code>quotaDetails</code>. A quotaDetail for every metric enforced by the plugin must be present. 
+- The default flags of the quota can not be changed via the update endpoint. To update these flags, the &#39;quotas/:id/default&#39; should be used. 
+- There is an asynchronous portion of this API that will assign the updated quota limits to all currently assigned organizations and organization environments on the backend service. </p>
+</blockquote>
+
+<table><thead>
+<tr>
+<th>Required</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>name</code><br/><em>string</em></td>
+<td>Name of the quota. Must be unique across the connection and organization.</td>
+</tr>
+<tr>
+<td><code>quotaDetails</code><br/><em>Array[QuotaDetails]</em></td>
+<td>List of <code>QuotaDetail</code> making up the quota. A <code>QuotaDetail</code> represents a limit on a resource and is directly linked to a <code>MetricDescriptor</code>. A <code>MetricDescriptor</code> describes a metric offered by the plugin. For more information, consult the SDK documentation.<br/><em>required</em>: <code>metricIdentifier</code>, <code>ceiling</code></td>
+</tr>
+<tr>
+<td><code>quotaDetail.metricIdentifier</code><br/><em>string</em></td>
+<td>A unique identifier used to define a <code>MetricDescriptor</code>.</td>
+</tr>
+<tr>
+<td><code>quotaDetail.ceiling</code><br/><em>number</em></td>
+<td>The ceiling for this particular quota detail.</td>
+</tr>
+</tbody></table>
+
+<table><thead>
+<tr>
+<th>Optional</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>description</code><br/><em>String</em></td>
+<td>The description of this quota</td>
+</tr>
+</tbody></table>
+
+<p>The responses&#39; <code>data</code> field contains the updated <a href="#administration-quota">quota</a>.</p>
+
+<blockquote>
+<p>The above command returns a JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"taskId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"085b008e-7ee4-444b-8092-350190786147"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"taskStatus"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PENDING"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:{</span><span class="w">
+    </span><span class="s2">"ownerOrganization"</span><span class="p">:{</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="s2">"Cox Communications"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="s2">"ca785487-5e22-4bac-ab01-187260b0d0cb"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"quotaDetails"</span><span class="p">:[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"ceiling"</span><span class="p">:</span><span class="mf">12.0</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"limitSize"</span><span class="p">:</span><span class="mi">12</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"metricIdentifier"</span><span class="p">:</span><span class="s2">"workload_cpu_count"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"metricDescriptor"</span><span class="p">:{</span><span class="w">
+            </span><span class="s2">"metricIdentifier"</span><span class="p">:</span><span class="s2">"workload_cpu_count"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"nameLabelKey"</span><span class="p">:</span><span class="s2">"metrics.quotas.workload_cpu_count"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"unitLabelKey"</span><span class="p">:</span><span class="s2">"metrics.units.unit"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"categoryLabelKey"</span><span class="p">:</span><span class="s2">"usage.stackpath.compute"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"resourceMetricType"</span><span class="p">:</span><span class="s2">"GAUGE"</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="s2">"id"</span><span class="p">:</span><span class="s2">"04d7c0cb-455a-42b2-b32a-b914c871a598"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"type"</span><span class="p">:</span><span class="s2">"workload_cpu_count"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"labelKey"</span><span class="p">:</span><span class="s2">"workload_cpu_count.label"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"description"</span><span class="p">:</span><span class="s2">"Trials assigned Edge Cloud should be assigned this quota"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"numberOfOrganizationsAppliedTo"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"creationDate"</span><span class="p">:</span><span class="s2">"2021-03-10T16:37:02.000Z"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"defaultForTrial"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="s2">"Trial"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"organizations"</span><span class="p">:[],</span><span class="w">
+    </span><span class="s2">"defaultForService"</span><span class="p">:</span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="s2">"6c44dc22-abf9-4fa2-b722-751848f1858e"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"serviceConnection"</span><span class="p">:{</span><span class="w">
+      </span><span class="s2">"serviceCode"</span><span class="p">:</span><span class="s2">"edge-cloud-beta"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"organization"</span><span class="p">:{</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="s2">"ca785487-5e22-4bac-ab01-187260b0d0cb"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="s2">"Edge Cloud Beta"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="s2">"081ffa1f-1531-4dd5-a7e2-070e560409ce"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"type"</span><span class="p">:</span><span class="s2">"stackpath"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">},</span><span class="w">
+
+
+</span></code></pre>
+<table><thead>
+<tr>
+<th>Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>taskId</code><br/><em>UUID</em></td>
+<td>The id of the asynchronous task</td>
+</tr>
+<tr>
+<td><code>taskStatus</code><br/><em>string</em></td>
+<td>The current status of the asynchronous task</td>
+</tr>
+<tr>
+<td><code>data</code><br/><em><a href="#administration-quotas">Quota</a></em></td>
+<td>The updated quota model</td>
+</tr>
+</tbody></table>
 
 <!-------------------- DELETE A QUOTA -------------------->
 <h3 id='administration-delete-a-quota'>Delete a quota</h3>
@@ -55881,6 +56016,283 @@ A workload can be added without any `ports`. However, `ports.publicPort` and `po
 </tr>
 </tbody></table>
 
+<!-------------------- RETRIEVE CDN SETTINGS -------------------->
+<h3 id='stackpath-retrieve-cdn-settings'>Retrieve CDN settings</h3><pre class="highlight shell tab-shell"><code>curl -X GET <span class="se">\</span>
+   -H <span class="s2">"MC-Api-Key: your_api_key"</span> <span class="se">\</span>
+   <span class="s2">"https://cloudmc_endpoint/api/v1/services/stackpath/test-area/cdnsettings/9f236f19-55db-411f-9f05-bd79dc91a69b"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns a JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"siteId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9f236f19-55db-411f-9f05-bd79dc91a69b"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"cacheExpirePolicy"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SPECIFY_CDN_TTL"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"cacheTtl"</span><span class="p">:</span><span class="w"> </span><span class="mi">60</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"queryStringControl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CUSTOM"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"customCachedQueryStrings"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"customQuery"</span><span class="p">,</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"dynamicCachingByHeaderEnabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"customCachedHeaders"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"mydynamicheader"</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"gzipCompressionEnabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"gzipCompressionLevel"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"contentPersistenceEnabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"maximumStaleFileTtl"</span><span class="p">:</span><span class="w"> </span><span class="mi">30</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"varyHeaderEnabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"browserCacheTtl"</span><span class="p">:</span><span class="w"> </span><span class="mi">60</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"corsHeaderEnabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"allowedCorsOrigins"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SPECIFY_ORIGINS"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"originsToAllowCors"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"example.org"</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"http2SupportEnabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"http2ServerPushEnabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"linkHeader"</span><span class="p">:</span><span class="w"> </span><span class="s2">"my-link-header"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"canonicalHeaderEnabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"canonicalHeader"</span><span class="p">:</span><span class="w"> </span><span class="s2">"my-canonical-header"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"urlCachingEnabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"urlCachingTtl"</span><span class="p">:</span><span class="w"> </span><span class="mi">300</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><code>GET /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/cdnsettings/:siteId</a></code></p>
+
+<p>Retrieve CDN settings for a site in a given <a href="#administration-environments">environment</a>.</p>
+
+<table><thead>
+<tr>
+<th>Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>siteId</code><br/><em>UUID</em></td>
+<td>A site&#39;s unique identifier.</td>
+</tr>
+<tr>
+<td><code>cacheExpirePolicy</code><br/><em>String</em></td>
+<td>A site&#39;s cache expiry policy. Can be <code>ORIGIN_CONTROLLED</code>, <code>SPECIFY_CDN_TTL</code>, <code>NEVER_EXPIRE</code>, or <code>DO_NOT_CACHE</code>.</td>
+</tr>
+<tr>
+<td><code>cacheTtl</code><br/><em>Integer</em></td>
+<td>The time to live for the cache. Depends on the cache expiry policy.</td>
+</tr>
+<tr>
+<td><code>queryStringControl</code><br/><em>String</em></td>
+<td>The strategy for caching query strings. Can be <code>IGNORE</code>, <code>CACHE_ALL</code> or <code>CUSTOM</code>.</td>
+</tr>
+<tr>
+<td><code>customCachedQueryStrings</code><br/><em>Array[String]</em></td>
+<td>List of custom cached query strings. Only visible if the <code>queryStringControl</code> attribute is <code>CUSTOM</code></td>
+</tr>
+<tr>
+<td><code>dynamicCachingByHeaderEnabled</code><br/><em>Boolean</em></td>
+<td>Whether or not to enable dynamic caching by headers.</td>
+</tr>
+<tr>
+<td><code>customCachedHeaders</code><br/><em>Array[String]</em></td>
+<td>A list of custom cached headers. Only visible if <code>dynamicCachingByHeaderEnabled</code> is enabled.</td>
+</tr>
+<tr>
+<td><code>gzipCompressionEnabled</code><br/><em>Boolean</em></td>
+<td>Whether or not to enable gzip compression.</td>
+</tr>
+<tr>
+<td><code>gzipCompressionLevel</code><br/><em>Integer</em></td>
+<td>The level for the gzip compression. Values are between <code>1</code> to <code>6</code>. Only visible is <code>gzipCompressionEnabled</code> is enabled.</td>
+</tr>
+<tr>
+<td><code>contentPersistenceEnabled</code><br/><em>Boolean</em></td>
+<td>Whether or not make cached content available after its expiration time.</td>
+</tr>
+<tr>
+<td><code>maximumStaleFileTtl</code><br/><em>Integer</em></td>
+<td>The maximum time to live for stale files. Only visible if <code>contentPersistenceEnabled</code> is enabled.</td>
+</tr>
+<tr>
+<td><code>varyHeaderEnabled</code><br/><em>Boolean</em></td>
+<td>Whether or not to enable honoring the vary header in a request.</td>
+</tr>
+<tr>
+<td><code>browserCacheTtl</code><br/><em>Integer</em></td>
+<td>Sets the default browser expiration time for cached assets.</td>
+</tr>
+<tr>
+<td><code>corsHeaderEnabled</code><br/><em>Boolean</em></td>
+<td>Sets the Access-Control-Allow-Origin header to allow browsers to access this domain from other origins.</td>
+</tr>
+<tr>
+<td><code>allowedCorsOrigins</code><br/><em>String</em></td>
+<td>The strategy for allowing cors origins. Can be <code>SPECIFY_ORIGINS</code> or <code>ALL_ORIGINS</code>.</td>
+</tr>
+<tr>
+<td><code>originsToAllowCors</code><br/><em>Array[String]</em></td>
+<td>A list of origins to allow cors requests from. Only visible if <code>allowedCorsOrigins</code> is set to <code>SPECIFY_ORIGINS</code>.</td>
+</tr>
+<tr>
+<td><code>http2SupportEnabled</code><br/><em>Boolean</em></td>
+<td>Whether or not to enable supporting applications using HTTP/2 protocol.</td>
+</tr>
+<tr>
+<td><code>http2ServerPushEnabled</code><br/><em>Boolean</em></td>
+<td>Whether or not to push assets to the client or browser (user) in advance (before the user requests these assets) which enables faster load times.</td>
+</tr>
+<tr>
+<td><code>linkHeader</code><br/><em>String</em></td>
+<td>The link header for http2ServerPush, only visible if <code>http2ServerPushEnabled</code> is enabled.</td>
+</tr>
+<tr>
+<td><code>canonicalHeaderEnabled</code><br/><em>Boolean</em></td>
+<td>Whether or not to enable setting Link: <a href="http://%7Bhostname%7D/URI">http://{hostname}/URI</a>; rel=&quot;canonical&quot; header on each response.</td>
+</tr>
+<tr>
+<td><code>canonicalHeader</code><br/><em>String</em></td>
+<td>The hostname for the canonicalHeader, only visible if <code>canonicalHeaderEnabled</code> is enabled.</td>
+</tr>
+<tr>
+<td><code>urlCachingEnabled</code><br/><em>Boolean</em></td>
+<td>Whether or not to enable caching of URLs without file extensions.</td>
+</tr>
+<tr>
+<td><code>urlCachingTtl</code><br/><em>Integer</em></td>
+<td>The time to live for the url cache. Only visible if <code>urlCachingEnabled</code> is enabled.</td>
+</tr>
+</tbody></table>
+
+<!-------------------- PURGE ALL CDN CACHED CONTENT -------------------->
+<h3 id='stackpath-purge-all-cdn-cached-content'>Purge all CDN cached content</h3><pre class="highlight shell tab-shell"><code>curl -X POST <span class="se">\</span>
+   -H <span class="s2">"MC-Api-Key: your_api_key"</span> <span class="se">\</span>
+   <span class="s2">"https://cloudmc_endpoint/api/v1/services/stackpath/test-area/cdnsettings/9f236f19-55db-411f-9f05-bd79dc91a69b?operation=purgeAll"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns a JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"taskId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"e6c03893-212f-4e28-b7a1-66ed7b554839"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"taskStatus"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PENDING"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><code>POST /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/cdnsettings/:siteId?operation=purgeAll</a></code></p>
+
+<p>Purge all CDN cached content of a site in a given <a href="#administration-environments">environment</a>.</p>
+
+<table><thead>
+<tr>
+<th>Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>taskId</code> <br/><em>string</em></td>
+<td>The task id related to the purge operation.</td>
+</tr>
+<tr>
+<td><code>taskStatus</code> <br/><em>string</em></td>
+<td>The status of the operation.</td>
+</tr>
+</tbody></table>
+
+<!-------------------- PURGE CUSTOM CDN CACHED CONTENT -------------------->
+<h3 id='stackpath-purge-custom-cdn-cached-content'>Purge custom CDN cached content</h3><pre class="highlight shell tab-shell"><code>curl -X POST <span class="se">\</span>
+   -H <span class="s2">"MC-Api-Key: your_api_key"</span> <span class="se">\</span>
+   -d <span class="s2">"request_body"</span> <span class="se">\</span>
+   <span class="s2">"https://cloudmc_endpoint/api/v1/services/stackpath/test-area/cdnsettings/9f236f19-55db-411f-9f05-bd79dc91a69b?operation=purge"</span>
+</code></pre>
+<blockquote>
+<p>Request body example:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"items"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//&lt;domain_name&gt;/path/to/file"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"recursive"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"purgeAllDynamic"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"headers"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+      </span><span class="s2">"purgeSelector"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"selectorName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"(?i)&lt;header_name&gt;"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"selectorValue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;header_value&gt;"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"selectorType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HEADER"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"selectorValueDelimiter"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<blockquote>
+<p>The above command returns a JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"taskId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"e6c03893-212f-4e28-b7a1-66ed7b554839"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"taskStatus"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PENDING"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><code>POST /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/cdnsettings/:siteId?operation=purge</a></code></p>
+
+<p>Purge custom CDN cached content of a site in a given <a href="#administration-environments">environment</a>.</p>
+
+<table><thead>
+<tr>
+<th>Required</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>items</code><br/><em>Array[Object]</em></td>
+<td>The items to purge from the CDN.</td>
+</tr>
+<tr>
+<td><code>items.url</code><br/><em>String</em></td>
+<td>The URL at which to delete content.</td>
+</tr>
+</tbody></table>
+
+<table><thead>
+<tr>
+<th>Optional</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>items.recursive</code><br/><em>Boolean</em></td>
+<td>Whether or not to recursively delete content from the CDN.</td>
+</tr>
+<tr>
+<td><code>items.invalidateOnly</code><br/><em>Boolean</em></td>
+<td>Whether or not to mark the asset as expired and re-validate instead of deleting.</td>
+</tr>
+<tr>
+<td><code>items.purgeAllDynamic</code><br/><em>Boolean</em></td>
+<td>Whether or not to purge dynamic versions of assets.</td>
+</tr>
+<tr>
+<td><code>items.headers</code><br/><em>Array[String]</em></td>
+<td>A list of HTTP request headers used to construct a cache key to purge content by. These headers must be configured in the site configuration&#39;s DynamicContent.headerFields property.</td>
+</tr>
+<tr>
+<td><code>items.purgeSelector</code><br/><em>Array[Object]</em></td>
+<td>A key/value pair definition of content to purge from the CDN.</td>
+</tr>
+<tr>
+<td><code>items.purgeSelector.selectorType</code><br/><em>String</em></td>
+<td>The kinds of content that can be purged from the CDN. One of: HEADER (Purge content based on an HTTP response header), TAG (Purge content based on an X-TAG HTTP header value. Purging by tag can be useful when content on the origin is tagged).</td>
+</tr>
+<tr>
+<td><code>items.purgeSelector.selectorName</code><br/><em>String</em></td>
+<td>The name of the type of content to purge. For example, the name of the HTTP response header. Names are case sensitive.</td>
+</tr>
+<tr>
+<td><code>items.purgeSelector.selectorValue</code><br/><em>String</em></td>
+<td>The value of the content to purge. For example, the value of the HTTP response header. Values are case sensitive and may be wild-carded, but cannot match a &quot;/&quot;.</td>
+</tr>
+<tr>
+<td><code>items.purgeSelector.selectorValueDelimiter</code><br/><em>String</em></td>
+<td>The delimiter to separate multiple values with. Defaults to &quot;,&quot;.</td>
+</tr>
+</tbody></table>
+
 <!-------------------- ENABLE WAF -------------------->
 <h3 id='stackpath-enable-waf'>Enable WAF</h3><pre class="highlight shell tab-shell"><code>curl -X POST <span class="se">\</span>
    -H <span class="s2">"MC-Api-Key: your_api_key"</span> <span class="se">\</span>
@@ -56294,6 +56706,262 @@ A workload can be added without any `ports`. However, `ports.publicPort` and `po
 <tr>
 <td><code>policyGroups.policies.enabled</code><br/><em>boolean</em></td>
 <td>If the WAF policy is enabled.</td>
+</tr>
+</tbody></table>
+
+<!-------------------- RETRIEVE ORIGIN SETTINGS -------------------->
+<h3 id='stackpath-retrieve-origin-settings'>Retrieve origin settings</h3><pre class="highlight shell tab-shell"><code>curl -X GET <span class="se">\</span>
+   -H <span class="s2">"MC-Api-Key: your_api_key"</span> <span class="se">\</span>
+   <span class="s2">"https://cloudmc_endpoint/api/v1/services/stackpath/test-area/originsettings/eb3ecdbe-d73b-40e6-a263-166accba75ed"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns a JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"eb3ecdbe-d73b-40e6-a263-166accba75ed"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"stackId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"144c3d16-2879-4286-82b6-75e58a6ec1cb"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"scopeConfigurationId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"45ab2429-ca8d-4145-acc3-f6aea6e8dbef"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"domain"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bluegreen.com"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"webSocketsEnabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"sslValidationEnabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"pullProtocol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MATCH"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"hostHeader"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Host: marvel.com"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"origin"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d92531f4-28f5-456d-9b5f-d1cbb17ccfee"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"www.test.com:80"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"commonCertificateName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"commonName"</span><span class="p">,</span><span class="w"> 
+      </span><span class="s2">"authMethod"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BASIC"</span><span class="p">,</span><span class="w"> 
+      </span><span class="s2">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"username"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"backupOriginEnabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"backupOriginExcludeCodes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"415"</span><span class="p">],</span><span class="w">
+    </span><span class="s2">"backupOrigin"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"f6766ee9-680d-4c92-b77c-36c60a251061"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.2.3.4:443/path"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"authMethod"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NONE"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><code>GET /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/originsettings/:id</a></code></p>
+
+<p>Retrieve origin settings for a site in a given <a href="#administration-environments">environment</a>.</p>
+
+<table><thead>
+<tr>
+<th>Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code><br/><em>UUID</em></td>
+<td>A site&#39;s unique identifier.</td>
+</tr>
+<tr>
+<td><code>stackId</code><br/><em>UUID</em></td>
+<td>The ID of the stack that a site belongs to.</td>
+</tr>
+<tr>
+<td><code>scopeConfigurationId</code><br/><em>UUID</em></td>
+<td>The ID of the scope of the site that the origins are connected to.</td>
+</tr>
+<tr>
+<td><code>domain</code><br/><em>string</em></td>
+<td>The domain of the site.</td>
+</tr>
+<tr>
+<td><code>webSocketsEnabled</code> <br/><em>boolean</em></td>
+<td>Specifies if web socket connections to the origin server are enabled.</td>
+</tr>
+<tr>
+<td><code>sslValidationEnabled</code> <br/> <em>boolean</em></td>
+<td>Specifies if SSL validation for the origins is enabled.</td>
+</tr>
+<tr>
+<td><code>pullProtocol</code> <br/><em>string</em></td>
+<td>The type of protocol used to pull content from the origin. Must be one of [&quot;HTTP&quot;, &quot;HTTPS&quot;, &quot;MATCH&quot;]. &quot;MATCH&quot; is equivalent to &quot;HTTP or HTTPS&quot;.</td>
+</tr>
+<tr>
+<td><code>hostHeader</code> <br/><em>string</em></td>
+<td>The host header to be used to pull content from the origin. &quot;Dynamic&quot; refers to using the requested domain name <code>(Host: %client.request.host%)</code> as the host header.</td>
+</tr>
+<tr>
+<td><code>origin</code> <br/> <em>Object</em></td>
+<td>The primary origin that the CDN uses to pull content from.</td>
+</tr>
+<tr>
+<td><code>origin.id</code> <br/> <em>UUID</em></td>
+<td>An origin&#39;s unique identifier.</td>
+</tr>
+<tr>
+<td><code>origin.address</code> <br/> <em>string</em></td>
+<td>The address of the primary origin that the CDN uses to pull content from. Can be a valid IPv4 address or a valid domain name. It may include a specific port and a precise path as well (e.g. 199.250.204.212:80/test). Port must be one of [80, 8080, 443, 1935, 9091].</td>
+</tr>
+<tr>
+<td><code>origin.authMethod</code> <br/> <em>string</em></td>
+<td>Specifies the authentication method that the origin uses. Must be one of [&quot;NONE&quot;, &quot;BASIC&quot;].</td>
+</tr>
+<tr>
+<td><code>origin.username</code> <br/> <em>string</em></td>
+<td>Username to use when authenticating with the origin.</td>
+</tr>
+<tr>
+<td><code>origin.password</code> <br/> <em>string</em></td>
+<td>Password to use when authenticating with the origin.</td>
+</tr>
+<tr>
+<td><code>origin.commonCertificateName</code> <br/> <em>string</em></td>
+<td>Common name to validate SSL origin requests against.</td>
+</tr>
+<tr>
+<td><code>backupOriginEnabled</code><br/><em>boolean</em></td>
+<td>Specifies if a backup origin for the site is configured.</td>
+</tr>
+<tr>
+<td><code>backupOriginExcludeCodes</code> <br/><em>Array[string]</em></td>
+<td>Requests are made to the backup origin on any 4xx or 5xx response codes returned from the primary origin. This property specifies the response status codes for which calls to the backup origin must not be made. Multiple response codes can be excluded. e.g: [&quot;410&quot;, &quot;411&quot;, &quot;412&quot;].  Asterisks can be used to cover a range of codes. e.g. All the 4xx codes can be covered using &quot;4*&quot;.</td>
+</tr>
+<tr>
+<td><code>backupOrigin</code> <br/> <em>Object</em></td>
+<td>The secondary origin that the CDN uses to pull content from when the primary origin is not available.</td>
+</tr>
+<tr>
+<td><code>backupOrigin.id</code> <br/> <em>UUID</em></td>
+<td>A backup origin&#39;s unique identifier.</td>
+</tr>
+<tr>
+<td><code>backupOrigin.address</code> <br/> <em>string</em></td>
+<td>The address of the secondary origin that the CDN uses to pull content from. Can be a valid IPv4 address or a valid domain name. It may include a specific port and a precise path as well (e.g. 199.250.204.212:80/test). Port must be one of [80, 8080, 443, 1935, 9091].</td>
+</tr>
+<tr>
+<td><code>backupOrigin.authMethod</code> <br/> <em>string</em></td>
+<td>Specifies the authentication method that the backup origin uses. Must be one of [&quot;NONE&quot;, &quot;BASIC&quot;].</td>
+</tr>
+<tr>
+<td><code>backupOrigin.username</code> <br/> <em>string</em></td>
+<td>Username to use when authenticating with the backup origin.</td>
+</tr>
+<tr>
+<td><code>backupOrigin.password</code> <br/> <em>string</em></td>
+<td>Password to use when authenticating with the backup origin.</td>
+</tr>
+<tr>
+<td><code>backupOrigin.commonCertificateName</code> <br/> <em>string</em></td>
+<td>Common name to validate SSL origin requests against.</td>
+</tr>
+</tbody></table>
+
+<!-------------------- EDIT ORIGIN SETTINGS -------------------->
+<h3 id='stackpath-edit-origin-settings'>Edit origin settings</h3><pre class="highlight shell tab-shell"><code>curl -X PATCH <span class="se">\</span>
+   -H <span class="s2">"MC-Api-Key: your_api_key"</span> <span class="se">\</span>
+   <span class="s2">"https://cloudmc_endpoint/api/v1/services/stackpath/test-area/originsettings/eb3ecdbe-d73b-40e6-a263-166accba75ed"</span>
+</code></pre>
+<blockquote>
+<p>Request body example:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"pullProtocol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MATCH"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"hostHeader"</span><span class="p">:</span><span class="w"> </span><span class="s2">"marvel.com"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"sslValidationEnabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"> 
+  </span><span class="s2">"origin"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"commonCertificateName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"commonName"</span><span class="w">
+  </span><span class="p">},</span><span class="w"> 
+  </span><span class="s2">"backupOriginEnabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"> 
+  </span><span class="s2">"backupOrigin"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.2.3.4:80"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<blockquote>
+<p>The above command returns a JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"taskId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"e94d2bb6-059a-4eb6-a14f-7c596a5fdea6"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"taskStatus"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SUCCESS"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><code>PATCH /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/originsettings/:id</a></code></p>
+
+<p>Edit origin settings for a site in a given <a href="#administration-environments">environment</a>.</p>
+
+<table><thead>
+<tr>
+<th>Optional</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>webSocketsEnabled</code> <br/><em>boolean</em></td>
+<td>Specifies if web socket connections to the origin server are enabled.</td>
+</tr>
+<tr>
+<td><code>sslValidationEnabled</code> <br/> <em>boolean</em></td>
+<td>Specifies if SSL validation for the origins is enabled.</td>
+</tr>
+<tr>
+<td><code>pullProtocol</code> <br/><em>string</em></td>
+<td>The type of protocol used to pull content from the origin. Must be one of [&quot;HTTP&quot;, &quot;HTTPS&quot;, &quot;MATCH&quot;]. &quot;MATCH&quot; is equivalent to &quot;HTTP or HTTPS&quot;.</td>
+</tr>
+<tr>
+<td><code>hostHeader</code> <br/><em>string</em></td>
+<td>The host header to be used to pull content from the origin. &quot;Dynamic&quot; refers to using the requested domain name <code>(Host: %client.request.host%)</code> as the host header.</td>
+</tr>
+<tr>
+<td><code>origin</code> <br/> <em>Object</em></td>
+<td>The primary origin that the CDN uses to pull content from.</td>
+</tr>
+<tr>
+<td><code>origin.address</code> <br/> <em>string</em></td>
+<td>The address of the primary origin that the CDN uses to pull content from. Can be a valid IPv4 address or a valid domain name. It may include a specific port and a precise path as well (e.g. 199.250.204.212:80/test). Port must be one of [80, 8080, 443, 1935, 9091].</td>
+</tr>
+<tr>
+<td><code>origin.authMethod</code> <br/> <em>string</em></td>
+<td>Specifies the authentication method that the origin uses. Must be one of [&quot;NONE&quot;, &quot;BASIC&quot;].</td>
+</tr>
+<tr>
+<td><code>origin.username</code> <br/> <em>string</em></td>
+<td>Username to use when authenticating with the origin.</td>
+</tr>
+<tr>
+<td><code>origin.password</code> <br/> <em>string</em></td>
+<td>Password to use when authenticating with the origin.</td>
+</tr>
+<tr>
+<td><code>origin.commonCertificateName</code> <br/> <em>string</em></td>
+<td>Common name to validate SSL origin requests against.</td>
+</tr>
+<tr>
+<td><code>backupOriginEnabled</code><br/><em>boolean</em></td>
+<td>Specifies if a backup origin for the site is configured. To configure backupOrigin&#39;s settings, this property must be passed as true.</td>
+</tr>
+<tr>
+<td><code>backupOriginExcludeCodes</code> <br/><em>Array[string]</em></td>
+<td>Requests are made to the backup origin on any 4xx or 5xx response codes returned from the primary origin. This property specifies the response status codes for which calls to the backup origin must not be made. Multiple response codes can be excluded. e.g: [&quot;410&quot;, &quot;411&quot;, &quot;412&quot;].  Asterisks can be used to cover a range of codes. e.g. All the 4xx codes can be covered using &quot;4*&quot;.</td>
+</tr>
+<tr>
+<td><code>backupOrigin</code> <br/> <em>Object</em></td>
+<td>The secondary origin that the CDN uses to pull content from when the primary origin is not available.</td>
+</tr>
+<tr>
+<td><code>backupOrigin.address</code> <br/> <em>string</em></td>
+<td>The address of the secondary origin that the CDN uses to pull content from. Can be a valid IPv4 address or a valid domain name. It may include a specific port and a precise path as well (e.g. 199.250.204.212:80/test). Port must be one of [80, 8080, 443, 1935, 9091].</td>
+</tr>
+<tr>
+<td><code>backupOrigin.authMethod</code> <br/> <em>string</em></td>
+<td>Specifies the authentication method that the backup origin uses. Must be one of [&quot;NONE&quot;, &quot;BASIC&quot;].</td>
+</tr>
+<tr>
+<td><code>backupOrigin.username</code> <br/> <em>string</em></td>
+<td>Username to use when authenticating with the backup origin.</td>
+</tr>
+<tr>
+<td><code>backupOrigin.password</code> <br/> <em>string</em></td>
+<td>Password to use when authenticating with the backup origin.</td>
+</tr>
+<tr>
+<td><code>backupOrigin.commonCertificateName</code> <br/> <em>string</em></td>
+<td>Common name to validate SSL origin requests against.</td>
 </tr>
 </tbody></table>
 <h2 id='stackpath-instances'>Instances</h2>
@@ -57175,551 +57843,6 @@ a custom one. Only non-deprecated images are returned by default.</p>
 <td>The status of the operation.</td>
 </tr>
 </tbody></table>
-<h2 id='stackpath-cdn-settings'>CDN settings</h2>
-<p>CDN settings allow you to configure your site&#39;s CDN properties.</p>
-
-<!-------------------- RETRIEVE CDN SETTINGS -------------------->
-<h3 id='stackpath-retrieve-cdn-settings'>Retrieve CDN settings</h3><pre class="highlight shell tab-shell"><code>curl -X GET <span class="se">\</span>
-   -H <span class="s2">"MC-Api-Key: your_api_key"</span> <span class="se">\</span>
-   <span class="s2">"https://cloudmc_endpoint/api/v1/services/stackpath/test-area/cdnsettings/9f236f19-55db-411f-9f05-bd79dc91a69b"</span>
-</code></pre>
-<blockquote>
-<p>The above command returns a JSON structured like this:</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"siteId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9f236f19-55db-411f-9f05-bd79dc91a69b"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"cacheExpirePolicy"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SPECIFY_CDN_TTL"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"cacheTtl"</span><span class="p">:</span><span class="w"> </span><span class="mi">60</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"queryStringControl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CUSTOM"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"customCachedQueryStrings"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-      </span><span class="s2">"customQuery"</span><span class="p">,</span><span class="w">
-    </span><span class="p">],</span><span class="w">
-    </span><span class="s2">"dynamicCachingByHeaderEnabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"customCachedHeaders"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-      </span><span class="s2">"mydynamicheader"</span><span class="w">
-    </span><span class="p">],</span><span class="w">
-    </span><span class="s2">"gzipCompressionEnabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"gzipCompressionLevel"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"contentPersistenceEnabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"maximumStaleFileTtl"</span><span class="p">:</span><span class="w"> </span><span class="mi">30</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"varyHeaderEnabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"browserCacheTtl"</span><span class="p">:</span><span class="w"> </span><span class="mi">60</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"corsHeaderEnabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"allowedCorsOrigins"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SPECIFY_ORIGINS"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"originsToAllowCors"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-      </span><span class="s2">"example.org"</span><span class="w">
-    </span><span class="p">],</span><span class="w">
-    </span><span class="s2">"http2SupportEnabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"http2ServerPushEnabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"linkHeader"</span><span class="p">:</span><span class="w"> </span><span class="s2">"my-link-header"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"canonicalHeaderEnabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"canonicalHeader"</span><span class="p">:</span><span class="w"> </span><span class="s2">"my-canonical-header"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"urlCachingEnabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"urlCachingTtl"</span><span class="p">:</span><span class="w"> </span><span class="mi">300</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-<p><code>GET /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/cdnsettings/:siteId</a></code></p>
-
-<p>Retrieve CDN settings for a site in a given <a href="#administration-environments">environment</a>.</p>
-
-<table><thead>
-<tr>
-<th>Attributes</th>
-<th>&nbsp;</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code>siteId</code><br/><em>UUID</em></td>
-<td>A site&#39;s unique identifier.</td>
-</tr>
-<tr>
-<td><code>cacheExpirePolicy</code><br/><em>String</em></td>
-<td>A site&#39;s cache expiry policy. Can be <code>ORIGIN_CONTROLLED</code>, <code>SPECIFY_CDN_TTL</code>, <code>NEVER_EXPIRE</code>, or <code>DO_NOT_CACHE</code>.</td>
-</tr>
-<tr>
-<td><code>cacheTtl</code><br/><em>Integer</em></td>
-<td>The time to live for the cache. Depends on the cache expiry policy.</td>
-</tr>
-<tr>
-<td><code>queryStringControl</code><br/><em>String</em></td>
-<td>The strategy for caching query strings. Can be <code>IGNORE</code>, <code>CACHE_ALL</code> or <code>CUSTOM</code>.</td>
-</tr>
-<tr>
-<td><code>customCachedQueryStrings</code><br/><em>Array[String]</em></td>
-<td>List of custom cached query strings. Only visible if the <code>queryStringControl</code> attribute is <code>CUSTOM</code></td>
-</tr>
-<tr>
-<td><code>dynamicCachingByHeaderEnabled</code><br/><em>Boolean</em></td>
-<td>Whether or not to enable dynamic caching by headers.</td>
-</tr>
-<tr>
-<td><code>customCachedHeaders</code><br/><em>Array[String]</em></td>
-<td>A list of custom cached headers. Only visible if <code>dynamicCachingByHeaderEnabled</code> is enabled.</td>
-</tr>
-<tr>
-<td><code>gzipCompressionEnabled</code><br/><em>Boolean</em></td>
-<td>Whether or not to enable gzip compression.</td>
-</tr>
-<tr>
-<td><code>gzipCompressionLevel</code><br/><em>Integer</em></td>
-<td>The level for the gzip compression. Values are between <code>1</code> to <code>6</code>. Only visible is <code>gzipCompressionEnabled</code> is enabled.</td>
-</tr>
-<tr>
-<td><code>contentPersistenceEnabled</code><br/><em>Boolean</em></td>
-<td>Whether or not make cached content available after its expiration time.</td>
-</tr>
-<tr>
-<td><code>maximumStaleFileTtl</code><br/><em>Integer</em></td>
-<td>The maximum time to live for stale files. Only visible if <code>contentPersistenceEnabled</code> is enabled.</td>
-</tr>
-<tr>
-<td><code>varyHeaderEnabled</code><br/><em>Boolean</em></td>
-<td>Whether or not to enable honoring the vary header in a request.</td>
-</tr>
-<tr>
-<td><code>browserCacheTtl</code><br/><em>Integer</em></td>
-<td>Sets the default browser expiration time for cached assets.</td>
-</tr>
-<tr>
-<td><code>corsHeaderEnabled</code><br/><em>Boolean</em></td>
-<td>Sets the Access-Control-Allow-Origin header to allow browsers to access this domain from other origins.</td>
-</tr>
-<tr>
-<td><code>allowedCorsOrigins</code><br/><em>String</em></td>
-<td>The strategy for allowing cors origins. Can be <code>SPECIFY_ORIGINS</code> or <code>ALL_ORIGINS</code>.</td>
-</tr>
-<tr>
-<td><code>originsToAllowCors</code><br/><em>Array[String]</em></td>
-<td>A list of origins to allow cors requests from. Only visible if <code>allowedCorsOrigins</code> is set to <code>SPECIFY_ORIGINS</code>.</td>
-</tr>
-<tr>
-<td><code>http2SupportEnabled</code><br/><em>Boolean</em></td>
-<td>Whether or not to enable supporting applications using HTTP/2 protocol.</td>
-</tr>
-<tr>
-<td><code>http2ServerPushEnabled</code><br/><em>Boolean</em></td>
-<td>Whether or not to push assets to the client or browser (user) in advance (before the user requests these assets) which enables faster load times.</td>
-</tr>
-<tr>
-<td><code>linkHeader</code><br/><em>String</em></td>
-<td>The link header for http2ServerPush, only visible if <code>http2ServerPushEnabled</code> is enabled.</td>
-</tr>
-<tr>
-<td><code>canonicalHeaderEnabled</code><br/><em>Boolean</em></td>
-<td>Whether or not to enable setting Link: <a href="http://%7Bhostname%7D/URI">http://{hostname}/URI</a>; rel=&quot;canonical&quot; header on each response.</td>
-</tr>
-<tr>
-<td><code>canonicalHeader</code><br/><em>String</em></td>
-<td>The hostname for the canonicalHeader, only visible if <code>canonicalHeaderEnabled</code> is enabled.</td>
-</tr>
-<tr>
-<td><code>urlCachingEnabled</code><br/><em>Boolean</em></td>
-<td>Whether or not to enable caching of URLs without file extensions.</td>
-</tr>
-<tr>
-<td><code>urlCachingTtl</code><br/><em>Integer</em></td>
-<td>The time to live for the url cache. Only visible if <code>urlCachingEnabled</code> is enabled.</td>
-</tr>
-</tbody></table>
-
-<!-------------------- PURGE ALL CDN CACHED CONTENT -------------------->
-<h3 id='stackpath-purge-all-cdn-cached-content'>Purge all CDN cached content</h3><pre class="highlight shell tab-shell"><code>curl -X POST <span class="se">\</span>
-   -H <span class="s2">"MC-Api-Key: your_api_key"</span> <span class="se">\</span>
-   <span class="s2">"https://cloudmc_endpoint/api/v1/services/stackpath/test-area/cdnsettings/9f236f19-55db-411f-9f05-bd79dc91a69b?operation=purgeAll"</span>
-</code></pre>
-<blockquote>
-<p>The above command returns a JSON structured like this:</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"taskId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"e6c03893-212f-4e28-b7a1-66ed7b554839"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"taskStatus"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PENDING"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-<p><code>POST /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/cdnsettings/:siteId?operation=purgeAll</a></code></p>
-
-<p>Purge all CDN cached content of a site in a given <a href="#administration-environments">environment</a>.</p>
-
-<table><thead>
-<tr>
-<th>Attributes</th>
-<th>&nbsp;</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code>taskId</code> <br/><em>string</em></td>
-<td>The task id related to the purge operation.</td>
-</tr>
-<tr>
-<td><code>taskStatus</code> <br/><em>string</em></td>
-<td>The status of the operation.</td>
-</tr>
-</tbody></table>
-
-<!-------------------- PURGE CUSTOM CDN CACHED CONTENT -------------------->
-<h3 id='stackpath-purge-custom-cdn-cached-content'>Purge custom CDN cached content</h3><pre class="highlight shell tab-shell"><code>curl -X POST <span class="se">\</span>
-   -H <span class="s2">"MC-Api-Key: your_api_key"</span> <span class="se">\</span>
-   -d <span class="s2">"request_body"</span> <span class="se">\</span>
-   <span class="s2">"https://cloudmc_endpoint/api/v1/services/stackpath/test-area/cdnsettings/9f236f19-55db-411f-9f05-bd79dc91a69b?operation=purge"</span>
-</code></pre>
-<blockquote>
-<p>Request body example:</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"items"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//&lt;domain_name&gt;/path/to/file"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"recursive"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"purgeAllDynamic"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"headers"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
-      </span><span class="s2">"purgeSelector"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"selectorName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"(?i)&lt;header_name&gt;"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"selectorValue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;header_value&gt;"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"selectorType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HEADER"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"selectorValueDelimiter"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
-      </span><span class="p">}</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-  </span><span class="p">]</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-<blockquote>
-<p>The above command returns a JSON structured like this:</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"taskId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"e6c03893-212f-4e28-b7a1-66ed7b554839"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"taskStatus"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PENDING"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-<p><code>POST /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/cdnsettings/:siteId?operation=purge</a></code></p>
-
-<p>Purge custom CDN cached content of a site in a given <a href="#administration-environments">environment</a>.</p>
-
-<table><thead>
-<tr>
-<th>Required</th>
-<th>&nbsp;</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code>items</code><br/><em>Array[Object]</em></td>
-<td>The items to purge from the CDN.</td>
-</tr>
-<tr>
-<td><code>items.url</code><br/><em>String</em></td>
-<td>The URL at which to delete content.</td>
-</tr>
-</tbody></table>
-
-<table><thead>
-<tr>
-<th>Optional</th>
-<th>&nbsp;</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code>items.recursive</code><br/><em>Boolean</em></td>
-<td>Whether or not to recursively delete content from the CDN.</td>
-</tr>
-<tr>
-<td><code>items.invalidateOnly</code><br/><em>Boolean</em></td>
-<td>Whether or not to mark the asset as expired and re-validate instead of deleting.</td>
-</tr>
-<tr>
-<td><code>items.purgeAllDynamic</code><br/><em>Boolean</em></td>
-<td>Whether or not to purge dynamic versions of assets.</td>
-</tr>
-<tr>
-<td><code>items.headers</code><br/><em>Array[String]</em></td>
-<td>A list of HTTP request headers used to construct a cache key to purge content by. These headers must be configured in the site configuration&#39;s DynamicContent.headerFields property.</td>
-</tr>
-<tr>
-<td><code>items.purgeSelector</code><br/><em>Array[Object]</em></td>
-<td>A key/value pair definition of content to purge from the CDN.</td>
-</tr>
-<tr>
-<td><code>items.purgeSelector.selectorType</code><br/><em>String</em></td>
-<td>The kinds of content that can be purged from the CDN. One of: HEADER (Purge content based on an HTTP response header), TAG (Purge content based on an X-TAG HTTP header value. Purging by tag can be useful when content on the origin is tagged).</td>
-</tr>
-<tr>
-<td><code>items.purgeSelector.selectorName</code><br/><em>String</em></td>
-<td>The name of the type of content to purge. For example, the name of the HTTP response header. Names are case sensitive.</td>
-</tr>
-<tr>
-<td><code>items.purgeSelector.selectorValue</code><br/><em>String</em></td>
-<td>The value of the content to purge. For example, the value of the HTTP response header. Values are case sensitive and may be wild-carded, but cannot match a &quot;/&quot;.</td>
-</tr>
-<tr>
-<td><code>items.purgeSelector.selectorValueDelimiter</code><br/><em>String</em></td>
-<td>The delimiter to separate multiple values with. Defaults to &quot;,&quot;.</td>
-</tr>
-</tbody></table>
-<h2 id='stackpath-origin-settings'>Origin settings</h2>
-<p>Origin settings allow you to configure your site&#39;s primary and backup origins.</p>
-
-<!-------------------- RETRIEVE ORIGIN SETTINGS -------------------->
-<h3 id='stackpath-retrieve-origin-settings'>Retrieve origin settings</h3><pre class="highlight shell tab-shell"><code>curl -X GET <span class="se">\</span>
-   -H <span class="s2">"MC-Api-Key: your_api_key"</span> <span class="se">\</span>
-   <span class="s2">"https://cloudmc_endpoint/api/v1/services/stackpath/test-area/originsettings/eb3ecdbe-d73b-40e6-a263-166accba75ed"</span>
-</code></pre>
-<blockquote>
-<p>The above command returns a JSON structured like this:</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"siteId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"eb3ecdbe-d73b-40e6-a263-166accba75ed"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"stackId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"144c3d16-2879-4286-82b6-75e58a6ec1cb"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"scopeConfigurationId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"45ab2429-ca8d-4145-acc3-f6aea6e8dbef"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"domain"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bluegreen.com"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"webSocketsEnabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"pullProtocol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MATCH"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"hostHeader"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Host: marvel.com"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"origin"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d92531f4-28f5-456d-9b5f-d1cbb17ccfee"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"www.test.com:80"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"authenticationEnabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"sslValidationEnabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"commonCertificateName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"commonName"</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="s2">"backupOriginEnabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"backupOriginExcludeCodes"</span><span class="p">:</span><span class="w"> </span><span class="s2">"415"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"backupOrigin"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"f6766ee9-680d-4c92-b77c-36c60a251061"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.2.3.4:443/path"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"authenticationEnabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"sslValidationEnabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-<p><code>GET /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/originsettings/:siteId</a></code></p>
-
-<p>Retrieve origin settings for a site in a given <a href="#administration-environments">environment</a>.</p>
-
-<table><thead>
-<tr>
-<th>Attributes</th>
-<th>&nbsp;</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code>siteId</code><br/><em>UUID</em></td>
-<td>A site&#39;s unique identifier.</td>
-</tr>
-<tr>
-<td><code>stackId</code><br/><em>UUID</em></td>
-<td>The ID of the stack that a site belongs to.</td>
-</tr>
-<tr>
-<td><code>scopeConfigurationId</code><br/><em>UUID</em></td>
-<td>The ID of the scope of the site that the origins are connected to.</td>
-</tr>
-<tr>
-<td><code>domain</code><br/><em>string</em></td>
-<td>The domain of the site.</td>
-</tr>
-<tr>
-<td><code>webSocketsEnabled</code> <br/><em>boolean</em></td>
-<td>Specifies if web socket connections to the origin server are enabled.</td>
-</tr>
-<tr>
-<td><code>pullProtocol</code> <br/><em>string</em></td>
-<td>The type of protocol used to pull content from the origin. Must be one of [&quot;HTTP&quot;, &quot;HTTPS&quot;, &quot;MATCH&quot;]. &quot;MATCH&quot; is equivalent to &quot;HTTP or HTTPS&quot;.</td>
-</tr>
-<tr>
-<td><code>hostHeader</code> <br/><em>string</em></td>
-<td>The host header to be used to pull content from the origin.</td>
-</tr>
-<tr>
-<td><code>origin</code> <br/> <em>Object</em></td>
-<td>The primary origin that the CDN uses to pull content from.</td>
-</tr>
-<tr>
-<td><code>origin.id</code> <br/> <em>UUID</em></td>
-<td>An origin&#39;s unique identifier.</td>
-</tr>
-<tr>
-<td><code>origin.address</code> <br/> <em>string</em></td>
-<td>The address of the primary origin that the CDN uses to pull content from. Can be a valid IPv4 address or a valid domain name. It may include a specific port and a precise path as well (e.g. 199.250.204.212:80/test). Port must be one of [80, 8080, 443, 1935, 9091].</td>
-</tr>
-<tr>
-<td><code>origin.authenticationEnabled</code> <br/> <em>boolean</em></td>
-<td>Specifies if the origin is using basic http authentication.</td>
-</tr>
-<tr>
-<td><code>origin.username</code> <br/> <em>string</em></td>
-<td>Username to use when authenticating with the origin.</td>
-</tr>
-<tr>
-<td><code>origin.password</code> <br/> <em>string</em></td>
-<td>Password to use when authenticating with the origin.</td>
-</tr>
-<tr>
-<td><code>origin.sslValidationEnabled</code> <br/> <em>boolean</em></td>
-<td>Specifies if SSL validation for the origin is enabled.</td>
-</tr>
-<tr>
-<td><code>origin.commonCertificateName</code> <br/> <em>string</em></td>
-<td>Common name to validate SSL origin requests against.</td>
-</tr>
-<tr>
-<td><code>backupOriginEnabled</code><br/><em>boolean</em></td>
-<td>Specifies if a backup origin for the site is configured.</td>
-</tr>
-<tr>
-<td><code>backupOriginExcludeCodes</code> <br/><em>string</em></td>
-<td>Requests are made to the backup origin on any 4xx or 5xx response codes returned from the primary origin. This property specifies the response status codes for which calls to the backup origin must not be made. Multiple response codes can be excluded. e.g: &quot;410, 411, 412&quot;.  Asterisks can be used to cover a range of codes. e.g. All the 4xx codes can be covered using &quot;4*&quot;.</td>
-</tr>
-<tr>
-<td><code>backupOrigin</code> <br/> <em>Object</em></td>
-<td>The secondary origin that the CDN uses to pull content from when the primary origin is not available.</td>
-</tr>
-<tr>
-<td><code>backupOrigin.id</code> <br/> <em>UUID</em></td>
-<td>A backup origin&#39;s unique identifier.</td>
-</tr>
-<tr>
-<td><code>backupOrigin.address</code> <br/> <em>string</em></td>
-<td>The address of the secondary origin that the CDN uses to pull content from. Can be a valid IPv4 address or a valid domain name. It may include a specific port and a precise path as well (e.g. 199.250.204.212:80/test). Port must be one of [80, 8080, 443, 1935, 9091].</td>
-</tr>
-<tr>
-<td><code>backupOrigin.authenticationEnabled</code> <br/> <em>boolean</em></td>
-<td>Specifies if the backup origin is using basic http authentication.</td>
-</tr>
-<tr>
-<td><code>backupOrigin.username</code> <br/> <em>string</em></td>
-<td>Username to use when authenticating with the backup origin.</td>
-</tr>
-<tr>
-<td><code>backupOrigin.password</code> <br/> <em>string</em></td>
-<td>Password to use when authenticating with the backup origin.</td>
-</tr>
-<tr>
-<td><code>backupOrigin.sslValidationEnabled</code> <br/> <em>boolean</em></td>
-<td>Specifies if SSL validation for the backup origin is enabled.</td>
-</tr>
-<tr>
-<td><code>backupOrigin.commonCertificateName</code> <br/> <em>string</em></td>
-<td>Common name to validate SSL origin requests against.</td>
-</tr>
-</tbody></table>
-
-<!-------------------- EDIT ORIGIN SETTINGS -------------------->
-<h3 id='stackpath-edit-origin-settings'>Edit origin settings</h3><pre class="highlight shell tab-shell"><code>curl -X PATCH <span class="se">\</span>
-   -H <span class="s2">"MC-Api-Key: your_api_key"</span> <span class="se">\</span>
-   <span class="s2">"https://cloudmc_endpoint/api/v1/services/stackpath/test-area/originsettings/eb3ecdbe-d73b-40e6-a263-166accba75ed"</span>
-</code></pre>
-<blockquote>
-<p>Request body example:</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"pullProtocol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MATCH"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"hostHeader"</span><span class="p">:</span><span class="w"> </span><span class="s2">"marvel.com"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"origin"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"sslValidationEnabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"> 
-        </span><span class="s2">"commonCertificateName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"commonName"</span><span class="w">
-    </span><span class="p">},</span><span class="w"> 
-    </span><span class="s2">"backupOriginEnabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"> 
-    </span><span class="s2">"backupOrigin"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.2.3.4:80"</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-<blockquote>
-<p>The above command returns a JSON structured like this:</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"taskId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"e94d2bb6-059a-4eb6-a14f-7c596a5fdea6"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"taskStatus"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SUCCESS"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-<p><code>PATCH /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/originsettings/:siteId</a></code></p>
-
-<p>Edit origin settings for a site in a given <a href="#administration-environments">environment</a>.</p>
-
-<table><thead>
-<tr>
-<th>Optional</th>
-<th>&nbsp;</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code>webSocketsEnabled</code> <br/><em>boolean</em></td>
-<td>Specifies if web socket connections to the origin server are enabled.</td>
-</tr>
-<tr>
-<td><code>pullProtocol</code> <br/><em>string</em></td>
-<td>The type of protocol used to pull content from the origin. Must be one of [&quot;HTTP&quot;, &quot;HTTPS&quot;, &quot;MATCH&quot;]. &quot;MATCH&quot; is equivalent to &quot;HTTP or HTTPS&quot;.</td>
-</tr>
-<tr>
-<td><code>hostHeader</code> <br/><em>string</em></td>
-<td>The host header to be used to pull content from the origin.</td>
-</tr>
-<tr>
-<td><code>origin</code> <br/> <em>Object</em></td>
-<td>The primary origin that the CDN uses to pull content from.</td>
-</tr>
-<tr>
-<td><code>origin.address</code> <br/> <em>string</em></td>
-<td>The address of the primary origin that the CDN uses to pull content from. Can be a valid IPv4 address or a valid domain name. It may include a specific port and a precise path as well (e.g. 199.250.204.212:80/test). Port must be one of [80, 8080, 443, 1935, 9091].</td>
-</tr>
-<tr>
-<td><code>origin.authenticationEnabled</code> <br/> <em>boolean</em></td>
-<td>Specifies if the origin is using basic http authentication. To update origin.username and origin.password, this property must be set to true.</td>
-</tr>
-<tr>
-<td><code>origin.username</code> <br/> <em>string</em></td>
-<td>Username to use when authenticating with the origin.</td>
-</tr>
-<tr>
-<td><code>origin.password</code> <br/> <em>string</em></td>
-<td>Password to use when authenticating with the origin.</td>
-</tr>
-<tr>
-<td><code>origin.sslValidationEnabled</code> <br/> <em>boolean</em></td>
-<td>Specifies if SSL validation for the origin is enabled.</td>
-</tr>
-<tr>
-<td><code>origin.commonCertificateName</code> <br/> <em>string</em></td>
-<td>Common name to validate SSL origin requests against.</td>
-</tr>
-<tr>
-<td><code>backupOriginEnabled</code><br/><em>boolean</em></td>
-<td>Specifies if a backup origin for the site is configured. To configure backupOrigin&#39;s settings, this property must be set to true.</td>
-</tr>
-<tr>
-<td><code>backupOriginExcludeCodes</code> <br/><em>string</em></td>
-<td>Requests are made to the backup origin on any 4xx or 5xx response codes returned from the primary origin. This property specifies the response status codes for which calls to the backup origin must not be made. Multiple response codes can be excluded. e.g: &quot;410, 411, 412&quot;.  Asterisks can be used to cover a range of codes. e.g. All the 4xx codes can be covered using &quot;4*&quot;.</td>
-</tr>
-<tr>
-<td><code>backupOrigin</code> <br/> <em>Object</em></td>
-<td>The secondary origin that the CDN uses to pull content from when the primary origin is not available.</td>
-</tr>
-<tr>
-<td><code>backupOrigin.address</code> <br/> <em>string</em></td>
-<td>The address of the secondary origin that the CDN uses to pull content from. Can be a valid IPv4 address or a valid domain name. It may include a specific port and a precise path as well (e.g. 199.250.204.212:80/test). Port must be one of [80, 8080, 443, 1935, 9091].</td>
-</tr>
-<tr>
-<td><code>backupOrigin.authenticationEnabled</code> <br/> <em>boolean</em></td>
-<td>Specifies if the backup origin is using basic http authentication. To update backupOrigin.username and backupOrigin.password, this property must be set to true.</td>
-</tr>
-<tr>
-<td><code>backupOrigin.username</code> <br/> <em>string</em></td>
-<td>Username to use when authenticating with the backup origin.</td>
-</tr>
-<tr>
-<td><code>backupOrigin.password</code> <br/> <em>string</em></td>
-<td>Password to use when authenticating with the backup origin.</td>
-</tr>
-<tr>
-<td><code>backupOrigin.sslValidationEnabled</code> <br/> <em>boolean</em></td>
-<td>Specifies if SSL validation for the backup origin is enabled.</td>
-</tr>
-<tr>
-<td><code>backupOrigin.commonCertificateName</code> <br/> <em>string</em></td>
-<td>Common name to validate SSL origin requests against.</td>
-</tr>
-</tbody></table>
 <h2 id='stackpath-scripts'>Scripts</h2>
 <p>Deploy and manage Serverless Scripts used to interact with requests made to the site.</p>
 
@@ -57864,7 +57987,7 @@ a custom one. Only non-deprecated images are returned by default.</p>
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<p><code>GET /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/scripts/:id/?siteId=<a href="#stackpath-sites">:siteId</a></code></p>
+<p><code>GET /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/scripts/:id?siteId=<a href="#stackpath-sites">:siteId</a></code></p>
 
 <table><thead>
 <tr>
@@ -57928,7 +58051,7 @@ a custom one. Only non-deprecated images are returned by default.</p>
 <h3 id='stackpath-create-a-script'>Create a script</h3>
 <p>Create a new serverless script that allows you to run JavaScript code at the Edge, on all of PoPs with real-time access to each of the requests that come in for your site.</p>
 
-<p><code>POST /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/scripts/:id/?siteId=<a href="#stackpath-sites">:siteId</a></code></p>
+<p><code>POST /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/scripts?siteId=<a href="#stackpath-sites">:siteId</a></code></p>
 
 <table><thead>
 <tr>
@@ -57996,15 +58119,87 @@ async function handleRequest(request) {
   }
 }"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><pre class="highlight plaintext"><code>&gt; The above command returns a JSON structured like this:
+</span></code></pre>
+<blockquote>
+<p>The above command returns a JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"taskId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"dfc0b899-ac0f-447b-8f50-74bf78d1c034"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"taskStatus"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PENDING"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>The following attributes are returned as part of the response.</p>
 
-```json
-{
-  "taskId": "dfc0b899-ac0f-447b-8f50-74bf78d1c034",
-  "taskStatus": "PENDING"
-}
+<table><thead>
+<tr>
+<th>Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>taskId</code> <br/><em>string</em></td>
+<td>The task id related to creation of the script.</td>
+</tr>
+<tr>
+<td><code>taskStatus</code> <br/><em>string</em></td>
+<td>The status of the operation.</td>
+</tr>
+</tbody></table>
+
+<!-------------------- EDIT A SCRIPT -------------------->
+<h3 id='stackpath-edit-a-script'>Edit a script</h3>
+<p>Edit a script in a given <a href="#administration-environments">environment</a> for a given site ID.</p>
+<pre class="highlight shell tab-shell"><code>curl -X PUT <span class="se">\</span>
+   -H <span class="s2">"MC-Api-Key: your_api_key"</span> <span class="se">\</span>
+   <span class="s2">"https://cloudmc_endpoint/api/v1/services/stackpath/test-area/scripts/dd207010-4570-43ee-9ff2-5421d2306b41?siteId=0a57855b-26d8-4e8f-8b77-429997c7c5fb"</span>
 </code></pre>
-<p>There following attributes are returned as part of the response.</p>
+<blockquote>
+<p>Request body example for editing a script:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"routes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"route"</span><span class="p">],</span><span class="w">
+  </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"console.log('hello')"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<blockquote>
+<p>The above command returns a JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"taskId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ef70cafa-0544-4709-a66a-c68595ee105a"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"taskStatus"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PENDING"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><code>PUT /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/scripts/:id?siteId=:siteId</code></p>
+
+<table><thead>
+<tr>
+<th>Query Params</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>siteId</code><br/><em>UUID</em></td>
+<td>The ID of the site for which to edit the script. This parameter is required.</td>
+</tr>
+</tbody></table>
+
+<table><thead>
+<tr>
+<th>Optional</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>routes</code><br/><em>Array[string]</em></td>
+<td>At least one route in the form of a URI.</td>
+</tr>
+<tr>
+<td><code>code</code><br/><em>string</em></td>
+<td>The JavaScript code used for the script or the Base64 encoded contents of the script</td>
+</tr>
+</tbody></table>
+
+<p>The following attributes are returned as part of the response.</p>
 
 <table><thead>
 <tr>
@@ -58023,7 +58218,9 @@ async function handleRequest(request) {
 </tbody></table>
 
 <!-------------------- DELETE A SCRIPT -------------------->
-<h3 id='stackpath-delete-a-script'>Delete a script</h3><pre class="highlight shell tab-shell"><code>curl -X DELETE <span class="se">\</span>
+<h3 id='stackpath-delete-a-script'>Delete a script</h3>
+<p>Delete a script in a given <a href="#administration-environments">environment</a> for a given site ID.</p>
+<pre class="highlight shell tab-shell"><code>curl -X DELETE <span class="se">\</span>
    -H <span class="s2">"MC-Api-Key: your_api_key"</span> <span class="se">\</span>
    <span class="s2">"https://cloudmc_endpoint/api/v1/services/stackpath/test-area/scripts/dd207010-4570-43ee-9ff2-5421d2306b41?siteId=0a57855b-26d8-4e8f-8b77-429997c7c5fb"</span>
 </code></pre>
@@ -58037,7 +58234,19 @@ async function handleRequest(request) {
 </span></code></pre>
 <p><code>DELETE /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/scripts/:id?siteId=:siteId</code></p>
 
-<p>Delete a script in a given <a href="#administration-environments">environment</a> for a given site ID.</p>
+<table><thead>
+<tr>
+<th>Query Params</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>siteId</code><br/><em>UUID</em></td>
+<td>The ID of the site for which to delete the script. This parameter is required.</td>
+</tr>
+</tbody></table>
+
+<p>The following attributes are returned as part of the response.</p>
 
 <table><thead>
 <tr>
