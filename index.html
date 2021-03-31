@@ -3352,6 +3352,34 @@
                       </ul>
                   </li>
                   <li>
+                    <a href="#stackpath-delivery-domains" class="toc-h2 toc-link" data-title="StackPath plugin">Delivery domains</a>
+                      <ul class="toc-list-h3">
+                          <li>
+                            <a href="#stackpath-list-delivery-domains" class="toc-h3 toc-link" data-title="StackPath plugin">List delivery domains</a>
+                          </li>
+                          <li>
+                            <a href="#stackpath-retrieve-a-delivery-domain" class="toc-h3 toc-link" data-title="StackPath plugin">Retrieve a delivery domain</a>
+                          </li>
+                          <li>
+                            <a href="#stackpath-delete-a-delivery-domain" class="toc-h3 toc-link" data-title="StackPath plugin">Delete a delivery domain</a>
+                          </li>
+                          <li>
+                            <a href="#stackpath-create-a-delivery-domain" class="toc-h3 toc-link" data-title="StackPath plugin">Create a delivery domain</a>
+                          </li>
+                      </ul>
+                  </li>
+                  <li>
+                    <a href="#stackpath-firewall-rules" class="toc-h2 toc-link" data-title="StackPath plugin">Firewall Rules</a>
+                      <ul class="toc-list-h3">
+                          <li>
+                            <a href="#stackpath-list-firewall-rules" class="toc-h3 toc-link" data-title="StackPath plugin">List firewall rules</a>
+                          </li>
+                          <li>
+                            <a href="#stackpath-retrieve-a-firewall-rule" class="toc-h3 toc-link" data-title="StackPath plugin">Retrieve a firewall rule</a>
+                          </li>
+                      </ul>
+                  </li>
+                  <li>
                     <a href="#stackpath-network-policy-rules" class="toc-h2 toc-link" data-title="StackPath plugin">Network policy rules</a>
                       <ul class="toc-list-h3">
                           <li>
@@ -3372,23 +3400,6 @@
                       </ul>
                   </li>
                   <li>
-                    <a href="#stackpath-delivery-domains" class="toc-h2 toc-link" data-title="StackPath plugin">Delivery domains</a>
-                      <ul class="toc-list-h3">
-                          <li>
-                            <a href="#stackpath-list-delivery-domains" class="toc-h3 toc-link" data-title="StackPath plugin">List delivery domains</a>
-                          </li>
-                          <li>
-                            <a href="#stackpath-retrieve-a-delivery-domain" class="toc-h3 toc-link" data-title="StackPath plugin">Retrieve a delivery domain</a>
-                          </li>
-                          <li>
-                            <a href="#stackpath-delete-a-delivery-domain" class="toc-h3 toc-link" data-title="StackPath plugin">Delete a delivery domain</a>
-                          </li>
-                          <li>
-                            <a href="#stackpath-create-a-delivery-domain" class="toc-h3 toc-link" data-title="StackPath plugin">Create a delivery domain</a>
-                          </li>
-                      </ul>
-                  </li>
-                  <li>
                     <a href="#stackpath-scripts" class="toc-h2 toc-link" data-title="StackPath plugin">Scripts</a>
                       <ul class="toc-list-h3">
                           <li>
@@ -3405,17 +3416,6 @@
                           </li>
                           <li>
                             <a href="#stackpath-delete-a-script" class="toc-h3 toc-link" data-title="StackPath plugin">Delete a script</a>
-                          </li>
-                      </ul>
-                  </li>
-                  <li>
-                    <a href="#stackpath-firewall-rules" class="toc-h2 toc-link" data-title="StackPath plugin">Firewall Rules</a>
-                      <ul class="toc-list-h3">
-                          <li>
-                            <a href="#stackpath-list-firewall-rules" class="toc-h3 toc-link" data-title="StackPath plugin">List firewall rules</a>
-                          </li>
-                          <li>
-                            <a href="#stackpath-retrieve-a-firewall-rule" class="toc-h3 toc-link" data-title="StackPath plugin">Retrieve a firewall rule</a>
                           </li>
                       </ul>
                   </li>
@@ -57326,6 +57326,371 @@ a custom one. Only non-deprecated images are returned by default.</p>
 <td>The reference of the image.</td>
 </tr>
 </tbody></table>
+<h2 id='stackpath-delivery-domains'>Delivery domains</h2>
+<p>Delivery domains allow the CDN to recognize an HTTP request and associate it with a site.</p>
+
+<!-------------------- LIST DELIVERY DOMAINS -------------------->
+<h3 id='stackpath-list-delivery-domains'>List delivery domains</h3><pre class="highlight shell tab-shell"><code>curl -X GET <span class="se">\</span>
+   -H <span class="s2">"MC-Api-Key: your_api_key"</span> <span class="se">\</span>
+   <span class="s2">"https://cloudmc_endpoint/api/v1/services/stackpath/test-area/deliverydomains?siteId=439b145a-7c55-4a73-8cf2-d8faabfe6d22"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns a JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"439b145a-7c55-4a73-8cf2-d8faabfe6d22/test-domain.com"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"stackId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3deddcbd-3757-44cf-a4a6-93028fc4649a"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"siteId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"439b145a-7c55-4a73-8cf2-d8faabfe6d22"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"domain"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test-domain.com"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"439b145a-7c55-4a73-8cf2-d8faabfe6d22/u7f7rXXX.stackpathcdn.com"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"stackId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3deddcbd-3757-44cf-a4a6-93028fc4649a"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"siteId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"439b145a-7c55-4a73-8cf2-d8faabfe6d22"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"domain"</span><span class="p">:</span><span class="w"> </span><span class="s2">"u7f7rXXX.stackpathcdn.com"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"validatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-02-26T19:00:15.177411Z"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"439b145a-7c55-4a73-8cf2-d8faabfe6d22/www.test-domain.com"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"stackId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3deddcbd-3757-44cf-a4a6-93028fc4649a"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"siteId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"439b145a-7c55-4a73-8cf2-d8faabfe6d22"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"domain"</span><span class="p">:</span><span class="w"> </span><span class="s2">"www.test-domain.com"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="s2">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"recordCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><code>GET /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/deliverydomains?siteId=<a href="#stackpath-sites">:siteId</a></code></p>
+
+<p>Retrieve a list of all delivery domains in a given <a href="#administration-environments">environment</a> for a <a href="#stackpath-sites">site</a>.</p>
+
+<table><thead>
+<tr>
+<th>Query Params</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>siteId</code><br/><em>UUID</em></td>
+<td>The ID of the site for which to list delivery domains. This parameter is required.</td>
+</tr>
+</tbody></table>
+
+<table><thead>
+<tr>
+<th>Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code><br/><em>string</em></td>
+<td>The delivery domain unique identifier.</td>
+</tr>
+<tr>
+<td><code>domain</code><br/><em>string</em></td>
+<td>The site&#39;s domain name.</td>
+</tr>
+<tr>
+<td><code>siteId</code><br/><em>UUID</em></td>
+<td>The ID of the site that the delivery domain belongs to.</td>
+</tr>
+<tr>
+<td><code>stackId</code><br/><em>UUID</em></td>
+<td>The ID of the stack that the site belongs to.</td>
+</tr>
+<tr>
+<td><code>updatedAt</code><br/><em>string</em></td>
+<td>The date the domain was validated to be pointing to Stackpath.</td>
+</tr>
+</tbody></table>
+
+<!-------------------- RETRIEVE A DELIVERY DOMAIN -------------------->
+<h3 id='stackpath-retrieve-a-delivery-domain'>Retrieve a delivery domain</h3><pre class="highlight shell tab-shell"><code>curl -X GET <span class="se">\</span>
+   -H <span class="s2">"MC-Api-Key: your_api_key"</span> <span class="se">\</span>
+   <span class="s2">"https://cloudmc_endpoint/api/v1/services/stackpath/test-area/deliverydomains/439b145a-7c55-4a73-8cf2-d8faabfe6d22/test-domain.com"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns a JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"439b145a-7c55-4a73-8cf2-d8faabfe6d22/test-domain.com"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"stackId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3deddcbd-3757-44cf-a4a6-93028fc4649a"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"siteId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"439b145a-7c55-4a73-8cf2-d8faabfe6d22"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"domain"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test-domain.com"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><code>GET /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/deliverydomains/:id</code></p>
+
+<p>Retrieve a delivery domain of a site in a given <a href="#administration-environments">environment</a>.</p>
+
+<table><thead>
+<tr>
+<th>Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code><br/><em>string</em></td>
+<td>The delivery domain unique identifier.</td>
+</tr>
+<tr>
+<td><code>domain</code><br/><em>string</em></td>
+<td>The site&#39;s domain name.</td>
+</tr>
+<tr>
+<td><code>siteId</code><br/><em>UUID</em></td>
+<td>The ID of the site that the delivery domain belongs to.</td>
+</tr>
+<tr>
+<td><code>stackId</code><br/><em>UUID</em></td>
+<td>The ID of the stack that the site belongs to.</td>
+</tr>
+<tr>
+<td><code>updatedAt</code><br/><em>string</em></td>
+<td>The date the domain was validated to be pointing to Stackpath.</td>
+</tr>
+</tbody></table>
+
+<!-------------------- DELETE A DELIVERY DOMAIN -------------------->
+<h3 id='stackpath-delete-a-delivery-domain'>Delete a delivery domain</h3><pre class="highlight shell tab-shell"><code>curl -X DELETE <span class="se">\</span>
+   -H <span class="s2">"MC-Api-Key: your_api_key"</span> <span class="se">\</span>
+   <span class="s2">"https://cloudmc_endpoint/api/v1/services/stackpath/test-area/deliverydomains/439b145a-7c55-4a73-8cf2-d8faabfe6d22/test-domain.com"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns a JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"taskId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"57fc8d89-6f13-451b-8b66-fcd96e1fedbd"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"taskStatus"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PENDING"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><code>DELETE /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/deliverydomains/:id</code></p>
+
+<p>Delete a delivery domain of a site in a given <a href="#administration-environments">environment</a>.</p>
+
+<table><thead>
+<tr>
+<th>Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>taskId</code> <br/><em>string</em></td>
+<td>The task id related to the site deletion.</td>
+</tr>
+<tr>
+<td><code>taskStatus</code> <br/><em>string</em></td>
+<td>The status of the operation.</td>
+</tr>
+</tbody></table>
+
+<!-------------------- CREATE A DELIVERY DOMAIN -------------------->
+<h3 id='stackpath-create-a-delivery-domain'>Create a delivery domain</h3><pre class="highlight shell tab-shell"><code>curl -X POST <span class="se">\</span>
+    -H <span class="s2">"MC-Api-Key: your_api_key"</span> <span class="se">\</span>
+    -d <span class="s2">"request_body"</span> <span class="se">\</span>
+    <span class="s2">"https://cloudmc_endpoint/api/v1/services/stackpath/test-area/deliverydomains?siteId=a2fefb15-7e31-4c72-87e0-5a892e91c8d9"</span>
+</code></pre>
+<blockquote>
+<p>Request body example:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"domain"</span><span class="p">:</span><span class="w"> </span><span class="s2">"new-domain.com"</span><span class="p">,</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<blockquote>
+<p>The above command returns a JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"taskId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"57fc8d89-6f13-451b-8b66-fcd96e1fedbd"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"taskStatus"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SUCCESS"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><code>POST /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/deliverydomains?siteId=:id</code></p>
+
+<p>Create a delivery domain of a site in a given <a href="#administration-environments">environment</a>.</p>
+
+<table><thead>
+<tr>
+<th>Required</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>domain</code><br/><em>string</em></td>
+<td>The site&#39;s domain name.</td>
+</tr>
+</tbody></table>
+
+<table><thead>
+<tr>
+<th>Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>taskId</code> <br/><em>string</em></td>
+<td>The task id related to the domain creation.</td>
+</tr>
+<tr>
+<td><code>taskStatus</code> <br/><em>string</em></td>
+<td>The status of the operation.</td>
+</tr>
+</tbody></table>
+<h2 id='stackpath-firewall-rules'>Firewall Rules</h2>
+<p>Deploy and manage Firewall Rules used to control and limit access to your sites. </p>
+
+<!-------------------- LIST FIREWALL RULES -------------------->
+<h3 id='stackpath-list-firewall-rules'>List firewall rules</h3><pre class="highlight shell tab-shell"><code>curl -X GET <span class="se">\</span>
+   -H <span class="s2">"MC-Api-Key: your_api_key"</span> <span class="se">\</span>
+   <span class="s2">"https://cloudmc_endpoint/api/v1/services/stackpath/test-area/firewallrules?siteId=0a57855b-26d8-4e8f-8b77-429997c7c5fb"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns a JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1533148"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Rule 1 "</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"ipStart"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10.10.10.10"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"ipEnd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"20.20.20.20"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"action"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ALLOW"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"enabled"</span><span class="p">:</span><span class="w"> </span><span class="s2">"true"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1533345"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Rule 2 "</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"ipStart"</span><span class="p">:</span><span class="w"> </span><span class="s2">"192.0.0.1"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"ipEnd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"192.1.1.2"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"action"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BLOCK"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"enabled"</span><span class="p">:</span><span class="w"> </span><span class="s2">"true"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="s2">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"recordCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><code>GET /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/firewallrules?siteId=<a href="#stackpath-sites">:siteId</a></code></p>
+
+<table><thead>
+<tr>
+<th>Query Params</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>siteId</code><br/><em>UUID</em></td>
+<td>The ID of the site for which the firewall rule is applied to. This parameter is required.</td>
+</tr>
+<tr>
+<td><code>action</code><br/><em>string</em></td>
+<td>Filter IP addresses, which are either ALLOW or BLOCK. This parameter is optional. If not provided, it will return both the type of IP addresses.</td>
+</tr>
+</tbody></table>
+
+<table><thead>
+<tr>
+<th>Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code><br/><em>UUID</em></td>
+<td>The unique identifier for the rule.</td>
+</tr>
+<tr>
+<td><code>name</code><br/><em>string</em></td>
+<td>The name of the rule.</td>
+</tr>
+<tr>
+<td><code>ipStart</code><br/><em>string</em></td>
+<td>The start ip adress for the rule.</td>
+</tr>
+<tr>
+<td><code>ipEnd</code><br/><em>string</em></td>
+<td>There end ip adress for the rule.</td>
+</tr>
+<tr>
+<td><code>action</code><br/><em>string</em></td>
+<td>Either ALLOW or BLOCK.</td>
+</tr>
+<tr>
+<td><code>enabled</code><br/><em>string</em></td>
+<td>Whether the rule is enabled or not.</td>
+</tr>
+</tbody></table>
+
+<!-------------------- RETRIEVE A RULE -------------------->
+<h3 id='stackpath-retrieve-a-firewall-rule'>Retrieve a firewall rule</h3><pre class="highlight shell tab-shell"><code>curl -X GET <span class="se">\</span>
+   -H <span class="s2">"MC-Api-Key: your_api_key"</span> <span class="se">\</span>
+   <span class="s2">"https://cloudmc_endpoint/api/v1/services/stackpath/test-area/firewallrules/1533148?siteId=0a57855b-26d8-4e8f-8b77-429997c7c5fb"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns a JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1533148"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Rule 1 "</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"ipStart"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10.10.10.10"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"ipEnd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"20.20.20.20"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"action"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ALLOW"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"enabled"</span><span class="p">:</span><span class="w"> </span><span class="s2">"true"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><code>GET /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/firewallrules/:id?siteId=<a href="#stackpath-sites">:siteId</a></code></p>
+
+<table><thead>
+<tr>
+<th>Query Params</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>siteId</code><br/><em>UUID</em></td>
+<td>The ID of the site for which the firewall rule is applied to. This parameter is required.</td>
+</tr>
+</tbody></table>
+
+<table><thead>
+<tr>
+<th>Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code><br/><em>UUID</em></td>
+<td>The unique identifier for the rule.</td>
+</tr>
+<tr>
+<td><code>name</code><br/><em>string</em></td>
+<td>The name of the rule.</td>
+</tr>
+<tr>
+<td><code>ipStart</code><br/><em>string</em></td>
+<td>The start ip adress for the rule.</td>
+</tr>
+<tr>
+<td><code>ipEnd</code><br/><em>string</em></td>
+<td>There end ip adress for the rule.</td>
+</tr>
+<tr>
+<td><code>action</code><br/><em>string</em></td>
+<td>Either ALLOW or BLOCK.</td>
+</tr>
+<tr>
+<td><code>enabled</code><br/><em>string</em></td>
+<td>Whether the rule is enabled or not.</td>
+</tr>
+</tbody></table>
 <h2 id='stackpath-network-policy-rules'>Network policy rules</h2>
 <p>Network policy rules allows you to control inbound and outbound traffic to your <a href="#stackpath-workloads">workload</a>.</p>
 
@@ -57636,222 +58001,6 @@ a custom one. Only non-deprecated images are returned by default.</p>
 <tr>
 <td><code>portRange</code><br/><em>string</em></td>
 <td>This specifies on which ports traffic will be allowed or denied by this rule. It can be a range of ports separated by a hyphen. Not required for protocol for <code>ESP</code> or <code>AH</code>.</td>
-</tr>
-</tbody></table>
-<h2 id='stackpath-delivery-domains'>Delivery domains</h2>
-<p>Delivery domains allow the CDN to recognize an HTTP request and associate it with a site.</p>
-
-<!-------------------- LIST DELIVERY DOMAINS -------------------->
-<h3 id='stackpath-list-delivery-domains'>List delivery domains</h3><pre class="highlight shell tab-shell"><code>curl -X GET <span class="se">\</span>
-   -H <span class="s2">"MC-Api-Key: your_api_key"</span> <span class="se">\</span>
-   <span class="s2">"https://cloudmc_endpoint/api/v1/services/stackpath/test-area/deliverydomains?siteId=439b145a-7c55-4a73-8cf2-d8faabfe6d22"</span>
-</code></pre>
-<blockquote>
-<p>The above command returns a JSON structured like this:</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"439b145a-7c55-4a73-8cf2-d8faabfe6d22/test-domain.com"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"stackId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3deddcbd-3757-44cf-a4a6-93028fc4649a"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"siteId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"439b145a-7c55-4a73-8cf2-d8faabfe6d22"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"domain"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test-domain.com"</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"439b145a-7c55-4a73-8cf2-d8faabfe6d22/u7f7rXXX.stackpathcdn.com"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"stackId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3deddcbd-3757-44cf-a4a6-93028fc4649a"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"siteId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"439b145a-7c55-4a73-8cf2-d8faabfe6d22"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"domain"</span><span class="p">:</span><span class="w"> </span><span class="s2">"u7f7rXXX.stackpathcdn.com"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"validatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-02-26T19:00:15.177411Z"</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"439b145a-7c55-4a73-8cf2-d8faabfe6d22/www.test-domain.com"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"stackId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3deddcbd-3757-44cf-a4a6-93028fc4649a"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"siteId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"439b145a-7c55-4a73-8cf2-d8faabfe6d22"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"domain"</span><span class="p">:</span><span class="w"> </span><span class="s2">"www.test-domain.com"</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-  </span><span class="p">],</span><span class="w">
-  </span><span class="s2">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"recordCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-<p><code>GET /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/deliverydomains?siteId=<a href="#stackpath-sites">:siteId</a></code></p>
-
-<p>Retrieve a list of all delivery domains in a given <a href="#administration-environments">environment</a> for a <a href="#stackpath-sites">site</a>.</p>
-
-<table><thead>
-<tr>
-<th>Query Params</th>
-<th>&nbsp;</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code>siteId</code><br/><em>UUID</em></td>
-<td>The ID of the site for which to list delivery domains. This parameter is required.</td>
-</tr>
-</tbody></table>
-
-<table><thead>
-<tr>
-<th>Attributes</th>
-<th>&nbsp;</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code>id</code><br/><em>string</em></td>
-<td>The delivery domain unique identifier.</td>
-</tr>
-<tr>
-<td><code>domain</code><br/><em>string</em></td>
-<td>The site&#39;s domain name.</td>
-</tr>
-<tr>
-<td><code>siteId</code><br/><em>UUID</em></td>
-<td>The ID of the site that the delivery domain belongs to.</td>
-</tr>
-<tr>
-<td><code>stackId</code><br/><em>UUID</em></td>
-<td>The ID of the stack that the site belongs to.</td>
-</tr>
-<tr>
-<td><code>updatedAt</code><br/><em>string</em></td>
-<td>The date the domain was validated to be pointing to Stackpath.</td>
-</tr>
-</tbody></table>
-
-<!-------------------- RETRIEVE A DELIVERY DOMAIN -------------------->
-<h3 id='stackpath-retrieve-a-delivery-domain'>Retrieve a delivery domain</h3><pre class="highlight shell tab-shell"><code>curl -X GET <span class="se">\</span>
-   -H <span class="s2">"MC-Api-Key: your_api_key"</span> <span class="se">\</span>
-   <span class="s2">"https://cloudmc_endpoint/api/v1/services/stackpath/test-area/deliverydomains/439b145a-7c55-4a73-8cf2-d8faabfe6d22/test-domain.com"</span>
-</code></pre>
-<blockquote>
-<p>The above command returns a JSON structured like this:</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"439b145a-7c55-4a73-8cf2-d8faabfe6d22/test-domain.com"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"stackId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3deddcbd-3757-44cf-a4a6-93028fc4649a"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"siteId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"439b145a-7c55-4a73-8cf2-d8faabfe6d22"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"domain"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test-domain.com"</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-<p><code>GET /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/deliverydomains/:id</code></p>
-
-<p>Retrieve a delivery domain of a site in a given <a href="#administration-environments">environment</a>.</p>
-
-<table><thead>
-<tr>
-<th>Attributes</th>
-<th>&nbsp;</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code>id</code><br/><em>string</em></td>
-<td>The delivery domain unique identifier.</td>
-</tr>
-<tr>
-<td><code>domain</code><br/><em>string</em></td>
-<td>The site&#39;s domain name.</td>
-</tr>
-<tr>
-<td><code>siteId</code><br/><em>UUID</em></td>
-<td>The ID of the site that the delivery domain belongs to.</td>
-</tr>
-<tr>
-<td><code>stackId</code><br/><em>UUID</em></td>
-<td>The ID of the stack that the site belongs to.</td>
-</tr>
-<tr>
-<td><code>updatedAt</code><br/><em>string</em></td>
-<td>The date the domain was validated to be pointing to Stackpath.</td>
-</tr>
-</tbody></table>
-
-<!-------------------- DELETE A DELIVERY DOMAIN -------------------->
-<h3 id='stackpath-delete-a-delivery-domain'>Delete a delivery domain</h3><pre class="highlight shell tab-shell"><code>curl -X DELETE <span class="se">\</span>
-   -H <span class="s2">"MC-Api-Key: your_api_key"</span> <span class="se">\</span>
-   <span class="s2">"https://cloudmc_endpoint/api/v1/services/stackpath/test-area/deliverydomains/439b145a-7c55-4a73-8cf2-d8faabfe6d22/test-domain.com"</span>
-</code></pre>
-<blockquote>
-<p>The above command returns a JSON structured like this:</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"taskId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"57fc8d89-6f13-451b-8b66-fcd96e1fedbd"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"taskStatus"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PENDING"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-<p><code>DELETE /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/deliverydomains/:id</code></p>
-
-<p>Delete a delivery domain of a site in a given <a href="#administration-environments">environment</a>.</p>
-
-<table><thead>
-<tr>
-<th>Attributes</th>
-<th>&nbsp;</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code>taskId</code> <br/><em>string</em></td>
-<td>The task id related to the site deletion.</td>
-</tr>
-<tr>
-<td><code>taskStatus</code> <br/><em>string</em></td>
-<td>The status of the operation.</td>
-</tr>
-</tbody></table>
-
-<!-------------------- CREATE A DELIVERY DOMAIN -------------------->
-<h3 id='stackpath-create-a-delivery-domain'>Create a delivery domain</h3><pre class="highlight shell tab-shell"><code>curl -X POST <span class="se">\</span>
-    -H <span class="s2">"MC-Api-Key: your_api_key"</span> <span class="se">\</span>
-    -d <span class="s2">"request_body"</span> <span class="se">\</span>
-    <span class="s2">"https://cloudmc_endpoint/api/v1/services/stackpath/test-area/deliverydomains?siteId=a2fefb15-7e31-4c72-87e0-5a892e91c8d9"</span>
-</code></pre>
-<blockquote>
-<p>Request body example:</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"domain"</span><span class="p">:</span><span class="w"> </span><span class="s2">"new-domain.com"</span><span class="p">,</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-<blockquote>
-<p>The above command returns a JSON structured like this:</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"taskId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"57fc8d89-6f13-451b-8b66-fcd96e1fedbd"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"taskStatus"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SUCCESS"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-<p><code>POST /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/deliverydomains?siteId=:id</code></p>
-
-<p>Create a delivery domain of a site in a given <a href="#administration-environments">environment</a>.</p>
-
-<table><thead>
-<tr>
-<th>Required</th>
-<th>&nbsp;</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code>domain</code><br/><em>string</em></td>
-<td>The site&#39;s domain name.</td>
-</tr>
-</tbody></table>
-
-<table><thead>
-<tr>
-<th>Attributes</th>
-<th>&nbsp;</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code>taskId</code> <br/><em>string</em></td>
-<td>The task id related to the domain creation.</td>
-</tr>
-<tr>
-<td><code>taskStatus</code> <br/><em>string</em></td>
-<td>The status of the operation.</td>
 </tr>
 </tbody></table>
 <h2 id='stackpath-scripts'>Scripts</h2>
@@ -58272,155 +58421,6 @@ async function handleRequest(request) {
 <tr>
 <td><code>taskStatus</code> <br/><em>string</em></td>
 <td>The status of the operation.</td>
-</tr>
-</tbody></table>
-<h2 id='stackpath-firewall-rules'>Firewall Rules</h2>
-<p>Deploy and manage Firewall Rules used to control and limit access to your sites. </p>
-
-<!-------------------- LIST FIREWALL RULES -------------------->
-<h3 id='stackpath-list-firewall-rules'>List firewall rules</h3><pre class="highlight shell tab-shell"><code>curl -X GET <span class="se">\</span>
-   -H <span class="s2">"MC-Api-Key: your_api_key"</span> <span class="se">\</span>
-   <span class="s2">"https://cloudmc_endpoint/api/v1/services/stackpath/test-area/firewallrules?siteId=0a57855b-26d8-4e8f-8b77-429997c7c5fb"</span>
-</code></pre>
-<blockquote>
-<p>The above command returns a JSON structured like this:</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1533148"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Rule 1 "</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"ipStart"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10.10.10.10"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"ipEnd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"20.20.20.20"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"action"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ALLOW"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"enabled"</span><span class="p">:</span><span class="w"> </span><span class="s2">"true"</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1533345"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Rule 2 "</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"ipStart"</span><span class="p">:</span><span class="w"> </span><span class="s2">"192.0.0.1"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"ipEnd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"192.1.1.2"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"action"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BLOCK"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"enabled"</span><span class="p">:</span><span class="w"> </span><span class="s2">"true"</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-  </span><span class="p">],</span><span class="w">
-  </span><span class="s2">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"recordCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-<p><code>GET /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/firewallrules?siteId=<a href="#stackpath-sites">:siteId</a></code></p>
-
-<table><thead>
-<tr>
-<th>Query Params</th>
-<th>&nbsp;</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code>siteId</code><br/><em>UUID</em></td>
-<td>The ID of the site for which the firewall rule is applied to. This parameter is required.</td>
-</tr>
-<tr>
-<td><code>action</code><br/><em>string</em></td>
-<td>Filter IP addresses, which are either ALLOW or BLOCK. This parameter is optional. If not provided, it will return both the type of IP addresses.</td>
-</tr>
-</tbody></table>
-
-<table><thead>
-<tr>
-<th>Attributes</th>
-<th>&nbsp;</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code>id</code><br/><em>UUID</em></td>
-<td>The unique identifier for the rule.</td>
-</tr>
-<tr>
-<td><code>name</code><br/><em>string</em></td>
-<td>The name of the rule.</td>
-</tr>
-<tr>
-<td><code>ipStart</code><br/><em>string</em></td>
-<td>The start ip adress for the rule.</td>
-</tr>
-<tr>
-<td><code>ipEnd</code><br/><em>string</em></td>
-<td>There end ip adress for the rule.</td>
-</tr>
-<tr>
-<td><code>action</code><br/><em>string</em></td>
-<td>Either ALLOW or BLOCK.</td>
-</tr>
-<tr>
-<td><code>enabled</code><br/><em>string</em></td>
-<td>Whether the rule is enabled or not.</td>
-</tr>
-</tbody></table>
-
-<!-------------------- RETRIEVE A RULE -------------------->
-<h3 id='stackpath-retrieve-a-firewall-rule'>Retrieve a firewall rule</h3><pre class="highlight shell tab-shell"><code>curl -X GET <span class="se">\</span>
-   -H <span class="s2">"MC-Api-Key: your_api_key"</span> <span class="se">\</span>
-   <span class="s2">"https://cloudmc_endpoint/api/v1/services/stackpath/test-area/firewallrules/1533148?siteId=0a57855b-26d8-4e8f-8b77-429997c7c5fb"</span>
-</code></pre>
-<blockquote>
-<p>The above command returns a JSON structured like this:</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"data"</span><span class="p">:{</span><span class="w">
-    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1533148"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Rule 1 "</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"ipStart"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10.10.10.10"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"ipEnd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"20.20.20.20"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"action"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ALLOW"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"enabled"</span><span class="p">:</span><span class="w"> </span><span class="s2">"true"</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-<p><code>GET /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/firewallrules/:id?siteId=<a href="#stackpath-sites">:siteId</a></code></p>
-
-<table><thead>
-<tr>
-<th>Query Params</th>
-<th>&nbsp;</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code>siteId</code><br/><em>UUID</em></td>
-<td>The ID of the site for which the firewall rule is applied to. This parameter is required.</td>
-</tr>
-</tbody></table>
-
-<table><thead>
-<tr>
-<th>Attributes</th>
-<th>&nbsp;</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code>id</code><br/><em>UUID</em></td>
-<td>The unique identifier for the rule.</td>
-</tr>
-<tr>
-<td><code>name</code><br/><em>string</em></td>
-<td>The name of the rule.</td>
-</tr>
-<tr>
-<td><code>ipStart</code><br/><em>string</em></td>
-<td>The start ip adress for the rule.</td>
-</tr>
-<tr>
-<td><code>ipEnd</code><br/><em>string</em></td>
-<td>There end ip adress for the rule.</td>
-</tr>
-<tr>
-<td><code>action</code><br/><em>string</em></td>
-<td>Either ALLOW or BLOCK.</td>
-</tr>
-<tr>
-<td><code>enabled</code><br/><em>string</em></td>
-<td>Whether the rule is enabled or not.</td>
 </tr>
 </tbody></table>
 <h1 id='amazon-web-services-plugin'>Amazon Web Services plugin</h1>
