@@ -3319,7 +3319,7 @@
                             <a href="#stackpath-retrieve-waf-settings" class="toc-h3 toc-link" data-title="StackPath plugin">Retrieve WAF Settings</a>
                           </li>
                           <li>
-                            <a href="#stackpath-edit-waf-settings-for-a-site" class="toc-h3 toc-link" data-title="StackPath plugin">Edit WAF Settings for a Site</a>
+                            <a href="#stackpath-edit-waf-settings" class="toc-h3 toc-link" data-title="StackPath plugin">Edit WAF Settings</a>
                           </li>
                           <li>
                             <a href="#stackpath-retrieve-origin-settings" class="toc-h3 toc-link" data-title="StackPath plugin">Retrieve origin settings</a>
@@ -3382,6 +3382,12 @@
                           </li>
                           <li>
                             <a href="#stackpath-create-a-firewall-rule" class="toc-h3 toc-link" data-title="StackPath plugin">Create a firewall rule</a>
+                          </li>
+                          <li>
+                            <a href="#stackpath-edit-a-firewall-rule" class="toc-h3 toc-link" data-title="StackPath plugin">Edit a firewall rule</a>
+                          </li>
+                          <li>
+                            <a href="#stackpath-delete-a-firewall-rule" class="toc-h3 toc-link" data-title="StackPath plugin">Delete a firewall rule</a>
                           </li>
                       </ul>
                   </li>
@@ -56574,8 +56580,9 @@ A workload can be added without any `ports`. However, `ports.publicPort` and `po
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"siteId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1b1cd7e6-41ab-4e0f-a59a-5c4b89da1b36"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1b1cd7e6-41ab-4e0f-a59a-5c4b89da1b36"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"stackId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1415650d-1d02-4097-a79a-8f6e4bb4f483"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"domain"</span><span class="p">:</span><span class="w"> </span><span class="s2">"site.com"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"apiUrls"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
       </span><span class="s2">"/test/this/way"</span><span class="w">
     </span><span class="p">],</span><span class="w">
@@ -56585,69 +56592,64 @@ A workload can be added without any `ports`. However, `ports.publicPort` and `po
       </span><span class="s2">"subSecondBurstThreshold"</span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="s2">"monitoringEnabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"listPolicyGroups"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"policyGroups"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-          </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8365e00f-a6c4-43a4-9f07-b830759737b8"</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"User Agents"</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"policies"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-            </span><span class="p">{</span><span class="w">
-              </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Invalid User Agent Prevention"</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Block requests in which the HTTP header describing the user-agent (browser and platform) seems invalid as it does not fit the client's properties."</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"action"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BLOCK"</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"S28158056"</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"enabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
-            </span><span class="p">},</span><span class="w">
-            </span><span class="p">{</span><span class="w">
-              </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Unknown User Agent Prevention"</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Challenge requests in which the HTTP header describing the user-agent (browser and platform) is missing or unknown."</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"action"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HANDSHAKE"</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"S28158057"</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"enabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
-            </span><span class="p">}</span><span class="w">
-          </span><span class="p">]</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-          </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d694f10e-7faf-4517-bc5b-265e95c04442"</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SPAM and Abuse"</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"policies"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-            </span><span class="p">{</span><span class="w">
-              </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Form Submission Validation"</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Challenge user sessions and activities that seem to be aggressively using forms on your website to post spam content, generate new accounts, and more."</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"action"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HANDSHAKE"</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"S28158209"</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"enabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
-            </span><span class="p">}</span><span class="w">
-          </span><span class="p">]</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-          </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"379521f9-5d82-499e-a1b2-18f23800af1c"</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Allow Known Bots"</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"policies"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-            </span><span class="p">{</span><span class="w">
-              </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Google bot"</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Google bot"</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"action"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ALLOW"</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"S28158095"</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"enabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
-            </span><span class="p">},</span><span class="w">
-            </span><span class="p">{</span><span class="w">
-              </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Google ads bot"</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Google ads bot"</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"action"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ALLOW"</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"S28158096"</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"enabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
-            </span><span class="p">}</span><span class="w">
-          </span><span class="p">]</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-      </span><span class="p">]</span><span class="w">
+    </span><span class="s2">"owaspThreats"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"sqlInjection"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"xssAttack"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"remoteFileInclusion"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"wordpressWafRuleset"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"apacheStrutsExploit"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"localFileInclusion"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"commonWebApplicationVulnerabilities"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"webShellExecutionAttempt"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"responseHeaderInjection"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"openRedirect"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"shellInjection"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"userAgents"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"blockInvalidUserAgents"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"blockUnknownUserAgents"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"csrf"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"trafficSources"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"viaTorNodes"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"viaProxyNetworks"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"viaHostingServices"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"viaVpn"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"convictedBotTraffic"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"suspiciousTrafficByLocalIpFormat"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"antiAutomationBotProtection"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"forceBrowserValidationOnTrafficAnomalies"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"challengeAutomatedClients"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"challengeHeadlessBrowsers"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"antiScraping"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"spamAndAbuseForm"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"behavioralWaf"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"spamProtection"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"blockProbingAndForcedBrowsing"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"obfuscatedAttacksAndZeroDayMitigation"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"repeatedViolations"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"bruteForceProtection"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"cmsProtection"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"whiteListWordpress"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"whiteListModx"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"whiteListDrupal"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"whiteListJoomla"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"whiteMagento"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"whiteListOriginIp"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"whiteListUmbraco"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"allowKnownBots"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"Internet Archive Bot"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p><code>GET /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/wafsettings/<a href="#administration-sites">:site_id</a></code></p>
 
-<p>Retrieve WAF Settings.</p>
+<p>Retrieve WAF Settings for a site in a given <a href="#administration-environments">environment</a>.</p>
 
 <table><thead>
 <tr>
@@ -56656,12 +56658,16 @@ A workload can be added without any `ports`. However, `ports.publicPort` and `po
 </tr>
 </thead><tbody>
 <tr>
-<td><code>siteId</code><br/><em>string</em></td>
+<td><code>id</code><br/><em>string</em></td>
 <td>The ID of the site that the WAF settings belongs to.</td>
 </tr>
 <tr>
 <td><code>stackId</code><br/><em>string</em></td>
 <td>The ID of the stack that a site belongs to.</td>
+</tr>
+<tr>
+<td><code>domain</code><br/><em>string</em></td>
+<td>The domain of the site.</td>
 </tr>
 <tr>
 <td><code>ddosSettings</code><br/><em>object</em></td>
@@ -56688,49 +56694,189 @@ A workload can be added without any `ports`. However, `ports.publicPort` and `po
 <td>If the monitoring mode is enabled.</td>
 </tr>
 <tr>
-<td><code>listPolicyGroups</code><br/><em>object</em></td>
-<td>An object containing the list of policy groups.</td>
+<td><code>owaspThreats</code><br/><em>object</em></td>
+<td>StackPath’s core rule set &amp; OWASP’s most critical Web application security risks.</td>
 </tr>
 <tr>
-<td><code>policyGroups</code><br/><em>array[object]</em></td>
-<td>A list of policy group object.</td>
+<td><code>owaspThreats.sqlInjection</code><br/><em>boolean</em></td>
+<td>Block requests suspected of being a SQL injection attack attempt. SQL injection attacks attempt to exploit vulnerabilities in a Web application&#39;s code and seek to gain access and control over the database. A successful attack would typically result in stolen data or the site being defaced or taken down.</td>
 </tr>
 <tr>
-<td><code>policyGroups.id</code><br/><em>string</em></td>
-<td>The ID of the policy group.</td>
+<td><code>owaspThreats.xssAttack</code><br/><em>boolean</em></td>
+<td>Block requests suspected of being a Cross-Site-Scripting attack attempt. Cross Site Scripting attacks attempt to exploit vulnerabilities in a Web application and seek to inject a client side script either across an entire site or to a specific user&#39;s session. A successful attack would typically allow forbidden access to a user&#39;s actions and data.</td>
 </tr>
 <tr>
-<td><code>policyGroups.name</code><br/><em>string</em></td>
-<td>The name of the policy group.</td>
+<td><code>owaspThreats.shellShockAttack</code><br/><em>boolean</em></td>
+<td>Block requests suspected of being a Shellshock attack attempt. A Shellshock attack is an attempt to exploit a server&#39;s vulnerabilities to gain full access and control over them. A successful attack would typically either abuse a server&#39;s resources or hack the website.</td>
 </tr>
 <tr>
-<td><code>policyGroups.policies</code><br/><em>array[object]</em></td>
-<td>A list of policies in a policy group.</td>
+<td><code>owaspThreats.remoteFileInclusion</code><br/><em>boolean</em></td>
+<td>Block requests suspected of being a Remote File Inclusion attempt. Remote File Inclusion attempts to exploit vulnerabilities in a Web application (typically in PHP) to execute a script from a 3rd party server. RFI attacks provide a backdoor for the hacker to change the behaviour of a server and Web application.</td>
 </tr>
 <tr>
-<td><code>policyGroups.policies.name</code><br/><em>string</em></td>
-<td>A WAF policy&#39;s name.</td>
+<td><code>owaspThreats.wordpressWafRuleset</code><br/><em>boolean</em></td>
+<td>Enable a set of rules designed to block common Wordpress exploits.</td>
 </tr>
 <tr>
-<td><code>policyGroups.policies.id</code><br/><em>string</em></td>
-<td>A WAF policy&#39;s ID.</td>
+<td><code>owaspThreats.apacheStrutsExploit</code><br/><em>boolean</em></td>
+<td>Patch known vulnerabilities in the Apache Struts framework by blocking requests suspected of exploiting these vulnerabilities.</td>
 </tr>
 <tr>
-<td><code>policyGroups.policies.description</code><br/><em>string</em></td>
-<td>A WAF policy&#39;s description.</td>
+<td><code>owaspThreats.localFileInclusion</code><br/><em>boolean</em></td>
+<td>Block requests suspected of a Local File Inclusion attempt. Local File Inclusion attempts seek to exploit vulnerabilities in a Web application to execute potentially harmful scripts on your servers.</td>
 </tr>
 <tr>
-<td><code>policyGroups.policies.action</code><br/><em>string</em></td>
-<td>The potential actions that the WAF will take when a policy is triggered. It can either be <code>ALLOW</code>, <code>BLOCK</code>, <code>HANDSHAKE</code>, <code>MONITOR</code> or <code>CAPTCHA</code>.</td>
+<td><code>owaspThreats.commonWebApplicationVulnerabilities</code><br/><em>boolean</em></td>
+<td>Block attempts to access and potentially harm your servers through common backdoors, such as common control panels, configuration scripts etc. which may be accessible to unwanted users.</td>
 </tr>
 <tr>
-<td><code>policyGroups.policies.enabled</code><br/><em>boolean</em></td>
-<td>If the WAF policy is enabled.</td>
+<td><code>owaspThreats.webShellExecutionAttempt</code><br/><em>boolean</em></td>
+<td>Block requests suspected of Web shell attempts. A Web shell is a script that can be uploaded to a Web server to enable remote administration of the machine. Infected Web servers can either be internet-facing or internal to the network, where the Web shell is used to further pivot to internal hosts.</td>
+</tr>
+<tr>
+<td><code>owaspThreats.responseHeaderInjection</code><br/><em>boolean</em></td>
+<td>Block requests suspected of Response header injection attempts. Response header injection attempts to inject a header via insufficient user input sanitation.</td>
+</tr>
+<tr>
+<td><code>owaspThreats.openRedirect</code><br/><em>boolean</em></td>
+<td>Block requests suspected of being an Open Redirect attempt. Open Redirect attempts to exploit vulnerabilities in a Web application to redirect a user to a new website without any validation of the target of redirect.</td>
+</tr>
+<tr>
+<td><code>owaspThreats.shellInjection</code><br/><em>boolean</em></td>
+<td>Block requests suspected of being a shell injection attack attempt. Shell Injection is an attack in which the goal is execution of arbitrary commands on the host operating system via a vulnerable application. Command injection attacks are possible when an application passes unsafe user supplied data (forms, cookies, HTTP headers etc.) to a system shell.</td>
+</tr>
+<tr>
+<td><code>userAgents</code><br/><em>object</em></td>
+<td>Block requests with missing or invalid user agent string.</td>
+</tr>
+<tr>
+<td><code>userAgents.blockInvalidUserAgents</code><br/><em>boolean</em></td>
+<td>Block requests in which the HTTP header describing the user-agent (browser and platform) seems invalid and cannot be translated to a known legitimate browser. Automated processes (bots) are most likely to have invalid user agents.</td>
+</tr>
+<tr>
+<td><code>userAgents.blockUnknownUserAgents</code><br/><em>boolean</em></td>
+<td>Block requests in which the HTTP header describing the user-agent (browser and platform) is missing.</td>
+</tr>
+<tr>
+<td><code>csrf</code><br/><em>boolean</em></td>
+<td>StackPath WAF will generate a CSRF token that is added to forms. Requests without a valid CSRF token will be blocked.</td>
+</tr>
+<tr>
+<td><code>trafficSources</code><br/><em>object</em></td>
+<td>Real-time threat intelligence for IP addresses, source location, and information on malicious IPs.</td>
+</tr>
+<tr>
+<td><code>trafficSources.viaTorNodes</code><br/><em>boolean</em></td>
+<td>Challenge traffic from The Onion Ring exit nodes to block bots and known bad devices. While TOR is used sometimes purely for Web anonymity, it is commonly used by hackers, scrapers, and spammers to crawl or hack Web applications.</td>
+</tr>
+<tr>
+<td><code>trafficSources.viaProxyNetworks</code><br/><em>boolean</em></td>
+<td>Challenge traffic from any known proxy network to block bots and known bad devices. While proxy services are used sometimes purely for Web anonymity, they are also commonly used by hackers, scrapers, and spammers to crawl or hack Web applications.</td>
+</tr>
+<tr>
+<td><code>trafficSources.viaHostingServices</code><br/><em>boolean</em></td>
+<td>Challenge traffic from IP addresses known to be of hosting service companies. This rule is unlikely to see legitimate human traffic on these IP spaces since they are typically used for server hosting. In most cases, traffic from these IP spaces originate from infected servers that are controlled by hackers.</td>
+</tr>
+<tr>
+<td><code>trafficSources.viaVpn</code><br/><em>boolean</em></td>
+<td>Challenge traffic from any known VPN to block bots and known bad devices. While VPNs are sometimes used purely for Web anonymity, they are also commonly used by hackers, scrapers, and spammers to crawl or hack Web applications.</td>
+</tr>
+<tr>
+<td><code>trafficSources.convictedBotTraffic</code><br/><em>boolean</em></td>
+<td>Challenge traffic from IP addresses that have been convicted of automated activities (bots) on this site or on others. These IP addresses are used by malicious automated agents while no legitimate traffic has been observed on them.</td>
+</tr>
+<tr>
+<td><code>trafficSources.suspiciousTrafficByLocalIpFormat</code><br/><em>boolean</em></td>
+<td>Challenge traffic from suspicious NAT ranges.</td>
+</tr>
+<tr>
+<td><code>antiAutomationBotProtection</code><br/><em>object</em></td>
+<td>Block automated traffic from scanning and browsing your online application.</td>
+</tr>
+<tr>
+<td><code>antiAutomationBotProtection.forceBrowserValidationOnTrafficAnomalies</code><br/><em>boolean</em></td>
+<td>Challenge and block requests if the user or device behind them does not keep session cookies and does not execute JavaScripts correctly. Most malicious automated activities (bots) do not meet these conditions and will, therefore, effectively be blocked by the JavaScript challenge triggered in any suspected situation. Clients can also be blocked depending on whether they act in an abnormal to the specific domain—by scraping content in a way that most sessions on this domain don&#39;t—or clients that try to, for example, avoid detection by switching IPs.</td>
+</tr>
+<tr>
+<td><code>antiAutomationBotProtection.challengeAutomatedClients</code><br/><em>boolean</em></td>
+<td>Captcha-challenge and block sessions conducted by standard Web browsers if there is evidence that these sessions are being automated and not driven by a human user. Such automation is used primarily for screen scraping and other very targeted, site-specific malicious automation.</td>
+</tr>
+<tr>
+<td><code>antiAutomationBotProtection.challengeHeadlessBrowsers</code><br/><em>boolean</em></td>
+<td>Challenge requests if the user or device behind them uses an automation tool that initiates browsers but is actually an automation tool without real display—such as phantomJS, Selenium, or other. While such tools are favored by programmers, they are also extremely popular with scrapers, hackers and even in sophisticated DDoS attacks to circumvent standard anti-bot measures.</td>
+</tr>
+<tr>
+<td><code>antiAutomationBotProtection.antiScraping</code><br/><em>boolean</em></td>
+<td>A more hardened anti-automation policy that is meant to stop scrapers by using faster and harsher convictions.</td>
+</tr>
+<tr>
+<td><code>spamAndAbuseForm</code><br/><em>boolean</em></td>
+<td>Challenge and prevent automated tools from making HTTP/S Post requests without validating their session first.</td>
+</tr>
+<tr>
+<td><code>cmsProtection</code><br/><em>object</em></td>
+<td>Whitelist admin users.</td>
+</tr>
+<tr>
+<td><code>cmsProtection.whiteListWordpress</code><br/><em>boolean</em></td>
+<td>Enable whitelist WordPress admin logged-in users.</td>
+</tr>
+<tr>
+<td><code>cmsProtection.whiteListModx</code><br/><em>boolean</em></td>
+<td>Enable whitelist MODX admin logged-in users.</td>
+</tr>
+<tr>
+<td><code>cmsProtection.whiteListDrupal</code><br/><em>boolean</em></td>
+<td>Enable whitelist Drupal admin logged-in users.</td>
+</tr>
+<tr>
+<td><code>cmsProtection.whiteListJoomla</code><br/><em>boolean</em></td>
+<td>Enable whitelist Joomla admin logged-in users.</td>
+</tr>
+<tr>
+<td><code>cmsProtection.whiteMagento</code><br/><em>boolean</em></td>
+<td>Enable whitelist Magento admin logged-in users.</td>
+</tr>
+<tr>
+<td><code>cmsProtection.whiteListOriginIp</code><br/><em>boolean</em></td>
+<td>Enable this policy to whitelist requests coming from the origin for plugin updates and general CMS updates,</td>
+</tr>
+<tr>
+<td><code>cmsProtection.whiteListUmbraco</code><br/><em>boolean</em></td>
+<td>Enable whitelist Umbraco admin logged-in users.</td>
+</tr>
+<tr>
+<td><code>behavioralWaf</code><br/><em>object</em></td>
+<td>StackPath&#39;s sophisticated user behaviour and reputation analysis rules.</td>
+</tr>
+<tr>
+<td><code>behavioralWaf.spamProtection</code><br/><em>boolean</em></td>
+<td>Challenge and block user sessions and activities that seem to be aggressively using forms on your website to post spam content, generate new accounts, and more. Also, require a handshake (if not already provided) to clients making POST requests.</td>
+</tr>
+<tr>
+<td><code>behavioralWaf.blockProbingAndForcedBrowsing</code><br/><em>boolean</em></td>
+<td>Challenge or block sessions and users that seem to make brute-forced requests on random URLs seeking to discover a Web application&#39;s structure and hidden directories.</td>
+</tr>
+<tr>
+<td><code>behavioralWaf.obfuscatedAttacksAndZeroDayMitigation</code><br/><em>boolean</em></td>
+<td>Block clients performing multiple injection attacks.</td>
+</tr>
+<tr>
+<td><code>behavioralWaf.repeatedViolations</code><br/><em>boolean</em></td>
+<td>Challenge or block clients that failed to answer previous challenges.</td>
+</tr>
+<tr>
+<td><code>behavioralWaf.bruteForceProtection</code><br/><em>boolean</em></td>
+<td>Challenge and block attempts seeking to guess user names and passwords on Web login forms.</td>
+</tr>
+<tr>
+<td><code>allowKnownBots</code><br/><em>object</em></td>
+<td>An object containing known bots.</td>
 </tr>
 </tbody></table>
 
-<!-------------------- Edit WAF Settings for a Site -------------------->
-<h3 id='stackpath-edit-waf-settings-for-a-site'>Edit WAF Settings for a Site</h3><pre class="highlight shell tab-shell"><code>curl -X PATCH <span class="se">\</span>
+<!-------------------- Edit WAF Settings -------------------->
+<h3 id='stackpath-edit-waf-settings'>Edit WAF Settings</h3><pre class="highlight shell tab-shell"><code>curl -X PATCH <span class="se">\</span>
    -H <span class="s2">"MC-Api-Key: your_api_key"</span> <span class="se">\</span>
    <span class="s2">"https://cloudmc_endpoint/api/v1/services/stackpath/test-area/wafsettings/c0ddc1b3-b390-4f39-b200-5c0323ca306e"</span>
 </code></pre>
@@ -56738,30 +56884,9 @@ A workload can be added without any `ports`. However, `ports.publicPort` and `po
 <p>Request body example:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"listPolicyGroups"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"policyGroups"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-      </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8365e00f-a6c4-43a4-9f07-b830759737b8"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"User Agents"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"policies"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-          </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Invalid User Agent Prevention"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Block requests in which the HTTP header describing the user-agent (browser and platform) seems invalid as it does not fit the client's properties."</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"action"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BLOCK"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"S28259696"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"enabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
-          </span><span class="p">},</span><span class="w">
-          </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Unknown User Agent Prevention"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Challenge requests in which the HTTP header describing the user-agent (browser and platform) is missing or unknown."</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"action"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HANDSHAKE"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"S28259697"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"enabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
-          </span><span class="p">}</span><span class="w">
-        </span><span class="p">]</span><span class="w">
-      </span><span class="p">}</span><span class="w">
-    </span><span class="p">]</span><span class="w">
-  </span><span class="p">}</span><span class="w">
+    </span><span class="s2">"owaspThreats"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"localFileInclusion"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+    </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <blockquote>
@@ -56807,44 +56932,184 @@ A workload can be added without any `ports`. However, `ports.publicPort` and `po
 <td>If the monitoring mode is enabled.</td>
 </tr>
 <tr>
-<td><code>listPolicyGroups</code><br/><em>object</em></td>
-<td>An object containing the list of policy groups.</td>
+<td><code>owaspThreats</code><br/><em>object</em></td>
+<td>StackPath’s core rule set &amp; OWASP’s most critical Web application security risks.</td>
 </tr>
 <tr>
-<td><code>policyGroups</code><br/><em>array[object]</em></td>
-<td>A list of policy group object.</td>
+<td><code>owaspThreats.sqlInjection</code><br/><em>boolean</em></td>
+<td>Block requests suspected of being a SQL injection attack attempt. SQL injection attacks attempt to exploit vulnerabilities in a Web application&#39;s code and seek to gain access and control over the database. A successful attack would typically result in stolen data or the site being defaced or taken down.</td>
 </tr>
 <tr>
-<td><code>policyGroups.id</code><br/><em>string</em></td>
-<td>The ID of the policy group.</td>
+<td><code>owaspThreats.xssAttack</code><br/><em>boolean</em></td>
+<td>Block requests suspected of being a Cross-Site-Scripting attack attempt. Cross Site Scripting attacks attempt to exploit vulnerabilities in a Web application and seek to inject a client side script either across an entire site or to a specific user&#39;s session. A successful attack would typically allow forbidden access to a user&#39;s actions and data.</td>
 </tr>
 <tr>
-<td><code>policyGroups.name</code><br/><em>string</em></td>
-<td>The name of the policy group.</td>
+<td><code>owaspThreats.shellShockAttack</code><br/><em>boolean</em></td>
+<td>Block requests suspected of being a Shellshock attack attempt. A Shellshock attack is an attempt to exploit a server&#39;s vulnerabilities to gain full access and control over them. A successful attack would typically either abuse a server&#39;s resources or hack the website.</td>
 </tr>
 <tr>
-<td><code>policyGroups.policies</code><br/><em>array[object]</em></td>
-<td>A list of policies in a policy group.</td>
+<td><code>owaspThreats.remoteFileInclusion</code><br/><em>boolean</em></td>
+<td>Block requests suspected of being a Remote File Inclusion attempt. Remote File Inclusion attempts to exploit vulnerabilities in a Web application (typically in PHP) to execute a script from a 3rd party server. RFI attacks provide a backdoor for the hacker to change the behaviour of a server and Web application.</td>
 </tr>
 <tr>
-<td><code>policyGroups.policies.name</code><br/><em>string</em></td>
-<td>A WAF policy&#39;s name.</td>
+<td><code>owaspThreats.wordpressWafRuleset</code><br/><em>boolean</em></td>
+<td>Enable a set of rules designed to block common Wordpress exploits.</td>
 </tr>
 <tr>
-<td><code>policyGroups.policies.id</code><br/><em>string</em></td>
-<td>A WAF policy&#39;s ID.</td>
+<td><code>owaspThreats.apacheStrutsExploit</code><br/><em>boolean</em></td>
+<td>Patch known vulnerabilities in the Apache Struts framework by blocking requests suspected of exploiting these vulnerabilities.</td>
 </tr>
 <tr>
-<td><code>policyGroups.policies.description</code><br/><em>string</em></td>
-<td>A WAF policy&#39;s description.</td>
+<td><code>owaspThreats.localFileInclusion</code><br/><em>boolean</em></td>
+<td>Block requests suspected of a Local File Inclusion attempt. Local File Inclusion attempts seek to exploit vulnerabilities in a Web application to execute potentially harmful scripts on your servers.</td>
 </tr>
 <tr>
-<td><code>policyGroups.policies.action</code><br/><em>string</em></td>
-<td>The potential actions that the WAF will take when a policy is triggered. It can either be <code>ALLOW</code>, <code>BLOCK</code>, <code>HANDSHAKE</code>, <code>MONITOR</code> or <code>CAPTCHA</code>.</td>
+<td><code>owaspThreats.commonWebApplicationVulnerabilities</code><br/><em>boolean</em></td>
+<td>Block attempts to access and potentially harm your servers through common backdoors, such as common control panels, configuration scripts etc. which may be accessible to unwanted users.</td>
 </tr>
 <tr>
-<td><code>policyGroups.policies.enabled</code><br/><em>boolean</em></td>
-<td>If the WAF policy is enabled.</td>
+<td><code>owaspThreats.webShellExecutionAttempt</code><br/><em>boolean</em></td>
+<td>Block requests suspected of Web shell attempts. A Web shell is a script that can be uploaded to a Web server to enable remote administration of the machine. Infected Web servers can either be internet-facing or internal to the network, where the Web shell is used to further pivot to internal hosts.</td>
+</tr>
+<tr>
+<td><code>owaspThreats.responseHeaderInjection</code><br/><em>boolean</em></td>
+<td>Block requests suspected of Response header injection attempts. Response header injection attempts to inject a header via insufficient user input sanitation.</td>
+</tr>
+<tr>
+<td><code>owaspThreats.openRedirect</code><br/><em>boolean</em></td>
+<td>Block requests suspected of being an Open Redirect attempt. Open Redirect attempts to exploit vulnerabilities in a Web application to redirect a user to a new website without any validation of the target of redirect.</td>
+</tr>
+<tr>
+<td><code>owaspThreats.shellInjection</code><br/><em>boolean</em></td>
+<td>Block requests suspected of being a shell injection attack attempt. Shell Injection is an attack in which the goal is execution of arbitrary commands on the host operating system via a vulnerable application. Command injection attacks are possible when an application passes unsafe user supplied data (forms, cookies, HTTP headers etc.) to a system shell.</td>
+</tr>
+<tr>
+<td><code>userAgents</code><br/><em>object</em></td>
+<td>Block requests with missing or invalid user agent string.</td>
+</tr>
+<tr>
+<td><code>userAgents.blockInvalidUserAgents</code><br/><em>boolean</em></td>
+<td>Block requests in which the HTTP header describing the user-agent (browser and platform) seems invalid and cannot be translated to a known legitimate browser. Automated processes (bots) are most likely to have invalid user agents.</td>
+</tr>
+<tr>
+<td><code>userAgents.blockUnknownUserAgents</code><br/><em>boolean</em></td>
+<td>Block requests in which the HTTP header describing the user-agent (browser and platform) is missing.</td>
+</tr>
+<tr>
+<td><code>csrf</code><br/><em>boolean</em></td>
+<td>StackPath WAF will generate a CSRF token that is added to forms. Requests without a valid CSRF token will be blocked.</td>
+</tr>
+<tr>
+<td><code>trafficSources</code><br/><em>object</em></td>
+<td>Real-time threat intelligence for IP addresses, source location, and information on malicious IPs.</td>
+</tr>
+<tr>
+<td><code>trafficSources.viaTorNodes</code><br/><em>boolean</em></td>
+<td>Challenge traffic from The Onion Ring exit nodes to block bots and known bad devices. While TOR is used sometimes purely for Web anonymity, it is commonly used by hackers, scrapers, and spammers to crawl or hack Web applications.</td>
+</tr>
+<tr>
+<td><code>trafficSources.viaProxyNetworks</code><br/><em>boolean</em></td>
+<td>Challenge traffic from any known proxy network to block bots and known bad devices. While proxy services are used sometimes purely for Web anonymity, they are also commonly used by hackers, scrapers, and spammers to crawl or hack Web applications.</td>
+</tr>
+<tr>
+<td><code>trafficSources.viaHostingServices</code><br/><em>boolean</em></td>
+<td>Challenge traffic from IP addresses known to be of hosting service companies. This rule is unlikely to see legitimate human traffic on these IP spaces since they are typically used for server hosting. In most cases, traffic from these IP spaces originate from infected servers that are controlled by hackers.</td>
+</tr>
+<tr>
+<td><code>trafficSources.viaVpn</code><br/><em>boolean</em></td>
+<td>Challenge traffic from any known VPN to block bots and known bad devices. While VPNs are sometimes used purely for Web anonymity, they are also commonly used by hackers, scrapers, and spammers to crawl or hack Web applications.</td>
+</tr>
+<tr>
+<td><code>trafficSources.convictedBotTraffic</code><br/><em>boolean</em></td>
+<td>Challenge traffic from IP addresses that have been convicted of automated activities (bots) on this site or on others. These IP addresses are used by malicious automated agents while no legitimate traffic has been observed on them.</td>
+</tr>
+<tr>
+<td><code>trafficSources.suspiciousTrafficByLocalIpFormat</code><br/><em>boolean</em></td>
+<td>Challenge traffic from suspicious NAT ranges.</td>
+</tr>
+<tr>
+<td><code>antiAutomationBotProtection</code><br/><em>object</em></td>
+<td>Block automated traffic from scanning and browsing your online application.</td>
+</tr>
+<tr>
+<td><code>antiAutomationBotProtection.forceBrowserValidationOnTrafficAnomalies</code><br/><em>boolean</em></td>
+<td>Challenge and block requests if the user or device behind them does not keep session cookies and does not execute JavaScripts correctly. Most malicious automated activities (bots) do not meet these conditions and will, therefore, effectively be blocked by the JavaScript challenge triggered in any suspected situation. Clients can also be blocked depending on whether they act in an abnormal to the specific domain—by scraping content in a way that most sessions on this domain don&#39;t—or clients that try to, for example, avoid detection by switching IPs.</td>
+</tr>
+<tr>
+<td><code>antiAutomationBotProtection.challengeAutomatedClients</code><br/><em>boolean</em></td>
+<td>Captcha-challenge and block sessions conducted by standard Web browsers if there is evidence that these sessions are being automated and not driven by a human user. Such automation is used primarily for screen scraping and other very targeted, site-specific malicious automation.</td>
+</tr>
+<tr>
+<td><code>antiAutomationBotProtection.challengeHeadlessBrowsers</code><br/><em>boolean</em></td>
+<td>Challenge requests if the user or device behind them uses an automation tool that initiates browsers but is actually an automation tool without real display—such as phantomJS, Selenium, or other. While such tools are favored by programmers, they are also extremely popular with scrapers, hackers and even in sophisticated DDoS attacks to circumvent standard anti-bot measures.</td>
+</tr>
+<tr>
+<td><code>antiAutomationBotProtection.antiScraping</code><br/><em>boolean</em></td>
+<td>A more hardened anti-automation policy that is meant to stop scrapers by using faster and harsher convictions.</td>
+</tr>
+<tr>
+<td><code>spamAndAbuseForm</code><br/><em>boolean</em></td>
+<td>Challenge and prevent automated tools from making HTTP/S Post requests without validating their session first.</td>
+</tr>
+<tr>
+<td><code>cmsProtection</code><br/><em>object</em></td>
+<td>Whitelist admin users.</td>
+</tr>
+<tr>
+<td><code>cmsProtection.whiteListWordpress</code><br/><em>boolean</em></td>
+<td>Enable whitelist WordPress admin logged-in users.</td>
+</tr>
+<tr>
+<td><code>cmsProtection.whiteListModx</code><br/><em>boolean</em></td>
+<td>Enable whitelist MODX admin logged-in users.</td>
+</tr>
+<tr>
+<td><code>cmsProtection.whiteListDrupal</code><br/><em>boolean</em></td>
+<td>Enable whitelist Drupal admin logged-in users.</td>
+</tr>
+<tr>
+<td><code>cmsProtection.whiteListJoomla</code><br/><em>boolean</em></td>
+<td>Enable whitelist Joomla admin logged-in users.</td>
+</tr>
+<tr>
+<td><code>cmsProtection.whiteMagento</code><br/><em>boolean</em></td>
+<td>Enable whitelist Magento admin logged-in users.</td>
+</tr>
+<tr>
+<td><code>cmsProtection.whiteListOriginIp</code><br/><em>boolean</em></td>
+<td>Enable this policy to whitelist requests coming from the origin for plugin updates and general CMS updates,</td>
+</tr>
+<tr>
+<td><code>cmsProtection.whiteListUmbraco</code><br/><em>boolean</em></td>
+<td>Enable whitelist Umbraco admin logged-in users.</td>
+</tr>
+<tr>
+<td><code>behavioralWaf</code><br/><em>object</em></td>
+<td>StackPath&#39;s sophisticated user behaviour and reputation analysis rules.</td>
+</tr>
+<tr>
+<td><code>behavioralWaf.spamProtection</code><br/><em>boolean</em></td>
+<td>Challenge and block user sessions and activities that seem to be aggressively using forms on your website to post spam content, generate new accounts, and more. Also, require a handshake (if not already provided) to clients making POST requests.</td>
+</tr>
+<tr>
+<td><code>behavioralWaf.blockProbingAndForcedBrowsing</code><br/><em>boolean</em></td>
+<td>Challenge or block sessions and users that seem to make brute-forced requests on random URLs seeking to discover a Web application&#39;s structure and hidden directories.</td>
+</tr>
+<tr>
+<td><code>behavioralWaf.obfuscatedAttacksAndZeroDayMitigation</code><br/><em>boolean</em></td>
+<td>Block clients performing multiple injection attacks.</td>
+</tr>
+<tr>
+<td><code>behavioralWaf.repeatedViolations</code><br/><em>boolean</em></td>
+<td>Challenge or block clients that failed to answer previous challenges.</td>
+</tr>
+<tr>
+<td><code>behavioralWaf.bruteForceProtection</code><br/><em>boolean</em></td>
+<td>Challenge and block attempts seeking to guess user names and passwords on Web login forms.</td>
+</tr>
+<tr>
+<td><code>allowKnownBots</code><br/><em>object</em></td>
+<td>An object containing known bots.</td>
 </tr>
 </tbody></table>
 
@@ -57684,20 +57949,22 @@ a custom one. Only non-deprecated images are returned by default.</p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1533148"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Rule 1 "</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"ipStart"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10.10.10.10"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"ipEnd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"20.20.20.20"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"action"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ALLOW"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"enabled"</span><span class="p">:</span><span class="w"> </span><span class="s2">"true"</span><span class="w">
+        </span><span class="s2">"enabled"</span><span class="p">:</span><span class="w"> </span><span class="s2">"true"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1533148"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"ipEnd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"20.20.20.20"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"ipStart"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10.10.10.10"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Rule 1 "</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"siteId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0a57855b-26d8-4e8f-8b77-429997c7c5fb"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1533345"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Rule 2 "</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"ipStart"</span><span class="p">:</span><span class="w"> </span><span class="s2">"192.0.0.1"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"ipEnd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"192.1.1.2"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"action"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BLOCK"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"enabled"</span><span class="p">:</span><span class="w"> </span><span class="s2">"true"</span><span class="w">
+        </span><span class="s2">"enabled"</span><span class="p">:</span><span class="w"> </span><span class="s2">"true"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1533345"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"ipEnd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"192.1.1.2"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"ipStart"</span><span class="p">:</span><span class="w"> </span><span class="s2">"192.0.0.1"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Rule 2 "</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"siteId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0a57855b-26d8-4e8f-8b77-429997c7c5fb"</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">],</span><span class="w">
   </span><span class="s2">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -57714,12 +57981,12 @@ a custom one. Only non-deprecated images are returned by default.</p>
 </tr>
 </thead><tbody>
 <tr>
-<td><code>siteId</code><br/><em>UUID</em></td>
-<td>The ID of the site for which the firewall rule is applied to. This parameter is required.</td>
-</tr>
-<tr>
 <td><code>action</code><br/><em>string</em></td>
 <td>Filter IP addresses, which are either ALLOW or BLOCK. This parameter is optional. If not provided, it will return both the type of IP addresses.</td>
+</tr>
+<tr>
+<td><code>siteId</code><br/><em>string</em></td>
+<td>The ID of the site for which the firewall rule is applied to. This parameter is required.</td>
 </tr>
 </tbody></table>
 
@@ -57730,28 +57997,32 @@ a custom one. Only non-deprecated images are returned by default.</p>
 </tr>
 </thead><tbody>
 <tr>
-<td><code>id</code><br/><em>UUID</em></td>
+<td><code>action</code><br/><em>string</em></td>
+<td>Either ALLOW or BLOCK.</td>
+</tr>
+<tr>
+<td><code>enabled</code><br/><em>boolean</em></td>
+<td>Whether or not the rule is enabled.</td>
+</tr>
+<tr>
+<td><code>id</code><br/><em>string</em></td>
 <td>The unique identifier for the rule.</td>
 </tr>
 <tr>
-<td><code>name</code><br/><em>string</em></td>
-<td>The name of the rule.</td>
+<td><code>ipEnd</code><br/><em>string</em></td>
+<td>The end ip adress for the rule.</td>
 </tr>
 <tr>
 <td><code>ipStart</code><br/><em>string</em></td>
 <td>The start ip adress for the rule.</td>
 </tr>
 <tr>
-<td><code>ipEnd</code><br/><em>string</em></td>
-<td>There end ip adress for the rule.</td>
+<td><code>name</code><br/><em>string</em></td>
+<td>The name of the rule.</td>
 </tr>
 <tr>
-<td><code>action</code><br/><em>string</em></td>
-<td>Either ALLOW or BLOCK.</td>
-</tr>
-<tr>
-<td><code>enabled</code><br/><em>string</em></td>
-<td>Whether the rule is enabled or not.</td>
+<td><code>siteId</code><br/><em>string</em></td>
+<td>The ID of the site for which the firewall rule is applied to.</td>
 </tr>
 </tbody></table>
 
@@ -57765,12 +58036,13 @@ a custom one. Only non-deprecated images are returned by default.</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:{</span><span class="w">
-    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1533148"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Rule 1 "</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"ipStart"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10.10.10.10"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"ipEnd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"20.20.20.20"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"action"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ALLOW"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"enabled"</span><span class="p">:</span><span class="w"> </span><span class="s2">"true"</span><span class="w">
+    </span><span class="s2">"enabled"</span><span class="p">:</span><span class="w"> </span><span class="s2">"true"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1533148"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"ipEnd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"20.20.20.20"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"ipStart"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10.10.10.10"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Rule 1 "</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"siteId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0a57855b-26d8-4e8f-8b77-429997c7c5fb"</span><span class="w">
     </span><span class="p">},</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
@@ -57783,7 +58055,7 @@ a custom one. Only non-deprecated images are returned by default.</p>
 </tr>
 </thead><tbody>
 <tr>
-<td><code>siteId</code><br/><em>UUID</em></td>
+<td><code>siteId</code><br/><em>string</em></td>
 <td>The ID of the site for which the firewall rule is applied to. This parameter is required.</td>
 </tr>
 </tbody></table>
@@ -57795,79 +58067,37 @@ a custom one. Only non-deprecated images are returned by default.</p>
 </tr>
 </thead><tbody>
 <tr>
-<td><code>id</code><br/><em>UUID</em></td>
+<td><code>action</code><br/><em>string</em></td>
+<td>Either ALLOW or BLOCK.</td>
+</tr>
+<tr>
+<td><code>enabled</code><br/><em>boolean</em></td>
+<td>Whether or not the rule is enabled.</td>
+</tr>
+<tr>
+<td><code>id</code><br/><em>string</em></td>
 <td>The unique identifier for the rule.</td>
 </tr>
 <tr>
-<td><code>name</code><br/><em>string</em></td>
-<td>The name of the rule.</td>
+<td><code>ipEnd</code><br/><em>string</em></td>
+<td>The end ip adress for the rule.</td>
 </tr>
 <tr>
 <td><code>ipStart</code><br/><em>string</em></td>
 <td>The start ip adress for the rule.</td>
 </tr>
 <tr>
-<td><code>ipEnd</code><br/><em>string</em></td>
-<td>There end ip adress for the rule.</td>
-</tr>
-<tr>
-<td><code>action</code><br/><em>string</em></td>
-<td>Either ALLOW or BLOCK.</td>
-</tr>
-<tr>
-<td><code>enabled</code><br/><em>string</em></td>
-<td>Whether the rule is enabled or not.</td>
-</tr>
-</tbody></table>
-<h3 id='stackpath-create-a-firewall-rule'>Create a firewall rule</h3>
-<p>Restrict access to a site using allow and block rules.</p>
-
-<p><code>POST /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/firewallrules?siteId=<a href="#stackpath-sites">:siteId</a></code></p>
-
-<table><thead>
-<tr>
-<th>Required Query Params</th>
-<th>&nbsp;</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code>siteId</code><br/><em>UUID</em></td>
-<td>The ID of the site for which to create the firewall rule. This parameter is required.</td>
-</tr>
-</tbody></table>
-
-<table><thead>
-<tr>
-<th>Required Body Attribute</th>
-<th>&nbsp;</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code>action</code><br/><em>string</em></td>
-<td>Either ALLOW or BLOCK.</td>
-</tr>
-<tr>
 <td><code>name</code><br/><em>string</em></td>
 <td>The name of the rule.</td>
 </tr>
 <tr>
-<td><code>ipStart</code><br/><em>string</em></td>
-<td>The start ip adress for the rule. When no <code>ipEnd</code> attribute is provided, the rule only applies for the ip provided in <code>ipStart</code>.</td>
+<td><code>siteId</code><br/><em>string</em></td>
+<td>The ID of the site for which the firewall rule is applied to.</td>
 </tr>
 </tbody></table>
 
-<table><thead>
-<tr>
-<th>Optional Body Attribute</th>
-<th>&nbsp;</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code>ipEnd</code><br/><em>string</em></td>
-<td>There end ip adress for the rule.</td>
-</tr>
-</tbody></table>
-<pre class="highlight shell tab-shell"><code>curl -X POST <span class="se">\</span>
+<!-------------------- CREATE A FIREWALL RULE -------------------->
+<h3 id='stackpath-create-a-firewall-rule'>Create a firewall rule</h3><pre class="highlight shell tab-shell"><code>curl -X POST <span class="se">\</span>
    -H <span class="s2">"MC-Api-Key: your_api_key"</span> <span class="se">\</span>
    -d <span class="s2">"request_body"</span> <span class="se">\</span>
    <span class="s2">"https://cloudmc_endpoint/api/v1/services/stackpath/test-area/firewallrules?siteId=f9dea588-d7ab-4f42-b6e6-4b85f273f3db"</span>
@@ -57876,12 +58106,186 @@ a custom one. Only non-deprecated images are returned by default.</p>
 <p>Request body example for creating a firewall rule:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"action"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ALLOW"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"firewall rule"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"ipStart"</span><span class="p">:</span><span class="w"> </span><span class="s2">"192.168.0.6"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"ipEnd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"192.168.0.7"</span><span class="w">
+  </span><span class="s2">"action"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ALLOW"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"enabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"ipEnd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"192.168.0.7"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"ipStart"</span><span class="p">:</span><span class="w"> </span><span class="s2">"192.168.0.6"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"firewall rule"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"siteId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1c6c127a-bfa4-4c85-a329-13c0581b41eb"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
+<blockquote>
+<p>The above commands return a JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"taskId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"7135ae25-8488-4bc5-a289-285c84a00a84"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"taskStatus"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PENDING"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><code>POST /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/firewallrules?siteId=<a href="#stackpath-sites">:siteId</a></code></p>
+
+<p>Restrict access to a site using allow and block rules.</p>
+
+<table><thead>
+<tr>
+<th>Query Params</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>siteId</code><br/><em>string</em></td>
+<td>The ID of the site for which to create the firewall rule. This parameter is required.</td>
+</tr>
+</tbody></table>
+
+<table><thead>
+<tr>
+<th>Required</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>action</code><br/><em>string</em></td>
+<td>Either ALLOW or BLOCK.</td>
+</tr>
+<tr>
+<td><code>ipStart</code><br/><em>string</em></td>
+<td>The start ip adress for the rule. When no <code>ipEnd</code> attribute is provided, the rule only applies for the ip provided in <code>ipStart</code>.</td>
+</tr>
+<tr>
+<td><code>name</code><br/><em>string</em></td>
+<td>The name of the rule.</td>
+</tr>
+</tbody></table>
+
+<table><thead>
+<tr>
+<th>Optional</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>enabled</code><br/><em>boolean</em></td>
+<td>Whether or not the rule is enabled. The default value is false.</td>
+</tr>
+<tr>
+<td><code>ipEnd</code><br/><em>string</em></td>
+<td>The end ip adress for the rule.</td>
+</tr>
+<tr>
+<td><code>siteId</code><br/><em>string</em></td>
+<td>The ID of the site for which the firewall rule is applied to.</td>
+</tr>
+</tbody></table>
+
+<!-------------------- EDIT A FIREWALL RULE -------------------->
+<h3 id='stackpath-edit-a-firewall-rule'>Edit a firewall rule</h3><pre class="highlight shell tab-shell"><code>curl -X PUT <span class="se">\</span>
+  -H <span class="s2">"MC-Api-Key: your_api_key"</span> <span class="se">\</span>
+  -d <span class="s2">"request_body"</span> <span class="se">\</span>
+  <span class="s2">"https://cloudmc_endpoint/api/v1/services/stackpath/test-area/firewallrules/1576836?siteId=1c6c127a-bfa4-4c85-a329-13c0581b41eb"</span>
+</code></pre>
+<blockquote>
+<p>Request body example:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"action"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ALLOW"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"enabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1576836"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"ipEnd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"192.1.1.2"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"ipStart"</span><span class="p">:</span><span class="w"> </span><span class="s2">"192.0.0.1"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"allow.rule.cloudmc.xzp12"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"siteId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1c6c127a-bfa4-4c85-a329-13c0581b41eb"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><code>PUT /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/firewallrules/:id?siteId=<a href="#stackpath-sites">:siteId</a></code></p>
+
+<p>Edit a firewall rule.</p>
+
+<table><thead>
+<tr>
+<th>Query Params</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>siteId</code><br/><em>string</em></td>
+<td>The ID of the site for which the firewall rule is applied to. This parameter is required.</td>
+</tr>
+</tbody></table>
+
+<table><thead>
+<tr>
+<th>Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>action</code><br/><em>string</em></td>
+<td>Either ALLOW or BLOCK.</td>
+</tr>
+<tr>
+<td><code>ipStart</code><br/><em>string</em></td>
+<td>The start ip adress for the rule.</td>
+</tr>
+<tr>
+<td><code>name</code><br/><em>string</em></td>
+<td>The name of the rule.</td>
+</tr>
+</tbody></table>
+
+<table><thead>
+<tr>
+<th>Optional</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>enabled</code><br/><em>boolean</em></td>
+<td>Whether or not the rule is enabled. The default value is false.</td>
+</tr>
+<tr>
+<td><code>id</code><br/><em>string</em></td>
+<td>The unique identifier for the rule.</td>
+</tr>
+<tr>
+<td><code>ipEnd</code><br/><em>string</em></td>
+<td>The end ip adress for the rule.</td>
+</tr>
+<tr>
+<td><code>siteId</code><br/><em>string</em></td>
+<td>The ID of the site for which the firewall rule is applied to.</td>
+</tr>
+</tbody></table>
+
+<!-------------------- DELETE A FIREWALL RULE -------------------->
+<h3 id='stackpath-delete-a-firewall-rule'>Delete a firewall rule</h3><pre class="highlight shell tab-shell"><code>curl -X DELETE <span class="se">\</span>
+   -H <span class="s2">"MC-Api-Key: your_api_key"</span> <span class="se">\</span>
+   <span class="s2">"https://cloudmc_endpoint/api/v1/services/stackpath/test-area/firewallrules/2318483?siteId=0a57855b-26d8-4e8f-8b77-429997c7c5fb"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns a JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"taskId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ef70cafa-0544-4709-a66a-c68595ee105a"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"taskStatus"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SUCCESS"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><code>DELETE /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/firewallrules/:id?siteId=:siteId</code></p>
+
+<p>Delete a firewall rule</p>
+
+<table><thead>
+<tr>
+<th>Query Params</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>siteId</code><br/><em>UUID</em></td>
+<td>The ID of the site for which to delete the firewall rule. This parameter is required.</td>
+</tr>
+</tbody></table>
+
 <p>The following attributes are returned as part of the response.</p>
 
 <table><thead>
@@ -57892,7 +58296,7 @@ a custom one. Only non-deprecated images are returned by default.</p>
 </thead><tbody>
 <tr>
 <td><code>taskId</code> <br/><em>string</em></td>
-<td>The task id related to creation of the firewall rule.</td>
+<td>The task id related to the firewall rule deletion.</td>
 </tr>
 <tr>
 <td><code>taskStatus</code> <br/><em>string</em></td>
