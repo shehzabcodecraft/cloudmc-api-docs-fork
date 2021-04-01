@@ -56295,7 +56295,11 @@ A workload can be added without any `ports`. However, `ports.publicPort` and `po
 </tr>
 <tr>
 <td><code>canonicalHeaderEnabled</code><br/><em>Boolean</em></td>
-<td>Whether or not to enable setting Link: <a href="http://%7Bhostname%7D/URI">http://{hostname}/URI</a>; rel=&quot;canonical&quot; header on each response.<code>canonicalHeader</code><br/><em>String</em></td>
+<td>Whether or not to enable setting Link: <a href="http://%7Bhostname%7D/URI">http://{hostname}/URI</a>; rel=&quot;canonical&quot; header on each response.</td>
+</tr>
+<tr>
+<td><code>canonicalHeader</code><br/><em>String</em></td>
+<td>The hostname for the canonicalHeader, only applies when attribute <code>canonicalHeaderEnabled</code> is true.</td>
 </tr>
 <tr>
 <td><code>urlCachingEnabled</code><br/><em>Boolean</em></td>
