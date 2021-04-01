@@ -58201,6 +58201,14 @@ a custom one. Only non-deprecated images are returned by default.</p>
   </span><span class="s2">"siteId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1c6c127a-bfa4-4c85-a329-13c0581b41eb"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
+<blockquote>
+<p>The above commands return a JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"taskId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"7135ae25-8488-4bc5-a289-285c84a00a84"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"taskStatus"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PENDING"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
 <p><code>PUT /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/firewallrules/:id?siteId=<a href="#stackpath-sites">:siteId</a></code></p>
 
 <p>Edit a firewall rule.</p>
@@ -58219,7 +58227,7 @@ a custom one. Only non-deprecated images are returned by default.</p>
 
 <table><thead>
 <tr>
-<th>Attributes</th>
+<th>Required</th>
 <th>&nbsp;</th>
 </tr>
 </thead><tbody>
