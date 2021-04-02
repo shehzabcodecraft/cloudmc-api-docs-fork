@@ -84,6 +84,7 @@ curl -X GET \
     "domain": "slow-test.com",
     "createdAt": "2021-02-19T19:29:58.713874Z",
     "updatedAt": "2021-02-19T19:30:04.656652Z",
+    "edgeAddress": "x7v8p4e6.stackpathcdn.com",
     "services": [
       "CDN",
       "SERVERLESS_EDGE_ENGINE",
@@ -107,6 +108,7 @@ Attributes | &nbsp;
 `status`<br/>*string* | The status of the site. It can either be `ACTIVE`, `PENDING`, or `PROVISIONING`.
 `createdAt`<br/>*string* | The date on which the site was created.
 `updatedAt`<br/>*string* | The date on which the site was last updated.
+`edgeAddress` <br/>*string* | A site's unique address on the StackPath Edge. 
 `services`<br/>*array* | List of services running on the site.
 
 <!-------------------- CREATE A SITE -------------------->
