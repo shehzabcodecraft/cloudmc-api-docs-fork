@@ -3431,6 +3431,17 @@
                           </li>
                       </ul>
                   </li>
+                  <li>
+                    <a href="#stackpath-delivery-rules" class="toc-h2 toc-link" data-title="StackPath plugin">Delivery Rules</a>
+                      <ul class="toc-list-h3">
+                          <li>
+                            <a href="#stackpath-list-delivery-rules" class="toc-h3 toc-link" data-title="StackPath plugin">List delivery rules</a>
+                          </li>
+                          <li>
+                            <a href="#stackpath-delete-a-delivery-rule" class="toc-h3 toc-link" data-title="StackPath plugin">Delete a delivery rule</a>
+                          </li>
+                      </ul>
+                  </li>
               </ul>
           </li>
           <li>            
@@ -57989,7 +58000,7 @@ a custom one. Only non-deprecated images are returned by default.</p>
 <td>Filter IP addresses, which are either ALLOW or BLOCK. This parameter is optional. If not provided, it will return both the type of IP addresses.</td>
 </tr>
 <tr>
-<td><code>siteId</code><br/><em>string</em></td>
+<td><code>siteId</code><br/><em>UUID</em></td>
 <td>The ID of the site for which the firewall rule is applied to. This parameter is required.</td>
 </tr>
 </tbody></table>
@@ -58025,7 +58036,7 @@ a custom one. Only non-deprecated images are returned by default.</p>
 <td>The name of the rule.</td>
 </tr>
 <tr>
-<td><code>siteId</code><br/><em>string</em></td>
+<td><code>siteId</code><br/><em>UUID</em></td>
 <td>The ID of the site for which the firewall rule is applied to.</td>
 </tr>
 </tbody></table>
@@ -58059,7 +58070,7 @@ a custom one. Only non-deprecated images are returned by default.</p>
 </tr>
 </thead><tbody>
 <tr>
-<td><code>siteId</code><br/><em>string</em></td>
+<td><code>siteId</code><br/><em>UUID</em></td>
 <td>The ID of the site for which the firewall rule is applied to. This parameter is required.</td>
 </tr>
 </tbody></table>
@@ -58095,7 +58106,7 @@ a custom one. Only non-deprecated images are returned by default.</p>
 <td>The name of the rule.</td>
 </tr>
 <tr>
-<td><code>siteId</code><br/><em>string</em></td>
+<td><code>siteId</code><br/><em>UUID</em></td>
 <td>The ID of the site for which the firewall rule is applied to.</td>
 </tr>
 </tbody></table>
@@ -58137,7 +58148,7 @@ a custom one. Only non-deprecated images are returned by default.</p>
 </tr>
 </thead><tbody>
 <tr>
-<td><code>siteId</code><br/><em>string</em></td>
+<td><code>siteId</code><br/><em>UUID</em></td>
 <td>The ID of the site for which to create the firewall rule. This parameter is required.</td>
 </tr>
 </tbody></table>
@@ -58177,7 +58188,7 @@ a custom one. Only non-deprecated images are returned by default.</p>
 <td>The end ip adress for the rule.</td>
 </tr>
 <tr>
-<td><code>siteId</code><br/><em>string</em></td>
+<td><code>siteId</code><br/><em>UUID</em></td>
 <td>The ID of the site for which the firewall rule is applied to.</td>
 </tr>
 </tbody></table>
@@ -58220,7 +58231,7 @@ a custom one. Only non-deprecated images are returned by default.</p>
 </tr>
 </thead><tbody>
 <tr>
-<td><code>siteId</code><br/><em>string</em></td>
+<td><code>siteId</code><br/><em>UUID</em></td>
 <td>The ID of the site for which the firewall rule is applied to. This parameter is required.</td>
 </tr>
 </tbody></table>
@@ -58264,7 +58275,7 @@ a custom one. Only non-deprecated images are returned by default.</p>
 <td>The end ip adress for the rule.</td>
 </tr>
 <tr>
-<td><code>siteId</code><br/><em>string</em></td>
+<td><code>siteId</code><br/><em>UUID</em></td>
 <td>The ID of the site for which the firewall rule is applied to.</td>
 </tr>
 </tbody></table>
@@ -59041,6 +59052,122 @@ async function handleRequest(request) {
 <tr>
 <td><code>taskId</code> <br/><em>string</em></td>
 <td>The task id related to the script deletion.</td>
+</tr>
+<tr>
+<td><code>taskStatus</code> <br/><em>string</em></td>
+<td>The status of the operation.</td>
+</tr>
+</tbody></table>
+<h2 id='stackpath-delivery-rules'>Delivery Rules</h2>
+<p>Set up delivery rules to improve access, security and set custom rules.</p>
+
+<!-------------------- LIST DELIVERY_RULE -------------------->
+<h3 id='stackpath-list-delivery-rules'>List delivery rules</h3><pre class="highlight shell tab-shell"><code>curl -X GET <span class="se">\</span>
+   -H <span class="s2">"MC-Api-Key: your_api_key"</span> <span class="se">\</span>
+   <span class="s2">"https://cloudmc_endpoint/api/v1/services/stackpath/test-area/deliveryrules?siteId=dcc2771d-a524-4f8c-a666-f699985d6961"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns a JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fc72c60a-d411-4b35-9deb-9dbc889faf7e"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"addHeader"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"portal-ui-custom-1617310238955"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"stackId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fd157f7c-e5cd-439b-b6c5-5864583a8ce8"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"siteId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"dcc2771d-a524-4f8c-a666-f699985d6961"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d411c60a-d411-4b35-9deb-f699985d6961"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"removeHeader"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"portal-ui-custom-1617310238955"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"stackId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fd157f7c-e5cd-439b-b6c5-5864583a8ce8"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"siteId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"dcc2771d-a524-4f8c-a666-f699985d6961"</span><span class="w">  
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="s2">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"recordCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><code>GET /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/deliveryrules?siteId=<a href="#stackpath-sites">:siteId</a></code></p>
+
+<p>Retrieve a list of all delivery rules in a given <a href="#administration-environments">environment</a> within a site.</p>
+
+<table><thead>
+<tr>
+<th>Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code><br/><em>UUID</em></td>
+<td>A delivery rule&#39;s unique identifier.</td>
+</tr>
+<tr>
+<td><code>name</code><br/><em>string</em></td>
+<td>The name of the delivery rule.</td>
+</tr>
+<tr>
+<td><code>slug</code><br/><em>string</em></td>
+<td>A delivery rule&#39;s programmatic name.</td>
+</tr>
+<tr>
+<td><code>stackId</code><br/><em>string</em></td>
+<td>The ID of the stack that the delivery rule belongs to.</td>
+</tr>
+<tr>
+<td><code>siteId</code><br/><em>string</em></td>
+<td>The ID of the site that the delivery rule is applied to.</td>
+</tr>
+</tbody></table>
+
+<p>=======
+  &quot;taskId&quot;: &quot;2c7429dc-64c2-492d-a767-f18c990af164&quot;,
+  &quot;taskStatus&quot;: &quot;PENDING&quot;
+}</p>
+
+<!-------------------- DELETE A DELIVERY RULE -------------------->
+<h3 id='stackpath-delete-a-delivery-rule'>Delete a delivery rule</h3><pre class="highlight shell tab-shell"><code>curl -X DELETE <span class="se">\</span>
+   -H <span class="s2">"MC-Api-Key: your_api_key"</span> <span class="se">\</span>
+   <span class="s2">"https://cloudmc_endpoint/api/v1/services/stackpath/test-area/deliveryrules/90d6a6ed-05a5-4b45-8d5a-e8229f535149?siteId=1c6c127a-bfa4-4c85-a329-13c0581b41eb"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns a JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"taskId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2c7429dc-64c2-492d-a767-f18c990af164"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"taskStatus"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PENDING"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><code>DELETE /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/deliveryrules/:id?siteId=:siteId</code></p>
+
+<p>Delete a delivery rule.</p>
+
+<table><thead>
+<tr>
+<th>Query Params</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>siteId</code><br/><em>UUID</em></td>
+<td>The ID of the site for which to delete the delivery rule. This parameter is required.</td>
+</tr>
+</tbody></table>
+
+<p>The following attributes are returned as part of the response.</p>
+
+<table><thead>
+<tr>
+<th>Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>taskId</code> <br/><em>string</em></td>
+<td>The task id related to the delivery rule deletion.</td>
 </tr>
 <tr>
 <td><code>taskStatus</code> <br/><em>string</em></td>
