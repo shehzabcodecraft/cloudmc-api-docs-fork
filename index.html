@@ -3333,6 +3333,9 @@
                                   <li>
                                     <a href="#stackpath-retrieve-edgessl-settings" class="toc-h4 toc-link" data-title="StackPath plugin">Retrieve EdgeSSL settings</a>
                                   </li>
+                                  <li>
+                                    <a href="#stackpath-edit-edgessl-settings" class="toc-h4 toc-link" data-title="StackPath plugin">Edit EdgeSSL settings</a>
+                                  </li>
                               </ul>
                           </li>
                       </ul>
@@ -57444,6 +57447,39 @@ A workload can be added without any `ports`. However, `ports.publicPort` and `po
 <td>The minimum TLS version clients must have to access the application.</td>
 </tr>
 </tbody></table>
+<h4 id='stackpath-edit-edgessl-settings'>Edit EdgeSSL settings</h4><pre class="highlight shell tab-shell"><code>curl -X PATCH <span class="se">\</span>
+   -H <span class="s2">"MC-Api-Key: your_api_key"</span> <span class="se">\</span>
+   <span class="s2">"https://cloudmc_endpoint/api/v1/services/stackpath/test-area/edgesslsettings/eb3ecdbe-d73b-40e6-a263-166accba75ed"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns a JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"forceHttps"</span><span class="p">:</span><span class="w"> </span><span class="s2">"true"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"minTlsVersion"</span><span class="p">:</span><span class="w"> </span><span class="s2">"V1_2"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><code>PATCH /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/edgesslsettings/:id</a></code></p>
+
+<p>Edit the EdgeSSL settings for a site in a given <a href="#administration-environments">environment</a>.</p>
+
+<table><thead>
+<tr>
+<th>Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>forceHttps</code><br/><em>boolean</em></td>
+<td>Whether the site redirects all visitors to use HTTPS instead of HTTP.</td>
+</tr>
+<tr>
+<td><code>minTlsVersion</code><br/><em>string</em></td>
+<td>The minimum TLS version clients must have to access the application.</td>
+</tr>
+</tbody></table>
+
+<p>One or both of these attributes can be updated at the same time.</p>
 <h2 id='stackpath-instances'>Instances</h2>
 <p>Manage your workload instances.</p>
 
