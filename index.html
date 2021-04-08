@@ -3419,16 +3419,32 @@
                             <a href="#stackpath-edgessl" class="toc-h3 toc-link" data-title="StackPath plugin">EdgeSSL</a>
                               <ul class="toc-list-h4">
                                   <li>
-                                    <a href="#stackpath-retrieve-edgessl-settings" class="toc-h4 toc-link" data-title="StackPath plugin">Retrieve EdgeSSL settings</a>
+                                    <a href="#stackpath-edgessl-settings" class="toc-h4 toc-link" data-title="StackPath plugin">EdgeSSL Settings</a>
+                                      <ul class="toc-list-h5">
+                                          <li>
+                                            <a href="#stackpath-retrieve-edgessl-settings" class="toc-h5 toc-link" data-title="StackPath plugin">Retrieve EdgeSSL settings</a>
+                                          </li>
+                                          <li>
+                                            <a href="#stackpath-edit-edgessl-settings" class="toc-h5 toc-link" data-title="StackPath plugin">Edit EdgeSSL settings</a>
+                                          </li>
+                                      </ul>
                                   </li>
                                   <li>
-                                    <a href="#stackpath-edit-edgessl-settings" class="toc-h4 toc-link" data-title="StackPath plugin">Edit EdgeSSL settings</a>
-                                  </li>
-                                  <li>
-                                    <a href="#stackpath-create-a-certificate" class="toc-h4 toc-link" data-title="StackPath plugin">Create a certificate</a>
-                                  </li>
-                                  <li>
-                                    <a href="#stackpath-delete-a-certificate" class="toc-h4 toc-link" data-title="StackPath plugin">Delete a certificate</a>
+                                    <a href="#stackpath-certificates" class="toc-h4 toc-link" data-title="StackPath plugin">Certificates</a>
+                                      <ul class="toc-list-h5">
+                                          <li>
+                                            <a href="#stackpath-list-certificates" class="toc-h5 toc-link" data-title="StackPath plugin">List certificates</a>
+                                          </li>
+                                          <li>
+                                            <a href="#stackpath-retrieve-a-certificate" class="toc-h5 toc-link" data-title="StackPath plugin">Retrieve a certificate</a>
+                                          </li>
+                                          <li>
+                                            <a href="#stackpath-create-a-certificate" class="toc-h5 toc-link" data-title="StackPath plugin">Create a certificate</a>
+                                          </li>
+                                          <li>
+                                            <a href="#stackpath-delete-a-certificate" class="toc-h5 toc-link" data-title="StackPath plugin">Delete a certificate</a>
+                                          </li>
+                                      </ul>
                                   </li>
                               </ul>
                           </li>
@@ -58543,11 +58559,11 @@ async function handleRequest(request) {
 <td>The status of the operation.</td>
 </tr>
 </tbody></table>
-<h3 id='stackpath-edgessl'>EdgeSSL</h3>
-<p>View and manage SSL settings and certificates. </p>
+<h3 id='stackpath-edgessl'>EdgeSSL</h3><h4 id='stackpath-edgessl-settings'>EdgeSSL Settings</h4>
+<p>View and manage SSL settings.</p>
 
 <!-------------------- RETRIEVE EDGESSL SETTINGS -------------------->
-<h4 id='stackpath-retrieve-edgessl-settings'>Retrieve EdgeSSL settings</h4><pre class="highlight shell tab-shell"><code>curl -X GET <span class="se">\</span>
+<h5 id='stackpath-retrieve-edgessl-settings'>Retrieve EdgeSSL settings</h5><pre class="highlight shell tab-shell"><code>curl -X GET <span class="se">\</span>
    -H <span class="s2">"MC-Api-Key: your_api_key"</span> <span class="se">\</span>
    <span class="s2">"https://cloudmc_endpoint/api/v1/services/stackpath/test-area/edgesslsettings/eb3ecdbe-d73b-40e6-a263-166accba75ed"</span>
 </code></pre>
@@ -58585,7 +58601,7 @@ async function handleRequest(request) {
 <td>The minimum TLS version clients must have to access the application.</td>
 </tr>
 </tbody></table>
-<h4 id='stackpath-edit-edgessl-settings'>Edit EdgeSSL settings</h4><pre class="highlight shell tab-shell"><code>curl -X PATCH <span class="se">\</span>
+<h5 id='stackpath-edit-edgessl-settings'>Edit EdgeSSL settings</h5><pre class="highlight shell tab-shell"><code>curl -X PATCH <span class="se">\</span>
    -H <span class="s2">"MC-Api-Key: your_api_key"</span> <span class="se">\</span>
    <span class="s2">"https://cloudmc_endpoint/api/v1/services/stackpath/test-area/edgesslsettings/eb3ecdbe-d73b-40e6-a263-166accba75ed"</span>
 </code></pre>
@@ -58618,9 +58634,274 @@ async function handleRequest(request) {
 </tbody></table>
 
 <p>One or both of these attributes can be updated at the same time.</p>
+<h4 id='stackpath-certificates'>Certificates</h4>
+<p>Add Secure Socket Layer (SSL) features to a site.</p>
+
+<!-------------------- LIST CERTIFICATES -------------------->
+<h5 id='stackpath-list-certificates'>List certificates</h5><pre class="highlight shell tab-shell"><code>curl -X GET <span class="se">\</span>
+   -H <span class="s2">"MC-Api-Key: your_api_key"</span> <span class="se">\</span>
+   <span class="s2">"https://cloudmc_endpoint/api/v1/services/stackpath/test-area/certificates?siteId=0a57855b-26d8-4e8f-8b77-429997c7c5fb"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns a JSON structured like this:
+<code>json
+{
+  &quot;data&quot;: [
+    {
+      &quot;id&quot;: &quot;2a12237d-c388-4c19-bff1-b019b837e8f1&quot;,
+      &quot;issuer&quot;: &quot;Let&#39;s Encrypt&quot;,
+      &quot;caBundle&quot;: &quot;-----BEGIN CERTIFICATE----- MIIEZTCCA02gAwIBAgIQQAF1BIMUpMghjISpDBbN3zANBgkqhkiG9w0BAQsFADA/ MSQwIgY...&quot;,
+      &quot;status&quot;: &quot;failed&quot;,
+      &quot;expiresAt&quot;: &quot;2021-04-01T18:11:11.903458Z&quot;,
+      &quot;commonName&quot;: &quot;helloworld.com&quot;,
+      &quot;createdAt&quot;: &quot;2021-04-01T18:11:11.904285Z&quot;,
+      &quot;isManaged&quot;: true,
+      &quot;trusted&quot;: false,
+      &quot;updatedAt&quot;: &quot;2021-04-04T18:30:32.021842Z&quot;
+    }
+  ],
+  &quot;metadata&quot;: {
+    &quot;recordCount&quot;: 1
+  }
+}
+</code></p>
+</blockquote>
+
+<p><code>GET /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/certificates?siteId=<a href="#stackpath-sites">:siteId</a></code></p>
+
+<table><thead>
+<tr>
+<th>Query Params</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>siteId</code><br/><em>UUID</em></td>
+<td>The ID of the site for which the certificate is applied to. This parameter is required.</td>
+</tr>
+</tbody></table>
+
+<table><thead>
+<tr>
+<th>Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code><br/><em>UUID</em></td>
+<td>The unique identifier of the certificate.</td>
+</tr>
+<tr>
+<td><code>siteId</code><br/><em>UUID</em></td>
+<td>The unique identifier of the site for which the certificate is applied to.</td>
+</tr>
+<tr>
+<td><code>issuer</code><br/><em>string</em></td>
+<td>The authority who issued the certificate.</td>
+</tr>
+<tr>
+<td><code>caBundle</code><br/><em>string</em></td>
+<td>A PEM PKCS #7 formatted certificate authority bundle.</td>
+</tr>
+<tr>
+<td><code>status</code><br/><em>string</em></td>
+<td>A SSL certificate status.</td>
+</tr>
+<tr>
+<td><code>expiresAt</code><br/><em>string</em></td>
+<td>The date the certificate will expire and the status updated to EXPIRED.</td>
+</tr>
+<tr>
+<td><code>commonName</code><br/><em>string</em></td>
+<td>A certificate&#39;s common name, or the primary domain name the certificate is used for.</td>
+</tr>
+<tr>
+<td><code>createdAt</code><br/><em>string</em></td>
+<td>The date the certificate was created.</td>
+</tr>
+<tr>
+<td><code>updatedAt</code><br/><em>string</em></td>
+<td>The last time a certificate was updated by the provisioning process.</td>
+</tr>
+<tr>
+<td><code>isManaged</code><br/><em>boolean</em></td>
+<td>Whether a certificate is managed by StackPath or the end user.</td>
+</tr>
+<tr>
+<td><code>trusted</code><br/><em>boolean</em></td>
+<td>Whether or not the certificate&#39;s authority is trusted by a web browser.</td>
+</tr>
+</tbody></table>
+
+<p>List of possible values for the <code>status</code> attribute:</p>
+
+<table><thead>
+<tr>
+<th><code>status</code></th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>UNKNOWN</code></td>
+<td>StackPath is unable to determine the certificate&#39;s status. This is the default status for end-user provided certificates.</td>
+</tr>
+<tr>
+<td><code>PENDING</code></td>
+<td>The certificate is provisioning.</td>
+</tr>
+<tr>
+<td><code>EXPIRED</code></td>
+<td>The certificate has expired.</td>
+</tr>
+<tr>
+<td><code>FAILED</code></td>
+<td>The certificate failed to provision.</td>
+</tr>
+<tr>
+<td><code>PENDING_VERIFICATION</code></td>
+<td>The certificate is pending domain verification by the end user.</td>
+</tr>
+<tr>
+<td><code>ACTIVE</code></td>
+<td>The certificate is valid and is in use by one or more hosts.</td>
+</tr>
+<tr>
+<td><code>INACTIVE</code></td>
+<td>The certificate is valid but is not in use by any hosts.</td>
+</tr>
+</tbody></table>
+
+<!-------------------- RETRIEVE A CERTIFICATE -------------------->
+<h5 id='stackpath-retrieve-a-certificate'>Retrieve a certificate</h5><pre class="highlight shell tab-shell"><code>curl -X GET <span class="se">\</span>
+   -H <span class="s2">"MC-Api-Key: your_api_key"</span> <span class="se">\</span>
+   <span class="s2">"https://cloudmc_endpoint/api/v1/services/stackpath/test-area/certificates/2a12237d-c388-4c19-bff1-b019b837e8f1?siteId=0a57855b-26d8-4e8f-8b77-429997c7c5fb"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns a JSON structured like this:
+<code>json
+{
+  &quot;data&quot;: {
+    &quot;id&quot;: &quot;2a12237d-c388-4c19-bff1-b019b837e8f1&quot;,
+    &quot;issuer&quot;: &quot;Let&#39;s Encrypt&quot;,
+    &quot;caBundle&quot;: &quot;-----BEGIN CERTIFICATE----- MIIEZTCCA02gAwIBAgIQQAF1BIMUpMghjISpDBbN3zANBgkqhkiG9w0BAQsFADA/ MSQwIgY...&quot;,
+    &quot;status&quot;: &quot;failed&quot;,
+    &quot;expiresAt&quot;: &quot;2021-04-01T18:11:11.903458Z&quot;,
+    &quot;commonName&quot;: &quot;helloworld.com&quot;,
+    &quot;createdAt&quot;: &quot;2021-04-01T18:11:11.904285Z&quot;,
+    &quot;isManaged&quot;: true,
+    &quot;trusted&quot;: false,
+    &quot;updatedAt&quot;: &quot;2021-04-04T18:30:32.021842Z&quot;
+  }
+}
+</code></p>
+</blockquote>
+
+<p><code>GET /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/certificates/:id?siteId=<a href="#stackpath-sites">:siteId</a></code></p>
+
+<table><thead>
+<tr>
+<th>Query Params</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>siteId</code><br/><em>UUID</em></td>
+<td>The ID of the site for which the certificate is applied to. This parameter is required.</td>
+</tr>
+</tbody></table>
+
+<table><thead>
+<tr>
+<th>Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code><br/><em>UUID</em></td>
+<td>The unique identifier of the certificate.</td>
+</tr>
+<tr>
+<td><code>siteId</code><br/><em>UUID</em></td>
+<td>The unique identifier of the site for which the certificate is applied to.</td>
+</tr>
+<tr>
+<td><code>issuer</code><br/><em>string</em></td>
+<td>The authority who issued the certificate.</td>
+</tr>
+<tr>
+<td><code>caBundle</code><br/><em>string</em></td>
+<td>A PEM PKCS #7 formatted certificate authority bundle.</td>
+</tr>
+<tr>
+<td><code>status</code><br/><em>string</em></td>
+<td>A SSL certificate status.</td>
+</tr>
+<tr>
+<td><code>expiresAt</code><br/><em>string</em></td>
+<td>The date the certificate will expire and the status updated to EXPIRED.</td>
+</tr>
+<tr>
+<td><code>commonName</code><br/><em>string</em></td>
+<td>A certificate&#39;s common name, or the primary domain name the certificate is used for.</td>
+</tr>
+<tr>
+<td><code>createdAt</code><br/><em>string</em></td>
+<td>The date the certificate was created.</td>
+</tr>
+<tr>
+<td><code>updatedAt</code><br/><em>string</em></td>
+<td>The last time a certificate was updated by the provisioning process.</td>
+</tr>
+<tr>
+<td><code>isManaged</code><br/><em>boolean</em></td>
+<td>Whether a certificate is managed by StackPath or the end user.</td>
+</tr>
+<tr>
+<td><code>trusted</code><br/><em>boolean</em></td>
+<td>Whether or not the certificate&#39;s authority is trusted by a web browser.</td>
+</tr>
+</tbody></table>
+
+<p>List of possible values for the <code>status</code> attribute:</p>
+
+<table><thead>
+<tr>
+<th><code>status</code></th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>UNKNOWN</code></td>
+<td>StackPath is unable to determine the certificate&#39;s status. This is the default status for end-user provided certificates.</td>
+</tr>
+<tr>
+<td><code>PENDING</code></td>
+<td>The certificate is provisioning.</td>
+</tr>
+<tr>
+<td><code>EXPIRED</code></td>
+<td>The certificate has expired.</td>
+</tr>
+<tr>
+<td><code>FAILED</code></td>
+<td>The certificate failed to provision.</td>
+</tr>
+<tr>
+<td><code>PENDING_VERIFICATION</code></td>
+<td>The certificate is pending domain verification by the end user.</td>
+</tr>
+<tr>
+<td><code>ACTIVE</code></td>
+<td>The certificate is valid and is in use by one or more hosts.</td>
+</tr>
+<tr>
+<td><code>INACTIVE</code></td>
+<td>The certificate is valid but is not in use by any hosts.</td>
+</tr>
+</tbody></table>
 
 <!-------------------- CREATE A CERTIFICATE -------------------->
-<h4 id='stackpath-create-a-certificate'>Create a certificate</h4><pre class="highlight shell tab-shell"><code>curl -X POST <span class="se">\</span>
+<h5 id='stackpath-create-a-certificate'>Create a certificate</h5><pre class="highlight shell tab-shell"><code>curl -X POST <span class="se">\</span>
    -H <span class="s2">"MC-Api-Key: your_api_key"</span> <span class="se">\</span>
    -d <span class="s2">"request_body"</span> <span class="se">\</span>
    <span class="s2">"https://cloudmc_endpoint/api/v1/services/stackpath/test-area/certificates?siteId=f9dea588-d7ab-4f42-b6e6-4b85f273f3db"</span>
@@ -58705,7 +58986,7 @@ async function handleRequest(request) {
 </tbody></table>
 
 <!-------------------- DELETE A CERTIFICATE -------------------->
-<h4 id='stackpath-delete-a-certificate'>Delete a certificate</h4><pre class="highlight shell tab-shell"><code>curl -X DELETE <span class="se">\</span>
+<h5 id='stackpath-delete-a-certificate'>Delete a certificate</h5><pre class="highlight shell tab-shell"><code>curl -X DELETE <span class="se">\</span>
    -H <span class="s2">"MC-Api-Key: your_api_key"</span> <span class="se">\</span>
    <span class="s2">"https://cloudmc_endpoint/api/v1/services/stackpath/test-area/certificates/2318483?siteId=6f6c1724-c306-433c-9e09-95227edc7c6c"</span>
 </code></pre>
