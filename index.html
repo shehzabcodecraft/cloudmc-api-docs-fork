@@ -3359,19 +3359,22 @@
                                   <li>
                                     <a href="#stackpath-list-delivery-rules" class="toc-h4 toc-link" data-title="StackPath plugin">List delivery rules</a>
                                   </li>
-                              </ul>
-                          </li>
-                          <li>
-                            <a href="#stackpath-create-a-delivery-rule" class="toc-h3 toc-link" data-title="StackPath plugin">Create a delivery rule</a>
-                              <ul class="toc-list-h4">
                                   <li>
-                                    <a href="#stackpath-condition" class="toc-h4 toc-link" data-title="StackPath plugin">Condition</a>
+                                    <a href="#stackpath-create-a-delivery-rule" class="toc-h4 toc-link" data-title="StackPath plugin">Create a delivery rule</a>
                                   </li>
                                   <li>
-                                    <a href="#stackpath-action" class="toc-h4 toc-link" data-title="StackPath plugin">Action</a>
+                                    <a href="#stackpath-update-a-delivery-rule" class="toc-h4 toc-link" data-title="StackPath plugin">Update a delivery rule</a>
                                   </li>
                                   <li>
                                     <a href="#stackpath-delete-a-delivery-rule" class="toc-h4 toc-link" data-title="StackPath plugin">Delete a delivery rule</a>
+                                      <ul class="toc-list-h5">
+                                          <li>
+                                            <a href="#stackpath-condition" class="toc-h5 toc-link" data-title="StackPath plugin">Condition</a>
+                                          </li>
+                                          <li>
+                                            <a href="#stackpath-action" class="toc-h5 toc-link" data-title="StackPath plugin">Action</a>
+                                          </li>
+                                      </ul>
                                   </li>
                               </ul>
                           </li>
@@ -57186,7 +57189,7 @@ A workload can be added without any `ports`. However, `ports.publicPort` and `po
 </tbody></table>
 
 <!-------------------- CREATE A DELIVERY RULE -------------------->
-<h3 id='stackpath-create-a-delivery-rule'>Create a delivery rule</h3><pre class="highlight shell tab-shell"><code>curl -X POST <span class="se">\</span>
+<h4 id='stackpath-create-a-delivery-rule'>Create a delivery rule</h4><pre class="highlight shell tab-shell"><code>curl -X POST <span class="se">\</span>
    -H <span class="s2">"MC-Api-Key: your_api_key"</span> <span class="se">\</span>
    -d <span class="s2">"request_body"</span> <span class="se">\</span>
    <span class="s2">"https://cloudmc_endpoint/api/v1/services/stackpath/test-area/deliveryrules?siteId=f9dea588-d7ab-4f42-b6e6-4b85f273f3db"</span>
@@ -57219,8 +57222,6 @@ A workload can be added without any `ports`. However, `ports.publicPort` and `po
 </span></code></pre>
 <p><code>POST /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/deliveryrules?siteId=<a href="#stackpath-sites">:siteId</a></code></p>
 
-<p>Delivery Rules which allow you to modify CDN settings based on a number of elements like URL, HTTP headers, and more.</p>
-
 <table><thead>
 <tr>
 <th>Query Params</th>
@@ -57252,7 +57253,115 @@ A workload can be added without any `ports`. However, `ports.publicPort` and `po
 <td>At least one action.</td>
 </tr>
 </tbody></table>
-<h4 id='stackpath-condition'>Condition</h4>
+
+<!-------------------- UPDATE A DELIVERY RULE -------------------->
+<h4 id='stackpath-update-a-delivery-rule'>Update a delivery rule</h4><pre class="highlight shell tab-shell"><code>curl -X PUT <span class="se">\</span>
+   -H <span class="s2">"MC-Api-Key: your_api_key"</span> <span class="se">\</span>
+   -d <span class="s2">"request_body"</span> <span class="se">\</span>
+   <span class="s2">"https://cloudmc_endpoint/api/v1/services/stackpath/test-area/deliveryrules/d065db45-1eba-4c62-a017-d51f2d473d4a?siteId=f9dea588-d7ab-4f42-b6e6-4b85f273f3db"</span>
+</code></pre>
+<blockquote>
+<p>Request body example for updating a delivery rule:</p>
+</blockquote>
+<pre class="highlight javascript"><code><span class="p">{</span>
+  <span class="s2">"conditions"</span><span class="p">:</span> <span class="p">[</span>
+  <span class="p">{</span>
+    <span class="s2">"trigger"</span><span class="p">:</span> <span class="s2">"HEADER"</span><span class="p">,</span>
+    <span class="s2">"operator"</span><span class="p">:</span> <span class="s2">"MATCHES"</span><span class="p">,</span>
+    <span class="s2">"target"</span><span class="p">:</span> <span class="s2">"my-header"</span>
+  <span class="p">}],</span>
+  <span class="s2">"actions"</span><span class="p">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="s2">"actionType"</span><span class="p">:</span> <span class="s2">"REDIRECT"</span><span class="p">,</span>
+      <span class="s2">"redirectUrl"</span><span class="p">:</span> <span class="s2">"https://my-url.com"</span>
+    <span class="p">}]</span>
+<span class="p">}</span>
+</code></pre>
+<blockquote>
+<p>The above commands return a JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"taskId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"7135ae25-8488-4bc5-a289-285c84a00a84"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"taskStatus"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PENDING"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><code>PUT /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/deliveryrules/:ruleId?siteId=<a href="#stackpath-sites">:siteId</a></code></p>
+
+<table><thead>
+<tr>
+<th>Query Params</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>siteId</code><br/><em>UUID</em></td>
+<td>The ID of the site for which to update the delivery rule. This parameter is required.</td>
+</tr>
+</tbody></table>
+
+<table><thead>
+<tr>
+<th>Required</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>conditions</code><br/><em>Array[<a href="#stackpath-condition">Condition</a>]</em></td>
+<td>At least one condition.</td>
+</tr>
+<tr>
+<td><code>actions</code><br/><em>Array[<a href="#stackpath-action">Action</a>]</em></td>
+<td>At least one action.</td>
+</tr>
+</tbody></table>
+
+<!-------------------- DELETE A DELIVERY RULE -------------------->
+<h4 id='stackpath-delete-a-delivery-rule'>Delete a delivery rule</h4><pre class="highlight shell tab-shell"><code>curl -X DELETE <span class="se">\</span>
+   -H <span class="s2">"MC-Api-Key: your_api_key"</span> <span class="se">\</span>
+   <span class="s2">"https://cloudmc_endpoint/api/v1/services/stackpath/test-area/deliveryrules/90d6a6ed-05a5-4b45-8d5a-e8229f535149?siteId=1c6c127a-bfa4-4c85-a329-13c0581b41eb"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns a JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"taskId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2c7429dc-64c2-492d-a767-f18c990af164"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"taskStatus"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PENDING"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><code>DELETE /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/deliveryrules/:id?siteId=<a href="#stackpath-site">:siteId</a></code></p>
+
+<p>Delete a delivery rule.</p>
+
+<table><thead>
+<tr>
+<th>Query Params</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>siteId</code><br/><em>UUID</em></td>
+<td>The ID of the site for which to delete the delivery rule. This parameter is required.</td>
+</tr>
+</tbody></table>
+
+<p>The following attributes are returned as part of the response.</p>
+
+<table><thead>
+<tr>
+<th>Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>taskId</code> <br/><em>string</em></td>
+<td>The task id related to the delivery rule deletion.</td>
+</tr>
+<tr>
+<td><code>taskStatus</code> <br/><em>string</em></td>
+<td>The status of the operation.</td>
+</tr>
+</tbody></table>
+<h5 id='stackpath-condition'>Condition</h5>
 <table><thead>
 <tr>
 <th>Required</th>
@@ -57276,7 +57385,7 @@ A workload can be added without any `ports`. However, `ports.publicPort` and `po
 <td>HTTP methods for the condition. Possible values are: <code>GET</code>, <code>POST</code>, <code>PUT</code>, <code>DELETE</code>, <code>HEAD</code>, <code>PATCH</code>, and <code>OPTIONS</code>. This fields is only used when <code>trigger</code> is set to <code>HTTP_METHOD</code>.</td>
 </tr>
 </tbody></table>
-<h4 id='stackpath-action'>Action</h4>
+<h5 id='stackpath-action'>Action</h5>
 <p>The action attributes needed to be passed will vary depending on the condition being specified.</p>
 
 <table><thead>
@@ -57332,53 +57441,6 @@ A workload can be added without any `ports`. However, `ports.publicPort` and `po
 <tr>
 <td><code>urlSignaturePathLength</code><br/><em>String</em></td>
 <td>The url signature path length for signing the url.</td>
-</tr>
-</tbody></table>
-
-<!-------------------- DELETE A DELIVERY RULE -------------------->
-<h4 id='stackpath-delete-a-delivery-rule'>Delete a delivery rule</h4><pre class="highlight shell tab-shell"><code>curl -X DELETE <span class="se">\</span>
-   -H <span class="s2">"MC-Api-Key: your_api_key"</span> <span class="se">\</span>
-   <span class="s2">"https://cloudmc_endpoint/api/v1/services/stackpath/test-area/deliveryrules/90d6a6ed-05a5-4b45-8d5a-e8229f535149?siteId=1c6c127a-bfa4-4c85-a329-13c0581b41eb"</span>
-</code></pre>
-<blockquote>
-<p>The above command returns a JSON structured like this:</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"taskId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2c7429dc-64c2-492d-a767-f18c990af164"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"taskStatus"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PENDING"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-<p><code>DELETE /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/deliveryrules/:id?siteId=<a href="#stackpath-site">:siteId</a></code></p>
-
-<p>Delete a delivery rule.</p>
-
-<table><thead>
-<tr>
-<th>Query Params</th>
-<th>&nbsp;</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code>siteId</code><br/><em>UUID</em></td>
-<td>The ID of the site for which to delete the delivery rule. This parameter is required.</td>
-</tr>
-</tbody></table>
-
-<p>The following attributes are returned as part of the response.</p>
-
-<table><thead>
-<tr>
-<th>Attributes</th>
-<th>&nbsp;</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code>taskId</code> <br/><em>string</em></td>
-<td>The task id related to the delivery rule deletion.</td>
-</tr>
-<tr>
-<td><code>taskStatus</code> <br/><em>string</em></td>
-<td>The status of the operation.</td>
 </tr>
 </tbody></table>
 <h3 id='stackpath-waf'>WAF</h3>
