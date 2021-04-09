@@ -3359,6 +3359,17 @@
                                   <li>
                                     <a href="#stackpath-list-delivery-rules" class="toc-h4 toc-link" data-title="StackPath plugin">List delivery rules</a>
                                   </li>
+                              </ul>
+                          </li>
+                          <li>
+                            <a href="#stackpath-create-a-delivery-rule" class="toc-h3 toc-link" data-title="StackPath plugin">Create a delivery rule</a>
+                              <ul class="toc-list-h4">
+                                  <li>
+                                    <a href="#stackpath-condition" class="toc-h4 toc-link" data-title="StackPath plugin">Condition</a>
+                                  </li>
+                                  <li>
+                                    <a href="#stackpath-action" class="toc-h4 toc-link" data-title="StackPath plugin">Action</a>
+                                  </li>
                                   <li>
                                     <a href="#stackpath-delete-a-delivery-rule" class="toc-h4 toc-link" data-title="StackPath plugin">Delete a delivery rule</a>
                                   </li>
@@ -57171,6 +57182,156 @@ A workload can be added without any `ports`. However, `ports.publicPort` and `po
 <tr>
 <td><code>siteId</code><br/><em>string</em></td>
 <td>The ID of the site that the delivery rule is applied to.</td>
+</tr>
+</tbody></table>
+
+<!-------------------- CREATE A DELIVERY RULE -------------------->
+<h3 id='stackpath-create-a-delivery-rule'>Create a delivery rule</h3><pre class="highlight shell tab-shell"><code>curl -X POST <span class="se">\</span>
+   -H <span class="s2">"MC-Api-Key: your_api_key"</span> <span class="se">\</span>
+   -d <span class="s2">"request_body"</span> <span class="se">\</span>
+   <span class="s2">"https://cloudmc_endpoint/api/v1/services/stackpath/test-area/deliveryrules?siteId=f9dea588-d7ab-4f42-b6e6-4b85f273f3db"</span>
+</code></pre>
+<blockquote>
+<p>Request body example for creating a delivery rule:</p>
+</blockquote>
+<pre class="highlight javascript"><code><span class="p">{</span>
+ <span class="s2">"name"</span><span class="p">:</span> <span class="s2">"rule"</span><span class="p">,</span>
+  <span class="s2">"conditions"</span><span class="p">:</span> <span class="p">[</span>
+  <span class="p">{</span>
+    <span class="s2">"trigger"</span><span class="p">:</span> <span class="s2">"HEADER"</span><span class="p">,</span>
+    <span class="s2">"operator"</span><span class="p">:</span> <span class="s2">"MATCHES"</span><span class="p">,</span>
+    <span class="s2">"target"</span><span class="p">:</span> <span class="s2">"my-header"</span>
+  <span class="p">}],</span>
+  <span class="s2">"actions"</span><span class="p">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="s2">"actionType"</span><span class="p">:</span> <span class="s2">"REDIRECT"</span><span class="p">,</span>
+      <span class="s2">"redirectUrl"</span><span class="p">:</span> <span class="s2">"https://my-url.com"</span>
+    <span class="p">}]</span>
+<span class="p">}</span>
+</code></pre>
+<blockquote>
+<p>The above commands return a JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"taskId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"7135ae25-8488-4bc5-a289-285c84a00a84"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"taskStatus"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PENDING"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><code>POST /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/deliveryrules?siteId=<a href="#stackpath-sites">:siteId</a></code></p>
+
+<p>Delivery Rules which allow you to modify CDN settings based on a number of elements like URL, HTTP headers, and more.</p>
+
+<table><thead>
+<tr>
+<th>Query Params</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>siteId</code><br/><em>UUID</em></td>
+<td>The ID of the site for which to create the delivery rule. This parameter is required.</td>
+</tr>
+</tbody></table>
+
+<table><thead>
+<tr>
+<th>Required</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>name</code><br/><em>string</em></td>
+<td>The name of the delivery rule.</td>
+</tr>
+<tr>
+<td><code>conditions</code><br/><em>Array[<a href="#stackpath-condition">Condition</a>]</em></td>
+<td>At least one condition.</td>
+</tr>
+<tr>
+<td><code>actions</code><br/><em>Array[<a href="#stackpath-action">Action</a>]</em></td>
+<td>At least one action.</td>
+</tr>
+</tbody></table>
+<h4 id='stackpath-condition'>Condition</h4>
+<table><thead>
+<tr>
+<th>Required</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>trigger</code><br/><em>Enum</em></td>
+<td>Trigger for the condition. Possible values: <code>COOKIE</code>, <code>HEADER</code>, <code>HTTP_METHOD</code>, <code>STATUS_CODE</code>, and <code>URL</code>.</td>
+</tr>
+<tr>
+<td><code>operator</code><br/><em>Enum</em></td>
+<td>Operator for the condition. Possible values: <code>EQUALS</code>, <code>MATCHES</code>, and <code>MATCHES_REGULAR_EXPRESSION</code>.</td>
+</tr>
+<tr>
+<td><code>target</code><br/><em>String</em></td>
+<td>The target of the condition.</td>
+</tr>
+<tr>
+<td><code>httpMethods</code><br/><em>Array[Enum]</em></td>
+<td>HTTP methods for the condition. Possible values are: <code>GET</code>, <code>POST</code>, <code>PUT</code>, <code>DELETE</code>, <code>HEAD</code>, <code>PATCH</code>, and <code>OPTIONS</code>. This fields is only used when <code>trigger</code> is set to <code>HTTP_METHOD</code>.</td>
+</tr>
+</tbody></table>
+<h4 id='stackpath-action'>Action</h4>
+<p>The action attributes needed to be passed will vary depending on the condition being specified.</p>
+
+<table><thead>
+<tr>
+<th>Possible Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>actionType</code><br/><em>Enum</em></td>
+<td>The type of action. Possible values: <code>ADD_RESPONSE_HEADER</code>, <code>ADD_HEADER_TO_ORIGIN</code>,<code>ADD_HEADER_TO_CDN</code>, <code>NEVER_EXPIRE</code>, <code>DO_NOT_CACHE</code>, <code>CACHE</code>, <code>REDIRECT</code>, <code>HIDE_HEADER</code>, <code>MODIFY_HEADER</code>, <code>SIGN_URL</code>, and <code>BYPASS_CACHE</code>.</td>
+</tr>
+<tr>
+<td><code>responseHeaders</code><br/><em>Array</em></td>
+<td>Headers for the actions expressed as a key-value pair.</td>
+</tr>
+<tr>
+<td><code>originHeaders</code><br/><em>Array</em></td>
+<td>Headers for the actions expressed as a key-value pair.</td>
+</tr>
+<tr>
+<td><code>cdnHeaders</code><br/><em>Array</em></td>
+<td>Headers for the actions expressed as a key-value pair.</td>
+</tr>
+<tr>
+<td><code>cacheTtl</code><br/><em>Number</em></td>
+<td>Time to live of the cache.</td>
+</tr>
+<tr>
+<td><code>redirectUrl</code><br/><em>String</em></td>
+<td>The url to redirect to.</td>
+</tr>
+<tr>
+<td><code>headerPattern</code><br/><em>String</em></td>
+<td>The header to set the modifier in the response.</td>
+</tr>
+<tr>
+<td><code>passphrase</code><br/><em>String</em></td>
+<td>The passphrase for signing the url.</td>
+</tr>
+<tr>
+<td><code>passphraseField</code><br/><em>String</em></td>
+<td>The passphrase field for signing the url.</td>
+</tr>
+<tr>
+<td><code>md5TokenField</code><br/><em>String</em></td>
+<td>The MD5 token field for signing the url.</td>
+</tr>
+<tr>
+<td><code>ipAddressFilter</code><br/><em>String</em></td>
+<td>The ip address filter for signing the url.</td>
+</tr>
+<tr>
+<td><code>urlSignaturePathLength</code><br/><em>String</em></td>
+<td>The url signature path length for signing the url.</td>
 </tr>
 </tbody></table>
 
