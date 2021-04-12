@@ -57036,6 +57036,7 @@ A workload can be added without any `ports`. However, `ports.publicPort` and `po
 <p>Request body example:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"purgeType"</span><span class="p">:</span><span class="s2">"PATH"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"items"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
       </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//&lt;domain_name&gt;/path/to/file"</span><span class="p">,</span><span class="w">
@@ -57076,7 +57077,7 @@ A workload can be added without any `ports`. However, `ports.publicPort` and `po
 </tr>
 <tr>
 <td><code>items.url</code><br/><em>String</em></td>
-<td>The URL at which to delete content.</td>
+<td>The URL or path at which to delete content.</td>
 </tr>
 </tbody></table>
 
@@ -57086,6 +57087,10 @@ A workload can be added without any `ports`. However, `ports.publicPort` and `po
 <th>&nbsp;</th>
 </tr>
 </thead><tbody>
+<tr>
+<td><code>purgeType</code><br/><em>String</em></td>
+<td>The type of cache purge. Can be <code>URL</code> or <code>PATH</code>. Default value is <code>URL</code>.</td>
+</tr>
 <tr>
 <td><code>items.recursive</code><br/><em>Boolean</em></td>
 <td>Whether or not to recursively delete content from the CDN.</td>
