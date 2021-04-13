@@ -3456,6 +3456,9 @@
                                             <a href="#stackpath-create-a-certificate" class="toc-h5 toc-link" data-title="StackPath plugin">Create a certificate</a>
                                           </li>
                                           <li>
+                                            <a href="#stackpath-request-a-certificate" class="toc-h5 toc-link" data-title="StackPath plugin">Request a certificate</a>
+                                          </li>
+                                          <li>
                                             <a href="#stackpath-delete-a-certificate" class="toc-h5 toc-link" data-title="StackPath plugin">Delete a certificate</a>
                                           </li>
                                       </ul>
@@ -59205,7 +59208,90 @@ async function handleRequest(request) {
 </thead><tbody>
 <tr>
 <td><code>taskId</code> <br/><em>string</em></td>
-<td>The task id related to creation of the Certificate.</td>
+<td>The task id related to creation of the certificate.</td>
+</tr>
+<tr>
+<td><code>taskStatus</code> <br/><em>string</em></td>
+<td>The status of the operation.</td>
+</tr>
+</tbody></table>
+
+<!-------------------- REQUEST A CERTIFICATE -------------------->
+<h5 id='stackpath-request-a-certificate'>Request a certificate</h5><pre class="highlight shell tab-shell"><code>curl -X POST <span class="se">\</span>
+   -H <span class="s2">"MC-Api-Key: your_api_key"</span> <span class="se">\</span>
+   -d <span class="s2">"request_body"</span> <span class="se">\</span>
+   <span class="s2">"https://cloudmc_endpoint/api/v1/services/stackpath/test-area/certificates?operation=request&amp;siteId=f9dea588-d7ab-4f42-b6e6-4b85f273f3db"</span>
+</code></pre>
+<blockquote>
+<p>Request body example for requesting a certificate:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"hosts"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="s2">"domain"</span><span class="p">:</span><span class="w"> </span><span class="s2">"helloworld.com"</span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="s2">"domain"</span><span class="p">:</span><span class="w"> </span><span class="s2">"www.helloworld.com"</span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"verificationMethod"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DNS"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<blockquote>
+<p>The above commands return a JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"taskId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"7135ae25-8488-4bc5-a289-285c84a00a84"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"taskStatus"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PENDING"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><code>POST /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/certificates?operation=request&amp;siteId=<a href="#stackpath-sites">:siteId</a></code></p>
+
+<p>Request a certificate that will automatically be assigned to the site.</p>
+
+<table><thead>
+<tr>
+<th>Query Params</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>siteId</code><br/><em>UUID</em></td>
+<td>The ID of the site. This parameter is required.</td>
+</tr>
+</tbody></table>
+
+<table><thead>
+<tr>
+<th>Required</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>verificationMethod</code><br/><em>Enum</em></td>
+<td>The verification method used to validate a requested certificate on a site. Possible values are: <code>DNS</code> and <code>HTTP</code>.</td>
+</tr>
+</tbody></table>
+
+<table><thead>
+<tr>
+<th>Optional</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>hosts</code><br/><em>Array[string]</em></td>
+<td>A list of delivery domains that will be included as subject alternative names on the certificate. If no hosts are provided, all delivery domains on the site will be included with the first one in the list being used as the common name. If hosts are provided, the first entry will be used as the common name. If the first host in the list is over 63 characters the shortest host provided will be used as the common name.</td>
+</tr>
+</tbody></table>
+
+<p>The following attributes are returned as part of the response.</p>
+
+<table><thead>
+<tr>
+<th>Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>taskId</code> <br/><em>string</em></td>
+<td>The task id related to creation of the certificate.</td>
 </tr>
 <tr>
 <td><code>taskStatus</code> <br/><em>string</em></td>
