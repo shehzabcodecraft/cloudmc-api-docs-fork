@@ -3465,6 +3465,17 @@
                                   </li>
                               </ul>
                           </li>
+                          <li>
+                            <a href="#stackpath-predefined-edgerules" class="toc-h3 toc-link" data-title="StackPath plugin">Predefined EdgeRules</a>
+                              <ul class="toc-list-h4">
+                                  <li>
+                                    <a href="#stackpath-list-predefined-edgerules" class="toc-h4 toc-link" data-title="StackPath plugin">List predefined EdgeRules</a>
+                                  </li>
+                                  <li>
+                                    <a href="#stackpath-edit-a-predefined-edgerules" class="toc-h4 toc-link" data-title="StackPath plugin">Edit a predefined EdgeRules</a>
+                                  </li>
+                              </ul>
+                          </li>
                       </ul>
                   </li>
                   <li>
@@ -59343,6 +59354,155 @@ async function handleRequest(request) {
 <tr>
 <td><code>taskStatus</code> <br/><em>string</em></td>
 <td>The status of the operation.</td>
+</tr>
+</tbody></table>
+<h3 id='stackpath-predefined-edgerules'>Predefined EdgeRules</h3>
+<p>The predefined EdgeRules let you configure how StackPath responds to requests to your website. These predefined EdgeRules only work with domains that resolve to StackPath.</p>
+
+<!-------------------- LIST PREDEFINED EDGERULES -------------------->
+<h4 id='stackpath-list-predefined-edgerules'>List predefined EdgeRules</h4><pre class="highlight shell tab-shell"><code>curl -X GET <span class="se">\</span>
+   -H <span class="s2">"MC-Api-Key: your_api_key"</span> <span class="se">\</span>
+   <span class="s2">"https://cloudmc_endpoint/api/v1/services/stackpath/test-area/predefinededgerules/dcc2771d-a524-4f8c-a666-f699985d6961"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns a JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"allowEmptyReferrer"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"forceWwwEnabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c988cc62-24e7-4850-9a81-95f51af0a68e"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"pseudoStreamingEnabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"referrerList"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"cloudmc.io"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"saas.cloudmc.io"</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"referrerProtectionEnabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"robotsTxtEnabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"robotsTxtFile"</span><span class="p">:</span><span class="w"> </span><span class="s2">"User-agent: *</span><span class="se">\n</span><span class="s2">Disallow:"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"scopeId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"e9e48610-3ba6-471a-96f4-7cf18cb73455"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"stackId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1f259d02-db66-4a93-8402-a0725a00a02a"</span><span class="p">,</span><span class="w">
+
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><code>GET /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/predefinededgerules/<a href="#stackpath-site">:siteId</a></code></p>
+
+<p>Retrieve the configuration of all predefined EdgeRules in a given <a href="#administration-environments">environment</a> within a site.</p>
+
+<table><thead>
+<tr>
+<th>Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>allowEmptyReferrer</code><br/><em>boolean</em></td>
+<td>Whether or not empty referrer is allowed.</td>
+</tr>
+<tr>
+<td><code>forceWwwEnabled</code><br/><em>boolean</em></td>
+<td>Whether or not redirecting every request to a www subdomain is enabled.</td>
+</tr>
+<tr>
+<td><code>id</code><br/><em>UUID</em></td>
+<td>This ID is same as the siteId to which the predefined EdgeRules belong.</td>
+</tr>
+<tr>
+<td><code>pseudoStreamingEnabled</code><br/><em>boolean</em></td>
+<td>Whether or not seeking random locations within MP4 or FLV files without downloading the entire video is enabled.</td>
+</tr>
+<tr>
+<td><code>referrerList</code><br/><em>Array[string]</em></td>
+<td>The list of domains authorized to access content from the site&#39;s root scope. Wildcards can be used to specify multiple websites hosted on the same domain.</td>
+</tr>
+<tr>
+<td><code>referrerProtectionEnabled</code><br/><em>boolean</em></td>
+<td>Whether or not referrer protection is enabled. This rule is used to allow only requests whose referrer header matches a URL that you specified.</td>
+</tr>
+<tr>
+<td><code>robotsTxtEnabled</code><br/><em>boolean</em></td>
+<td>Whether or not custom robot.txt support is enabled. This rule is used to configure which pages or files search engine crawlers can or cannot index from the site.</td>
+</tr>
+<tr>
+<td><code>robotsTxtFile</code><br/><em>string</em></td>
+<td>This field represents the robots.txt file contents. <code>NOTE:</code> When you first enable the <code>robotsTxtEnabled</code> rule, by default, the robots.txt will populate with a rule to disallow all indexing for CDN content. Any change made with this rule will override the contents of the robots.txt file on origin server.</td>
+</tr>
+<tr>
+<td><code>scopeId</code><br/><em>UUID</em></td>
+<td>The ID of the CDN site&#39;s root scope that the predefined rules belongs to.</td>
+</tr>
+<tr>
+<td><code>stackId</code><br/><em>UUID</em></td>
+<td>The ID of the stack that the predefined rules belong to.</td>
+</tr>
+</tbody></table>
+
+<!-------------------- EDIT PREDEFINED EDGERULES  -------------------->
+<h4 id='stackpath-edit-a-predefined-edgerules'>Edit a predefined EdgeRules</h4><pre class="highlight shell tab-shell"><code>curl -X PATCH <span class="se">\</span>
+   -H <span class="s2">"MC-Api-Key: your_api_key"</span> <span class="se">\</span>
+   -d <span class="s2">"request_body"</span> <span class="se">\</span>
+   <span class="s2">"https://cloudmc_endpoint/api/v1/services/stackpath/test-area/predefinededgerules/dcc2771d-a524-4f8c-a666-f699985d6961"</span>
+</code></pre>
+<blockquote>
+<p>Request body example:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"allowEmptyReferrer"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"forceWwwEnabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"pseudoStreamingEnabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"referrerList"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="s2">"cloudmc.com"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"saas.cloudmc.com"</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="s2">"referrerProtectionEnabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"robotsTxtEnabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"robotsTxtFile"</span><span class="p">:</span><span class="w"> </span><span class="s2">"User-agent: *</span><span class="se">\n</span><span class="s2">Disallow:"</span><span class="p">,</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<blockquote>
+<p>The above commands return a JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"taskId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"7135ae25-8488-4bc5-a289-285c84a00a84"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"taskStatus"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PENDING"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><code>PATCH /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/predefinededgerules/<a href="#stackpath-sites">:siteId</a></code></p>
+
+<table><thead>
+<tr>
+<th>Optional</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>allowEmptyReferrer</code><br/><em>boolean</em></td>
+<td>Whether or not empty referrer is allowed.</td>
+</tr>
+<tr>
+<td><code>forceWwwEnabled</code><br/><em>boolean</em></td>
+<td>Whether or not redirecting every request to a www subdomain is enabled.</td>
+</tr>
+<tr>
+<td><code>pseudoStreamingEnabled</code><br/><em>boolean</em></td>
+<td>Whether or not seeking random locations within MP4 or FLV files without downloading the entire video is enabled.</td>
+</tr>
+<tr>
+<td><code>referrerList</code><br/><em>Array[string]</em></td>
+<td>The list of domains authorized to access content from the site&#39;s root scope. Wildcards can be used to specify multiple websites hosted on the same domain.</td>
+</tr>
+<tr>
+<td><code>referrerProtectionEnabled</code><br/><em>boolean</em></td>
+<td>Whether or not referrer protection is enabled. This rule is used to allow only requests whose referrer header matches a URL that you specified.</td>
+</tr>
+<tr>
+<td><code>robotsTxtEnabled</code><br/><em>boolean</em></td>
+<td>Whether or not custom robot.txt support is enabled.</td>
+</tr>
+<tr>
+<td><code>robotsTxtFile</code><br/><em>string</em></td>
+<td>This field represents the robots.txt file contents. <code>NOTE:</code> To update the <code>robotsTxtFile</code> content, the <code>robotsTxtEnabled</code> flag should be included in the request payload.</td>
 </tr>
 </tbody></table>
 <h2 id='stackpath-instances'>Instances</h2>
