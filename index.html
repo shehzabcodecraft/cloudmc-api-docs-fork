@@ -3379,6 +3379,23 @@
                               </ul>
                           </li>
                           <li>
+                            <a href="#stackpath-custom-rules" class="toc-h3 toc-link" data-title="StackPath plugin">Custom Rules</a>
+                              <ul class="toc-list-h4">
+                                  <li>
+                                    <a href="#stackpath-list-custom-rules" class="toc-h4 toc-link" data-title="StackPath plugin">List custom rules</a>
+                                  </li>
+                                  <li>
+                                    <a href="#stackpath-retrieve-a-custom-rule" class="toc-h4 toc-link" data-title="StackPath plugin">Retrieve a custom rule</a>
+                                  </li>
+                                  <li>
+                                    <a href="#stackpath-create-a-custom-rule" class="toc-h4 toc-link" data-title="StackPath plugin">Create a custom rule</a>
+                                  </li>
+                                  <li>
+                                    <a href="#stackpath-delete-a-custom-rule" class="toc-h4 toc-link" data-title="StackPath plugin">Delete a custom rule</a>
+                                  </li>
+                              </ul>
+                          </li>
+                          <li>
                             <a href="#stackpath-waf" class="toc-h3 toc-link" data-title="StackPath plugin">WAF</a>
                               <ul class="toc-list-h4">
                                   <li>
@@ -57460,6 +57477,500 @@ A workload can be added without any `ports`. However, `ports.publicPort` and `po
 <tr>
 <td><code>urlSignaturePathLength</code><br/><em>String</em></td>
 <td>The url signature path length for signing the url.</td>
+</tr>
+</tbody></table>
+<h3 id='stackpath-custom-rules'>Custom Rules</h3>
+<p>Manage custom rules used to control and limit access to your sites. </p>
+
+<!-------------------- LIST CUSTOM RULES -------------------->
+<h4 id='stackpath-list-custom-rules'>List custom rules</h4><pre class="highlight shell tab-shell"><code>curl -X GET <span class="se">\</span>
+   -H <span class="s2">"MC-Api-Key: your_api_key"</span> <span class="se">\</span>
+   <span class="s2">"https://cloudmc_endpoint/api/v1/services/stackpath/test-area/customrules?siteId=0a57855b-26d8-4e8f-8b77-429997c7c5fb"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns a JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1580676"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"stackId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"7fbea2c0-17d0-41df-b0b1-4d5c95cXXX"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"siteId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0a57855b-26d8-4e8f-8b77-429997c7c5fb"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"testrequestrate"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"notes"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test-note"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WAF"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"enabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"action"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BLOCK"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"actionDuration"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0s"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"statusCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FORBIDDEN_403"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"conditions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IP"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"operation"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EQUAL"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"120.1.1.1"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1580692"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"stackId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"7fbea2c0-17d0-41df-b0b1-4d5c95cXXX"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"siteId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0a57855b-26d8-4e8f-8b77-429997c7c5fb"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"testipwafrule"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"notes"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"REQUEST_RATE"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"enabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"action"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ALLOW"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"actionDuration"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0s"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"statusCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TOO_MANY_REQUESTS_429"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"nbRequest"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"duration"</span><span class="p">:</span><span class="w"> </span><span class="mi">60</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"pathRegExp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"httpMethods"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+      </span><span class="s2">"ipAddresses"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="s2">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"recordCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><code>GET /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/customrules?siteId=<a href="#stackpath-site">:siteId</a></code></p>
+
+<table><thead>
+<tr>
+<th>Query Params</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>siteId</code><br/><em>UUID</em></td>
+<td>The ID of the site for which the custom rule is applied to. This parameter is required.</td>
+</tr>
+</tbody></table>
+
+<table><thead>
+<tr>
+<th>Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code><br/><em>string</em></td>
+<td>The unique identifier for the rule.</td>
+</tr>
+<tr>
+<td><code>stackId</code><br/><em>UUID</em></td>
+<td>The ID of the stack for which the custom rule is applied to.</td>
+</tr>
+<tr>
+<td><code>siteId</code><br/><em>UUID</em></td>
+<td>The ID of the site for which the custom rule is applied to.</td>
+</tr>
+<tr>
+<td><code>name</code><br/><em>string</em></td>
+<td>The name of the rule.</td>
+</tr>
+<tr>
+<td><code>notes</code><br/><em>string</em></td>
+<td>The description notes of the rule.</td>
+</tr>
+<tr>
+<td><code>type</code><br/><em>string</em></td>
+<td>Type of custom rule. One of <code>REQUEST_RATE</code> or <code>WAF</code>. The fields returned are different based on the type, <code>REQUEST_RATE</code> will not return a list of conditions.</td>
+</tr>
+<tr>
+<td><code>enabled</code><br/><em>boolean</em></td>
+<td>Whether or not the rule is enabled.</td>
+</tr>
+<tr>
+<td><code>action</code><br/><em>string</em></td>
+<td>Action to be taken when the rule is met. Possible values are <code>ALLOW</code>, <code>BLOCK</code>, <code>CAPTCHA</code>,<code>HANDSHAKE</code> or <code>MONITOR</code>.</td>
+</tr>
+<tr>
+<td><code>actionDuration</code><br/><em>string</em></td>
+<td>How long a rule&#39;s block action will apply to subsequent requests in case of the action <code>BLOCK</code>. Format is a string with a integer followed by the unit (s for seconds, m for minutes and h for hours e.g. 30s). Default is <code>0s</code></td>
+</tr>
+<tr>
+<td><code>statusCode</code><br/><em>string</em></td>
+<td>A custom HTTP status code that the WAF returns if a rule blocks a request. Possible values are <code>FORBIDDEN_403</code> and <code>TOO_MANY_REQUESTS_429</code>. Default is <code>FORBIDDEN_403</code>.</td>
+</tr>
+<tr>
+<td><code>nbRequest</code><br/><em>long</em></td>
+<td>Number of dynamic page requests made for the rule to trigger. Only for rule of type <code>REQUEST_RATE</code>.</td>
+</tr>
+<tr>
+<td><code>duration</code><br/><em>long</em></td>
+<td>Number of seconds that the WAF measures incoming requests over for the rule to trigger. Only for rule of type <code>REQUEST_RATE</code>.</td>
+</tr>
+<tr>
+<td><code>pathRegExp</code><br/><em>string</em></td>
+<td>The regex expression present in the path for the rule to trigger. Only for rule of type <code>REQUEST_RATE</code>.</td>
+</tr>
+<tr>
+<td><code>httpMethods</code><br/><em>Array[string]</em></td>
+<td>List of HTTP methods that the rule will apply to. Only for rule of type <code>REQUEST_RATE</code>. Possible values are: <code>GET</code>, <code>POST</code>, <code>PUT</code>, <code>DELETE</code>, <code>HEAD</code>, <code>PATCH</code>, <code>OPTION</code>, <code>CONNECT</code>, <code>TRACE</code>.</td>
+</tr>
+<tr>
+<td><code>ipAddresses</code><br/><em>Array[string]</em></td>
+<td>List of IP addresses that the rule will apply to. Only for rule of type <code>REQUEST_RATE</code>.</td>
+</tr>
+<tr>
+<td><code>conditions</code><br/><em>Array[Object]</em></td>
+<td>The conditions required for the WAF engine to trigger the rule. All conditions must pass for the rule to trigger. Only for rule of type <code>WAF</code>.</td>
+</tr>
+<tr>
+<td><code>conditions.type</code><br/><em>string</em></td>
+<td>Type of condition, one of: <code>IP</code>, <code>IP_RANGE</code>, <code>URL</code>, <code>USER_AGENT</code>, <code>HEADER</code>, <code>HTTP_METHOD</code>, <code>FILE_EXTENSION</code>, <code>CONTENT_TYPE</code>, <code>COUNTRY</code> or <code>ORGANIZATION</code>.</td>
+</tr>
+<tr>
+<td><code>conditions.operation</code><br/><em>string</em></td>
+<td>Operation of the condition, one of: <ul><li><code>EQUAL</code>, <code>NOT_EQUAL</code> for all condition type except <code>IP_RANGE</code></li>, <li><code>CONTAINS</code>, <code>NOT_CONTAINS</code> for condition type <code>HEADER</code>, <code>URL</code> and <code>USER_AGENT</code></li><li><code>BETWEEN</code> or <code>NOT_BETWEEN</code> only for condition type <code>IP_RANGE</code></li></ul>.</td>
+</tr>
+<tr>
+<td><code>conditions.header</code><br/><em>string</em></td>
+<td>Value of the header. Only for condition of type <code>HEADER</code>.</td>
+</tr>
+<tr>
+<td><code>conditions.value</code><br/><em>string</em></td>
+<td>Value for which the condition holds.</td>
+</tr>
+<tr>
+<td><code>conditions.endValue</code><br/><em>string</em></td>
+<td>Second value of the condition. Only for condition of type <code>IP_RANGE</code>.</td>
+</tr>
+</tbody></table>
+
+<!-------------------- RETRIEVE A RULE -------------------->
+<h4 id='stackpath-retrieve-a-custom-rule'>Retrieve a custom rule</h4><pre class="highlight shell tab-shell"><code>curl -X GET <span class="se">\</span>
+   -H <span class="s2">"MC-Api-Key: your_api_key"</span> <span class="se">\</span>
+   <span class="s2">"https://cloudmc_endpoint/api/v1/services/stackpath/test-area/customrules/1580676?siteId=0a57855b-26d8-4e8f-8b77-429997c7c5fb"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns a JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1580676"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"stackId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"7fbea2c0-17d0-41df-b0b1-4d5c95cXXX"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"siteId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0a57855b-26d8-4e8f-8b77-429997c7c5fb"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"testrequestrate"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"notes"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test-note"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WAF"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"enabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"action"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BLOCK"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"actionDuration"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0s"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"statusCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FORBIDDEN_403"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"conditions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IP"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"operation"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EQUAL"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"120.1.1.1"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><code>GET /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/customrules/:id?siteId=<a href="#stackpath-site">:siteId</a></code></p>
+
+<table><thead>
+<tr>
+<th>Query Params</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>siteId</code><br/><em>UUID</em></td>
+<td>The ID of the site for which the custom rule is applied to. This parameter is required.</td>
+</tr>
+</tbody></table>
+
+<table><thead>
+<tr>
+<th>Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code><br/><em>string</em></td>
+<td>The unique identifier for the rule.</td>
+</tr>
+<tr>
+<td><code>stackId</code><br/><em>UUID</em></td>
+<td>The ID of the stack for which the custom rule is applied to.</td>
+</tr>
+<tr>
+<td><code>siteId</code><br/><em>UUID</em></td>
+<td>The ID of the site for which the custom rule is applied to.</td>
+</tr>
+<tr>
+<td><code>name</code><br/><em>string</em></td>
+<td>The name of the rule.</td>
+</tr>
+<tr>
+<td><code>notes</code><br/><em>string</em></td>
+<td>The description notes of the rule.</td>
+</tr>
+<tr>
+<td><code>type</code><br/><em>string</em></td>
+<td>Type of custom rule. One of <code>REQUEST_RATE</code> or <code>WAF</code>. The fields returned are different based on the type, <code>REQUEST_RATE</code> will not return a list of conditions.</td>
+</tr>
+<tr>
+<td><code>enabled</code><br/><em>boolean</em></td>
+<td>Whether or not the rule is enabled.</td>
+</tr>
+<tr>
+<td><code>action</code><br/><em>string</em></td>
+<td>Action to be taken when the rule is met. Possible values are <code>ALLOW</code>, <code>BLOCK</code>, <code>CAPTCHA</code>,<code>HANDSHAKE</code> or <code>MONITOR</code>.</td>
+</tr>
+<tr>
+<td><code>actionDuration</code><br/><em>string</em></td>
+<td>How long a rule&#39;s block action will apply to subsequent requests in case of the action <code>BLOCK</code>. Format is a string with a integer followed by the unit (s for seconds, m for minutes and h for hours e.g. 30s). Default is <code>0s</code></td>
+</tr>
+<tr>
+<td><code>statusCode</code><br/><em>string</em></td>
+<td>A custom HTTP status code that the WAF returns if a rule blocks a request. Possible values are <code>FORBIDDEN_403</code> and <code>TOO_MANY_REQUESTS_429</code>. Default is <code>FORBIDDEN_403</code>.</td>
+</tr>
+<tr>
+<td><code>nbRequest</code><br/><em>long</em></td>
+<td>Number of dynamic page requests made for the rule to trigger. Only for rule of type <code>REQUEST_RATE</code>.</td>
+</tr>
+<tr>
+<td><code>duration</code><br/><em>long</em></td>
+<td>Number of seconds that the WAF measures incoming requests over for the rule to trigger. Only for rule of type <code>REQUEST_RATE</code>.</td>
+</tr>
+<tr>
+<td><code>pathRegExp</code><br/><em>string</em></td>
+<td>The regex expression present in the path for the rule to trigger. Only for rule of type <code>REQUEST_RATE</code>.</td>
+</tr>
+<tr>
+<td><code>httpMethods</code><br/><em>Array[string]</em></td>
+<td>List of HTTP methods that the rule will apply to. Only for rule of type <code>REQUEST_RATE</code>. Possible values are: <code>GET</code>, <code>POST</code>, <code>PUT</code>, <code>DELETE</code>, <code>HEAD</code>, <code>PATCH</code>, <code>OPTION</code>, <code>CONNECT</code>, <code>TRACE</code>.</td>
+</tr>
+<tr>
+<td><code>ipAddresses</code><br/><em>Array[string]</em></td>
+<td>List of IP addresses that the rule will apply to. Only for rule of type <code>REQUEST_RATE</code>.</td>
+</tr>
+<tr>
+<td><code>conditions</code><br/><em>Array[Object]</em></td>
+<td>The conditions required for the WAF engine to trigger the rule. All conditions must pass for the rule to trigger. Only for rule of type <code>WAF</code>.</td>
+</tr>
+<tr>
+<td><code>conditions.type</code><br/><em>string</em></td>
+<td>Type of condition, one of: <code>IP</code>, <code>IP_RANGE</code>, <code>URL</code>, <code>USER_AGENT</code>, <code>HEADER</code>, <code>HTTP_METHOD</code>, <code>FILE_EXTENSION</code>, <code>CONTENT_TYPE</code>, <code>COUNTRY</code> or <code>ORGANIZATION</code>.</td>
+</tr>
+<tr>
+<td><code>conditions.operation</code><br/><em>string</em></td>
+<td>Operation of the condition, one of: <ul><li><code>EQUAL</code>, <code>NOT_EQUAL</code> for all condition type except <code>IP_RANGE</code></li>, <li><code>CONTAINS</code>, <code>NOT_CONTAINS</code> for condition type <code>HEADER</code>, <code>URL</code> and <code>USER_AGENT</code></li><li><code>BETWEEN</code> or <code>NOT_BETWEEN</code> only for condition type <code>IP_RANGE</code></li></ul>.</td>
+</tr>
+<tr>
+<td><code>conditions.header</code><br/><em>string</em></td>
+<td>Value of the header. Only for condition of type <code>HEADER</code>.</td>
+</tr>
+<tr>
+<td><code>conditions.value</code><br/><em>string</em></td>
+<td>Value for which the condition holds.</td>
+</tr>
+<tr>
+<td><code>conditions.endValue</code><br/><em>string</em></td>
+<td>Second value of the condition. Only for condition of type <code>IP_RANGE</code>.</td>
+</tr>
+</tbody></table>
+
+<!-------------------- CREATE A CUSTOM RULE -------------------->
+<h4 id='stackpath-create-a-custom-rule'>Create a custom rule</h4><pre class="highlight shell tab-shell"><code>curl -X POST <span class="se">\</span>
+    -H <span class="s2">"MC-Api-Key: your_api_key"</span> <span class="se">\</span>
+    -d <span class="s2">"request_body"</span> <span class="se">\</span>
+    <span class="s2">"https://cloudmc_endpoint/api/v1/services/stackpath/test-area/customrules?siteId=0a57855b-26d8-4e8f-8b77-429997c7c5fb"</span>
+</code></pre>
+<blockquote>
+<p>Request body example for a custom rule with conditions:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"firewall-allow"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"notes"</span><span class="p">:</span><span class="w"> </span><span class="s2">"some firewall note"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WAF"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"action"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BLOCK"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"actionDuration"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0s"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"statusCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FORBIDDEN_403"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"conditions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IP"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"operation"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EQUAL"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"120.1.1.1"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<blockquote>
+<p>Request body example for a custom role with request rate:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"firewall-deny"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"notes"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Deny rule"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"REQUEST_RATE"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"enabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"action"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BLOCK"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"actionDuration"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0s"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"statusCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TOO_MANY_REQUESTS_429"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"nbRequest"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"duration"</span><span class="p">:</span><span class="w"> </span><span class="mi">60</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"pathRegExp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"httpMethods"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"GET"</span><span class="p">],</span><span class="w">
+  </span><span class="s2">"ipAddresses"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"192.168.2.1"</span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<blockquote>
+<p>The above commands return a JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"taskId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"7135ae25-8488-4bc5-a289-285c84a00a84"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"taskStatus"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PENDING"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><code>POST /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/customrules?siteId=<a href="#stackpath-site">:siteId</a></code></p>
+
+<p>Create a custom rule for a site in a given <a href="#administration-environments">environment</a>.</p>
+
+<table><thead>
+<tr>
+<th>Query Params</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>siteId</code><br/><em>UUID</em></td>
+<td>The ID of the site for which the custom rule is applied to. This parameter is required.</td>
+</tr>
+</tbody></table>
+
+<table><thead>
+<tr>
+<th>Required</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>name</code><br/><em>string</em></td>
+<td>The name of the rule.</td>
+</tr>
+<tr>
+<td><code>type</code><br/><em>string</em></td>
+<td>Type of custom rule. One of <code>REQUEST_RATE</code> or <code>WAF</code>. The fields returned are different based on the type, <code>REQUEST_RATE</code> will not return a list of conditions.</td>
+</tr>
+<tr>
+<td><code>action</code><br/><em>string</em></td>
+<td>Action to be taken when the rule is met. Possible values are <code>ALLOW</code>, <code>BLOCK</code>, <code>CAPTCHA</code>,<code>HANDSHAKE</code> or <code>MONITOR</code>.</td>
+</tr>
+<tr>
+<td><code>nbRequest</code><br/><em>long</em></td>
+<td>Number of dynamic page requests made for the rule to trigger. Only for rule of type <code>REQUEST_RATE</code>.</td>
+</tr>
+<tr>
+<td><code>duration</code><br/><em>long</em></td>
+<td>Number of seconds that the WAF measures incoming requests over for the rule to trigger. Only for rule of type <code>REQUEST_RATE</code>.</td>
+</tr>
+<tr>
+<td><code>conditions</code><br/><em>Array[Object]</em></td>
+<td>The conditions required for the WAF engine to trigger the rule. All conditions must pass for the rule to trigger. Only for rule of type <code>WAF</code>.</td>
+</tr>
+<tr>
+<td><code>conditions.type</code><br/><em>string</em></td>
+<td>Type of condition, one of: <code>IP</code>, <code>IP_RANGE</code>, <code>URL</code>, <code>USER_AGENT</code>, <code>HEADER</code>, <code>HTTP_METHOD</code>, <code>FILE_EXTENSION</code>, <code>CONTENT_TYPE</code>, <code>COUNTRY</code> or <code>ORGANIZATION</code>.</td>
+</tr>
+<tr>
+<td><code>conditions.operation</code><br/><em>string</em></td>
+<td>Operation of the condition, one of: <ul><li><code>EQUAL</code>, <code>NOT_EQUAL</code> for all condition type except <code>IP_RANGE</code></li>, <li><code>CONTAINS</code>, <code>NOT_CONTAINS</code> for condition type <code>HEADER</code>, <code>URL</code> and <code>USER_AGENT</code></li><li><code>BETWEEN</code> or <code>NOT_BETWEEN</code> only for condition type <code>IP_RANGE</code></li></ul>.</td>
+</tr>
+<tr>
+<td><code>conditions.header</code><br/><em>string</em></td>
+<td>Value of the header. Only for condition of type <code>HEADER</code>.</td>
+</tr>
+<tr>
+<td><code>conditions.value</code><br/><em>string</em></td>
+<td>Value for which the condition holds.</td>
+</tr>
+<tr>
+<td><code>conditions.endValue</code><br/><em>string</em></td>
+<td>Second value of the condition. Only for condition of type <code>IP_RANGE</code>.</td>
+</tr>
+</tbody></table>
+
+<table><thead>
+<tr>
+<th>Optional</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>notes</code><br/><em>string</em></td>
+<td>The description notes of the rule.</td>
+</tr>
+<tr>
+<td><code>actionDuration</code><br/><em>string</em></td>
+<td>How long a rule&#39;s block action will apply to subsequent requests in case of the action <code>BLOCK</code>. Format is a string with a integer followed by the unit (s for seconds, m for minutes and h for hours e.g. 30s). Default is <code>0s</code></td>
+</tr>
+<tr>
+<td><code>statusCode</code><br/><em>string</em></td>
+<td>A custom HTTP status code that the WAF returns if a rule blocks a request. Possible values are <code>FORBIDDEN_403</code> and <code>TOO_MANY_REQUESTS_429</code>. Default is <code>FORBIDDEN_403</code>.</td>
+</tr>
+<tr>
+<td><code>pathRegExp</code><br/><em>string</em></td>
+<td>The regex expression that the path must match for the rule to trigger. Default is &#39;/&#39;. Only for rule of type <code>REQUEST_RATE</code>.</td>
+</tr>
+<tr>
+<td><code>httpMethods</code><br/><em>Array[string]</em></td>
+<td>List of HTTP methods that the rule will apply to. Only for rule of type <code>REQUEST_RATE</code>.</td>
+</tr>
+<tr>
+<td><code>ipAddresses</code><br/><em>Array[string]</em></td>
+<td>List of IP addresses that the rule will apply to. Only for rule of type <code>REQUEST_RATE</code>.</td>
+</tr>
+</tbody></table>
+
+<!-------------------- DELETE A CUSTOM RULE -------------------->
+<h4 id='stackpath-delete-a-custom-rule'>Delete a custom rule</h4><pre class="highlight shell tab-shell"><code>curl -X DELETE <span class="se">\</span>
+   -H <span class="s2">"MC-Api-Key: your_api_key"</span> <span class="se">\</span>
+   <span class="s2">"https://cloudmc_endpoint/api/v1/services/stackpath/test-area/customrules/1585477?siteId=1b1cd7e6-41ab-4e0f-a59a-5c4b89da1b36"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns a JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"taskId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c39f0c66-04a0-40cf-aa2e-485f50a27561"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"taskStatus"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SUCCESS"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><code>DELETE /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/customrules/:id?siteId=<a href="#stackpath-site">:siteId</a></code></p>
+
+<p>Delete a custom rule</p>
+
+<table><thead>
+<tr>
+<th>Query Params</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>siteId</code><br/><em>UUID</em></td>
+<td>The ID of the site for which to delete the custom rule. This parameter is required.</td>
+</tr>
+</tbody></table>
+
+<p>The following attributes are returned as part of the response.</p>
+
+<table><thead>
+<tr>
+<th>Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>taskId</code> <br/><em>string</em></td>
+<td>The task id related to the custom rule deletion.</td>
+</tr>
+<tr>
+<td><code>taskStatus</code> <br/><em>string</em></td>
+<td>The status of the operation.</td>
 </tr>
 </tbody></table>
 <h3 id='stackpath-waf'>WAF</h3>
