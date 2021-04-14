@@ -3393,6 +3393,12 @@
                                   <li>
                                     <a href="#stackpath-delete-a-custom-rule" class="toc-h4 toc-link" data-title="StackPath plugin">Delete a custom rule</a>
                                   </li>
+                                  <li>
+                                    <a href="#stackpath-enable-a-custom-rule" class="toc-h4 toc-link" data-title="StackPath plugin">Enable a custom rule</a>
+                                  </li>
+                                  <li>
+                                    <a href="#stackpath-disable-a-custom-rule" class="toc-h4 toc-link" data-title="StackPath plugin">Disable a custom rule</a>
+                                  </li>
                               </ul>
                           </li>
                           <li>
@@ -57808,7 +57814,6 @@ A workload can be added without any `ports`. However, `ports.publicPort` and `po
   </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"firewall-deny"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"notes"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Deny rule"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"REQUEST_RATE"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"enabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
   </span><span class="s2">"action"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BLOCK"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"actionDuration"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0s"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"statusCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TOO_MANY_REQUESTS_429"</span><span class="p">,</span><span class="w">
@@ -57967,6 +57972,98 @@ A workload can be added without any `ports`. However, `ports.publicPort` and `po
 <tr>
 <td><code>taskId</code> <br/><em>string</em></td>
 <td>The task id related to the custom rule deletion.</td>
+</tr>
+<tr>
+<td><code>taskStatus</code> <br/><em>string</em></td>
+<td>The status of the operation.</td>
+</tr>
+</tbody></table>
+
+<!-------------------- ENABLE A CUSTOM RULE -------------------->
+<h4 id='stackpath-enable-a-custom-rule'>Enable a custom rule</h4><pre class="highlight shell tab-shell"><code>curl -X POST <span class="se">\</span>
+   -H <span class="s2">"MC-Api-Key: your_api_key"</span> <span class="se">\</span>
+   <span class="s2">"https://cloudmc_endpoint/api/v1/services/stackpath/test-area/customrules/1585477?siteId=1b1cd7e6-41ab-4e0f-a59a-5c4b89da1b36&amp;operation=enable"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns a JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"taskId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"57fc8d89-6f13-451b-8b66-fcd96e1fedbd"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"taskStatus"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SUCCESS"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><code>POST /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/customrules/:id?siteId=<a href="#stackpath-site">:siteId</a>&amp;operation=enable</code></p>
+
+<table><thead>
+<tr>
+<th>Query Params</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>siteId</code><br/><em>UUID</em></td>
+<td>The ID of the site for which the rule belongs to. This parameter is required.</td>
+</tr>
+</tbody></table>
+
+<p>The following attributes are returned as part of the response.</p>
+
+<table><thead>
+<tr>
+<th>Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>taskId</code> <br/><em>string</em></td>
+<td>The task id related to the operation.</td>
+</tr>
+<tr>
+<td><code>taskStatus</code> <br/><em>string</em></td>
+<td>The status of the operation.</td>
+</tr>
+</tbody></table>
+
+<!-------------------- DISABLE A CUSTOM RULE -------------------->
+<h4 id='stackpath-disable-a-custom-rule'>Disable a custom rule</h4><pre class="highlight shell tab-shell"><code>curl -X POST <span class="se">\</span>
+   -H <span class="s2">"MC-Api-Key: your_api_key"</span> <span class="se">\</span>
+   <span class="s2">"https://cloudmc_endpoint/api/v1/services/stackpath/test-area/customrules/1585477?siteId=1b1cd7e6-41ab-4e0f-a59a-5c4b89da1b36&amp;operation=disable"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns a JSON structured like this:
+<code>json
+{
+  &quot;taskId&quot;: &quot;57fc8d89-6f13-451b-8b66-fcd96e1fedbd&quot;,
+  &quot;taskStatus&quot;: &quot;SUCCESS&quot;
+}
+</code></p>
+</blockquote>
+
+<p><code>POST /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/customrules/:id?siteId=<a href="#stackpath-site">:siteId</a>&amp;operation=disable</code></p>
+
+<table><thead>
+<tr>
+<th>Query Params</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>siteId</code><br/><em>UUID</em></td>
+<td>The ID of the site for which the rule belongs to. This parameter is required.</td>
+</tr>
+</tbody></table>
+
+<p>The following attributes are returned as part of the response.</p>
+
+<table><thead>
+<tr>
+<th>Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>taskId</code> <br/><em>string</em></td>
+<td>The task id related to the operation.</td>
 </tr>
 <tr>
 <td><code>taskStatus</code> <br/><em>string</em></td>
