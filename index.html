@@ -790,6 +790,25 @@
                           </li>
                       </ul>
                   </li>
+                  <li>
+                    <a href="#administration-billing" class="toc-h2 toc-link" data-title="Administration">Billing</a>
+                      <ul class="toc-list-h3">
+                          <li>
+                            <a href="#administration-billing-providers" class="toc-h3 toc-link" data-title="Administration">Billing providers</a>
+                              <ul class="toc-list-h4">
+                                  <li>
+                                    <a href="#administration-list-billing-providers" class="toc-h4 toc-link" data-title="Administration">List billing providers</a>
+                                  </li>
+                                  <li>
+                                    <a href="#administration-retrieve-a-billing-provider" class="toc-h4 toc-link" data-title="Administration">Retrieve a billing provider</a>
+                                  </li>
+                                  <li>
+                                    <a href="#administration-provider-type-configuration-attribute" class="toc-h4 toc-link" data-title="Administration">Provider type configuration attribute</a>
+                                  </li>
+                              </ul>
+                          </li>
+                      </ul>
+                  </li>
               </ul>
           </li>
           <li>            
@@ -15096,6 +15115,176 @@ curl <span class="s2">"https://cloudmc_endpoint/api/v1/activity_log/summary"</sp
 <tr>
 <td><code>serviceConnectionType</code><br/><em>string</em></td>
 <td>The type of the service connection the activity belongs to.</td>
+</tr>
+</tbody></table>
+<h2 id='administration-billing'>Billing</h2><h3 id='administration-billing-providers'>Billing providers</h3>
+<p>The billing providers are the different payment processing tools that can be used to charge organizations.</p>
+
+<!-------------------- LIST BILLING PROVIDERS -------------------->
+<h4 id='administration-list-billing-providers'>List billing providers</h4>
+<p><code>GET /billing_providers</code></p>
+
+<p>Retrieves a list of billing providers configured in the system.</p>
+<pre class="highlight shell tab-shell"><code><span class="c"># Retrieve billing providers list</span>
+curl <span class="s2">"https://cloudmc_endpoint/rest/billing_providers"</span> <span class="se">\</span>
+   -H <span class="s2">"MC-Api-Key: your_api_key"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns a JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"f26e66a4-755c-4867-b565-ad68aa515237"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"organization"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"23910576-d29f-4c14-b663-31d728ff49a5"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Chase Credit Card (Dev)"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CREDIT_CARD"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"providerType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"chaseCreditCard"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"createdDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-05-07T19:21:20Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"updatedDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-05-07T19:21:20Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"defaultForType"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"configurationAttributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"creditCards"</span><span class="p">:</span><span class="w"> </span><span class="s2">"American Express, MasterCard, Visa, Discover"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<table><thead>
+<tr>
+<th>Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code><br/><em>UUID</em></td>
+<td>The UUID of the billing provider.</td>
+</tr>
+<tr>
+<td><code>organization.id</code><br/><em>UUID</em></td>
+<td>UUID of the organization to which belongs the billing provider. This can only be a organization which is root or reseller.</td>
+</tr>
+<tr>
+<td><code>name</code><br/><em>Object</em></td>
+<td>The name object of the billing provider.</td>
+</tr>
+<tr>
+<td><code>type</code><br/><em>string</em></td>
+<td>The type of billing provider. Possible values are: <code>CREDIT_CARD</code>.</td>
+</tr>
+<tr>
+<td><code>providerType</code><br/><em>string</em></td>
+<td>The provider for the associated type.</td>
+</tr>
+<tr>
+<td><code>createdDate</code><br/><em>string</em></td>
+<td>The date the billing provider was created.</td>
+</tr>
+<tr>
+<td><code>updatedDate</code><br/><em>string</em></td>
+<td>The last date the billing provider was updated.</td>
+</tr>
+<tr>
+<td><code>defaultForType</code><br/><em>UUID</em></td>
+<td>If this billing provider is the default for the specified type.</td>
+</tr>
+<tr>
+<td><code>configurationAttributes</code><br/><em>Object</em></td>
+<td>The configuration attribute associated to the provider type. <a href="#administration-provider-type-configuration-attribute">See possible values</a></td>
+</tr>
+</tbody></table>
+
+<!-------------------- GET BILLING PROVIDER -------------------->
+<h4 id='administration-retrieve-a-billing-provider'>Retrieve a billing provider</h4>
+<p><code>GET /billing_providers/:id</code></p>
+
+<p>Retrieve a billing provider&#39;s details.</p>
+<pre class="highlight shell tab-shell"><code><span class="c"># Retrieve a billing provider's details</span>
+curl <span class="s2">"https://cloudmc_endpoint/rest/billing_providers/f26e66a4-755c-4867-b565-ad68aa515237"</span> <span class="se">\</span>
+   -H <span class="s2">"MC-Api-Key: your_api_key"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns a JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"f26e66a4-755c-4867-b565-ad68aa515237"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"organization"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"23910576-d29f-4c14-b663-31d728ff49a5"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Chase Credit Card (Dev)"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CREDIT_CARD"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"providerType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"chaseCreditCard"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"createdDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-05-07T19:21:20Z"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"updatedDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-05-07T19:21:20Z"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"defaultForType"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"configurationAttributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"creditCards"</span><span class="p">:</span><span class="w"> </span><span class="s2">"American Express, MasterCard, Visa, Discover"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<table><thead>
+<tr>
+<th>Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code><br/><em>UUID</em></td>
+<td>The UUID of the billing provider.</td>
+</tr>
+<tr>
+<td><code>organization.id</code><br/><em>UUID</em></td>
+<td>UUID of the organization to which belongs the billing provider. This can only be a organization which is root or reseller.</td>
+</tr>
+<tr>
+<td><code>name</code><br/><em>Object</em></td>
+<td>The name object of the billing provider.</td>
+</tr>
+<tr>
+<td><code>type</code><br/><em>string</em></td>
+<td>The type of billing provider. Possible values are: <code>CREDIT_CARD</code>.</td>
+</tr>
+<tr>
+<td><code>providerType</code><br/><em>string</em></td>
+<td>The provider for the associated type.</td>
+</tr>
+<tr>
+<td><code>createdDate</code><br/><em>string</em></td>
+<td>The date the billing provider was created.</td>
+</tr>
+<tr>
+<td><code>updatedDate</code><br/><em>string</em></td>
+<td>The last date the billing provider was updated.</td>
+</tr>
+<tr>
+<td><code>defaultForType</code><br/><em>UUID</em></td>
+<td>If this billing provider is the default for the specified type.</td>
+</tr>
+<tr>
+<td><code>configurationAttributes</code><br/><em>Object</em></td>
+<td>The configuration attribute associated to the provider type. <a href="#administration-provider-type-configuration-attribute">See possible values</a></td>
+</tr>
+</tbody></table>
+
+<!-------------------- PROVIDER TYPE ATTRIBUTES -------------------->
+<h4 id='administration-provider-type-configuration-attribute'>Provider type configuration attribute</h4>
+<p>Here are the attributes for the <code>CREDIT_CARD</code> providers.</p>
+
+<table><thead>
+<tr>
+<th>Provider</th>
+<th>Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>all</td>
+<td><code>creditCards</code><br/><em>string</em></td>
+<td>The type of credit card accepted. This is a comma separated field.</td>
 </tr>
 </tbody></table>
 <h1 id='cloudstack-plugin'>CloudStack plugin</h1>
@@ -55231,8 +55420,12 @@ If the secret <code>X-Account-Meta-Temp-URL-Key</code> key does not already exis
         </span><span class="s2">"/bin/sh -c </span><span class="se">\"</span><span class="s2">sleep 50</span><span class="se">\"</span><span class="s2">"</span><span class="w">
       </span><span class="p">],</span><span class="w">
       </span><span class="s2">"specs"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SP-1"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"persistenceStoragePath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/lib/data/newFolder"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"persistenceStorageSize"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"persistentStorages"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/lib/data/newFolder"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"size"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="p">}</span><span class="w">  
+      </span><span class="p">],</span><span class="w">
       </span><span class="s2">"deployments"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
         </span><span class="p">{</span><span class="w">
           </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"deployment-lax"</span><span class="p">,</span><span class="w">
@@ -55272,8 +55465,12 @@ If the secret <code>X-Account-Meta-Temp-URL-Key</code> key does not already exis
       </span><span class="s2">"addAnyCastIpAddress"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
       </span><span class="s2">"anycastIpAddress"</span><span class="p">:</span><span class="w"> </span><span class="s2">"None"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"firstBootSshKey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ssh-rsa..."</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"persistenceStorageSize"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"persistenceStoragePath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/var/lib/data"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"persistentStorages"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/lib/data/newFolder"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"size"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="p">}</span><span class="w">  
+      </span><span class="p">],</span><span class="w">
       </span><span class="s2">"deploymentName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"deployment-name"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"deploymentPops"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
         </span><span class="s2">"YYZ"</span><span class="w">
@@ -55403,11 +55600,15 @@ If the secret <code>X-Account-Meta-Temp-URL-Key</code> key does not already exis
 <td>Network interfaces to bind to the workload&#39;s instances.</td>
 </tr>
 <tr>
-<td><code>persistenceStoragePath</code><br/><em>string</em></td>
+<td><code>persistentStorages</code><br/><em>Array[Object]</em></td>
+<td>Persistent storage volumes used by the workload.</td>
+</tr>
+<tr>
+<td><code>persistentStorages.path</code><br/><em>string</em></td>
 <td>The path in an instance to mount a volume.</td>
 </tr>
 <tr>
-<td><code>persistenceStorageSize</code><br/><em>int</em></td>
+<td><code>persistentStorages.size</code><br/><em>int</em></td>
 <td>The size of the mounted volume (in GB).</td>
 </tr>
 <tr>
@@ -55488,8 +55689,12 @@ If the secret <code>X-Account-Meta-Temp-URL-Key</code> key does not already exis
       </span><span class="s2">"/bin/sh -c </span><span class="se">\"</span><span class="s2">sleep 50</span><span class="se">\"</span><span class="s2">"</span><span class="w">
     </span><span class="p">],</span><span class="w">
     </span><span class="s2">"specs"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SP-1"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"persistenceStoragePath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/lib/data/newFolder"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"persistenceStorageSize"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"persistentStorages"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/lib/data/newFolder"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"size"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="p">}</span><span class="w">  
+    </span><span class="p">],</span><span class="w">
     </span><span class="s2">"deployments"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
       </span><span class="p">{</span><span class="w">
         </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"deployment-lax"</span><span class="p">,</span><span class="w">
@@ -55630,11 +55835,15 @@ If the secret <code>X-Account-Meta-Temp-URL-Key</code> key does not already exis
 <td>Network interfaces to bind to the workload&#39;s instances.</td>
 </tr>
 <tr>
-<td><code>persistenceStoragePath</code><br/><em>string</em></td>
+<td><code>persistentStorages</code><br/><em>Array[Object]</em></td>
+<td>Persistent storage volumes used by the workload.</td>
+</tr>
+<tr>
+<td><code>persistentStorages.path</code><br/><em>string</em></td>
 <td>The path in an instance to mount a volume.</td>
 </tr>
 <tr>
-<td><code>persistenceStorageSize</code><br/><em>int</em></td>
+<td><code>persistentStorages.size</code><br/><em>int</em></td>
 <td>The size of the mounted volume (in GB).</td>
 </tr>
 <tr>
@@ -55699,8 +55908,12 @@ If the secret <code>X-Account-Meta-Temp-URL-Key</code> key does not already exis
   </span><span class="p">],</span><span class="w">
   </span><span class="s2">"firstBootSshKey"</span><span class="p">:</span><span class="s2">"ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDcYr9OnzsDfYVW2I1kX/iYJ0mPG490bI5mbxbOAKPLMuWLguxRohX804j1XbwZJ+Sna+9rSfxaYA8vgd1MoYX10l9cnMLx/MMbYp4ZquauN4pGY3WoDeCqsTss3VUMW+7RFBILpU3SJTlDV02FI36D3IXb4A8XymCyU3KC99XXTfTQsuKC+WFRMsTWtklrasqCVd5yEG90i/aJc6A3TZGOYgPFNEeVYvNDaJmIkb3y4FfShoBIMgZRt0ay7SvWZUvyfvyNmK5W9ePdhZZ58R+7tQNmCzjQ4v0suWRuGJ/XL3+03w3HEsDdQx+noL+R+qAjoNFwc0spBBhJK+Q4ADqr nothing@gmail.com </span><span class="se">\n</span><span class="s2">ssh-rsa..."</span><span class="p">,</span><span class="w">
   </span><span class="s2">"specs"</span><span class="p">:</span><span class="s2">"SP-1"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"persistenceStoragePath"</span><span class="p">:</span><span class="s2">"/lib/data/newFolder"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"persistenceStorageSize"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"persistentStorages"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/lib/data/newFolder"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"size"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
   </span><span class="s2">"deployments"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
       </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"deployment-name"</span><span class="p">,</span><span class="w">
@@ -55728,8 +55941,12 @@ If the secret <code>X-Account-Meta-Temp-URL-Key</code> key does not already exis
     </span><span class="p">}</span><span class="w">
   </span><span class="p">],</span><span class="w">
   </span><span class="s2">"specs"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SP-1"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"persistenceStoragePath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/lib/data/newFolder"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"persistenceStorageSize"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"persistentStorages"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/lib/data/newFolder"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"size"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="p">}</span><span class="w">  
+  </span><span class="p">],</span><span class="w">
   </span><span class="s2">"commands"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="s2">"/bin/sh -c </span><span class="se">\"</span><span class="s2">sleep 50</span><span class="se">\"</span><span class="s2">"</span><span class="w">
   </span><span class="p">],</span><span class="w">
@@ -55886,11 +56103,15 @@ If the secret <code>X-Account-Meta-Temp-URL-Key</code> key does not already exis
 <td>A list of environment variables. Only applicable to workloads of <code>type</code> &#39;CONTAINER&#39;.</td>
 </tr>
 <tr>
-<td><code>persistenceStoragePath</code><br/><em>string</em></td>
+<td><code>persistentStorages</code><br/><em>Array[Object]</em></td>
+<td>Persistent storage volumes used by the workload.</td>
+</tr>
+<tr>
+<td><code>persistentStorages.path</code><br/><em>string</em></td>
 <td>The path in an instance to mount a volume.</td>
 </tr>
 <tr>
-<td><code>persistenceStorageSize</code><br/><em>int</em></td>
+<td><code>persistentStorages.size</code><br/><em>int</em></td>
 <td>The size of the mounted volume (in GB).</td>
 </tr>
 <tr>
