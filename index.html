@@ -805,6 +805,9 @@
                                   <li>
                                     <a href="#administration-provider-type-configuration-attribute" class="toc-h4 toc-link" data-title="Administration">Provider type configuration attribute</a>
                                   </li>
+                                  <li>
+                                    <a href="#administration-delete-a-billing-provider" class="toc-h4 toc-link" data-title="Administration">Delete a billing provider</a>
+                                  </li>
                               </ul>
                           </li>
                       </ul>
@@ -4367,6 +4370,7 @@ curl <span class="s2">"https://cloudmc_endpoint/api/v1/organizations"</span> <sp
          </span><span class="s2">"billableStartDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-08-15T12:00:00.000Z"</span><span class="p">,</span><span class="w">
          </span><span class="s2">"billingDay"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
          </span><span class="s2">"isBillable"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"billingMode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CREDIT_CARD"</span><span class="p">,</span><span class="w">
          </span><span class="s2">"isReseller"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
          </span><span class="s2">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"a-tag"</span><span class="p">],</span><span class="w">
          </span><span class="s2">"parent"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -4428,6 +4432,10 @@ curl <span class="s2">"https://cloudmc_endpoint/api/v1/organizations"</span> <sp
 <tr>
 <td><code>isBillable</code><br/><em>boolean</em></td>
 <td>If the organization is billable this values is true, false otherwise.</td>
+</tr>
+<tr>
+<td><code>billingMode</code><br/><em>enum</em></td>
+<td>The billing mode of the organization. It could be either &quot;MANUAL&quot; or &quot;CREDIT_CARD&quot;. Default value is &quot;MANUAL&quot;.</td>
 </tr>
 <tr>
 <td><code>tags</code><br/><em>Array[string]</em></td>
@@ -4503,6 +4511,7 @@ curl <span class="s2">"https://cloudmc_endpoint/api/v1/organizations/03bc22bd-ad
       </span><span class="s2">"billableStartDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-08-15T12:00:00.000Z"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"billingDay"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
       </span><span class="s2">"isBillable"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"billingMode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CREDIT_CARD"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"isReseller"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
       </span><span class="s2">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"a-tag"</span><span class="p">],</span><span class="w">
       </span><span class="s2">"parent"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -4563,6 +4572,10 @@ curl <span class="s2">"https://cloudmc_endpoint/api/v1/organizations/03bc22bd-ad
 <tr>
 <td><code>isBillable</code><br/><em>boolean</em></td>
 <td>If the organization is billable this values is true, false otherwise.</td>
+</tr>
+<tr>
+<td><code>billingMode</code><br/><em>enum</em></td>
+<td>The billing mode of the organization. It could be either &quot;MANUAL&quot; or &quot;CREDIT_CARD&quot;. Default value is &quot;MANUAL&quot;.</td>
 </tr>
 <tr>
 <td><code>tags</code><br/><em>Array[string]</em></td>
@@ -4679,6 +4692,10 @@ curl -X POST <span class="s2">"https://cloudmc_endpoint/api/v1/organizations"</s
 <td><code>billingDay</code><br/><em>int</em></td>
 <td>The billing day of the organization. Must be between 1 and 28 (inclusive), the default value is 1.</td>
 </tr>
+<tr>
+<td><code>billingMode</code><br/><em>enum</em></td>
+<td>The billing mode of the organization. It could be either &quot;MANUAL&quot; or &quot;CREDIT_CARD&quot;. Default value is &quot;MANUAL&quot;.</td>
+</tr>
 </tbody></table>
 
 <p>The responses&#39; <code>data</code> field contains the created <a href="#administration-organizations">organization</a> with its <code>id</code>.</p>
@@ -4756,6 +4773,10 @@ curl -X PUT <span class="s2">"https://cloudmc_endpoint/api/v1/organizations/03bc
 <tr>
 <td><code>billingDay</code><br/><em>int</em></td>
 <td>The billing day of the organization. Must be between 1 and 28 (inclusive), the default value is 1.</td>
+</tr>
+<tr>
+<td><code>billingMode</code><br/><em>enum</em></td>
+<td>The billing mode of the organization. It could be either &quot;MANUAL&quot; or &quot;CREDIT_CARD&quot;. Default value is &quot;MANUAL&quot;.</td>
 </tr>
 </tbody></table>
 
@@ -15287,6 +15308,16 @@ curl <span class="s2">"https://cloudmc_endpoint/rest/billing_providers/f26e66a4-
 <td>The type of credit card accepted. This is a comma separated field.</td>
 </tr>
 </tbody></table>
+
+<!-------------------- DELETE BILLING PROVIDER -------------------->
+<h4 id='administration-delete-a-billing-provider'>Delete a billing provider</h4>
+<p><code>DELETE /billing_providers/:id</code></p>
+<pre class="highlight shell tab-shell"><code>curl --request DELETE <span class="se">\</span>
+  --url https://cloudmc_endpoint/rest/billing_providers/f9a2b02b-7d67-4910-8353-c4bfcbdeaa7e <span class="se">\</span>
+  --header <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  --header <span class="s2">"Mc-Api-Key: your_api_key"</span> 
+</code></pre>
+<p>Delete a billing provider.</p>
 <h1 id='cloudstack-plugin'>CloudStack plugin</h1>
 <p>The CloudStack plugin provides endpoints for carrying out operations on CloudMC compute and networking entities. While each operation has its own validation and required fields, all operations need to specify the service code and environment in which they should be carried out. The following example URL describes how to specify this information for all entities.</p>
 
