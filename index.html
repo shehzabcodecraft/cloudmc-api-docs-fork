@@ -823,6 +823,12 @@
                                     <a href="#administration-retrieve-a-billing-provider" class="toc-h4 toc-link" data-title="Administration">Retrieve a billing provider</a>
                                   </li>
                                   <li>
+                                    <a href="#administration-create-a-billing-provider" class="toc-h4 toc-link" data-title="Administration">Create a billing provider</a>
+                                  </li>
+                                  <li>
+                                    <a href="#administration-update-billing-provider" class="toc-h4 toc-link" data-title="Administration">Update billing provider</a>
+                                  </li>
+                                  <li>
                                     <a href="#administration-provider-type-configuration-attribute" class="toc-h4 toc-link" data-title="Administration">Provider type configuration attribute</a>
                                   </li>
                                   <li>
@@ -15413,7 +15419,7 @@ curl <span class="s2">"https://cloudmc_endpoint/rest/billing_providers"</span> <
       </span><span class="s2">"updatedDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-05-07T19:21:20Z"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"defaultForType"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
       </span><span class="s2">"configurationAttributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"creditCards"</span><span class="p">:</span><span class="w"> </span><span class="s2">"American Express, MasterCard, Visa, Discover"</span><span class="w">
+        </span><span class="s2">"creditCards"</span><span class="p">:</span><span class="w"> </span><span class="s2">"American Express,Mastercard,Visa,Discover"</span><span class="w">
       </span><span class="p">}</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
@@ -15434,8 +15440,8 @@ curl <span class="s2">"https://cloudmc_endpoint/rest/billing_providers"</span> <
 <td>UUID of the organization to which belongs the billing provider. This can only be a organization which is root or reseller.</td>
 </tr>
 <tr>
-<td><code>name</code><br/><em>Object</em></td>
-<td>The name object of the billing provider.</td>
+<td><code>name</code><br/><em>string</em></td>
+<td>The name of the billing provider object.</td>
 </tr>
 <tr>
 <td><code>type</code><br/><em>string</em></td>
@@ -15454,7 +15460,7 @@ curl <span class="s2">"https://cloudmc_endpoint/rest/billing_providers"</span> <
 <td>The last date the billing provider was updated.</td>
 </tr>
 <tr>
-<td><code>defaultForType</code><br/><em>UUID</em></td>
+<td><code>defaultForType</code><br/><em>boolean</em></td>
 <td>If this billing provider is the default for the specified type.</td>
 </tr>
 <tr>
@@ -15488,7 +15494,7 @@ curl <span class="s2">"https://cloudmc_endpoint/rest/billing_providers/f26e66a4-
     </span><span class="s2">"updatedDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-05-07T19:21:20Z"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"defaultForType"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
     </span><span class="s2">"configurationAttributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"creditCards"</span><span class="p">:</span><span class="w"> </span><span class="s2">"American Express, MasterCard, Visa, Discover"</span><span class="w">
+      </span><span class="s2">"creditCards"</span><span class="p">:</span><span class="w"> </span><span class="s2">"American Express,Mastercard,Visa,Discover"</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -15508,8 +15514,8 @@ curl <span class="s2">"https://cloudmc_endpoint/rest/billing_providers/f26e66a4-
 <td>UUID of the organization to which belongs the billing provider. This can only be a organization which is root or reseller.</td>
 </tr>
 <tr>
-<td><code>name</code><br/><em>Object</em></td>
-<td>The name object of the billing provider.</td>
+<td><code>name</code><br/><em>string</em></td>
+<td>The name of the billing provider object.</td>
 </tr>
 <tr>
 <td><code>type</code><br/><em>string</em></td>
@@ -15528,12 +15534,184 @@ curl <span class="s2">"https://cloudmc_endpoint/rest/billing_providers/f26e66a4-
 <td>The last date the billing provider was updated.</td>
 </tr>
 <tr>
-<td><code>defaultForType</code><br/><em>UUID</em></td>
+<td><code>defaultForType</code><br/><em>boolean</em></td>
 <td>If this billing provider is the default for the specified type.</td>
 </tr>
 <tr>
 <td><code>configurationAttributes</code><br/><em>Object</em></td>
 <td>The configuration attribute associated to the provider type. <a href="#administration-provider-type-configuration-attribute">See possible values</a></td>
+</tr>
+</tbody></table>
+
+<!-------------------- CREATE BILLING PROVIDER -------------------->
+<h4 id='administration-create-a-billing-provider'>Create a billing provider</h4>
+<p><code>POST /billing_providers</code></p>
+
+<p>Create a new billing provider.</p>
+<pre class="highlight shell tab-shell"><code><span class="c"># Creates a new billing provider</span>
+curl -X POST <span class="s2">"https://cloudmc_endpoint/rest/billing_providers"</span> <span class="se">\</span>
+   -H <span class="s2">"MC-Api-Key: your_api_key"</span>
+</code></pre>
+<blockquote>
+<p>Request body example:</p>
+</blockquote>
+<pre class="highlight javascript"><code><span class="p">{</span>
+  <span class="s2">"name"</span><span class="p">:</span> <span class="s2">"Chase Credit Card (Dev)"</span><span class="p">,</span>
+  <span class="s2">"organization"</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s2">"id"</span><span class="p">:</span> <span class="s2">"23910576-d29f-4c14-b663-31d728ff49a5"</span>
+  <span class="p">},</span>
+  <span class="s2">"type"</span><span class="p">:</span> <span class="s2">"CREDIT_CARD"</span><span class="p">,</span>
+  <span class="s2">"providerType"</span><span class="p">:</span> <span class="s2">"chaseCreditCard"</span><span class="p">,</span>
+  <span class="s2">"defaultForType"</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+  <span class="s2">"configurationAttributes"</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s2">"creditCards"</span><span class="p">:</span> <span class="s2">"Visa, Mastercard, American Express, Discover"</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+<blockquote>
+<p>The above command return JSON structured like this:</p>
+</blockquote>
+<pre class="highlight javascript"><code><span class="p">{</span>
+  <span class="s2">"data"</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s2">"createdDate"</span><span class="p">:</span> <span class="s2">"2021-05-17T19:59:33.387453Z"</span><span class="p">,</span>
+    <span class="s2">"organization"</span><span class="p">:</span> <span class="p">{</span>
+      <span class="s2">"id"</span><span class="p">:</span> <span class="s2">"23910576-d29f-4c14-b663-31d728ff49a5"</span>
+    <span class="p">},</span>
+    <span class="s2">"name"</span><span class="p">:</span> <span class="s2">"testing API"</span><span class="p">,</span>
+    <span class="s2">"configurationAttributes"</span><span class="p">:</span> <span class="p">{</span>
+      <span class="s2">"creditCards"</span><span class="p">:</span> <span class="s2">"Visa, Mastercard, American Express, Discover"</span>
+    <span class="p">},</span>
+    <span class="s2">"defaultForType"</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+    <span class="s2">"id"</span><span class="p">:</span> <span class="s2">"8db7cd13-b309-4fb9-b022-1632dbd165d0"</span><span class="p">,</span>
+    <span class="s2">"updatedDate"</span><span class="p">:</span> <span class="s2">"2021-05-17T19:59:33.387477Z"</span><span class="p">,</span>
+    <span class="s2">"type"</span><span class="p">:</span> <span class="s2">"CREDIT_CARD"</span><span class="p">,</span>
+    <span class="s2">"providerType"</span><span class="p">:</span> <span class="s2">"chaseCreditCard"</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+<table><thead>
+<tr>
+<th>Required</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>name</code><br/><em>string</em></td>
+<td>The name of the billing provider object.</td>
+</tr>
+<tr>
+<td><code>organization.id</code><br/><em>UUID</em></td>
+<td>UUID of the organization to which belongs the billing provider. This can only be a organization which is root or reseller.</td>
+</tr>
+<tr>
+<td><code>type</code><br/><em>string</em></td>
+<td>The type of billing provider. Possible values are: <code>CREDIT_CARD</code>.</td>
+</tr>
+<tr>
+<td><code>providerType</code><br/><em>string</em></td>
+<td>The provider for the associated type.</td>
+</tr>
+<tr>
+<td><code>configurationAttributes</code><br/><em>Object</em></td>
+<td>The configuration attribute associated to the provider type. <a href="#administration-provider-type-configuration-attribute">See possible values</a></td>
+</tr>
+</tbody></table>
+
+<table><thead>
+<tr>
+<th>Optional</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>defaultForType</code><br/><em>UUID</em></td>
+<td>If this billing provider is the default for the specified type.</td>
+</tr>
+</tbody></table>
+
+<!-------------------- UPDATE BILLING PROVIDER -------------------->
+<h4 id='administration-update-billing-provider'>Update billing provider</h4>
+<p><code>PUT /billing_providers/:id</code></p>
+
+<p>Update an existing billing provider.</p>
+<pre class="highlight shell tab-shell"><code><span class="c"># Updates an existing billing provider</span>
+curl -X PUT <span class="s2">"https://cloudmc_endpoint/rest/billing_providers/c84cfe41-929b-47c9-bde4-b55a10bd2774"</span> <span class="se">\</span>
+   -H <span class="s2">"MC-Api-Key: your_api_key"</span>
+</code></pre>
+<blockquote>
+<p>Request body example:</p>
+</blockquote>
+<pre class="highlight javascript"><code><span class="p">{</span>
+  <span class="s2">"name"</span><span class="p">:</span> <span class="s2">"Chase Credit Card (Dev)"</span><span class="p">,</span>
+  <span class="s2">"organization"</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s2">"id"</span><span class="p">:</span> <span class="s2">"23910576-d29f-4c14-b663-31d728ff49a5"</span>
+  <span class="p">},</span>
+  <span class="s2">"type"</span><span class="p">:</span> <span class="s2">"CREDIT_CARD"</span><span class="p">,</span>
+  <span class="s2">"providerType"</span><span class="p">:</span> <span class="s2">"chaseCreditCard"</span><span class="p">,</span>
+  <span class="s2">"defaultForType"</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+  <span class="s2">"configurationAttributes"</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s2">"creditCards"</span><span class="p">:</span> <span class="s2">"Visa, Mastercard, American Express, Discover"</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+<blockquote>
+<p>The above command return JSON structured like this:</p>
+</blockquote>
+<pre class="highlight javascript"><code><span class="p">{</span>
+  <span class="s2">"data"</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s2">"createdDate"</span><span class="p">:</span> <span class="s2">"2021-05-17T20:32:07Z"</span><span class="p">,</span>
+    <span class="s2">"organization"</span><span class="p">:</span> <span class="p">{</span>
+      <span class="s2">"id"</span><span class="p">:</span> <span class="s2">"23910576-d29f-4c14-b663-31d728ff49a5"</span>
+    <span class="p">},</span>
+    <span class="s2">"name"</span><span class="p">:</span> <span class="s2">"Chase Credit Card (Dev)"</span><span class="p">,</span>
+    <span class="s2">"configurationAttributes"</span><span class="p">:</span> <span class="p">{</span>
+      <span class="s2">"creditCards"</span><span class="p">:</span> <span class="s2">"Visa, Mastercard, American Express"</span>
+    <span class="p">},</span>
+    <span class="s2">"defaultForType"</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+    <span class="s2">"id"</span><span class="p">:</span> <span class="s2">"c84cfe41-929b-47c9-bde4-b55a10bd2774"</span><span class="p">,</span>
+    <span class="s2">"updatedDate"</span><span class="p">:</span> <span class="s2">"2021-05-17T21:09:49Z"</span><span class="p">,</span>
+    <span class="s2">"type"</span><span class="p">:</span> <span class="s2">"CREDIT_CARD"</span><span class="p">,</span>
+    <span class="s2">"providerType"</span><span class="p">:</span> <span class="s2">"chaseCreditCard"</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+<table><thead>
+<tr>
+<th>Required</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>name</code><br/><em>string</em></td>
+<td>The name of the billing provider object.</td>
+</tr>
+<tr>
+<td><code>organization.id</code><br/><em>UUID</em></td>
+<td>UUID of the organization to which belongs the billing provider. This can only be a organization which is root or reseller.</td>
+</tr>
+<tr>
+<td><code>type</code><br/><em>string</em></td>
+<td>The type of billing provider. Possible values are: <code>CREDIT_CARD</code>.</td>
+</tr>
+<tr>
+<td><code>providerType</code><br/><em>string</em></td>
+<td>The provider for the associated type.</td>
+</tr>
+<tr>
+<td><code>configurationAttributes</code><br/><em>Object</em></td>
+<td>The configuration attribute associated to the provider type. <a href="#administration-provider-type-configuration-attribute">See possible values</a></td>
+</tr>
+</tbody></table>
+
+<table><thead>
+<tr>
+<th>Optional</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>defaultForType</code><br/><em>boolean</em></td>
+<td>If this billing provider is the default for the specified type.</td>
 </tr>
 </tbody></table>
 
@@ -15551,7 +15729,52 @@ curl <span class="s2">"https://cloudmc_endpoint/rest/billing_providers/f26e66a4-
 <tr>
 <td>all</td>
 <td><code>creditCards</code><br/><em>string</em></td>
-<td>The type of credit card accepted. This is a comma separated field.</td>
+<td>The type of credit card accepted. This is a comma separated field. Possible values are &#39;Visa&#39;, &#39;Mastercard&#39;, &#39;American Express&#39;, &#39;Discover.</td>
+</tr>
+<tr>
+<td>chaseCreditCard</td>
+<td><code>hostname</code><br/><em>string</em></td>
+<td>Hosted payment hostname.</td>
+</tr>
+<tr>
+<td>chaseCreditCard</td>
+<td><code>secureId</code><br/><em>string</em></td>
+<td>Unique value identifying the client’s Hosted Payment account.</td>
+</tr>
+<tr>
+<td>chaseCreditCard</td>
+<td><code>secureToken</code><br/><em>string</em></td>
+<td>Unique value associated with Hosted Payment account.</td>
+</tr>
+<tr>
+<td>chaseCreditCard</td>
+<td><code>cssURL</code><br/><em>string</em></td>
+<td>Sets the URL of the CSS file used to style the payment form. This value overrides the URL set in the Hosted Payment Page Admin screen.</td>
+</tr>
+<tr>
+<td>chaseCreditCard</td>
+<td><code>orbitalHostname</code><br/><em>string</em></td>
+<td>Orbital API hostname.</td>
+</tr>
+<tr>
+<td>chaseCreditCard</td>
+<td><code>orbitalUsername</code><br/><em>string</em></td>
+<td>Orbital Connection Username set up on Orbital Gateway.</td>
+</tr>
+<tr>
+<td>chaseCreditCard</td>
+<td><code>orbitalPassword</code><br/><em>string</em></td>
+<td>Orbital Connection Password used in conjunction with Orbital Username.</td>
+</tr>
+<tr>
+<td>chaseCreditCard</td>
+<td><code>orbitalMerchantTerminal</code><br/><em>string</em></td>
+<td>Orbital API merchant terminal ID.</td>
+</tr>
+<tr>
+<td>chaseCreditCard</td>
+<td><code>orbitalMerchantBin</code><br/><em>string</em></td>
+<td>Orbital API merchant BIN number.</td>
 </tr>
 </tbody></table>
 
