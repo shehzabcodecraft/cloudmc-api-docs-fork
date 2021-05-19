@@ -838,6 +838,26 @@
                           </li>
                       </ul>
                   </li>
+                  <li>
+                    <a href="#administration-custom-navigation" class="toc-h2 toc-link" data-title="Administration">Custom navigation</a>
+                      <ul class="toc-list-h3">
+                          <li>
+                            <a href="#administration-list-custom-navigation" class="toc-h3 toc-link" data-title="Administration">List custom navigation</a>
+                          </li>
+                          <li>
+                            <a href="#administration-get-custom-navigation" class="toc-h3 toc-link" data-title="Administration">Get custom navigation</a>
+                          </li>
+                          <li>
+                            <a href="#administration-create-custom-navigation" class="toc-h3 toc-link" data-title="Administration">Create custom navigation</a>
+                          </li>
+                          <li>
+                            <a href="#administration-update-custom-navigation" class="toc-h3 toc-link" data-title="Administration">Update custom navigation</a>
+                          </li>
+                          <li>
+                            <a href="#administration-delete-custom-navigation" class="toc-h3 toc-link" data-title="Administration">Delete custom navigation</a>
+                          </li>
+                      </ul>
+                  </li>
               </ul>
           </li>
           <li>            
@@ -15787,6 +15807,417 @@ curl -X PUT <span class="s2">"https://cloudmc_endpoint/rest/billing_providers/c8
   --header <span class="s2">"Mc-Api-Key: your_api_key"</span> 
 </code></pre>
 <p>Delete a billing provider.</p>
+<h2 id='administration-custom-navigation'>Custom navigation</h2>
+<p>Custom navigation API allows to customize the navigation per-reseller. Most notably it allows to customize what tabs are shown to a user in the main menu.</p>
+
+<!-------------------- List CUSTOM NAV -------------------->
+<h3 id='administration-list-custom-navigation'>List custom navigation</h3>
+<p><code>GET /custom_navigation</code></p>
+<pre class="highlight shell tab-shell"><code>
+curl --request GET <span class="se">\</span>
+  --url http://cloudmc_endpoint/rest/navigation/:id <span class="se">\</span>
+  --header <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+  --header <span class="s1">'Mc-Api-Key: your_api_key'</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"reseller"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c869e848-6fb3-4850-af3d-42c5666f2c78"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"f8663571-1d84-4d48-bb86-d4e2a14ea9f9"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"enabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>Retrieves a list of custom navigations. Since there is only one custom navigation per reseller this list will either be of length 1 or 0.</p>
+
+<table><thead>
+<tr>
+<th>Query Params</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>organization_id</code><br/><em>UUID</em></td>
+<td>Return only the custom navigation for the provided organization id. If not provided, will default to the calling user&#39;s organization. Must be a reseller organization.</td>
+</tr>
+</tbody></table>
+
+<table><thead>
+<tr>
+<th>Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code><br/><em>UUID</em></td>
+<td>The custom navigations&#39;s id.</td>
+</tr>
+<tr>
+<td><code>reseller.id</code><br/><em>UUID</em></td>
+<td>The organization id that the custom field belongs to.</td>
+</tr>
+<tr>
+<td><code>enabled</code><br/><em>boolean</em></td>
+<td>Whether not custom navigation is enabled on the reseller.</td>
+</tr>
+</tbody></table>
+
+<!-------------------- Get CUSTOM NAV -------------------->
+<h3 id='administration-get-custom-navigation'>Get custom navigation</h3>
+<p><code>GET /custom_navigation/:id</code></p>
+<pre class="highlight shell tab-shell"><code>
+curl --request GET <span class="se">\</span>
+  --url http://cloudmc_endpoint/rest/navigation/f8663571-1d84-4d48-bb86-d4e2a14ea9f9 <span class="se">\</span>
+  --header <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+  --header <span class="s1">'Mc-Api-Key: your_api_key'</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"reseller"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c869e848-6fb3-4850-af3d-42c5666f2c78"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"tabs"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"en"</span><span class="p">:</span><span class="w"> </span><span class="s2">"system en"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"fr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"system fr"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"rank"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"e4f527bf-9de6-4055-9ede-6949d01156f9"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"tag"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"en"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tag en"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"fr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tag fr"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SYSTEM"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/users"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"en"</span><span class="p">:</span><span class="w"> </span><span class="s2">"system en"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"fr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sytem fr"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"rank"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"125e296a-ae59-4cd7-8d5b-0cf354cbb1cc"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"COMING_SOON"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"f8663571-1d84-4d48-bb86-d4e2a14ea9f9"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"enabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>Retrieves a detailed custom navigation by id.</p>
+
+<table><thead>
+<tr>
+<th>Query Params</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>organization_id</code><br/><em>UUID</em></td>
+<td>Return only the custom navigation for the provided organization id. If not provided, will default to the calling user&#39;s organization. Must be a reseller organization.</td>
+</tr>
+</tbody></table>
+
+<table><thead>
+<tr>
+<th>Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code><br/><em>UUID</em></td>
+<td>The custom navigations&#39;s id.</td>
+</tr>
+<tr>
+<td><code>reseller.id</code><br/><em>UUID</em></td>
+<td>The organization id that the custom field belongs to.</td>
+</tr>
+<tr>
+<td><code>enabled</code><br/><em>boolean</em></td>
+<td>Whether not custom navigation is enabled on the reseller.</td>
+</tr>
+<tr>
+<td><code>tabs</code><br/><em>Array[Object]</em></td>
+<td>List of tabs, the the order they should be displayed in a the menu.</td>
+</tr>
+<tr>
+<td><code>tabs.name</code><br/><em>Object</em></td>
+<td>Mapped object containing the tab name in different languages.</td>
+</tr>
+<tr>
+<td><code>tabs.tooltip</code><br/><em>Object</em></td>
+<td>Mapped object containing the tab&#39;s tooltip name in different languages.</td>
+</tr>
+<tr>
+<td><code>tabs.tag</code><br/><em>Object</em></td>
+<td>Mapped object containing the tab&#39;s tag name in different languages.</td>
+</tr>
+<tr>
+<td><code>tabs.rank</code><br/><em>int</em></td>
+<td>The order in which the tab will be displayed in the menu.</td>
+</tr>
+<tr>
+<td><code>tabs.type</code><br/><em>String</em></td>
+<td>Valid values are <code>SERVICE</code>, <code>SYSTEM</code> and <code>COMING_SOON</code>.</td>
+</tr>
+<tr>
+<td><code>tabs.icon</code><br/><em>String</em></td>
+<td>A string representing a css icon class.</td>
+</tr>
+<tr>
+<td><code>tabs.serviceConnection</code><br/><em>UUID</em></td>
+<td>The service connection id for a tab of type <code>SERVICE</code>.</td>
+</tr>
+<tr>
+<td><code>tabs.workspace</code><br/><em>String</em></td>
+<td>The workspace name for a tab of type <code>SERVICE</code>.</td>
+</tr>
+<tr>
+<td><code>tabs.key</code><br/><em>String</em></td>
+<td>The view key for a tab of type <code>SYSTEM</code>.</td>
+</tr>
+</tbody></table>
+
+<!-------------------- Create CUSTOM NAV -------------------->
+<h3 id='administration-create-custom-navigation'>Create custom navigation</h3>
+<p><code>POST /custom_navigation</code></p>
+<pre class="highlight shell tab-shell"><code>  --request POST <span class="se">\</span>
+  --url http://cloudmc_endpoint/rest/navigation <span class="se">\</span>
+  --header <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+  --header <span class="s1">'Mc-Api-Key: your_api_key'</span> <span class="se">\</span>
+  --data <span class="s1">'{
+  "enabled": true,
+  "reseller": {
+    "id": "c869e848-6fb3-4850-af3d-42c5666f2c78"
+  },
+  "tabs": [
+    {
+      "type": "SYSTEM",
+      "key": "users",
+      "name": {
+        "en": "Users",
+        "fr": "Usagers"
+      }
+    },
+    {
+      "type": "COMING_SOON",
+      "name": {
+        "en": "hot new feature",
+        "fr": "hot new feature fr"
+      }
+    }
+  ]
+}'</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"reseller"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c869e848-6fb3-4850-af3d-42c5666f2c78"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"tabs"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"en"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Users"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"fr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Usagers"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"rank"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d95a83ed-ba25-432b-94c9-9d59e82f8284"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SYSTEM"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"users"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"en"</span><span class="p">:</span><span class="w"> </span><span class="s2">"hot new feature"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"fr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"hot new feature fr"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"rank"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cb36c538-6f6b-47af-bfa8-daad56ce58ed"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"COMING_SOON"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"e80adf4d-5401-4cff-b393-93a7f10f4d71"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"enabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<table><thead>
+<tr>
+<th>Optional</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>reseller.id</code><br/><em>UUID</em></td>
+<td>The organization id that the custom field belongs to. If not provided defaults to caller&#39;s organization.</td>
+</tr>
+<tr>
+<td><code>enabled</code><br/><em>boolean</em></td>
+<td>Whether not custom navigation is enabled on the reseller. Defaults to false.</td>
+</tr>
+<tr>
+<td><code>tabs</code><br/><em>Array[Object]</em></td>
+<td>List of tabs, in the order they should be displayed in the menu.</td>
+</tr>
+<tr>
+<td><code>tabs.type</code><br/><em>Object</em></td>
+<td><em>Required</em> in tab object. Valid values are <code>SERVICE</code>, <code>SYSTEM</code> and <code>COMING_SOON</code>.</td>
+</tr>
+<tr>
+<td><code>tabs.name</code><br/><em>Object</em></td>
+<td><em>Required</em> in tab object. Mapped object containing the tab name in different languages. Need to specify all languages for target reseller&#39;s branding.</td>
+</tr>
+<tr>
+<td><code>tabs.tooltip</code><br/><em>Object</em></td>
+<td>Mapped object containing the tab&#39;s tooltip name in different languages. Need to specify all languages for target reseller&#39;s branding.</td>
+</tr>
+<tr>
+<td><code>tabs.tag</code><br/><em>Object</em></td>
+<td>Mapped object containing the tab&#39;s tag name in different languages. Need to specify all languages for target reseller&#39;s branding.</td>
+</tr>
+<tr>
+<td><code>tabs.icon</code><br/><em>String</em></td>
+<td>A string representing a css icon class.</td>
+</tr>
+<tr>
+<td><code>tabs.serviceConnection</code><br/><em>UUID</em></td>
+<td><em>Required</em> if type <code>SERVICE</code>. The service connection id for a tab of type <code>SERVICE</code>.</td>
+</tr>
+<tr>
+<td><code>tabs.workspace</code><br/><em>String</em></td>
+<td><em>Required</em> if type <code>SERVICE</code>. The workspace name for a tab of type <code>SERVICE</code>.</td>
+</tr>
+<tr>
+<td><code>tabs.key</code><br/><em>String</em></td>
+<td><em>Required</em> if type <code>SYSTEM</code>. The view key for a tab of type <code>SYSTEM</code>.</td>
+</tr>
+</tbody></table>
+
+<!-------------------- Update CUSTOM NAV -------------------->
+<h3 id='administration-update-custom-navigation'>Update custom navigation</h3>
+<p><code>PUT /custom_navigation/:id</code></p>
+<pre class="highlight shell tab-shell"><code>curl --request PUT <span class="se">\</span>
+  --url http://cloudmc_endpoint/rest/navigation/e80adf4d-5401-4cff-b393-93a7f10f4d71 <span class="se">\</span>
+  --header <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+  --header <span class="s1">'Mc-Api-Key: your_api_key'</span> <span class="se">\</span>
+  --data <span class="s1">'{
+    "id": "e80adf4d-5401-4cff-b393-93a7f10f4d71",
+    "reseller": {
+        "id": "c869e848-6fb3-4850-af3d-42c5666f2c78"
+    },
+    "enabled": false,
+    "tabs": []
+}'</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"reseller"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c869e848-6fb3-4850-af3d-42c5666f2c78"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"tabs"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"e80adf4d-5401-4cff-b393-93a7f10f4d71"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"enabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>Update a custom navigation.</p>
+
+<table><thead>
+<tr>
+<th>Required</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code><br/><em>UUID</em></td>
+<td>The id of the custom navigation. Cannot be changed.</td>
+</tr>
+<tr>
+<td><code>reseller.id</code><br/><em>UUID</em></td>
+<td>The organization id that the custom field belongs to. If not provided defaults to caller&#39;s organization.</td>
+</tr>
+</tbody></table>
+
+<table><thead>
+<tr>
+<th>Optional</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>enabled</code><br/><em>boolean</em></td>
+<td>Whether not custom navigation is enabled on the reseller. Defaults to false.</td>
+</tr>
+<tr>
+<td><code>tabs</code><br/><em>Array[Object]</em></td>
+<td>List of tabs, in the order they should be displayed in a the menu. Replaces all tabs currently set on the object.</td>
+</tr>
+<tr>
+<td><code>tabs.type</code><br/><em>Object</em></td>
+<td><em>Required</em> in tab object. Valid values are <code>SERVICE</code>, <code>SYSTEM</code> and <code>COMING_SOON</code>.</td>
+</tr>
+<tr>
+<td><code>tabs.name</code><br/><em>Object</em></td>
+<td><em>Required</em> in tab object. Mapped object containing the tab name in different languages. Need to specify all languages for target reseller&#39;s branding.</td>
+</tr>
+<tr>
+<td><code>tabs.tooltip</code><br/><em>Object</em></td>
+<td>Mapped object containing the tab&#39;s tooltip name in different languages. Need to specify all languages for target reseller&#39;s branding.</td>
+</tr>
+<tr>
+<td><code>tabs.tag</code><br/><em>Object</em></td>
+<td>Mapped object containing the tab&#39;s tag name in different languages. Need to specify all languages for target reseller&#39;s branding.</td>
+</tr>
+<tr>
+<td><code>tabs.icon</code><br/><em>String</em></td>
+<td>A string representing a css icon class.</td>
+</tr>
+<tr>
+<td><code>tabs.serviceConnection</code><br/><em>UUID</em></td>
+<td><em>Required</em> if type <code>SERVICE</code>. The service connection id for a tab of type <code>SERVICE</code>.</td>
+</tr>
+<tr>
+<td><code>tabs.workspace</code><br/><em>String</em></td>
+<td><em>Required</em> if type <code>SERVICE</code>. The workspace name for a tab of type <code>SERVICE</code>.</td>
+</tr>
+<tr>
+<td><code>tabs.key</code><br/><em>String</em></td>
+<td><em>Required</em> if type <code>SYSTEM</code>. The view key for a tab of type <code>SYSTEM</code>.</td>
+</tr>
+</tbody></table>
+
+<!-------------------- Delete CUSTOM NAV -------------------->
+<h3 id='administration-delete-custom-navigation'>Delete custom navigation</h3>
+<p><code>DELETE /custom_navigation/:id</code></p>
+<pre class="highlight shell tab-shell"><code>curl --request DELETE <span class="se">\</span>
+  --url http://cloudmc_endpoint/rest/navigation/e80adf4d-5401-4cff-b393-93a7f10f4d71 <span class="se">\</span>
+  --header <span class="s1">'Mc-Api-Key: you_api_key'</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"taskId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"96bb7528-dc19-48b5-b713-9e55c7664aaf"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"taskStatus"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SUCCESS"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>Delete&#39;s a custom navigation configuration.</p>
 <h1 id='cloudstack-plugin'>CloudStack plugin</h1>
 <p>The CloudStack plugin provides endpoints for carrying out operations on CloudMC compute and networking entities. While each operation has its own validation and required fields, all operations need to specify the service code and environment in which they should be carried out. The following example URL describes how to specify this information for all entities.</p>
 
