@@ -327,6 +327,12 @@
                           <li>
                             <a href="#administration-get-identity-providers" class="toc-h3 toc-link" data-title="Administration">Get identity providers</a>
                           </li>
+                          <li>
+                            <a href="#administration-get-billing-information" class="toc-h3 toc-link" data-title="Administration">Get billing information</a>
+                          </li>
+                          <li>
+                            <a href="#administration-clear-credit-card-information" class="toc-h3 toc-link" data-title="Administration">Clear credit card information</a>
+                          </li>
                       </ul>
                   </li>
                   <li>
@@ -5423,7 +5429,7 @@ curl -X POST <span class="s2">"https://cloudmc_endpoint/api/v1/organizations/03b
 
 <!-------------------- GET IDENTITY PROVIDERS -------------------->
 <h3 id='administration-get-identity-providers'>Get identity providers</h3>
-<p><code>GET /organizations/organization_id/identity_providers</code></p>
+<p><code>GET /organizations/:organization_id/identity_providers</code></p>
 
 <p>Retrieve the identity providers for the organization.</p>
 <pre class="highlight shell tab-shell"><code><span class="c"># Retrieve the organization's identity providers</span>
@@ -5491,7 +5497,112 @@ curl <span class="s2">"https://cloudmc_endpoint/api/v1/organizations/87895f43-51
 <td>If provided, this integer sorts identity providers on the Login page in ascending order.</td>
 </tr>
 </tbody></table>
-<h2 id='administration-users'>Users</h2>
+
+<!-------------------- GET BILLING -------------------->
+<h3 id='administration-get-billing-information'>Get billing information</h3>
+<p><code>GET /organizations/:organization_id/billing_info</code></p>
+
+<p>Retrieve the billing information for an organization.</p>
+<pre class="highlight shell tab-shell"><code><span class="c"># Retrieve the organization's billing information</span>
+curl <span class="s2">"https://cloudmc_endpoint/api/v1/organizations/87895f43-51c1-43cc-b987-7e301bf5b86a/billing_info"</span> <span class="se">\</span>
+   -H <span class="s2">"MC-Api-Key: your_api_key"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns a JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"23910576-d29f-4c14-b663-31d728ff49a5"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"organization"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"23910576-d29f-4c14-b663-31d728ff49a5"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"billingProvider"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"f26e66a4-755c-4867-b565-ad68aa515237"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"cardType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mastercard"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"cardMaskedNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"************1234"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"cardName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John Doe"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"cardExp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0124"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"billingAddressLineOne"</span><span class="p">:</span><span class="w"> </span><span class="s2">"555 SomeStree"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"billingAddressLineTwo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"App #2"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"billingAddressCity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SomeCity"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"billingAddressProvince"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NY"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"billingAddressPostalCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"555555"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"billingAddressCountry"</span><span class="p">:</span><span class="w"> </span><span class="s2">"US"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<table><thead>
+<tr>
+<th>Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code><br/><em>UUID</em></td>
+<td>The id of the billing information.</td>
+</tr>
+<tr>
+<td><code>organization</code><br/><em><a href="#administration-organizations">Organization</a></em></td>
+<td>The organization to which belongs the billing information.</td>
+</tr>
+<tr>
+<td><code>billingProvider</code><br/><em><a href="#administration-billing-providers">BillingProvier</a></em></td>
+<td>The billing provider associated to the credit card.</td>
+</tr>
+<tr>
+<td><code>cardType</code><br/><em>string</em></td>
+<td>The credit card type.</td>
+</tr>
+<tr>
+<td><code>cardMaskedNumber</code><br/><em>string</em></td>
+<td>The credit card masked number.</td>
+</tr>
+<tr>
+<td><code>cardName</code><br/><em>string</em></td>
+<td>The name on the credit card</td>
+</tr>
+<tr>
+<td><code>cardExp</code><br/><em>string</em></td>
+<td>The credit card expiration (&#39;mmyy&#39; format)</td>
+</tr>
+<tr>
+<td><code>billingAddressLineOne</code><br/><em>string</em></td>
+<td>The address line 1 of the billing address.</td>
+</tr>
+<tr>
+<td><code>billingAddressLineTwo</code><br/><em>string</em></td>
+<td>The address line 2 of the billing address.</td>
+</tr>
+<tr>
+<td><code>billingAddressCity</code><br/><em>string</em></td>
+<td>The city of the billing address.</td>
+</tr>
+<tr>
+<td><code>billingAddressProvince</code><br/><em>string</em></td>
+<td>The province or state code (2 letters) of the billing address.</td>
+</tr>
+<tr>
+<td><code>billingAddressPostalCode</code><br/><em>string</em></td>
+<td>The postal/zip code of the billing address.</td>
+</tr>
+<tr>
+<td><code>billingAddressCountry</code><br/><em>string</em></td>
+<td>The country code (ISO 2 or 3 letter code) of the billing address</td>
+</tr>
+</tbody></table>
+
+<!-------------------- DELETE CREDIT CARD -------------------->
+<h3 id='administration-clear-credit-card-information'>Clear credit card information</h3>
+<p><code>DELETE /organizations/:organization_id/billing_info</code></p>
+
+<p>Delete the billing information for an organization. Only accessible to system operator.</p>
+
+<p>Returns an HTTP status code 200, with an empty response body.</p>
+<pre class="highlight shell tab-shell"><code><span class="c"># Retrieve the organization's billing information</span>
+curl -X DELETE <span class="s2">"https://cloudmc_endpoint/api/v1/organizations/87895f43-51c1-43cc-b987-7e301bf5b86a/billing_info"</span> <span class="se">\</span>
+   -H <span class="s2">"MC-Api-Key: your_api_key"</span>
+</code></pre><h2 id='administration-users'>Users</h2>
 <p>A user account allows users to authenticate to an <a href="#administration-organizations">organization</a> and to have access to the resources in it. You can restrict user access to the system and environments by assigning them specific <a href="#administration-roles">roles</a>. Additionally, every user is given an API key which is needed to use our APIs. All operations done by users are persisted and can be accessed through the activity log.</p>
 
 <!-------------------- LIST USERS -------------------->
