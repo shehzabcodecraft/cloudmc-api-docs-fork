@@ -15946,7 +15946,7 @@ curl -X PUT <span class="s2">"https://cloudmc_endpoint/rest/billing_providers/c8
 
 <!-------------------- List CUSTOM NAV -------------------->
 <h3 id='administration-list-custom-navigation'>List custom navigation</h3>
-<p><code>GET /custom_navigation</code></p>
+<p><code>GET /navigation</code></p>
 <pre class="highlight shell tab-shell"><code>
 curl --request GET <span class="se">\</span>
   --url http://cloudmc_endpoint/rest/navigation/:id <span class="se">\</span>
@@ -16004,7 +16004,7 @@ curl --request GET <span class="se">\</span>
 
 <!-------------------- Get CUSTOM NAV -------------------->
 <h3 id='administration-get-custom-navigation'>Get custom navigation</h3>
-<p><code>GET /custom_navigation/:id</code></p>
+<p><code>GET /navigation/:id</code></p>
 <pre class="highlight shell tab-shell"><code>
 curl --request GET <span class="se">\</span>
   --url http://cloudmc_endpoint/rest/navigation/f8663571-1d84-4d48-bb86-d4e2a14ea9f9 <span class="se">\</span>
@@ -16129,7 +16129,7 @@ curl --request GET <span class="se">\</span>
 
 <!-------------------- Create CUSTOM NAV -------------------->
 <h3 id='administration-create-custom-navigation'>Create custom navigation</h3>
-<p><code>POST /custom_navigation</code></p>
+<p><code>POST /navigation</code></p>
 <pre class="highlight shell tab-shell"><code>  --request POST <span class="se">\</span>
   --url http://cloudmc_endpoint/rest/navigation <span class="se">\</span>
   --header <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
@@ -16250,7 +16250,7 @@ curl --request GET <span class="se">\</span>
 
 <!-------------------- Update CUSTOM NAV -------------------->
 <h3 id='administration-update-custom-navigation'>Update custom navigation</h3>
-<p><code>PUT /custom_navigation/:id</code></p>
+<p><code>PUT /navigation/:id</code></p>
 <pre class="highlight shell tab-shell"><code>curl --request PUT <span class="se">\</span>
   --url http://cloudmc_endpoint/rest/navigation/e80adf4d-5401-4cff-b393-93a7f10f4d71 <span class="se">\</span>
   --header <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
@@ -16350,7 +16350,7 @@ curl --request GET <span class="se">\</span>
 
 <!-------------------- Delete CUSTOM NAV -------------------->
 <h3 id='administration-delete-custom-navigation'>Delete custom navigation</h3>
-<p><code>DELETE /custom_navigation/:id</code></p>
+<p><code>DELETE /navigation/:id</code></p>
 <pre class="highlight shell tab-shell"><code>curl --request DELETE <span class="se">\</span>
   --url http://cloudmc_endpoint/rest/navigation/e80adf4d-5401-4cff-b393-93a7f10f4d71 <span class="se">\</span>
   --header <span class="s1">'Mc-Api-Key: you_api_key'</span>
