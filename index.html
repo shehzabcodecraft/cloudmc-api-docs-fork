@@ -15962,6 +15962,7 @@ curl --request GET <span class="se">\</span>
       </span><span class="s2">"reseller"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c869e848-6fb3-4850-af3d-42c5666f2c78"</span><span class="w">
       </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"alwaysShowOrgPicker"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
       </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"f8663571-1d84-4d48-bb86-d4e2a14ea9f9"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"enabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
     </span><span class="p">}</span><span class="w">
@@ -15999,6 +16000,10 @@ curl --request GET <span class="se">\</span>
 <tr>
 <td><code>enabled</code><br/><em>boolean</em></td>
 <td>Whether not custom navigation is enabled on the reseller.</td>
+</tr>
+<tr>
+<td><code>alwaysShowOrgPicker</code><br/><em>boolean</em></td>
+<td>Whether or not to always show the organization picker in the sidebar, even when the user has access to only a single organization.</td>
 </tr>
 </tbody></table>
 
@@ -16044,6 +16049,7 @@ curl --request GET <span class="se">\</span>
         </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"COMING_SOON"</span><span class="w">
       </span><span class="p">}</span><span class="w">
     </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"alwaysShowOrgPicker"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
     </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"f8663571-1d84-4d48-bb86-d4e2a14ea9f9"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"enabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
   </span><span class="p">}</span><span class="w">
@@ -16080,6 +16086,10 @@ curl --request GET <span class="se">\</span>
 <tr>
 <td><code>enabled</code><br/><em>boolean</em></td>
 <td>Whether not custom navigation is enabled on the reseller.</td>
+</tr>
+<tr>
+<td><code>alwaysShowOrgPicker</code><br/><em>boolean</em></td>
+<td>Whether or not to always show the organization picker in the sidebar, even when the user has access to only a single organization.</td>
 </tr>
 <tr>
 <td><code>tabs</code><br/><em>Array[Object]</em></td>
@@ -16187,6 +16197,7 @@ curl --request GET <span class="se">\</span>
         </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"COMING_SOON"</span><span class="w">
       </span><span class="p">}</span><span class="w">
     </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"alwaysShowOrgPicker"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
     </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"e80adf4d-5401-4cff-b393-93a7f10f4d71"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"enabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
   </span><span class="p">}</span><span class="w">
@@ -16205,6 +16216,10 @@ curl --request GET <span class="se">\</span>
 <tr>
 <td><code>enabled</code><br/><em>boolean</em></td>
 <td>Whether not custom navigation is enabled on the reseller. Defaults to false.</td>
+</tr>
+<tr>
+<td><code>alwaysShowOrgPicker</code><br/><em>boolean</em></td>
+<td>Whether or not to always show the organization picker in the sidebar, even when the user has access to only a single organization. Defaults to false.</td>
 </tr>
 <tr>
 <td><code>tabs</code><br/><em>Array[Object]</em></td>
@@ -16273,6 +16288,7 @@ curl --request GET <span class="se">\</span>
       </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c869e848-6fb3-4850-af3d-42c5666f2c78"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="s2">"tabs"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+    </span><span class="s2">"alwaysShowOrgPicker"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
     </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"e80adf4d-5401-4cff-b393-93a7f10f4d71"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"enabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
   </span><span class="p">}</span><span class="w">
@@ -16305,6 +16321,10 @@ curl --request GET <span class="se">\</span>
 <tr>
 <td><code>enabled</code><br/><em>boolean</em></td>
 <td>Whether not custom navigation is enabled on the reseller. Defaults to false.</td>
+</tr>
+<tr>
+<td><code>alwaysShowOrgPicker</code><br/><em>boolean</em></td>
+<td>Whether or not to always show the organization picker in the sidebar, even when the user has access to only a single organization. Defaults to false.</td>
 </tr>
 <tr>
 <td><code>tabs</code><br/><em>Array[Object]</em></td>
