@@ -8,13 +8,13 @@ language_tabs: # must be one of https://git.io/vQNgJ
 includes:
   - getting_started
   - administration
-  - administration/service_connections
+  # - administration/service_connections
   - administration/organizations
   - administration/users
-  - administration/roles
+  # - administration/roles
   - administration/environments
-  - administration/resource_commitments
-  - administration/usage
+  # - administration/resource_commitments
+  # - administration/usage
   # - administration/monetization
   - administration/reports_pricing_v2 # Reporting section
   # - administration/notification_categories

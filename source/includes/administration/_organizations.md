@@ -46,7 +46,6 @@ curl "https://portal.coxedge.com/api/v1/organizations" \
          "serviceConnections":[
             {
                "id":"11607a49-9691-40fe-8022-2e148bc0d720",
-               "serviceCode":"compute-qc"
             }
          ],
          "users": [
@@ -126,7 +125,7 @@ curl "https://portal.coxedge.com/api/v1/organizations/03bc22bd-adc4-46b8-988d-af
       "serviceConnections": [
          {
             "id":"11607a49-9691-40fe-8022-2e148bc0d720",
-            "serviceCode":"compute-qc"
+            "serviceCode":"edge"
          }
       ],
       "users": [
@@ -620,138 +619,6 @@ curl -X DELETE "https://portal.coxedge.com/api/v1/organizations/e8d95716-26a9-40
 ```
 
 Returns an HTTP status code 204, with an empty response body.
-
-<!-------------------- GET MANAGEABLE CONNECTIONS OF ORGANIZATION -------------------->
-### Get manageable connections of an organization
-`GET /organizations/:id/manageable_connections`
-
-Get a list of Service connections that can be managed by the current user on the given organization.
-
-```shell
-# Update an organization
-curl -X GET "https://portal.coxedge.com/api/v1/organizations/03bc22bd-adc4-46b8-988d-afddc24c0cb5/manageable_connections" \
-   -H "MC-Api-Key: your_api_key"
-```
-
-> The above command returns a JSON structured like this:
-
-```json
-[
-  {
-    "id": "2f7b4d49-b426-424f-b272-396b66947bb1",
-    "name": "Microsoft Azure",
-    "type": "azure",
-    "serviceCode": "azure-dev",
-    "status": {
-      "id": "97b3f5fa-1bda-4dae-b716-8039d9b89a56",
-      "serviceConnection": null,
-      "reachable": true,
-      "lastUpdated": null,
-      "message": null,
-      "version": null
-    },
-    "quotas": []
-  },
-  {
-    "id": "b1dc9202-4e1a-4180-9ed6-28025b5aacdd",
-    "name": "Objects Lab",
-    "type": "swiftstack",
-    "serviceCode": "objects-lab",
-    "status": {
-      "id": "74a78d2b-c0da-475e-9bb7-218adc745d81",
-      "serviceConnection": null,
-      "reachable": true,
-      "lastUpdated": null,
-      "message": null,
-      "version": null
-    },
-    "quotas": [
-      { ... },
-      { ... },
-    ]
-  }
-]
-```
-Attributes | &nbsp;
----- | -----------
-`id`<br/>*string* | The id of the service connection.
-`name`<br/>*string* | The name of the service connection.
-`type`<br/>*string* | The type of the service connection. _(e.g. gcp, azure, aws, cloudca, swift, etc.)_
-`serviceCode`<br/>*string* | The globally unique serviceCode that identifies the service connection.
-`status`<br/>*Object* | The status object describing the status of connectivity to this service from CloudMc.
-`quotas`<br/>*Array[Quotas]* | A list of quotas that can be associated to the service connnection.
-
-The user should have `Connections reseller` permission on the organization. This list includes the following types of Service connections:
-
-- If the API user is from this organization:
-   - Service connections `owned by` and `assigned to` this organization
-- If the API user is from this organization's immediate parent organization:
-   - Service connections `assigned to` this organization
-   - Service connections `owned by` and `assigned to` this organization's immediate parent organization _(i.e. the user's organization)_
-- If the API user is from any organization between this organization's immediate parent organization and the root organization:
-   - Service connections `assigned to` this organization
-   - Service connections `owned by` the user's organization **and** is `assigned to` this organization's immediate parent organization
-   - Service connections `assigned to` the user's organization **and** is `assigned to` this organization's immediate parent organization
-
-<!-------------------- MARK AS RESELLER -------------------->
-### Mark organization as reseller
-`POST /organizations/:organization_id/mark_reseller`
-
-```shell
-# Mark an organization as reseller
-curl -X POST "https://portal.coxedge.com/api/v1/organizations/03bc22bd-adc4-46b8-988d-afddc24c0cb5/mark_reseller" \
-   -H "MC-Api-Key: your_api_key" \
-```
-
-Mark the organization as a reseller. Returns an HTTP status code 200, with an empty response body.
-
-
-<!-------------------- GET IDENTITY PROVIDERS -------------------->
-### Get identity providers
-`GET /organizations/:organization_id/identity_providers`
-
-Retrieve the identity providers for the organization.
-
-```shell
-# Retrieve the organization's identity providers
-curl "https://portal.coxedge.com/api/v1/organizations/87895f43-51c1-43cc-b987-7e301bf5b86a/identity_providers" \
-   -H "MC-Api-Key: your_api_key"
-```
-> The above command returns a JSON structured like this:
-
-```json
-{
-  "data": [
-    {
-      "id": "32a5640c-b366-44b1-882a-ee2e1951c592",
-      "organization": {
-        "name": "my organization",
-        "id": "87895f43-51c1-43cc-b987-7e301bf5b86a",
-        "entryPoint": "myOrg"
-      },
-      "type": "OIDC",
-      "css": "",
-      "provider": "GOOGLE",
-      "displayName": "Google",
-      "logo": "/static/img/google_signin.svg",
-      "rank": 1
-    }
-  ]
-}
-```
-Attributes | &nbsp;
----- | -----------
-`id`<br/>*UUID* | The id of the identity provider.
-`organization`<br/>*[Organization](#administration-organizations)* | The organization to which the verified domain belongs. *includes*:`id`,`name`, `entryPoint`.
-`type`<br/>*string* | The type of authentication protocol. Possible values: OIDC, SAML.
-`css`<br/>*string* | Custom css for the login button of the identity provider.
-`provider`<br/>*string* | The name of the provider. Possible values include the default providers (e.g GOOGLE), or CUSTOM for a custom user-defined provider.
-`displayName`<br/>*string* | The display name of the identity provider that will appear on the login screen.
-`logo`<br/>*string* | A base64 encoded data URL or URL to an image for the logo to display on the login screen.
-`rank`<br/>*int* | If provided, this integer sorts identity providers on the Login page in ascending order.
-
-
-
 
 <!-------------------- GET BILLING -------------------->
 ### Get billing information

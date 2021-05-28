@@ -200,7 +200,7 @@ curl -X PUT "https://portal.coxedge.com/api/v1/users/fdf60a19-980d-4380-acab-914
   "userName": "spidey1",
   "firstName": "Peter",
   "lastName": "Parker",
-  "email": "spidey1@cloud.mc",
+  "email": "spidey1@someemail",
   "roles": [
     {
       "id": "dd01c908-371c-4ec5-9fd7-80b1bfac8975"
