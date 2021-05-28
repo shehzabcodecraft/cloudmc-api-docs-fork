@@ -103,6 +103,8 @@ html, body {
 
   .logo {
     margin: $logo-margin;
+    max-width: $nav-width - 30px;
+    filter: brightness(0) invert(100%);
   }
 
   .search-results {

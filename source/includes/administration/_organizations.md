@@ -1,5 +1,5 @@
 ## Organizations
-Organizations are the largest logical grouping of users, environments and resources available in CloudMC. Each organization is isolated from other organizations. It has its own subdomain (`[entryPoint].CloudMC`) and is protected by its own customizable system [roles](#administration-roles). An administrator that must manage its sub-organizations environments or provisioned resources can do so by having the `Access other levels` permission. Additionally, provisioned resource usage is metered at the organization level facilitating cost tracking.
+Organizations are the largest logical grouping of users, environments and resources available in Cox Edge. Each organization is isolated from other organizations. It has its own subdomain (`[entryPoint].Cox Edge`) and is protected by its own customizable system [roles](#administration-roles). An administrator that must manage its sub-organizations environments or provisioned resources can do so by having the `Access other levels` permission. Additionally, provisioned resource usage is metered at the organization level facilitating cost tracking.
 
 
 <!-------------------- LIST ORGANIZATIONS -------------------->
@@ -11,7 +11,7 @@ Retrieves a list of organizations visible to the caller. In most cases, only the
 
 ```shell
 # Retrieve visible organizations
-curl "https://cloudmc_endpoint/api/v1/organizations" \
+curl "https://portal.coxedge.com/api/v1/organizations" \
    -H "MC-Api-Key: your_api_key"
 ```
 > The above command returns a JSON structured like this:
@@ -64,7 +64,7 @@ Attributes | &nbsp;
 ---- | -----------
 `id`<br/>*UUID* | The id of the organization.
 `name`<br/>*string* | The name of the organization.
-`entryPoint`<br/>*string* | The entry point of the organization is the subdomain of the organization in the CloudMC URL : `[entryPoint].CloudMC`.
+`entryPoint`<br/>*string* | The entry point of the organization is the subdomain of the organization in the Cox Edge URL : `[entryPoint].Cox Edge`.
 `billableStartDate`<br/>*string* | The billable start date in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) of the organization.
 `billingDay`<br/>*int* | The billing day of the organization. Default value is 1.
 `isBillable`<br/>*boolean* | If the organization is billable this values is true, false otherwise.
@@ -92,7 +92,7 @@ Retrieve an organization's details.
 
 ```shell
 # Retrieve an organization
-curl "https://cloudmc_endpoint/api/v1/organizations/03bc22bd-adc4-46b8-988d-afddc24c0cb5" \
+curl "https://portal.coxedge.com/api/v1/organizations/03bc22bd-adc4-46b8-988d-afddc24c0cb5" \
    -H "MC-Api-Key: your_api_key"
 ```
 > The above command returns a JSON structured like this:
@@ -143,7 +143,7 @@ Attributes | &nbsp;
 ---- | -----------
 `id`<br/>*UUID* | The id of the organization.
 `name`<br/>*string* | The name of the organization.
-`entryPoint`<br/>*string* | The entry point of the organization is the subdomain of the organization in the CloudMC URL :<br/>`[entryPoint].CloudMC`.
+`entryPoint`<br/>*string* | The entry point of the organization is the subdomain of the organization in the Cox Edge URL :<br/>`[entryPoint].Cox Edge`.
 `billableStartDate`<br/>*string* | The billable start date in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) of the organization.
 `billingDay`<br/>*int* | The billing day of the organization. Default value is 1.
 `isBillable`<br/>*boolean* | If the organization is billable this values is true, false otherwise.
@@ -171,7 +171,7 @@ Creates a new organization as a sub-organization of the caller's organization, o
 
 ```shell
 # Create an organization
-curl -X POST "https://cloudmc_endpoint/api/v1/organizations" \
+curl -X POST "https://portal.coxedge.com/api/v1/organizations" \
    -H "MC-Api-Key: your_api_key" \
    -H "Content-Type: application/json" \
    -d "request_body"
@@ -196,7 +196,7 @@ curl -X POST "https://cloudmc_endpoint/api/v1/organizations" \
 Required | &nbsp;
 ---- | ----
 `name`<br/>*string*  | The name of the organization. (Add info about restrictions)
-`entryPoint`<br/>*string* | The entry point of the organization is the subdomain of the organization in the CloudMC URL : `[entryPoint].CloudMC`.
+`entryPoint`<br/>*string* | The entry point of the organization is the subdomain of the organization in the Cox Edge URL : `[entryPoint].Cox Edge`.
 
 
 Optional | &nbsp;
@@ -216,7 +216,7 @@ Update an organization. Its parent organization cannot be changed. It can be ass
 
 ```shell
 # Update an organization
-curl -X PUT "https://cloudmc_endpoint/api/v1/organizations/03bc22bd-adc4-46b8-988d-afddc24c0cb5" \
+curl -X PUT "https://portal.coxedge.com/api/v1/organizations/03bc22bd-adc4-46b8-988d-afddc24c0cb5" \
    -H "MC-Api-Key: your_api_key" \
    -H "Content-Type: application/json" \
    -d "request_body"
@@ -238,7 +238,7 @@ curl -X PUT "https://cloudmc_endpoint/api/v1/organizations/03bc22bd-adc4-46b8-98
 Optional | &nbsp;
 ---- | ----
 `name`<br/>*string*  | The name of the organization. (Add info about restrictions)
-`entryPoint`<br/>*string* | The entry point of the organization is the subdomain of the organization in the CloudMC URL : `[entryPoint].CloudMC`.
+`entryPoint`<br/>*string* | The entry point of the organization is the subdomain of the organization in the Cox Edge URL : `[entryPoint].Cox Edge`.
 `serviceConnections`<br/>Array[[ServiceConnection](#administration-service-connections)] | A list of service connections for which the organization may provision resources. The caller must have access to all connections that are provided. <br/>_Read below (after the request parameter list) for more details._<br/>*required attributes of the service connection:* `id`
 `tags`<br/>*Array[string]* | Tags associated to the organization.
 `resourceCommitments`</br>*Array[[ResourceCommitment](#administration-retrieve-a-resource-commitment)]* | The resource commitments applied on the organization.
@@ -264,7 +264,7 @@ Delete an organization. The caller may not delete his own organization. Also, an
 
 ```shell
 # Delete an organization
-curl -X DELETE "https://cloudmc_endpoint/api/v1/organizations/03bc22bd-adc4-46b8-988d-afddc24c0cb5" \
+curl -X DELETE "https://portal.coxedge.com/api/v1/organizations/03bc22bd-adc4-46b8-988d-afddc24c0cb5" \
    -H "MC-Api-Key: your_api_key"
 ```
 
@@ -278,7 +278,7 @@ Get a list of all verified domains on the specified organization.
 
 ```shell
 # Retrieve all verified domains
-curl "https://cloudmc_endpoint/api/v1/organizations/87895f43-51c1-43cc-b987-7e301bf5b86a/verified_domains" \
+curl "https://portal.coxedge.com/api/v1/organizations/87895f43-51c1-43cc-b987-7e301bf5b86a/verified_domains" \
    -H "MC-Api-Key: your_api_key"
 ```
 > The above command returns a JSON structured like this:
@@ -322,7 +322,7 @@ Attributes | &nbsp;
 `domain`<br/>*string* | The domain associated with the organization.
 `organization`<br/>*[Organization](#administration-organizations)* | The organization to which the verified domain belongs. *includes*:`id`,`name`, `entryPoint`.
 `id`<br/>*UUID* | The id of the verified domain.
-`verificationCode`<br/>*string* | The verification code for the domain. This is the value that should be added to the domain's DNS registration as a new TXT record. CloudMC will check on a recurring schedule if the TXT record has been added to the domain, and update the status to VERIFIED once found.
+`verificationCode`<br/>*string* | The verification code for the domain. This is the value that should be added to the domain's DNS registration as a new TXT record. Cox Edge will check on a recurring schedule if the TXT record has been added to the domain, and update the status to VERIFIED once found.
 `status`<br/>*string* | The status of the domain ownership proof. Possible values are : VERIFIED, PENDING, ERROR.
 
 <!-------------------- CREATE VERIFIED DOMAIN -------------------->
@@ -334,7 +334,7 @@ Creates a new verified domain in the specified organization.
 
 ```shell
 # Create a verified domain
-curl -X POST "https://cloudmc_endpoint/api/v1/organizations87895f43-51c1-43cc-b987-7e301bf5b86a/verified_domains" \
+curl -X POST "https://portal.coxedge.com/api/v1/organizations87895f43-51c1-43cc-b987-7e301bf5b86a/verified_domains" \
    -H "MC-Api-Key: your_api_key" \
    -H "Content-Type: application/json" \
    -d "request_body"
@@ -362,7 +362,7 @@ Delete a specified domain on the organization.
 
 ```shell
 # Delete a verified domain
-curl -X DELETE "https://cloudmc_endpoint/api/v1/organizations/03bc22bd-adc4-46b8-988d-afddc24c0cb5/verified_domains/22d30872-8e90-43b5-b1ba-636bead42e34" \
+curl -X DELETE "https://portal.coxedge.com/api/v1/organizations/03bc22bd-adc4-46b8-988d-afddc24c0cb5/verified_domains/22d30872-8e90-43b5-b1ba-636bead42e34" \
    -H "MC-Api-Key: your_api_key"
 ```
 
@@ -376,7 +376,7 @@ Retrieve the security settings for the organization.
 
 ```shell
 # Retrieve the organization's security settings
-curl "https://cloudmc_endpoint/api/v1/organizations/87895f43-51c1-43cc-b987-7e301bf5b86a/security_settings" \
+curl "https://portal.coxedge.com/api/v1/organizations/87895f43-51c1-43cc-b987-7e301bf5b86a/security_settings" \
    -H "MC-Api-Key: your_api_key"
 ```
 > The above command returns a JSON structured like this:
@@ -476,7 +476,7 @@ Attributes | &nbsp;
 
 ```shell
 # Update an organization's security settings
-curl -X PUT "https://cloudmc_endpoint/api/v1/organizations/03bc22bd-adc4-46b8-988d-afddc24c0cb5/security_settings" \
+curl -X PUT "https://portal.coxedge.com/api/v1/organizations/03bc22bd-adc4-46b8-988d-afddc24c0cb5/security_settings" \
    -H "MC-Api-Key: your_api_key" \
    -H "Content-Type: application/json" \
    -d "request_body"
@@ -564,7 +564,7 @@ Retrieve the password policy for the organization.
 
 ```shell
 # Retrieve the organization's own or inherited password policy.
-curl "https://cloudmc_endpoint/api/v1/organizations/e8d95716-26a9-4054-833e-81cd3a5155cd/password_policy" \
+curl "https://portal.coxedge.com/api/v1/organizations/e8d95716-26a9-4054-833e-81cd3a5155cd/password_policy" \
    -H "MC-Api-Key: your_api_key"
 ```
 > The above command returns a JSON structured like this:
@@ -615,7 +615,7 @@ Delete a password policy for an organization. Root reseller organization will no
 
 ```shell
 # Delete an organization
-curl -X DELETE "https://cloudmc_endpoint/api/v1/organizations/e8d95716-26a9-4054-833e-81cd3a5155cd/password_policy" \
+curl -X DELETE "https://portal.coxedge.com/api/v1/organizations/e8d95716-26a9-4054-833e-81cd3a5155cd/password_policy" \
    -H "MC-Api-Key: your_api_key"
 ```
 
@@ -629,7 +629,7 @@ Get a list of Service connections that can be managed by the current user on the
 
 ```shell
 # Update an organization
-curl -X GET "https://cloudmc_endpoint/api/v1/organizations/03bc22bd-adc4-46b8-988d-afddc24c0cb5/manageable_connections" \
+curl -X GET "https://portal.coxedge.com/api/v1/organizations/03bc22bd-adc4-46b8-988d-afddc24c0cb5/manageable_connections" \
    -H "MC-Api-Key: your_api_key"
 ```
 
@@ -699,7 +699,7 @@ The user should have `Connections reseller` permission on the organization. This
 
 ```shell
 # Mark an organization as reseller
-curl -X POST "https://cloudmc_endpoint/api/v1/organizations/03bc22bd-adc4-46b8-988d-afddc24c0cb5/mark_reseller" \
+curl -X POST "https://portal.coxedge.com/api/v1/organizations/03bc22bd-adc4-46b8-988d-afddc24c0cb5/mark_reseller" \
    -H "MC-Api-Key: your_api_key" \
 ```
 
@@ -714,7 +714,7 @@ Retrieve the identity providers for the organization.
 
 ```shell
 # Retrieve the organization's identity providers
-curl "https://cloudmc_endpoint/api/v1/organizations/87895f43-51c1-43cc-b987-7e301bf5b86a/identity_providers" \
+curl "https://portal.coxedge.com/api/v1/organizations/87895f43-51c1-43cc-b987-7e301bf5b86a/identity_providers" \
    -H "MC-Api-Key: your_api_key"
 ```
 > The above command returns a JSON structured like this:
@@ -761,7 +761,7 @@ Retrieve the billing information for an organization.
 
 ```shell
 # Retrieve the organization's billing information
-curl "https://cloudmc_endpoint/api/v1/organizations/87895f43-51c1-43cc-b987-7e301bf5b86a/billing_info" \
+curl "https://portal.coxedge.com/api/v1/organizations/87895f43-51c1-43cc-b987-7e301bf5b86a/billing_info" \
    -H "MC-Api-Key: your_api_key"
 ```
 > The above command returns a JSON structured like this:
@@ -817,5 +817,5 @@ Returns an HTTP status code 200, with an empty response body.
 
 ```shell
 # Retrieve the organization's billing information
-curl -X DELETE "https://cloudmc_endpoint/api/v1/organizations/87895f43-51c1-43cc-b987-7e301bf5b86a/billing_info" \
+curl -X DELETE "https://portal.coxedge.com/api/v1/organizations/87895f43-51c1-43cc-b987-7e301bf5b86a/billing_info" \
    -H "MC-Api-Key: your_api_key"

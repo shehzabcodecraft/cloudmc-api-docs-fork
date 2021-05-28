@@ -26,7 +26,7 @@ Optional Query Parameters 	 | &nbsp;
 
 ```shell
 # Retrieve activity list
-curl "https://cloudmc_endpoint/api/v1/activity_log" \
+curl "https://portal.coxedge.com/api/v1/activity_log" \
    -H "MC-Api-Key: your_api_key"
 ```
 > The above command returns a JSON structured like this:
@@ -96,7 +96,7 @@ Optional Query Parameters  | &nbsp;
 
 ```shell
 # Retrieve activity codes
-curl "https://cloudmc_endpoint/api/v1/activity_log/codes" \
+curl "https://portal.coxedge.com/api/v1/activity_log/codes" \
    -H "MC-Api-Key: your_api_key"
 ```
 > The above command returns a JSON structured like this:
@@ -133,7 +133,7 @@ Optional Query Parameters  | &nbsp;
 
 ```shell
 # Retrieve activities summary
-curl "https://cloudmc_endpoint/api/v1/activity_log/summary" \
+curl "https://portal.coxedge.com/api/v1/activity_log/summary" \
    -H "MC-Api-Key: your_api_key"
 ```
 > The above command returns a JSON structured like this:
