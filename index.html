@@ -16135,6 +16135,10 @@ curl --request GET <span class="se">\</span>
 <td><code>tabs.skipEnvironmentPicker</code><br/><em>boolean</em></td>
 <td>Skip the environment picker if there is a single environment associated with the service tab. Configurable for a tab of type <code>SERVICE</code>.</td>
 </tr>
+<tr>
+<td><code>tabs.promotePanel</code><br/><em>boolean</em></td>
+<td>Promote the menu items from the tab&#39;s workspace to the main menu. Configurable for a tab of type <code>SERVICE</code>.</td>
+</tr>
 </tbody></table>
 
 <!-------------------- Create CUSTOM NAV -------------------->
@@ -16157,6 +16161,19 @@ curl --request GET <span class="se">\</span>
         "en": "Users",
         "fr": "Usagers"
       }
+    },
+    {
+      "type": "SERVICE",
+      "name": {
+        "en": "Edge compute",
+        "fr": "Edge compute"
+      },
+      "serviceConnection": {
+        "id": "2d49e70f-e4f8-43e3-b730-92328174214sa21"
+      },
+      "workspace": "compute",
+      "promotePanel": true,
+      "skipEnvironmentPicker": true
     },
     {
       "type": "COMING_SOON",
@@ -16188,11 +16205,27 @@ curl --request GET <span class="se">\</span>
         </span><span class="s2">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"users"</span><span class="w">
       </span><span class="p">},</span><span class="w">
       </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"workspace"</span><span class="p">:</span><span class="w"> </span><span class="s2">"compute"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"en"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Edge compute"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"fr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Edge compute"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"icon"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fa fa-server"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"rank"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"skipEnvironmentPicker"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6080bdb2-ceda-4774-aa28-c7f98cd804a4"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"promotePanel"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SERVICE"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"serviceConnection"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2d49e70f-e4f8-43e3-b730-92328174214sa21"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
         </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
           </span><span class="s2">"en"</span><span class="p">:</span><span class="w"> </span><span class="s2">"hot new feature"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"fr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"hot new feature fr"</span><span class="w">
         </span><span class="p">},</span><span class="w">
-        </span><span class="s2">"rank"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"rank"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
         </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cb36c538-6f6b-47af-bfa8-daad56ce58ed"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"COMING_SOON"</span><span class="w">
       </span><span class="p">}</span><span class="w">
@@ -16260,6 +16293,10 @@ curl --request GET <span class="se">\</span>
 <tr>
 <td><code>tabs.skipEnvironmentPicker</code><br/><em>boolean</em></td>
 <td>Skip the environment picker if there is a single environment associated with the service tab. Configurable for a tab of type <code>SERVICE</code>.</td>
+</tr>
+<tr>
+<td><code>tabs.promotePanel</code><br/><em>boolean</em></td>
+<td>Promote the menu items from the tab&#39;s workspace to the main menu. Configurable for a tab of type <code>SERVICE</code>.</td>
 </tr>
 </tbody></table>
 
@@ -16365,6 +16402,10 @@ curl --request GET <span class="se">\</span>
 <tr>
 <td><code>tabs.skipEnvironmentPicker</code><br/><em>boolean</em></td>
 <td>Skip the environment picker if there is a single environment associated with the service tab. Configurable for a tab of type <code>SERVICE</code>.</td>
+</tr>
+<tr>
+<td><code>tabs.promotePanel</code><br/><em>boolean</em></td>
+<td>Promote the menu items from the tab&#39;s workspace to the main menu. Configurable for a tab of type <code>SERVICE</code>.</td>
 </tr>
 </tbody></table>
 
