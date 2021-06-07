@@ -3662,6 +3662,11 @@
                           </li>
                           <li>
                             <a href="#stackpath-retrieve-an-image" class="toc-h3 toc-link" data-title="StackPath plugin">Retrieve an image</a>
+                              <ul class="toc-list-h4">
+                                  <li>
+                                    <a href="#stackpath-create-a-custom-image" class="toc-h4 toc-link" data-title="StackPath plugin">Create a custom image</a>
+                                  </li>
+                              </ul>
                           </li>
                       </ul>
                   </li>
@@ -63108,6 +63113,69 @@ a custom one. Only non-deprecated images are returned by default.</p>
 <tr>
 <td><code>reference</code><br/><em>string</em></td>
 <td>The reference of the image.</td>
+</tr>
+</tbody></table>
+
+<!-------------------- CREATE AN IMAGE -------------------->
+<h4 id='stackpath-create-a-custom-image'>Create a custom image</h4><pre class="highlight shell tab-shell"><code>curl -X POST <span class="se">\</span>
+   -H <span class="s2">"MC-Api-Key: your_api_key"</span> <span class="se">\</span>
+   -d <span class="s2">"request_body"</span> <span class="se">\</span>
+   <span class="s2">"https://cloudmc_endpoint/api/v1/services/stackpath/test-area/images"</span>
+</code></pre>
+<blockquote>
+<p>Request body example for creating a custom image:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"family"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Ubuntu"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"tag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"v2021-01-01"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"workloadId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c23652ed-0f15-47cf-a9b8-63e1e3aacb3c"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"instanceName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"w-john-ahd-wi-john-jsr-phx-0"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Ubuntu OS v4"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<blockquote>
+<p>The above commands return a JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"taskId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1f64aefb-f980-400b-bc2d-5300376fa55e"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"taskStatus"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PENDING"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><code>POST /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/images</code></p>
+
+<table><thead>
+<tr>
+<th>Required</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>family</code><br/><em>string</em></td>
+<td>The family name of the custom image.Family must consist of lower case alphanumeric characters or &#39;-&#39; and must begin and end with an alphanumeric character.</td>
+</tr>
+<tr>
+<td><code>tag</code><br/><em>string</em></td>
+<td>The tag of the image. A tag must be valid ASCII and may contain lowercase and uppercase letters, digits, underscores, periods and dashes. A tag must not start with a period or a dash and must contain a maximum of 128 characters.</td>
+</tr>
+<tr>
+<td><code>workloadId</code><br/><em>string</em></td>
+<td>The workloadId of the source workload the image will be created from. Only workloads of type VM are allowed</td>
+</tr>
+<tr>
+<td><code>instanceName</code><br/><em>string</em></td>
+<td>The name of one of the instance the create the image from. The name of the instance needs to be a valid instance of the workloadId provided.</td>
+</tr>
+</tbody></table>
+
+<table><thead>
+<tr>
+<th>Optional</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>description</code><br/><em>string</em></td>
+<td>The description of the custom image.</td>
 </tr>
 </tbody></table>
 <h1 id='amazon-web-services-plugin'>Amazon Web Services plugin</h1>
