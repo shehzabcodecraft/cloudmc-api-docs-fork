@@ -57126,6 +57126,10 @@ If the secret <code>X-Account-Meta-Temp-URL-Key</code> key does not already exis
 <td>Specify whether a workload is a VM-based workload or container-based.</td>
 </tr>
 <tr>
+<td><code>userData</code><br/><em>string</em></td>
+<td>The Cloud-Init user-data to be run on the workload&#39;s instances.</td>
+</tr>
+<tr>
 <td><code>version</code><br/><em>string</em></td>
 <td>A version number for the workload. Versions start at 1 when they are created and increment by 1 every time they are updated.</td>
 </tr>
@@ -57150,6 +57154,7 @@ If the secret <code>X-Account-Meta-Temp-URL-Key</code> key does not already exis
     </span><span class="s2">"network"</span><span class="p">:</span><span class="w"> </span><span class="s2">"default"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"cpu"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"memory"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2Gi"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"userData"</span><span class="p">:</span><span class="s2">"package-upgrade: true"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"isRemoteManagementEnabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
     </span><span class="s2">"image"</span><span class="p">:</span><span class="w"> </span><span class="s2">"nginx"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"addImagePullCredentialsOption"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
@@ -57361,6 +57366,10 @@ If the secret <code>X-Account-Meta-Temp-URL-Key</code> key does not already exis
 <td>Specify whether a workload is a VM-based workload or container-based.</td>
 </tr>
 <tr>
+<td><code>userData</code><br/><em>string</em></td>
+<td>The Cloud-Init user-data to be run on the workload&#39;s instances.</td>
+</tr>
+<tr>
 <td><code>version</code><br/><em>string</em></td>
 <td>A version number for the workload. Versions start at 1 when they are created and increment by 1 every time they are updated.</td>
 </tr>
@@ -57389,6 +57398,7 @@ If the secret <code>X-Account-Meta-Temp-URL-Key</code> key does not already exis
     </span><span class="p">}</span><span class="w">
   </span><span class="p">],</span><span class="w">
   </span><span class="s2">"firstBootSshKey"</span><span class="p">:</span><span class="s2">"ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDcYr9OnzsDfYVW2I1kX/iYJ0mPG490bI5mbxbOAKPLMuWLguxRohX804j1XbwZJ+Sna+9rSfxaYA8vgd1MoYX10l9cnMLx/MMbYp4ZquauN4pGY3WoDeCqsTss3VUMW+7RFBILpU3SJTlDV02FI36D3IXb4A8XymCyU3KC99XXTfTQsuKC+WFRMsTWtklrasqCVd5yEG90i/aJc6A3TZGOYgPFNEeVYvNDaJmIkb3y4FfShoBIMgZRt0ay7SvWZUvyfvyNmK5W9ePdhZZ58R+7tQNmCzjQ4v0suWRuGJ/XL3+03w3HEsDdQx+noL+R+qAjoNFwc0spBBhJK+Q4ADqr nothing@gmail.com </span><span class="se">\n</span><span class="s2">ssh-rsa..."</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"userData"</span><span class="p">:</span><span class="s2">"package-upgrade: true"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"specs"</span><span class="p">:</span><span class="s2">"SP-1"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"persistentStorages"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
@@ -57429,6 +57439,7 @@ If the secret <code>X-Account-Meta-Temp-URL-Key</code> key does not already exis
       </span><span class="s2">"size"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
     </span><span class="p">}</span><span class="w">  
   </span><span class="p">],</span><span class="w">
+  </span><span class="s2">"userData"</span><span class="p">:</span><span class="s2">"package-upgrade: true"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"commands"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="s2">"/bin/sh -c </span><span class="se">\"</span><span class="s2">sleep 50</span><span class="se">\"</span><span class="s2">"</span><span class="w">
   </span><span class="p">],</span><span class="w">
@@ -57632,6 +57643,10 @@ If the secret <code>X-Account-Meta-Temp-URL-Key</code> key does not already exis
 <td><code>slug</code><br/><em>string</em></td>
 <td>A workload&#39;s programmatic name. Workload slugs are used to build its instances names. If not provided, defaults to workload&#39;s name. It must not exceed 18 characters.</td>
 </tr>
+<tr>
+<td><code>userData</code><br/><em>string</em></td>
+<td>The Cloud-Init user-data to be run on the workload&#39;s instances. This should only be set for a VM-based workload.</td>
+</tr>
 </tbody></table>
 
 <aside class="notice">
@@ -57651,6 +57666,7 @@ A workload can be added without any `ports`. However, `ports.publicPort` and `po
   </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"my-vm-workload"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"VM"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"specs"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SP-1"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"userData"</span><span class="p">:</span><span class="s2">"package-upgrade: true"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"deployments"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
       </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"toronto-1"</span><span class="p">,</span><span class="w">
@@ -57818,6 +57834,10 @@ A workload can be added without any `ports`. However, `ports.publicPort` and `po
 <tr>
 <td><code>secretEnvironmentVariables</code> <br/><em>Array[Object]</em></td>
 <td>A list of sensitive environment variables. Only applicable to workloads of <code>type</code> &#39;CONTAINER&#39;.</td>
+</tr>
+<tr>
+<td><code>userData</code><br/><em>string</em></td>
+<td>The Cloud-Init user-data to be run on the workload&#39;s instances. This should only be set for a VM-based workload.</td>
 </tr>
 </tbody></table>
 
