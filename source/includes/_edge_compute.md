@@ -1,1 +1,1 @@
-# Edge compute
+# Edge Compute

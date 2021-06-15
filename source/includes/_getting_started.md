@@ -1,4 +1,4 @@
-# Getting started
+# Getting Started
 
 The Cox Edge API allows you to manage your environments and provision resources in a simple programmatic way using standard HTTP requests.
 
