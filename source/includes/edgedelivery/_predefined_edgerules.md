@@ -1,6 +1,6 @@
 ### Predefined EdgeRules
 
-The predefined EdgeRules let you configure how StackPath responds to requests to your website. These predefined EdgeRules only work with domains that resolve to StackPath.
+The predefined EdgeRules let you configure how Cox responds to requests to your website. These predefined EdgeRules only work with domains that resolve to Cox.
 
 <!-------------------- LIST PREDEFINED EDGERULES -------------------->
 
@@ -21,8 +21,8 @@ curl -X GET \
     "id": "c988cc62-24e7-4850-9a81-95f51af0a68e",
     "pseudoStreamingEnabled": true,
     "referrerList": [
-      "cloudmc.io",
-      "saas.cloudmc.io"
+      "portal.coxedge.com",
+      "saas.portal.coxedge.com"
     ],
     "referrerProtectionEnabled": true,
     "robotsTxtEnabled": true,

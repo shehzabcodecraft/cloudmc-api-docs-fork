@@ -51,14 +51,14 @@ Attributes | &nbsp;
 `commonName`<br/>*string* | A certificate's common name, or the primary domain name the certificate is used for.
 `createdAt`<br/>*string* | The date the certificate was created.
 `updatedAt`<br/>*string* | The last time a certificate was updated by the provisioning process.
-`isManaged`<br/>*boolean* | Whether a certificate is managed by StackPath or the end user.
+`isManaged`<br/>*boolean* | Whether a certificate is managed by Cox or the end user.
 `trusted`<br/>*boolean* | Whether or not the certificate's authority is trusted by a web browser.
 
 List of possible values for the `status` attribute:
 
 `status` | &nbsp;
 --- | ---
-`UNKNOWN` | StackPath is unable to determine the certificate's status. This is the default status for end-user provided certificates.
+`UNKNOWN` | Cox is unable to determine the certificate's status. This is the default status for end-user provided certificates.
 `PENDING` | The certificate is provisioning.
 `EXPIRED` | The certificate has expired.
 `FAILED` | The certificate failed to provision.
@@ -110,14 +110,14 @@ Attributes | &nbsp;
 `commonName`<br/>*string* | A certificate's common name, or the primary domain name the certificate is used for.
 `createdAt`<br/>*string* | The date the certificate was created.
 `updatedAt`<br/>*string* | The last time a certificate was updated by the provisioning process.
-`isManaged`<br/>*boolean* | Whether a certificate is managed by StackPath or the end user.
+`isManaged`<br/>*boolean* | Whether a certificate is managed by Cox or the end user.
 `trusted`<br/>*boolean* | Whether or not the certificate's authority is trusted by a web browser.
 
 List of possible values for the `status` attribute:
 
 `status` | &nbsp;
 --- | ---
-`UNKNOWN` | StackPath is unable to determine the certificate's status. This is the default status for end-user provided certificates.
+`UNKNOWN` | Cox is unable to determine the certificate's status. This is the default status for end-user provided certificates.
 `PENDING` | The certificate is provisioning.
 `EXPIRED` | The certificate has expired.
 `FAILED` | The certificate failed to provision.

@@ -96,7 +96,7 @@ Attributes | &nbsp;
 `ddosSettings.subSecondBurstThreshold`<br/>*Integer* | The number of requests per 0.1 seconds that can trigger DDoS protection.
 `apiUrls`<br/>*array* | List of configured API urls.
 `monitoringEnabled`<br/>*boolean* | If the monitoring mode is enabled.
-`owaspThreats`<br/>*object* | StackPath’s core rule set & OWASP’s most critical Web application security risks.
+`owaspThreats`<br/>*object* | Cox’s core rule set & OWASP’s most critical Web application security risks.
 `owaspThreats.sqlInjection`<br/>*boolean* | Block requests suspected of being a SQL injection attack attempt. SQL injection attacks attempt to exploit vulnerabilities in a Web application's code and seek to gain access and control over the database. A successful attack would typically result in stolen data or the site being defaced or taken down.
 `owaspThreats.xssAttack`<br/>*boolean* | Block requests suspected of being a Cross-Site-Scripting attack attempt. Cross Site Scripting attacks attempt to exploit vulnerabilities in a Web application and seek to inject a client side script either across an entire site or to a specific user's session. A successful attack would typically allow forbidden access to a user's actions and data.
 `owaspThreats.shellShockAttack`<br/>*boolean* | Block requests suspected of being a Shellshock attack attempt. A Shellshock attack is an attempt to exploit a server's vulnerabilities to gain full access and control over them. A successful attack would typically either abuse a server's resources or hack the website.
@@ -112,7 +112,7 @@ Attributes | &nbsp;
 `userAgents`<br/>*object* | Block requests with missing or invalid user agent string.
 `userAgents.blockInvalidUserAgents`<br/>*boolean* | Block requests in which the HTTP header describing the user-agent (browser and platform) seems invalid and cannot be translated to a known legitimate browser. Automated processes (bots) are most likely to have invalid user agents.
 `userAgents.blockUnknownUserAgents`<br/>*boolean* | Block requests in which the HTTP header describing the user-agent (browser and platform) is missing.
-`csrf`<br/>*boolean* | StackPath WAF will generate a CSRF token that is added to forms. Requests without a valid CSRF token will be blocked.
+`csrf`<br/>*boolean* | Cox WAF will generate a CSRF token that is added to forms. Requests without a valid CSRF token will be blocked.
 `trafficSources`<br/>*object* | Real-time threat intelligence for IP addresses, source location, and information on malicious IPs.
 `trafficSources.viaTorNodes`<br/>*boolean* | Challenge traffic from The Onion Ring exit nodes to block bots and known bad devices. While TOR is used sometimes purely for Web anonymity, it is commonly used by hackers, scrapers, and spammers to crawl or hack Web applications.
 `trafficSources.viaProxyNetworks`<br/>*boolean* | Challenge traffic from any known proxy network to block bots and known bad devices. While proxy services are used sometimes purely for Web anonymity, they are also commonly used by hackers, scrapers, and spammers to crawl or hack Web applications.
@@ -134,7 +134,7 @@ Attributes | &nbsp;
 `cmsProtection.whiteMagento`<br/>*boolean* | Enable whitelist Magento admin logged-in users.
 `cmsProtection.whiteListOriginIp`<br/>*boolean* | Enable this policy to whitelist requests coming from the origin for plugin updates and general CMS updates,
 `cmsProtection.whiteListUmbraco`<br/>*boolean* | Enable whitelist Umbraco admin logged-in users.
-`behavioralWaf`<br/>*object* | StackPath's sophisticated user behaviour and reputation analysis rules.
+`behavioralWaf`<br/>*object* | Cox's sophisticated user behaviour and reputation analysis rules.
 `behavioralWaf.spamProtection`<br/>*boolean* | Challenge and block user sessions and activities that seem to be aggressively using forms on your website to post spam content, generate new accounts, and more. Also, require a handshake (if not already provided) to clients making POST requests.
 `behavioralWaf.blockProbingAndForcedBrowsing`<br/>*boolean* | Challenge or block sessions and users that seem to make brute-forced requests on random URLs seeking to discover a Web application's structure and hidden directories.
 `behavioralWaf.obfuscatedAttacksAndZeroDayMitigation`<br/>*boolean* | Block clients performing multiple injection attacks.
@@ -183,7 +183,7 @@ Attributes | &nbsp;
 `ddosSettings.subSecondBurstThreshold`<br/>*Integer* | The number of requests per 0.1 seconds that can trigger DDoS protection.
 `apiUrls`<br/>*array* | List of configured API urls.
 `monitoringEnabled`<br/>*boolean* | If the monitoring mode is enabled.
-`owaspThreats`<br/>*object* | StackPath’s core rule set & OWASP’s most critical Web application security risks.
+`owaspThreats`<br/>*object* | Cox’s core rule set & OWASP’s most critical Web application security risks.
 `owaspThreats.sqlInjection`<br/>*boolean* | Block requests suspected of being a SQL injection attack attempt. SQL injection attacks attempt to exploit vulnerabilities in a Web application's code and seek to gain access and control over the database. A successful attack would typically result in stolen data or the site being defaced or taken down.
 `owaspThreats.xssAttack`<br/>*boolean* | Block requests suspected of being a Cross-Site-Scripting attack attempt. Cross Site Scripting attacks attempt to exploit vulnerabilities in a Web application and seek to inject a client side script either across an entire site or to a specific user's session. A successful attack would typically allow forbidden access to a user's actions and data.
 `owaspThreats.shellShockAttack`<br/>*boolean* | Block requests suspected of being a Shellshock attack attempt. A Shellshock attack is an attempt to exploit a server's vulnerabilities to gain full access and control over them. A successful attack would typically either abuse a server's resources or hack the website.
@@ -199,7 +199,7 @@ Attributes | &nbsp;
 `userAgents`<br/>*object* | Block requests with missing or invalid user agent string.
 `userAgents.blockInvalidUserAgents`<br/>*boolean* | Block requests in which the HTTP header describing the user-agent (browser and platform) seems invalid and cannot be translated to a known legitimate browser. Automated processes (bots) are most likely to have invalid user agents.
 `userAgents.blockUnknownUserAgents`<br/>*boolean* | Block requests in which the HTTP header describing the user-agent (browser and platform) is missing.
-`csrf`<br/>*boolean* | StackPath WAF will generate a CSRF token that is added to forms. Requests without a valid CSRF token will be blocked.
+`csrf`<br/>*boolean* | Cox WAF will generate a CSRF token that is added to forms. Requests without a valid CSRF token will be blocked.
 `trafficSources`<br/>*object* | Real-time threat intelligence for IP addresses, source location, and information on malicious IPs.
 `trafficSources.viaTorNodes`<br/>*boolean* | Challenge traffic from The Onion Ring exit nodes to block bots and known bad devices. While TOR is used sometimes purely for Web anonymity, it is commonly used by hackers, scrapers, and spammers to crawl or hack Web applications.
 `trafficSources.viaProxyNetworks`<br/>*boolean* | Challenge traffic from any known proxy network to block bots and known bad devices. While proxy services are used sometimes purely for Web anonymity, they are also commonly used by hackers, scrapers, and spammers to crawl or hack Web applications.
@@ -221,7 +221,7 @@ Attributes | &nbsp;
 `cmsProtection.whiteMagento`<br/>*boolean* | Enable whitelist Magento admin logged-in users.
 `cmsProtection.whiteListOriginIp`<br/>*boolean* | Enable this policy to whitelist requests coming from the origin for plugin updates and general CMS updates,
 `cmsProtection.whiteListUmbraco`<br/>*boolean* | Enable whitelist Umbraco admin logged-in users.
-`behavioralWaf`<br/>*object* | StackPath's sophisticated user behaviour and reputation analysis rules.
+`behavioralWaf`<br/>*object* | Cox's sophisticated user behaviour and reputation analysis rules.
 `behavioralWaf.spamProtection`<br/>*boolean* | Challenge and block user sessions and activities that seem to be aggressively using forms on your website to post spam content, generate new accounts, and more. Also, require a handshake (if not already provided) to clients making POST requests.
 `behavioralWaf.blockProbingAndForcedBrowsing`<br/>*boolean* | Challenge or block sessions and users that seem to make brute-forced requests on random URLs seeking to discover a Web application's structure and hidden directories.
 `behavioralWaf.obfuscatedAttacksAndZeroDayMitigation`<br/>*boolean* | Block clients performing multiple injection attacks.
