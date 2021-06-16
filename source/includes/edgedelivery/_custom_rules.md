@@ -9,7 +9,7 @@ Manage custom rules used to control and limit access to your sites.
 ```shell
 curl -X GET \
    -H "MC-Api-Key: your_api_key" \
-   "https://portal.coxedge.com/api/v1/services/stackpath/test-area/customrules?siteId=0a57855b-26d8-4e8f-8b77-429997c7c5fb"
+   "https://portal.coxedge.com/api/v1/services/cox/test-area/customrules?siteId=0a57855b-26d8-4e8f-8b77-429997c7c5fb"
 ```
 > The above command returns a JSON structured like this:
 
@@ -59,7 +59,7 @@ curl -X GET \
 }
 ```
 
-<code>GET /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/customrules?siteId=<a href="#stackpath-sites">:siteId</a></code>
+<code>GET /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/customrules?siteId=<a href="#cox-sites">:siteId</a></code>
 
 Query Params | &nbsp;
 ---- | -----------
@@ -97,7 +97,7 @@ Attributes | &nbsp;
 ```shell
 curl -X GET \
    -H "MC-Api-Key: your_api_key" \
-   "https://portal.coxedge.com/api/v1/services/stackpath/test-area/customrules/1580676?siteId=0a57855b-26d8-4e8f-8b77-429997c7c5fb"
+   "https://portal.coxedge.com/api/v1/services/cox/test-area/customrules/1580676?siteId=0a57855b-26d8-4e8f-8b77-429997c7c5fb"
 ```
 > The above command returns a JSON structured like this:
 
@@ -125,7 +125,7 @@ curl -X GET \
 }
 ```
 
-<code>GET /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/customrules/:id?siteId=<a href="#stackpath-sites">:siteId</a></code>
+<code>GET /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/customrules/:id?siteId=<a href="#cox-sites">:siteId</a></code>
 
 
 Query Params | &nbsp;
@@ -165,7 +165,7 @@ Attributes | &nbsp;
 curl -X POST \
     -H "MC-Api-Key: your_api_key" \
     -d "request_body" \
-    "https://portal.coxedge.com/api/v1/services/stackpath/test-area/customrules?siteId=0a57855b-26d8-4e8f-8b77-429997c7c5fb"
+    "https://portal.coxedge.com/api/v1/services/cox/test-area/customrules?siteId=0a57855b-26d8-4e8f-8b77-429997c7c5fb"
 ```
 > Request body example for a custom rule with conditions:
 
@@ -213,7 +213,7 @@ curl -X POST \
 }
 ```
 
-<code>POST /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/customrules?siteId=<a href="#stackpath-sites">:siteId</a></code>
+<code>POST /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/customrules?siteId=<a href="#cox-sites">:siteId</a></code>
 
 Create a custom rule for a site in a given [environment](#administration-environments).
 
@@ -252,7 +252,7 @@ Optional | &nbsp;
 curl -X PUT \
   -H "MC-Api-Key: your_api_key" \
   -d "request_body" \
-  "https://portal.coxedge.com/api/v1/services/stackpath/test-area/customrules/1576836?siteId=1c6c127a-bfa4-4c85-a329-13c0581b41eb"
+  "https://portal.coxedge.com/api/v1/services/cox/test-area/customrules/1576836?siteId=1c6c127a-bfa4-4c85-a329-13c0581b41eb"
 ```
 > Request body example for a custom rule with conditions:
 
@@ -301,7 +301,7 @@ curl -X PUT \
 }
 ```
 
-<code>PUT /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/customrules/:id?siteId=<a href="#stackpath-sites">:siteId</a></code>
+<code>PUT /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/customrules/:id?siteId=<a href="#cox-sites">:siteId</a></code>
 
 Edit a custom rule.
 
@@ -339,7 +339,7 @@ Optional | &nbsp;
 ```shell
 curl -X DELETE \
    -H "MC-Api-Key: your_api_key" \
-   "https://portal.coxedge.com/api/v1/services/stackpath/test-area/customrules/1585477?siteId=1b1cd7e6-41ab-4e0f-a59a-5c4b89da1b36"
+   "https://portal.coxedge.com/api/v1/services/cox/test-area/customrules/1585477?siteId=1b1cd7e6-41ab-4e0f-a59a-5c4b89da1b36"
 ```
 > The above command returns a JSON structured like this:
 
@@ -350,7 +350,7 @@ curl -X DELETE \
 }
 ```
 
-<code>DELETE /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/customrules/:id?siteId=<a href="#stackpath-sites">:siteId</a></code>
+<code>DELETE /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/customrules/:id?siteId=<a href="#cox-sites">:siteId</a></code>
 
 Delete a custom rule
 
@@ -373,7 +373,7 @@ Attributes | &nbsp;
 ```shell
 curl -X POST \
    -H "MC-Api-Key: your_api_key" \
-   "https://portal.coxedge.com/api/v1/services/stackpath/test-area/customrules/1585477?siteId=1b1cd7e6-41ab-4e0f-a59a-5c4b89da1b36&operation=enable"
+   "https://portal.coxedge.com/api/v1/services/cox/test-area/customrules/1585477?siteId=1b1cd7e6-41ab-4e0f-a59a-5c4b89da1b36&operation=enable"
 ```
 > The above command returns a JSON structured like this:
 
@@ -384,7 +384,7 @@ curl -X POST \
 }
 ```
 
-<code>POST /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/customrules/:id?siteId=<a href="#stackpath-sites">:siteId</a>&operation=enable</code>
+<code>POST /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/customrules/:id?siteId=<a href="#cox-sites">:siteId</a>&operation=enable</code>
 
 Query Params | &nbsp;
 ---- | -----------
@@ -405,7 +405,7 @@ Attributes | &nbsp;
 ```shell
 curl -X POST \
    -H "MC-Api-Key: your_api_key" \
-   "https://portal.coxedge.com/api/v1/services/stackpath/test-area/customrules/1585477?siteId=1b1cd7e6-41ab-4e0f-a59a-5c4b89da1b36&operation=disable"
+   "https://portal.coxedge.com/api/v1/services/cox/test-area/customrules/1585477?siteId=1b1cd7e6-41ab-4e0f-a59a-5c4b89da1b36&operation=disable"
 ```
 > The above command returns a JSON structured like this:
 ```json
@@ -415,7 +415,7 @@ curl -X POST \
 }
 ```
 
-<code>POST /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/customrules/:id?siteId=<a href="#stackpath-sites">:siteId</a>&operation=disable</code>
+<code>POST /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/customrules/:id?siteId=<a href="#cox-sites">:siteId</a>&operation=disable</code>
 
 Query Params | &nbsp;
 ---- | -----------

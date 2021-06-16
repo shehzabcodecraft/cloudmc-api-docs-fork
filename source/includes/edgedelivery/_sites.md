@@ -9,7 +9,7 @@ Create and manage your CDN, WAF, and/or Serverless Scripting Delivery sites.
 ```shell
 curl -X GET \
    -H "MC-Api-Key: your_api_key" \
-   "https://portal.coxedge.com/api/v1/services/stackpath/test-area/sites"
+   "https://portal.coxedge.com/api/v1/services/cox/test-area/sites"
 ```
 > The above command returns a JSON structured like this:
 
@@ -54,7 +54,7 @@ Retrieve a list of all sites in a given [environment](#administration-environmen
 
 Optional | &nbsp;
 ------ | -----------
-`status`<br/>*string* | Setting the status parameter will return only the **stackpath sites** with that particular status. The site's status can either be `ACTIVE`, `PENDING`, or `PROVISIONING`.
+`status`<br/>*string* | Setting the status parameter will return only the **cox sites** with that particular status. The site's status can either be `ACTIVE`, `PENDING`, or `PROVISIONING`.
 
 Attributes | &nbsp;
 ------- | -----------
@@ -73,7 +73,7 @@ Attributes | &nbsp;
 ```shell
 curl -X GET \
    -H "MC-Api-Key: your_api_key" \
-   "https://portal.coxedge.com/api/v1/services/stackpath/test-area/sites/9ae3717a-006a-4aa7-b64b-8bc8d2f2d6e5"
+   "https://portal.coxedge.com/api/v1/services/cox/test-area/sites/9ae3717a-006a-4aa7-b64b-8bc8d2f2d6e5"
 ```
 > The above command returns a JSON structured like this:
 
@@ -91,11 +91,11 @@ curl -X GET \
     ],
     "id": "9ae3717a-006a-4aa7-b64b-8bc8d2f2d6e5",
     "status": "ACTIVE",
-    "edgeAddress": "v2a4k7y8.stackpathcdn.com",
+    "edgeAddress": "v2a4k7y8.coxcdn.com",
     "anycastIp": "151.139.128.10",
     "deliveryDomains": [
     {
-      "domain": "v2a4k7y8.stackpathcdn.com",
+      "domain": "v2a4k7y8.coxcdn.com",
       "validatedAt": "2021-02-26T19:00:15.177411Z"
     },
     {
@@ -122,7 +122,7 @@ Attributes | &nbsp;
 `anycastIp`<br/>*string* | The Anycast IP address that domains should be pointed to.
 `deliveryDomains`<br/>*array* | List of delivery domains of the site.
 `deliveryDomains.domain`<br/>*string* | A delivery domain of the site.
-`deliveryDomains.validatedAt`<br/>*string* | The date the domain was validated to be pointing to Stackpath.
+`deliveryDomains.validatedAt`<br/>*string* | The date the domain was validated to be pointing to Cox.
 
 <!-------------------- CREATE A SITE -------------------->
 
@@ -132,7 +132,7 @@ Attributes | &nbsp;
 curl -X POST \
     -H "MC-Api-Key: your_api_key" \
     -d "request_body" \
-    "https://portal.coxedge.com/api/v1/services/stackpath/test-area/sites"
+    "https://portal.coxedge.com/api/v1/services/cox/test-area/sites"
 ```
 > Request body example for a site with basic authentication:
 
@@ -200,7 +200,7 @@ Required | &nbsp;
 ```shell
 curl -X DELETE \
    -H "MC-Api-Key: your_api_key" \
-   "https://portal.coxedge.com/api/v1/services/stackpath/test-area/sites/f8ad8351-4f07-4b52-92ec-fd2983873853"
+   "https://portal.coxedge.com/api/v1/services/cox/test-area/sites/f8ad8351-4f07-4b52-92ec-fd2983873853"
 ```
 > The above command returns a JSON structured like this:
 
@@ -227,7 +227,7 @@ Attributes | &nbsp;
 ```shell
 curl -X POST \
    -H "MC-Api-Key: your_api_key" \
-   "https://portal.coxedge.com/api/v1/services/stackpath/test-area/sites/f8ad8351-4f07-4b52-92ec-fd2983873853?operation=enable_cdn"
+   "https://portal.coxedge.com/api/v1/services/cox/test-area/sites/f8ad8351-4f07-4b52-92ec-fd2983873853?operation=enable_cdn"
 ```
 > The above command returns a JSON structured like this:
 
@@ -254,7 +254,7 @@ Attributes | &nbsp;
 ```shell
 curl -X POST \
    -H "MC-Api-Key: your_api_key" \
-   "https://portal.coxedge.com/api/v1/services/stackpath/test-area/sites/f8ad8351-4f07-4b52-92ec-fd2983873853?operation=disable_cdn"
+   "https://portal.coxedge.com/api/v1/services/cox/test-area/sites/f8ad8351-4f07-4b52-92ec-fd2983873853?operation=disable_cdn"
 ```
 > The above command returns a JSON structured like this:
 
@@ -281,7 +281,7 @@ Attributes | &nbsp;
 ```shell
 curl -X POST \
    -H "MC-Api-Key: your_api_key" \
-   "https://portal.coxedge.com/api/v1/services/stackpath/test-area/sites/f8ad8351-4f07-4b52-92ec-fd2983873853?operation=enable_waf"
+   "https://portal.coxedge.com/api/v1/services/cox/test-area/sites/f8ad8351-4f07-4b52-92ec-fd2983873853?operation=enable_waf"
 ```
 > The above command returns a JSON structured like this:
 
@@ -308,7 +308,7 @@ Attributes | &nbsp;
 ```shell
 curl -X POST \
    -H "MC-Api-Key: your_api_key" \
-   "https://portal.coxedge.com/api/v1/services/stackpath/test-area/sites/f8ad8351-4f07-4b52-92ec-fd2983873853?operation=disable_waf"
+   "https://portal.coxedge.com/api/v1/services/cox/test-area/sites/f8ad8351-4f07-4b52-92ec-fd2983873853?operation=disable_waf"
 ```
 > The above command returns a JSON structured like this:
 
@@ -335,7 +335,7 @@ Attributes | &nbsp;
 ```shell
 curl -X POST \
    -H "MC-Api-Key: your_api_key" \
-   "https://portal.coxedge.com/api/v1/services/stackpath/test-area/sites/f8ad8351-4f07-4b52-92ec-fd2983873853?operation=enable_scripts"
+   "https://portal.coxedge.com/api/v1/services/cox/test-area/sites/f8ad8351-4f07-4b52-92ec-fd2983873853?operation=enable_scripts"
 ```
 > The above command returns a JSON structured like this:
 
@@ -362,7 +362,7 @@ Attributes | &nbsp;
 ```shell
 curl -X POST \
    -H "MC-Api-Key: your_api_key" \
-   "https://portal.coxedge.com/api/v1/services/stackpath/test-area/sites/f8ad8351-4f07-4b52-92ec-fd2983873853?operation=disable_scripts"
+   "https://portal.coxedge.com/api/v1/services/cox/test-area/sites/f8ad8351-4f07-4b52-92ec-fd2983873853?operation=disable_scripts"
 ```
 > The above command returns a JSON structured like this:
 

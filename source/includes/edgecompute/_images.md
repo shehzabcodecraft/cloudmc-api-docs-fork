@@ -13,7 +13,7 @@ Deploy and manage your images.
 ```shell
 curl -X GET \
    -H "MC-Api-Key: your_api_key" \
-   "https://portal.coxedge.com/api/v1/services/stackpath/test-area/images"
+   "https://portal.coxedge.com/api/v1/services/cox/test-area/images"
 ```
 > The above command returns a JSON structured like this:
 
@@ -23,23 +23,23 @@ curl -X GET \
     {
       "stackId": "a8050b2b-39eb-4929-bce5-1af42055903e",
       "id": "a8050b2b-39eb-4929-bce5-1af42055903e/centos7/v20201110",
-      "slug": "stackpath-edge",
+      "slug": "cox-edge",
       "family": "centos7",
       "tag": "v20201110",
       "createdAt": "2020-11-10T20:33:32.609434Z",
       "description": "Image using centos7",
-      "reference": "stackpath-edge/centos7:v20201110",
+      "reference": "cox-edge/centos7:v20201110",
       "status": "READY"
     },
     {
       "stackId": "a8050b2b-39eb-4929-bce5-1af42055903e",
       "id": "a8050b2b-39eb-4929-bce5-1af42055903e/ubuntu/v20201110",
-      "slug": "stackpath-edge",
+      "slug": "cox-edge",
       "family": "ubuntu",
       "tag": "v20201110",
       "createdAt": "2020-11-10T20:34:11.328575Z",
       "description": "Image using ubuntu",
-      "reference": "stackpath-edge/ubuntu:v20201110",
+      "reference": "cox-edge/ubuntu:v20201110",
       "status": "READY"
     }
   ],
@@ -55,7 +55,7 @@ Retrieve a list of all images in a given [environment](#administration-environme
 
 Optional | &nbsp;
 ------ | -----------
-`includeOnlySystemImages`<br/>*boolean* | Setting the query parameter to **true** will return only the default **stackpath images**.
+`includeOnlySystemImages`<br/>*boolean* | Setting the query parameter to **true** will return only the default **cox images**.
 
 Attributes | &nbsp;
 ------- | -----------
@@ -76,7 +76,7 @@ Attributes | &nbsp;
 ```shell
 curl -X GET \
    -H "MC-Api-Key: your_api_key" \
-   "https://portal.coxedge.com/api/v1/services/stackpath/test-area/images/a8050b2b-39eb-4929-bce5-1af42055903e/ubuntu/v20201110"
+   "https://portal.coxedge.com/api/v1/services/cox/test-area/images/a8050b2b-39eb-4929-bce5-1af42055903e/ubuntu/v20201110"
 ```
 > The above command returns a JSON structured like this:
 
@@ -85,12 +85,12 @@ curl -X GET \
   "data": {
     "stackId": "a8050b2b-39eb-4929-bce5-1af42055903e",
     "id": "a8050b2b-39eb-4929-bce5-1af42055903e/ubuntu/v20201110",
-    "slug": "stackpath-edge",
+    "slug": "cox-edge",
     "family": "ubuntu",
     "tag": "v20201110",
     "createdAt": "2020-11-10T20:34:11.328575Z",
     "description": "test 2",
-    "reference": "stackpath-edge/ubuntu:v20201110",
+    "reference": "cox-edge/ubuntu:v20201110",
     "status": "READY"
   }
 }

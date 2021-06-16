@@ -13,7 +13,7 @@ Retrieves a list of organizations visible to the caller. In most cases, only the
 # Retrieve visible organizations
 curl "https://portal.coxedge.com/api/v1/organizations" \
    -H "MC-Api-Key: your_api_key"
-```
+```    
 > The above command returns a JSON structured like this:
 
 ```json

@@ -11,7 +11,7 @@ Deploy and manage your workloads.
 ```shell
 curl -X GET \
    -H "MC-Api-Key: your_api_key" \
-   "https://portal.coxedge.com/api/v1/services/stackpath/test-area/workloads"
+   "https://portal.coxedge.com/api/v1/services/cox/test-area/workloads"
 ```
 
 > The above command returns a JSON structured like this:
@@ -91,7 +91,7 @@ curl -X GET \
       "cpu": "1",
       "memory": "2Gi",
       "isRemoteManagementEnabled": false,
-      "image": "stackpath-edge/centos-7:v202007311835",
+      "image": "cox-edge/centos-7:v202007311835",
       "addAnyCastIpAddress": false,
       "anycastIpAddress": "None",
       "firstBootSshKey": "ssh-rsa...",
@@ -169,7 +169,7 @@ Attributes | &nbsp;
 ```shell
 curl -X GET \
    -H "MC-Api-Key: your_api_key" \
-   "https://portal.coxedge.com/api/v1/services/stackpath/test-area/workloads/1b932678-1038-4ab4-9fa4-c4c06e696e20"
+   "https://portal.coxedge.com/api/v1/services/cox/test-area/workloads/1b932678-1038-4ab4-9fa4-c4c06e696e20"
 ```
 
 > The above command returns a JSON structured like this:
@@ -292,7 +292,7 @@ Attributes | &nbsp;
 curl -X POST \
     -H "MC-Api-Key: your_api_key" \
     -d "request_body" \
-    "https://portal.coxedge.com/api/v1/services/stackpath/test-area/workloads"
+    "https://portal.coxedge.com/api/v1/services/cox/test-area/workloads"
 ```
 > Request body example for a VM Workload type:
 
@@ -301,7 +301,7 @@ curl -X POST \
   "name":"vm-workload",
   "slug":"vm-workload",
   "type":"VM",
-  "image":"stackpath-edge/centos-7-cpanel:v201905241955",
+  "image":"cox-edge/centos-7-cpanel:v201905241955",
   "addAnyCastIpAddress":false,
   "ports": [
     {
@@ -409,7 +409,7 @@ Required | &nbsp;
 `deployments.pops`<br/>*Array[string]* | The points of presence of a deployment. In the regex format `[A-Z]{3, 3}`.
 `deployments`<br/>*Array[Object]* | The list of deployment targets.
 `firstBootSshKey`<br/>*string* | If creating a VM-based workload, SSH keys are required. Multiple SSH keys can be separated by newlines `\n`.
-`image`<br/>*string* | Either the location of a Docker image to run as a container or the image to use for the virtual machine. If for a virtual machine, this is in the format of /[:]. If the image tag portion is omitted, 'default' is assumed which is the most recently created, ready, and non-deprecated image of that slug. A set of common images is present on the 'stackpath-edge' stack.
+`image`<br/>*string* | Either the location of a Docker image to run as a container or the image to use for the virtual machine. If for a virtual machine, this is in the format of /[:]. If the image tag portion is omitted, 'default' is assumed which is the most recently created, ready, and non-deprecated image of that slug. A set of common images is present on the 'cox-edge' stack.
 `name`<br/>*string* | The name of the workload. The workload name must not exceed 18 characters.
 `specs`<br/>*string* | Specification type for resources which are allocated to each instance in a workload. Supported specifications are `SP-1 (1 vCPU, 2 GB RAM)`,`SP-2 (2 vCPU, 4 GB RAM)`,`SP-3 (2 vCPU, 8GB RAM)`,`SP-4 (4 vCPU, 16 GB RAM)`,`SP-5 (8 vCPU, 32 GB RAM)`.
 `type`<br/>*string* | Specify whether a workload is a VM-based workload or container-based. Can be either `VM` or `CONTAINER`.
@@ -455,7 +455,7 @@ A workload can be added without any `ports`. However, `ports.publicPort` and `po
 curl -X PUT \
   -H "MC-Api-Key: your_api_key" \
   -d "request_body" \
-  "https://portal.coxedge.com/api/v1/services/stackpath/test-area/workloads/1b932678-1038-4ab4-9fa4-c4c06e696e20"
+  "https://portal.coxedge.com/api/v1/services/cox/test-area/workloads/1b932678-1038-4ab4-9fa4-c4c06e696e20"
 ```
 > Request body example for a VM Workload type:
 
@@ -563,7 +563,7 @@ Optional | &nbsp;
 ```shell
 curl -X DELETE \
    -H "MC-Api-Key: your_api_key" \
-   "https://portal.coxedge.com/api/v1/services/stackpath/test-area/workloads/1b932678-1038-4ab4-9fa4-c4c06e696e20"
+   "https://portal.coxedge.com/api/v1/services/cox/test-area/workloads/1b932678-1038-4ab4-9fa4-c4c06e696e20"
 ```
 > The above command returns a JSON structured like this:
 
@@ -590,7 +590,7 @@ Change a workload specific settings in a given [environment](#administration-env
 ```shell
 curl -X PATCH \
    -H "MC-Api-Key: your_api_key" \
-   "https://portal.coxedge.com/api/v1/services/stackpath/test-area/workloads/1b932678-1038-4ab4-9fa4-c4c06e696e20"
+   "https://portal.coxedge.com/api/v1/services/cox/test-area/workloads/1b932678-1038-4ab4-9fa4-c4c06e696e20"
 ```
 
 > Request body example:

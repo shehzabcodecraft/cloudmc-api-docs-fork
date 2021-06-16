@@ -9,7 +9,7 @@ Manage your workload instances.
 ```shell
 curl -X GET \
    -H "MC-Api-Key: your_api_key" \
-   "https://portal.coxedge.com/api/v1/services/stackpath/test-area/instances?workloadId=e485fe8c-e1de-40f7-b3b3-a43700441e0e"
+   "https://portal.coxedge.com/api/v1/services/cox/test-area/instances?workloadId=e485fe8c-e1de-40f7-b3b3-a43700441e0e"
 ```
 > The above command returns a JSON structured like this:
 
@@ -64,7 +64,7 @@ Attributes | &nbsp;
 ```shell
 curl -X GET \
    -H "MC-Api-Key: your_api_key" \
-   "https://portal.coxedge.com/api/v1/services/stackpath/test-area/instances/e485fe8c-e1de-40f7-b3b3-a43700441e0e/instance-name-1"
+   "https://portal.coxedge.com/api/v1/services/cox/test-area/instances/e485fe8c-e1de-40f7-b3b3-a43700441e0e/instance-name-1"
 ```
 > The above command returns a JSON structured like this:
 
@@ -109,7 +109,7 @@ Attributes | &nbsp;
 ```shell
 curl -X POST \
    -H "MC-Api-Key: your_api_key" \
-   "https://portal.coxedge.com/api/v1/services/stackpath/test-area/instances/workload-id1/instance-name-1?operation=restart"
+   "https://portal.coxedge.com/api/v1/services/cox/test-area/instances/workload-id1/instance-name-1?operation=restart"
 ```
 
 <code>POST /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/instances/:id?operation=restart</code>
@@ -123,7 +123,7 @@ Restart an instance in a given [environment](#administration-environments) with 
 ```shell
 curl -X POST \
    -H "MC-Api-Key: your_api_key" \
-   "https://portal.coxedge.com/api/v1/services/stackpath/test-area/instances/workload-id1/instance-name-1?operation=accessconsole"
+   "https://portal.coxedge.com/api/v1/services/cox/test-area/instances/workload-id1/instance-name-1?operation=accessconsole"
 ```
 
 > Request body example(s):

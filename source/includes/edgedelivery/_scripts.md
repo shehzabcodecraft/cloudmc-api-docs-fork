@@ -9,7 +9,7 @@ Deploy and manage Serverless Scripts used to interact with requests made to the 
 ```shell
 curl -X GET \
    -H "MC-Api-Key: your_api_key" \
-   "https://portal.coxedge.com/api/v1/services/stackpath/test-area/scripts?siteId=0a57855b-26d8-4e8f-8b77-429997c7c5fb"
+   "https://portal.coxedge.com/api/v1/services/cox/test-area/scripts?siteId=0a57855b-26d8-4e8f-8b77-429997c7c5fb"
 ```
 > The above command returns a JSON structured like this:
 
@@ -48,7 +48,7 @@ curl -X GET \
 }
 ```
 
-<code>GET /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/scripts?siteId=<a href="#stackpath-sites">:siteId</a></code>
+<code>GET /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/scripts?siteId=<a href="#cox-sites">:siteId</a></code>
 
 Query Params | &nbsp;
 ---- | -----------
@@ -72,7 +72,7 @@ Attributes | &nbsp;
 ```shell
 curl -X GET \
    -H "MC-Api-Key: your_api_key" \
-   "https://portal.coxedge.com/api/v1/services/stackpath/test-area/scripts/439b145a-7c55-4a73-8cf2-d8faabfe6d22?siteId=0a57855b-26d8-4e8f-8b77-429997c7c5fb"
+   "https://portal.coxedge.com/api/v1/services/cox/test-area/scripts/439b145a-7c55-4a73-8cf2-d8faabfe6d22?siteId=0a57855b-26d8-4e8f-8b77-429997c7c5fb"
 ```
 > The above command returns a JSON structured like this:
 
@@ -115,7 +115,7 @@ curl -X GET \
   }
 }
 ```
-<code>GET /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/scripts/:id?siteId=<a href="#stackpath-sites">:siteId</a></code>
+<code>GET /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/scripts/:id?siteId=<a href="#cox-sites">:siteId</a></code>
 
 Query Params | &nbsp;
 ---- | -----------
@@ -141,7 +141,7 @@ Attributes | &nbsp;
 
 Create a new serverless script that allows you to run JavaScript code at the Edge, on all of PoPs with real-time access to each of the requests that come in for your site.
 
-<code>POST /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/scripts?siteId=<a href="#stackpath-sites">:siteId</a></code>
+<code>POST /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/scripts?siteId=<a href="#cox-sites">:siteId</a></code>
 
 Query Params | &nbsp;
 ---- | -----------
@@ -156,7 +156,7 @@ Required | &nbsp;
 ```shell
 curl -X POST \
    -H "MC-Api-Key: your_api_key" \
-   "https://portal.coxedge.com/api/v1/services/stackpath/test-area/scripts?siteId=:siteId"
+   "https://portal.coxedge.com/api/v1/services/cox/test-area/scripts?siteId=:siteId"
 ```
 > Request body example for creating a script:
 
@@ -217,7 +217,7 @@ Edit a script in a given [environment](#administration-environments) for a given
 ```shell
 curl -X PUT \
    -H "MC-Api-Key: your_api_key" \
-   "https://portal.coxedge.com/api/v1/services/stackpath/test-area/scripts/dd207010-4570-43ee-9ff2-5421d2306b41?siteId=0a57855b-26d8-4e8f-8b77-429997c7c5fb"
+   "https://portal.coxedge.com/api/v1/services/cox/test-area/scripts/dd207010-4570-43ee-9ff2-5421d2306b41?siteId=0a57855b-26d8-4e8f-8b77-429997c7c5fb"
 ```
 > Request body example for editing a script:
 
@@ -237,7 +237,7 @@ curl -X PUT \
 }
 ```
 
-<code>PUT /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/scripts/:id?siteId=<a href="#stackpath-sites">:siteId</a></code>
+<code>PUT /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/scripts/:id?siteId=<a href="#cox-sites">:siteId</a></code>
 
 
 Query Params | &nbsp;
@@ -266,7 +266,7 @@ Delete a script in a given [environment](#administration-environments) for a giv
 ```shell
 curl -X DELETE \
    -H "MC-Api-Key: your_api_key" \
-   "https://portal.coxedge.com/api/v1/services/stackpath/test-area/scripts/dd207010-4570-43ee-9ff2-5421d2306b41?siteId=0a57855b-26d8-4e8f-8b77-429997c7c5fb"
+   "https://portal.coxedge.com/api/v1/services/cox/test-area/scripts/dd207010-4570-43ee-9ff2-5421d2306b41?siteId=0a57855b-26d8-4e8f-8b77-429997c7c5fb"
 ```
 > The above command returns a JSON structured like this:
 
@@ -277,7 +277,7 @@ curl -X DELETE \
 }
 ```
 
-<code>DELETE /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/scripts/:id?siteId=<a href="#stackpath-sites">:siteId</a></code>
+<code>DELETE /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/scripts/:id?siteId=<a href="#cox-sites">:siteId</a></code>
 
 Query Params | &nbsp;
 ---- | -----------

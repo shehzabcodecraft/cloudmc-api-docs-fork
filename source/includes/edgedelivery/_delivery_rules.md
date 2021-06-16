@@ -9,7 +9,7 @@ Set up delivery rules to improve access, security and set custom rules.
 ```shell
 curl -X GET \
    -H "MC-Api-Key: your_api_key" \
-   "https://portal.coxedge.com/api/v1/services/stackpath/test-area/deliveryrules?siteId=dcc2771d-a524-4f8c-a666-f699985d6961"
+   "https://portal.coxedge.com/api/v1/services/cox/test-area/deliveryrules?siteId=dcc2771d-a524-4f8c-a666-f699985d6961"
 ```
 > The above command returns a JSON structured like this:
 
@@ -37,7 +37,7 @@ curl -X GET \
 }
 ```
 
-<code>GET /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/deliveryrules?siteId=<a href="#stackpath-sites">:siteId</a></code>
+<code>GET /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/deliveryrules?siteId=<a href="#cox-sites">:siteId</a></code>
 
 Retrieve a list of all delivery rules in a given [environment](#administration-environments) within a site.
 
@@ -57,7 +57,7 @@ Attributes | &nbsp;
 curl -X POST \
    -H "MC-Api-Key: your_api_key" \
    -d "request_body" \
-   "https://portal.coxedge.com/api/v1/services/stackpath/test-area/deliveryrules?siteId=f9dea588-d7ab-4f42-b6e6-4b85f273f3db"
+   "https://portal.coxedge.com/api/v1/services/cox/test-area/deliveryrules?siteId=f9dea588-d7ab-4f42-b6e6-4b85f273f3db"
 ```
 
 > Request body example for creating a delivery rule:
@@ -87,7 +87,7 @@ curl -X POST \
   "taskStatus": "PENDING"
 }
 ```
-<code>POST /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/deliveryrules?siteId=<a href="#stackpath-sites">:siteId</a></code>
+<code>POST /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/deliveryrules?siteId=<a href="#cox-sites">:siteId</a></code>
 
 Query Params | &nbsp;
 ---- | -----------
@@ -96,8 +96,8 @@ Query Params | &nbsp;
 Required| &nbsp;
 ------------------------| -----------
 `name`<br/>*string* | The name of the delivery rule.
-`conditions`<br/>*Array[[Condition](#stackpath-condition)]* | At least one condition.
-`actions`<br/>*Array[[Action](#stackpath-action)]* | At least one action.
+`conditions`<br/>*Array[[Condition](#cox-condition)]* | At least one condition.
+`actions`<br/>*Array[[Action](#cox-action)]* | At least one action.
 
 <!-------------------- UPDATE A DELIVERY RULE -------------------->
 
@@ -107,7 +107,7 @@ Required| &nbsp;
 curl -X PUT \
    -H "MC-Api-Key: your_api_key" \
    -d "request_body" \
-   "https://portal.coxedge.com/api/v1/services/stackpath/test-area/deliveryrules/d065db45-1eba-4c62-a017-d51f2d473d4a?siteId=f9dea588-d7ab-4f42-b6e6-4b85f273f3db"
+   "https://portal.coxedge.com/api/v1/services/cox/test-area/deliveryrules/d065db45-1eba-4c62-a017-d51f2d473d4a?siteId=f9dea588-d7ab-4f42-b6e6-4b85f273f3db"
 ```
 
 > Request body example for updating a delivery rule:
@@ -136,7 +136,7 @@ curl -X PUT \
   "taskStatus": "PENDING"
 }
 ```
-<code>PUT /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/deliveryrules/:ruleId?siteId=<a href="#stackpath-sites">:siteId</a></code>
+<code>PUT /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/deliveryrules/:ruleId?siteId=<a href="#cox-sites">:siteId</a></code>
 
 Query Params | &nbsp;
 ---- | -----------
@@ -144,8 +144,8 @@ Query Params | &nbsp;
 
 Required| &nbsp;
 ------------------------| -----------
-`conditions`<br/>*Array[[Condition](#stackpath-condition)]* | At least one condition.
-`actions`<br/>*Array[[Action](#stackpath-action)]* | At least one action.
+`conditions`<br/>*Array[[Condition](#cox-condition)]* | At least one condition.
+`actions`<br/>*Array[[Action](#cox-action)]* | At least one action.
 
 <!-------------------- DELETE A DELIVERY RULE -------------------->
 
@@ -154,7 +154,7 @@ Required| &nbsp;
 ```shell
 curl -X DELETE \
    -H "MC-Api-Key: your_api_key" \
-   "https://portal.coxedge.com/api/v1/services/stackpath/test-area/deliveryrules/90d6a6ed-05a5-4b45-8d5a-e8229f535149?siteId=1c6c127a-bfa4-4c85-a329-13c0581b41eb"
+   "https://portal.coxedge.com/api/v1/services/cox/test-area/deliveryrules/90d6a6ed-05a5-4b45-8d5a-e8229f535149?siteId=1c6c127a-bfa4-4c85-a329-13c0581b41eb"
 ```
 > The above command returns a JSON structured like this:
 
@@ -165,7 +165,7 @@ curl -X DELETE \
 }
 ```
 
-<code>DELETE /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/deliveryrules/:id?siteId=<a href="#stackpath-sites">:siteId</a></code>
+<code>DELETE /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/deliveryrules/:id?siteId=<a href="#cox-sites">:siteId</a></code>
 
 Delete a delivery rule.
 

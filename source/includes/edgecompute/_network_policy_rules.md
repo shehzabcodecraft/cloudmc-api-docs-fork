@@ -1,6 +1,6 @@
 ## Network policy rules
 
-Network policy rules allows you to control inbound and outbound traffic to your [workload](#stackpath-workloads).
+Network policy rules allows you to control inbound and outbound traffic to your [workload](#cox-workloads).
 
 
 <!-------------------- LIST NETWORK POLICY RULES -------------------->
@@ -9,7 +9,7 @@ Network policy rules allows you to control inbound and outbound traffic to your 
 ```shell
 curl -X GET \
   -H "MC-Api-Key: your_api_key" \
-  "https://portal.coxedge.com/api/v1/services/stackpath/test-area/networkpolicyrules"
+  "https://portal.coxedge.com/api/v1/services/cox/test-area/networkpolicyrules"
 ```
 
 > The above command returns a JSON structured like this:
@@ -77,7 +77,7 @@ Attributes | &nbsp;
 ```shell
 curl -X GET \
   -H "MC-Api-Key: your_api_key" \
-  "https://portal.coxedge.com/api/v1/services/stackpath/test-area/networkpolicyrules/2ac958f2-0976-4de9-95f6-3546fc10f8d0/INBOUND/-812331665/0"
+  "https://portal.coxedge.com/api/v1/services/cox/test-area/networkpolicyrules/2ac958f2-0976-4de9-95f6-3546fc10f8d0/INBOUND/-812331665/0"
 ```
 
 > The above command returns a JSON structured like this:
@@ -124,7 +124,7 @@ Attributes | &nbsp;
 curl -X POST \
   -H "MC-Api-Key: your_api_key" \
   -d "request_body" \
-  "https://portal.coxedge.com/api/v1/services/stackpath/test-area/networkpolicyrules"
+  "https://portal.coxedge.com/api/v1/services/cox/test-area/networkpolicyrules"
 ```
 > Request body example:
 
@@ -176,7 +176,7 @@ Delete a network policy rule.
 curl -X PUT \
   -H "MC-Api-Key: your_api_key" \
   -d "request_body" \
-  "https://portal.coxedge.com/api/v1/services/stackpath/test-area/networkpolicyrules/2ac958f2-0976-4de9-95f6-3546fc10f8d0/INBOUND/-812331665/0"
+  "https://portal.coxedge.com/api/v1/services/cox/test-area/networkpolicyrules/2ac958f2-0976-4de9-95f6-3546fc10f8d0/INBOUND/-812331665/0"
 ```
 > Request body example:
 

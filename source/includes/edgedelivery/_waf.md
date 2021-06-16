@@ -6,7 +6,7 @@
 ```shell
 curl -X GET \
    -H "MC-Api-Key: your_api_key" \
-   "https://portal.coxedge.com/api/v1/services/stackpath/test-area/wafsettings/1b1cd7e6-41ab-4e0f-a59a-5c4b89da1b36"
+   "https://portal.coxedge.com/api/v1/services/cox/test-area/wafsettings/1b1cd7e6-41ab-4e0f-a59a-5c4b89da1b36"
 ```
 > The above command returns a JSON structured like this:
 
@@ -81,7 +81,7 @@ curl -X GET \
 }
 ```
 
-<code>GET /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/wafsettings/<a href="#stackpath-sites">:siteId</a></code>
+<code>GET /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/wafsettings/<a href="#cox-sites">:siteId</a></code>
 
 Retrieve WAF Settings for a site in a given [environment](#administration-environments).
 
@@ -149,7 +149,7 @@ Attributes | &nbsp;
 ```shell
 curl -X PATCH \
    -H "MC-Api-Key: your_api_key" \
-   "https://portal.coxedge.com/api/v1/services/stackpath/test-area/wafsettings/c0ddc1b3-b390-4f39-b200-5c0323ca306e"
+   "https://portal.coxedge.com/api/v1/services/cox/test-area/wafsettings/c0ddc1b3-b390-4f39-b200-5c0323ca306e"
 ```
 
 > Request body example:
@@ -171,7 +171,7 @@ curl -X PATCH \
 }
 ```
 
-<code>PATCH /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/wafsettings/<a href="#stackpath-sites">:siteId</a></code>
+<code>PATCH /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/wafsettings/<a href="#cox-sites">:siteId</a></code>
 
 Edit the WAF settings for a site in a given [environment](#administration-environments).
 

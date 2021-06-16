@@ -9,7 +9,7 @@ Deploy and manage Firewall Rules used to control and limit access to your sites.
 ```shell
 curl -X GET \
    -H "MC-Api-Key: your_api_key" \
-   "https://portal.coxedge.com/api/v1/services/stackpath/test-area/firewallrules?siteId=0a57855b-26d8-4e8f-8b77-429997c7c5fb"
+   "https://portal.coxedge.com/api/v1/services/cox/test-area/firewallrules?siteId=0a57855b-26d8-4e8f-8b77-429997c7c5fb"
 ```
 > The above command returns a JSON structured like this:
 
@@ -41,7 +41,7 @@ curl -X GET \
 }
 ```
 
-<code>GET /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/firewallrules?siteId=<a href="#stackpath-sites">:siteId</a></code>
+<code>GET /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/firewallrules?siteId=<a href="#cox-sites">:siteId</a></code>
 
 Query Params | &nbsp;
 ---- | -----------
@@ -65,7 +65,7 @@ Attributes | &nbsp;
 ```shell
 curl -X GET \
    -H "MC-Api-Key: your_api_key" \
-   "https://portal.coxedge.com/api/v1/services/stackpath/test-area/firewallrules/1533148?siteId=0a57855b-26d8-4e8f-8b77-429997c7c5fb"
+   "https://portal.coxedge.com/api/v1/services/cox/test-area/firewallrules/1533148?siteId=0a57855b-26d8-4e8f-8b77-429997c7c5fb"
 ```
 > The above command returns a JSON structured like this:
 
@@ -83,7 +83,7 @@ curl -X GET \
 }
 ```
 
-<code>GET /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/firewallrules/:id?siteId=<a href="#stackpath-sites">:siteId</a></code>
+<code>GET /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/firewallrules/:id?siteId=<a href="#cox-sites">:siteId</a></code>
 
 Query Params | &nbsp;
 ---- | -----------
@@ -107,7 +107,7 @@ Attributes | &nbsp;
 curl -X POST \
    -H "MC-Api-Key: your_api_key" \
    -d "request_body" \
-   "https://portal.coxedge.com/api/v1/services/stackpath/test-area/firewallrules?siteId=f9dea588-d7ab-4f42-b6e6-4b85f273f3db"
+   "https://portal.coxedge.com/api/v1/services/cox/test-area/firewallrules?siteId=f9dea588-d7ab-4f42-b6e6-4b85f273f3db"
 ```
 > Request body example for creating a firewall rule:
 
@@ -129,7 +129,7 @@ curl -X POST \
   "taskStatus": "PENDING"
 }
 ```
-<code>POST /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/firewallrules?siteId=<a href="#stackpath-sites">:siteId</a></code>
+<code>POST /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/firewallrules?siteId=<a href="#cox-sites">:siteId</a></code>
 
 Restrict access to a site using allow and block rules.
 
@@ -157,7 +157,7 @@ Optional| &nbsp;
 curl -X PUT \
   -H "MC-Api-Key: your_api_key" \
   -d "request_body" \
-  "https://portal.coxedge.com/api/v1/services/stackpath/test-area/firewallrules/1576836?siteId=1c6c127a-bfa4-4c85-a329-13c0581b41eb"
+  "https://portal.coxedge.com/api/v1/services/cox/test-area/firewallrules/1576836?siteId=1c6c127a-bfa4-4c85-a329-13c0581b41eb"
 ```
 > Request body example:
 
@@ -181,7 +181,7 @@ curl -X PUT \
 }
 ```
 
-<code>PUT /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/firewallrules/:id?siteId=<a href="#stackpath-sites">:siteId</a></code>
+<code>PUT /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/firewallrules/:id?siteId=<a href="#cox-sites">:siteId</a></code>
 
 Edit a firewall rule.
 
@@ -209,7 +209,7 @@ Optional | &nbsp;
 ```shell
 curl -X DELETE \
    -H "MC-Api-Key: your_api_key" \
-   "https://portal.coxedge.com/api/v1/services/stackpath/test-area/firewallrules/2318483?siteId=0a57855b-26d8-4e8f-8b77-429997c7c5fb"
+   "https://portal.coxedge.com/api/v1/services/cox/test-area/firewallrules/2318483?siteId=0a57855b-26d8-4e8f-8b77-429997c7c5fb"
 ```
 > The above command returns a JSON structured like this:
 
@@ -220,7 +220,7 @@ curl -X DELETE \
 }
 ```
 
-<code>DELETE /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/firewallrules/:id?siteId=<a href="#stackpath-sites">:siteId</a></code>
+<code>DELETE /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/firewallrules/:id?siteId=<a href="#cox-sites">:siteId</a></code>
 
 Delete a firewall rule
 

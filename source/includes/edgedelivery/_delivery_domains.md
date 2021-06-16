@@ -9,7 +9,7 @@ Delivery domains allow the CDN to recognize an HTTP request and associate it wit
 ```shell
 curl -X GET \
    -H "MC-Api-Key: your_api_key" \
-   "https://portal.coxedge.com/api/v1/services/stackpath/test-area/deliverydomains?siteId=439b145a-7c55-4a73-8cf2-d8faabfe6d22"
+   "https://portal.coxedge.com/api/v1/services/cox/test-area/deliverydomains?siteId=439b145a-7c55-4a73-8cf2-d8faabfe6d22"
 ```
 > The above command returns a JSON structured like this:
 
@@ -23,10 +23,10 @@ curl -X GET \
       "domain": "test-domain.com"
     },
     {
-      "id": "439b145a-7c55-4a73-8cf2-d8faabfe6d22/u7f7rXXX.stackpathcdn.com",
+      "id": "439b145a-7c55-4a73-8cf2-d8faabfe6d22/u7f7rXXX.coxcdn.com",
       "stackId": "3deddcbd-3757-44cf-a4a6-93028fc4649a",
       "siteId": "439b145a-7c55-4a73-8cf2-d8faabfe6d22",
-      "domain": "u7f7rXXX.stackpathcdn.com",
+      "domain": "u7f7rXXX.coxcdn.com",
       "validatedAt": "2021-02-26T19:00:15.177411Z"
     },
     {
@@ -42,9 +42,9 @@ curl -X GET \
 }
 ```
 
-<code>GET /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/deliverydomains?siteId=<a href="#stackpath-sites"><a href="#stackpath-sites">:siteId</a></a></code>
+<code>GET /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/deliverydomains?siteId=<a href="#cox-sites"><a href="#cox-sites">:siteId</a></a></code>
 
-Retrieve a list of all delivery domains in a given [environment](#administration-environments) for a [site] (#stackpath-sites).
+Retrieve a list of all delivery domains in a given [environment](#administration-environments) for a [site] (#cox-sites).
 
 Query Params | &nbsp;
 ---- | -----------
@@ -56,7 +56,7 @@ Attributes | &nbsp;
 `domain`<br/>*string* | The site's domain name.
 `siteId`<br/>*UUID* | The ID of the site that the delivery domain belongs to.
 `stackId`<br/>*UUID* | The ID of the stack that the site belongs to.
-`updatedAt`<br/>*string* | The date the domain was validated to be pointing to Stackpath.
+`updatedAt`<br/>*string* | The date the domain was validated to be pointing to Cox.
 
 <!-------------------- RETRIEVE A DELIVERY DOMAIN -------------------->
 
@@ -65,7 +65,7 @@ Attributes | &nbsp;
 ```shell
 curl -X GET \
    -H "MC-Api-Key: your_api_key" \
-   "https://portal.coxedge.com/api/v1/services/stackpath/test-area/deliverydomains/439b145a-7c55-4a73-8cf2-d8faabfe6d22/test-domain.com"
+   "https://portal.coxedge.com/api/v1/services/cox/test-area/deliverydomains/439b145a-7c55-4a73-8cf2-d8faabfe6d22/test-domain.com"
 ```
 > The above command returns a JSON structured like this:
 
@@ -90,7 +90,7 @@ Attributes | &nbsp;
 `domain`<br/>*string* | The site's domain name.
 `siteId`<br/>*UUID* | The ID of the site that the delivery domain belongs to.
 `stackId`<br/>*UUID* | The ID of the stack that the site belongs to.
-`updatedAt`<br/>*string* | The date the domain was validated to be pointing to Stackpath.
+`updatedAt`<br/>*string* | The date the domain was validated to be pointing to Cox.
 
 <!-------------------- DELETE A DELIVERY DOMAIN -------------------->
 
@@ -99,7 +99,7 @@ Attributes | &nbsp;
 ```shell
 curl -X DELETE \
    -H "MC-Api-Key: your_api_key" \
-   "https://portal.coxedge.com/api/v1/services/stackpath/test-area/deliverydomains/439b145a-7c55-4a73-8cf2-d8faabfe6d22/test-domain.com"
+   "https://portal.coxedge.com/api/v1/services/cox/test-area/deliverydomains/439b145a-7c55-4a73-8cf2-d8faabfe6d22/test-domain.com"
 ```
 > The above command returns a JSON structured like this:
 
@@ -127,7 +127,7 @@ Attributes | &nbsp;
 curl -X POST \
     -H "MC-Api-Key: your_api_key" \
     -d "request_body" \
-    "https://portal.coxedge.com/api/v1/services/stackpath/test-area/deliverydomains?siteId=a2fefb15-7e31-4c72-87e0-5a892e91c8d9"
+    "https://portal.coxedge.com/api/v1/services/cox/test-area/deliverydomains?siteId=a2fefb15-7e31-4c72-87e0-5a892e91c8d9"
 ```
 
 > Request body example:

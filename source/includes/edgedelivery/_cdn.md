@@ -7,7 +7,7 @@
 ```shell
 curl -X GET \
    -H "MC-Api-Key: your_api_key" \
-   "https://portal.coxedge.com/api/v1/services/stackpath/test-area/cdnsettings/9f236f19-55db-411f-9f05-bd79dc91a69b"
+   "https://portal.coxedge.com/api/v1/services/cox/test-area/cdnsettings/9f236f19-55db-411f-9f05-bd79dc91a69b"
 ```
 
 > The above command returns a JSON structured like this:
@@ -48,7 +48,7 @@ curl -X GET \
 }
 ```
 
-<code>GET /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/cdnsettings/<a href="#stackpath-sites">:siteId</a></a></code>
+<code>GET /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/cdnsettings/<a href="#cox-sites">:siteId</a></a></code>
 
 Retrieve CDN settings for a site in a given [environment](#administration-environments).
 
@@ -85,7 +85,7 @@ Attributes | &nbsp;
 ```shell
 curl -X PATCH \
    -H "MC-Api-Key: your_api_key" \
-   "https://portal.coxedge.com/api/v1/services/stackpath/test-area/cdnsettings/9f236f19-55db-411f-9f05-bd79dc91a69b"
+   "https://portal.coxedge.com/api/v1/services/cox/test-area/cdnsettings/9f236f19-55db-411f-9f05-bd79dc91a69b"
 ```
 
 > Request body example:
@@ -111,7 +111,7 @@ curl -X PATCH \
 }
 ```
 
-<code>PATCH /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/cdnsettings/<a href="#stackpath-sites">:siteId</a></a></code>
+<code>PATCH /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/cdnsettings/<a href="#cox-sites">:siteId</a></a></code>
 
 Edit CDN settings for a site in a given [environment](#administration-environments).
 
@@ -147,7 +147,7 @@ Optional | &nbsp;
 ```shell
 curl -X POST \
    -H "MC-Api-Key: your_api_key" \
-   "https://portal.coxedge.com/api/v1/services/stackpath/test-area/cdnsettings/9f236f19-55db-411f-9f05-bd79dc91a69b?operation=purgeAll"
+   "https://portal.coxedge.com/api/v1/services/cox/test-area/cdnsettings/9f236f19-55db-411f-9f05-bd79dc91a69b?operation=purgeAll"
 ```
 
 > The above command returns a JSON structured like this:
@@ -159,7 +159,7 @@ curl -X POST \
 }
 ```
 
-<code>POST /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/cdnsettings/<a href="#stackpath-sites">:siteId</a>?operation=purgeAll</a></code>
+<code>POST /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/cdnsettings/<a href="#cox-sites">:siteId</a>?operation=purgeAll</a></code>
 
 Purge all CDN cached content of a site in a given [environment](#administration-environments).
 
@@ -176,7 +176,7 @@ Attributes | &nbsp;
 curl -X POST \
    -H "MC-Api-Key: your_api_key" \
    -d "request_body" \
-   "https://portal.coxedge.com/api/v1/services/stackpath/test-area/cdnsettings/9f236f19-55db-411f-9f05-bd79dc91a69b?operation=purge"
+   "https://portal.coxedge.com/api/v1/services/cox/test-area/cdnsettings/9f236f19-55db-411f-9f05-bd79dc91a69b?operation=purge"
 ```
 
 > Request body example for URL purge type:
@@ -232,7 +232,7 @@ curl -X POST \
 }
 ```
 
-<code>POST /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/cdnsettings/<a href="#stackpath-sites">:siteId</a>?operation=purge</a></code>
+<code>POST /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/cdnsettings/<a href="#cox-sites">:siteId</a>?operation=purge</a></code>
 
 Purge custom CDN cached content of a site in a given [environment](#administration-environments).
 

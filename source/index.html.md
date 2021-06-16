@@ -209,8 +209,8 @@ includes:
   - edgedelivery/edgessl
   - edgedelivery/edgessl_settings
   - edgedelivery/certificates
-  - edgedelivery/edgerules
-  - edgedelivery/predefined_edgerules
+  - edgedelivery/edgelogic
+  - edgedelivery/predefined_edgelogic
   - edgedelivery/custom_rules
   - edgedelivery/delivery_rules
   
