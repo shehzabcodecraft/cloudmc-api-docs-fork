@@ -45,11 +45,11 @@ Attributes | &nbsp;
 `id`<br/>*UUID* | This ID is same as the siteId to which the predefined Edge Logic belong.
 `pseudoStreamingEnabled`<br/>*boolean* | Whether or not seeking random locations within MP4 or FLV files without downloading the entire video is enabled.
 `referrerList`<br/>*Array[string]* | The list of domains authorized to access content from the site's root scope. Wildcards can be used to specify multiple websites hosted on the same domain.
-`referrerProtectionEnabled`<br/>*boolean* | Whether or not referrer protection is enabled. This rule is used to allow only requests whose referrer header matches a URL that you specified.
-`robotsTxtEnabled`<br/>*boolean* | Whether or not custom robot.txt support is enabled. This rule is used to configure which pages or files search engine crawlers can or cannot index from the site.
-`robotsTxtFile`<br/>*string* | This field represents the robots.txt file contents. `NOTE:` When you first enable the `robotsTxtEnabled` rule, by default, the robots.txt will populate with a rule to disallow all indexing for CDN content. Any change made with this rule will override the contents of the robots.txt file on origin server.
-`scopeId`<br/>*UUID* | The ID of the CDN site's root scope that the predefined rules belongs to.
-`stackId`<br/>*UUID* | The ID of the stack that the predefined rules belong to.
+`referrerProtectionEnabled`<br/>*boolean* | Whether or not referrer protection is enabled. This logic is used to allow only requests whose referrer header matches a URL that you specified.
+`robotsTxtEnabled`<br/>*boolean* | Whether or not custom robot.txt support is enabled. This logic is used to configure which pages or files search engine crawlers can or cannot index from the site.
+`robotsTxtFile`<br/>*string* | This field represents the robots.txt file contents. `NOTE:` When you first enable the `robotsTxtEnabled` logic, by default, the robots.txt will populate with a logic to disallow all indexing for CDN content. Any change made with this logic will override the contents of the robots.txt file on origin server.
+`scopeId`<br/>*UUID* | The ID of the CDN site's root scope that the predefined logic belongs to.
+`stackId`<br/>*UUID* | The ID of the stack that the predefined logic belong to.
 
 <!-------------------- EDIT PREDEFINED EDGERULES  -------------------->
 
@@ -96,6 +96,6 @@ Optional| &nbsp;
 `forceWwwEnabled`<br/>*boolean* | Whether or not redirecting every request to a www subdomain is enabled.
 `pseudoStreamingEnabled`<br/>*boolean* | Whether or not seeking random locations within MP4 or FLV files without downloading the entire video is enabled.
 `referrerList`<br/>*Array[string]* | The list of domains authorized to access content from the site's root scope. Wildcards can be used to specify multiple websites hosted on the same domain.
-`referrerProtectionEnabled`<br/>*boolean* | Whether or not referrer protection is enabled. This rule is used to allow only requests whose referrer header matches a URL that you specified.
+`referrerProtectionEnabled`<br/>*boolean* | Whether or not referrer protection is enabled. This logic is used to allow only requests whose referrer header matches a URL that you specified.
 `robotsTxtEnabled`<br/>*boolean* | Whether or not custom robot.txt support is enabled.
 `robotsTxtFile`<br/>*string* | This field represents the robots.txt file contents. `NOTE:` To update the `robotsTxtFile` content, the `robotsTxtEnabled` flag should be included in the request payload.
