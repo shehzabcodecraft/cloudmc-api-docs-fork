@@ -9381,6 +9381,26 @@ curl <span class="s2">"https://cloudmc_endpoint/rest/pricings"</span> <span clas
             </span><span class="s2">"sku"</span><span class="p">:</span><span class="w"> </span><span class="s2">"vCPU"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"categoryId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fcd8908d-e1a0-41f2-9c38-fed1d1f77f18"</span><span class="w">
           </span><span class="p">},</span><span class="w">
+          </span><span class="s2">"pricingTiers"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"pricingMode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FLAT_FEE"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"lowerBound"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"upperBound"</span><span class="p">:</span><span class="w"> </span><span class="mf">1000.5</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"price"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"CAD"</span><span class="p">:</span><span class="w"> </span><span class="mi">999</span><span class="w">
+              </span><span class="p">},</span><span class="w">
+              </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9c560c79-e600-4a8b-b73b-d359a6512601"</span><span class="w">
+             </span><span class="p">},</span><span class="w">
+             </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"pricingMode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FLAT_FEE"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"lowerBound"</span><span class="p">:</span><span class="w"> </span><span class="mf">1000.5</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"chunkSize"</span><span class="p">:</span><span class="w"> </span><span class="mi">500</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"price"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"CAD"</span><span class="p">:</span><span class="w"> </span><span class="mi">999</span><span class="w">
+              </span><span class="p">},</span><span class="w">
+              </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"accf0b65-1406-45d6-b6d8-b83c062efcd7"</span><span class="w">
+             </span><span class="p">}</span><span class="w">
+           </span><span class="p">],</span><span class="w">
           </span><span class="s2">"cogs"</span><span class="p">:</span><span class="w"> </span><span class="mf">321.0</span><span class="p">,</span><span class="w">
           </span><span class="s2">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CAD"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"45425fe6-beb3-4c78-be68-f82eeb3976c6"</span><span class="w">
@@ -9453,6 +9473,34 @@ curl <span class="s2">"https://cloudmc_endpoint/rest/pricings"</span> <span clas
 <tr>
 <td><code>pricingProducts.currency</code><br/><em>string</em></td>
 <td>The currency of the pricing.</td>
+</tr>
+<tr>
+<td><code>pricingProducts.pricingTiers</code><br/><em>Array[Object]</em></td>
+<td>The list of pricing tiers assigned to the product pricings.</td>
+</tr>
+<tr>
+<td><code>pricingProducts.pricingTier.id</code><br/><em>UUID</em></td>
+<td>UUID of the pricing tier.</td>
+</tr>
+<tr>
+<td><code>pricingProducts.pricingTier.pricingMode</code><br/><em>Enum</em></td>
+<td>The pricing mode of the pricing tier. Must be one of &quot;FLAT_FEE&quot; or &quot;PER_UNIT&quot;.</td>
+</tr>
+<tr>
+<td><code>pricingProducts.pricingTier.lowerBound</code><br/><em>double</em></td>
+<td>The pricing tier&#39;s lower bound.</td>
+</tr>
+<tr>
+<td><code>pricingProducts.pricingTier.upperBound</code><br/><em>double</em></td>
+<td>The pricing tier&#39;s upper bound. A null value indicates that there is no upper bound for the given tier.</td>
+</tr>
+<tr>
+<td><code>pricingProducts.pricingTier.price</code><br/><em>Map[string, double]&gt;</em></td>
+<td>The pricing tier&#39;s price in each of the pricing product&#39;s supported currencies.</td>
+</tr>
+<tr>
+<td><code>pricingProducts.pricingTier.chunkSize</code><br/><em>double</em></td>
+<td>The pricing tier&#39;s chunk size.</td>
 </tr>
 </tbody></table>
 
@@ -9539,6 +9587,26 @@ curl <span class="s2">"https://cloudmc_endpoint/rest/pricings/03bc22bd-adc4-46b8
             </span><span class="s2">"en"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sfg"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"fr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sdfg"</span><span class="w">
           </span><span class="p">},</span><span class="w">
+          </span><span class="s2">"pricingTiers"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"pricingMode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FLAT_FEE"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"lowerBound"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"upperBound"</span><span class="p">:</span><span class="w"> </span><span class="mf">1000.5</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"price"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+               </span><span class="s2">"CAD"</span><span class="p">:</span><span class="w"> </span><span class="mi">999</span><span class="w">
+              </span><span class="p">},</span><span class="w">
+             </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9c560c79-e600-4a8b-b73b-d359a6512601"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+             </span><span class="s2">"pricingMode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FLAT_FEE"</span><span class="p">,</span><span class="w">
+             </span><span class="s2">"lowerBound"</span><span class="p">:</span><span class="w"> </span><span class="mf">1000.5</span><span class="p">,</span><span class="w">
+             </span><span class="s2">"chunkSize"</span><span class="p">:</span><span class="w"> </span><span class="mi">500</span><span class="p">,</span><span class="w">
+             </span><span class="s2">"price"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"CAD"</span><span class="p">:</span><span class="w"> </span><span class="mi">999</span><span class="w">
+             </span><span class="p">},</span><span class="w">
+             </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"accf0b65-1406-45d6-b6d8-b83c062efcd7"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+           </span><span class="p">],</span><span class="w">
           </span><span class="s2">"transformer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
             </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PROPORTIONAL_TO_TIME"</span><span class="w">
           </span><span class="p">},</span><span class="w">
@@ -9621,6 +9689,34 @@ curl <span class="s2">"https://cloudmc_endpoint/rest/pricings/03bc22bd-adc4-46b8
 <td><code>pricingProducts.currency</code><br/><em>string</em></td>
 <td>The currency of the pricing.</td>
 </tr>
+<tr>
+<td><code>pricingProducts.pricingTiers</code><br/><em>Array[Object]</em></td>
+<td>The list of pricing tiers assigned to the product pricings.</td>
+</tr>
+<tr>
+<td><code>pricingProducts.pricingTier.id</code><br/><em>UUID</em></td>
+<td>UUID of the pricing tier.</td>
+</tr>
+<tr>
+<td><code>pricingProducts.pricingTier.pricingMode</code><br/><em>Enum</em></td>
+<td>The pricing mode of the pricing tier. Must be one of &quot;FLAT_FEE&quot; or &quot;PER_UNIT&quot;.</td>
+</tr>
+<tr>
+<td><code>pricingProducts.pricingTier.lowerBound</code><br/><em>double</em></td>
+<td>The pricing tier&#39;s lower bound.</td>
+</tr>
+<tr>
+<td><code>pricingProducts.pricingTier.upperBound</code><br/><em>double</em></td>
+<td>The pricing tier&#39;s upper bound. A null value indicates that there is no upper bound for the given tier.</td>
+</tr>
+<tr>
+<td><code>pricingProducts.pricingTier.price</code><br/><em>Map[string, double]&gt;</em></td>
+<td>The pricing tier&#39;s price in each of the pricing product&#39;s supported currencies.</td>
+</tr>
+<tr>
+<td><code>pricingProducts.pricingTier.chunkSize</code><br/><em>double</em></td>
+<td>The pricing tier&#39;s chunk size.</td>
+</tr>
 </tbody></table>
 
 <!-------------------- CREATE PRICING -------------------->
@@ -9662,7 +9758,27 @@ curl -X POST <span class="s2">"https://cloudmc_endpoint/rest/pricings"</span> <s
             <span class="p">},</span>
             <span class="s2">"cogs"</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span>
             <span class="s2">"unitPrice"</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
-            <span class="s2">"currency"</span><span class="p">:</span> <span class="s2">"CAD"</span>
+            <span class="s2">"currency"</span><span class="p">:</span> <span class="s2">"CAD"</span><span class="p">,</span>
+      <span class="s2">"pricingTiers"</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+         <span class="s2">"pricingMode"</span><span class="p">:</span> <span class="s2">"FLAT_FEE"</span><span class="p">,</span>
+         <span class="s2">"lowerBound"</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+         <span class="s2">"upperBound"</span><span class="p">:</span> <span class="mf">1000.5</span><span class="p">,</span>
+         <span class="s2">"price"</span><span class="p">:</span> <span class="p">{</span>
+         <span class="s2">"CAD"</span><span class="p">:</span> <span class="mi">999</span>
+         <span class="p">},</span>
+         <span class="s2">"id"</span><span class="p">:</span> <span class="s2">"9c560c79-e600-4a8b-b73b-d359a6512601"</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+         <span class="s2">"pricingMode"</span><span class="p">:</span> <span class="s2">"FLAT_FEE"</span><span class="p">,</span>
+         <span class="s2">"lowerBound"</span><span class="p">:</span> <span class="mf">1000.5</span><span class="p">,</span>
+         <span class="s2">"chunkSize"</span><span class="p">:</span> <span class="mi">500</span><span class="p">,</span>
+         <span class="s2">"price"</span><span class="p">:</span> <span class="p">{</span>
+          <span class="s2">"CAD"</span><span class="p">:</span> <span class="mi">999</span>
+         <span class="p">},</span>
+         <span class="s2">"id"</span><span class="p">:</span> <span class="s2">"accf0b65-1406-45d6-b6d8-b83c062efcd7"</span>
+        <span class="p">}</span>
+      <span class="p">],</span>
         <span class="p">},</span>
         <span class="p">{</span>
             <span class="s2">"product"</span><span class="p">:</span> <span class="p">{</span>
@@ -9704,7 +9820,35 @@ curl -X POST <span class="s2">"https://cloudmc_endpoint/rest/pricings"</span> <s
         <span class="p">},</span>
         <span class="s2">"cogs"</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span>
         <span class="s2">"currency"</span><span class="p">:</span> <span class="s2">"CAD"</span><span class="p">,</span>
-        <span class="s2">"id"</span><span class="p">:</span> <span class="s2">"45301951-59cb-461e-b0d0-85c46a7abb69"</span>
+        <span class="s2">"id"</span><span class="p">:</span> <span class="s2">"45301951-59cb-461e-b0d0-85c46a7abb69"</span><span class="p">,</span>
+        <span class="s2">"pricingProducts"</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="s2">"product"</span><span class="p">:</span> <span class="p">{</span>
+                <span class="s2">"id"</span><span class="p">:</span> <span class="s2">"c14daee2-4678-4710-b9af-fc26fbd3c7f3"</span>
+            <span class="p">},</span>
+            <span class="s2">"cogs"</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span>
+            <span class="s2">"unitPrice"</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
+            <span class="s2">"currency"</span><span class="p">:</span> <span class="s2">"CAD"</span><span class="p">,</span>
+      <span class="s2">"pricingTiers"</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+         <span class="s2">"pricingMode"</span><span class="p">:</span> <span class="s2">"FLAT_FEE"</span><span class="p">,</span>
+         <span class="s2">"lowerBound"</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+         <span class="s2">"upperBound"</span><span class="p">:</span> <span class="mf">1000.5</span><span class="p">,</span>
+         <span class="s2">"price"</span><span class="p">:</span> <span class="p">{</span>
+         <span class="s2">"CAD"</span><span class="p">:</span> <span class="mi">999</span>
+         <span class="p">},</span>
+         <span class="s2">"id"</span><span class="p">:</span> <span class="s2">"9c560c79-e600-4a8b-b73b-d359a6512601"</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+         <span class="s2">"pricingMode"</span><span class="p">:</span> <span class="s2">"FLAT_FEE"</span><span class="p">,</span>
+         <span class="s2">"lowerBound"</span><span class="p">:</span> <span class="mf">1000.5</span><span class="p">,</span>
+         <span class="s2">"chunkSize"</span><span class="p">:</span> <span class="mi">500</span><span class="p">,</span>
+         <span class="s2">"price"</span><span class="p">:</span> <span class="p">{</span>
+          <span class="s2">"CAD"</span><span class="p">:</span> <span class="mi">999</span>
+         <span class="p">},</span>
+         <span class="s2">"id"</span><span class="p">:</span> <span class="s2">"accf0b65-1406-45d6-b6d8-b83c062efcd7"</span>
+        <span class="p">}</span>
+      <span class="p">]</span>
       <span class="p">},</span>
       <span class="p">{</span>
         <span class="s2">"unitPrice"</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
@@ -9793,6 +9937,30 @@ curl -X POST <span class="s2">"https://cloudmc_endpoint/rest/pricings"</span> <s
 <tr>
 <td><code>description</code> <br/><em>Object</em></td>
 <td>A map of language language keys to the description in the specified language.</td>
+</tr>
+<tr>
+<td><code>pricingProducts.pricingTiers</code><br/><em>Array[Object]</em></td>
+<td>The list of pricing tiers assigned to the product pricings. Pricing tiers must be contiguous, there cannot be any overlap between tiers, nor can there be gaps in between them.</td>
+</tr>
+<tr>
+<td><code>pricingProducts.pricingTier.pricingMode</code><br/><em>Enum</em></td>
+<td>The pricing mode of the pricing tier. Must be one of &quot;FLAT_FEE&quot; or &quot;PER_UNIT&quot;. If a pricing tier is specified, this attribute is mandatory.</td>
+</tr>
+<tr>
+<td><code>pricingProducts.pricingTier.lowerBound</code><br/><em>double</em></td>
+<td>The pricing tier&#39;s lower bound. The lower bound must be a non-negative value. If a pricing tier is specified, this attribute is mandatory.</td>
+</tr>
+<tr>
+<td><code>pricingProducts.pricingTier.upperBound</code><br/><em>double</em></td>
+<td>The pricing tier&#39;s upper bound. The upper bound must be a non-negative value. If a pricing tier is specified, the upper bound must be specified unless it is a part of the last pricing tier. In that case, a null value indicates that there is no upper bound for the given tier.</td>
+</tr>
+<tr>
+<td><code>pricingProducts.pricingTier.price</code><br/><em>Map[string, double]&gt;</em></td>
+<td>The pricing tier&#39;s price in each of the pricing product&#39;s supported currencies. All currencies specified must be supported by the pricing. Any missing or invalid currencies will not be accepted. Also, pricings must be non-negative.</td>
+</tr>
+<tr>
+<td><code>pricingProducts.pricingTier.chunkSize</code><br/><em>double</em></td>
+<td>The pricing tier&#39;s chunk size. The chunk size must be a non-negative value</td>
 </tr>
 </tbody></table>
 
