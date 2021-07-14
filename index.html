@@ -864,29 +864,6 @@
                           </li>
                       </ul>
                   </li>
-                  <li>
-                    <a href="#administration-connection-settings" class="toc-h2 toc-link" data-title="Administration">Connection Settings</a>
-                      <ul class="toc-list-h3">
-                          <li>
-                            <a href="#administration-search-for-a-connection-setting-associated-with-an-organization-and-service-connection" class="toc-h3 toc-link" data-title="Administration">Search for a connection setting associated with an organization and service connection</a>
-                          </li>
-                          <li>
-                            <a href="#administration-search-for-all-connection-settings-associated-with-an-organization" class="toc-h3 toc-link" data-title="Administration">Search for all connection settings associated with an organization</a>
-                          </li>
-                          <li>
-                            <a href="#administration-retrieve-a-connection-setting" class="toc-h3 toc-link" data-title="Administration">Retrieve a connection setting</a>
-                          </li>
-                          <li>
-                            <a href="#administration-create-a-connection-setting" class="toc-h3 toc-link" data-title="Administration">Create a connection setting</a>
-                          </li>
-                          <li>
-                            <a href="#administration-update-a-connection-setting" class="toc-h3 toc-link" data-title="Administration">Update a connection setting</a>
-                          </li>
-                          <li>
-                            <a href="#administration-delete-a-connection-setting" class="toc-h3 toc-link" data-title="Administration">Delete a connection setting</a>
-                          </li>
-                      </ul>
-                  </li>
               </ul>
           </li>
           <li>            
@@ -14159,11 +14136,11 @@ curl <span class="s2">"https://cloudmc_endpoint/api/v1/support/exists?organizati
 </span></code></pre><h2 id='administration-workspace-settings'>Workspace Settings</h2>
 <!-------------------- FIND WORKSPACE SETTINGS -------------------->
 <h3 id='administration-find-workspace-settings-associated-to-an-organization'>Find workspace settings associated to an organization</h3>
-<p><code>GET /workspace_settings/find?organizationId=:id</code></p>
+<p><code>GET /reseller/settings/workspace/find?organizationId=:id</code></p>
 
 <p>Retrieve the workspace settings associated to an organization. If the <code>organizationId</code> is omitted, the authenticated user&#39;s organization will be used.</p>
 <pre class="highlight shell tab-shell"><code><span class="c"># Retrieve the workspace settings</span>
-curl <span class="s2">"https://cloudmc_endpoint/api/v1/workspace_settings/find?organizationId=10572c3d-16e5-450f-8af8-a01e50dc52d4"</span> <span class="se">\</span>
+curl <span class="s2">"https://cloudmc_endpoint/api/v1/reseller/settings/workspace/find?organizationId=10572c3d-16e5-450f-8af8-a01e50dc52d4"</span> <span class="se">\</span>
    -H <span class="s2">"MC-Api-Key: your_api_key"</span>
 </code></pre>
 <blockquote>
@@ -14176,7 +14153,8 @@ curl <span class="s2">"https://cloudmc_endpoint/api/v1/workspace_settings/find?o
     </span><span class="p">},</span><span class="w">
     </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"f7ad28a8-1227-44de-9785-6dbd556f3bda"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"version"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"detailsViewSummaryFieldsLayout"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CONDENSED"</span><span class="w">
+    </span><span class="s2">"detailsViewSummaryFieldsLayout"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CONDENSED"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"supportsMultiStep"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
@@ -14204,13 +14182,17 @@ curl <span class="s2">"https://cloudmc_endpoint/api/v1/workspace_settings/find?o
 <td><code>detailsViewSummaryFieldsLayout</code><br/><em>enum</em></td>
 <td>The layout to render summary fields in detail views. It could be either &quot;DEFAULT&quot; or &quot;CONDENSED&quot;.</td>
 </tr>
+<tr>
+<td><code>supportsMultiStep</code><br/><em>boolean</em></td>
+<td>If true, the operation&#39;s (create/edit) forms for the service connection of an organization will appear in multi-step mode.</td>
+</tr>
 </tbody></table>
 
 <!-------------------- GET WORKSPACE SETTINGS -------------------->
 <h3 id='administration-retrieve-workspace-settings'>Retrieve workspace settings</h3>
-<p><code>GET /workspace_settings/:id</code></p>
+<p><code>GET /reseller/settings/workspace/:id</code></p>
 <pre class="highlight shell tab-shell"><code><span class="c"># Retrieve workspace settings</span>
-curl <span class="s2">"https://cloudmc_endpoint/api/v1/workspace_settings/f7ad28a8-1227-44de-9785-6dbd556f3bda"</span> <span class="se">\</span>
+curl <span class="s2">"https://cloudmc_endpoint/api/v1/reseller/settings/workspace/f7ad28a8-1227-44de-9785-6dbd556f3bda"</span> <span class="se">\</span>
    -H <span class="s2">"MC-Api-Key: your_api_key"</span>
 </code></pre>
 <blockquote>
@@ -14223,7 +14205,8 @@ curl <span class="s2">"https://cloudmc_endpoint/api/v1/workspace_settings/f7ad28
     </span><span class="p">},</span><span class="w">
     </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"f7ad28a8-1227-44de-9785-6dbd556f3bda"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"version"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"detailsViewSummaryFieldsLayout"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CONDENSED"</span><span class="w">
+    </span><span class="s2">"detailsViewSummaryFieldsLayout"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CONDENSED"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"supportsMultiStep"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
@@ -14251,15 +14234,19 @@ curl <span class="s2">"https://cloudmc_endpoint/api/v1/workspace_settings/f7ad28
 <td><code>detailsViewSummaryFieldsLayout</code><br/><em>enum</em></td>
 <td>The layout to render summary fields in detail views. It could be either &quot;DEFAULT&quot; or &quot;CONDENSED&quot;.</td>
 </tr>
+<tr>
+<td><code>supportsMultiStep</code><br/><em>boolean</em></td>
+<td>If true, the operation&#39;s (create/edit) forms for the service connection of an organization will appear in multi-step mode.</td>
+</tr>
 </tbody></table>
 
 <!-------------------- CREATE WORKSPACE SETTINGS -------------------->
 <h3 id='administration-create-workspace-setting'>Create workspace setting</h3>
-<p><code>POST /workspace_settings</code></p>
+<p><code>POST /reseller/settings/workspace</code></p>
 
 <p>Create a new workspace settings.</p>
 <pre class="highlight shell tab-shell"><code><span class="c"># Creates a new workspace settings</span>
-curl -X POST <span class="s2">"https://cloudmc_endpoint/api/v1/workspace_settings"</span> <span class="se">\</span>
+curl -X POST <span class="s2">"https://cloudmc_endpoint/api/v1/reseller/settings/workspace"</span> <span class="se">\</span>
    -H <span class="s2">"MC-Api-Key: your_api_key"</span>
 </code></pre>
 <blockquote>
@@ -14269,7 +14256,8 @@ curl -X POST <span class="s2">"https://cloudmc_endpoint/api/v1/workspace_setting
  </span><span class="s2">"organization"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
   </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10572c3d-16e5-450f-8af8-a01e50dc52d4"</span><span class="w">
  </span><span class="p">},</span><span class="w">
- </span><span class="s2">"detailsViewSummaryFieldsLayout"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CONDENSED"</span><span class="w">
+ </span><span class="s2">"detailsViewSummaryFieldsLayout"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CONDENSED"</span><span class="p">,</span><span class="w">
+ </span><span class="s2">"supportsMultiStep"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <blockquote>
@@ -14282,7 +14270,8 @@ curl -X POST <span class="s2">"https://cloudmc_endpoint/api/v1/workspace_setting
     </span><span class="p">},</span><span class="w">
     </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d785ffcb-9b03-478d-a49b-52a2ccedf1b8"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"version"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"detailsViewSummaryFieldsLayout"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CONDENSED"</span><span class="w">
+    </span><span class="s2">"detailsViewSummaryFieldsLayout"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CONDENSED"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"supportsMultiStep"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
@@ -14295,6 +14284,10 @@ curl -X POST <span class="s2">"https://cloudmc_endpoint/api/v1/workspace_setting
 <tr>
 <td><code>detailsViewSummaryFieldsLayout</code><br/><em>enum</em></td>
 <td>The layout to render summary fields in detail views. It could be either &quot;DEFAULT&quot; or &quot;CONDENSED&quot;.</td>
+</tr>
+<tr>
+<td><code>supportsMultiStep</code><br/><em>boolean</em></td>
+<td>If true, the operation&#39;s (create/edit) forms for the service connection of an organization will appear in multi-step mode.</td>
 </tr>
 </tbody></table>
 
@@ -14312,11 +14305,11 @@ curl -X POST <span class="s2">"https://cloudmc_endpoint/api/v1/workspace_setting
 
 <!-------------------- UPDATE WORKSPACE SETTINGS -------------------->
 <h3 id='administration-update-workspace-settings'>Update workspace settings</h3>
-<p><code>PUT /workspace_settings/:id</code></p>
+<p><code>PUT /reseller/settings/workspace/:id</code></p>
 
 <p>Updates the workspace settings of an organization.</p>
 <pre class="highlight shell tab-shell"><code><span class="c"># Updates an existing workspace settings for an organization</span>
-curl -X PUT <span class="s2">"https://cloudmc_endpoint/api/v1/workspace_settings/d785ffcb-9b03-478d-a49b-52a2ccedf1b8 </span><span class="se">\</span><span class="s2">
+curl -X PUT <span class="s2">"https://cloudmc_endpoint/api/v1/reseller/settings/workspace/d785ffcb-9b03-478d-a49b-52a2ccedf1b8 </span><span class="se">\</span><span class="s2">
    -H "</span>MC-Api-Key: your_api_key<span class="s2">"
    -H "</span>Content-Type: application/json<span class="s2">" </span><span class="se">\</span><span class="s2">
    -d "</span>request-body<span class="s2">"
@@ -14330,7 +14323,8 @@ curl -X PUT <span class="s2">"https://cloudmc_endpoint/api/v1/workspace_settings
  </span><span class="p">},</span><span class="w">
  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d785ffcb-9b03-478d-a49b-52a2ccedf1b8"</span><span class="p">,</span><span class="w">
  </span><span class="s2">"version"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
- </span><span class="s2">"detailsViewSummaryFieldsLayout"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DEFAULT"</span><span class="w">
+ </span><span class="s2">"detailsViewSummaryFieldsLayout"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DEFAULT"</span><span class="p">,</span><span class="w">
+ </span><span class="s2">"supportsMultiStep"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <blockquote>
@@ -14343,7 +14337,8 @@ curl -X PUT <span class="s2">"https://cloudmc_endpoint/api/v1/workspace_settings
     </span><span class="p">},</span><span class="w">
     </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d785ffcb-9b03-478d-a49b-52a2ccedf1b8"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"version"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"detailsViewSummaryFieldsLayout"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DEFAULT"</span><span class="w">
+    </span><span class="s2">"detailsViewSummaryFieldsLayout"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DEFAULT"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"supportsMultiStep"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
@@ -14365,14 +14360,18 @@ curl -X PUT <span class="s2">"https://cloudmc_endpoint/api/v1/workspace_settings
 <td><code>detailsViewSummaryFieldsLayout</code><br/><em>enum</em></td>
 <td>The layout to render summary fields in detail views. It could be either &quot;DEFAULT&quot; or &quot;CONDENSED&quot;.</td>
 </tr>
+<tr>
+<td><code>supportsMultiStep</code><br/><em>boolean</em></td>
+<td>If true, the operation&#39;s (create/edit) forms for the service connection of an organization will appear in multi-step mode.</td>
+</tr>
 </tbody></table>
 
 <!-------------------- DELETE WORKSPACE SETTINGS -------------------->
 <h3 id='administration-delete-workspace-settings'>Delete workspace settings</h3>
-<p><code>DELETE /workspace_settings/:id</code></p>
+<p><code>DELETE /reseller/settings/workspace/:id</code></p>
 
 <p>Delete an existing workspace settings.</p>
-<pre class="highlight shell tab-shell"><code>curl -X DELETE <span class="s2">"https://cloudmc_endpoint/api/v1/workspace_settings/d785ffcb-9b03-478d-a49b-52a2ccedf1b8"</span> <span class="se">\</span>
+<pre class="highlight shell tab-shell"><code>curl -X DELETE <span class="s2">"https://cloudmc_endpoint/api/v1/reseller/settings/workspace/d785ffcb-9b03-478d-a49b-52a2ccedf1b8"</span> <span class="se">\</span>
    -H <span class="s2">"MC-Api-Key: your_api_key"</span>
 </code></pre>
 <blockquote>
@@ -16601,346 +16600,7 @@ curl --request GET <span class="se">\</span>
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>Delete&#39;s a custom navigation configuration.</p>
-<h2 id='administration-connection-settings'>Connection Settings</h2>
-<!-------------------- SEARCH CONNECTION SETTINGS ASSOCIATED WITH AN ORG AND SERVICE CONNECTION-------------------->
-<h3 id='administration-search-for-a-connection-setting-associated-with-an-organization-and-service-connection'>Search for a connection setting associated with an organization and service connection</h3>
-<p><code>GET /reseller/connectionSettings/search?organizationId=:orgId&amp;connectionId=:serviceConnectionId</code></p>
-
-<p>Retrieve the connection setting associated with an organization (or its lineage) and service connection. If the <code>organizationId</code> is omitted, the authenticated user&#39;s organization will be used to return a connection setting associated with the <code>connectionId</code>. If both <code>organizationId</code> and <code>connectionId</code> is omitted all connection settings associated with the
-authenticated user&#39;s organization will be returned</p>
-<pre class="highlight shell tab-shell"><code><span class="c"># Retrieve a connection setting associated with an organization and service connection</span>
-curl <span class="s2">"https://cloudmc_endpoint/api/v1/reseller/connectionSettings/search?organizationId=10572c3d-16e5-450f-8af8-a01e50dc52d4&amp;connectionId=e0133c59-cfa4-4bd5-9b49-1575aadc4842"</span> <span class="se">\</span>
-   -H <span class="s2">"MC-Api-Key: your_api_key"</span>
-</code></pre>
-<blockquote>
-<p>The above command returns JSON structured like this:</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"organization"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10572c3d-16e5-450f-8af8-a01e50dc52d4"</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="s2">"supportsMultiStep"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"b3a09847-83e0-4505-b941-c0f565b39686"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"version"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"serviceConnection"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"e0133c59-cfa4-4bd5-9b49-1575aadc4842"</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-<table><thead>
-<tr>
-<th>Attributes</th>
-<th>&nbsp;</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code>id</code><br/><em>UUID</em></td>
-<td>The configured connection settings&#39; id.</td>
-</tr>
-<tr>
-<td><code>organization.id</code><br/><em>UUID</em></td>
-<td>The organization id that the connection settings is linked to. It cannot be changed.</td>
-</tr>
-<tr>
-<td><code>serviceConnection.id</code><br/><em>UUID</em></td>
-<td>The service connection id that the connection settings is linked to. It cannot be changed.</td>
-</tr>
-<tr>
-<td><code>version</code><br/><em>integer</em></td>
-<td>The connection settings version.</td>
-</tr>
-<tr>
-<td><code>supportsMultiStep</code><br/><em>boolean</em></td>
-<td>If true the Operation (create/edit) forms for the service connection of an organization will appear in wizard mode.</td>
-</tr>
-</tbody></table>
-
-<!-------------------- SEARCH ALL CONNECTION SETTINGS -------------------->
-<h3 id='administration-search-for-all-connection-settings-associated-with-an-organization'>Search for all connection settings associated with an organization</h3>
-<p><code>GET /reseller/connectionSettings/search?organizationId=:orgId</code></p>
-
-<p>Retrieve the list of connection settings associated with an organization (or its lineage). If the <code>organizationId</code> is omitted, the authenticated user&#39;s organization will be used to return a list of connection settings.</p>
-<pre class="highlight shell tab-shell"><code><span class="c"># Retrieve the list of connection settings associated with an organization</span>
-curl <span class="s2">"https://cloudmc_endpoint/api/v1/reseller/connectionSettings/search?organizationId=10572c3d-16e5-450f-8af8-a01e50dc52d4&amp;"</span> <span class="se">\</span>
-   -H <span class="s2">"MC-Api-Key: your_api_key"</span>
-</code></pre>
-<blockquote>
-<p>The above command returns JSON structured like this:</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="w">
-</span><span class="p">{</span><span class="w">
-  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"organization"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10572c3d-16e5-450f-8af8-a01e50dc52d4"</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="s2">"supportsMultiStep"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"b3a09847-83e0-4505-b941-c0f565b39686"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"version"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"serviceConnection"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"e0133c59-cfa4-4bd5-9b49-1575aadc4842"</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"organization"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"56e2219c-2576-48dc-82b1-0ea7cd096d12"</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="s2">"supportsMultiStep"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"61c9c620-840b-4a5d-b7b1-cebdac7a4385"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"version"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"serviceConnection"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"b5f3ba0d-8b37-413f-a257-d1fc8bebb9a6"</span><span class="w">
-      </span><span class="p">}</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-  </span><span class="p">]</span><span class="w">
-</span><span class="p">}</span><span class="w">    
-</span></code></pre>
-<table><thead>
-<tr>
-<th>Attributes</th>
-<th>&nbsp;</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code>id</code><br/><em>UUID</em></td>
-<td>The configured connection settings&#39; id.</td>
-</tr>
-<tr>
-<td><code>organization.id</code><br/><em>UUID</em></td>
-<td>The organization id that the connection settings is linked to. It cannot be changed.</td>
-</tr>
-<tr>
-<td><code>serviceConnection.id</code><br/><em>UUID</em></td>
-<td>The service connection id that the connection settings is linked to. It cannot be changed.</td>
-</tr>
-<tr>
-<td><code>version</code><br/><em>integer</em></td>
-<td>The connection settings version.</td>
-</tr>
-<tr>
-<td><code>supportsMultiStep</code><br/><em>boolean</em></td>
-<td>If true the Operation (create/edit) forms for the service connection of an organization will appear in wizard mode.</td>
-</tr>
-</tbody></table>
-
-<!-------------------- GET CONNECTION SETTINGS -------------------->
-<h3 id='administration-retrieve-a-connection-setting'>Retrieve a connection setting</h3>
-<p><code>GET /reseller/connectionSettings/:id</code></p>
-<pre class="highlight shell tab-shell"><code><span class="c"># Retrieve a connection setting</span>
-curl <span class="s2">"https://cloudmc_endpoint/api/v1/reseller/connectionSettings/b3a09847-83e0-4505-b941-c0f565b39686"</span> <span class="se">\</span>
-   -H <span class="s2">"MC-Api-Key: your_api_key"</span>
-</code></pre>
-<blockquote>
-<p>The above command returns JSON structured like this:</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"organization"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10572c3d-16e5-450f-8af8-a01e50dc52d4"</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="s2">"supportsMultiStep"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"b3a09847-83e0-4505-b941-c0f565b39686"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"version"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"serviceConnection"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"e0133c59-cfa4-4bd5-9b49-1575aadc4842"</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-<p>Retrieve the connection setting associated with the connection setting id.</p>
-
-<table><thead>
-<tr>
-<th>Attributes</th>
-<th>&nbsp;</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code>id</code><br/><em>UUID</em></td>
-<td>The configured connection settings&#39; id.</td>
-</tr>
-<tr>
-<td><code>organization.id</code><br/><em>UUID</em></td>
-<td>The organization id that the connection settings is linked to. It cannot be changed.</td>
-</tr>
-<tr>
-<td><code>serviceConnection.id</code><br/><em>UUID</em></td>
-<td>The service connection id that the connection settings is linked to. It cannot be changed.</td>
-</tr>
-<tr>
-<td><code>version</code><br/><em>integer</em></td>
-<td>The connection settings version.</td>
-</tr>
-<tr>
-<td><code>supportsMultiStep</code><br/><em>boolean</em></td>
-<td>If true the Operation (create/edit) forms for the service connection of an organization will appear in wizard mode.</td>
-</tr>
-</tbody></table>
-
-<!-------------------- CREATE CONNECTION SETTINGS -------------------->
-<h3 id='administration-create-a-connection-setting'>Create a connection setting</h3>
-<p><code>POST /reseller/connectionSettings</code></p>
-
-<p>Create a new connection setting.</p>
-<pre class="highlight shell tab-shell"><code><span class="c"># Creates a new connection setting</span>
-curl -X POST <span class="s2">"https://cloudmc_endpoint/api/v1/reseller/connectionSettings"</span> <span class="se">\</span>
-   -H <span class="s2">"MC-Api-Key: your_api_key"</span>
-</code></pre>
-<blockquote>
-<p>Request body example:</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"organization"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10572c3d-16e5-450f-8af8-a01e50dc52d4"</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="s2">"supportsMultiStep"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"serviceConnection"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"e0133c59-cfa4-4bd5-9b49-1575aadc4842"</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-<blockquote>
-<p>The above command return JSON structured like this:</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"organization"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10572c3d-16e5-450f-8af8-a01e50dc52d4"</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="s2">"supportsMultiStep"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"b3a09847-83e0-4505-b941-c0f565b39686"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"version"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"serviceConnection"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"e0133c59-cfa4-4bd5-9b49-1575aadc4842"</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-<table><thead>
-<tr>
-<th>Required</th>
-<th>&nbsp;</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code>organization.id</code><br/><em>UUID</em></td>
-<td>The organization id that the connection settings will be linked to.</td>
-</tr>
-<tr>
-<td><code>serviceConnection.id</code><br/><em>UUID</em></td>
-<td>The service connection id that the connection settings will be linked to.</td>
-</tr>
-</tbody></table>
-
-<table><thead>
-<tr>
-<th>Optional</th>
-<th>&nbsp;</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code>supportsMultiStep</code><br/><em>UUID</em></td>
-<td>Whether to display the Operation (create/edit) forms for the service connection of an organization in wizard mode. Default is false</td>
-</tr>
-</tbody></table>
-
-<!-------------------- UPDATE CONNECTION SETTINGS -------------------->
-<h3 id='administration-update-a-connection-setting'>Update a connection setting</h3>
-<p><code>PUT /reseller/connectionSettings/:id</code></p>
-
-<p>Updates the connection setting associated with the connection settings id.</p>
-<pre class="highlight shell tab-shell"><code><span class="c"># Updates an existing connection setting for an organization and service connection</span>
-curl -X PUT <span class="s2">"https://cloudmc_endpoint/api/v1/reseller/connectionSettings/b3a09847-83e0-4505-b941-c0f565b39686 </span><span class="se">\</span><span class="s2">
-   -H "</span>MC-Api-Key: your_api_key<span class="s2">"
-   -H "</span>Content-Type: application/json<span class="s2">" </span><span class="se">\</span><span class="s2">
-   -d "</span>request-body<span class="s2">"
-</span></code></pre>
-<blockquote>
-<p>Request body example:</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"organization"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10572c3d-16e5-450f-8af8-a01e50dc52d4"</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="s2">"supportsMultiStep"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"b3a09847-83e0-4505-b941-c0f565b39686"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"version"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"serviceConnection"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"e0133c59-cfa4-4bd5-9b49-1575aadc4842"</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-<blockquote>
-<p>The above command return JSON structured like this:</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"organization"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10572c3d-16e5-450f-8af8-a01e50dc52d4"</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="s2">"supportsMultiStep"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"b3a09847-83e0-4505-b941-c0f565b39686"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"version"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"serviceConnection"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"e0133c59-cfa4-4bd5-9b49-1575aadc4842"</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-<table><thead>
-<tr>
-<th>Required</th>
-<th>&nbsp;</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code>id</code><br/><em>UUID</em></td>
-<td>The configured connection settings&#39; id.</td>
-</tr>
-<tr>
-<td><code>organization.id</code><br/><em>UUID</em></td>
-<td>The organization id that the connection settings is linked to. It cannot be changed.</td>
-</tr>
-<tr>
-<td><code>serviceConnection.id</code><br/><em>UUID</em></td>
-<td>The service connection id that the connection settings is linked to. It cannot be changed.</td>
-</tr>
-</tbody></table>
-
-<table><thead>
-<tr>
-<th>Optional</th>
-<th>&nbsp;</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code>supportsMultiStep</code><br/><em>UUID</em></td>
-<td>Whether to display the Operation (create/edit) forms for the service connection of an organization in wizard mode. Default is false</td>
-</tr>
-<tr>
-<td><code>version</code><br/><em>integer</em></td>
-<td>The connection settings version.</td>
-</tr>
-</tbody></table>
-
-<!-------------------- DELETE CONNECTION SETTINGS -------------------->
-<h3 id='administration-delete-a-connection-setting'>Delete a connection setting</h3>
-<p><code>DELETE /reseller/connectionSettings/:id</code></p>
-
-<p>Delete an existing connection setting.</p>
-<pre class="highlight shell tab-shell"><code>curl -X DELETE <span class="s2">"https://cloudmc_endpoint/api/v1/reseller/connectionSettings/b3a09847-83e0-4505-b941-c0f565b39686"</span> <span class="se">\</span>
-   -H <span class="s2">"MC-Api-Key: your_api_key"</span>
-</code></pre>
-<blockquote>
-<p>The above command returns a JSON structured like this:</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"taskId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"26022b83-9797-44c0-883c-7e82ecb757e9"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"taskStatus"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SUCCESS"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre><h1 id='cloudstack-plugin'>CloudStack plugin</h1>
+<h1 id='cloudstack-plugin'>CloudStack plugin</h1>
 <p>The CloudStack plugin provides endpoints for carrying out operations on CloudMC compute and networking entities. While each operation has its own validation and required fields, all operations need to specify the service code and environment in which they should be carried out. The following example URL describes how to specify this information for all entities.</p>
 
 <p><code>https://cloudmc_endpoint/api/v1/services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/:entity_type</code></p>
