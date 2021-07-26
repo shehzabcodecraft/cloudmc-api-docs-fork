@@ -553,6 +553,23 @@
                       </ul>
                   </li>
                   <li>
+                    <a href="#administration-discounts" class="toc-h2 toc-link" data-title="Administration">Discounts</a>
+                      <ul class="toc-list-h3">
+                          <li>
+                            <a href="#administration-list-discounts" class="toc-h3 toc-link" data-title="Administration">List discounts</a>
+                          </li>
+                          <li>
+                            <a href="#administration-get-discount" class="toc-h3 toc-link" data-title="Administration">Get discount</a>
+                          </li>
+                          <li>
+                            <a href="#administration-create-discount" class="toc-h3 toc-link" data-title="Administration">Create discount</a>
+                          </li>
+                          <li>
+                            <a href="#administration-edit-discount" class="toc-h3 toc-link" data-title="Administration">Edit discount</a>
+                          </li>
+                      </ul>
+                  </li>
+                  <li>
                     <a href="#administration-authentication" class="toc-h2 toc-link" data-title="Administration">Authentication</a>
                       <ul class="toc-list-h3">
                           <li>
@@ -10563,7 +10580,444 @@ curl -X PUT <span class="s2">"https://cloudmc_endpoint/rest/applied_pricings/8bb
   </span><span class="s2">"taskId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"85df8dfb-b904-42dc-bb76-4824e6b50c83"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"taskStatus"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SUCCESS"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h2 id='administration-authentication'>Authentication</h2><h3 id='administration-identity-providers'>Identity providers</h3>
+</span></code></pre><h2 id='administration-discounts'>Discounts</h2>
+<p>The discount allows the assignment of a percentage discount or credit to an applied pricing.</p>
+
+<!-------------------- LIST DISCOUNTS -------------------->
+<h3 id='administration-list-discounts'>List discounts</h3>
+<p><code>GET /applied_pricings/:applied_pricing_id/discounts?type=:type</code></p>
+
+<p>Retrieves the list of discounts associated with an applied pricing.</p>
+<pre class="highlight shell tab-shell"><code><span class="c"># Retrieve applied pricing list</span>
+curl <span class="s2">"https://cloudmc_endpoint/rest/applied_pricings/efd32752-c6f2-45cf-b494-cc6be8a45845/discounts?type=PERCENTAGE"</span> <span class="se">\</span>
+   -H <span class="s2">"MC-Api-Key: your_api_key"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns a JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"applyToNewCustomersOnly"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"discountedProducts"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+      </span><span class="s2">"durationMonths"</span><span class="p">:</span><span class="w"> </span><span class="mi">22354</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PERCENTAGE"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"packageDiscount"</span><span class="p">:</span><span class="w"> </span><span class="mf">20.0</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"discountScope"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ALL_PRODUCTS"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"isDeactivated"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"discountedCategories"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"en"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Summer Discount"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"fr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Réduction Estival"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"18db7bc6-8be1-48bb-bab1-77a7d696fa3b"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"appliedPricing"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"efd32752-c6f2-45cf-b494-cc6be8a45845"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"startDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-07-20T15:57:16.132Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CURRENT"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<table><thead>
+<tr>
+<th>Optional Query Parameters</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>type</code><br/><em>enum</em></td>
+<td>The type of the discount. It could be either &quot;PERCENTAGE&quot; or &quot;CREDIT&quot;.</td>
+</tr>
+</tbody></table>
+
+<table><thead>
+<tr>
+<th>Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code><br/><em>UUID</em></td>
+<td>The UUID of the discount.</td>
+</tr>
+<tr>
+<td><code>discountedProducts</code><br/><em>Map[UUID, BigDecimal]</em></td>
+<td>A mapping of the desired priced product IDs and discounts. All pricing products specified will have the discount value applied to them.</td>
+</tr>
+<tr>
+<td><code>durationMonths</code><br/><em>integer</em></td>
+<td>Duration of the discount once it has been applied to a customer. If not provided the discount will last indefinitely, or until credit values are reached.</td>
+</tr>
+<tr>
+<td><code>type</code><br/><em>enum</em></td>
+<td>The type of the discount. It could be either &quot;PERCENTAGE&quot; or &quot;CREDIT&quot;.</td>
+</tr>
+<tr>
+<td><code>packageDiscount</code><br/><em>BigDecimal</em></td>
+<td>The discount value that will be applied to all products within the applied pricing.</td>
+</tr>
+<tr>
+<td><code>discountScope</code><br/><em>enum</em></td>
+<td>The scope of the discount. It could be either &quot;ALL_PRODUCTS&quot;, &quot;CATEGORIES&quot; or &quot;PRODUCTS&quot;.</td>
+</tr>
+<tr>
+<td><code>isDeactivated</code><br/><em>boolean</em></td>
+<td>Whether or not the discount is deactivated. Defaults to false.</td>
+</tr>
+<tr>
+<td><code>discountedCategories</code><br/><em>Map[UUID, BigDecimal]</em></td>
+<td>A mapping between category IDs and discount values. All pricing products within a category will have the discount value applied to them.</td>
+</tr>
+<tr>
+<td><code>name</code><br/><em>Map[String, String]</em></td>
+<td>The name translations of the discount.</td>
+</tr>
+<tr>
+<td><code>appliedPricing</code><br/><em>Object</em></td>
+<td>The applied pricing being discounted.</td>
+</tr>
+<tr>
+<td><code>appliedPricing.id</code><br/><em>UUID</em></td>
+<td>The UUID of the applied pricing.</td>
+</tr>
+<tr>
+<td><code>applyToNewCustomersOnly</code><br/><em>boolean</em></td>
+<td>If true, the discount will only be applied to organizations created after the discount start date.</td>
+</tr>
+<tr>
+<td><code>startDate</code><br/><em>date</em></td>
+<td>The start date of the discount.</td>
+</tr>
+<tr>
+<td><code>cutoffDate</code><br/><em>date</em></td>
+<td>The date on which the discount will no longer be offered to customers who have not already received it. If not provided, the discount will always be offered after the start date.</td>
+</tr>
+<tr>
+<td><code>status</code><br/><em>enum</em></td>
+<td>The status of the discount. Possible values are: UPCOMING, CURRENT, ENDED.</td>
+</tr>
+</tbody></table>
+
+<!-------------------- GET DISCOUNT -------------------->
+<h3 id='administration-get-discount'>Get discount</h3>
+<p><code>GET /applied_pricings/:applied_pricing_id/discounts/:id</code></p>
+
+<p>Retrieves a discount&#39;s details.</p>
+<pre class="highlight shell tab-shell"><code><span class="c"># Retrieve applied pricing list</span>
+curl <span class="s2">"https://cloudmc_endpoint/rest/applied_pricings/efd32752-c6f2-45cf-b494-cc6be8a45845/discounts/18db7bc6-8be1-48bb-bab1-77a7d696fa3b"</span> <span class="se">\</span>
+   -H <span class="s2">"MC-Api-Key: your_api_key"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns a JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"applyToNewCustomersOnly"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"discountedProducts"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+      </span><span class="s2">"durationMonths"</span><span class="p">:</span><span class="w"> </span><span class="mi">22354</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PERCENTAGE"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"packageDiscount"</span><span class="p">:</span><span class="w"> </span><span class="mf">20.0</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"discountScope"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ALL_PRODUCTS"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"isDeactivated"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"discountedCategories"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"en"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Summer Discount"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"fr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Réduction Estival"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"18db7bc6-8be1-48bb-bab1-77a7d696fa3b"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"appliedPricing"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"efd32752-c6f2-45cf-b494-cc6be8a45845"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"startDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-07-20T15:57:16.132Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CURRENT"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<table><thead>
+<tr>
+<th>Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code><br/><em>UUID</em></td>
+<td>The UUID of the discount.</td>
+</tr>
+<tr>
+<td><code>discountedProducts</code><br/><em>Map[UUID, BigDecimal]</em></td>
+<td>A mapping of the desired priced product IDs and discounts. All pricing products specified will have the discount value applied to them.</td>
+</tr>
+<tr>
+<td><code>durationMonths</code><br/><em>integer</em></td>
+<td>Duration of the discount once it has been applied to a customer. If not provided the discount will last indefinitely, or until credit values are reached.</td>
+</tr>
+<tr>
+<td><code>type</code><br/><em>enum</em></td>
+<td>The type of the discount. It could be either &quot;PERCENTAGE&quot; or &quot;CREDIT&quot;.</td>
+</tr>
+<tr>
+<td><code>packageDiscount</code><br/><em>BigDecimal</em></td>
+<td>The discount value that will be applied to all products within the applied pricing.</td>
+</tr>
+<tr>
+<td><code>discountScope</code><br/><em>enum</em></td>
+<td>The scope of the discount. It could be either &quot;ALL_PRODUCTS&quot;, &quot;CATEGORIES&quot; or &quot;PRODUCTS&quot;.</td>
+</tr>
+<tr>
+<td><code>isDeactivated</code><br/><em>boolean</em></td>
+<td>Whether or not the discount is deactivated. Defaults to false.</td>
+</tr>
+<tr>
+<td><code>discountedCategories</code><br/><em>Map[UUID, BigDecimal]</em></td>
+<td>A mapping between category IDs and discount values. All pricing products within a category will have the discount value applied to them.</td>
+</tr>
+<tr>
+<td><code>name</code><br/><em>Map[String, String]</em></td>
+<td>The name translations of the discount.</td>
+</tr>
+<tr>
+<td><code>appliedPricing</code><br/><em>Object</em></td>
+<td>The applied pricing being discounted.</td>
+</tr>
+<tr>
+<td><code>appliedPricing.id</code><br/><em>UUID</em></td>
+<td>The UUID of the applied pricing.</td>
+</tr>
+<tr>
+<td><code>applyToNewCustomersOnly</code><br/><em>boolean</em></td>
+<td>If true, the discount will only be applied to organizations created after the discount start date.</td>
+</tr>
+<tr>
+<td><code>startDate</code><br/><em>date</em></td>
+<td>The start date of the discount.</td>
+</tr>
+<tr>
+<td><code>cutoffDate</code><br/><em>date</em></td>
+<td>The date on which the discount will no longer be offered to customers who have not already received it. If not provided, the discount will always be offered after the start date.</td>
+</tr>
+<tr>
+<td><code>status</code><br/><em>enum</em></td>
+<td>The status of the discount. Possible values are: UPCOMING, CURRENT, ENDED.</td>
+</tr>
+</tbody></table>
+
+<!-------------------- CREATE DISCOUNT -------------------->
+<h3 id='administration-create-discount'>Create discount</h3>
+<p><code>POST /applied_pricings/:applied_pricing_id/discounts</code></p>
+
+<p>Creates a new discount </p>
+<pre class="highlight shell tab-shell"><code><span class="c"># Creates a new discount</span>
+curl -X POST <span class="s2">"https://cloudmc_endpoint/rest/applied_pricings/efd32752-c6f2-45cf-b494-cc6be8a45845/discounts"</span> <span class="se">\</span>
+   -H <span class="s2">"MC-Api-Key: your_api_key"</span>
+</code></pre>
+<blockquote>
+<p>Request body example:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"en"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Summer Discount"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"fr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Réduction Estival"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"startDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-07-23T00:00:00.000Z"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PERCENTAGE"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"durationMonths"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"discountedProducts"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+  </span><span class="s2">"discountedCategories"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"8cf73cc0-b86e-49b4-a102-6102894f7955"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> 
+    </span><span class="s2">"00358632-5c9a-4164-a9a9-df271a9c06a9"</span><span class="p">:</span><span class="w"> </span><span class="mi">22</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"discountScope"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CATEGORIES"</span><span class="p">,</span><span class="w"> 
+  </span><span class="s2">"cutoffDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-07-24T00:00:00.000Z"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"applyToNewCustomersOnly"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<blockquote>
+<p>The above command returns a JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"applyToNewCustomersOnly"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"discountedProducts"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+      </span><span class="s2">"durationMonths"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PERCENTAGE"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"discountScope"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CATEGORIES"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"discountedCategories"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"8cf73cc0-b86e-49b4-a102-6102894f7955"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> 
+        </span><span class="s2">"00358632-5c9a-4164-a9a9-df271a9c06a9"</span><span class="p">:</span><span class="w"> </span><span class="mi">22</span><span class="w">
+      </span><span class="p">},</span><span class="w">  
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"en"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Summer Discount"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"fr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Réduction Estival"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"18db7bc6-8be1-48bb-bab1-77a7d696fa3b"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"appliedPricing"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"efd32752-c6f2-45cf-b494-cc6be8a45845"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"startDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-07-23T00:00:00.000Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"cutoffDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-07-24T00:00:00.000Z"</span><span class="p">,</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<table><thead>
+<tr>
+<th>Required</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>name</code><br/><em>Map[String, String]</em></td>
+<td>The name translations of the discount.</td>
+</tr>
+<tr>
+<td><code>type</code><br/><em>enum</em></td>
+<td>The type of the discount. It can be either &quot;PERCENTAGE&quot; or &quot;CREDIT&quot;.</td>
+</tr>
+<tr>
+<td><code>startDate</code><br/><em>date</em></td>
+<td>The start date of the discount.</td>
+</tr>
+<tr>
+<td><code>applyToNewCustomersOnly</code><br/><em>boolean</em></td>
+<td>If true, the discount will only be applied to organizations created after the discount start date.</td>
+</tr>
+<tr>
+<td><code>discountScope</code><br/><em>enum</em></td>
+<td>The scope of the discount. It can be either &quot;ALL_PRODUCTS&quot;, &quot;CATEGORIES&quot; or &quot;PRODUCTS&quot;.</td>
+</tr>
+<tr>
+<td><code>packageDiscount</code><br/><em>BigDecimal</em></td>
+<td>The discount value that will be applied to all products within the applied pricing. Only required if the scope is &quot;ALL_PRODUCTS&quot;. The value must be between (0,100] for a percentage discount and greater than 0 for a credit.</td>
+</tr>
+<tr>
+<td><code>discountedCategories</code><br/><em>Map[UUID, BigDecimal]</em></td>
+<td>A mapping between category IDs and discount values. All pricing products within a category will have the discount value applied to them. Required to be non-empty if scope is &quot;CATEGORIES&quot;. All discount values must be between (0,100] for a percentage discount and greater than 0 for a credit.</td>
+</tr>
+<tr>
+<td><code>discountedProducts</code><br/><em>Map[UUID, BigDecimal]</em></td>
+<td>A mapping of the desired priced product IDs and discount values. All pricing products specified will have the discount value applied to them. Required to be non-empty if scope is &quot;PRODUCTS&quot;. All discount values must be between (0,100] for a percentage discount and greater than 0 for a credit.</td>
+</tr>
+</tbody></table>
+
+<table><thead>
+<tr>
+<th>Optional</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>cutoffDate</code><br/><em>date</em></td>
+<td>The date on which the discount will no longer be offered to customers who have not already received it. If not provided, the discount will always be offered after the start date.</td>
+</tr>
+<tr>
+<td><code>durationMonths</code><br/><em>integer</em></td>
+<td>Duration of the discount once it has been applied to a customer. If not provided the discount will last indefinitely, or until credit values are reached.</td>
+</tr>
+</tbody></table>
+
+<!-------------------- EDIT DISCOUNT -------------------->
+<h3 id='administration-edit-discount'>Edit discount</h3>
+<p><code>PUT /applied_pricings/:applied_pricing_id/discounts/:id</code></p>
+
+<p>Edit an existing discount that hasn&#39;t ended. Only the name and cutoff date can be edited for current discount. All fields can be edited for upcoming discounts.</p>
+<pre class="highlight shell tab-shell"><code><span class="c"># Edit an existing discount</span>
+curl -X PUT <span class="s2">"https://cloudmc_endpoint/rest/applied_pricings/efd32752-c6f2-45cf-b494-cc6be8a45845/discounts/18db7bc6-8be1-48bb-bab1-77a7d696fa3b"</span> <span class="se">\</span>
+   -H <span class="s2">"MC-Api-Key: your_api_key"</span>
+</code></pre>
+<blockquote>
+<p>Request body example:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"en"</span><span class="p">:</span><span class="w"> </span><span class="s2">"End of summer Discount"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"fr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Réduction estival fin d'été"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"durationMonths"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"discountedProducts"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+  </span><span class="s2">"discountedCategories"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"8cf73cc0-b86e-49b4-a102-6102894f7955"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> 
+    </span><span class="s2">"00358632-5c9a-4164-a9a9-df271a9c06a9"</span><span class="p">:</span><span class="w"> </span><span class="mi">22</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"discountScope"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CATEGORIES"</span><span class="p">,</span><span class="w"> 
+  </span><span class="s2">"cutoffDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-08-24T00:00:00.000Z"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"applyToNewCustomersOnly"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<blockquote>
+<p>The above command returns a JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"applyToNewCustomersOnly"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"discountedProducts"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+      </span><span class="s2">"durationMonths"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PERCENTAGE"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"discountScope"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CATEGORIES"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"discountedCategories"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"8cf73cc0-b86e-49b4-a102-6102894f7955"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> 
+        </span><span class="s2">"00358632-5c9a-4164-a9a9-df271a9c06a9"</span><span class="p">:</span><span class="w"> </span><span class="mi">22</span><span class="w">
+      </span><span class="p">},</span><span class="w">  
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"en"</span><span class="p">:</span><span class="w"> </span><span class="s2">"End of summer Discount"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"fr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Réduction estival fin d'été"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"18db7bc6-8be1-48bb-bab1-77a7d696fa3b"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"appliedPricing"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"efd32752-c6f2-45cf-b494-cc6be8a45845"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"startDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-07-23T00:00:00.000Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"cutoffDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-08-24T00:00:00.000Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"UPCOMING"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<table><thead>
+<tr>
+<th>Optional</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>name</code><br/><em>Map[String, String]</em></td>
+<td>The name translations of the discount.</td>
+</tr>
+<tr>
+<td><code>startDate</code><br/><em>date</em></td>
+<td>The start date of the discount.</td>
+</tr>
+<tr>
+<td><code>applyToNewCustomersOnly</code><br/><em>boolean</em></td>
+<td>If true, the discount will only be applied to organizations created after the discount start date.</td>
+</tr>
+<tr>
+<td><code>discountScope</code><br/><em>enum</em></td>
+<td>The scope of the discount. It can be either &quot;ALL_PRODUCTS&quot;, &quot;CATEGORIES&quot; or &quot;PRODUCTS&quot;.</td>
+</tr>
+<tr>
+<td><code>packageDiscount</code><br/><em>BigDecimal</em></td>
+<td>The discount value that will be applied to all products within the applied pricing. Only required if the scope is &quot;ALL_PRODUCTS&quot;. The value must be between (0,100] for a percentage discount and greater than 0 for a credit.</td>
+</tr>
+<tr>
+<td><code>discountedCategories</code><br/><em>Map[UUID, BigDecimal]</em></td>
+<td>A mapping between category IDs and discount values. All pricing products within a category will have the discount value applied to them. Required to be non-empty if scope is &quot;CATEGORIES&quot;. All discount values must be between (0,100] for a percentage discount and greater than 0 for a credit.</td>
+</tr>
+<tr>
+<td><code>discountedProducts</code><br/><em>Map[UUID, BigDecimal]</em></td>
+<td>A mapping of the desired priced product IDs and discount values. All pricing products specified will have the discount value applied to them. Required to be non-empty if scope is &quot;PRODUCTS&quot;. All discount values must be between (0,100] for a percentage discount and greater than 0 for a credit.</td>
+</tr>
+<tr>
+<td><code>cutoffDate</code><br/><em>date</em></td>
+<td>The date on which the discount will no longer be offered to customers who have not already received it. If not provided, the discount will always be offered after the start date.</td>
+</tr>
+<tr>
+<td><code>durationMonths</code><br/><em>integer</em></td>
+<td>Duration of the discount once it has been applied to a customer. If not provided the discount will last indefinitely, or until credit values are reached.</td>
+</tr>
+</tbody></table>
+<h2 id='administration-authentication'>Authentication</h2><h3 id='administration-identity-providers'>Identity providers</h3>
 <p>Configure methods of authentication for your organizations.</p>
 
 <!-------------------- LIST IDPS -------------------->
