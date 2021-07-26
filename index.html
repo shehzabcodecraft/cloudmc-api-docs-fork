@@ -567,6 +567,9 @@
                           <li>
                             <a href="#administration-edit-discount" class="toc-h3 toc-link" data-title="Administration">Edit discount</a>
                           </li>
+                          <li>
+                            <a href="#administration-delete-discount" class="toc-h3 toc-link" data-title="Administration">Delete discount</a>
+                          </li>
                       </ul>
                   </li>
                   <li>
@@ -11017,7 +11020,23 @@ curl -X PUT <span class="s2">"https://cloudmc_endpoint/rest/applied_pricings/efd
 <td>Duration of the discount once it has been applied to a customer. If not provided the discount will last indefinitely, or until credit values are reached.</td>
 </tr>
 </tbody></table>
-<h2 id='administration-authentication'>Authentication</h2><h3 id='administration-identity-providers'>Identity providers</h3>
+
+<!-------------------- DELETE DISCOUNT -------------------->
+<h3 id='administration-delete-discount'>Delete discount</h3>
+<p><code>DELETE /applied_pricings/:applied_pricing_id/discounts/:id</code></p>
+
+<p>Delete a discount. This operation can only be performed on discounts that have state UPCOMING.</p>
+<pre class="highlight shell tab-shell"><code>curl -X DELETE <span class="s2">"https://cloudmc_endpoint/rest/applied_pricings/efd32752-c6f2-45cf-b494-cc6be8a45845/discounts/18db7bc6-8be1-48bb-bab1-77a7d696fa3b"</span> <span class="se">\</span>
+   -H <span class="s2">"MC-Api-Key: your_api_key"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns a JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"taskId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"85df8dfb-b904-42dc-bb76-4824e6b50c83"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"taskStatus"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SUCCESS"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h2 id='administration-authentication'>Authentication</h2><h3 id='administration-identity-providers'>Identity providers</h3>
 <p>Configure methods of authentication for your organizations.</p>
 
 <!-------------------- LIST IDPS -------------------->
