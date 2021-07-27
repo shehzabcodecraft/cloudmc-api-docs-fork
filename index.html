@@ -570,6 +570,9 @@
                           <li>
                             <a href="#administration-delete-discount" class="toc-h3 toc-link" data-title="Administration">Delete discount</a>
                           </li>
+                          <li>
+                            <a href="#administration-deactivate-discount" class="toc-h3 toc-link" data-title="Administration">Deactivate discount</a>
+                          </li>
                       </ul>
                   </li>
                   <li>
@@ -10590,7 +10593,7 @@ curl -X PUT <span class="s2">"https://cloudmc_endpoint/rest/applied_pricings/8bb
 <h3 id='administration-list-discounts'>List discounts</h3>
 <p><code>GET /applied_pricings/:applied_pricing_id/discounts?type=:type</code></p>
 
-<p>Retrieves the list of discounts associated with an applied pricing.</p>
+<p>Retrieve the list of discounts associated with an applied pricing.</p>
 <pre class="highlight shell tab-shell"><code><span class="c"># Retrieve applied pricing list</span>
 curl <span class="s2">"https://cloudmc_endpoint/rest/applied_pricings/efd32752-c6f2-45cf-b494-cc6be8a45845/discounts?type=PERCENTAGE"</span> <span class="se">\</span>
    -H <span class="s2">"MC-Api-Key: your_api_key"</span>
@@ -10707,7 +10710,7 @@ curl <span class="s2">"https://cloudmc_endpoint/rest/applied_pricings/efd32752-c
 <h3 id='administration-get-discount'>Get discount</h3>
 <p><code>GET /applied_pricings/:applied_pricing_id/discounts/:id</code></p>
 
-<p>Retrieves a discount&#39;s details.</p>
+<p>Retrieve a discount&#39;s details.</p>
 <pre class="highlight shell tab-shell"><code><span class="c"># Retrieve applied pricing list</span>
 curl <span class="s2">"https://cloudmc_endpoint/rest/applied_pricings/efd32752-c6f2-45cf-b494-cc6be8a45845/discounts/18db7bc6-8be1-48bb-bab1-77a7d696fa3b"</span> <span class="se">\</span>
    -H <span class="s2">"MC-Api-Key: your_api_key"</span>
@@ -10812,7 +10815,7 @@ curl <span class="s2">"https://cloudmc_endpoint/rest/applied_pricings/efd32752-c
 <h3 id='administration-create-discount'>Create discount</h3>
 <p><code>POST /applied_pricings/:applied_pricing_id/discounts</code></p>
 
-<p>Creates a new discount </p>
+<p>Create a new discount </p>
 <pre class="highlight shell tab-shell"><code><span class="c"># Creates a new discount</span>
 curl -X POST <span class="s2">"https://cloudmc_endpoint/rest/applied_pricings/efd32752-c6f2-45cf-b494-cc6be8a45845/discounts"</span> <span class="se">\</span>
    -H <span class="s2">"MC-Api-Key: your_api_key"</span>
@@ -11025,7 +11028,7 @@ curl -X PUT <span class="s2">"https://cloudmc_endpoint/rest/applied_pricings/efd
 <h3 id='administration-delete-discount'>Delete discount</h3>
 <p><code>DELETE /applied_pricings/:applied_pricing_id/discounts/:id</code></p>
 
-<p>Delete a discount. This operation can only be performed on discounts that have state UPCOMING.</p>
+<p>Delete a discount. This operation can only be performed on discounts that have status UPCOMING.</p>
 <pre class="highlight shell tab-shell"><code>curl -X DELETE <span class="s2">"https://cloudmc_endpoint/rest/applied_pricings/efd32752-c6f2-45cf-b494-cc6be8a45845/discounts/18db7bc6-8be1-48bb-bab1-77a7d696fa3b"</span> <span class="se">\</span>
    -H <span class="s2">"MC-Api-Key: your_api_key"</span>
 </code></pre>
@@ -11035,6 +11038,42 @@ curl -X PUT <span class="s2">"https://cloudmc_endpoint/rest/applied_pricings/efd
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"taskId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"85df8dfb-b904-42dc-bb76-4824e6b50c83"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"taskStatus"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SUCCESS"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h3 id='administration-deactivate-discount'>Deactivate discount</h3>
+<p><code>PUT /applied_pricings/:applied_pricing_id/discounts/:id/deactivate</code></p>
+
+<p>Deactivate a discount. This operation can only be performed on discounts that have status CURRENT or ENDED.
+Deactivated is a final state, cannot be reactivated.</p>
+<pre class="highlight shell tab-shell"><code>curl -X PUT <span class="s2">"https://cloudmc_endpoint/rest/applied_pricings/efd32752-c6f2-45cf-b494-cc6be8a45845/discounts/18db7bc6-8be1-48bb-bab1-77a7d696fa3b/deactivate"</span> <span class="se">\</span>
+   -H <span class="s2">"MC-Api-Key: your_api_key"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns a JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"applyToNewCustomersOnly"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"discountedProducts"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+      </span><span class="s2">"durationMonths"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PERCENTAGE"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"discountScope"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CATEGORIES"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"isDeactivated"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"discountedCategories"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"8cf73cc0-b86e-49b4-a102-6102894f7955"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> 
+        </span><span class="s2">"00358632-5c9a-4164-a9a9-df271a9c06a9"</span><span class="p">:</span><span class="w"> </span><span class="mi">22</span><span class="w">
+      </span><span class="p">},</span><span class="w">  
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"en"</span><span class="p">:</span><span class="w"> </span><span class="s2">"End of summer Discount"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"fr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Réduction estival fin d'été"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"18db7bc6-8be1-48bb-bab1-77a7d696fa3b"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"appliedPricing"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"efd32752-c6f2-45cf-b494-cc6be8a45845"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"startDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-07-23T00:00:00.000Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"cutoffDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-08-24T00:00:00.000Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ENDED"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre><h2 id='administration-authentication'>Authentication</h2><h3 id='administration-identity-providers'>Identity providers</h3>
 <p>Configure methods of authentication for your organizations.</p>
