@@ -14326,7 +14326,9 @@ curl <span class="s2">"https://cloudmc_endpoint/api/v1/feedback/find?organizatio
       </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fcda8d5a-0276-4de3-908f-b3bd0aff2491"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="s2">"feedbackSlackWebhookUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://hooks.slack.com/services/T00000000/B00000000/XXXXXXXXXXXXXXXXXXXXXXXX"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"matomoHost"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://myUrl-cloudmc.matomo.cloud/"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"f4be2785-ec67-474c-af3a-38ffecfa4094"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"matomoWebsiteId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"version"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
     </span><span class="s2">"feedbackEmail"</span><span class="p">:</span><span class="w"> </span><span class="s2">"feedback@company.com"</span><span class="w">
   </span><span class="p">}</span><span class="w">
@@ -14353,7 +14355,9 @@ curl <span class="s2">"https://cloudmc_endpoint/api/v1/feedback/f4be2785-ec67-47
       </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fcda8d5a-0276-4de3-908f-b3bd0aff2491"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="s2">"feedbackSlackWebhookUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://hooks.slack.com/services/T00000000/B00000000/XXXXXXXXXXXXXXXXXXXXXXXX"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"matomoHost"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://myUrl-cloudmc.matomo.cloud/"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"f4be2785-ec67-474c-af3a-38ffecfa4094"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"matomoWebsiteId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"version"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
     </span><span class="s2">"feedbackEmail"</span><span class="p">:</span><span class="w"> </span><span class="s2">"feedback@company.com"</span><span class="w">
   </span><span class="p">}</span><span class="w">
@@ -14396,6 +14400,14 @@ curl <span class="s2">"https://cloudmc_endpoint/api/v1/feedback/f4be2785-ec67-47
 <td>Content of the zeSettings as a JSON for customization. Please refer to <a href="https://developer.zendesk.com/embeddables/docs/widget/settings">https://developer.zendesk.com/embeddables/docs/widget/settings</a>.</td>
 </tr>
 <tr>
+<td><code>matomoHost</code><br/><em>string</em></td>
+<td>The Matomo analytics subdomain, ending in &#39;.matomo.cloud&#39;.</td>
+</tr>
+<tr>
+<td><code>matomoWebsiteId</code><br/><em>string</em></td>
+<td>The website ID which Matomo&#39;s Javascript pushes events to.</td>
+</tr>
+<tr>
 <td><code>version</code><br/><em>integer</em></td>
 <td>The feedback settings version.</td>
 </tr>
@@ -14422,7 +14434,9 @@ curl -X POST <span class="s2">"https://cloudmc_endpoint/api/v1/feedback"</span> 
     </span><span class="s2">"feedbackSlackWebhookUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://hooks.slack.com/services/T00000000/B00000000/XXXXXXXXXXXXXXXXXXXXXXXX"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"supportEmail"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
   </span><span class="s2">"widgetZesettings"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{ </span><span class="se">\"</span><span class="s2">webWidget</span><span class="se">\"</span><span class="s2">: { </span><span class="se">\"</span><span class="s2">color</span><span class="se">\"</span><span class="s2">: { </span><span class="se">\"</span><span class="s2">theme</span><span class="se">\"</span><span class="s2">: </span><span class="se">\"</span><span class="s2">#78a300</span><span class="se">\"</span><span class="s2"> } } }"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"zendeskWidgetKey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"YourZendeskWidgetKey"</span><span class="w">
+  </span><span class="s2">"zendeskWidgetKey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"YourZendeskWidgetKey"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"matomoHost"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://myUrl-cloudmc.matomo.cloud/"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"matomoWebsiteId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <blockquote>
@@ -14437,7 +14451,9 @@ curl -X POST <span class="s2">"https://cloudmc_endpoint/api/v1/feedback"</span> 
       </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fcda8d5a-0276-4de3-908f-b3bd0aff2491"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="s2">"feedbackSlackWebhookUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://hooks.slack.com/services/T00000000/B00000000/XXXXXXXXXXXXXXXXXXXXXXXX"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"matomoHost"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://myUrl-cloudmc.matomo.cloud/"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"f4be2785-ec67-474c-af3a-38ffecfa4094"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"matomoWebsiteId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"version"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
     </span><span class="s2">"feedbackEmail"</span><span class="p">:</span><span class="w"> </span><span class="s2">"feedback@company.com"</span><span class="w">
   </span><span class="p">}</span><span class="w">
@@ -14488,6 +14504,14 @@ curl -X POST <span class="s2">"https://cloudmc_endpoint/api/v1/feedback"</span> 
 <tr>
 <td><code>widgetZesettings</code><br/><em>string</em></td>
 <td>Content of the zeSettings as a JSON for customization. Please refer to <a href="https://developer.zendesk.com/embeddables/docs/widget/settings">https://developer.zendesk.com/embeddables/docs/widget/settings</a>.</td>
+</tr>
+<tr>
+<td><code>matomoHost</code><br/><em>string</em></td>
+<td>The Matomo analytics subdomain, ending in &#39;.matomo.cloud&#39;. If specified, both the host and website ID are required.</td>
+</tr>
+<tr>
+<td><code>matomoWebsiteId</code><br/><em>string</em></td>
+<td>The website ID which Matomo&#39;s Javascript pushes events to. If specified, both the host and website ID are required.</td>
 </tr>
 </tbody></table>
 
@@ -14514,7 +14538,10 @@ curl -X PUT <span class="s2">"https://cloudmc_endpoint/api/v1/feedback/f4be2785-
     </span><span class="s2">"feedbackSlackWebhookUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://hooks.slack.com/services/T00000000/B00000000/XXXXXXXXXXXXXXXXXXXXXXXX"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"supportEmail"</span><span class="p">:</span><span class="w"> </span><span class="s2">"support@company.com"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"widgetZesettings"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"zendeskWidgetKey"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
+  </span><span class="s2">"zendeskWidgetKey"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"matomoHost"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://myUrl-cloudmc.matomo.cloud/"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"f4be2785-ec67-474c-af3a-38ffecfa4094"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"matomoWebsiteId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <blockquote>
@@ -14529,7 +14556,9 @@ curl -X PUT <span class="s2">"https://cloudmc_endpoint/api/v1/feedback/f4be2785-
       </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fcda8d5a-0276-4de3-908f-b3bd0aff2491"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="s2">"feedbackSlackWebhookUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://hooks.slack.com/services/T00000000/B00000000/XXXXXXXXXXXXXXXXXXXXXXXX"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"matomoHost"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://myUrl-cloudmc.matomo.cloud/"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"f4be2785-ec67-474c-af3a-38ffecfa4094"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"matomoWebsiteId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"version"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
     </span><span class="s2">"feedbackEmail"</span><span class="p">:</span><span class="w"> </span><span class="s2">"feedback@company.com"</span><span class="w">
   </span><span class="p">}</span><span class="w">
@@ -14580,6 +14609,14 @@ curl -X PUT <span class="s2">"https://cloudmc_endpoint/api/v1/feedback/f4be2785-
 <tr>
 <td><code>widgetZesettings</code><br/><em>string</em></td>
 <td>Content of the zeSettings as a JSON for customization. Please refer to <a href="https://developer.zendesk.com/embeddables/docs/widget/settings">https://developer.zendesk.com/embeddables/docs/widget/settings</a>.</td>
+</tr>
+<tr>
+<td><code>matomoHost</code><br/><em>string</em></td>
+<td>The Matomo analytics subdomain, ending in &#39;.matomo.cloud&#39;. If specified, both the host and website ID are required.</td>
+</tr>
+<tr>
+<td><code>matomoWebsiteId</code><br/><em>string</em></td>
+<td>The website ID which Matomo&#39;s Javascript pushes events to. If specified, both the host and website ID are required.</td>
 </tr>
 </tbody></table>
 
