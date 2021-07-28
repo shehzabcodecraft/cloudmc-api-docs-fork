@@ -3691,16 +3691,16 @@
                                   </li>
                               </ul>
                           </li>
+                      </ul>
+                  </li>
+                  <li>
+                    <a href="#stackpath-dns-zones" class="toc-h2 toc-link" data-title="StackPath plugin">DNS Zones</a>
+                      <ul class="toc-list-h3">
                           <li>
-                            <a href="#stackpath-dns-zones" class="toc-h3 toc-link" data-title="StackPath plugin">DNS Zones</a>
-                              <ul class="toc-list-h4">
-                                  <li>
-                                    <a href="#stackpath-list-dns-zones" class="toc-h4 toc-link" data-title="StackPath plugin">List DNS Zones</a>
-                                  </li>
-                                  <li>
-                                    <a href="#stackpath-retrieve-a-dns-zone" class="toc-h4 toc-link" data-title="StackPath plugin">Retrieve a DNS zone</a>
-                                  </li>
-                              </ul>
+                            <a href="#stackpath-list-dns-zones" class="toc-h3 toc-link" data-title="StackPath plugin">List DNS Zones</a>
+                          </li>
+                          <li>
+                            <a href="#stackpath-retrieve-a-dns-zone" class="toc-h3 toc-link" data-title="StackPath plugin">Retrieve a DNS zone</a>
                           </li>
                       </ul>
                   </li>
@@ -63902,11 +63902,11 @@ a custom one. Only non-deprecated images are returned by default.</p>
 <td>The status of the operation.</td>
 </tr>
 </tbody></table>
-<h3 id='stackpath-dns-zones'>DNS Zones</h3>
+<h2 id='stackpath-dns-zones'>DNS Zones</h2>
 <p>Create and manage your DNS zones.</p>
 
 <!-------------------- LIST DNS ZONES -------------------->
-<h4 id='stackpath-list-dns-zones'>List DNS Zones</h4><pre class="highlight shell tab-shell"><code>curl -X GET <span class="se">\</span>
+<h3 id='stackpath-list-dns-zones'>List DNS Zones</h3><pre class="highlight shell tab-shell"><code>curl -X GET <span class="se">\</span>
    -H <span class="s2">"MC-Api-Key: your_api_key"</span> <span class="se">\</span>
    <span class="s2">"https://cloudmc_endpoint/api/v1/services/stackpath/test-area/dnszones"</span>
 </code></pre>
@@ -63994,7 +63994,7 @@ a custom one. Only non-deprecated images are returned by default.</p>
 </tbody></table>
 
 <!-------------------- RETRIEVE A DNS ZONE -------------------->
-<h4 id='stackpath-retrieve-a-dns-zone'>Retrieve a DNS zone</h4><pre class="highlight shell tab-shell"><code>curl -X GET <span class="se">\</span>
+<h3 id='stackpath-retrieve-a-dns-zone'>Retrieve a DNS zone</h3><pre class="highlight shell tab-shell"><code>curl -X GET <span class="se">\</span>
    -H <span class="s2">"MC-Api-Key: your_api_key"</span> <span class="se">\</span>
    <span class="s2">"https://cloudmc_endpoint/api/v1/services/stackpath/test-area/dnszones/9ae3717a-006a-4aa7-b64b-8bc8d2f2d6e5"</span>
 </code></pre>
