@@ -3691,6 +3691,17 @@
                                   </li>
                               </ul>
                           </li>
+                          <li>
+                            <a href="#stackpath-dns-zones" class="toc-h3 toc-link" data-title="StackPath plugin">DNS Zones</a>
+                              <ul class="toc-list-h4">
+                                  <li>
+                                    <a href="#stackpath-list-dns-zones" class="toc-h4 toc-link" data-title="StackPath plugin">List DNS Zones</a>
+                                  </li>
+                                  <li>
+                                    <a href="#stackpath-retrieve-a-dns-zone" class="toc-h4 toc-link" data-title="StackPath plugin">Retrieve a DNS zone</a>
+                                  </li>
+                              </ul>
+                          </li>
                       </ul>
                   </li>
               </ul>
@@ -63889,6 +63900,179 @@ a custom one. Only non-deprecated images are returned by default.</p>
 <tr>
 <td><code>taskStatus</code> <br/><em>string</em></td>
 <td>The status of the operation.</td>
+</tr>
+</tbody></table>
+<h3 id='stackpath-dns-zones'>DNS Zones</h3>
+<p>Create and manage your DNS zones.</p>
+
+<!-------------------- LIST DNS ZONES -------------------->
+<h4 id='stackpath-list-dns-zones'>List DNS Zones</h4><pre class="highlight shell tab-shell"><code>curl -X GET <span class="se">\</span>
+   -H <span class="s2">"MC-Api-Key: your_api_key"</span> <span class="se">\</span>
+   <span class="s2">"https://cloudmc_endpoint/api/v1/services/stackpath/test-area/dnszones"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns a JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"stackId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"87e22df5-cac9-4e42-9b75-02996af95566"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"accountId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"69b60c67-6175-4515-bb66-033108306X66"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"domain"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mydomain.com"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-07-28T17:13:42.863239Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"updated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-07-28T17:14:25.246331Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"nameservers"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="s2">"xx2xx0.stackpathdns.net"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"ss3xx3.stackpathdns.net"</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="s2">"disabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"eb3ecdbe-d73b-40e6-a263-166accba75ed"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"verified"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-07-28T17:14:25.246331Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ACTIVE"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="s2">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"recordCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><code>GET /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/dnszones</code></p>
+
+<p>Retrieve a list of all DNS zones in a given <a href="#administration-environments">environment</a>.</p>
+
+<table><thead>
+<tr>
+<th>Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code><br/><em>string</em></td>
+<td>A zone&#39;s unique identifier.</td>
+</tr>
+<tr>
+<td><code>stackId</code><br/><em>string</em></td>
+<td>The ID of the stack that a site belongs to.</td>
+</tr>
+<tr>
+<td><code>accountId</code><br/><em>string</em></td>
+<td>The ID of the StackPath account that owns a zone.</td>
+</tr>
+<tr>
+<td><code>domain</code><br/><em>string</em></td>
+<td>The name of the zone.</td>
+</tr>
+<tr>
+<td><code>version</code><br/><em>string</em></td>
+<td>The version of the zone. Version numbers are incremented automatically when a zone is updated.</td>
+</tr>
+<tr>
+<td><code>created</code><br/><em>string</em></td>
+<td>The date on which the DNS zone was created.</td>
+</tr>
+<tr>
+<td><code>updated</code><br/><em>string</em></td>
+<td>The date on which the DNS zone was last updated.</td>
+</tr>
+<tr>
+<td><code>nameservers</code><br/><em>Array[string]</em></td>
+<td>The hostnames of the StackPath resolvers that host a zone. Every zone has multiple name servers assigned by StackPath upon creation for redundancy purposes.</td>
+</tr>
+<tr>
+<td><code>disabled</code><br/><em>boolean</em></td>
+<td>Whether or not a zone has been disabled by the user.</td>
+</tr>
+<tr>
+<td><code>verified</code><br/><em>string</em></td>
+<td>The date a zone&#39;s nameservers were last audited by StackPath.</td>
+</tr>
+<tr>
+<td><code>status</code><br/><em>string</em></td>
+<td>The status of the zone. It can either be <code>ACTIVE</code>, <code>INACTIVE</code>.</td>
+</tr>
+</tbody></table>
+
+<!-------------------- RETRIEVE A DNS ZONE -------------------->
+<h4 id='stackpath-retrieve-a-dns-zone'>Retrieve a DNS zone</h4><pre class="highlight shell tab-shell"><code>curl -X GET <span class="se">\</span>
+   -H <span class="s2">"MC-Api-Key: your_api_key"</span> <span class="se">\</span>
+   <span class="s2">"https://cloudmc_endpoint/api/v1/services/stackpath/test-area/dnszones/9ae3717a-006a-4aa7-b64b-8bc8d2f2d6e5"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns a JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"stackId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"87e22df5-cac9-4e42-9b75-02996af95566"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"accountId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"69b60c67-6175-4515-bb66-033108306X66"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"domain"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mydomain.com"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-07-28T17:13:42.863239Z"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"updated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-07-28T17:14:25.246331Z"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"nameservers"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"xx2xx0.stackpathdns.net"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"ss3xx3.stackpathdns.net"</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"disabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"eb3ecdbe-d73b-40e6-a263-166accba75ed"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"verified"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-07-28T17:14:25.246331Z"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ACTIVE"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><code>GET /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/dnszones/:id</code></p>
+
+<p>Retrieve a DNS zone in a given <a href="#administration-environments">environment</a>.</p>
+
+<table><thead>
+<tr>
+<th>Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code><br/><em>string</em></td>
+<td>A zone&#39;s unique identifier.</td>
+</tr>
+<tr>
+<td><code>stackId</code><br/><em>string</em></td>
+<td>The ID of the stack that a site belongs to.</td>
+</tr>
+<tr>
+<td><code>accountId</code><br/><em>string</em></td>
+<td>The ID of the StackPath account that owns a zone.</td>
+</tr>
+<tr>
+<td><code>domain</code><br/><em>string</em></td>
+<td>The name of the zone.</td>
+</tr>
+<tr>
+<td><code>version</code><br/><em>string</em></td>
+<td>The version of the zone. Version numbers are incremented automatically when a zone is updated.</td>
+</tr>
+<tr>
+<td><code>created</code><br/><em>string</em></td>
+<td>The date on which the DNS zone was created.</td>
+</tr>
+<tr>
+<td><code>updated</code><br/><em>string</em></td>
+<td>The date on which the DNS zone was last updated.</td>
+</tr>
+<tr>
+<td><code>nameservers</code><br/><em>Array[string]</em></td>
+<td>The hostnames of the StackPath resolvers that host a zone. Every zone has multiple name servers assigned by StackPath upon creation for redundancy purposes.</td>
+</tr>
+<tr>
+<td><code>disabled</code><br/><em>boolean</em></td>
+<td>Whether or not a zone has been disabled by the user.</td>
+</tr>
+<tr>
+<td><code>verified</code><br/><em>string</em></td>
+<td>The date a zone&#39;s nameservers were last audited by StackPath.</td>
+</tr>
+<tr>
+<td><code>status</code><br/><em>string</em></td>
+<td>The status of the zone. It can either be <code>ACTIVE</code>, <code>INACTIVE</code>.</td>
 </tr>
 </tbody></table>
 <h1 id='amazon-web-services-plugin'>Amazon Web Services plugin</h1>
