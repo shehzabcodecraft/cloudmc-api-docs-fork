@@ -3701,6 +3701,11 @@
                           </li>
                           <li>
                             <a href="#stackpath-retrieve-a-dns-zone" class="toc-h3 toc-link" data-title="StackPath plugin">Retrieve a DNS zone</a>
+                              <ul class="toc-list-h4">
+                                  <li>
+                                    <a href="#stackpath-delete-a-dns-zone" class="toc-h4 toc-link" data-title="StackPath plugin">Delete a DNS zone</a>
+                                  </li>
+                              </ul>
                           </li>
                       </ul>
                   </li>
@@ -64073,6 +64078,41 @@ a custom one. Only non-deprecated images are returned by default.</p>
 <tr>
 <td><code>status</code><br/><em>string</em></td>
 <td>The status of the zone. It can either be <code>ACTIVE</code>, <code>INACTIVE</code>.</td>
+</tr>
+</tbody></table>
+
+<!-------------------- DELETE A DNS ZONE -------------------->
+<h4 id='stackpath-delete-a-dns-zone'>Delete a DNS zone</h4><pre class="highlight shell tab-shell"><code>curl -X DELETE <span class="se">\</span>
+   -H <span class="s2">"MC-Api-Key: your_api_key"</span> <span class="se">\</span>
+   <span class="s2">"https://cloudmc_endpoint/api/v1/services/stackpath/test-area/dnszones/9ae3717a-006a-4aa7-b64b-8bc8d2f2d6e5"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns a JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"taskId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ef70cafa-0544-4709-a66a-c68595ee105a"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"taskStatus"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SUCCESS"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><code>DELETE /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/dnszones/:id</code></p>
+
+<p>Delete a DNS zone</p>
+
+<p>The following attributes are returned as part of the response.</p>
+
+<table><thead>
+<tr>
+<th>Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>taskId</code> <br/><em>string</em></td>
+<td>The task id related to the DNS zone deletion.</td>
+</tr>
+<tr>
+<td><code>taskStatus</code> <br/><em>string</em></td>
+<td>The status of the operation.</td>
 </tr>
 </tbody></table>
 <h1 id='amazon-web-services-plugin'>Amazon Web Services plugin</h1>
