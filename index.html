@@ -3707,6 +3707,17 @@
                                   </li>
                               </ul>
                           </li>
+                          <li>
+                            <a href="#stackpath-dns-records" class="toc-h3 toc-link" data-title="StackPath plugin">DNS Records</a>
+                              <ul class="toc-list-h4">
+                                  <li>
+                                    <a href="#stackpath-list-dns-records" class="toc-h4 toc-link" data-title="StackPath plugin">List DNS Records</a>
+                                  </li>
+                                  <li>
+                                    <a href="#stackpath-retrieve-a-dns-record" class="toc-h4 toc-link" data-title="StackPath plugin">Retrieve a DNS record</a>
+                                  </li>
+                              </ul>
+                          </li>
                       </ul>
                   </li>
               </ul>
@@ -64113,6 +64124,210 @@ a custom one. Only non-deprecated images are returned by default.</p>
 <tr>
 <td><code>taskStatus</code> <br/><em>string</em></td>
 <td>The status of the operation.</td>
+</tr>
+</tbody></table>
+<h3 id='stackpath-dns-records'>DNS Records</h3>
+<p>Create and manage your DNS records associated to your zones.</p>
+
+<!-------------------- LIST DNS RECORDS -------------------->
+<h4 id='stackpath-list-dns-records'>List DNS Records</h4><pre class="highlight shell tab-shell"><code>curl -X GET <span class="se">\</span>
+   -H <span class="s2">"MC-Api-Key: your_api_key"</span> <span class="se">\</span>
+   <span class="s2">"https://cloudmc_endpoint/api/v1/services/stackpath/test-area/dnsrecords?zoneId=337c7c26-31f4-4b2e-83dc-126exxxxxxWr"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns a JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4eea2e59-8d06-4f37-8fd1-035e3314dxxD"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"stackId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"7fbea2c0-17d0-41df-b0b1-4d5c95234566"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"zoneId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"337c7c26-31f4-4b2e-83dc-126exxxxxxWr"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test1"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"A"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"classCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IN"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"ttl"</span><span class="p">:</span><span class="w"> </span><span class="mi">21600</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="s2">"127.0.0.0"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"weight"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-07-28T17:14:07.928210Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"updated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-07-28T17:14:07.928210Z"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0a18b323-72df-447a-af81-08a2ea62re45"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"stackId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"7fbea2c0-17d0-41df-b0b1-4d5c95234566"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"zoneId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"337c7c26-31f4-4b2e-83dc-126exxxxxxWr"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test2"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TXT"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"classCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IN"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"ttl"</span><span class="p">:</span><span class="w"> </span><span class="mi">300</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123 312 12"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"weight"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-07-28T17:14:25.229376Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"updated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-07-28T17:14:25.229376Z"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="s2">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"recordCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><code>GET /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/dnsrecords?zoneId=:zoneId</code></p>
+
+<p>Retrieve a list of all DNS records in a given DNS zone in an <a href="#administration-environments">environment</a> .</p>
+
+<table><thead>
+<tr>
+<th>Query Params</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>zoneId</code><br/><em>UUID</em></td>
+<td>The ID of the zone for which we list the records. This parameter is required.</td>
+</tr>
+</tbody></table>
+
+<table><thead>
+<tr>
+<th>Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code><br/><em>string</em></td>
+<td>A record&#39;s unique identifier.</td>
+</tr>
+<tr>
+<td><code>stackId</code><br/><em>string</em></td>
+<td>The ID of the stack that a record belongs to.</td>
+</tr>
+<tr>
+<td><code>zoneId</code><br/><em>string</em></td>
+<td>The ID of zone that the record belongs to.</td>
+</tr>
+<tr>
+<td><code>name</code><br/><em>string</em></td>
+<td>The name of the record. Use the value &quot;@&quot; to denote current root domain name.</td>
+</tr>
+<tr>
+<td><code>type</code><br/><em>string</em></td>
+<td>A zone record&#39;s type. Zone record types describe the zone record&#39;s behavior.</td>
+</tr>
+<tr>
+<td><code>classCode</code><br/><em>string</em></td>
+<td>A zone record&#39;s class code. This is typically &quot;IN&quot; for Internet related resource records.</td>
+</tr>
+<tr>
+<td><code>ttl</code> <br/><em>int</em></td>
+<td>A zone record&#39;s time to live. A record&#39;s TTL is the number of seconds that the record should be cached by DNS resolvers. Use lower TTL values if you expect zone records to change often. Use higher TTL values for records that won&#39;t change to prevent extra DNS lookups by clients.</td>
+</tr>
+<tr>
+<td><code>data</code><br/><em>string</em></td>
+<td>A zone record&#39;s value.</td>
+</tr>
+<tr>
+<td><code>weight</code> <br/><em>int</em></td>
+<td>A zone record&#39;s priority. A resource record is replicated in StackPath&#39;s DNS infrastructure the number of times of the record&#39;s weight, giving it a more likely response to queries if a zone has records with the same name and type.</td>
+</tr>
+<tr>
+<td><code>created</code><br/><em>string</em></td>
+<td>The date on which the DNS record was created</td>
+</tr>
+<tr>
+<td><code>updated</code><br/><em>string</em></td>
+<td>The date on which the DNS record was last updated.</td>
+</tr>
+</tbody></table>
+
+<!-------------------- RETRIEVE A DNS RECORD -------------------->
+<h4 id='stackpath-retrieve-a-dns-record'>Retrieve a DNS record</h4><pre class="highlight shell tab-shell"><code>curl -X GET <span class="se">\</span>
+   -H <span class="s2">"MC-Api-Key: your_api_key"</span> <span class="se">\</span>
+   <span class="s2">"https://cloudmc_endpoint/api/v1/services/stackpath/test-area/dnsrecords/0a18b323-72df-447a-af81-08a2ea62re45?zoneId=337c7c26-31f4-4b2e-83dc-126exxxxxxWr"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns a JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0a18b323-72df-447a-af81-08a2ea62re45"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"stackId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"7fbea2c0-17d0-41df-b0b1-4d5c95234566"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"zoneId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"337c7c26-31f4-4b2e-83dc-126exxxxxxWr"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test2"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TXT"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"classCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IN"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"ttl"</span><span class="p">:</span><span class="w"> </span><span class="mi">300</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123 312 12"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"weight"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-07-28T17:14:25.229376Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"updated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-07-28T17:14:25.229376Z"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><code>GET /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/dnsrecords/id?zoneId=:zoneId</code></p>
+
+<p>Retrieve a DNS record in a given DNS zone in an <a href="#administration-environments">environment</a> .</p>
+
+<table><thead>
+<tr>
+<th>Query Params</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>zoneId</code><br/><em>UUID</em></td>
+<td>The ID of the zone for which we want to get the record. This parameter is required.</td>
+</tr>
+</tbody></table>
+
+<table><thead>
+<tr>
+<th>Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code><br/><em>string</em></td>
+<td>A record&#39;s unique identifier.</td>
+</tr>
+<tr>
+<td><code>stackId</code><br/><em>string</em></td>
+<td>The ID of the stack that a record belongs to.</td>
+</tr>
+<tr>
+<td><code>zoneId</code><br/><em>string</em></td>
+<td>The ID of zone that the record belongs to.</td>
+</tr>
+<tr>
+<td><code>name</code><br/><em>string</em></td>
+<td>The name of the record. Use the value &quot;@&quot; to denote current root domain name.</td>
+</tr>
+<tr>
+<td><code>type</code><br/><em>string</em></td>
+<td>A zone record&#39;s type. Zone record types describe the zone record&#39;s behavior.</td>
+</tr>
+<tr>
+<td><code>classCode</code><br/><em>string</em></td>
+<td>A zone record&#39;s class code. This is typically &quot;IN&quot; for Internet related resource records.</td>
+</tr>
+<tr>
+<td><code>ttl</code> <br/><em>int</em></td>
+<td>A zone record&#39;s time to live. A record&#39;s TTL is the number of seconds that the record should be cached by DNS resolvers. Use lower TTL values if you expect zone records to change often. Use higher TTL values for records that won&#39;t change to prevent extra DNS lookups by clients.</td>
+</tr>
+<tr>
+<td><code>data</code><br/><em>string</em></td>
+<td>A zone record&#39;s value.</td>
+</tr>
+<tr>
+<td><code>weight</code> <br/><em>int</em></td>
+<td>A zone record&#39;s priority. A resource record is replicated in StackPath&#39;s DNS infrastructure the number of times of the record&#39;s weight, giving it a more likely response to queries if a zone has records with the same name and type.</td>
+</tr>
+<tr>
+<td><code>created</code><br/><em>string</em></td>
+<td>The date on which the DNS record was created</td>
+</tr>
+<tr>
+<td><code>updated</code><br/><em>string</em></td>
+<td>The date on which the DNS record was last updated.</td>
 </tr>
 </tbody></table>
 <h1 id='amazon-web-services-plugin'>Amazon Web Services plugin</h1>
