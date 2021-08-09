@@ -553,6 +553,20 @@
                       </ul>
                   </li>
                   <li>
+                    <a href="#administration-invoices" class="toc-h2 toc-link" data-title="Administration">Invoices</a>
+                      <ul class="toc-list-h3">
+                          <li>
+                            <a href="#administration-get-customer-invoices-by-reseller-id" class="toc-h3 toc-link" data-title="Administration">Get customer invoices by reseller ID</a>
+                          </li>
+                          <li>
+                            <a href="#administration-list-invoices-of-organization" class="toc-h3 toc-link" data-title="Administration">List invoices of organization</a>
+                          </li>
+                          <li>
+                            <a href="#administration-approve-invoice" class="toc-h3 toc-link" data-title="Administration">Approve invoice</a>
+                          </li>
+                      </ul>
+                  </li>
+                  <li>
                     <a href="#administration-discounts" class="toc-h2 toc-link" data-title="Administration">Discounts</a>
                       <ul class="toc-list-h3">
                           <li>
@@ -10619,7 +10633,574 @@ curl -X PUT <span class="s2">"https://cloudmc_endpoint/rest/applied_pricings/8bb
   </span><span class="s2">"taskId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"85df8dfb-b904-42dc-bb76-4824e6b50c83"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"taskStatus"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SUCCESS"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h2 id='administration-discounts'>Discounts</h2>
+</span></code></pre><h2 id='administration-invoices'>Invoices</h2>
+<p>Note: Creating, deleting and updating invoices is not supported.</p>
+
+<!-------------------- GET INVOICE -------------------->
+<h3 id='administration-get-customer-invoices-by-reseller-id'>Get customer invoices by reseller ID</h3>
+<p><code>GET /invoices/find/:reseller_id/customer_invoices</code></p>
+
+<p>Retrieve a list of invoices belonging to the customers of the reseller specified.</p>
+<pre class="highlight shell tab-shell"><code><span class="c"># Retrieve customer invoices list</span>
+curl <span class="s2">"https://cloudmc_endpoint/rest/invoices/find/efd32752-c6f2-45cf-b494-cc6be8a45845/customer_invoices?includeAllSubOrgs=false&amp;billingCycle=07-2021"</span> <span class="se">\</span>
+   -H <span class="s2">"MC-Api-Key: your_api_key"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns a JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+        </span><span class="s2">"draftedDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-07-27T00:00:00Z"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"createdDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-07-27T00:00:00Z"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DRAFT"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"organization"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"org_name"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"289ec5fb-0970-44e3-bca8-777a691e23c7"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"20e9b8d8-b1cb-4462-b6e8-fbb8416b2cbb"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"detail"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"discounted"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"discounts"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+            </span><span class="s2">"startDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-07-01T00:00:00Z"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"endDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-08-01T00:00:00Z"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CAD"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"subTotal"</span><span class="p">:</span><span class="w"> </span><span class="mf">272154.29</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"categories"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+                </span><span class="s2">"discounted"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"unit"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"unit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HOUR"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="s2">"discounts"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+                </span><span class="s2">"productId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5bec5db2-b438-4610-ba73-f3ed50a7b26b"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"40.0"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"en"</span><span class="p">:</span><span class="w"> </span><span class="s2">"memory"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"fr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"memory"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="s2">"subTotal"</span><span class="p">:</span><span class="w"> </span><span class="mf">65407.39</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"sku"</span><span class="p">:</span><span class="w"> </span><span class="s2">"product_sku"</span><span class="w">
+            </span><span class="p">}]</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">}]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<table><thead>
+<tr>
+<th>Optional Query Parameters</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>includeAllSubOrgs</code><br/><em>boolean</em></td>
+<td>Whether or not to include sub-organizations of sub-organizations or just direct sub-organizations of the reseller.</td>
+</tr>
+<tr>
+<td><code>billingCycle</code><br/><em>String</em></td>
+<td>The cycle which the invoice belongs to. Format is <code>MM-YYYY</code></td>
+</tr>
+</tbody></table>
+
+<table><thead>
+<tr>
+<th>Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code><br/><em>UUID</em></td>
+<td>The UUID of the invoice.</td>
+</tr>
+<tr>
+<td><code>status</code><br/><em>enum</em></td>
+<td>The status of the invoice. Possible values are: USAGE_PENDING, DRAFT, ISSUED, OVERDUE, PAID, VOID.</td>
+</tr>
+<tr>
+<td><code>createdDate</code><br/><em>date</em></td>
+<td>The created date of the invoice.</td>
+</tr>
+<tr>
+<td><code>draftedDate</code><br/><em>date</em></td>
+<td>The date the invoice was drafted. Is null if status is still USAGE_PENDING.</td>
+</tr>
+<tr>
+<td><code>issuedDate</code><br/><em>date</em></td>
+<td>The date the invoice was issued.</td>
+</tr>
+<tr>
+<td><code>dueDate</code><br/><em>date</em></td>
+<td>The date the invoice is due.</td>
+</tr>
+<tr>
+<td><code>organization.id</code><br/><em>UUID</em></td>
+<td>The UUID of the organization the invoice belongs to.</td>
+</tr>
+<tr>
+<td><code>organization.name</code><br/><em>string</em></td>
+<td>The name of the organization the invoice belongs to.</td>
+</tr>
+<tr>
+<td><code>total</code><br/><em>BigDecimal</em></td>
+<td>The invoice total after discounts, taxes and credits.</td>
+</tr>
+<tr>
+<td><code>balance</code><br/><em>BigDecimal</em></td>
+<td>The invoice&#39;s remaining balance.</td>
+</tr>
+<tr>
+<td><code>detail</code><br/><em>Object</em></td>
+<td>The invoice detail contains a currency and a list of categories. Each category has a list of products.</td>
+</tr>
+<tr>
+<td><code>detail.discounted</code><br/><em>boolean</em></td>
+<td>Whether the invoice is discounted or not.</td>
+</tr>
+<tr>
+<td><code>detail.discounts</code><br/><em>Array[Object]</em></td>
+<td>Returns an array of discounts applied to the invoice.</td>
+</tr>
+<tr>
+<td><code>detail.currency</code><br/><em>string</em></td>
+<td>The short-name of the currency.</td>
+</tr>
+<tr>
+<td><code>detail.subTotal</code><br/><em>string</em></td>
+<td>A string containing the total before discounts.</td>
+</tr>
+<tr>
+<td><code>detail.startDate</code><br/><em>string</em></td>
+<td>An ISO-8601 instant format string representing the start of the invoice detail report.</td>
+</tr>
+<tr>
+<td><code>detail.endDate</code><br/><em>string</em></td>
+<td>An ISO-8601 instant format string representing the end of the invoice detail report.</td>
+</tr>
+<tr>
+<td><code>detail.categories</code><br/><em>Array[Object]</em></td>
+<td>An array of category objects. Contains all categories that had usage for the period.</td>
+</tr>
+<tr>
+<td><code>detail.categories.name</code><br/><em>Object</em></td>
+<td>A map of short language codes to their translated category names.</td>
+</tr>
+<tr>
+<td><code>detail.categories.subTotal</code><br/><em>string</em></td>
+<td>A string with the subtotal of usage for the category. It is the summed up product usage.</td>
+</tr>
+<tr>
+<td><code>detail.categories.products</code><br/><em>Object</em></td>
+<td>A map of short language codes to their translated category names.</td>
+</tr>
+<tr>
+<td><code>detail.categories.products.sku</code><br/><em>string</em></td>
+<td>A unique string representing the sku for a product.</td>
+</tr>
+<tr>
+<td><code>detail.categories.products.name</code><br/><em>Object</em></td>
+<td>The name object in each language for the product name.</td>
+</tr>
+<tr>
+<td><code>detail.categories.products.cost</code><br/><em>string</em></td>
+<td>A string of the summed up total cost for the product.</td>
+</tr>
+<tr>
+<td><code>detail.categories.products.usage</code><br/><em>Object</em></td>
+<td>A string of the summed up total usage for the product.</td>
+</tr>
+<tr>
+<td><code>detail.categories.products.price</code><br/><em>Object</em></td>
+<td>A string representing the <em>average</em> unit price over the preriod.</td>
+</tr>
+<tr>
+<td><code>detail.categories.products.period</code><br/><em>string</em></td>
+<td>The period for the product capture. Possible values: HOURS, MONTH.</td>
+</tr>
+<tr>
+<td><code>detail.categories.products.unit</code><br/><em>Object</em></td>
+<td>The unit object of the product.</td>
+</tr>
+<tr>
+<td><code>detail.categories.products.unit.unit</code><br/><em>Object</em></td>
+<td>The unit value of the product.</td>
+</tr>
+<tr>
+<td><code>detail.categories.products.unit.name</code><br/><em>Object</em></td>
+<td>The name of the unit of the product in the required language. Only present when defining custom units.</td>
+</tr>
+</tbody></table>
+
+<!-------------------- LIST INVOICES -------------------->
+<h3 id='administration-list-invoices-of-organization'>List invoices of organization</h3>
+<p><code>GET /invoices?organization_id=:organization_id&amp;billingCycle=MM-YYYY</code></p>
+
+<p>Retrieve the list of invoices associated with an organization.</p>
+<pre class="highlight shell tab-shell"><code><span class="c"># Retrieve list of invoices of an organization</span>
+curl <span class="s2">"https://cloudmc_endpoint/rest/invoices?organization_id=289ec5fb-0970-44e3-bca8-777a691e23c7&amp;billingCycle=07-2021"</span> <span class="se">\</span>
+   -H <span class="s2">"MC-Api-Key: your_api_key"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns a JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+        </span><span class="s2">"draftedDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-07-27T00:00:00Z"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"createdDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-07-27T00:00:00Z"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DRAFT"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"organization"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"org_name"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"289ec5fb-0970-44e3-bca8-777a691e23c7"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"20e9b8d8-b1cb-4462-b6e8-fbb8416b2cbb"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"detail"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"discounted"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"discounts"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+            </span><span class="s2">"startDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-07-01T00:00:00Z"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"endDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-08-01T00:00:00Z"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CAD"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"subTotal"</span><span class="p">:</span><span class="w"> </span><span class="mf">272154.29</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"categories"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+                </span><span class="s2">"discounted"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"unit"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"unit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HOUR"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="s2">"discounts"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+                </span><span class="s2">"productId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5bec5db2-b438-4610-ba73-f3ed50a7b26b"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"40.0"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"en"</span><span class="p">:</span><span class="w"> </span><span class="s2">"memory"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"fr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"memory"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="s2">"subTotal"</span><span class="p">:</span><span class="w"> </span><span class="mf">65407.39</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"sku"</span><span class="p">:</span><span class="w"> </span><span class="s2">"product_sku"</span><span class="w">
+            </span><span class="p">}]</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">}]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+<table><thead>
+<tr>
+<th>Optional Query Parameters</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>organization_id</code><br/><em>UUID</em></td>
+<td>The UUID of the organization the invoice belongs to.</td>
+</tr>
+<tr>
+<td><code>billingCycle</code><br/><em>String</em></td>
+<td>The cycle which the invoice belongs to. Format is <code>MM-YYYY</code></td>
+</tr>
+</tbody></table>
+
+<table><thead>
+<tr>
+<th>Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code><br/><em>UUID</em></td>
+<td>The UUID of the invoice.</td>
+</tr>
+<tr>
+<td><code>status</code><br/><em>enum</em></td>
+<td>The status of the invoice. Possible values are: USAGE_PENDING, DRAFT, ISSUED, OVERDUE, PAID, VOID.</td>
+</tr>
+<tr>
+<td><code>createdDate</code><br/><em>date</em></td>
+<td>The created date of the invoice.</td>
+</tr>
+<tr>
+<td><code>draftedDate</code><br/><em>date</em></td>
+<td>The date the invoice was drafted. Is null if status is still USAGE_PENDING.</td>
+</tr>
+<tr>
+<td><code>issuedDate</code><br/><em>date</em></td>
+<td>The date the invoice was issued.</td>
+</tr>
+<tr>
+<td><code>dueDate</code><br/><em>date</em></td>
+<td>The date the invoice is due.</td>
+</tr>
+<tr>
+<td><code>organization.id</code><br/><em>UUID</em></td>
+<td>The UUID of the organization the invoice belongs to.</td>
+</tr>
+<tr>
+<td><code>organization.name</code><br/><em>string</em></td>
+<td>The name of the organization the invoice belongs to.</td>
+</tr>
+<tr>
+<td><code>total</code><br/><em>BigDecimal</em></td>
+<td>The invoice total after discounts, taxes and credits.</td>
+</tr>
+<tr>
+<td><code>balance</code><br/><em>BigDecimal</em></td>
+<td>The invoice&#39;s remaining balance.</td>
+</tr>
+<tr>
+<td><code>detail</code><br/><em>Object</em></td>
+<td>The invoice detail contains a currency and a list of categories. Each category has a list of products.</td>
+</tr>
+<tr>
+<td><code>detail.discounted</code><br/><em>boolean</em></td>
+<td>Whether the invoice is discounted or not.</td>
+</tr>
+<tr>
+<td><code>detail.discounts</code><br/><em>Array[Object]</em></td>
+<td>Returns an array of discounts applied to the invoice.</td>
+</tr>
+<tr>
+<td><code>detail.currency</code><br/><em>string</em></td>
+<td>The short-name of the currency.</td>
+</tr>
+<tr>
+<td><code>detail.subTotal</code><br/><em>string</em></td>
+<td>A string containing the total before discounts.</td>
+</tr>
+<tr>
+<td><code>detail.startDate</code><br/><em>string</em></td>
+<td>An ISO-8601 instant format string representing the start of the invoice detail report.</td>
+</tr>
+<tr>
+<td><code>detail.endDate</code><br/><em>string</em></td>
+<td>An ISO-8601 instant format string representing the end of the invoice detail report.</td>
+</tr>
+<tr>
+<td><code>detail.categories</code><br/><em>Array[Object]</em></td>
+<td>An array of category objects. Contains all categories that had usage for the period.</td>
+</tr>
+<tr>
+<td><code>detail.categories.name</code><br/><em>Object</em></td>
+<td>A map of short language codes to their translated category names.</td>
+</tr>
+<tr>
+<td><code>detail.categories.subTotal</code><br/><em>string</em></td>
+<td>A string with the subtotal of usage for the category. It is the summed up product usage.</td>
+</tr>
+<tr>
+<td><code>detail.categories.products</code><br/><em>Object</em></td>
+<td>A map of short language codes to their translated category names.</td>
+</tr>
+<tr>
+<td><code>detail.categories.products.sku</code><br/><em>string</em></td>
+<td>A unique string representing the sku for a product.</td>
+</tr>
+<tr>
+<td><code>detail.categories.products.name</code><br/><em>Object</em></td>
+<td>The name object in each language for the product name.</td>
+</tr>
+<tr>
+<td><code>detail.categories.products.cost</code><br/><em>string</em></td>
+<td>A string of the summed up total cost for the product.</td>
+</tr>
+<tr>
+<td><code>detail.categories.products.usage</code><br/><em>Object</em></td>
+<td>A string of the summed up total usage for the product.</td>
+</tr>
+<tr>
+<td><code>detail.categories.products.price</code><br/><em>Object</em></td>
+<td>A string representing the <em>average</em> unit price over the preriod.</td>
+</tr>
+<tr>
+<td><code>detail.categories.products.period</code><br/><em>string</em></td>
+<td>The period for the product capture. Possible values: HOURS, MONTH.</td>
+</tr>
+<tr>
+<td><code>detail.categories.products.unit</code><br/><em>Object</em></td>
+<td>The unit object of the product.</td>
+</tr>
+<tr>
+<td><code>detail.categories.products.unit.unit</code><br/><em>Object</em></td>
+<td>The unit value of the product.</td>
+</tr>
+<tr>
+<td><code>detail.categories.products.unit.name</code><br/><em>Object</em></td>
+<td>The name of the unit of the product in the required language. Only present when defining custom units.</td>
+</tr>
+</tbody></table>
+
+<!-------------------- APPROVE INVOICE -------------------->
+<h3 id='administration-approve-invoice'>Approve invoice</h3>
+<p><code>PUT /invoices/:invoice_id/approve</code></p>
+
+<p>Manually approve an invoice in the &#39;DRAFT&#39; state and issue the invoice to the customer by email. If the invoice is already in the &#39;ISSUED&#39; state, an empty response will be returned and an email will not be sent. If the invoice is in any other state, an error will be thrown.</p>
+<pre class="highlight shell tab-shell"><code><span class="c"># Approve a draft invoice</span>
+curl -X PUT <span class="s2">"https://cloudmc_endpoint/rest/invoices/20e9b8d8-b1cb-4462-b6e8-fbb8416b2cbb/approve"</span> <span class="se">\</span>
+   -H <span class="s2">"MC-Api-Key: your_api_key"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns a JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"draftedDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-07-27T00:00:00Z"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"createdDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-07-27T00:00:00Z"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ISSUED"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"organization"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"org_name"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"289ec5fb-0970-44e3-bca8-777a691e23c7"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"20e9b8d8-b1cb-4462-b6e8-fbb8416b2cbb"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"detail"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"discounted"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"discounts"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+            </span><span class="s2">"startDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-07-01T00:00:00Z"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"endDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-08-01T00:00:00Z"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CAD"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"subTotal"</span><span class="p">:</span><span class="w"> </span><span class="mf">272154.29</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"categories"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+                </span><span class="s2">"discounted"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"unit"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"unit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HOUR"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="s2">"discounts"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+                </span><span class="s2">"productId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5bec5db2-b438-4610-ba73-f3ed50a7b26b"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"40.0"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"en"</span><span class="p">:</span><span class="w"> </span><span class="s2">"memory"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"fr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"memory"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="s2">"subTotal"</span><span class="p">:</span><span class="w"> </span><span class="mf">65407.39</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"sku"</span><span class="p">:</span><span class="w"> </span><span class="s2">"product_sku"</span><span class="w">
+            </span><span class="p">}]</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"total"</span><span class="p">:</span><span class="w"> </span><span class="mf">272154.29</span><span class="p">,</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<table><thead>
+<tr>
+<th>Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code><br/><em>UUID</em></td>
+<td>The UUID of the invoice.</td>
+</tr>
+<tr>
+<td><code>status</code><br/><em>enum</em></td>
+<td>The status of the invoice. Should be ISSUED upon a successful approval.</td>
+</tr>
+<tr>
+<td><code>createdDate</code><br/><em>date</em></td>
+<td>The created date of the invoice.</td>
+</tr>
+<tr>
+<td><code>draftedDate</code><br/><em>date</em></td>
+<td>The date the invoice was drafted.</td>
+</tr>
+<tr>
+<td><code>issuedDate</code><br/><em>date</em></td>
+<td>The date the invoice was issued.</td>
+</tr>
+<tr>
+<td><code>dueDate</code><br/><em>date</em></td>
+<td>The date the invoice is due.</td>
+</tr>
+<tr>
+<td><code>organization.id</code><br/><em>UUID</em></td>
+<td>The UUID of the organization the invoice belongs to.</td>
+</tr>
+<tr>
+<td><code>organization.name</code><br/><em>string</em></td>
+<td>The name of the organization the invoice belongs to.</td>
+</tr>
+<tr>
+<td><code>total</code><br/><em>BigDecimal</em></td>
+<td>The invoice total after discounts, taxes and credits.</td>
+</tr>
+<tr>
+<td><code>balance</code><br/><em>BigDecimal</em></td>
+<td>The invoice&#39;s remaining balance.</td>
+</tr>
+<tr>
+<td><code>detail</code><br/><em>Object</em></td>
+<td>The invoice detail contains a currency and a list of categories. Each category has a list of products.</td>
+</tr>
+<tr>
+<td><code>detail.discounted</code><br/><em>boolean</em></td>
+<td>Whether the invoice is discounted or not.</td>
+</tr>
+<tr>
+<td><code>detail.discounts</code><br/><em>Array[Object]</em></td>
+<td>Returns an array of discounts applied to the invoice.</td>
+</tr>
+<tr>
+<td><code>detail.currency</code><br/><em>string</em></td>
+<td>The short-name of the currency.</td>
+</tr>
+<tr>
+<td><code>detail.subTotal</code><br/><em>string</em></td>
+<td>A string containing the total before discounts.</td>
+</tr>
+<tr>
+<td><code>detail.startDate</code><br/><em>string</em></td>
+<td>An ISO-8601 instant format string representing the start of the invoice detail report.</td>
+</tr>
+<tr>
+<td><code>detail.endDate</code><br/><em>string</em></td>
+<td>An ISO-8601 instant format string representing the end of the invoice detail report.</td>
+</tr>
+<tr>
+<td><code>detail.categories</code><br/><em>Array[Object]</em></td>
+<td>An array of category objects. Contains all categories that had usage for the period.</td>
+</tr>
+<tr>
+<td><code>detail.categories.name</code><br/><em>Object</em></td>
+<td>A map of short language codes to their translated category names.</td>
+</tr>
+<tr>
+<td><code>detail.categories.subTotal</code><br/><em>string</em></td>
+<td>A string with the subtotal of usage for the category. It is the summed up product usage.</td>
+</tr>
+<tr>
+<td><code>detail.categories.products</code><br/><em>Object</em></td>
+<td>A map of short language codes to their translated category names.</td>
+</tr>
+<tr>
+<td><code>detail.categories.products.sku</code><br/><em>string</em></td>
+<td>A unique string representing the sku for a product.</td>
+</tr>
+<tr>
+<td><code>detail.categories.products.name</code><br/><em>Object</em></td>
+<td>The name object in each language for the product name.</td>
+</tr>
+<tr>
+<td><code>detail.categories.products.cost</code><br/><em>string</em></td>
+<td>A string of the summed up total cost for the product.</td>
+</tr>
+<tr>
+<td><code>detail.categories.products.usage</code><br/><em>Object</em></td>
+<td>A string of the summed up total usage for the product.</td>
+</tr>
+<tr>
+<td><code>detail.categories.products.price</code><br/><em>Object</em></td>
+<td>A string representing the <em>average</em> unit price over the preriod.</td>
+</tr>
+<tr>
+<td><code>detail.categories.products.period</code><br/><em>string</em></td>
+<td>The period for the product capture. Possible values: HOURS, MONTH.</td>
+</tr>
+<tr>
+<td><code>detail.categories.products.unit</code><br/><em>Object</em></td>
+<td>The unit object of the product.</td>
+</tr>
+<tr>
+<td><code>detail.categories.products.unit.unit</code><br/><em>Object</em></td>
+<td>The unit value of the product.</td>
+</tr>
+<tr>
+<td><code>detail.categories.products.unit.name</code><br/><em>Object</em></td>
+<td>The name of the unit of the product in the required language. Only present when defining custom units.</td>
+</tr>
+</tbody></table>
+<h2 id='administration-discounts'>Discounts</h2>
 <p>The discount allows the assignment of a percentage discount or credit to an applied pricing.</p>
 
 <!-------------------- LIST DISCOUNTS -------------------->
