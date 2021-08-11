@@ -16983,6 +16983,9 @@ curl <span class="s2">"https://cloudmc_endpoint/api/rest/reseller/settings/billi
     </span><span class="s2">"daysBeforeAutoDraft"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
     </span><span class="s2">"daysBeforeAutoApproval"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
     </span><span class="s2">"daysBeforeAutoPayment"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"customerInformation"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"accountId"</span><span class="p">],</span><span class="w">
+    </span><span class="s2">"address"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"Address line 1"</span><span class="p">,</span><span class="w"> </span><span class="s2">"Address line 2"</span><span class="p">,</span><span class="w"> </span><span class="s2">"etc."</span><span class="p">],</span><span class="w">
+    </span><span class="s2">"termsAndConditions"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My terms and conditions..."</span><span class="p">,</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
@@ -17018,6 +17021,18 @@ curl <span class="s2">"https://cloudmc_endpoint/api/rest/reseller/settings/billi
 <td><code>daysBeforeAutoPayment</code><br/><em>integer</em></td>
 <td>The number of days after the invoice has been issued before the customer&#39;s credit card is automatically charged.</td>
 </tr>
+<tr>
+<td><code>customerInformation</code><br/><em>Array[string]</em></td>
+<td>The list of client custom fields to display in the invoice.</td>
+</tr>
+<tr>
+<td><code>address</code><br/><em>Array[string]</em></td>
+<td>The address to display in the invoice. Each address field will be a row in the address block.</td>
+</tr>
+<tr>
+<td><code>termsAndConditions</code><br/><em>string</em></td>
+<td>The terms and conditions to display in the invoice.</td>
+</tr>
 </tbody></table>
 
 <!-------------------- GET BILLING SETTINGS -------------------->
@@ -17040,6 +17055,9 @@ curl <span class="s2">"https://cloudmc_endpoint/api/rest/reseller/settings/billi
     </span><span class="s2">"daysBeforeAutoDraft"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
     </span><span class="s2">"daysBeforeAutoApproval"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
     </span><span class="s2">"daysBeforeAutoPayment"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"customerInformation"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"accountId"</span><span class="p">],</span><span class="w">
+    </span><span class="s2">"address"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"Address line 1"</span><span class="p">,</span><span class="w"> </span><span class="s2">"Address line 2"</span><span class="p">,</span><span class="w"> </span><span class="s2">"etc."</span><span class="p">],</span><span class="w">
+    </span><span class="s2">"termsAndConditions"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My terms and conditions..."</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
@@ -17075,6 +17093,18 @@ curl <span class="s2">"https://cloudmc_endpoint/api/rest/reseller/settings/billi
 <td><code>daysBeforeAutoPayment</code><br/><em>integer</em></td>
 <td>The number of days after the invoice has been issued before the customer&#39;s credit card is automatically charged.</td>
 </tr>
+<tr>
+<td><code>customerInformation</code><br/><em>Array[string]</em></td>
+<td>The list of client custom fields to display in the invoice.</td>
+</tr>
+<tr>
+<td><code>address</code><br/><em>Array[string]</em></td>
+<td>The address to display in the invoice. Each address field will be a row in the address block.</td>
+</tr>
+<tr>
+<td><code>termsAndConditions</code><br/><em>string</em></td>
+<td>The terms and conditions to display in the invoice.</td>
+</tr>
 </tbody></table>
 
 <!-------------------- CREATE BILLING SETTINGS -------------------->
@@ -17095,6 +17125,10 @@ curl -X POST <span class="s2">"https://cloudmc_endpoint/api/rest/reseller/settin
   </span><span class="p">},</span><span class="w">
   </span><span class="s2">"daysBeforeAutoApproval"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
   </span><span class="s2">"daysBeforeAutoPayment"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"daysBeforeAutoDraft"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"customerInformation"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"accountId"</span><span class="p">],</span><span class="w">
+  </span><span class="s2">"address"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"Address line 1"</span><span class="p">,</span><span class="w"> </span><span class="s2">"Address line 2"</span><span class="p">,</span><span class="w"> </span><span class="s2">"etc."</span><span class="p">],</span><span class="w">
+  </span><span class="s2">"termsAndConditions"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My terms and conditions..."</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <blockquote>
@@ -17110,6 +17144,9 @@ curl -X POST <span class="s2">"https://cloudmc_endpoint/api/rest/reseller/settin
     </span><span class="s2">"daysBeforeAutoDraft"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
     </span><span class="s2">"daysBeforeAutoApproval"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
     </span><span class="s2">"daysBeforeAutoPayment"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"customerInformation"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"accountId"</span><span class="p">],</span><span class="w">
+    </span><span class="s2">"address"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"Address line 1"</span><span class="p">,</span><span class="w"> </span><span class="s2">"Address line 2"</span><span class="p">,</span><span class="w"> </span><span class="s2">"etc."</span><span class="p">],</span><span class="w">
+    </span><span class="s2">"termsAndConditions"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My terms and conditions..."</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
@@ -17143,6 +17180,18 @@ curl -X POST <span class="s2">"https://cloudmc_endpoint/api/rest/reseller/settin
 <td><code>organization.id</code><br/><em>UUID</em></td>
 <td>The organization id that the billing settings are linked to. If the <code>organizationId</code> is omitted, the authenticated user&#39;s organization will be used.</td>
 </tr>
+<tr>
+<td><code>customerInformation</code><br/><em>Array[string]</em></td>
+<td>The list of client custom fields to display in the invoice.</td>
+</tr>
+<tr>
+<td><code>address</code><br/><em>Array[string]</em></td>
+<td>The address to display in the invoice. Each address field will be a row in the address block.</td>
+</tr>
+<tr>
+<td><code>termsAndConditions</code><br/><em>string</em></td>
+<td>The terms and conditions to display in the invoice.</td>
+</tr>
 </tbody></table>
 
 <!-------------------- UPDATE BILLING SETTINGS -------------------->
@@ -17168,6 +17217,9 @@ curl -X PUT <span class="s2">"https://cloudmc_endpoint/api/rest/reseller/setting
    </span><span class="s2">"daysBeforeAutoDraft"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
   </span><span class="s2">"daysBeforeAutoApproval"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
   </span><span class="s2">"daysBeforeAutoPayment"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"customerInformation"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"accountId"</span><span class="p">],</span><span class="w">
+  </span><span class="s2">"address"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"Address line 1"</span><span class="p">,</span><span class="w"> </span><span class="s2">"Address line 2"</span><span class="p">,</span><span class="w"> </span><span class="s2">"etc."</span><span class="p">],</span><span class="w">
+  </span><span class="s2">"termsAndConditions"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My terms and conditions..."</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <blockquote>
@@ -17183,6 +17235,9 @@ curl -X PUT <span class="s2">"https://cloudmc_endpoint/api/rest/reseller/setting
     </span><span class="s2">"daysBeforeAutoDraft"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
     </span><span class="s2">"daysBeforeAutoApproval"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
     </span><span class="s2">"daysBeforeAutoPayment"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"customerInformation"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"accountId"</span><span class="p">],</span><span class="w">
+    </span><span class="s2">"address"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"Address line 1"</span><span class="p">,</span><span class="w"> </span><span class="s2">"Address line 2"</span><span class="p">,</span><span class="w"> </span><span class="s2">"etc."</span><span class="p">],</span><span class="w">
+    </span><span class="s2">"termsAndConditions"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My terms and conditions..."</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
@@ -17211,6 +17266,26 @@ curl -X PUT <span class="s2">"https://cloudmc_endpoint/api/rest/reseller/setting
 <tr>
 <td><code>daysBeforeAutoPayment</code><br/><em>integer</em></td>
 <td>The number of days after the invoice has been issued before the customer&#39;s credit card is automatically charged.</td>
+</tr>
+</tbody></table>
+
+<table><thead>
+<tr>
+<th>Optional</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>customerInformation</code><br/><em>Array[string]</em></td>
+<td>The list of client custom fields to display in the invoice.</td>
+</tr>
+<tr>
+<td><code>address</code><br/><em>Array[string]</em></td>
+<td>The address to display in the invoice. Each address field will be a row in the address block.</td>
+</tr>
+<tr>
+<td><code>termsAndConditions</code><br/><em>string</em></td>
+<td>The terms and conditions to display in the invoice.</td>
 </tr>
 </tbody></table>
 
