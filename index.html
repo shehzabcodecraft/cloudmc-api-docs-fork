@@ -3737,6 +3737,12 @@
                                     <a href="#stackpath-retrieve-a-dns-record" class="toc-h4 toc-link" data-title="StackPath plugin">Retrieve a DNS record</a>
                                   </li>
                                   <li>
+                                    <a href="#stackpath-create-a-dns-record" class="toc-h4 toc-link" data-title="StackPath plugin">Create a DNS record</a>
+                                  </li>
+                                  <li>
+                                    <a href="#stackpath-update-a-dns-record" class="toc-h4 toc-link" data-title="StackPath plugin">Update a DNS record</a>
+                                  </li>
+                                  <li>
                                     <a href="#stackpath-delete-a-dns-record" class="toc-h4 toc-link" data-title="StackPath plugin">Delete a DNS record</a>
                                   </li>
                               </ul>
@@ -65222,6 +65228,160 @@ a custom one. Only non-deprecated images are returned by default.</p>
 <tr>
 <td><code>updated</code><br/><em>string</em></td>
 <td>The date on which the DNS record was last updated.</td>
+</tr>
+</tbody></table>
+
+<!-------------------- CREATE A DNS RECORD -------------------->
+<h4 id='stackpath-create-a-dns-record'>Create a DNS record</h4><pre class="highlight shell tab-shell"><code>curl -X POST <span class="se">\</span>
+   -H <span class="s2">"MC-Api-Key: your_api_key"</span> <span class="se">\</span>
+   -d <span class="s2">"request_body"</span> <span class="se">\</span>
+   <span class="s2">"https://cloudmc_endpoint/api/v1/services/stackpath/test-area/dnsrecords?zoneId=337c7c26-31f4-4b2e-83dc-126exxxxxxWr"</span>
+</code></pre>
+<blockquote>
+<p>Request body example for creating a DNS record:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"*"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NS"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"ttl"</span><span class="p">:</span><span class="w"> </span><span class="mi">3600</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ns1.above.com."</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"weight"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<blockquote>
+<p>The above command returns a JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"taskId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"7135ae25-8488-4bc5-a289-285c84a00a84"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"taskStatus"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PENDING"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><code>POST /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/dnsrecords?zoneId=:zoneId</code></p>
+
+<p>Create a DNS record in a given <a href="#administration-environments">environment</a>.</p>
+
+<table><thead>
+<tr>
+<th>Query Params</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>zoneId</code><br/><em>UUID</em></td>
+<td>The ID of the zone for which we want to create the record. This parameter is required.</td>
+</tr>
+</tbody></table>
+
+<table><thead>
+<tr>
+<th>Required</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>name</code><br/><em>string</em></td>
+<td>The name of the record. Use the value &quot;@&quot; to denote current root domain name.</td>
+</tr>
+<tr>
+<td><code>type</code><br/><em>string</em></td>
+<td>A DNS record&#39;s type. DNS record types describe the record&#39;s behavior.</td>
+</tr>
+<tr>
+<td><code>ttl</code> <br/><em>int</em></td>
+<td>A DNS record&#39;s time to live. A record&#39;s TTL is the number of seconds that the record should be cached by DNS resolvers. Use lower TTL values if you expect zone records to change often. Use higher TTL values for records that won&#39;t change to prevent extra DNS lookups by clients.</td>
+</tr>
+<tr>
+<td><code>data</code><br/><em>string</em></td>
+<td>A DNS record&#39;s value.</td>
+</tr>
+</tbody></table>
+
+<table><thead>
+<tr>
+<th>Optional</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>weight</code> <br/><em>int</em></td>
+<td>A DNS record&#39;s priority. A resource record is replicated in StackPath&#39;s DNS infrastructure the number of times of the record&#39;s weight, giving it a more likely response to queries if a zone has records with the same name and type.</td>
+</tr>
+</tbody></table>
+
+<!-------------------- UPDATE A DNS RECORD -------------------->
+<h4 id='stackpath-update-a-dns-record'>Update a DNS record</h4><pre class="highlight shell tab-shell"><code>curl -X PUT <span class="se">\</span>
+   -H <span class="s2">"MC-Api-Key: your_api_key"</span> <span class="se">\</span>
+   -d <span class="s2">"request_body"</span> <span class="se">\</span>
+   <span class="s2">"https://cloudmc_endpoint/api/v1/services/stackpath/test-area/dnsrecords/0a18b323-72df-447a-af81-08a2ea62re45?zoneId=337c7c26-31f4-4b2e-83dc-126exxxxxxWr"</span>
+</code></pre>
+<blockquote>
+<p>Request body example for creating a DNS record:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"*"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NS"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"ttl"</span><span class="p">:</span><span class="w"> </span><span class="mi">3600</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ns1.above.com."</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"weight"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<blockquote>
+<p>The above command returns a JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"taskId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"7135ae25-8488-4bc5-a289-285c84a00a84"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"taskStatus"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PENDING"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><code>PUT /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/dnsrecords/:id?zoneId=:zoneId</code></p>
+
+<p>Update a DNS record in a given <a href="#administration-environments">environment</a>.</p>
+
+<table><thead>
+<tr>
+<th>Query Params</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>zoneId</code><br/><em>UUID</em></td>
+<td>The ID of the zone for which we want to update the record. This parameter is required.</td>
+</tr>
+</tbody></table>
+
+<table><thead>
+<tr>
+<th>Required</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>name</code><br/><em>string</em></td>
+<td>The name of the record. Use the value &quot;@&quot; to denote current root domain name.</td>
+</tr>
+<tr>
+<td><code>type</code><br/><em>string</em></td>
+<td>A DNS record&#39;s type. DNS record types describe the record&#39;s behavior.</td>
+</tr>
+<tr>
+<td><code>ttl</code> <br/><em>int</em></td>
+<td>A DNS record&#39;s time to live. A record&#39;s TTL is the number of seconds that the record should be cached by DNS resolvers. Use lower TTL values if you expect zone records to change often. Use higher TTL values for records that won&#39;t change to prevent extra DNS lookups by clients.</td>
+</tr>
+<tr>
+<td><code>data</code><br/><em>string</em></td>
+<td>A DNS record&#39;s value.</td>
+</tr>
+</tbody></table>
+
+<table><thead>
+<tr>
+<th>Optional</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>weight</code> <br/><em>int</em></td>
+<td>A DNS record&#39;s priority. A resource record is replicated in StackPath&#39;s DNS infrastructure the number of times of the record&#39;s weight, giving it a more likely response to queries if a zone has records with the same name and type.</td>
 </tr>
 </tbody></table>
 
