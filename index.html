@@ -921,6 +921,14 @@
                           </li>
                       </ul>
                   </li>
+                  <li>
+                    <a href="#administration-metrics" class="toc-h2 toc-link" data-title="Administration">Metrics</a>
+                      <ul class="toc-list-h3">
+                          <li>
+                            <a href="#administration-retrieve-metrics-for-a-specified-interval" class="toc-h3 toc-link" data-title="Administration">Retrieve Metrics for a Specified Interval</a>
+                          </li>
+                      </ul>
+                  </li>
               </ul>
           </li>
           <li>            
@@ -3652,6 +3660,9 @@
                                           </li>
                                           <li>
                                             <a href="#stackpath-create-a-custom-rule" class="toc-h5 toc-link" data-title="StackPath plugin">Create a custom rule</a>
+                                          </li>
+                                          <li>
+                                            <a href="#stackpath-create-a-waf-rule-based-on-a-request-made-to-an-existing-site" class="toc-h5 toc-link" data-title="StackPath plugin">Create a WAF rule based on a request made to an existing site</a>
                                           </li>
                                           <li>
                                             <a href="#stackpath-edit-a-custom-rule" class="toc-h5 toc-link" data-title="StackPath plugin">Edit a custom rule</a>
@@ -18206,6 +18217,141 @@ curl --request GET <span class="se">\</span>
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>Delete&#39;s a custom navigation configuration.</p>
+<h2 id='administration-metrics'>Metrics</h2>
+<p>The metrics API can be queried to obtain metrics data that is pushed by the service to CloudMC metric data store.</p>
+<h3 id='administration-retrieve-metrics-for-a-specified-interval'>Retrieve Metrics for a Specified Interval</h3>
+<!-- GET METRICS FOR INTERVAL -->
+
+<p><code>GET /metrics/{serviceCode}/{metricId}</code></p>
+
+<p>Retrieves metrics for a given metric id in a specified interval</p>
+<pre class="highlight shell tab-shell"><code><span class="c"># Retrieve metrics for a given interval</span>
+curl <span class="s2">"https://cloudmc_endpoint/api/v1/metrics/stackpath-cox-dev/ingress_bandwidth?startDate=2021-08-12T10:50:46.386Z&amp;endDate=2021-08-15T10:50:46.386Z&amp;size=12&amp;unit=hours&amp;entityId=1923471a-6a72-474d-9e19-63075bc1020b"</span> <span class="se">\</span>
+   -H <span class="s2">"MC-Api-Key: your_api_key"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns a JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"ingress_bandwidth"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"entityId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1923471a-6a72-474d-9e19-63075bc1020b"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-08-12T12:00:00.000"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.27</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"entityId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1923471a-6a72-474d-9e19-63075bc1020b"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-08-13T00:00:00.000"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.29</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"entityId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1923471a-6a72-474d-9e19-63075bc1020b"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-08-13T12:00:00.000"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.25</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"entityId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1923471a-6a72-474d-9e19-63075bc1020b"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-08-14T00:00:00.000"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.37</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"entityId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1923471a-6a72-474d-9e19-63075bc1020b"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-08-14T12:00:00.000"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.26</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"entityId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1923471a-6a72-474d-9e19-63075bc1020b"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-08-15T00:00:00.000"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.21</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<table><thead>
+<tr>
+<th>Path Parameters</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>serviceCode</code><br/><em>string</em></td>
+<td>A globally unique code that identifies this service connection..</td>
+</tr>
+<tr>
+<td><code>metricId</code><br/><em>string</em></td>
+<td>A unique identifier used to define a <code>MetricDescriptor</code>.</td>
+</tr>
+</tbody></table>
+
+<table><thead>
+<tr>
+<th>Required Query Parameters</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>startDate</code><br/><em>Date</em></td>
+<td>The start date of the interval to query metrics for. The date must be in a valid ISO-8601 format. The start date must be provided to query this endpoint.</td>
+</tr>
+<tr>
+<td><code>endDate</code><br/><em>Date</em></td>
+<td>The start date of the interval to query metrics for. The date must be in a valid ISO-8601 format.  The end date must be provided to query this endpoint.</td>
+</tr>
+</tbody></table>
+
+<table><thead>
+<tr>
+<th>Optional Query Parameters</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>environment</code><br/><em>string</em></td>
+<td>The name of the environment to query metrics for.</td>
+</tr>
+<tr>
+<td><code>aggregationType</code><br/><em>string</em></td>
+<td>How the queried metrics should be aggregated. The possible values are sum, count, min, max, avg (average). When not provided, the default value used is <code>average</code>.</td>
+</tr>
+<tr>
+<td><code>size</code><br/><em>integer</em></td>
+<td>The size of the data points granularity in the response. The size must be a positive integer value. When combined with <code>unit</code>, this forms an expression similar to <code>1 hour</code>, or <code>1 day</code>, etc. The default value used is <code>5</code>.</td>
+</tr>
+<tr>
+<td><code>unit</code><br/><em>string</em></td>
+<td>The unit of the data points granularity in the response. The unit must be a valid Java Chronounit. The default value is <code>MINUTES</code>.</td>
+</tr>
+<tr>
+<td><code>entityType</code><br/><em>String</em></td>
+<td>The type of entity to query metrics for. When provided, only those metric records that have the provided <code>entityType</code> are aggregated.</td>
+</tr>
+<tr>
+<td><code>entityId</code><br/><em>UUID</em></td>
+<td>The id of the entity to query metrics for. When provided, only those metric records that have the provided <code>entityId</code> are aggregated.</td>
+</tr>
+</tbody></table>
+
+<table><thead>
+<tr>
+<th>Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>label</code><br/><em>UUID</em></td>
+<td>The UTC timestamp used to label the value returned by the query.</td>
+</tr>
+<tr>
+<td><code>value</code><br/><em>Number</em></td>
+<td>The value of the metric at the given timestamp.</td>
+</tr>
+<tr>
+<td><code>entityId</code><br/><em>UUID</em></td>
+<td>The id of the entity metrics data was queried for.</td>
+</tr>
+</tbody></table>
 <h1 id='cloudstack-plugin'>CloudStack plugin</h1>
 <p>The CloudStack plugin provides endpoints for carrying out operations on CloudMC compute and networking entities. While each operation has its own validation and required fields, all operations need to specify the service code and environment in which they should be carried out. The following example URL describes how to specify this information for all entities.</p>
 
@@ -63787,6 +63933,81 @@ async function handleRequest(request) {
 <tr>
 <td><code>ipAddresses</code><br/><em>Array[string]</em></td>
 <td>List of IP addresses that the rule will apply to. Only for rule of type <code>REQUEST_RATE</code>.</td>
+</tr>
+</tbody></table>
+
+<!-- CREATE A CUSTOM RULE BASED ON A WAF REQUEST -->
+<h5 id='stackpath-create-a-waf-rule-based-on-a-request-made-to-an-existing-site'>Create a WAF rule based on a request made to an existing site</h5><pre class="highlight plaintext"><code>POST "https://cloudmc_endpoint/api/v1/services/{serviceCode}/{environment}/wafrequests/{wafrequestId}?operation=create_rule&amp;siteId={siteId}"
+</code></pre><pre class="highlight shell tab-shell"><code>curl -X POST <span class="se">\</span>
+  -H <span class="s2">"MC-Api-Key: your_api_key"</span> <span class="se">\</span>
+  -d <span class="s2">"request_body"</span> <span class="se">\</span>
+  <span class="s2">"https://cloudmc_endpoint/api/v1/services/stackpath-aaaa/env-1/wafrequests/197d190d415bea5ea1385a0de6f3bceb-452444?operation=create_rule&amp;siteId=5ea00192-30f0-4da0-b9d9-461baa3dde89"</span>
+</code></pre>
+<blockquote>
+<p>Request body example for the custom rule:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"action"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MONITOR"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"clientIp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"66.249.82.90"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<blockquote>
+<p>The above commands return a JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"taskId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"7135ae25-8488-4bc5-a289-285c84a00a84"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"taskStatus"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PENDING"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<table><thead>
+<tr>
+<th>Path Params</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>serviceCode</code><br/><em>string</em></td>
+<td>The globally unique serviceCode that identifies the service connection.</td>
+</tr>
+<tr>
+<td><code>wafrequestId</code><br/><em>UUID</em></td>
+<td>The ID of the WAF request made to the site. The WAF rule created must map to an existing request made to the site.</td>
+</tr>
+<tr>
+<td><code>environment</code><br/><em>UUID</em></td>
+<td>The name of the environment containing the site.</td>
+</tr>
+</tbody></table>
+
+<table><thead>
+<tr>
+<th>Query Params</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>operation</code><br/><em>string</em></td>
+<td>The operation executed. This must be <code>create_rule</code>.</td>
+</tr>
+<tr>
+<td><code>siteId</code><br/><em>UUID</em></td>
+<td>The ID of the site for which the custom rule is applied to. This parameter is required.</td>
+</tr>
+</tbody></table>
+
+<table><thead>
+<tr>
+<th>Required</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>action</code><br/><em>string</em></td>
+<td>The action to be taken on the provided IP address. The action must be one of ALLOW, BLOCK, MONITOR, CAPTCHA, or HANDSHAKE.</td>
+</tr>
+<tr>
+<td><code>clientIp</code><br/><em>string</em></td>
+<td>The IP address the WAF request specified was made from.</td>
 </tr>
 </tbody></table>
 
