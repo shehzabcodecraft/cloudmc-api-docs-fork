@@ -5660,7 +5660,11 @@ curl <span class="s2">"https://cloudmc_endpoint/api/v1/organizations/87895f43-51
     </span><span class="s2">"billingAddressCity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SomeCity"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"billingAddressProvince"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NY"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"billingAddressPostalCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"555555"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"billingAddressCountry"</span><span class="p">:</span><span class="w"> </span><span class="s2">"US"</span><span class="w">
+    </span><span class="s2">"billingAddressCountry"</span><span class="p">:</span><span class="w"> </span><span class="s2">"US"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"customAttribute"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"uid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"774B145528524D7C65590CE77B933135"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"customerRefNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"208523664"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
@@ -5721,6 +5725,30 @@ curl <span class="s2">"https://cloudmc_endpoint/api/v1/organizations/87895f43-51
 <tr>
 <td><code>billingAddressCountry</code><br/><em>string</em></td>
 <td>The country code (ISO 2 or 3 letter code) of the billing address</td>
+</tr>
+<tr>
+<td><code>billingAddressCountry</code><br/><em>string</em></td>
+<td>The country code (ISO 2 or 3 letter code) of the billing address</td>
+</tr>
+<tr>
+<td><code>customAttribute</code> <br/><em>Object</em></td>
+<td>The custom attributes associated to the billing provider</td>
+</tr>
+</tbody></table>
+
+<table><thead>
+<tr>
+<th>Chase attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>customAttribute.uid</code> <br/><em>string</em></td>
+<td>Chase registration id</td>
+</tr>
+<tr>
+<td><code>customAttribute.customerRefNum</code> <br/><em>string</em></td>
+<td>Chase customer reference number/profile id</td>
 </tr>
 </tbody></table>
 
@@ -17734,6 +17762,11 @@ curl -X PUT <span class="s2">"https://cloudmc_endpoint/rest/billing_providers/c8
 <td>chaseCreditCard</td>
 <td><code>orbitalPassword</code><br/><em>string</em></td>
 <td>Orbital Connection Password used in conjunction with Orbital Username.</td>
+</tr>
+<tr>
+<td>chaseCreditCard</td>
+<td><code>orbitalMerchantId</code><br/><em>string</em></td>
+<td>Orbital API merchant ID.</td>
 </tr>
 <tr>
 <td>chaseCreditCard</td>
