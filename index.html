@@ -333,6 +333,12 @@
                           <li>
                             <a href="#administration-clear-credit-card-information" class="toc-h3 toc-link" data-title="Administration">Clear credit card information</a>
                           </li>
+                          <li>
+                            <a href="#administration-set-billable-organization-information" class="toc-h3 toc-link" data-title="Administration">Set billable organization information</a>
+                          </li>
+                          <li>
+                            <a href="#administration-list-applicable-pricing-packages-to-an-organization" class="toc-h3 toc-link" data-title="Administration">List applicable pricing packages to an organization</a>
+                          </li>
                       </ul>
                   </li>
                   <li>
@@ -5762,7 +5768,143 @@ curl <span class="s2">"https://cloudmc_endpoint/api/v1/organizations/87895f43-51
 <pre class="highlight shell tab-shell"><code><span class="c"># Retrieve the organization's billing information</span>
 curl -X DELETE <span class="s2">"https://cloudmc_endpoint/api/v1/organizations/87895f43-51c1-43cc-b987-7e301bf5b86a/billing_info"</span> <span class="se">\</span>
    -H <span class="s2">"MC-Api-Key: your_api_key"</span>
-</code></pre><h2 id='administration-users'>Users</h2>
+</code></pre>
+<!-------------------- UPDATE BILLABLE ORGANIZATION INFORMATION -------------------->
+<h3 id='administration-set-billable-organization-information'>Set billable organization information</h3>
+<p><code>PUT /organizations/:organization_id/billable</code></p>
+
+<p>Set the organization to billable and update the billable organization information.</p>
+<pre class="highlight shell tab-shell"><code><span class="c"># Update billable organization info</span>
+curl -X PUT <span class="s2">"https://cloudmc_endpoint/api/v1/organizations/87895f43-51c1-43cc-b987-7e301bf5b86a/billable"</span> <span class="se">\</span>
+   -H <span class="s2">"MC-Api-Key: your_api_key"</span> <span class="se">\</span>
+   -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+   -d <span class="s2">"request_body"</span>
+</code></pre>
+<blockquote>
+<p>Request body example:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+   </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"39f6260d-f0ca-4be9-93c4-46405d471c04"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"billableStart"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-01-18"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"pricingPackage"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"58bad1de-1f87-422b-b44f-27ed58889272"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<table><thead>
+<tr>
+<th>Required</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code><br/><em>UUID</em></td>
+<td>The id of the udpated billable organization information.</td>
+</tr>
+<tr>
+<td><code>billableStart</code><br/><em>string</em></td>
+<td>The date the organization became billable, in YYYY-MM-DD format.</td>
+</tr>
+<tr>
+<td><code>pricingPackage.id</code><br/><em>UUID</em></td>
+<td>The id of the pricing package applied on the organization.</td>
+</tr>
+</tbody></table>
+
+<table><thead>
+<tr>
+<th>Optional</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>billableEnd</code><br/><em>string</em></td>
+<td>The date the organization stops being billable, in YYYY-MM-DD format.</td>
+</tr>
+</tbody></table>
+
+<!-------------------- LIST APPLICABLE PRICING PACKAGES TO ORG -------------------->
+<h3 id='administration-list-applicable-pricing-packages-to-an-organization'>List applicable pricing packages to an organization</h3>
+<p><code>GET /organizations/:organization_id/pricing_packages</code></p>
+
+<p>Retrieves a list of applicable pricing packages to an organization.</p>
+<pre class="highlight shell tab-shell"><code><span class="c"># Retrieve visible organizations</span>
+curl <span class="s2">"https://cloudmc_endpoint/api/v1/organizations/87895f43-51c1-43cc-b987-7e301bf5b86a/pricing_packages"</span> <span class="se">\</span>
+   -H <span class="s2">"MC-Api-Key: your_api_key"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns a JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"offerType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"30-day-trial"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"pricingDefinition"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c9a396f1-690a-4201-a3bf-b1da37221acc"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"endDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-09-14T00:00:00Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"organization"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"de6cf332-14b2-4da8-8522-3dfe12fcd0da"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"en"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Applied Pricing"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"fr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Applied Pricing"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"92041aa8-7784-45b0-aa85-76376ede784d"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"creationDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-09-13T15:18:38.000Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"startDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-09-22T20:09:32.084Z"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<table><thead>
+<tr>
+<th>Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code><br/><em>UUID</em></td>
+<td>The UUID of the pricing package.</td>
+</tr>
+<tr>
+<td><code>offerType</code><br/><em>string</em></td>
+<td>The offer type of the pricing package.</td>
+</tr>
+<tr>
+<td><code>pricingDefinition</code><br/><em>Object</em></td>
+<td>The pricing definition associated with the pricing package.</td>
+</tr>
+<tr>
+<td><code>pricingDefinition.id</code><br/><em>UUID</em></td>
+<td>The UUID of the pricing.</td>
+</tr>
+<tr>
+<td><code>organization</code><br/><em>Object</em></td>
+<td>The object representing the organization owning the pricing package.</td>
+</tr>
+<tr>
+<td><code>organization.id</code><br/><em>UUID</em></td>
+<td>The UUID of the organization.</td>
+</tr>
+<tr>
+<td><code>startDate</code><br/><em>date</em></td>
+<td>The start date of the pricing package.</td>
+</tr>
+<tr>
+<td><code>endDate</code><br/><em>date</em></td>
+<td>The end date of the pricing package. If it is not present, there is no end date defined.</td>
+</tr>
+<tr>
+<td><code>creationDate</code><br/><em>Object</em></td>
+<td>The date the pricing package was created.</td>
+</tr>
+<tr>
+<td><code>name</code> <br/><em>Object</em></td>
+<td>A map of language keys to the name of the pricing package in the specified language.</td>
+</tr>
+</tbody></table>
+<h2 id='administration-users'>Users</h2>
 <p>A user account allows users to authenticate to an <a href="#administration-organizations">organization</a> and to have access to the resources in it. You can restrict user access to the system and environments by assigning them specific <a href="#administration-roles">roles</a>. Additionally, every user is given an API key which is needed to use our APIs. All operations done by users are persisted and can be accessed through the activity log.</p>
 
 <!-------------------- LIST USERS -------------------->
