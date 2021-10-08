@@ -920,6 +920,12 @@
                                   <li>
                                     <a href="#administration-get-tax-codes-for-a-given-reseller-organization" class="toc-h4 toc-link" data-title="Administration">Get tax codes for a given reseller organization</a>
                                   </li>
+                                  <li>
+                                    <a href="#administration-create-a-tax-provider" class="toc-h4 toc-link" data-title="Administration">Create a tax provider</a>
+                                  </li>
+                                  <li>
+                                    <a href="#administration-update-a-tax-provider" class="toc-h4 toc-link" data-title="Administration">Update a tax provider</a>
+                                  </li>
                               </ul>
                           </li>
                       </ul>
@@ -17935,8 +17941,8 @@ curl -X PUT <span class="s2">"https://cloudmc_endpoint/rest/billing_providers/c8
 </code></pre>
 <p>Delete a billing provider.</p>
 <h3 id='administration-tax-providers'>Tax providers</h3>
-<p>A tax provider enables a reseller to map tax codes to monetization products. The tax code provider will ensure that invoices include taxes based 
-on the billing details (i.e. billing address) and mapping of tax codes to product offerings provided by the reseller. </p>
+<p>A tax provider enables a reseller to map tax codes to monetization products. The tax code provider will ensure that invoices include taxes based
+on the billing details (i.e. billing address) and mapping of tax codes to product offerings provided by the reseller.</p>
 
 <!-------------------- LIST TAX PROVIDERS -------------------->
 <h4 id='administration-list-tax-providers'>List tax providers</h4>
@@ -18124,6 +18130,238 @@ curl <span class="s2">"https://cloudmc_endpoint/rest/tax_providers/f26e66a4-755c
 <tr>
 <td><code>description</code><br/><em>string</em></td>
 <td>The description of the tax code.</td>
+</tr>
+</tbody></table>
+
+<!-------------------- CREATE TAX PROVIDER -------------------->
+<h4 id='administration-create-a-tax-provider'>Create a tax provider</h4>
+<p><code>POST /tax_providers/</code></p>
+
+<p>Creates a tax provider for the given reseller</p>
+
+<blockquote>
+<p>Note: You must have the Reseller billing permission on the owner of the tax provider requested. If the caller does not have the correct permissions or the tax provider for the given ID does not exist, then a <code>404 Not Found</code> response will be returned.</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code><span class="c"># Create a tax provider</span>
+curl <span class="s2">"https://cloudmc_endpoint/rest/tax_providers"</span> <span class="se">\</span>
+   -H <span class="s2">"MC-Api-Key: your_api_key"</span>
+</code></pre>
+<blockquote>
+<p>Request body example:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"reseller"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"174cace2-ad04-47c7-9429-e180bb44cf71"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AVALARA"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"configurationAttributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"environment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Production"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"email@cloudops.com"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"password"</span><span class="p">:</span><span class="w"> </span><span class="s2">"password"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"companyId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1148191"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"address"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"lineOne"</span><span class="p">:</span><span class="w"> </span><span class="s2">"420 GUY ST"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"lineTwo"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MONTREAL"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"province"</span><span class="p">:</span><span class="w"> </span><span class="s2">"QC"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CA"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"postalCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"H3J 1S6"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<blockquote>
+<p>The above command returns a JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"address"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CA"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"lineTwo"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"province"</span><span class="p">:</span><span class="w"> </span><span class="s2">"QC"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MONTREAL"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"postalCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"H3J 1S6"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"lineOne"</span><span class="p">:</span><span class="w"> </span><span class="s2">"420 GUY ST"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"reseller"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"174cace2-ad04-47c7-9429-e180bb44cf71"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"configurationAttributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"environment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Production"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"password"</span><span class="p">:</span><span class="w"> </span><span class="s2">"password"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"companyId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1148191"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"email@cloudops.com"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"961a2b96-0a6a-4bb4-9e32-59a3dcc555aa"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CONFIGURING"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AVALARA"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"taskId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"eea0cf4d-47fc-4f5d-b227-863502486192"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"taskStatus"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PENDING"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<table><thead>
+<tr>
+<th>Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>reseller.id</code><br/><em>UUID</em></td>
+<td>UUID of the reseller to which the tax provider belongs (AKA an organization id that is a reseller).</td>
+</tr>
+<tr>
+<td><code>type</code><br/><em>string</em></td>
+<td>The type of tax provider. Possible values are: <code>AVALARA</code>.</td>
+</tr>
+<tr>
+<td><code>configurationAttributes</code><br/><em>Object</em></td>
+<td>The configuration attributes associated to the provider type. This depends on the provider type.</td>
+</tr>
+<tr>
+<td><code>address.lineOne</code><br/><em>string</em></td>
+<td>The address line 1 of the reseller.</td>
+</tr>
+<tr>
+<td><code>address.lineTwo</code><br/><em>string</em></td>
+<td>The address line 2 of the reseller.</td>
+</tr>
+<tr>
+<td><code>address.city</code><br/><em>string</em></td>
+<td>The city name of the reseller.</td>
+</tr>
+<tr>
+<td><code>address.province</code><br/><em>string</em></td>
+<td>The province of the reseller.</td>
+</tr>
+<tr>
+<td><code>address.country</code><br/><em>string</em></td>
+<td>The country of the reseller.</td>
+</tr>
+<tr>
+<td><code>address.postalCode</code><br/><em>string</em></td>
+<td>The postal code of the reseller.</td>
+</tr>
+</tbody></table>
+
+<!-------------------- UPDATE TAX PROVIDER -------------------->
+<h4 id='administration-update-a-tax-provider'>Update a tax provider</h4>
+<p><code>PUT /tax_providers/:id</code></p>
+
+<p>Updates a tax provider for the given reseller</p>
+
+<blockquote>
+<p>Note: You must have the Reseller billing permission on the owner of the tax provider requested. If the caller does not have the correct permissions or the tax provider for the given ID does not exist, then a <code>404 Not Found</code> response will be returned.</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code><span class="c"># Update a tax provider</span>
+curl <span class="s2">"https://cloudmc_endpoint/rest/tax_providers/961a2b96-0a6a-4bb4-9e32-59a3dcc555aa"</span> <span class="se">\</span>
+   -H <span class="s2">"MC-Api-Key: your_api_key"</span>
+</code></pre>
+<blockquote>
+<p>Request body example:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"reseller"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"174cace2-ad04-47c7-9429-e180bb44cf71"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AVALARA"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"configurationAttributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"environment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Production"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"email@cloudops.com"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"password"</span><span class="p">:</span><span class="w"> </span><span class="s2">"password"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"companyId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1148191"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"address"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"lineOne"</span><span class="p">:</span><span class="w"> </span><span class="s2">"420 GUY ST"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"lineTwo"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MONTREAL"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"province"</span><span class="p">:</span><span class="w"> </span><span class="s2">"QC"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CA"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"postalCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"H3J 1S6"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<blockquote>
+<p>The above command returns a JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"address"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CA"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"lineTwo"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"province"</span><span class="p">:</span><span class="w"> </span><span class="s2">"QC"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MONTREAL"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"postalCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"H3J 1S6"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"lineOne"</span><span class="p">:</span><span class="w"> </span><span class="s2">"420 GUY ST"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"reseller"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"174cace2-ad04-47c7-9429-e180bb44cf71"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"createdDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-05-07T19:21:20Z"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"updatedDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-05-07T19:21:20Z"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"configurationAttributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"environment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Production"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"password"</span><span class="p">:</span><span class="w"> </span><span class="s2">"password"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"companyId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1148191"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"email@cloudops.com"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"961a2b96-0a6a-4bb4-9e32-59a3dcc555aa"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CONFIGURING"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AVALARA"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"taskId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"eea0cf4d-47fc-4f5d-b227-863502486192"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"taskStatus"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PENDING"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<table><thead>
+<tr>
+<th>Attributes</th>
+<th>&nbsp;</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>reseller.id</code><br/><em>UUID</em></td>
+<td>UUID of the reseller to which the tax provider belongs (AKA an organization id that is a reseller).</td>
+</tr>
+<tr>
+<td><code>type</code><br/><em>string</em></td>
+<td>The type of tax provider. Possible values are: <code>AVALARA</code>.</td>
+</tr>
+<tr>
+<td><code>configurationAttributes</code><br/><em>Object</em></td>
+<td>The configuration attributes associated to the provider type. This depends on the provider type.</td>
+</tr>
+<tr>
+<td><code>address.lineOne</code><br/><em>string</em></td>
+<td>The address line 1 of the reseller.</td>
+</tr>
+<tr>
+<td><code>address.lineTwo</code><br/><em>string</em></td>
+<td>The address line 2 of the reseller.</td>
+</tr>
+<tr>
+<td><code>address.city</code><br/><em>string</em></td>
+<td>The city name of the reseller.</td>
+</tr>
+<tr>
+<td><code>address.province</code><br/><em>string</em></td>
+<td>The province of the reseller.</td>
+</tr>
+<tr>
+<td><code>address.country</code><br/><em>string</em></td>
+<td>The country of the reseller.</td>
+</tr>
+<tr>
+<td><code>address.postalCode</code><br/><em>string</em></td>
+<td>The postal code of the reseller.</td>
+</tr>
+<tr>
+<td><code>createdDate</code><br/><em>string</em></td>
+<td>The date the tax provider was created.</td>
+</tr>
+<tr>
+<td><code>updatedDate</code><br/><em>string</em></td>
+<td>The last date the tax provider was updated.</td>
 </tr>
 </tbody></table>
 <h2 id='administration-custom-navigation'>Custom navigation</h2>
