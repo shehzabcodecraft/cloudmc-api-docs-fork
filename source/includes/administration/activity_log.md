@@ -37,7 +37,7 @@ curl "https://cloudmc_endpoint/api/v1/activity_log" \
     {
       "userLastname": "Name",
       "organizationId": "856ed38e-da4a-4f51-a7ad-e4981a44c66c",
-      "requesterIp": "127.0.0.1",
+      "requestedIp": "127.0.0.1",
       "userEmail": "username@acme.com",
       "correlationId": "caa1445a-99d4-4ec2-a6d0-13ea29f12b09",
       "id": "000598f3-d538-4b18-a5e7-964696ef8d79",
@@ -78,7 +78,7 @@ Activity Attributes | &nbsp;
 `userOrganizationName`<br/>*string* | The name of the organization of the user who generated the activity.
 `organizationId`<br/>*UUID* | The id of the organization of activity belongs to.
 `organizationName`<br/>*string* | The name of the organization of activity belongs to.
-`requesterIp`<br/>*string* | The ip address of the requester.
+`requestedIp`<br/>*string* | The requested ip address.
 `eventContext`<br/>*string* | The escaped json event context.
 
 <!------------------- LIST ACTIVITY CODES -------------------->
