@@ -10,7 +10,7 @@ the activity per day over the last 30 days. </p>
 
 <p>Retrieve activity count grouped by organization.</p>
 <pre class="highlight shell tab-shell"><code><span class="c"># Retrieve activity per organization</span>
-curl <span class="s2">"https://cloudmc_endpoint/rest/organizations/activity"</span> <span class="se">\</span>
+curl <span class="s2">"https://cloudmc_endpoint/api/v2/organizations/activity"</span> <span class="se">\</span>
    -H <span class="s2">"MC-Api-Key: your_api_key"</span>
 </code></pre>
 <blockquote>
@@ -86,7 +86,7 @@ curl <span class="s2">"https://cloudmc_endpoint/rest/organizations/activity"</sp
 </tr>
 </tbody></table>
 <pre class="highlight shell tab-shell"><code><span class="c"># Retrieve activity list</span>
-curl <span class="s2">"https://cloudmc_endpoint/api/v1/activity_log"</span> <span class="se">\</span>
+curl <span class="s2">"https://cloudmc_endpoint/api/v2/activity_log"</span> <span class="se">\</span>
    -H <span class="s2">"MC-Api-Key: your_api_key"</span>
 </code></pre>
 <blockquote>
@@ -221,7 +221,7 @@ curl <span class="s2">"https://cloudmc_endpoint/api/v1/activity_log"</span> <spa
 </tr>
 </tbody></table>
 <pre class="highlight shell tab-shell"><code><span class="c"># Retrieve activity codes</span>
-curl <span class="s2">"https://cloudmc_endpoint/api/v1/activity_log/codes"</span> <span class="se">\</span>
+curl <span class="s2">"https://cloudmc_endpoint/api/v2/activity_log/codes"</span> <span class="se">\</span>
    -H <span class="s2">"MC-Api-Key: your_api_key"</span>
 </code></pre>
 <blockquote>
@@ -261,7 +261,7 @@ curl <span class="s2">"https://cloudmc_endpoint/api/v1/activity_log/codes"</span
 </tr>
 </tbody></table>
 <pre class="highlight shell tab-shell"><code><span class="c"># Retrieve activities summary</span>
-curl <span class="s2">"https://cloudmc_endpoint/api/v1/activity_log/summary"</span> <span class="se">\</span>
+curl <span class="s2">"https://cloudmc_endpoint/api/v2/activity_log/summary"</span> <span class="se">\</span>
    -H <span class="s2">"MC-Api-Key: your_api_key"</span>
 </code></pre>
 <blockquote>
