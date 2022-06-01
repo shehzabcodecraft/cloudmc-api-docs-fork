@@ -1,15 +1,15 @@
-### Predefined EdgeRules
+### Predefined Edge Logic
 
-The predefined EdgeRules let you configure how StackPath responds to requests to your website. These predefined EdgeRules only work with domains that resolve to StackPath.
+The predefined Edge Logic let you configure how StackPath responds to requests to your website. These predefined Edge Logic only work with domains that resolve to StackPath.
 
-<!-------------------- LIST PREDEFINED EDGERULES -------------------->
+<!-------------------- LIST PREDEFINED EDGE LOGIC -------------------->
 
-#### List predefined EdgeRules
+#### List predefined Edge Logic
 
 ```shell
 curl -X GET \
    -H "MC-Api-Key: your_api_key" \
-   "https://portal.coxedge.com/api/v2/services/stackpath/test-area/predefinededgerules/dcc2771d-a524-4f8c-a666-f699985d6961"
+   "https://portal.coxedge.com/api/v2/services/stackpath/test-area/predefinededgelogic/dcc2771d-a524-4f8c-a666-f699985d6961"
 ```
 
 > The above command returns a JSON structured like this:
@@ -31,15 +31,15 @@ curl -X GET \
 }
 ```
 
-<code>GET /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/predefinededgerules/<a href="#stackpath-sites">:siteId</a></code>
+<code>GET /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/predefinededgelogic/<a href="#stackpath-sites">:siteId</a></code>
 
-Retrieve the configuration of all predefined EdgeRules in a given [environment](#administration-environments) within a site.
+Retrieve the configuration of all predefined Edge Logic in a given [environment](#administration-environments) within a site.
 
 | Attributes                                | &nbsp;                                                                                                                                                                                                                                                                                                           |
 | ----------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `allowEmptyReferrer`<br/>_boolean_        | Whether or not empty referrer is allowed.                                                                                                                                                                                                                                                                        |
 | `forceWwwEnabled`<br/>_boolean_           | Whether or not redirecting every request to a www subdomain is enabled.                                                                                                                                                                                                                                          |
-| `id`<br/>_UUID_                           | This ID is same as the siteId to which the predefined EdgeRules belong.                                                                                                                                                                                                                                          |
+| `id`<br/>_UUID_                           | This ID is same as the siteId to which the predefined Edge Logic belong.                                                                                                                                                                                                                                         |
 | `pseudoStreamingEnabled`<br/>_boolean_    | Whether or not seeking random locations within MP4 or FLV files without downloading the entire video is enabled.                                                                                                                                                                                                 |
 | `referrerList`<br/>_Array[string]_        | The list of domains authorized to access content from the site's root scope. Wildcards can be used to specify multiple websites hosted on the same domain.                                                                                                                                                       |
 | `referrerProtectionEnabled`<br/>_boolean_ | Whether or not referrer protection is enabled. This rule is used to allow only requests whose referrer header matches a URL that you specified.                                                                                                                                                                  |
@@ -48,15 +48,15 @@ Retrieve the configuration of all predefined EdgeRules in a given [environment](
 | `scopeId`<br/>_UUID_                      | The ID of the CDN site's root scope that the predefined rules belongs to.                                                                                                                                                                                                                                        |
 | `stackId`<br/>_UUID_                      | The ID of the stack that the predefined rules belong to.                                                                                                                                                                                                                                                         |
 
-<!-------------------- EDIT PREDEFINED EDGERULES  -------------------->
+<!-------------------- EDIT PREDEFINED EDGE LOGIC -------------------->
 
-#### Edit a predefined EdgeRules
+#### Edit a predefined Edge Logic
 
 ```shell
 curl -X PATCH \
    -H "MC-Api-Key: your_api_key" \
    -d "request_body" \
-   "https://portal.coxedge.com/api/v2/services/stackpath/test-area/predefinededgerules/dcc2771d-a524-4f8c-a666-f699985d6961"
+   "https://portal.coxedge.com/api/v2/services/stackpath/test-area/predefinededgelogic/dcc2771d-a524-4f8c-a666-f699985d6961"
 ```
 
 > Request body example:
@@ -82,7 +82,7 @@ curl -X PATCH \
 }
 ```
 
-<code>PATCH /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/predefinededgerules/<a href="#stackpath-sites">:siteId</a></code>
+<code>PATCH /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/predefinededgelogic/<a href="#stackpath-sites">:siteId</a></code>
 
 | Optional                                  | &nbsp;                                                                                                                                                                    |
 | ----------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
