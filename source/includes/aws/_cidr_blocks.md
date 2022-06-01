@@ -9,7 +9,7 @@ A Classless Inter-Domain Routing (CIDR) block has to be associated to a VPC. The
 ```shell
 curl -X GET \
    -H "MC-Api-Key: your_api_key" \
-   "https://cloudmc_endpoint/v1/services/aws/test-env/cidrblocks?vpcId=:vpc_id"
+   "https://portal.coxedge.com/v1/services/aws/test-env/cidrblocks?vpcId=:vpc_id"
 ```
 
 > The above command returns a JSON structured like this:

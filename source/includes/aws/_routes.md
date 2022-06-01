@@ -13,7 +13,7 @@ The target is the internet gateway that's attached to your VPC.
 ```shell
 curl -X POST \
    -H "MC-Api-Key: your_api_key" \
-   "https://cloudmc_endpoint/v1/services/aws/aws-tesv/routes/0.0.0.0/0?operation=delete&routeTableId=rtb-04703a509a773f41b"
+   "https://portal.coxedge.com/v1/services/aws/aws-tesv/routes/0.0.0.0/0?operation=delete&routeTableId=rtb-04703a509a773f41b"
 ```
 
 > The above commands return a JSON structured like this:

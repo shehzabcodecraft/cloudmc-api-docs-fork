@@ -10,7 +10,7 @@ An internet gateway enables resources in your public subnets to connect to the i
 ```shell
 curl -X GET \
    -H "MC-Api-Key: your_api_key" \
-   "https://cloudmc_endpoint/v1/services/aws/test-env/internetgateways"
+   "https://portal.coxedge.com/v1/services/aws/test-env/internetgateways"
 ```
 > The above command returns a JSON structured like this:
 ```json
@@ -68,7 +68,7 @@ Retrieve a list of all internet gateways.
 ```shell
 curl -X GET \
    -H "MC-Api-Key: your_api_key" \
-   "https://cloudmc_endpoint/v1/services/aws/test/internetgateways/igw-03d0a0c6cb0d12279"
+   "https://portal.coxedge.com/v1/services/aws/test/internetgateways/igw-03d0a0c6cb0d12279"
 ```
 > The above command returns a JSON structured like this:
 
@@ -100,7 +100,7 @@ Retrieve an internet gateway in a given [environment](#administration-environmen
 ```shell
 curl -X POST \
    -H "MC-Api-Key: your_api_key" \
-   "https://cloudmc_endpoint/v1/services/aws/aws-tesv/internetgateways?operation=create"
+   "https://portal.coxedge.com/v1/services/aws/aws-tesv/internetgateways?operation=create"
 ```
 > Request body example to create an internet gateway:
 
@@ -144,7 +144,7 @@ There is a default limit (5) to the number of internet gateways per region.
 ```shell
 curl -X POST \
    -H "MC-Api-Key: your_api_key" \
-   "https://cloudmc_endpoint/v1/services/aws/aws-tesv/internetgateways/igw-09adee4bafdef2c31?operation=attach"
+   "https://portal.coxedge.com/v1/services/aws/aws-tesv/internetgateways/igw-09adee4bafdef2c31?operation=attach"
 ```
 > Request body example to attach an internet gateway:
 
@@ -187,7 +187,7 @@ This operation will configure a Route for this Internet Gateway within the Route
 ```shell
 curl -X POST \
    -H "MC-Api-Key: your_api_key" \
-   "https://cloudmc_endpoint/v1/services/aws/aws-tesv/internetgateways/igw-09adee4bafdef2c31?operation=detach"
+   "https://portal.coxedge.com/v1/services/aws/aws-tesv/internetgateways/igw-09adee4bafdef2c31?operation=detach"
 ```
 > Request body example to detach an internet gateway:
 
@@ -222,7 +222,7 @@ Detach an internet gateway from a VPC in a given [environment](#administration-e
 ```shell
 curl -X POST \
    -H "MC-Api-Key: your_api_key" \
-   "https://cloudmc_endpoint/v1/services/aws/aws-tesv/internetgateways/igw-00b5e5bb6cce152cb?operation=delete"
+   "https://portal.coxedge.com/v1/services/aws/aws-tesv/internetgateways/igw-00b5e5bb6cce152cb?operation=delete"
 ```
 
 > The above commands return a JSON structured like this:

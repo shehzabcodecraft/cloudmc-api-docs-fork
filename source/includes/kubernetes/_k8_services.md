@@ -7,7 +7,7 @@
 ```shell
 curl -X GET \
    -H "MC-Api-Key: your_api_key" \
-   "https://cloudmc_endpoint/api/v2/services/a_service/an_environment/services"
+   "https://portal.coxedge.com/api/v2/services/a_service/an_environment/services"
 ```
 
 > The above command returns a JSON structured like this:
@@ -69,7 +69,7 @@ Note that the list is not complete, since it is refering to the [kubernetes api 
 ```shell
 curl -X GET \
    -H "MC-Api-Key: your_api_key" \
-   "https://cloudmc_endpoint/api/v2/services/a_service/an_environment/services/test-aerospike/auth"
+   "https://portal.coxedge.com/api/v2/services/a_service/an_environment/services/test-aerospike/auth"
 ```
 
 > The above command returns a JSON structured like this:
@@ -116,7 +116,7 @@ Note that the list is not complete, since it is refering to the [kubernetes api 
 ```shell
 curl -X POST \
   -H "MC-Api-Key: your_api_key" \
-   "https://cloudmc_endpoint/api/v2/services/a_service/an_environment/services"
+   "https://portal.coxedge.com/api/v2/services/a_service/an_environment/services"
   Content-Type: application/json
   {
   "apiVersion": "v1",
@@ -179,7 +179,7 @@ Return value:
 ```shell
 curl -X PUT \
    -H "MC-Api-Key: your_api_key" \
-   "https://cloudmc_endpoint/api/v2/services/a_service/an_environment/services/service-name/default"
+   "https://portal.coxedge.com/api/v2/services/a_service/an_environment/services/service-name/default"
 ```
 > Request body example:
 
@@ -249,7 +249,7 @@ Return value:
 ```shell
 curl -X DELETE \
    -H "MC-Api-Key: your_api_key" \
-   "https://cloudmc_endpoint/api/v2/services/a_service/an_environment/services/test-service/default"
+   "https://portal.coxedge.com/api/v2/services/a_service/an_environment/services/test-service/default"
 ```
 
 <code>DELETE /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/services/:id</code>

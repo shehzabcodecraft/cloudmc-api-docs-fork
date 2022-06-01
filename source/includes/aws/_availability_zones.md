@@ -11,7 +11,7 @@ When you launch an instance, you select a Region and a virtual private cloud (VP
 ```shell
 curl -X GET \
    -H "MC-Api-Key: your_api_key" \
-   "https://cloudmc_endpoint/v1/services/aws/test-env/availabilityzones"
+   "https://portal.coxedge.com/v1/services/aws/test-env/availabilityzones"
 ```
 
 > The above command returns a JSON structured like this:
@@ -52,7 +52,7 @@ Retrieve a list of all availability zones for a caller context.
 ```shell
 curl -X GET \
    -H "MC-Api-Key: your_api_key" \
-   "https://cloudmc_endpoint/v1/services/aws/test-env/availabilityzones/us-east-1a"
+   "https://portal.coxedge.com/v1/services/aws/test-env/availabilityzones/us-east-1a"
 ```
 
 > The above command returns a JSON structured like this:

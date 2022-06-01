@@ -9,7 +9,7 @@ A range of allowed IPv4 addresses in a subnet.
 ```shell
 curl -X GET \
    -H "MC-Api-Key: your_api_key" \
-   "https://cloudmc_endpoint/v1/services/aws/test-env/cidrreservations?subnetId=:subnet_id"
+   "https://portal.coxedge.com/v1/services/aws/test-env/cidrreservations?subnetId=:subnet_id"
 ```
 
 > The above command returns a JSON structured like this:

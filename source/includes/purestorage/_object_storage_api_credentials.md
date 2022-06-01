@@ -8,7 +8,7 @@ View and manage your FlashBlade's s3 object-storage API credentials. You need to
 
 ```shell
 curl --request GET \
-  --url 'https://cloudmc_endpoint/v1/services/purestorage/test-env/apiCredentials/:regionName' \
+  --url 'https://portal.coxedge.com/v1/services/purestorage/test-env/apiCredentials/:regionName' \
   --header 'Mc-Api-key: your_api_key'
 ```
 
@@ -43,7 +43,7 @@ Retrieves a list of object storage s3 API credentials. There will only ever be o
 
 ```shell
 curl --request GET \
-  --url 'https://cloudmc_endpoint/v1/services/purestorage/test-env/apiCredentials/:regionName' \
+  --url 'https://portal.coxedge.com/v1/services/purestorage/test-env/apiCredentials/:regionName' \
   --header 'Mc-Api-key: your_api_key'
 ```
 
@@ -75,7 +75,7 @@ Retrieves an access key by region.
 
 ```shell
 curl --request POST \
-  --url 'https://cloudmc_endpoint/api/v2/services/purestorage/test-env/apiCredentials?operation=generate' \
+  --url 'https://portal.coxedge.com/api/v2/services/purestorage/test-env/apiCredentials?operation=generate' \
   --header 'Content-Type: application/json' \
   --header 'Mc-Api-key: your_api_key' \
   --data '{
@@ -127,7 +127,7 @@ Return value:
 #### Delete credentials
 ```shell
 curl --request DELETE \
-  --url `https://cloudmc_endpoint/api/v2/services/purestorage-aaaa/emcilroy-local/apiCredentials/montreal` \
+  --url `https://portal.coxedge.com/api/v2/services/purestorage-aaaa/emcilroy-local/apiCredentials/montreal` \
   --header 'Mc-Api-Key: your_api_key'
 ```
 

@@ -7,7 +7,7 @@
 ```shell
 curl -X GET \
    -H "MC-Api-Key: your_api_key" \
-   "https://cloudmc_endpoint/api/v2/services/a_service/an_environment/pods?cluster_id=projects/cmc-k8s-enabled-llb/locations/us-central1-a/clusters/standard-cluster-1"
+   "https://portal.coxedge.com/api/v2/services/a_service/an_environment/pods?cluster_id=projects/cmc-k8s-enabled-llb/locations/us-central1-a/clusters/standard-cluster-1"
 ```
 
 > The above command returns a JSON structured like this:
@@ -236,7 +236,7 @@ Note that the list is not complete, since it is refering to the [kubernetes api 
 ```shell
 curl -X GET \
    -H "MC-Api-Key: your_api_key" \
-   "https://cloudmc_endpoint/api/v2/services/a_service/an_environment/pods/my-aerospike-0/default?cluster_id=projects/cmc-k8s-enabled-llb/locations/us-central1-a/clusters/standard-cluster-1"
+   "https://portal.coxedge.com/api/v2/services/a_service/an_environment/pods/my-aerospike-0/default?cluster_id=projects/cmc-k8s-enabled-llb/locations/us-central1-a/clusters/standard-cluster-1"
 ```
 
 > The above command returns a JSON structured like this:
@@ -465,7 +465,7 @@ Note that the list is not complete, since it is refering to the [kubernetes api 
 ```shell
 curl -X POST \
   -H "MC-Api-Key: your_api_key" \
-   "https://cloudmc_endpoint/api/v2/services/a_service/an_environment/pods"
+   "https://portal.coxedge.com/api/v2/services/a_service/an_environment/pods"
   Content-Type: application/json
   {
 	  "apiVersion": "v1",
@@ -525,7 +525,7 @@ Return value:
 ```shell
 curl -X PUT \
   -H "MC-Api-Key: your_api_key" \
-   "https://cloudmc_endpoint/api/v2/services/a_service/an_environment/pods/edgar-allen-pod/default"
+   "https://portal.coxedge.com/api/v2/services/a_service/an_environment/pods/edgar-allen-pod/default"
   Content-Type: application/json
   {
     "apiVersion": "v1",
@@ -585,7 +585,7 @@ Return value:
 ```shell
 curl -X DELETE \
    -H "MC-Api-Key: your_api_key" \
-   "https://cloudmc_endpoint/api/v2/services/a_service/an_environment/pods/my-aerospike-0/default?cluster_id=projects/cmc-k8s-enabled-llb/locations/us-central1-a/clusters/standard-cluster-1"
+   "https://portal.coxedge.com/api/v2/services/a_service/an_environment/pods/my-aerospike-0/default?cluster_id=projects/cmc-k8s-enabled-llb/locations/us-central1-a/clusters/standard-cluster-1"
 ```
 
 > The above command returns a JSON structured like this:

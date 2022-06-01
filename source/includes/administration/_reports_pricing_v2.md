@@ -25,7 +25,7 @@ Optional | &nbsp;
 
 ```shell
 curl --request GET \
-  --url 'https://cloudmc_endpoint/api/v2/reports/organization_pricing?start_date=2021-03-30T00%3A00%3A00.000Z&end_date=2021-04-01T23%3A59%3A59.999Z' 
+  --url 'https://portal.coxedge.com/api/v2/reports/organization_pricing?start_date=2021-03-30T00%3A00%3A00.000Z&end_date=2021-04-01T23%3A59%3A59.999Z' 
   \
   --header 'MC-Api-Key: your_api_key'
 ```
@@ -122,7 +122,7 @@ Retrieves a flat list of product with usage and cost along with other details in
 ```shell
 # Retrieve organizatio usage
 curl  --request GET \
-  --url "https://cloudmc_endpoint/api/v2/reports/organization_pricing?start_date=2021-07-01T00%3A00%3A00.000Z&end_date=2021-07-31T23%3A59%3A59.999Z&organization_id=a01716d0-f748-447d-94e9-60ba46753d1a&language=en&currency=CAD" \
+  --url "https://portal.coxedge.com/api/v2/reports/organization_pricing?start_date=2021-07-01T00%3A00%3A00.000Z&end_date=2021-07-31T23%3A59%3A59.999Z&organization_id=a01716d0-f748-447d-94e9-60ba46753d1a&language=en&currency=CAD" \
   -H 'Accept: text/csv ' \
   -H "MC-Api-Key: your_api_key"
 ```
@@ -188,7 +188,7 @@ Optional | &nbsp;
 
 ```shell
 curl --request GET \
-  --url 'https://cloudmc_endpoint/api/v2/reports/customers?start_date=2021-04-01T00%3A00%3A00.000Z&end_date=2021-04-07T23%3A59%3A59.999Z' \
+  --url 'https://portal.coxedge.com/api/v2/reports/customers?start_date=2021-04-01T00%3A00%3A00.000Z&end_date=2021-04-07T23%3A59%3A59.999Z' \
   --header 'MC-Api-Key: your_api_key'
 ```
 
@@ -268,7 +268,7 @@ Optional | &nbsp;
 
 ```shell
 curl -X GET \
-  'https://cloudmc_endpoint/api/v2/reports/customers/revenue_tax_report?billing_cycle=:billing_cycle&organization_id=:organization_id&language=:language' \
+  'https://portal.coxedge.com/api/v2/reports/customers/revenue_tax_report?billing_cycle=:billing_cycle&organization_id=:organization_id&language=:language' \
   --header 'MC-Api-Key: your_api_key'
 ```
 

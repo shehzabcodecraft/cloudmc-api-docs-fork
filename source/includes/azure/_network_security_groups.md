@@ -9,7 +9,7 @@ A network security group is a group of security rules that allow or deny inbound
 ```shell
 curl -X GET \
    -H "MC-Api-Key: your_api_key" \
-   "https://cloudmc_endpoint/api/v2/services/azure/example/networksecuritygroups"
+   "https://portal.coxedge.com/api/v2/services/azure/example/networksecuritygroups"
 ```
 > The above command returns a JSON structured like this:
 
@@ -63,7 +63,7 @@ Attributes | &nbsp;
 
 ```shell
 curl -X POST \
-  'http://cloudmc_endpoint/v1/services/azure/my-azure/networkSecurityGroups' \
+  'http://portal.coxedge.com/v1/services/azure/my-azure/networkSecurityGroups' \
   -H 'mc-api-key: your_api_key' \
   -d '{
 	"name": "network-security-group", 
@@ -84,7 +84,7 @@ Required | &nbsp;
 
 ```shell 
 curl -X DELETE \
-  'http://cloudmc_endpoint/v1/services/azure/my-azure/networkSecurityGroups/subscriptions/6b6a1f27-55c1-4b1d-969b-60a3c9eebe64/resourceGroups/azure-system-co-cloudmc-eastus/providers/Microsoft.Network/networkSecurityGroups/test' \
+  'http://portal.coxedge.com/v1/services/azure/my-azure/networkSecurityGroups/subscriptions/6b6a1f27-55c1-4b1d-969b-60a3c9eebe64/resourceGroups/azure-system-co-cloudmc-eastus/providers/Microsoft.Network/networkSecurityGroups/test' \
   -H 'mc-api-key: your_api_key'
   ```
 

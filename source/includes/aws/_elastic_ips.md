@@ -11,7 +11,7 @@ within your account.
 ```shell
 curl -X GET \
    -H "MC-Api-Key: your_api_key" \
-   "https://cloudmc_endpoint/v1/services/aws/test-env/elasticips"
+   "https://portal.coxedge.com/v1/services/aws/test-env/elasticips"
 ```
 
 > The above command returns a JSON structured like this:
@@ -66,7 +66,7 @@ Retrieve a list of all elastic ips in a given [environment](#administration-envi
 ```shell
 curl -X GET \
    -H "MC-Api-Key: your_api_key" \
-   "https://cloudmc_endpoint/v1/services/aws/test-env/elasticips/elasticip_id"
+   "https://portal.coxedge.com/v1/services/aws/test-env/elasticips/elasticip_id"
 ```
 
 > The above command returns a JSON structured like this:
@@ -116,7 +116,7 @@ Retrieve an elastic ip in a given [environment](#administration-environments).
 ```shell
 curl -X POST \
    -H "MC-Api-Key: your_api_key" \
-   "https://cloudmc_endpoint/v1/services/aws-tesv/test/elasticips?operation=allocate"
+   "https://portal.coxedge.com/v1/services/aws-tesv/test/elasticips?operation=allocate"
 ```
 
 > Request body to allocate an Elastic IP:
@@ -154,7 +154,7 @@ Allocate an Elastic IP to a given environment [environment](#administration-envi
 ```shell
 curl -X POST \
    -H "MC-Api-Key: your_api_key" \
-   "https://cloudmc_endpoint/v1/services/aws-tesv/test/elasticips/eipalloc-0b1822bb64a812884?operation=associate"
+   "https://portal.coxedge.com/v1/services/aws-tesv/test/elasticips/eipalloc-0b1822bb64a812884?operation=associate"
 ```
 
 > Request body to associate an Elastic IP:
@@ -192,7 +192,7 @@ Note: A Virtual Private Cloud has to be configured on the Instance, else this op
 ```shell
 curl -X POST \
    -H "MC-Api-Key: your_api_key" \
-   "https://cloudmc_endpoint/v1/services/aws/aws-tesv/elasticips/eipalloc-0576a190ce3b575e3?operation=disassociate"
+   "https://portal.coxedge.com/v1/services/aws/aws-tesv/elasticips/eipalloc-0576a190ce3b575e3?operation=disassociate"
 ```
 
 > The above commands return a JSON structured like this:
@@ -216,7 +216,7 @@ Disassociate an elastic IP from an Instance in a given [environment](#administra
 ```shell
 curl -X POST \
    -H "MC-Api-Key: your_api_key" \
-   "https://cloudmc_endpoint/v1/services/aws/aws-tesv/elasticips/eipalloc-0576a190ce3b575e3?operation=release"
+   "https://portal.coxedge.com/v1/services/aws/aws-tesv/elasticips/eipalloc-0576a190ce3b575e3?operation=release"
 ```
 
 > The above commands return a JSON structured like this:

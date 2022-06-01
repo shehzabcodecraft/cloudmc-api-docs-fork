@@ -141,7 +141,7 @@ Attributes | &nbsp;
 ```shell
 # Retrieve your API credentials
 curl -X GET \
-  "https://cloudmc_endpoint/v1/services/connections/378442e0-d9a4-4e55-83e3-220ba1f909a8/apiInfo?environmentId=c880f6b2-f52e-40d5-b289-7211c0319ebc" \
+  "https://portal.coxedge.com/v1/services/connections/378442e0-d9a4-4e55-83e3-220ba1f909a8/apiInfo?environmentId=c880f6b2-f52e-40d5-b289-7211c0319ebc" \
   -H "MC-Api-Key: your_api_key" \
 # Response body example
 ```
@@ -195,7 +195,7 @@ Attributes | &nbsp;
 ```shell
 # Retrieve the connection parameters
 curl -X GET \
-  "https://cloudmc_endpoint/v1/services/connections/378442e0-d9a4-4e55-83e3-220ba1f909a8/parameters" \
+  "https://portal.coxedge.com/v1/services/connections/378442e0-d9a4-4e55-83e3-220ba1f909a8/parameters" \
   -H "MC-Api-key: your_api_key" \
 # Response body example
 ```
@@ -236,7 +236,7 @@ Attributes | &nbsp;
 
 curl -X GET \
    -H "MC-Api-Key: your_api_key" \
-   "https://cloudmc_endpoint/api/v2/services/descriptors/gcp/parameters"
+   "https://portal.coxedge.com/api/v2/services/descriptors/gcp/parameters"
 ```
 > Request body example:
 
@@ -317,7 +317,7 @@ This call returns a list of parameters that must be provided _(when creating a n
 ```shell
 # Create a service connection
 
-curl -X POST "https://cloudmc_endpoint/api/v2/services/connections" \
+curl -X POST "https://portal.coxedge.com/api/v2/services/connections" \
    -H "MC-Api-Key: your_api_key" \
    -H "Content-Type: application/json" \
    -d "request_body"
@@ -399,7 +399,7 @@ Optional query parameters | &nbsp;
 ```shell
 # Test a new service connection
 
-curl -X POST "https://cloudmc_endpoint/api/v2/services/connections/test" \
+curl -X POST "https://portal.coxedge.com/api/v2/services/connections/test" \
    -H "MC-Api-Key: your_api_key" \
    -H "Content-Type: application/json" \
    -d "request_body"
@@ -422,7 +422,7 @@ Test a new service connection before creating it. The request body is the same a
 ```shell
 # Test a new service connection
 
-curl -X POST "https://cloudmc_endpoint/api/v2/services/connections/9571b279-abaf-4a37-9f39-85d1a915af7d/test" \
+curl -X POST "https://portal.coxedge.com/api/v2/services/connections/9571b279-abaf-4a37-9f39-85d1a915af7d/test" \
    -H "MC-Api-Key: your_api_key" \
    -H "Content-Type: application/json"
 ```
@@ -441,7 +441,7 @@ Query Parameters | &nbsp;
 
 ```shell
 # Retrieve connection policy descriptors
-curl "https://cloudmc_endpoint/api/v2/services/connections/03bc22bd-adc4-46b8-988d-afddc24c0cb5/policies/descriptors?section=trials" \
+curl "https://portal.coxedge.com/api/v2/services/connections/03bc22bd-adc4-46b8-988d-afddc24c0cb5/policies/descriptors?section=trials" \
    -H "MC-Api-Key: your_api_key"
 ```
 > The above command returns a JSON structured like this:
@@ -515,7 +515,7 @@ curl -X PUT \
    -H "Content-Type: application/json" \
    -H "MC-Api-Key: your_api_key" \
    -d "[{"name": "serviceVersion", "value": "1.1"}, {"name": "cacheEnabled", "value": "true"}]" \
-   "https://cloudmc_endpoint/api/v2/services/connections/03bc22bd-adc4-46b8-988d-afddc24c0cb5/policies"
+   "https://portal.coxedge.com/api/v2/services/connections/03bc22bd-adc4-46b8-988d-afddc24c0cb5/policies"
 ```
 > The above command returns a JSON structured like this:
 

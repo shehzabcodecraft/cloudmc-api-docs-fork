@@ -9,7 +9,7 @@ Deploy and manage your instances.
 ```shell
 curl -X GET \
    -H "MC-Api-Key: your_api_key" \
-   "https://cloudmc_endpoint/v1/services/aws/test-env/instances"
+   "https://portal.coxedge.com/v1/services/aws/test-env/instances"
 ```
 > The above command returns a JSON structured like this:
 
@@ -106,7 +106,7 @@ Retrieve a list of all instances in a given [environment](#administration-enviro
 ```shell
 curl -X GET \
    -H "MC-Api-Key: your_api_key" \
-   "https://cloudmc_endpoint/v1/services/aws/test-area/instances/i-03dffc71c7d649bb1"
+   "https://portal.coxedge.com/v1/services/aws/test-area/instances/i-03dffc71c7d649bb1"
 ```
 > The above command returns a JSON structured like this:
 
@@ -196,7 +196,7 @@ Retrieve an instance in a given [environment](#administration-environments).
 ```shell
 curl -X POST \
    -H "MC-Api-Key: your_api_key" \
-   "https://cloudmc_endpoint/v1/services/aws/test-area/instances"
+   "https://portal.coxedge.com/v1/services/aws/test-area/instances"
 ```
 > Request body example for an instance with custom security group:
 
@@ -303,7 +303,7 @@ Windows: /dev/sda1<br/>
 ```shell
 curl -X DELETE \
    -H "MC-Api-Key: your_api_key" \
-   "https://cloudmc_endpoint/v1/services/aws/test-area/instances/i-0d1f9106cd0e0dff7"
+   "https://portal.coxedge.com/v1/services/aws/test-area/instances/i-0d1f9106cd0e0dff7"
 ```
 > The above command returns a JSON structured like this:
 
@@ -328,7 +328,7 @@ curl -X DELETE \
 ```shell
 curl -X POST \
    -H "MC-Api-Key: your_api_key" \
-   "https://cloudmc_endpoint/v1/services/aws/test-area/instances/i-0d1f9106cd0e0dff7?operation=start"
+   "https://portal.coxedge.com/v1/services/aws/test-area/instances/i-0d1f9106cd0e0dff7?operation=start"
 ```
 > The above command returns a JSON structured like this:
 
@@ -353,7 +353,7 @@ curl -X POST \
 ```shell
 curl -X POST \
    -H "MC-Api-Key: your_api_key" \
-   "https://cloudmc_endpoint/v1/services/aws/test-area/instances/i-0d1f9106cd0e0dff7?operation=stop"
+   "https://portal.coxedge.com/v1/services/aws/test-area/instances/i-0d1f9106cd0e0dff7?operation=stop"
 ```
 > The above command returns a JSON structured like this:
 
@@ -381,7 +381,7 @@ acts as the bridge between a Virtual Private Cloud (VPC) and an Instance.
 ```shell
 curl -X POST \
    -H "MC-Api-Key: your_api_key" \
-   "https://cloudmc_endpoint/v1/services/aws-tesv/test/instances/i-00b2dcf0e059a2f1e?operation=associate"
+   "https://portal.coxedge.com/v1/services/aws-tesv/test/instances/i-00b2dcf0e059a2f1e?operation=associate"
 ```
 
 > Request body to associate an Elastic IP to an Instance:
@@ -418,7 +418,7 @@ curl -X POST \
 ```shell
 curl -X POST \
    -H "MC-Api-Key: your_api_key" \
-   "https://cloudmc_endpoint/v1/services/aws/test-area/instances/i-0d1f9106cd0e0dff7?operation=disassociate"
+   "https://portal.coxedge.com/v1/services/aws/test-area/instances/i-0d1f9106cd0e0dff7?operation=disassociate"
 ```
 > The above command returns a JSON structured like this:
 

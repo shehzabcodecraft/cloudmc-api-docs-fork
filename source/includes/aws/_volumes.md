@@ -9,7 +9,7 @@ Create an Amazon EBS volume to attach to any EC2 instance in the same Availabili
 ```shell
 curl -X GET \
    -H "MC-Api-Key: your_api_key" \
-   "https://cloudmc_endpoint/v1/services/aws/test-env/volumes"
+   "https://portal.coxedge.com/v1/services/aws/test-env/volumes"
 ```
 > The above command returns a JSON structured like this:
 
@@ -77,7 +77,7 @@ Retrieve a list of all volumes in a given [environment](#administration-environm
 ```shell
 curl -X GET \
    -H "MC-Api-Key: your_api_key" \
-   "https://cloudmc_endpoint/v1/services/aws/test-area/volumes/vol-0c8dd88e0743c368b"
+   "https://portal.coxedge.com/v1/services/aws/test-area/volumes/vol-0c8dd88e0743c368b"
 ```
 > The above command returns a JSON structured like this:
 
@@ -140,7 +140,7 @@ Retrieve a volume in a given [environment](#administration-environments).
 ```shell
 curl -X POST \
    -H "MC-Api-Key: your_api_key" \
-   "https://cloudmc_endpoint/v1/services/aws/test-env/volumes"
+   "https://portal.coxedge.com/v1/services/aws/test-env/volumes"
 ```
 
 > Request body example for a volume:
@@ -196,7 +196,7 @@ Retrieve a list of all volumes in a given [environment](#administration-environm
 ```shell
 curl -X POST \
    -H "MC-Api-Key: your_api_key" \
-   "https://cloudmc_endpoint/v1/services/aws/test-area/volumes/vol-0c8dd88e0743c368b"
+   "https://portal.coxedge.com/v1/services/aws/test-area/volumes/vol-0c8dd88e0743c368b"
 ```
 > Request body example for a volume:
 ```json
@@ -254,7 +254,7 @@ Note: only volumes in an "available" state can be deleted
 ```shell
 curl -X DELETE \
    -H "MC-Api-Key: your_api_key" \
-   "https://cloudmc_endpoint/v1/services/aws/test-area/volumes/vol-0d1f9106cd0e0dff7"
+   "https://portal.coxedge.com/v1/services/aws/test-area/volumes/vol-0d1f9106cd0e0dff7"
 ```
 > The above command returns a JSON structured like this:
 
@@ -280,7 +280,7 @@ curl -X DELETE \
 ```shell
 curl -X POST \
    -H "MC-Api-Key: your_api_key" \
-   "https://cloudmc_endpoint/v1/services/aws/test-area/volumes/vol-0d1f9106cd0e0dff7?operation=attach"
+   "https://portal.coxedge.com/v1/services/aws/test-area/volumes/vol-0d1f9106cd0e0dff7?operation=attach"
 ```
 
 > Request body example for a volume:
@@ -324,7 +324,7 @@ Note: Only attached volumes can be detached. Detaching a root device volume will
 ```shell
 curl -X POST \
    -H "MC-Api-Key: your_api_key" \
-   "https://cloudmc_endpoint/v1/services/aws/test-area/volumes/vol-0d1f9106cd0e0dff7?operation=detach"
+   "https://portal.coxedge.com/v1/services/aws/test-area/volumes/vol-0d1f9106cd0e0dff7?operation=detach"
 ```
 
 > Request body example for a volume:

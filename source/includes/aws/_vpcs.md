@@ -9,7 +9,7 @@ View and manage vpcs.
 ```shell
 curl -X GET \
    -H "MC-Api-Key: your_api_key" \
-   "https://cloudmc_endpoint/v1/services/aws/test-env/vpcs"
+   "https://portal.coxedge.com/v1/services/aws/test-env/vpcs"
 ```
 
 > The above command returns a JSON structured like this:
@@ -56,7 +56,7 @@ Retrieve a list of all vpcs in a given [environment](#administration-environment
 ```shell
 curl -X GET \
    -H "MC-Api-Key: your_api_key" \
-   "https://cloudmc_endpoint/v1/services/aws/test-env/vpcs/vpc_id"
+   "https://portal.coxedge.com/v1/services/aws/test-env/vpcs/vpc_id"
 ```
 
 > The above command returns a JSON structured like this:
@@ -100,7 +100,7 @@ Retrieve a vpc in a given [environment](#administration-environments).
 ```shell
 curl -X POST \
    -H "MC-Api-Key: your_api_key" \
-   "https://cloudmc_endpoint/v1/services/aws/test-env/vpcs"
+   "https://portal.coxedge.com/v1/services/aws/test-env/vpcs"
 ```
 
 > Request body example for a named VPC:
@@ -140,7 +140,7 @@ Create a VPC in a given [environment](#administration-environments).
 ```shell
 curl -X DELETE \
    -H "MC-Api-Key: your_api_key" \
-   "https://cloudmc_endpoint/v1/services/aws/test-env/vpcs/vpc-05a6af2e6a6360915"
+   "https://portal.coxedge.com/v1/services/aws/test-env/vpcs/vpc-05a6af2e6a6360915"
 ```
 
 > The above commands return a JSON structured like this:
