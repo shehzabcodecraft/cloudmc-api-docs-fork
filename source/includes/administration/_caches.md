@@ -12,7 +12,7 @@ This operation will clear the current content of the cache containing entity obj
 
 ```shell
 curl -X DELETE \
-"https://cloudmc_endpoint/rest/cache/fetcher?connectionId=f789261c-b2db-427e-bdff-dd3629192087&environmentId=099a86b2-0998-4d99-b036-0d85fa7c82a7" \
+"https://portal.coxedge.com/api/v2/cache/fetcher?connectionId=f789261c-b2db-427e-bdff-dd3629192087&environmentId=099a86b2-0998-4d99-b036-0d85fa7c82a7" \
   -h "Mc-Api-Key: your_api_key"
 ```
 
@@ -20,7 +20,7 @@ curl -X DELETE \
 
 Clear the cache for the given environment within the given connection.
 
-Query Params               | &nbsp;
--------------------------- | -----------
-`connectionId`<br/>*UUID*  | The Connection ID
-`environmentId`<br/>*UUID* | The Environment ID
+| Query Params               | &nbsp;             |
+| -------------------------- | ------------------ |
+| `connectionId`<br/>_UUID_  | The Connection ID  |
+| `environmentId`<br/>_UUID_ | The Environment ID |

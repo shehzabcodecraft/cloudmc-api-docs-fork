@@ -2,7 +2,6 @@
 
 Configure methods of authentication for your organizations.
 
-
 <!-------------------- LIST IDPS -------------------->
 
 #### List identity providers
@@ -11,74 +10,77 @@ Configure methods of authentication for your organizations.
 
 ```shell
 # Retrieve identity providers
-curl "https://cloudmc_endpoint/api/v2/identity_providers" \
+curl "https://portal.coxedge.com/api/v2/identity_providers" \
    -H "MC-Api-Key: your_api_key"
 ```
+
 > The above command returns JSON structured like this:
 
 ```json
 {
-  "data": [{
-    "provider": "GOOGLE",
-    "displayName": "Google",
-    "logo": "aHR0cHM6Ly9kZXZlbG9wZXJzLmdvb2dsZS5jb20vaWR23nRpdHkvaW1hZ2VzL2ctbG9nby5wbmc=",
-    "enableSingleLogout": false,
-    "organization": {
-      "id": "5d841eb6-5913-4244-b001-917228e7aa64",
-      "customDomain": {
-        "domain": "portal.dev.cloudmc.io",
-        "id": "b662888e-76e5-4617-833e-304bbacfab38"
-      }
-    },
-    "identityProviderUsers": [
-      {
-        "user": {
-          "id": "0c4hc34e-ff76-48de-8976-7cb2fc89aa96"
+  "data": [
+    {
+      "provider": "GOOGLE",
+      "displayName": "Google",
+      "logo": "aHR0cHM6Ly9kZXZlbG9wZXJzLmdvb2dsZS5jb20vaWR23nRpdHkvaW1hZ2VzL2ctbG9nby5wbmc=",
+      "enableSingleLogout": false,
+      "organization": {
+        "id": "5d841eb6-5913-4244-b001-917228e7aa64",
+        "customDomain": {
+          "domain": "portal.dev.cloudmc.io",
+          "id": "b662888e-76e5-4617-833e-304bbacfab38"
+        }
+      },
+      "identityProviderUsers": [
+        {
+          "user": {
+            "id": "0c4hc34e-ff76-48de-8976-7cb2fc89aa96"
+          },
+          "subjectId": "totallyFakeSubjectID"
+        }
+      ],
+      "id": "02b3cbd5-9286-4cd7-b47e-22b2fb9ceae5",
+      "connectionName": "Google",
+      "type": "OIDC",
+      "rank": "1",
+      "parameters": [
+        {
+          "parameter": "issuerURL",
+          "id": "02b3cbd5-9286-4cd7-b47e-22b2fb9ceab1",
+          "value": "https://accounts.google.com"
         },
-        "subjectId": "totallyFakeSubjectID"
-      }
-    ],
-    "id": "02b3cbd5-9286-4cd7-b47e-22b2fb9ceae5",
-    "connectionName": "Google",
-    "type": "OIDC",
-    "rank": "1",
-    "parameters": [
-      {
-        "parameter": "issuerURL",
-        "id": "02b3cbd5-9286-4cd7-b47e-22b2fb9ceab1",
-        "value": "https://accounts.google.com"
-      },
-      {
-        "parameter": "clientSecret",
-        "id": "02b3cbd5-9286-4cd7-b47e-22b2fb9ceab3",
-        "value": "sssshhhhhhhhh"
-      },
-      {
-        "parameter": "clientID",
-        "id": "02b3cbd5-9286-4cd7-b47e-22b2fb9ceab4",
-        "value": "shhhID"
-      }
-    ]
-  }]
+        {
+          "parameter": "clientSecret",
+          "id": "02b3cbd5-9286-4cd7-b47e-22b2fb9ceab3",
+          "value": "sssshhhhhhhhh"
+        },
+        {
+          "parameter": "clientID",
+          "id": "02b3cbd5-9286-4cd7-b47e-22b2fb9ceab4",
+          "value": "shhhID"
+        }
+      ]
+    }
+  ]
 }
 ```
+
 List the identity providers configured on the system.
 
-Attributes | &nbsp;
----------- | -----------
-`id`<br/>*UUID* | The id of the identity provider.
-`provider`<br/>*string* | The name of the provider. Possible values include the default providers (e.g GOOGLE), or CUSTOM for a custom user-defined provider.
-`organization`<br/>*Object* | Organization that owns this identity provider.<br/>*includes*: `customDomain.id`, `customDomain.domain` and `name`
-`displayName`<br/>*string* | The display name of the identity provider that will appear on the login screen.
-`logo`<br/>*string* | A base64 encoded data URL or URL to an image for the logo to display on the login screen.
-`css`<br/>*string* | Custom css for the login button of the identity provider.
-`identityProviderUsers`<br/>*Array* | A list of objects containing the ids of users associated with the identity provider, and their subject ids.
-`connectionName`<br/>*string* | The connection name of the identity provider.
-`type`<br/>*string* | The type of authentication protocol. Possible values: OIDC, SAML.
-`parameters`<br/>*Array* | A list of parameters associated with the identity provider.
-`rank`<br/>*int* | If provided, this integer sorts identity providers on the Login page in ascending order.
-`enableSingleLogout`<br/>*int* | If the identity provider allows single logout.
-
+| Attributes                          | &nbsp;                                                                                                                              |
+| ----------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------- |
+| `id`<br/>_UUID_                     | The id of the identity provider.                                                                                                    |
+| `provider`<br/>_string_             | The name of the provider. Possible values include the default providers (e.g GOOGLE), or CUSTOM for a custom user-defined provider. |
+| `organization`<br/>_Object_         | Organization that owns this identity provider.<br/>_includes_: `customDomain.id`, `customDomain.domain` and `name`                  |
+| `displayName`<br/>_string_          | The display name of the identity provider that will appear on the login screen.                                                     |
+| `logo`<br/>_string_                 | A base64 encoded data URL or URL to an image for the logo to display on the login screen.                                           |
+| `css`<br/>_string_                  | Custom css for the login button of the identity provider.                                                                           |
+| `identityProviderUsers`<br/>_Array_ | A list of objects containing the ids of users associated with the identity provider, and their subject ids.                         |
+| `connectionName`<br/>_string_       | The connection name of the identity provider.                                                                                       |
+| `type`<br/>_string_                 | The type of authentication protocol. Possible values: OIDC, SAML.                                                                   |
+| `parameters`<br/>_Array_            | A list of parameters associated with the identity provider.                                                                         |
+| `rank`<br/>_int_                    | If provided, this integer sorts identity providers on the Login page in ascending order.                                            |
+| `enableSingleLogout`<br/>_int_      | If the identity provider allows single logout.                                                                                      |
 
 <!-------------------- CREATE IDPS -------------------->
 
@@ -90,7 +92,7 @@ Create a new identity provider.
 
 ```shell
 # Creates a new identity provider
-curl -X POST "https://cloudmc_endpoint/api/v2/identity_providers" \
+curl -X POST "https://portal.coxedge.com/api/v2/identity_providers" \
    -H "MC-Api-Key: your_api_key"
 ```
 
@@ -118,6 +120,7 @@ curl -X POST "https://cloudmc_endpoint/api/v2/identity_providers" \
   ]
 }
 ```
+
 > The above command return JSON structured like this:
 
 ```js
@@ -125,7 +128,7 @@ curl -X POST "https://cloudmc_endpoint/api/v2/identity_providers" \
   "data": {
     "provider": "CUSTOM",
     "displayName": "Google",
-    "connectionName": "CloudMC Google",
+    "connectionName": "Cox Edge Google",
     "type": "OIDC",
     "rank": "1",
     "parameters": [
@@ -149,21 +152,20 @@ curl -X POST "https://cloudmc_endpoint/api/v2/identity_providers" \
 }
 ```
 
-Required | &nbsp;
----------- | -----------
-`id`<br/>*UUID* | The id of the identity provider.
-`provider`<br/>*string* | The name of the provider. Possible values include the default providers (e.g GOOGLE), or CUSTOM for a custom user-defined provider.
-`displayName`<br/>*string* | The display name of the identity provider that will appear on the login screen. If of a default provider type, this will be set with a default if not passed.
-`connectionName`<br/>*string* | The connection name of the identity provider. If of a default provider type, this will be set with a default if not passed.
-`logo`<br/>*string* | A base64 encoded data URL or URL to an image for the logo to display on the login screen. If of a default provider type, this will be set with a default if not passed.
-`type`<br/>*string* | The type of authentication protocol. Possible values: OIDC, SAML.
-`parameters`<br/>*Array* | A list of parameters associated with the identity provider. The issuerURL will be set if of a default provider type.
-`rank`<br/>*int* | If provided, this integer sorts identity providers on the Login page in ascending order.
+| Required                      | &nbsp;                                                                                                                                                                  |
+| ----------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `id`<br/>_UUID_               | The id of the identity provider.                                                                                                                                        |
+| `provider`<br/>_string_       | The name of the provider. Possible values include the default providers (e.g GOOGLE), or CUSTOM for a custom user-defined provider.                                     |
+| `displayName`<br/>_string_    | The display name of the identity provider that will appear on the login screen. If of a default provider type, this will be set with a default if not passed.           |
+| `connectionName`<br/>_string_ | The connection name of the identity provider. If of a default provider type, this will be set with a default if not passed.                                             |
+| `logo`<br/>_string_           | A base64 encoded data URL or URL to an image for the logo to display on the login screen. If of a default provider type, this will be set with a default if not passed. |
+| `type`<br/>_string_           | The type of authentication protocol. Possible values: OIDC, SAML.                                                                                                       |
+| `parameters`<br/>_Array_      | A list of parameters associated with the identity provider. The issuerURL will be set if of a default provider type.                                                    |
+| `rank`<br/>_int_              | If provided, this integer sorts identity providers on the Login page in ascending order.                                                                                |
 
-
-Optional | &nbsp;
----------- | -----------
-`css`<br/>*string* | Custom css for the login button of the identity provider.
+| Optional           | &nbsp;                                                    |
+| ------------------ | --------------------------------------------------------- |
+| `css`<br/>_string_ | Custom css for the login button of the identity provider. |
 
 <!-------------------- UPDATE IDPS -------------------->
 
@@ -175,7 +177,7 @@ Update an existing identity provider.
 
 ```shell
 # Updates an existing identity provider
-curl -X PUT "https://cloudmc_endpoint/api/v2/identity_providers/c84cfe41-929b-47c9-bde4-b55a10bd2774" \
+curl -X PUT "https://portal.coxedge.com/api/v2/identity_providers/c84cfe41-929b-47c9-bde4-b55a10bd2774" \
    -H "MC-Api-Key: your_api_key"
 ```
 
@@ -204,6 +206,7 @@ curl -X PUT "https://cloudmc_endpoint/api/v2/identity_providers/c84cfe41-929b-47
   ]
 }
 ```
+
 > The above command return JSON structured like this:
 
 ```js
@@ -212,7 +215,7 @@ curl -X PUT "https://cloudmc_endpoint/api/v2/identity_providers/c84cfe41-929b-47
     "provider": "CUSTOM",
     "displayName": "Google",
     "id": "da33bf85-6ba3-4214-a258-9442de149eff",
-    "connectionName": "CloudMC Google",
+    "connectionName": "Cox Edge Google",
     "type": "OIDC",
     "rank": "1",
     "parameters": [
@@ -236,21 +239,20 @@ curl -X PUT "https://cloudmc_endpoint/api/v2/identity_providers/c84cfe41-929b-47
 }
 ```
 
-Required | &nbsp;
----------- | -----------
-`id`<br/>*UUID* | The id of the identity provider.
-`provider`<br/>*string* | The name of the provider. Possible values include the default providers (e.g GOOGLE), or CUSTOM for a custom user-defined provider.
-`displayName`<br/>*string* | The display name of the identity provider that will appear on the login screen. If of a default provider type, this will be set with a default if not passed.
-`connectionName`<br/>*string* | The connection name of the identity provider. If of a default provider type, this will be set with a default if not passed.
-`logo`<br/>*string* | A base64 encoded data URL or URL to an image for the logo to display on the login screen. If of a default provider type, this will be set with a default if not passed.
-`type`<br/>*string* | The type of authentication protocol. Possible values: OIDC, SAML.
-`parameters`<br/>*Array* | A list of parameters associated with the identity provider. The issuerURL will be set if of a default provider type.
-`rank`<br/>*int* | If provided, this integer sorts identity providers on the Login page in ascending order.
+| Required                      | &nbsp;                                                                                                                                                                  |
+| ----------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `id`<br/>_UUID_               | The id of the identity provider.                                                                                                                                        |
+| `provider`<br/>_string_       | The name of the provider. Possible values include the default providers (e.g GOOGLE), or CUSTOM for a custom user-defined provider.                                     |
+| `displayName`<br/>_string_    | The display name of the identity provider that will appear on the login screen. If of a default provider type, this will be set with a default if not passed.           |
+| `connectionName`<br/>_string_ | The connection name of the identity provider. If of a default provider type, this will be set with a default if not passed.                                             |
+| `logo`<br/>_string_           | A base64 encoded data URL or URL to an image for the logo to display on the login screen. If of a default provider type, this will be set with a default if not passed. |
+| `type`<br/>_string_           | The type of authentication protocol. Possible values: OIDC, SAML.                                                                                                       |
+| `parameters`<br/>_Array_      | A list of parameters associated with the identity provider. The issuerURL will be set if of a default provider type.                                                    |
+| `rank`<br/>_int_              | If provided, this integer sorts identity providers on the Login page in ascending order.                                                                                |
 
-
-Optional | &nbsp;
----------- | -----------
-`css`<br/>*string* | Custom css for the login button of the identity provider.
+| Optional           | &nbsp;                                                    |
+| ------------------ | --------------------------------------------------------- |
+| `css`<br/>_string_ | Custom css for the login button of the identity provider. |
 
 <!-------------------- Delete IDPs -------------------->
 
@@ -262,9 +264,10 @@ Delete an existing identity provider.
 
 ```shell
 # Deletes a specified identity provider
-curl -X DELETE "https://cloudmc_endpoint/api/v2/identity_providers/c84cfe41-929b-47c9-bde4-b55a10bd2774" \
+curl -X DELETE "https://portal.coxedge.com/api/v2/identity_providers/c84cfe41-929b-47c9-bde4-b55a10bd2774" \
    -H "MC-Api-Key: your_api_key"
 ```
+
 > The above command(s) return(s) JSON structured like this:
 
 ```js
@@ -274,11 +277,10 @@ curl -X DELETE "https://cloudmc_endpoint/api/v2/identity_providers/c84cfe41-929b
 }
 ```
 
-Attributes | &nbsp;
-------- | -----------
-`taskId` <br/>*string* | The task id related to the identity provider deletion.
-`taskStatus` <br/>*string* | The status of the operation.
-
+| Attributes                 | &nbsp;                                                 |
+| -------------------------- | ------------------------------------------------------ |
+| `taskId` <br/>_string_     | The task id related to the identity provider deletion. |
+| `taskStatus` <br/>_string_ | The status of the operation.                           |
 
 <!-------------------- GET DEFAULT IDPS -------------------->
 
@@ -288,9 +290,10 @@ Attributes | &nbsp;
 
 ```shell
 # Retrieve default identity providers
-curl "https://cloudmc_endpoint/api/v2/identity_providers/default_providers" \
+curl "https://portal.coxedge.com/api/v2/identity_providers/default_providers" \
    -H "MC-Api-Key: your_api_key"
 ```
+
 > The above command returns JSON structured like this:
 
 ```json
@@ -324,12 +327,13 @@ curl "https://cloudmc_endpoint/api/v2/identity_providers/default_providers" \
   }
 }
 ```
+
 List the default identity providers configured on the system.
 
-Attributes | &nbsp;
----------- | -----------
-`data`<br/>*Map<string,object>* | Contains a map of all default identity providers.
-`logo`<br/>*string* | The logo to be deisplayed.
-`supportSingleLogout`<br/>*int* | If the identity provider support single logout.
-`issuerURL`<br/>*string* | The issuer url of the identity provider.
-`displayName`<br/>*string* | The display name of the identity provider that will appear on the login screen.
+| Attributes                      | &nbsp;                                                                          |
+| ------------------------------- | ------------------------------------------------------------------------------- |
+| `data`<br/>_Map<string,object>_ | Contains a map of all default identity providers.                               |
+| `logo`<br/>_string_             | The logo to be deisplayed.                                                      |
+| `supportSingleLogout`<br/>_int_ | If the identity provider support single logout.                                 |
+| `issuerURL`<br/>_string_        | The issuer url of the identity provider.                                        |
+| `displayName`<br/>_string_      | The display name of the identity provider that will appear on the login screen. |

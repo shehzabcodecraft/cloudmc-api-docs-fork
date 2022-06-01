@@ -4,6 +4,7 @@ Rollbacks enable service providers to reprocess usage data from the past.
 Currently the only supported rollback type REPROCESS uses existing collected usage metrics and reprocesses it through the monetization engine. The most current effective pricing configuration will be used to price these records.
 
 <!-------------------- LIST ROLLBACK TRIGGERS -------------------->
+
 ### List rollback triggers
 
 `GET /rollbacks`
@@ -14,7 +15,7 @@ Retrives a list of rollback triggers for a reseller.
 
 ```shell
 # Retrieve rollback triggers
-curl "https://cloudmc_endpoint/api/v2/rollbacks?organization_id=23910576-d29f-4c14-b663-31d728ff49a5" \
+curl "https://portal.coxedge.com/api/v2/rollbacks?organization_id=23910576-d29f-4c14-b663-31d728ff49a5" \
    -H "MC-Api-Key: your_api_key"
 ```
 
@@ -73,7 +74,7 @@ curl "https://cloudmc_endpoint/api/v2/rollbacks?organization_id=23910576-d29f-4c
 ```
 
 | Attributes                   | &nbsp;                                                                                |
-|------------------------------|---------------------------------------------------------------------------------------|
+| ---------------------------- | ------------------------------------------------------------------------------------- |
 | `id`<br/>_UUID_              | The UUID of the rollback trigger provider.                                            |
 | `name`<br/>_string_          | The name of the rollback.                                                             |
 | `description`<br/>_string_   | The description of the rollback (optional).                                           |
@@ -87,6 +88,7 @@ curl "https://cloudmc_endpoint/api/v2/rollbacks?organization_id=23910576-d29f-4c
 | `rollbacks`<br/>_Array_      | A list of rollbacks scoped to a service connection and organization.                  |
 
 <!-------------------- GET ROLLBACK TRIGGER -------------------->
+
 ### Get a rollback trigger
 
 `GET /rollbacks/:id`
@@ -97,7 +99,7 @@ Retrives a rollback trigger's details.
 
 ```shell
 # Retrieve rollback triggers
-curl "https://cloudmc_endpoint/api/v2/rollbacks/23910576-d29f-4c14-b663-31d728ff49a5" \
+curl "https://portal.coxedge.com/api/v2/rollbacks/23910576-d29f-4c14-b663-31d728ff49a5" \
    -H "MC-Api-Key: your_api_key"
 ```
 
@@ -178,7 +180,7 @@ Rollbacks of all types will **not** impact issued, paid or overdue invoices. Onl
 
 ```shell
 # Retrieve rollback triggers
-curl "https://cloudmc_endpoint/api/v2/rollbacks/23910576-d29f-4c14-b663-31d728ff49a5" \
+curl "https://portal.coxedge.com/api/v2/rollbacks/23910576-d29f-4c14-b663-31d728ff49a5" \
    -H "MC-Api-Key: your_api_key"
 ```
 
@@ -234,7 +236,7 @@ curl "https://cloudmc_endpoint/api/v2/rollbacks/23910576-d29f-4c14-b663-31d728ff
 ```
 
 | Attributes                         | &nbsp;                                                                                |
-|------------------------------------|---------------------------------------------------------------------------------------|
+| ---------------------------------- | ------------------------------------------------------------------------------------- |
 | `id`<br/>_UUID_                    | The UUID of the rollback trigger provider.                                            |
 | `name`<br/>_string_                | The name of the rollback.                                                             |
 | `description`<br/>_string_         | The description of the rollback (optional).                                           |

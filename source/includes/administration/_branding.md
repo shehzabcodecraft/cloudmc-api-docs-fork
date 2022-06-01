@@ -1,16 +1,19 @@
 ## Branding
+
 Manage branding.
 
 <!-------------------- LIST BRANDINGS -------------------->
+
 ### List brandings
 
 `GET /brandings`
 
 ```shell
 # Retrieve branding
-curl "https://cloudmc_endpoint/api/v2/brandings" \
+curl "https://portal.coxedge.com/api/v2/brandings" \
    -H "MC-Api-Key: your_api_key"
 ```
+
 > The above command returns JSON structured like this:
 
 ```json
@@ -25,7 +28,7 @@ curl "https://cloudmc_endpoint/api/v2/brandings" \
       },
       "activeLanguages": "en,fr,es",
       "defaultTimezone": "America/Montreal",
-      "applicationName": "CloudMC application",
+      "applicationName": "Cox Edge application",
       "artifacts": [
         {
           "createdAt": "2020-09-14T11:42:52.000Z",
@@ -44,29 +47,27 @@ curl "https://cloudmc_endpoint/api/v2/brandings" \
 
 List the branding configured for the organization.
 
-Query Params | &nbsp;
----- | -----------
-`organization_id`<br/>*UUID* | Return only the branding for the provided organization id. If not provided, will default to the user's organization.
+| Query Params                 | &nbsp;                                                                                                               |
+| ---------------------------- | -------------------------------------------------------------------------------------------------------------------- |
+| `organization_id`<br/>_UUID_ | Return only the branding for the provided organization id. If not provided, will default to the user's organization. |
 
-Attributes | &nbsp;
----------- | -----------
-`id`<br/>*UUID* | The id of the branding.
-`organization.id`<br/>*UUID* | The organization id that the branding is linked to.
-`defaultLanguage`<br/>*string* | The default language.
-`activeLanguages`<br/>*Array[string]* | List of the possible languages.
-`defaultTimezone`<br/>*string* | The default timezone.
-`applicationName`<br/>*string* | The application name displayed to the user.
-`factory`<br/>*boolean* | If the branding is the factory branding.
-`artifacts`<br/>*Array[Object]* | The list of artifacts linked to the branding. This includes the custom css, colours css, logos, favicons.
-`artifacts.id`<br/>*UUID* | The artifact id.
-`artifacts.name`<br/>*string* | The artifact name.
-`artifacts.mimeType`<br/>*string* | The mime type of the artifact.
-`artifacts.type`<br/>*string* | The artifact type. The possibles values are: LOGO, LOGO_SQUARE, FAVICON, CUSTOM_CSS, COLORS.
-`artifacts.content`<br/>*string* | The artifact content.
-`artifacts.createdAt`<br/>*string* | The artifact creation date.
-`artifacts.updatedAt`<br/>*string* | The artifact update date.
-
-
+| Attributes                            | &nbsp;                                                                                                    |
+| ------------------------------------- | --------------------------------------------------------------------------------------------------------- |
+| `id`<br/>_UUID_                       | The id of the branding.                                                                                   |
+| `organization.id`<br/>_UUID_          | The organization id that the branding is linked to.                                                       |
+| `defaultLanguage`<br/>_string_        | The default language.                                                                                     |
+| `activeLanguages`<br/>_Array[string]_ | List of the possible languages.                                                                           |
+| `defaultTimezone`<br/>_string_        | The default timezone.                                                                                     |
+| `applicationName`<br/>_string_        | The application name displayed to the user.                                                               |
+| `factory`<br/>_boolean_               | If the branding is the factory branding.                                                                  |
+| `artifacts`<br/>_Array[Object]_       | The list of artifacts linked to the branding. This includes the custom css, colours css, logos, favicons. |
+| `artifacts.id`<br/>_UUID_             | The artifact id.                                                                                          |
+| `artifacts.name`<br/>_string_         | The artifact name.                                                                                        |
+| `artifacts.mimeType`<br/>_string_     | The mime type of the artifact.                                                                            |
+| `artifacts.type`<br/>_string_         | The artifact type. The possibles values are: LOGO, LOGO_SQUARE, FAVICON, CUSTOM_CSS, COLORS.              |
+| `artifacts.content`<br/>_string_      | The artifact content.                                                                                     |
+| `artifacts.createdAt`<br/>_string_    | The artifact creation date.                                                                               |
+| `artifacts.updatedAt`<br/>_string_    | The artifact update date.                                                                                 |
 
 <!-------------------- GET BRANDING -------------------->
 
@@ -76,9 +77,10 @@ Attributes | &nbsp;
 
 ```shell
 # Retrieve knowledge base
-curl "https://cloudmc_endpoint/api/v2/brandings/671f113c-dbbb-4478-be9c-90765b3259e5" \
+curl "https://portal.coxedge.com/api/v2/brandings/671f113c-dbbb-4478-be9c-90765b3259e5" \
    -H "MC-Api-Key: your_api_key"
 ```
+
 > The above command returns JSON structured like this:
 
 ```json
@@ -92,7 +94,7 @@ curl "https://cloudmc_endpoint/api/v2/brandings/671f113c-dbbb-4478-be9c-90765b32
     },
     "activeLanguages": "en,fr,es",
     "defaultTimezone": "America/Montreal",
-    "applicationName": "CloudMC application",
+    "applicationName": "Cox Edge application",
     "artifacts": [
       {
         "createdAt": "2020-09-14T11:42:52.000Z",
@@ -107,22 +109,23 @@ curl "https://cloudmc_endpoint/api/v2/brandings/671f113c-dbbb-4478-be9c-90765b32
   }
 }
 ```
+
 Retrieve the branding associated to the id.
 
-Attributes | &nbsp;
----------- | -----------
-`id`<br/>*UUID* | The id of the branding.
-`organization.id`<br/>*UUID* | The organization id that the branding is linked to.
-`defaultLanguage`<br/>*string* | The default language.
-`activeLanguages`<br/>*Array[string]* | List of the possible languages.
-`defaultTimezone`<br/>*string* | The default timezone.
-`applicationName`<br/>*string* | The application name displayed to the user.
-`factory`<br/>*boolean* | If the branding is the factory branding.
-`artifacts`<br/>*Array[Object]* | The list of artifacts linked to the branding. This includes the custom css, colours css, logos, favicons.
-`artifacts.id`<br/>*UUID* | The artifact id.
-`artifacts.name`<br/>*string* | The artifact name.
-`artifacts.mimeType`<br/>*string* | The mime type of the artifact.
-`artifacts.type`<br/>*string* | The artifact type. The possibles values are: LOGO, LOGO_SQUARE, FAVICON, CUSTOM_CSS, COLORS.
-`artifacts.content`<br/>*string* | The artifact content.
-`artifacts.createdAt`<br/>*string* | The artifact creation date.
-`artifacts.updatedAt`<br/>*string* | The artifact update date.
+| Attributes                            | &nbsp;                                                                                                    |
+| ------------------------------------- | --------------------------------------------------------------------------------------------------------- |
+| `id`<br/>_UUID_                       | The id of the branding.                                                                                   |
+| `organization.id`<br/>_UUID_          | The organization id that the branding is linked to.                                                       |
+| `defaultLanguage`<br/>_string_        | The default language.                                                                                     |
+| `activeLanguages`<br/>_Array[string]_ | List of the possible languages.                                                                           |
+| `defaultTimezone`<br/>_string_        | The default timezone.                                                                                     |
+| `applicationName`<br/>_string_        | The application name displayed to the user.                                                               |
+| `factory`<br/>_boolean_               | If the branding is the factory branding.                                                                  |
+| `artifacts`<br/>_Array[Object]_       | The list of artifacts linked to the branding. This includes the custom css, colours css, logos, favicons. |
+| `artifacts.id`<br/>_UUID_             | The artifact id.                                                                                          |
+| `artifacts.name`<br/>_string_         | The artifact name.                                                                                        |
+| `artifacts.mimeType`<br/>_string_     | The mime type of the artifact.                                                                            |
+| `artifacts.type`<br/>_string_         | The artifact type. The possibles values are: LOGO, LOGO_SQUARE, FAVICON, CUSTOM_CSS, COLORS.              |
+| `artifacts.content`<br/>_string_      | The artifact content.                                                                                     |
+| `artifacts.createdAt`<br/>_string_    | The artifact creation date.                                                                               |
+| `artifacts.updatedAt`<br/>_string_    | The artifact update date.                                                                                 |

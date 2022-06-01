@@ -3,6 +3,7 @@
 The discount allows the assignment of a percentage discount or credit to an organization.
 
 <!-------------------- LIST ORGANIZATION DISCOUNTS -------------------->
+
 ### List organization discounts
 
 `GET /organizations/:organization_id/discounts?type=:type`
@@ -11,7 +12,7 @@ Retrieve the list of discounts associated with an organization.
 
 ```shell
 # Retrieve organization discount list
-curl "https://cloudmc_endpoint/api/v2/organizations/efd32752-c6f2-45cf-b494-cc6be8a45845/discounts?type=PERCENTAGE" \
+curl "https://portal.coxedge.com/api/v2/organizations/efd32752-c6f2-45cf-b494-cc6be8a45845/discounts?type=PERCENTAGE" \
    -H "MC-Api-Key: your_api_key"
 ```
 
@@ -85,24 +86,25 @@ curl "https://cloudmc_endpoint/api/v2/organizations/efd32752-c6f2-45cf-b494-cc6b
 }
 ```
 
-Optional Query Parameters | &nbsp;
----------- | -----------
-`type`<br/>*enum* | The type of the discount. It could be either "PERCENTAGE" or "CREDIT".
+| Optional Query Parameters | &nbsp;                                                                 |
+| ------------------------- | ---------------------------------------------------------------------- |
+| `type`<br/>_enum_         | The type of the discount. It could be either "PERCENTAGE" or "CREDIT". |
 
-Attributes | &nbsp;
----- | -----------
-`id`<br/>*string* | The id of the discount.
-`name`<br/>*object[string, string]* | The name translations of the discount.
-`status`<br/>*enum* | The status of the discount. Possible values are: UPCOMING, CURRENT, ENDED.
-`type`<br/>*enum* | The type of the discount. It could be either "PERCENTAGE" or "CREDIT".
-`scope`<br/>*enum* | The scope of the discount. It could be either "ALL_PRODUCTS", "CATEGORIES" or "PRODUCTS".
-`packageDiscount`<br/>*number* | The discount value that will be applied to all products within the applied pricing.
-`discountedProducts`<br/>*object[string, number]* | A mapping between product IDs and discount values. All pricing products specified will have the discount value applied to them.
-`discountedCategories`<br/>*object[string, number]* | A mapping between category IDs and discount values. All pricing products within a category will have the discount value applied to them.
-`startDate`<br/>*date* | The start date of the discount.
-`durationDays`<br/>*integer* | Duration of the discount once it has been applied to a customer. If not provided the discount will last indefinitely, or until credit values are reached.
+| Attributes                                          | &nbsp;                                                                                                                                                    |
+| --------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `id`<br/>_string_                                   | The id of the discount.                                                                                                                                   |
+| `name`<br/>_object[string, string]_                 | The name translations of the discount.                                                                                                                    |
+| `status`<br/>_enum_                                 | The status of the discount. Possible values are: UPCOMING, CURRENT, ENDED.                                                                                |
+| `type`<br/>_enum_                                   | The type of the discount. It could be either "PERCENTAGE" or "CREDIT".                                                                                    |
+| `scope`<br/>_enum_                                  | The scope of the discount. It could be either "ALL_PRODUCTS", "CATEGORIES" or "PRODUCTS".                                                                 |
+| `packageDiscount`<br/>_number_                      | The discount value that will be applied to all products within the applied pricing.                                                                       |
+| `discountedProducts`<br/>_object[string, number]_   | A mapping between product IDs and discount values. All pricing products specified will have the discount value applied to them.                           |
+| `discountedCategories`<br/>_object[string, number]_ | A mapping between category IDs and discount values. All pricing products within a category will have the discount value applied to them.                  |
+| `startDate`<br/>_date_                              | The start date of the discount.                                                                                                                           |
+| `durationDays`<br/>_integer_                        | Duration of the discount once it has been applied to a customer. If not provided the discount will last indefinitely, or until credit values are reached. |
 
 <!-------------------- GET ORGANIZATION DISCOUNT -------------------->
+
 ### Get organization discount
 
 `GET /organizations/:organization_id/discounts/:id`
@@ -111,7 +113,7 @@ Retrieve a discount's details.
 
 ```shell
 # Retrieve organization discount list
-curl "https://cloudmc_endpoint/api/v2/organizations/efd32752-c6f2-45cf-b494-cc6be8a45845/discounts/18db7bc6-8be1-48bb-bab1-77a7d696fa3b" \
+curl "https://portal.coxedge.com/api/v2/organizations/efd32752-c6f2-45cf-b494-cc6be8a45845/discounts/18db7bc6-8be1-48bb-bab1-77a7d696fa3b" \
    -H "MC-Api-Key: your_api_key"
 ```
 
@@ -120,37 +122,38 @@ curl "https://cloudmc_endpoint/api/v2/organizations/efd32752-c6f2-45cf-b494-cc6b
 ```json
 {
   "data": {
-      "discountedProducts": {},
-      "durationDays": 60,
-      "type": "PERCENTAGE",
-      "packageDiscount": 20.0,
-      "scope": "ALL_PRODUCTS",
-      "discountedCategories": {},
-      "name": {
-        "en": "Summer Discount",
-        "fr": "Réduction Estival"
-      },
-      "id": "18db7bc6-8be1-48bb-bab1-77a7d696fa3b",
-      "startDate": "2021-07-20T15:57:16.132Z",
-      "status": "CURRENT"
+    "discountedProducts": {},
+    "durationDays": 60,
+    "type": "PERCENTAGE",
+    "packageDiscount": 20.0,
+    "scope": "ALL_PRODUCTS",
+    "discountedCategories": {},
+    "name": {
+      "en": "Summer Discount",
+      "fr": "Réduction Estival"
+    },
+    "id": "18db7bc6-8be1-48bb-bab1-77a7d696fa3b",
+    "startDate": "2021-07-20T15:57:16.132Z",
+    "status": "CURRENT"
   }
 }
 ```
 
-Attributes | &nbsp;
----- | -----------
-`id`<br/>*string* | The id of the discount.
-`name`<br/>*object[string, string]* | The name translations of the discount.
-`status`<br/>*enum* | The status of the discount. Possible values are: UPCOMING, CURRENT, ENDED.
-`type`<br/>*enum* | The type of the discount. It could be either "PERCENTAGE" or "CREDIT".
-`scope`<br/>*enum* | The scope of the discount. It could be either "ALL_PRODUCTS", "CATEGORIES" or "PRODUCTS".
-`packageDiscount`<br/>*number* | The discount value that will be applied to all products within the applied pricing.
-`discountedProducts`<br/>*object[string, number]* | A mapping between product IDs and discount values. All pricing products specified will have the discount value applied to them.
-`discountedCategories`<br/>*object[string, number]* | A mapping between category IDs and discount values. All pricing products within a category will have the discount value applied to them.
-`startDate`<br/>*date* | The start date of the discount.
-`durationDays`<br/>*integer* | Duration of the discount once it has been applied to a customer. If not provided the discount will last indefinitely, or until credit values are reached.
+| Attributes                                          | &nbsp;                                                                                                                                                    |
+| --------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `id`<br/>_string_                                   | The id of the discount.                                                                                                                                   |
+| `name`<br/>_object[string, string]_                 | The name translations of the discount.                                                                                                                    |
+| `status`<br/>_enum_                                 | The status of the discount. Possible values are: UPCOMING, CURRENT, ENDED.                                                                                |
+| `type`<br/>_enum_                                   | The type of the discount. It could be either "PERCENTAGE" or "CREDIT".                                                                                    |
+| `scope`<br/>_enum_                                  | The scope of the discount. It could be either "ALL_PRODUCTS", "CATEGORIES" or "PRODUCTS".                                                                 |
+| `packageDiscount`<br/>_number_                      | The discount value that will be applied to all products within the applied pricing.                                                                       |
+| `discountedProducts`<br/>_object[string, number]_   | A mapping between product IDs and discount values. All pricing products specified will have the discount value applied to them.                           |
+| `discountedCategories`<br/>_object[string, number]_ | A mapping between category IDs and discount values. All pricing products within a category will have the discount value applied to them.                  |
+| `startDate`<br/>_date_                              | The start date of the discount.                                                                                                                           |
+| `durationDays`<br/>_integer_                        | Duration of the discount once it has been applied to a customer. If not provided the discount will last indefinitely, or until credit values are reached. |
 
 <!-------------------- CREATE ORGANIZATION DISCOUNT -------------------->
+
 ### Create organization discount
 
 `POST /organizations/:organization_id/discounts`
@@ -159,7 +162,7 @@ Create a new discount
 
 ```shell
 # Creates a new discount
-curl -X POST "https://cloudmc_endpoint/api/v2/organizations/efd32752-c6f2-45cf-b494-cc6be8a45845/discounts" \
+curl -X POST "https://portal.coxedge.com/api/v2/organizations/efd32752-c6f2-45cf-b494-cc6be8a45845/discounts" \
    -H "MC-Api-Key: your_api_key"
 ```
 
@@ -176,10 +179,10 @@ curl -X POST "https://cloudmc_endpoint/api/v2/organizations/efd32752-c6f2-45cf-b
   "durationDays": 60,
   "discountedProducts": {},
   "discountedCategories": {
-    "8cf73cc0-b86e-49b4-a102-6102894f7955": 2, 
+    "8cf73cc0-b86e-49b4-a102-6102894f7955": 2,
     "00358632-5c9a-4164-a9a9-df271a9c06a9": 22
   },
-  "scope": "CATEGORIES", 
+  "scope": "CATEGORIES"
 }
 ```
 
@@ -188,39 +191,40 @@ curl -X POST "https://cloudmc_endpoint/api/v2/organizations/efd32752-c6f2-45cf-b
 ```json
 {
   "data": {
-      "discountedProducts": {},
-      "durationDays": 60,
-      "type": "PERCENTAGE",
-      "scope": "CATEGORIES",
-      "discountedCategories": {
-        "8cf73cc0-b86e-49b4-a102-6102894f7955": 2, 
-        "00358632-5c9a-4164-a9a9-df271a9c06a9": 22
-      },  
-      "name": {
-        "en": "Summer Discount",
-        "fr": "Réduction Estival"
-      },
-      "id": "18db7bc6-8be1-48bb-bab1-77a7d696fa3b",
-      "startDate": "2021-07-23T00:00:00.000Z"
+    "discountedProducts": {},
+    "durationDays": 60,
+    "type": "PERCENTAGE",
+    "scope": "CATEGORIES",
+    "discountedCategories": {
+      "8cf73cc0-b86e-49b4-a102-6102894f7955": 2,
+      "00358632-5c9a-4164-a9a9-df271a9c06a9": 22
+    },
+    "name": {
+      "en": "Summer Discount",
+      "fr": "Réduction Estival"
+    },
+    "id": "18db7bc6-8be1-48bb-bab1-77a7d696fa3b",
+    "startDate": "2021-07-23T00:00:00.000Z"
   }
 }
 ```
 
-Required | &nbsp;
-------- | -----------
-`name`<br/>*object[string, string]* | The name translations of the discount.
-`type`<br/>*enum* | The type of the discount. It could be either "PERCENTAGE" or "CREDIT".
-`scope`<br/>*enum* | The scope of the discount. It could be either "ALL_PRODUCTS", "CATEGORIES" or "PRODUCTS".
-`packageDiscount`<br/>*number* | The discount value that will be applied to all products within the applied pricing.
-`discountedProducts`<br/>*object[string, number]* | A mapping between product IDs and discount values. All pricing products specified will have the discount value applied to them.
-`discountedCategories`<br/>*object[string, number]* | A mapping between category IDs and discount values. All pricing products within a category will have the discount value applied to them.
-`startDate`<br/>*date* | The start date of the discount.
+| Required                                            | &nbsp;                                                                                                                                   |
+| --------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------- |
+| `name`<br/>_object[string, string]_                 | The name translations of the discount.                                                                                                   |
+| `type`<br/>_enum_                                   | The type of the discount. It could be either "PERCENTAGE" or "CREDIT".                                                                   |
+| `scope`<br/>_enum_                                  | The scope of the discount. It could be either "ALL_PRODUCTS", "CATEGORIES" or "PRODUCTS".                                                |
+| `packageDiscount`<br/>_number_                      | The discount value that will be applied to all products within the applied pricing.                                                      |
+| `discountedProducts`<br/>_object[string, number]_   | A mapping between product IDs and discount values. All pricing products specified will have the discount value applied to them.          |
+| `discountedCategories`<br/>_object[string, number]_ | A mapping between category IDs and discount values. All pricing products within a category will have the discount value applied to them. |
+| `startDate`<br/>_date_                              | The start date of the discount.                                                                                                          |
 
-Optional | &nbsp;
-------- | -----------
-`durationDays`<br/>*integer* | Duration of the discount once it has been applied to a customer. If not provided the discount will last indefinitely, or until credit values are reached.
+| Optional                     | &nbsp;                                                                                                                                                    |
+| ---------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `durationDays`<br/>_integer_ | Duration of the discount once it has been applied to a customer. If not provided the discount will last indefinitely, or until credit values are reached. |
 
 <!-------------------- EDIT ORGANIZATION DISCOUNT -------------------->
+
 ### Edit organization discount
 
 `PUT /organizations/:organization_id/discounts/:id`
@@ -229,7 +233,7 @@ Edit an existing discount that hasn't ended. Only the name and cutoff date can b
 
 ```shell
 # Edit an existing discount
-curl -X PUT "https://cloudmc_endpoint/api/v2/organizations/efd32752-c6f2-45cf-b494-cc6be8a45845/discounts/18db7bc6-8be1-48bb-bab1-77a7d696fa3b" \
+curl -X PUT "https://portal.coxedge.com/api/v2/organizations/efd32752-c6f2-45cf-b494-cc6be8a45845/discounts/18db7bc6-8be1-48bb-bab1-77a7d696fa3b" \
    -H "MC-Api-Key: your_api_key"
 ```
 
@@ -237,31 +241,31 @@ curl -X PUT "https://cloudmc_endpoint/api/v2/organizations/efd32752-c6f2-45cf-b4
 
 ```json
 {
- "discountedProducts": {
-  "9d842142-1ce9-449f-9691-798f83925214": 5,
-  "191f69c9-3a76-480e-843c-35afb9cbb1a2": 5,
-  "49a49de7-74c4-459f-9189-3adc7c9c1585": 5,
-  "b8eede50-4f5f-47ac-8a90-2b32c1a995ce": 5,
-  "bcd82514-d539-4d66-aaf4-b24a95ebe1cd": 5,
-  "47c1006d-84bf-4bb7-92c5-7bcd34baa82b": 5,
-  "47bb82f9-5af4-4cc3-bf79-168cc7bdb7a4": 5,
-  "24948849-7303-48c5-bfd8-f58f3e88a7c2": 5,
-  "64b8d628-89ad-41b1-8375-27c0453deef9": 5,
-  "9a6d318c-fa8b-437e-a8d0-cf50d933ef0c": 5,
-  "0642dc67-6d97-460f-9046-91fccbddc15d": 5,
-  "6313dba8-e971-48cb-97f9-21dc8ff4cae5": 5,
-  "30a3bf2c-d00a-4bff-9d24-c13af4f7f31f": 5,
-  "3feb88cb-b665-4481-a30f-a90746ddf25c": 5,
-  "757db7f8-3cef-41b2-8e08-0460dc65fc66": 5,
-  "414ddeb5-4df3-4ce7-ab93-2fb39c195eaf": 5
- },
- "type": "PERCENTAGE",
- "discountedCategories": {},
- "scope": "PRODUCTS",
- "name": {
-  "en": "product discounts may 1st"
- },
- "startDate": "2022-05-01T00:00:00Z"
+  "discountedProducts": {
+    "9d842142-1ce9-449f-9691-798f83925214": 5,
+    "191f69c9-3a76-480e-843c-35afb9cbb1a2": 5,
+    "49a49de7-74c4-459f-9189-3adc7c9c1585": 5,
+    "b8eede50-4f5f-47ac-8a90-2b32c1a995ce": 5,
+    "bcd82514-d539-4d66-aaf4-b24a95ebe1cd": 5,
+    "47c1006d-84bf-4bb7-92c5-7bcd34baa82b": 5,
+    "47bb82f9-5af4-4cc3-bf79-168cc7bdb7a4": 5,
+    "24948849-7303-48c5-bfd8-f58f3e88a7c2": 5,
+    "64b8d628-89ad-41b1-8375-27c0453deef9": 5,
+    "9a6d318c-fa8b-437e-a8d0-cf50d933ef0c": 5,
+    "0642dc67-6d97-460f-9046-91fccbddc15d": 5,
+    "6313dba8-e971-48cb-97f9-21dc8ff4cae5": 5,
+    "30a3bf2c-d00a-4bff-9d24-c13af4f7f31f": 5,
+    "3feb88cb-b665-4481-a30f-a90746ddf25c": 5,
+    "757db7f8-3cef-41b2-8e08-0460dc65fc66": 5,
+    "414ddeb5-4df3-4ce7-ab93-2fb39c195eaf": 5
+  },
+  "type": "PERCENTAGE",
+  "discountedCategories": {},
+  "scope": "PRODUCTS",
+  "name": {
+    "en": "product discounts may 1st"
+  },
+  "startDate": "2022-05-01T00:00:00Z"
 }
 ```
 
@@ -269,50 +273,51 @@ curl -X PUT "https://cloudmc_endpoint/api/v2/organizations/efd32752-c6f2-45cf-b4
 
 ```json
 {
- "data": {
-  "discountedProducts": {
-   "9d842142-1ce9-449f-9691-798f83925214": 5,
-   "191f69c9-3a76-480e-843c-35afb9cbb1a2": 5,
-   "49a49de7-74c4-459f-9189-3adc7c9c1585": 5,
-   "b8eede50-4f5f-47ac-8a90-2b32c1a995ce": 5,
-   "bcd82514-d539-4d66-aaf4-b24a95ebe1cd": 5,
-   "47c1006d-84bf-4bb7-92c5-7bcd34baa82b": 5,
-   "47bb82f9-5af4-4cc3-bf79-168cc7bdb7a4": 5,
-   "24948849-7303-48c5-bfd8-f58f3e88a7c2": 5,
-   "64b8d628-89ad-41b1-8375-27c0453deef9": 5,
-   "9a6d318c-fa8b-437e-a8d0-cf50d933ef0c": 5,
-   "0642dc67-6d97-460f-9046-91fccbddc15d": 5,
-   "6313dba8-e971-48cb-97f9-21dc8ff4cae5": 5,
-   "30a3bf2c-d00a-4bff-9d24-c13af4f7f31f": 5,
-   "3feb88cb-b665-4481-a30f-a90746ddf25c": 5,
-   "757db7f8-3cef-41b2-8e08-0460dc65fc66": 5,
-   "414ddeb5-4df3-4ce7-ab93-2fb39c195eaf": 5
-  },
-  "type": "PERCENTAGE",
-  "mode": "ORGANIZATION",
-  "isDeactivated": false,
-  "discountedCategories": {},
-  "scope": "PRODUCTS",
-  "name": {
-   "en": "product discounts may 1st"
-  },
-  "id": "6f62e128-9d83-4423-9fea-9bcd5a2cfa72",
-  "startDate": "2022-05-01T00:00:00Z"
- }
+  "data": {
+    "discountedProducts": {
+      "9d842142-1ce9-449f-9691-798f83925214": 5,
+      "191f69c9-3a76-480e-843c-35afb9cbb1a2": 5,
+      "49a49de7-74c4-459f-9189-3adc7c9c1585": 5,
+      "b8eede50-4f5f-47ac-8a90-2b32c1a995ce": 5,
+      "bcd82514-d539-4d66-aaf4-b24a95ebe1cd": 5,
+      "47c1006d-84bf-4bb7-92c5-7bcd34baa82b": 5,
+      "47bb82f9-5af4-4cc3-bf79-168cc7bdb7a4": 5,
+      "24948849-7303-48c5-bfd8-f58f3e88a7c2": 5,
+      "64b8d628-89ad-41b1-8375-27c0453deef9": 5,
+      "9a6d318c-fa8b-437e-a8d0-cf50d933ef0c": 5,
+      "0642dc67-6d97-460f-9046-91fccbddc15d": 5,
+      "6313dba8-e971-48cb-97f9-21dc8ff4cae5": 5,
+      "30a3bf2c-d00a-4bff-9d24-c13af4f7f31f": 5,
+      "3feb88cb-b665-4481-a30f-a90746ddf25c": 5,
+      "757db7f8-3cef-41b2-8e08-0460dc65fc66": 5,
+      "414ddeb5-4df3-4ce7-ab93-2fb39c195eaf": 5
+    },
+    "type": "PERCENTAGE",
+    "mode": "ORGANIZATION",
+    "isDeactivated": false,
+    "discountedCategories": {},
+    "scope": "PRODUCTS",
+    "name": {
+      "en": "product discounts may 1st"
+    },
+    "id": "6f62e128-9d83-4423-9fea-9bcd5a2cfa72",
+    "startDate": "2022-05-01T00:00:00Z"
+  }
 }
 ```
 
-Optional | &nbsp;
-------- | -----------
-`name`<br/>*object[string, string]* | The name translations of the discount.
-`scope`<br/>*enum* | The scope of the discount. It could be either "ALL_PRODUCTS", "CATEGORIES" or "PRODUCTS".
-`packageDiscount`<br/>*number* | The discount value that will be applied to all products within the applied pricing.
-`discountedProducts`<br/>*object[string, number]* | A mapping between product IDs and discount values. All pricing products specified will have the discount value applied to them.
-`discountedCategories`<br/>*object[string, number]* | A mapping between category IDs and discount values. All pricing products within a category will have the discount value applied to them.
-`startDate`<br/>*date* | The start date of the discount.
-`durationDays`<br/>*integer* | Duration of the discount once it has been applied to a customer. If not provided the discount will last indefinitely, or until credit values are reached.
+| Optional                                            | &nbsp;                                                                                                                                                    |
+| --------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `name`<br/>_object[string, string]_                 | The name translations of the discount.                                                                                                                    |
+| `scope`<br/>_enum_                                  | The scope of the discount. It could be either "ALL_PRODUCTS", "CATEGORIES" or "PRODUCTS".                                                                 |
+| `packageDiscount`<br/>_number_                      | The discount value that will be applied to all products within the applied pricing.                                                                       |
+| `discountedProducts`<br/>_object[string, number]_   | A mapping between product IDs and discount values. All pricing products specified will have the discount value applied to them.                           |
+| `discountedCategories`<br/>_object[string, number]_ | A mapping between category IDs and discount values. All pricing products within a category will have the discount value applied to them.                  |
+| `startDate`<br/>_date_                              | The start date of the discount.                                                                                                                           |
+| `durationDays`<br/>_integer_                        | Duration of the discount once it has been applied to a customer. If not provided the discount will last indefinitely, or until credit values are reached. |
 
 <!-------------------- DELETE ORGANIZATION DISCOUNT -------------------->
+
 ### Delete organization discount
 
 `DELETE /organizations/:organization_id/discounts/:id`
@@ -320,7 +325,7 @@ Optional | &nbsp;
 Delete a discount. This operation can only be performed on discounts that have status UPCOMING.
 
 ```shell
-curl -X DELETE "https://cloudmc_endpoint/api/v2/organizations/efd32752-c6f2-45cf-b494-cc6be8a45845/discounts/18db7bc6-8be1-48bb-bab1-77a7d696fa3b" \
+curl -X DELETE "https://portal.coxedge.com/api/v2/organizations/efd32752-c6f2-45cf-b494-cc6be8a45845/discounts/18db7bc6-8be1-48bb-bab1-77a7d696fa3b" \
    -H "MC-Api-Key: your_api_key"
 ```
 

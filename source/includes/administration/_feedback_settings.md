@@ -10,7 +10,7 @@ Retrieve the feedback settings associated to an organization. If the `organizati
 
 ```shell
 # Retrieve the feedback settings
-curl "https://cloudmc_endpoint/api/v2/feedback/find?organizationId=fcda8d5a-0276-4de3-908f-b3bd0aff2491" \
+curl "https://portal.coxedge.com/api/v2/feedback/find?organizationId=fcda8d5a-0276-4de3-908f-b3bd0aff2491" \
    -H "MC-Api-Key: your_api_key"
 ```
 
@@ -36,6 +36,7 @@ curl "https://cloudmc_endpoint/api/v2/feedback/find?organizationId=fcda8d5a-0276
 ```
 
 <!-------------------- GET FEEDBACK SETTINGS -------------------->
+
 ### Retrieve feedback settings
 
 `GET /feedback/:id`
@@ -44,7 +45,7 @@ Retrieve the feedback settings associated to a feedback setting id.
 
 ```shell
 # Retrieve feedback settings
-curl "https://cloudmc_endpoint/api/v2/feedback/f4be2785-ec67-474c-af3a-38ffecfa4094" \
+curl "https://portal.coxedge.com/api/v2/feedback/f4be2785-ec67-474c-af3a-38ffecfa4094" \
    -H "MC-Api-Key: your_api_key"
 ```
 
@@ -71,20 +72,21 @@ curl "https://cloudmc_endpoint/api/v2/feedback/f4be2785-ec67-474c-af3a-38ffecfa4
 
 Retrieve the feedback settings associated to the feedback settings id.
 
-Attributes | &nbsp;
----------- | -----------
-`id`<br/>*UUID* | The configured feedback settings' id.
-`organization.id`<br/>*UUID* | The organization id that the feedback settings are linked to. It cannot be changed.
-`feedbackEmail`<br/>*string* |  Email address used for feedback.
-`feedbackSlackWebhookUrl`<br/>*string* | The slack webhook url used for feedback. Please refer to [https://api.slack.com/messaging/webhooks](https://api.slack.com/messaging/webhooks).
-`googleTagManagerContainerId`<br/>*string* | The Google Tag Manager Container ID used to deploy analytics and measurement tag configurations. Please refer to [https://developers.google.com/tag-platform/tag-manager/web](https://developers.google.com/tag-platform/tag-manager/web).
-`matomoHost`<br/>*string* | The Matomo analytics subdomain, ending in '.matomo.cloud'.
-`matomoWebsiteId`<br/>*string* | The website ID which Matomo's Javascript pushes events to.
-`supportEmail`<br/>*string* | Email address used for support requests.
-`widgetZesettings`<br/>*string* | Content of the zeSettings as a JSON for customization. Please refer to [https://developer.zendesk.com/embeddables/docs/widget/settings](https://developer.zendesk.com/embeddables/docs/widget/settings).
-`zendeskWidgetKey`<br/>*string* | The key taken from the Zendesk admin page. Only one of supportEmail and zendeskWidgetKey can be set.
+| Attributes                                 | &nbsp;                                                                                                                                                                                                                                     |
+| ------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `id`<br/>_UUID_                            | The configured feedback settings' id.                                                                                                                                                                                                      |
+| `organization.id`<br/>_UUID_               | The organization id that the feedback settings are linked to. It cannot be changed.                                                                                                                                                        |
+| `feedbackEmail`<br/>_string_               | Email address used for feedback.                                                                                                                                                                                                           |
+| `feedbackSlackWebhookUrl`<br/>_string_     | The slack webhook url used for feedback. Please refer to [https://api.slack.com/messaging/webhooks](https://api.slack.com/messaging/webhooks).                                                                                             |
+| `googleTagManagerContainerId`<br/>_string_ | The Google Tag Manager Container ID used to deploy analytics and measurement tag configurations. Please refer to [https://developers.google.com/tag-platform/tag-manager/web](https://developers.google.com/tag-platform/tag-manager/web). |
+| `matomoHost`<br/>_string_                  | The Matomo analytics subdomain, ending in '.matomo.cloud'.                                                                                                                                                                                 |
+| `matomoWebsiteId`<br/>_string_             | The website ID which Matomo's Javascript pushes events to.                                                                                                                                                                                 |
+| `supportEmail`<br/>_string_                | Email address used for support requests.                                                                                                                                                                                                   |
+| `widgetZesettings`<br/>_string_            | Content of the zeSettings as a JSON for customization. Please refer to [https://developer.zendesk.com/embeddables/docs/widget/settings](https://developer.zendesk.com/embeddables/docs/widget/settings).                                   |
+| `zendeskWidgetKey`<br/>_string_            | The key taken from the Zendesk admin page. Only one of supportEmail and zendeskWidgetKey can be set.                                                                                                                                       |
 
 <!-------------------- CREATE FEEDBACK SETTINGS -------------------->
+
 ### Create feedback
 
 `POST /feedback`
@@ -93,7 +95,7 @@ Create a new feedback settings. The support can either be through email or a Zen
 
 ```shell
 # Creates a new feedback settings
-curl -X POST "https://cloudmc_endpoint/api/v2/feedback" \
+curl -X POST "https://portal.coxedge.com/api/v2/feedback" \
    -H "MC-Api-Key: your_api_key"
 ```
 
@@ -103,7 +105,7 @@ curl -X POST "https://cloudmc_endpoint/api/v2/feedback" \
 {
   "id": "f4be2785-ec67-474c-af3a-38ffecfa4094",
   "organization": {
-      "id": "fcda8d5a-0276-4de3-908f-b3bd0aff2491"
+    "id": "fcda8d5a-0276-4de3-908f-b3bd0aff2491"
   },
   "feedbackEmail": "feedback@company.com",
   "feedbackSlackWebhookUrl": "https://hooks.slack.com/services/T00000000/B00000000/XXXXXXXXXXXXXXXXXXXXXXXX",
@@ -137,23 +139,24 @@ curl -X POST "https://cloudmc_endpoint/api/v2/feedback" \
 }
 ```
 
-Required | &nbsp;
----------- | -----------
-`id`<br/>*UUID* | The configured feedback settings' id.
-`organization.id`<br/>*UUID* | The organization id that the feedback settings are linked to. It cannot be changed.
+| Required                     | &nbsp;                                                                              |
+| ---------------------------- | ----------------------------------------------------------------------------------- |
+| `id`<br/>_UUID_              | The configured feedback settings' id.                                               |
+| `organization.id`<br/>_UUID_ | The organization id that the feedback settings are linked to. It cannot be changed. |
 
-Optional | &nbsp;
----------- | -----------
-`feedbackEmail`<br/>*string* |  Email address used for feedback.
-`feedbackSlackWebhookUrl`<br/>*string* | The slack webhook url used for feedback. Please refer to [https://api.slack.com/messaging/webhooks](https://api.slack.com/messaging/webhooks).
-`googleTagManagerContainerId`<br/>*string* | The Google Tag Manager Container ID used to deploy analytics and measurement tag configurations. Please refer to [https://developers.google.com/tag-platform/tag-manager/web](https://developers.google.com/tag-platform/tag-manager/web).
-`matomoHost`<br/>*string* | The Matomo analytics subdomain, ending in '.matomo.cloud'. If specified, both the host and website ID are required.
-`matomoWebsiteId`<br/>*string* | The website ID which Matomo's Javascript pushes events to. If specified, both the host and website ID are required.
-`supportEmail`<br/>*string* | Email address used for support requests.
-`widgetZesettings`<br/>*string* | Content of the zeSettings as a JSON for customization. Please refer to [https://developer.zendesk.com/embeddables/docs/widget/settings](https://developer.zendesk.com/embeddables/docs/widget/settings).
-`zendeskWidgetKey`<br/>*string* | The key taken from the Zendesk admin page. Only one of supportEmail and zendeskWidgetKey can be set.
+| Optional                                   | &nbsp;                                                                                                                                                                                                                                     |
+| ------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `feedbackEmail`<br/>_string_               | Email address used for feedback.                                                                                                                                                                                                           |
+| `feedbackSlackWebhookUrl`<br/>_string_     | The slack webhook url used for feedback. Please refer to [https://api.slack.com/messaging/webhooks](https://api.slack.com/messaging/webhooks).                                                                                             |
+| `googleTagManagerContainerId`<br/>_string_ | The Google Tag Manager Container ID used to deploy analytics and measurement tag configurations. Please refer to [https://developers.google.com/tag-platform/tag-manager/web](https://developers.google.com/tag-platform/tag-manager/web). |
+| `matomoHost`<br/>_string_                  | The Matomo analytics subdomain, ending in '.matomo.cloud'. If specified, both the host and website ID are required.                                                                                                                        |
+| `matomoWebsiteId`<br/>_string_             | The website ID which Matomo's Javascript pushes events to. If specified, both the host and website ID are required.                                                                                                                        |
+| `supportEmail`<br/>_string_                | Email address used for support requests.                                                                                                                                                                                                   |
+| `widgetZesettings`<br/>_string_            | Content of the zeSettings as a JSON for customization. Please refer to [https://developer.zendesk.com/embeddables/docs/widget/settings](https://developer.zendesk.com/embeddables/docs/widget/settings).                                   |
+| `zendeskWidgetKey`<br/>_string_            | The key taken from the Zendesk admin page. Only one of supportEmail and zendeskWidgetKey can be set.                                                                                                                                       |
 
 <!-------------------- UPDATE FEEDBACK SETTINGS -------------------->
+
 ### Update feedback settings
 
 `PUT /feedback/:id`
@@ -162,7 +165,7 @@ Updates the feedback settings of an organization. The support can either be thro
 
 ```shell
 # Updates an existing feedback settings for an organization
-curl -X PUT "https://cloudmc_endpoint/api/v2/feedback/f4be2785-ec67-474c-af3a-38ffecfa4094 \
+curl -X PUT "https://portal.coxedge.com/api/v2/feedback/f4be2785-ec67-474c-af3a-38ffecfa4094 \
    -H "MC-Api-Key: your_api_key"
    -H "Content-Type: application/json" \
    -d "request-body"
@@ -174,7 +177,7 @@ curl -X PUT "https://cloudmc_endpoint/api/v2/feedback/f4be2785-ec67-474c-af3a-38
 {
   "id": "f4be2785-ec67-474c-af3a-38ffecfa4094",
   "organization": {
-      "id": "fcda8d5a-0276-4de3-908f-b3bd0aff2491"
+    "id": "fcda8d5a-0276-4de3-908f-b3bd0aff2491"
   },
   "feedbackEmail": "feedback@company.com",
   "feedbackSlackWebhookUrl": "https://hooks.slack.com/services/T00000000/B00000000/XXXXXXXXXXXXXXXXXXXXXXXX",
@@ -208,23 +211,24 @@ curl -X PUT "https://cloudmc_endpoint/api/v2/feedback/f4be2785-ec67-474c-af3a-38
 }
 ```
 
-Required | &nbsp;
----------- | -----------
-`id`<br/>*UUID* | The configured feedback settings' id.
-`organization.id`<br/>*UUID* | The organization id that the feedback settings are linked to. It cannot be changed.
+| Required                     | &nbsp;                                                                              |
+| ---------------------------- | ----------------------------------------------------------------------------------- |
+| `id`<br/>_UUID_              | The configured feedback settings' id.                                               |
+| `organization.id`<br/>_UUID_ | The organization id that the feedback settings are linked to. It cannot be changed. |
 
-Optional | &nbsp;
----------- | -----------
-`feedbackEmail`<br/>*string* |  Email address used for feedback.
-`feedbackSlackWebhookUrl`<br/>*string* | The slack webhook url used for feedback. Please refer to [https://api.slack.com/messaging/webhooks](https://api.slack.com/messaging/webhooks).
-`googleTagManagerContainerId`<br/>*string* | The Google Tag Manager Container ID used to deploy analytics and measurement tag configurations. Please refer to [https://developers.google.com/tag-platform/tag-manager/web](https://developers.google.com/tag-platform/tag-manager/web).
-`matomoHost`<br/>*string* | The Matomo analytics subdomain, ending in '.matomo.cloud'. If specified, both the host and website ID are required.
-`matomoWebsiteId`<br/>*string* | The website ID which Matomo's Javascript pushes events to. If specified, both the host and website ID are required.
-`supportEmail`<br/>*string* | Email address used for support requests.
-`widgetZesettings`<br/>*string* | Content of the zeSettings as a JSON for customization. Please refer to [https://developer.zendesk.com/embeddables/docs/widget/settings](https://developer.zendesk.com/embeddables/docs/widget/settings).
-`zendeskWidgetKey`<br/>*string* | The key taken from the Zendesk admin page. Only one of supportEmail and zendeskWidgetKey can be set.
+| Optional                                   | &nbsp;                                                                                                                                                                                                                                     |
+| ------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `feedbackEmail`<br/>_string_               | Email address used for feedback.                                                                                                                                                                                                           |
+| `feedbackSlackWebhookUrl`<br/>_string_     | The slack webhook url used for feedback. Please refer to [https://api.slack.com/messaging/webhooks](https://api.slack.com/messaging/webhooks).                                                                                             |
+| `googleTagManagerContainerId`<br/>_string_ | The Google Tag Manager Container ID used to deploy analytics and measurement tag configurations. Please refer to [https://developers.google.com/tag-platform/tag-manager/web](https://developers.google.com/tag-platform/tag-manager/web). |
+| `matomoHost`<br/>_string_                  | The Matomo analytics subdomain, ending in '.matomo.cloud'. If specified, both the host and website ID are required.                                                                                                                        |
+| `matomoWebsiteId`<br/>_string_             | The website ID which Matomo's Javascript pushes events to. If specified, both the host and website ID are required.                                                                                                                        |
+| `supportEmail`<br/>_string_                | Email address used for support requests.                                                                                                                                                                                                   |
+| `widgetZesettings`<br/>_string_            | Content of the zeSettings as a JSON for customization. Please refer to [https://developer.zendesk.com/embeddables/docs/widget/settings](https://developer.zendesk.com/embeddables/docs/widget/settings).                                   |
+| `zendeskWidgetKey`<br/>_string_            | The key taken from the Zendesk admin page. Only one of supportEmail and zendeskWidgetKey can be set.                                                                                                                                       |
 
 <!-------------------- DELETE FEEDBACK SETTINGS -------------------->
+
 ### Delete feedback settings
 
 `DELETE /feedback/:id`
@@ -232,7 +236,7 @@ Optional | &nbsp;
 Delete an existing feedback settings.
 
 ```shell
-curl -X DELETE "https://cloudmc_endpoint/api/v2/feedback/f4be2785-ec67-474c-af3a-38ffecfa4094" \
+curl -X DELETE "https://portal.coxedge.com/api/v2/feedback/f4be2785-ec67-474c-af3a-38ffecfa4094" \
    -H "MC-Api-Key: your_api_key"
 ```
 
@@ -255,7 +259,7 @@ Checks if feedback settings is configured for an organization. If the `organizat
 
 ```shell
 # Check if feedback settings is configured
-curl "https://cloudmc_endpoint/api/v2/feedback/exists?organizationId=fcda8d5a-0276-4de3-908f-b3bd0aff2491" \
+curl "https://portal.coxedge.com/api/v2/feedback/exists?organizationId=fcda8d5a-0276-4de3-908f-b3bd0aff2491" \
    -H "MC-Api-Key: your_api_key"
 ```
 
@@ -275,7 +279,7 @@ Check if a support email is configured for an organization. If the `organization
 
 ```shell
 # Check if support email is configured
-curl "https://cloudmc_endpoint/api/v2/support/exists?organizationId=fcda8d5a-0276-4de3-908f-b3bd0aff2491" \
+curl "https://portal.coxedge.com/api/v2/support/exists?organizationId=fcda8d5a-0276-4de3-908f-b3bd0aff2491" \
    -H "MC-Api-Key: your_api_key"
 ```
 

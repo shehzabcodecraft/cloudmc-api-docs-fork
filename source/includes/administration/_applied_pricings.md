@@ -3,6 +3,7 @@
 The applied pricing allows the assignment of pricing to organization with a determined scope.
 
 <!-------------------- LIST APPLIED PRICINGS -------------------->
+
 ### List applied pricings
 
 `GET /applied_pricings`
@@ -11,9 +12,10 @@ Retrieves a list of applied pricings configured in the system.
 
 ```shell
 # Retrieve applied pricing list
-curl "https://cloudmc_endpoint/api/v2/applied_pricings" \
+curl "https://portal.coxedge.com/api/v2/applied_pricings" \
    -H "MC-Api-Key: your_api_key"
 ```
+
 > The above command returns a JSON structured like this:
 
 ```json
@@ -21,10 +23,7 @@ curl "https://cloudmc_endpoint/api/v2/applied_pricings" \
   "data": [
     {
       "pricingDefinition": {
-        "supportedCurrencies": [
-          "CAD",
-          "USD"
-        ],
+        "supportedCurrencies": ["CAD", "USD"],
         "organization": {
           "id": "23910576-d29f-4c14-b663-31d728ff49a5"
         },
@@ -53,31 +52,31 @@ curl "https://cloudmc_endpoint/api/v2/applied_pricings" \
 }
 ```
 
-Attributes | &nbsp;
----- | -----------
-`id`<br/>*UUID* | The UUID of the applied pricing.
-`pricingDefinition`<br/>*Object* | The pricing definition associated with the applied pricing.
-`pricingDefinition.id`<br/>*UUID* | The UUID of the pricing.
-`pricingDefinition.supportedCurrencies`<br/>*Array[string]* | The list of currencies associated to the pricing.
-`pricingDefinition.organization.id`<br/>*UUID* | The UUID of the organization owning of the pricing definition.
-`pricingDefinition.name`<br/>*Object* | Mapped object containing the pricing name in different languages.
-`pricingDefinition.description`<br/>*Object* | Mapped object containing the pricing description in different languages.
-`pricingDefinition.effectiveDate`<br/>*date* | The date to which the pricing will be applicable from.
-`organization`<br/>*Object* | The object representing the organization owning the applied pricing.
-`organization.id`<br/>*UUID* | The UUID of the organization.
-`organization.name`<br/>*string* | The name of the organization.
-`startDate`<br/>*date* | The start date of the applied pricing.
-`endDate`<br/>*date* | The end date of the applied pricing. If it is not present, there is no end date defined.
-`currency`<br/>*string* | The currency associated to the applied pricing.
-`scopeQualifier`<br/>*string* | Scope qualifier of the applied pricing. Possible values are : GLOBAL, ORG_TOPLEVEL, ORG_SUBS, ORG_BASE, ORG_TREE.
-`scopeOrganization`<br/>*Object* | The organization to which the scope is applied to.
-`scopeOrganization.id`<br/>*UUID* | The UUID of the organization.
-`scopeOrganization.name`<br/>*string* | The name of the organization.
-`creationDate`<br/>*Object* | The date the applied pricing was created.
-`status`<br/>*string* | The status of the applied pricing. Possible values are : ACTIVE, EXPIRED, FUTURE.
-
+| Attributes                                                  | &nbsp;                                                                                                            |
+| ----------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- |
+| `id`<br/>_UUID_                                             | The UUID of the applied pricing.                                                                                  |
+| `pricingDefinition`<br/>_Object_                            | The pricing definition associated with the applied pricing.                                                       |
+| `pricingDefinition.id`<br/>_UUID_                           | The UUID of the pricing.                                                                                          |
+| `pricingDefinition.supportedCurrencies`<br/>_Array[string]_ | The list of currencies associated to the pricing.                                                                 |
+| `pricingDefinition.organization.id`<br/>_UUID_              | The UUID of the organization owning of the pricing definition.                                                    |
+| `pricingDefinition.name`<br/>_Object_                       | Mapped object containing the pricing name in different languages.                                                 |
+| `pricingDefinition.description`<br/>_Object_                | Mapped object containing the pricing description in different languages.                                          |
+| `pricingDefinition.effectiveDate`<br/>_date_                | The date to which the pricing will be applicable from.                                                            |
+| `organization`<br/>_Object_                                 | The object representing the organization owning the applied pricing.                                              |
+| `organization.id`<br/>_UUID_                                | The UUID of the organization.                                                                                     |
+| `organization.name`<br/>_string_                            | The name of the organization.                                                                                     |
+| `startDate`<br/>_date_                                      | The start date of the applied pricing.                                                                            |
+| `endDate`<br/>_date_                                        | The end date of the applied pricing. If it is not present, there is no end date defined.                          |
+| `currency`<br/>_string_                                     | The currency associated to the applied pricing.                                                                   |
+| `scopeQualifier`<br/>_string_                               | Scope qualifier of the applied pricing. Possible values are : GLOBAL, ORG_TOPLEVEL, ORG_SUBS, ORG_BASE, ORG_TREE. |
+| `scopeOrganization`<br/>_Object_                            | The organization to which the scope is applied to.                                                                |
+| `scopeOrganization.id`<br/>_UUID_                           | The UUID of the organization.                                                                                     |
+| `scopeOrganization.name`<br/>_string_                       | The name of the organization.                                                                                     |
+| `creationDate`<br/>_Object_                                 | The date the applied pricing was created.                                                                         |
+| `status`<br/>_string_                                       | The status of the applied pricing. Possible values are : ACTIVE, EXPIRED, FUTURE.                                 |
 
 <!-------------------- GET APPLIED PRICING -------------------->
+
 ### Retrieve an applied pricing
 
 `GET /applied_pricings/:id`
@@ -86,19 +85,17 @@ Retrieve an applied pricing's details.
 
 ```shell
 # Retrieve an applied pricing
-curl "https://cloudmc_endpoint/api/v2/applied_pricings/03bc22bd-adc4-46b8-988d-afddc24c0cb5" \
+curl "https://portal.coxedge.com/api/v2/applied_pricings/03bc22bd-adc4-46b8-988d-afddc24c0cb5" \
    -H "MC-Api-Key: your_api_key"
 ```
+
 > The above command returns a JSON structured like this:
 
 ```json
 {
   "data": {
     "pricingDefinition": {
-      "supportedCurrencies": [
-        "CAD",
-        "USD"
-      ],
+      "supportedCurrencies": ["CAD", "USD"],
       "organization": {
         "id": "23910576-d29f-4c14-b663-31d728ff49a5"
       },
@@ -126,30 +123,31 @@ curl "https://cloudmc_endpoint/api/v2/applied_pricings/03bc22bd-adc4-46b8-988d-a
 }
 ```
 
-Attributes | &nbsp;
----- | -----------
-`id`<br/>*UUID* | The UUID of the applied pricing.
-`pricingDefinition`<br/>*Object* | The pricing definition associated with the applied pricing.
-`pricingDefinition.id`<br/>*UUID* | The UUID of the pricing.
-`pricingDefinition.supportedCurrencies`<br/>*Array[string]* | The list of currencies associated to the pricing.
-`pricingDefinition.organization.id`<br/>*UUID* | The UUID of the organization owning of the pricing definition.
-`pricingDefinition.name`<br/>*Object* | Mapped object containing the pricing name in different languages.
-`pricingDefinition.description`<br/>*Object* | Mapped object containing the pricing description in different languages.
-`pricingDefinition.effectiveDate`<br/>*date* | The date to which the pricing will be applicable from.
-`organization`<br/>*Object* | The object representing the organization owning the applied pricing.
-`organization.id`<br/>*UUID* | The UUID of the organization.
-`organization.name`<br/>*string* | The name of the organization.
-`startDate`<br/>*date* | The start date of the applied pricing.
-`endDate`<br/>*date* | The end date of the applied pricing. If it is not present, there is no end date defined.
-`currency`<br/>*string* | The currency associated to the applied pricing.
-`scopeQualifier`<br/>*string* | Scope qualifier of the applied pricing. Possible values are : GLOBAL, ORG_TOPLEVEL, ORG_SUBS, ORG_BASE, ORG_TREE.
-`scopeOrganization`<br/>*Object* | The organization to which the scope is applied to.
-`scopeOrganization.id`<br/>*UUID* | The UUID of the organization.
-`scopeOrganization.name`<br/>*string* | The name of the organization.
-`creationDate`<br/>*Object* | The date the applied pricing was created.
-`status`<br/>*string* | The status of the applied pricing. Possible values are : ACTIVE, EXPIRED, FUTURE.
+| Attributes                                                  | &nbsp;                                                                                                            |
+| ----------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- |
+| `id`<br/>_UUID_                                             | The UUID of the applied pricing.                                                                                  |
+| `pricingDefinition`<br/>_Object_                            | The pricing definition associated with the applied pricing.                                                       |
+| `pricingDefinition.id`<br/>_UUID_                           | The UUID of the pricing.                                                                                          |
+| `pricingDefinition.supportedCurrencies`<br/>_Array[string]_ | The list of currencies associated to the pricing.                                                                 |
+| `pricingDefinition.organization.id`<br/>_UUID_              | The UUID of the organization owning of the pricing definition.                                                    |
+| `pricingDefinition.name`<br/>_Object_                       | Mapped object containing the pricing name in different languages.                                                 |
+| `pricingDefinition.description`<br/>_Object_                | Mapped object containing the pricing description in different languages.                                          |
+| `pricingDefinition.effectiveDate`<br/>_date_                | The date to which the pricing will be applicable from.                                                            |
+| `organization`<br/>_Object_                                 | The object representing the organization owning the applied pricing.                                              |
+| `organization.id`<br/>_UUID_                                | The UUID of the organization.                                                                                     |
+| `organization.name`<br/>_string_                            | The name of the organization.                                                                                     |
+| `startDate`<br/>_date_                                      | The start date of the applied pricing.                                                                            |
+| `endDate`<br/>_date_                                        | The end date of the applied pricing. If it is not present, there is no end date defined.                          |
+| `currency`<br/>_string_                                     | The currency associated to the applied pricing.                                                                   |
+| `scopeQualifier`<br/>_string_                               | Scope qualifier of the applied pricing. Possible values are : GLOBAL, ORG_TOPLEVEL, ORG_SUBS, ORG_BASE, ORG_TREE. |
+| `scopeOrganization`<br/>_Object_                            | The organization to which the scope is applied to.                                                                |
+| `scopeOrganization.id`<br/>_UUID_                           | The UUID of the organization.                                                                                     |
+| `scopeOrganization.name`<br/>_string_                       | The name of the organization.                                                                                     |
+| `creationDate`<br/>_Object_                                 | The date the applied pricing was created.                                                                         |
+| `status`<br/>_string_                                       | The status of the applied pricing. Possible values are : ACTIVE, EXPIRED, FUTURE.                                 |
 
 <!-------------------- CREATE APPLIED PRICING -------------------->
+
 ### Create applied pricing
 
 `POST /applied_pricings`
@@ -158,7 +156,7 @@ Create a new applied pricing.
 
 ```shell
 # Creates a new pricing
-curl -X POST "https://cloudmc_endpoint/api/v2/applied_pricings" \
+curl -X POST "https://portal.coxedge.com/api/v2/applied_pricings" \
    -H "MC-Api-Key: your_api_key"
 ```
 
@@ -178,6 +176,7 @@ curl -X POST "https://cloudmc_endpoint/api/v2/applied_pricings" \
   "endDate": "2021-06-05T23:59:59.999Z"
 }
 ```
+
 > The above command return JSON structured like this:
 
 ```js
@@ -202,21 +201,21 @@ curl -X POST "https://cloudmc_endpoint/api/v2/applied_pricings" \
 }
 ```
 
-Required | &nbsp;
-------- | -----------
-`organization.id` <br/>*UUID* | The UUID of the organization the applied pricing belongs to. 
-`pricingDefinition.id` <br/>*UUID* | the UUID of the pricing that will be used in the applied pricing.
-`scopeQualifier` <br/>*string* | The scope qualifier for the applied pricing. Possible values are : ORG_BASE, ORG_TREE, ORG_SUB, ORG_TOPLEVEL, GLOBAL.
-`currency` <br/>*String* | The currency used for the applied pricing. The value is a ISO 4217 currency code that is part of the pricing selected. 
-`startDate` <br/>*Date* | The start date for the applied pricing.
+| Required                           | &nbsp;                                                                                                                 |
+| ---------------------------------- | ---------------------------------------------------------------------------------------------------------------------- |
+| `organization.id` <br/>_UUID_      | The UUID of the organization the applied pricing belongs to.                                                           |
+| `pricingDefinition.id` <br/>_UUID_ | the UUID of the pricing that will be used in the applied pricing.                                                      |
+| `scopeQualifier` <br/>_string_     | The scope qualifier for the applied pricing. Possible values are : ORG_BASE, ORG_TREE, ORG_SUB, ORG_TOPLEVEL, GLOBAL.  |
+| `currency` <br/>_String_           | The currency used for the applied pricing. The value is a ISO 4217 currency code that is part of the pricing selected. |
+| `startDate` <br/>_Date_            | The start date for the applied pricing.                                                                                |
 
-Optional | &nbsp;
-------- | -----------
-`endDate` <br/>*Date* | The end date for the applied pricing. 
-`scopeOrganization.id` <br/>*UUID* | The UUID of the organization that the scope is targeting. Only required for scopes : ORG_BASE, ORG_TREE, ORG_SUBS.
-
+| Optional                           | &nbsp;                                                                                                             |
+| ---------------------------------- | ------------------------------------------------------------------------------------------------------------------ |
+| `endDate` <br/>_Date_              | The end date for the applied pricing.                                                                              |
+| `scopeOrganization.id` <br/>_UUID_ | The UUID of the organization that the scope is targeting. Only required for scopes : ORG_BASE, ORG_TREE, ORG_SUBS. |
 
 <!-------------------- UPDATE APPLIED PRICING -------------------->
+
 ### Update applied pricing
 
 `PUT /applied_pricings/:id`
@@ -225,7 +224,7 @@ Update an applied pricing. Updates to the pricing, the scope, start date and end
 
 ```shell
 # Update an applied pricing
-curl -X PUT "https://cloudmc_endpoint/api/v2/applied_pricings/8bb5e457-41c3-410b-aced-b9c694ff141a" \
+curl -X PUT "https://portal.coxedge.com/api/v2/applied_pricings/8bb5e457-41c3-410b-aced-b9c694ff141a" \
    -H "MC-Api-Key: your_api_key"
 ```
 
@@ -289,18 +288,18 @@ curl -X PUT "https://cloudmc_endpoint/api/v2/applied_pricings/8bb5e457-41c3-410b
 }
 ```
 
-Required | &nbsp;
-------- | -----------
-`organization.id` <br/>*UUID* | The UUID of the organization the applied pricing belongs to. 
-`pricingDefinition.id` <br/>*UUID* | the UUID of the pricing that will be used in the applied pricing.
-`scopeQualifier` <br/>*string* | The scope qualifier for the applied pricing. Possible values are : ORG_BASE, ORG_TREE, ORG_SUB, ORG_TOPLEVEL, GLOBAL.
-`currency` <br/>*String* | The currency used for the applied pricing. The value is a ISO 4217 currency code that is part of the pricing selected. 
-`startDate` <br/>*Date* | The start date for the applied pricing.
+| Required                           | &nbsp;                                                                                                                 |
+| ---------------------------------- | ---------------------------------------------------------------------------------------------------------------------- |
+| `organization.id` <br/>_UUID_      | The UUID of the organization the applied pricing belongs to.                                                           |
+| `pricingDefinition.id` <br/>_UUID_ | the UUID of the pricing that will be used in the applied pricing.                                                      |
+| `scopeQualifier` <br/>_string_     | The scope qualifier for the applied pricing. Possible values are : ORG_BASE, ORG_TREE, ORG_SUB, ORG_TOPLEVEL, GLOBAL.  |
+| `currency` <br/>_String_           | The currency used for the applied pricing. The value is a ISO 4217 currency code that is part of the pricing selected. |
+| `startDate` <br/>_Date_            | The start date for the applied pricing.                                                                                |
 
-Optional | &nbsp;
-------- | -----------
-`endDate` <br/>*Date* | The end date for the applied pricing. 
-`scopeOrganization.id` <br/>*UUID* | The UUID of the organization that the scope is targeting. Only required for scopes : ORG_BASE, ORG_TREE, ORG_SUBS.
+| Optional                           | &nbsp;                                                                                                             |
+| ---------------------------------- | ------------------------------------------------------------------------------------------------------------------ |
+| `endDate` <br/>_Date_              | The end date for the applied pricing.                                                                              |
+| `scopeOrganization.id` <br/>_UUID_ | The UUID of the organization that the scope is targeting. Only required for scopes : ORG_BASE, ORG_TREE, ORG_SUBS. |
 
 ### Delete applied pricing
 
@@ -309,7 +308,7 @@ Optional | &nbsp;
 Delete an existing applied pricing. Deleting an applied pricing that is ACTIVE or EXPIRED may cause charges to be rolled back.
 
 ```shell
-curl -X DELETE "https://cloudmc_endpoint/api/v2/applied_pricings/d08b9332-d26e-42fe-b272-3071f2d64839" \
+curl -X DELETE "https://portal.coxedge.com/api/v2/applied_pricings/d08b9332-d26e-42fe-b272-3071f2d64839" \
    -H "MC-Api-Key: your_api_key"
 ```
 

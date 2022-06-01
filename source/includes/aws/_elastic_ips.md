@@ -11,7 +11,7 @@ within your account.
 ```shell
 curl -X GET \
    -H "MC-Api-Key: your_api_key" \
-   "https://cloudmc_endpoint/v1/services/aws/test-env/elasticips"
+   "https://portal.coxedge.com/api/v2/services/aws/test-env/elasticips"
 ```
 
 > The above command returns a JSON structured like this:
@@ -45,7 +45,7 @@ curl -X GET \
 Retrieve a list of all elastic ips in a given [environment](#administration-environments).
 
 | Attributes                         | &nbsp;                                                                                                                     |
-|------------------------------------|----------------------------------------------------------------------------------------------------------------------------|
+| ---------------------------------- | -------------------------------------------------------------------------------------------------------------------------- |
 | `id`<br/>_string_                  | The ID of the Elastic IP.                                                                                                  |
 | `name`<br/>_string_                | The name of the Elastic IP.                                                                                                |
 | `associationId`<br/>_string_       | The ID of the association between the Elastic IP and instance.                                                             |
@@ -58,7 +58,6 @@ Retrieve a list of all elastic ips in a given [environment](#administration-envi
 | `publicIp`<br/>_boolean_           | The Elastic IP address.                                                                                                    |
 | `state`<br/>_boolean_              | The attachment state of the Elastic IP. Can be either Associated or Available.                                             |
 
-
 <!-------------------- RETRIEVE AN ELASTIC IP -------------------->
 
 #### Retrieve an Elastic IP
@@ -66,7 +65,7 @@ Retrieve a list of all elastic ips in a given [environment](#administration-envi
 ```shell
 curl -X GET \
    -H "MC-Api-Key: your_api_key" \
-   "https://cloudmc_endpoint/v1/services/aws/test-env/elasticips/elasticip_id"
+   "https://portal.coxedge.com/api/v2/services/aws/test-env/elasticips/elasticip_id"
 ```
 
 > The above command returns a JSON structured like this:
@@ -95,7 +94,7 @@ curl -X GET \
 Retrieve an elastic ip in a given [environment](#administration-environments).
 
 | Attributes                         | &nbsp;                                                                                                                     |
-|------------------------------------|----------------------------------------------------------------------------------------------------------------------------|
+| ---------------------------------- | -------------------------------------------------------------------------------------------------------------------------- |
 | `id`<br/>_string_                  | The ID of the Elastic IP.                                                                                                  |
 | `name`<br/>_string_                | The name of the Elastic IP.                                                                                                |
 | `associationId`<br/>_string_       | The ID of the association between the Elastic IP and instance.                                                             |
@@ -108,15 +107,14 @@ Retrieve an elastic ip in a given [environment](#administration-environments).
 | `publicIp`<br/>_boolean_           | The Elastic IP address.                                                                                                    |
 | `state`<br/>_boolean_              | The attachment state of the Elastic IP. Can be either Associated or Available.                                             |
 
-
 <!-------------------- ALLOCATE AN ELASTIC IP -------------------->
-#### Allocate an Elastic IP
 
+#### Allocate an Elastic IP
 
 ```shell
 curl -X POST \
    -H "MC-Api-Key: your_api_key" \
-   "https://cloudmc_endpoint/v1/services/aws-tesv/test/elasticips?operation=allocate"
+   "https://portal.coxedge.com/api/v2/services/aws-tesv/test/elasticips?operation=allocate"
 ```
 
 > Request body to allocate an Elastic IP:
@@ -128,6 +126,7 @@ curl -X POST \
   "instanceId": "i-00b2dcf0e059a2f1e"
 }
 ```
+
 > The above commands return a JSON structured like this:
 
 ```json
@@ -136,16 +135,16 @@ curl -X POST \
   "taskStatus": "PENDING"
 }
 ```
+
 <code>POST /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/elasticips?operation=allocate</code>
 
 Allocate an Elastic IP to a given environment [environment](#administration-environments).
 
 | Attributes                        | &nbsp;                                                                                                                                                                                      |
-|-----------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| --------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `name`<br/>_string_               | The name of the Elastic IP.                                                                                                                                                                 |
 | `networkBorderGroup`<br/>_string_ | The AWS network border group of the Elastic IP.Could be a region, an availability zone, local zone or wavelength zone.                                                                      |
 | `instanceId`<br/>_string_         | The ID of the instance that the newly allocated Elastic IP will be associated to. This attribute is optional. The instance needs to be in a non-terminating state and possess no public IP. |
-
 
 <!-------------------- ASSOCIATE AN ELASTIC IP -------------------->
 
@@ -154,7 +153,7 @@ Allocate an Elastic IP to a given environment [environment](#administration-envi
 ```shell
 curl -X POST \
    -H "MC-Api-Key: your_api_key" \
-   "https://cloudmc_endpoint/v1/services/aws-tesv/test/elasticips/eipalloc-0b1822bb64a812884?operation=associate"
+   "https://portal.coxedge.com/api/v2/services/aws-tesv/test/elasticips/eipalloc-0b1822bb64a812884?operation=associate"
 ```
 
 > Request body to associate an Elastic IP:
@@ -180,7 +179,7 @@ curl -X POST \
 Associate an Elastic IP to an Instance in a given [environment](#administration-environments).
 
 | Attributes                | &nbsp;                                                 |
-|---------------------------|--------------------------------------------------------|
+| ------------------------- | ------------------------------------------------------ |
 | `instanceId`<br/>_string_ | The ID of the Instance to associate the Elastic IP to. |
 
 Note: A Virtual Private Cloud has to be configured on the Instance, else this operation will return an error.
@@ -192,7 +191,7 @@ Note: A Virtual Private Cloud has to be configured on the Instance, else this op
 ```shell
 curl -X POST \
    -H "MC-Api-Key: your_api_key" \
-   "https://cloudmc_endpoint/v1/services/aws/aws-tesv/elasticips/eipalloc-0576a190ce3b575e3?operation=disassociate"
+   "https://portal.coxedge.com/api/v2/services/aws/aws-tesv/elasticips/eipalloc-0576a190ce3b575e3?operation=disassociate"
 ```
 
 > The above commands return a JSON structured like this:
@@ -216,7 +215,7 @@ Disassociate an elastic IP from an Instance in a given [environment](#administra
 ```shell
 curl -X POST \
    -H "MC-Api-Key: your_api_key" \
-   "https://cloudmc_endpoint/v1/services/aws/aws-tesv/elasticips/eipalloc-0576a190ce3b575e3?operation=release"
+   "https://portal.coxedge.com/api/v2/services/aws/aws-tesv/elasticips/eipalloc-0576a190ce3b575e3?operation=release"
 ```
 
 > The above commands return a JSON structured like this:

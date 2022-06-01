@@ -9,7 +9,7 @@ A range of allowed IPv4 addresses in a subnet.
 ```shell
 curl -X GET \
    -H "MC-Api-Key: your_api_key" \
-   "https://cloudmc_endpoint/v1/services/aws/test-env/cidrreservations?subnetId=:subnet_id"
+   "https://portal.coxedge.com/api/v2/services/aws/test-env/cidrreservations?subnetId=:subnet_id"
 ```
 
 > The above command returns a JSON structured like this:
@@ -38,8 +38,8 @@ curl -X GET \
 
 Retrieve a list of all CIDR reservations associated to the Subnet.
 
-| Attributes                 | &nbsp;                                                                                                                      |
-| -------------------------- | --------------------------------------------------------------------------------------------------------------------------- |
-| `id`<br/>_string_          | The CIDR Reservation ID                                                                                                              |
-| `cidrBlock`<br/>_string_       | The associated CIDR block |
-| `addressType`<br/>_string_ | The address reservation type (prefix, explicit)                                                                   |
+| Attributes                 | &nbsp;                                          |
+| -------------------------- | ----------------------------------------------- |
+| `id`<br/>_string_          | The CIDR Reservation ID                         |
+| `cidrBlock`<br/>_string_   | The associated CIDR block                       |
+| `addressType`<br/>_string_ | The address reservation type (prefix, explicit) |

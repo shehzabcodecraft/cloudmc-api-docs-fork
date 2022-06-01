@@ -1,13 +1,16 @@
 ### Fixes [MC-](https://cloud-ops.atlassian.net/browse/MC-)
 
 #### Changes made
+
 <!-- Changes should match the template provided below -->
+
 - ...
 
 #### Related PRs
+
 - []()
 
-<!-- 
+<!--
 CLOUDMC-API-DOCS TEMPLATE
 - all sentences should have periods
 - requests and responses should use an example like 'my-env' instead of ':environment'
@@ -19,7 +22,7 @@ CLOUDMC-API-DOCS TEMPLATE
 curl -X POST \
    -H "MC-Api-Key: your_api_key" \
    -d "request_body" \
-   "https://cloudmc_endpoint/api/v1/services/k8s/my-env/releases/my-release/aerospike?operation=upgrade"
+   "https://portal.coxedge.com/api/v2/services/k8s/my-env/releases/my-release/aerospike?operation=upgrade"
 ```
 > Request body example(s):
 
@@ -28,7 +31,7 @@ curl -X POST \
 // Change to the latest version of a chart
 {
   "upgradeChart":  "stable/aerospike",
-  "upgradeChart":  1 
+  "upgradeChart":  1
 }
 
 // Change to a specific version of a chart
@@ -51,7 +54,7 @@ Upgrade a release in a given [environment](#administration-environments).
 
 Required | &nbsp;
 ------- | -----------
-`upgradeChart` <br/>*string* | The id of the chart to upgrade (repo/name) or the url to the version of the chart to use.  
+`upgradeChart` <br/>*string* | The id of the chart to upgrade (repo/name) or the url to the version of the chart to use.
 
 Optional | &nbsp;
 ------- | -----------

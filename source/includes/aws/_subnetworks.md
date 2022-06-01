@@ -9,7 +9,7 @@ Subnets are a range of IP addresses within your VPC. You can use a public subnet
 ```shell
 curl -X GET \
    -H "MC-Api-Key: your_api_key" \
-   "https://cloudmc_endpoint/v1/services/aws/test-env/subnetworks"
+   "https://portal.coxedge.com/api/v2/services/aws/test-env/subnetworks"
 ```
 
 > The above command returns a JSON structured like this:
@@ -72,7 +72,7 @@ Retrieve a list of all subnets in a given [environment](#administration-environm
 ```shell
 curl -X GET \
    -H "MC-Api-Key: your_api_key" \
-   "https://cloudmc_endpoint/v1/services/aws/test-env/subnetwork/subnet_id"
+   "https://portal.coxedge.com/api/v2/services/aws/test-env/subnetwork/subnet_id"
 ```
 
 > The above command returns a JSON structured like this:
@@ -130,7 +130,7 @@ Retrieve a subnetwork in a given [environment](#administration-environments).
 ```shell
 curl -X POST \
    -H "MC-Api-Key: your_api_key" \
-   "https://cloudmc_endpoint/v1/services/aws/test-env/subnetworks"
+   "https://portal.coxedge.com/api/v2/services/aws/test-env/subnetworks"
 ```
 
 > Request body example for named subnets:
@@ -166,11 +166,11 @@ curl -X POST \
 
 Create a subnetwork in a given [environment](#administration-environments).
 
-| Attributes                     | &nbsp;                                              |
-| ------------------------------ | --------------------------------------------------- |
-| `vpcId`<br/>_string_           | The ID of the VPC.                                  |
-| `subnetsToCreate`<br/>*Array*  | List of subnets to be created for a VPC             |
-| `cidrBlock`<br/>_string_       | IPv4 network range for the subnet in CIDR notation. |
+| Attributes                    | &nbsp;                                              |
+| ----------------------------- | --------------------------------------------------- |
+| `vpcId`<br/>_string_          | The ID of the VPC.                                  |
+| `subnetsToCreate`<br/>_Array_ | List of subnets to be created for a VPC             |
+| `cidrBlock`<br/>_string_      | IPv4 network range for the subnet in CIDR notation. |
 
 | Optional                        | &nbsp;                                                                       |
 | ------------------------------- | ---------------------------------------------------------------------------- |
@@ -184,7 +184,7 @@ Create a subnetwork in a given [environment](#administration-environments).
 ```shell
 curl -X DELETE \
    -H "MC-Api-Key: your_api_key" \
-   "https://cloudmc_endpoint/v1/services/aws/test-env/subnetworks/subnet-07baec16047092451"
+   "https://portal.coxedge.com/api/v2/services/aws/test-env/subnetworks/subnet-07baec16047092451"
 ```
 
 > The above commands return a JSON structured like this:

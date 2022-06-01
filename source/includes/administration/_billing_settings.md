@@ -10,7 +10,7 @@ Retrieve the billing settings associated to an organization. If the `organizatio
 
 ```shell
 # Retrieve the billing settings
-curl "https://cloudmc_endpoint/api/rest/reseller/settings/billing/find?organizationId=10572c3d-16e5-450f-8af8-a01e50dc52d4" \
+curl "https://portal.coxedge.com/api/v2/reseller/settings/billing/find?organizationId=10572c3d-16e5-450f-8af8-a01e50dc52d4" \
    -H "MC-Api-Key: your_api_key"
 ```
 
@@ -31,36 +31,36 @@ curl "https://cloudmc_endpoint/api/rest/reseller/settings/billing/find?organizat
     "daysBeforeCardWarnings": [30],
     "customerInformation": ["accountId"],
     "address": ["Address line 1", "Address line 2", "etc."],
-    "termsAndConditions": "My terms and conditions...",
+    "termsAndConditions": "My terms and conditions..."
   }
 }
 ```
 
 Retrieve the billing settings associated to an organization.
 
-Attributes | &nbsp;
----------- | -----------
-`id`<br/>*UUID* | The configured billing settings' id.
-`organization.id`<br/>*UUID* | The organization id that the billing settings are linked to. It cannot be changed.
-`version`<br/>*integer* | The billing settings version.
-`daysBeforeAutoDraft`<br/>*integer* | The number of days after the billing date to continue gathering missing customer usage before the invoice is drafted. Cannot be less than 2 days.
-`daysBeforeAutoApproval`<br/>*integer* | The number of days to review a draft invoice before it is automatically issued to the customer.
-`daysBeforeAutoPayment`<br/>*integer* | The number of days after the invoice has been issued before the customer's credit card is automatically charged.
-`bccEmails`<br/>*Array[string]* | List of email addresses to include as BCC when sending emails to customers upon billing exceptions.
-`daysBeforeCardWarnings`<br/>*Array[integer]* | Specify the number of days before notifying a customer of an expiring credit card. You can specify 1 to 5 values between 1 and 60.
-`customerInformation`<br/>*Array[string]* | The list of client custom fields to display in the invoice.
-`address`<br/>*Array[string]* | The address to display in the invoice. Each address field will be a row in the address block.
-`termsAndConditions`<br/>*string* | The terms and conditions to display in the invoice.
-
+| Attributes                                    | &nbsp;                                                                                                                                            |
+| --------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `id`<br/>_UUID_                               | The configured billing settings' id.                                                                                                              |
+| `organization.id`<br/>_UUID_                  | The organization id that the billing settings are linked to. It cannot be changed.                                                                |
+| `version`<br/>_integer_                       | The billing settings version.                                                                                                                     |
+| `daysBeforeAutoDraft`<br/>_integer_           | The number of days after the billing date to continue gathering missing customer usage before the invoice is drafted. Cannot be less than 2 days. |
+| `daysBeforeAutoApproval`<br/>_integer_        | The number of days to review a draft invoice before it is automatically issued to the customer.                                                   |
+| `daysBeforeAutoPayment`<br/>_integer_         | The number of days after the invoice has been issued before the customer's credit card is automatically charged.                                  |
+| `bccEmails`<br/>_Array[string]_               | List of email addresses to include as BCC when sending emails to customers upon billing exceptions.                                               |
+| `daysBeforeCardWarnings`<br/>_Array[integer]_ | Specify the number of days before notifying a customer of an expiring credit card. You can specify 1 to 5 values between 1 and 60.                |
+| `customerInformation`<br/>_Array[string]_     | The list of client custom fields to display in the invoice.                                                                                       |
+| `address`<br/>_Array[string]_                 | The address to display in the invoice. Each address field will be a row in the address block.                                                     |
+| `termsAndConditions`<br/>_string_             | The terms and conditions to display in the invoice.                                                                                               |
 
 <!-------------------- GET BILLING SETTINGS -------------------->
+
 #### Retrieve billing settings
 
 `GET /reseller/settings/billing/:id`
 
 ```shell
 # Retrieve billing settings
-curl "https://cloudmc_endpoint/api/rest/reseller/settings/billing/f7ad28a8-1227-44de-9785-6dbd556f3bda" \
+curl "https://portal.coxedge.com/api/v2/reseller/settings/billing/f7ad28a8-1227-44de-9785-6dbd556f3bda" \
    -H "MC-Api-Key: your_api_key"
 ```
 
@@ -88,21 +88,22 @@ curl "https://cloudmc_endpoint/api/rest/reseller/settings/billing/f7ad28a8-1227-
 
 Retrieve the billing settings associated to the billing settings id.
 
-Attributes | &nbsp;
----------- | -----------
-`id`<br/>*UUID* | The configured billing settings' id.
-`organization.id`<br/>*UUID* | The organization id that the billing settings are linked to. It cannot be changed.
-`version`<br/>*integer* | The billing settings version.
-`daysBeforeAutoDraft`<br/>*integer* | The number of days after the billing date to continue gathering missing customer usage before the invoice is drafted. Cannot be less than 2 days.
-`daysBeforeAutoApproval`<br/>*integer* | The number of days to review a draft invoice before it is automatically issued to the customer.
-`daysBeforeAutoPayment`<br/>*integer* | The number of days after the invoice has been issued before the customer's credit card is automatically charged.
-`bccEmails`<br/>*Array[string]* | List of email addresses to include as BCC when sending emails to customers upon billing exceptions.
-`daysBeforeCardWarnings`<br/>*Array[integer]* | Specify the number of days before notifying a customer of an expiring credit card. You can specify 1 to 5 values between 1 and 60.
-`customerInformation`<br/>*Array[string]* | The list of client custom fields to display in the invoice.
-`address`<br/>*Array[string]* | The address to display in the invoice. Each address field will be a row in the address block.
-`termsAndConditions`<br/>*string* | The terms and conditions to display in the invoice.
+| Attributes                                    | &nbsp;                                                                                                                                            |
+| --------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `id`<br/>_UUID_                               | The configured billing settings' id.                                                                                                              |
+| `organization.id`<br/>_UUID_                  | The organization id that the billing settings are linked to. It cannot be changed.                                                                |
+| `version`<br/>_integer_                       | The billing settings version.                                                                                                                     |
+| `daysBeforeAutoDraft`<br/>_integer_           | The number of days after the billing date to continue gathering missing customer usage before the invoice is drafted. Cannot be less than 2 days. |
+| `daysBeforeAutoApproval`<br/>_integer_        | The number of days to review a draft invoice before it is automatically issued to the customer.                                                   |
+| `daysBeforeAutoPayment`<br/>_integer_         | The number of days after the invoice has been issued before the customer's credit card is automatically charged.                                  |
+| `bccEmails`<br/>_Array[string]_               | List of email addresses to include as BCC when sending emails to customers upon billing exceptions.                                               |
+| `daysBeforeCardWarnings`<br/>_Array[integer]_ | Specify the number of days before notifying a customer of an expiring credit card. You can specify 1 to 5 values between 1 and 60.                |
+| `customerInformation`<br/>_Array[string]_     | The list of client custom fields to display in the invoice.                                                                                       |
+| `address`<br/>_Array[string]_                 | The address to display in the invoice. Each address field will be a row in the address block.                                                     |
+| `termsAndConditions`<br/>_string_             | The terms and conditions to display in the invoice.                                                                                               |
 
 <!-------------------- CREATE BILLING SETTINGS -------------------->
+
 #### Create billing settings
 
 `POST /reseller/settings/billing`
@@ -111,7 +112,7 @@ Create new billing settings.
 
 ```shell
 # Creates a new billing settings
-curl -X POST "https://cloudmc_endpoint/api/rest/reseller/settings/billing" \
+curl -X POST "https://portal.coxedge.com/api/v2/reseller/settings/billing" \
    -H "MC-Api-Key: your_api_key"
 ```
 
@@ -155,22 +156,23 @@ curl -X POST "https://cloudmc_endpoint/api/rest/reseller/settings/billing" \
 }
 ```
 
-Required | &nbsp;
----------- | -----------
-`daysBeforeAutoDraft`<br/>*integer* | The number of days after the billing date to continue gathering missing customer usage before the invoice is drafted. Cannot be less than 2 days.
-`daysBeforeAutoApproval`<br/>*integer* | The number of days to review a draft invoice before it is automatically issued to the customer.
-`daysBeforeAutoPayment`<br/>*integer* | The number of days after the invoice has been issued before the customer's credit card is automatically charged.
-`daysBeforeCardWarnings`<br/>*Array[integer]* | Specify the number of days before notifying a customer of an expiring credit card. You can specify 1 to 5 values between 1 and 60.
+| Required                                      | &nbsp;                                                                                                                                            |
+| --------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `daysBeforeAutoDraft`<br/>_integer_           | The number of days after the billing date to continue gathering missing customer usage before the invoice is drafted. Cannot be less than 2 days. |
+| `daysBeforeAutoApproval`<br/>_integer_        | The number of days to review a draft invoice before it is automatically issued to the customer.                                                   |
+| `daysBeforeAutoPayment`<br/>_integer_         | The number of days after the invoice has been issued before the customer's credit card is automatically charged.                                  |
+| `daysBeforeCardWarnings`<br/>_Array[integer]_ | Specify the number of days before notifying a customer of an expiring credit card. You can specify 1 to 5 values between 1 and 60.                |
 
-Optional | &nbsp;
----------- | -----------
-`organization.id`<br/>*UUID* | The organization id that the billing settings are linked to. If the `organizationId` is omitted, the authenticated user's organization will be used.
-`customerInformation`<br/>*Array[string]* | The list of client custom fields to display in the invoice.
-`address`<br/>*Array[string]* | The address to display in the invoice. Each address field will be a row in the address block.
-`termsAndConditions`<br/>*string* | The terms and conditions to display in the invoice.
-`bccEmails`<br/>*Array[string]* | List of email addresses to include as BCC when sending emails to customers upon billing exceptions.
+| Optional                                  | &nbsp;                                                                                                                                               |
+| ----------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `organization.id`<br/>_UUID_              | The organization id that the billing settings are linked to. If the `organizationId` is omitted, the authenticated user's organization will be used. |
+| `customerInformation`<br/>_Array[string]_ | The list of client custom fields to display in the invoice.                                                                                          |
+| `address`<br/>_Array[string]_             | The address to display in the invoice. Each address field will be a row in the address block.                                                        |
+| `termsAndConditions`<br/>_string_         | The terms and conditions to display in the invoice.                                                                                                  |
+| `bccEmails`<br/>_Array[string]_           | List of email addresses to include as BCC when sending emails to customers upon billing exceptions.                                                  |
 
 <!-------------------- UPDATE BILLING SETTINGS -------------------->
+
 #### Update billing settings
 
 `PUT /reseller/settings/billing/:id`
@@ -179,7 +181,7 @@ Updates the billing settings of an organization.
 
 ```shell
 # Updates an existing billing settings for an organization
-curl -X PUT "https://cloudmc_endpoint/api/rest/reseller/settings/billing/d785ffcb-9b03-478d-a49b-52a2ccedf1b8 \
+curl -X PUT "https://portal.coxedge.com/api/v2/reseller/settings/billing/d785ffcb-9b03-478d-a49b-52a2ccedf1b8 \
    -H "MC-Api-Key: your_api_key"
    -H "Content-Type: application/json" \
    -d "request-body"
@@ -194,7 +196,7 @@ curl -X PUT "https://cloudmc_endpoint/api/rest/reseller/settings/billing/d785ffc
   },
   "id": "d785ffcb-9b03-478d-a49b-52a2ccedf1b8",
   "version": 1,
-   "daysBeforeAutoDraft": 3,
+  "daysBeforeAutoDraft": 3,
   "daysBeforeAutoApproval": 3,
   "daysBeforeAutoPayment": 5,
   "bccEmails": ["finance.support@company.com", "monitoring@company.com"],
@@ -227,23 +229,24 @@ curl -X PUT "https://cloudmc_endpoint/api/rest/reseller/settings/billing/d785ffc
 }
 ```
 
-Required | &nbsp;
----------- | -----------
-`id`<br/>*UUID* | The configured billing settings' id.
-`organization.id`<br/>*UUID* | The organization id that the billing settings are linked to. It cannot be changed.
-`daysBeforeAutoDraft`<br/>*integer* | The number of days after the billing date to continue gathering missing customer usage before the invoice is drafted. Cannot be less than 2 days.
-`daysBeforeAutoApproval`<br/>*integer* | The number of days to review a draft invoice before it is automatically issued to the customer.
-`daysBeforeAutoPayment`<br/>*integer* | The number of days after the invoice has been issued before the customer's credit card is automatically charged.
-`daysBeforeCardWarnings`<br/>*Array[integer]* | Specify the number of days before notifying a customer of an expiring credit card. You can specify 1 to 5 values between 1 and 60.
+| Required                                      | &nbsp;                                                                                                                                            |
+| --------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `id`<br/>_UUID_                               | The configured billing settings' id.                                                                                                              |
+| `organization.id`<br/>_UUID_                  | The organization id that the billing settings are linked to. It cannot be changed.                                                                |
+| `daysBeforeAutoDraft`<br/>_integer_           | The number of days after the billing date to continue gathering missing customer usage before the invoice is drafted. Cannot be less than 2 days. |
+| `daysBeforeAutoApproval`<br/>_integer_        | The number of days to review a draft invoice before it is automatically issued to the customer.                                                   |
+| `daysBeforeAutoPayment`<br/>_integer_         | The number of days after the invoice has been issued before the customer's credit card is automatically charged.                                  |
+| `daysBeforeCardWarnings`<br/>_Array[integer]_ | Specify the number of days before notifying a customer of an expiring credit card. You can specify 1 to 5 values between 1 and 60.                |
 
-Optional | &nbsp;
----------- | -----------
-`customerInformation`<br/>*Array[string]* | The list of client custom fields to display in the invoice.
-`address`<br/>*Array[string]* | The address to display in the invoice. Each address field will be a row in the address block.
-`termsAndConditions`<br/>*string* | The terms and conditions to display in the invoice.
-`bccEmails`<br/>*Array[string]* | List of email addresses to include as BCC when sending emails to customers upon billing exceptions.
+| Optional                                  | &nbsp;                                                                                              |
+| ----------------------------------------- | --------------------------------------------------------------------------------------------------- |
+| `customerInformation`<br/>_Array[string]_ | The list of client custom fields to display in the invoice.                                         |
+| `address`<br/>_Array[string]_             | The address to display in the invoice. Each address field will be a row in the address block.       |
+| `termsAndConditions`<br/>_string_         | The terms and conditions to display in the invoice.                                                 |
+| `bccEmails`<br/>_Array[string]_           | List of email addresses to include as BCC when sending emails to customers upon billing exceptions. |
 
 <!-------------------- DELETE BILLING SETTINGS -------------------->
+
 #### Delete billing settings
 
 `DELETE /reseller/settings/billing/:id`
@@ -251,7 +254,7 @@ Optional | &nbsp;
 Delete an existing billing settings.
 
 ```shell
-curl -X DELETE "https://cloudmc_endpoint/api/rest/reseller/settings/billing/d785ffcb-9b03-478d-a49b-52a2ccedf1b8" \
+curl -X DELETE "https://portal.coxedge.com/api/v2/reseller/settings/billing/d785ffcb-9b03-478d-a49b-52a2ccedf1b8" \
    -H "MC-Api-Key: your_api_key"
 ```
 

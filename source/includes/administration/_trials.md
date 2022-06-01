@@ -1,7 +1,9 @@
 ## Trials
+
 Manage trials and trials settings.
 
 ### Trials Settings
+
 Manage trials settings.
 
 <!-------------------- LIST TRIALS SETTINGS -------------------->
@@ -12,9 +14,10 @@ Manage trials settings.
 
 ```shell
 # Retrieve trials settings
-curl "https://cloudmc_endpoint/api/v2/trials_settings" \
+curl "https://portal.coxedge.com/api/v2/trials_settings" \
    -H "MC-Api-Key: your_api_key"
 ```
+
 > The above command returns JSON structured like this:
 
 ```json
@@ -23,7 +26,7 @@ curl "https://cloudmc_endpoint/api/v2/trials_settings" \
     {
       "id": "b41f2aa3-e2d1-48d8-9760-8b874c20e8ae",
       "organization": {
-        "id": "23910576-d29f-4c14-b663-31d728ff49a5",     
+        "id": "23910576-d29f-4c14-b663-31d728ff49a5"
       },
       "duration": 14,
       "extensionDays": 7,
@@ -48,31 +51,30 @@ curl "https://cloudmc_endpoint/api/v2/trials_settings" \
   ]
 }
 ```
+
 List the trials settings configured on the system.
 
-Query Params | &nbsp;
----- | -----------
-`organization_id`<br/>*UUID* | Return only settings for the provided organization id. If not provided, will default to the user organization.
+| Query Params                 | &nbsp;                                                                                                         |
+| ---------------------------- | -------------------------------------------------------------------------------------------------------------- |
+| `organization_id`<br/>_UUID_ | Return only settings for the provided organization id. If not provided, will default to the user organization. |
 
-Attributes | &nbsp;
----------- | -----------
-`id`<br/>*UUID* | The id of the trial settings.
-`organization.id`<br/>*UUID* | The organization id that the trial settings is linked to.
-`duration`<br/>*integer* | The number of days a trial account will remain active.
-`extensionDays`<br/>*integer* | The number of days that a trial administrator adds when extending an active trial.
-`maxConcurrentTrials`<br/>*integer* | The number of organizations that can concurrently have an active trial account. A value of zero indicates that there is no upper limit.
-`cleanupDelayDays`<br/>*integer* | The number of days after the trial expiration before the system will delete the trial's resources.
-`expirationReminderDays`<br/>*integer* | The number of days before the trial's end that the trial administrator will receive an email notification that the trial is about to expire.
-`allowMultipleTrialSameEmail`<br/>*boolean* | If more than one trial account can be created using the same email address.
-`enableRecaptcha`<br/>*boolean* | If the reCAPTCHA verification on the sign up form is displayed. The reCAPTCHA site key and secret key must be present.
-`recaptchaSitekey`<br/>*string* | The site key obtained from the reCAPTCHA admin console (Google).
-`recaptchaSecretkey`<br/>*string* | The secret key obtained from the reCAPTCHA admin console (Google).
-`contactUsEmail`<br/>*string* | The email address that trial user can contact for more info/support.
-`contactUsPhone`<br/>*string* | The phone number that trial user can contact for more info/support.
-`registrationHTML`<br/>*Object* | Mapped object containing the registration information HTML in different languages.
-`termsAndConditionsHTML`<br/>*Object* | Mapped object containing the terms and conditions HTML name in different languages.
-
-
+| Attributes                                  | &nbsp;                                                                                                                                       |
+| ------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------- |
+| `id`<br/>_UUID_                             | The id of the trial settings.                                                                                                                |
+| `organization.id`<br/>_UUID_                | The organization id that the trial settings is linked to.                                                                                    |
+| `duration`<br/>_integer_                    | The number of days a trial account will remain active.                                                                                       |
+| `extensionDays`<br/>_integer_               | The number of days that a trial administrator adds when extending an active trial.                                                           |
+| `maxConcurrentTrials`<br/>_integer_         | The number of organizations that can concurrently have an active trial account. A value of zero indicates that there is no upper limit.      |
+| `cleanupDelayDays`<br/>_integer_            | The number of days after the trial expiration before the system will delete the trial's resources.                                           |
+| `expirationReminderDays`<br/>_integer_      | The number of days before the trial's end that the trial administrator will receive an email notification that the trial is about to expire. |
+| `allowMultipleTrialSameEmail`<br/>_boolean_ | If more than one trial account can be created using the same email address.                                                                  |
+| `enableRecaptcha`<br/>_boolean_             | If the reCAPTCHA verification on the sign up form is displayed. The reCAPTCHA site key and secret key must be present.                       |
+| `recaptchaSitekey`<br/>_string_             | The site key obtained from the reCAPTCHA admin console (Google).                                                                             |
+| `recaptchaSecretkey`<br/>_string_           | The secret key obtained from the reCAPTCHA admin console (Google).                                                                           |
+| `contactUsEmail`<br/>_string_               | The email address that trial user can contact for more info/support.                                                                         |
+| `contactUsPhone`<br/>_string_               | The phone number that trial user can contact for more info/support.                                                                          |
+| `registrationHTML`<br/>_Object_             | Mapped object containing the registration information HTML in different languages.                                                           |
+| `termsAndConditionsHTML`<br/>_Object_       | Mapped object containing the terms and conditions HTML name in different languages.                                                          |
 
 <!-------------------- GET TRIAL SETTINGS -------------------->
 
@@ -82,9 +84,10 @@ Attributes | &nbsp;
 
 ```shell
 # Retrieve trial settings
-curl "https://cloudmc_endpoint/api/v2/trials_settings/b41f2aa3-e2d1-48d8-9760-8b874c20e8ae" \
+curl "https://portal.coxedge.com/api/v2/trials_settings/b41f2aa3-e2d1-48d8-9760-8b874c20e8ae" \
    -H "MC-Api-Key: your_api_key"
 ```
+
 > The above command returns JSON structured like this:
 
 ```json
@@ -92,7 +95,7 @@ curl "https://cloudmc_endpoint/api/v2/trials_settings/b41f2aa3-e2d1-48d8-9760-8b
   "data": {
     "id": "b41f2aa3-e2d1-48d8-9760-8b874c20e8ae",
     "organization": {
-      "id": "23910576-d29f-4c14-b663-31d728ff49a5",     
+      "id": "23910576-d29f-4c14-b663-31d728ff49a5"
     },
     "duration": 14,
     "extensionDays": 7,
@@ -116,26 +119,26 @@ curl "https://cloudmc_endpoint/api/v2/trials_settings/b41f2aa3-e2d1-48d8-9760-8b
   }
 }
 ```
+
 Retrieve the trial settings configured associated to the id on the system.
 
-Attributes | &nbsp;
----------- | -----------
-`id`<br/>*UUID* | The id of the trial settings.
-`organization.id`<br/>*UUID* | The organization id that the trial settings is linked to.
-`duration`<br/>*integer* | The number of days a trial account will remain active.
-`extensionDays`<br/>*integer* | The number of days that a trial administrator adds when extending an active trial.
-`maxConcurrentTrials`<br/>*integer* | The number of organizations that can concurrently have an active trial account. A value of zero indicates that there is no upper limit.
-`cleanupDelayDays`<br/>*integer* | The number of days after the trial expiration before the system will delete the trial's resources.
-`expirationReminderDays`<br/>*integer* | The number of days before the trial's end that the trial administrator will receive an email notification that the trial is about to expire.
-`allowMultipleTrialSameEmail`<br/>*boolean* | If more than one trial account can be created using the same email address.
-`enableRecaptcha`<br/>*boolean* | If the reCAPTCHA verification on the sign up form is displayed. The reCAPTCHA site key and secret key must be present.
-`recaptchaSitekey`<br/>*string* | The site key obtained from the reCAPTCHA admin console (Google).
-`recaptchaSecretkey`<br/>*string* | The secret key obtained from the reCAPTCHA admin console (Google).
-`contactUsEmail`<br/>*string* | The email address that trial user can contact for more info/support.
-`contactUsPhone`<br/>*string* | The phone number that trial user can contact for more info/support.
-`registrationHTML`<br/>*Object* | Mapped object containing the registration information HTML in different languages.
-`termsAndConditionsHTML`<br/>*Object* | Mapped object containing the terms and conditions HTML name in different languages.
-
+| Attributes                                  | &nbsp;                                                                                                                                       |
+| ------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------- |
+| `id`<br/>_UUID_                             | The id of the trial settings.                                                                                                                |
+| `organization.id`<br/>_UUID_                | The organization id that the trial settings is linked to.                                                                                    |
+| `duration`<br/>_integer_                    | The number of days a trial account will remain active.                                                                                       |
+| `extensionDays`<br/>_integer_               | The number of days that a trial administrator adds when extending an active trial.                                                           |
+| `maxConcurrentTrials`<br/>_integer_         | The number of organizations that can concurrently have an active trial account. A value of zero indicates that there is no upper limit.      |
+| `cleanupDelayDays`<br/>_integer_            | The number of days after the trial expiration before the system will delete the trial's resources.                                           |
+| `expirationReminderDays`<br/>_integer_      | The number of days before the trial's end that the trial administrator will receive an email notification that the trial is about to expire. |
+| `allowMultipleTrialSameEmail`<br/>_boolean_ | If more than one trial account can be created using the same email address.                                                                  |
+| `enableRecaptcha`<br/>_boolean_             | If the reCAPTCHA verification on the sign up form is displayed. The reCAPTCHA site key and secret key must be present.                       |
+| `recaptchaSitekey`<br/>_string_             | The site key obtained from the reCAPTCHA admin console (Google).                                                                             |
+| `recaptchaSecretkey`<br/>_string_           | The secret key obtained from the reCAPTCHA admin console (Google).                                                                           |
+| `contactUsEmail`<br/>_string_               | The email address that trial user can contact for more info/support.                                                                         |
+| `contactUsPhone`<br/>_string_               | The phone number that trial user can contact for more info/support.                                                                          |
+| `registrationHTML`<br/>_Object_             | Mapped object containing the registration information HTML in different languages.                                                           |
+| `termsAndConditionsHTML`<br/>_Object_       | Mapped object containing the terms and conditions HTML name in different languages.                                                          |
 
 <!-------------------- UPDATE TRIALS SETTINGS -------------------->
 
@@ -145,7 +148,7 @@ Attributes | &nbsp;
 
 ```shell
 # Updates an existing trial's settings
-curl -X PUT "https://cloudmc_endpoint/api/v2/trials_settings/:id" \
+curl -X PUT "https://portal.coxedge.com/api/v2/trials_settings/:id" \
    -H "MC-Api-Key: your_api_key"
 ```
 
@@ -155,7 +158,7 @@ curl -X PUT "https://cloudmc_endpoint/api/v2/trials_settings/:id" \
 {
   "id": "b41f2aa3-e2d1-48d8-9760-8b874c20e8ae",
   "organization": {
-    "id": "23910576-d29f-4c14-b663-31d728ff49a5",     
+    "id": "23910576-d29f-4c14-b663-31d728ff49a5"
   },
   "organizationId": "23910576-d29f-4c14-b663-31d728ff49a5",
   "duration": 14,
@@ -179,6 +182,7 @@ curl -X PUT "https://cloudmc_endpoint/api/v2/trials_settings/:id" \
   }
 }
 ```
+
 > The above command return JSON structured like this:
 
 ```json
@@ -186,7 +190,7 @@ curl -X PUT "https://cloudmc_endpoint/api/v2/trials_settings/:id" \
   "data": {
     "id": "b41f2aa3-e2d1-48d8-9760-8b874c20e8ae",
     "organization": {
-      "id": "23910576-d29f-4c14-b663-31d728ff49a5",     
+      "id": "23910576-d29f-4c14-b663-31d728ff49a5"
     },
     "duration": 14,
     "extensionDays": 7,
@@ -213,28 +217,29 @@ curl -X PUT "https://cloudmc_endpoint/api/v2/trials_settings/:id" \
 
 Updates a specific trial's settings.
 
-Required | &nbsp;
----------- | -----------
-`id`<br/>*UUID* | The id of the trial settings.
-`organization.id`<br/>*UUID* | The organization id that the trial settings is linked to. It cannot be changed.
-`duration`<br/>*integer* | The number of days a trial account will remain active.
-`extensionDays`<br/>*integer* | The number of days that a trial administrator adds when extending an active trial.
-`maxConcurrentTrials`<br/>*integer* | The number of organizations that can concurrently have an active trial account. A value of zero indicates that there is no upper limit.
-`cleanupDelayDays`<br/>*integer* | The number of days after the trial expiration before the system will delete the trial's resources.
-`expirationReminderDays`<br/>*integer* | The number of days before the trial's end that the trial administrator will receive an email notification that the trial is about to expire.
-`allowMultipleTrialSameEmail`<br/>*boolean* | If more than one trial account can be created using the same email address. 
-`contactUsEmail`<br/>*string* | The email address that trial user can contact for more info/support.
-`registrationHTML`<br/>*Object* | Mapped object containing the registration information HTML in different languages.
-`termsAndConditionsHTML`<br/>*Object* | Mapped object containing the terms and conditions HTML name in different languages.
+| Required                                    | &nbsp;                                                                                                                                       |
+| ------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------- |
+| `id`<br/>_UUID_                             | The id of the trial settings.                                                                                                                |
+| `organization.id`<br/>_UUID_                | The organization id that the trial settings is linked to. It cannot be changed.                                                              |
+| `duration`<br/>_integer_                    | The number of days a trial account will remain active.                                                                                       |
+| `extensionDays`<br/>_integer_               | The number of days that a trial administrator adds when extending an active trial.                                                           |
+| `maxConcurrentTrials`<br/>_integer_         | The number of organizations that can concurrently have an active trial account. A value of zero indicates that there is no upper limit.      |
+| `cleanupDelayDays`<br/>_integer_            | The number of days after the trial expiration before the system will delete the trial's resources.                                           |
+| `expirationReminderDays`<br/>_integer_      | The number of days before the trial's end that the trial administrator will receive an email notification that the trial is about to expire. |
+| `allowMultipleTrialSameEmail`<br/>_boolean_ | If more than one trial account can be created using the same email address.                                                                  |
+| `contactUsEmail`<br/>_string_               | The email address that trial user can contact for more info/support.                                                                         |
+| `registrationHTML`<br/>_Object_             | Mapped object containing the registration information HTML in different languages.                                                           |
+| `termsAndConditionsHTML`<br/>_Object_       | Mapped object containing the terms and conditions HTML name in different languages.                                                          |
 
-Optional | &nbsp;
----------- | -----------
-`contactUsPhone`<br/>*string* | The phone number that trial user can contact for more info/support.
-`enableRecaptcha`<br/>*boolean* | If the reCAPTCHA verification on the sign up form is displayed. The reCAPTCHA site key and secret key must be present. Default is false.
-`recaptchaSitekey`<br/>*string* | The site key obtained from the reCAPTCHA admin console (Google). Mandatory if recaptcha is enabled.
-`recaptchaSecretkey`<br/>*string* | The secret key obtained from the reCAPTCHA admin console (Google). Mandatory if recaptcha is enabled.
+| Optional                          | &nbsp;                                                                                                                                   |
+| --------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------- |
+| `contactUsPhone`<br/>_string_     | The phone number that trial user can contact for more info/support.                                                                      |
+| `enableRecaptcha`<br/>_boolean_   | If the reCAPTCHA verification on the sign up form is displayed. The reCAPTCHA site key and secret key must be present. Default is false. |
+| `recaptchaSitekey`<br/>_string_   | The site key obtained from the reCAPTCHA admin console (Google). Mandatory if recaptcha is enabled.                                      |
+| `recaptchaSecretkey`<br/>_string_ | The secret key obtained from the reCAPTCHA admin console (Google). Mandatory if recaptcha is enabled.                                    |
 
 ### Trials Management
+
 Manage trials through it lifecycle.
 
 <!-------------------- LIST TRIALS -------------------->
@@ -245,9 +250,10 @@ Manage trials through it lifecycle.
 
 ```shell
 # Retrieve trials
-curl "https://cloudmc_endpoint/api/v2/trials" \
+curl "https://portal.coxedge.com/api/v2/trials" \
    -H "MC-Api-Key: your_api_key"
 ```
+
 > The above command returns JSON structured like this:
 
 ```json
@@ -260,18 +266,11 @@ curl "https://cloudmc_endpoint/api/v2/trials" \
       "lastName": "Doe",
       "persistedOrganizationId": "0518842d-1ad6-4b66-abc4-2cf48d502b4c",
       "resellerOrganization": {
-        "id": "23910576-d29f-4c14-b663-31d728ff49a5",     
+        "id": "23910576-d29f-4c14-b663-31d728ff49a5"
       },
       "createdDate": "2020-10-19T13:36:25.000Z",
       "organizationName": "John Doe Corp",
-      "activity": [
-        5,
-        1,
-        0,
-        null,
-        null,
-        null
-      ],
+      "activity": [5, 1, 0, null, null, null],
       "organization": {
         "serviceConnections": [
           {
@@ -301,24 +300,23 @@ curl "https://cloudmc_endpoint/api/v2/trials" \
 
 List the trials configured on the system.
 
-Query Params | &nbsp;
----- | -----------
-`organization_id`<br/>*UUID* | Return only settings for the provided organization id. If not provided, will default to the user organization.
+| Query Params                 | &nbsp;                                                                                                         |
+| ---------------------------- | -------------------------------------------------------------------------------------------------------------- |
+| `organization_id`<br/>_UUID_ | Return only settings for the provided organization id. If not provided, will default to the user organization. |
 
-Attributes | &nbsp;
----------- | -----------
-`id`<br/>*UUID* | The id of the trial.
-`resellerOrganization.id`<br/>*UUID* | The reseller organization id that the trial belongs to.
-`status`<br/>*string* | The status of the trial. Possible values are:  SUBMITTED, PENDING, DENIED, ONGOING, EXPIRED, PURGED, CONVERTED.
-`firstName`<br/>*string* | The first name of the person that requested the trial.
-`lastName`<br/>*string* | The last name of the person that requested the trial.
-`email`<br/>*string* | The email address of the person that requested the trial.
-`organizationName`<br/>*string* | The name of the organization for which the requester is doing the trial for.
-`createdDate`<br/>*string* | The creation date of the trial.
-`expiryDate`<br/>*string* | The expiration date of the trial.
-`persistedOrganizationId`<br/>*UUID* | The id of the organization created in the system once the trial is approved.
-`organization`<br/>*Object* | The organization object created in the system for this organization once the trial is approved.
-
+| Attributes                           | &nbsp;                                                                                                         |
+| ------------------------------------ | -------------------------------------------------------------------------------------------------------------- |
+| `id`<br/>_UUID_                      | The id of the trial.                                                                                           |
+| `resellerOrganization.id`<br/>_UUID_ | The reseller organization id that the trial belongs to.                                                        |
+| `status`<br/>_string_                | The status of the trial. Possible values are: SUBMITTED, PENDING, DENIED, ONGOING, EXPIRED, PURGED, CONVERTED. |
+| `firstName`<br/>_string_             | The first name of the person that requested the trial.                                                         |
+| `lastName`<br/>_string_              | The last name of the person that requested the trial.                                                          |
+| `email`<br/>_string_                 | The email address of the person that requested the trial.                                                      |
+| `organizationName`<br/>_string_      | The name of the organization for which the requester is doing the trial for.                                   |
+| `createdDate`<br/>_string_           | The creation date of the trial.                                                                                |
+| `expiryDate`<br/>_string_            | The expiration date of the trial.                                                                              |
+| `persistedOrganizationId`<br/>_UUID_ | The id of the organization created in the system once the trial is approved.                                   |
+| `organization`<br/>_Object_          | The organization object created in the system for this organization once the trial is approved.                |
 
 <!-------------------- GET TRIAL -------------------->
 
@@ -328,9 +326,10 @@ Attributes | &nbsp;
 
 ```shell
 # Retrieve trial
-curl "https://cloudmc_endpoint/api/v2/trials/b41f2aa3-e2d1-48d8-9760-8b874c20e8ae" \
+curl "https://portal.coxedge.com/api/v2/trials/b41f2aa3-e2d1-48d8-9760-8b874c20e8ae" \
    -H "MC-Api-Key: your_api_key"
 ```
+
 > The above command returns JSON structured like this:
 
 ```json
@@ -338,21 +337,14 @@ curl "https://cloudmc_endpoint/api/v2/trials/b41f2aa3-e2d1-48d8-9760-8b874c20e8a
   "data": {
     "id": "b41f2aa3-e2d1-48d8-9760-8b874c20e8ae",
     "resellerOrganization": {
-      "id": "23910576-d29f-4c14-b663-31d728ff49a5",     
+      "id": "23910576-d29f-4c14-b663-31d728ff49a5"
     },
     "lastName": "Doe",
     "approvalDate": "2020-10-19T13:38:57.000Z",
-    "activity": [
-      5,
-      1,
-      0,
-      null,
-      null,
-      null
-    ],
+    "activity": [5, 1, 0, null, null, null],
     "extensionEmailDate": "2020-10-21T14:09:18.000Z",
     "language": "en",
-    "blurb": "We need CloudMC services",
+    "blurb": "We need Cox Edge services",
     "expiryDate": "2020-10-24T13:38:57.000Z",
     "email": "john.doe@yahoo.com",
     "organizationName": "John Doe Corp",
@@ -387,48 +379,46 @@ curl "https://cloudmc_endpoint/api/v2/trials/b41f2aa3-e2d1-48d8-9760-8b874c20e8a
   }
 }
 ```
+
 Retrieve the trial associated to the id on the system.
 
-Attributes | &nbsp;
----------- | -----------
-`id`<br/>*UUID* | The id of the trial.
-`resellerOrganization.id`<br/>*UUID* | The reseller organization id that the trial belongs to.
-`status`<br/>*string* | The status of the trial. Possible values are:  SUBMITTED, PENDING, DENIED, ONGOING, EXPIRED, PURGED, CONVERTED.
-`firstName`<br/>*string* | The first name of the person that requested the trial.
-`lastName`<br/>*string* | The last name of the person that requested the trial.
-`email`<br/>*string* | The email address of the person that requested the trial.
-`phoneNumber`<br/>*string* | The phone number of the person that requested the trial.
-`organizationName`<br/>*string* | The name of the organization for which the requester is doing the trial for.
-`createdDate`<br/>*string* | The creation date of the trial.
-`expiryDate`<br/>*string* | The expiration date of the trial.
-`persistedOrganizationId`<br/>*UUID* | The id of the organization created in the system once the trial is approved.
-`organization`<br/>*Object* | The organization object created in the system for this organization once the trial is approved.
-`username`<br/>*string* | The username associated to the creator of the trial.
-`approvalDate`<br/>*string* | The approval date of the trial.
-`denialDate`<br/>*string* | The denial date of the trial.
-`denialReason`<br/>*string* | The reason the trial is denied.
-`extensionCount`<br/>*integer* | The number of times the trial was extended.
-`language`<br/>*string* | The language used when creating the trial.
-`manuallyApproved`<br/>*boolean* | If the trial is manually approved.
-`extensionEmailDate`<br/>*string* | The date the extension email notification was sent.
-`extensionDate`<br/>*string* | The date the trial was extended.
-`shutdownDate`<br/>*string* | The date the trial was shutdown.
-`purgeDate`<br/>*string* | The date the trial was purged.
-`conversionDate`<br/>*string* | The date the trial was converted to an active organization.
-`blurb`<br/>*string* | The cloud requirements entered in the trial registration.
+| Attributes                           | &nbsp;                                                                                                         |
+| ------------------------------------ | -------------------------------------------------------------------------------------------------------------- |
+| `id`<br/>_UUID_                      | The id of the trial.                                                                                           |
+| `resellerOrganization.id`<br/>_UUID_ | The reseller organization id that the trial belongs to.                                                        |
+| `status`<br/>_string_                | The status of the trial. Possible values are: SUBMITTED, PENDING, DENIED, ONGOING, EXPIRED, PURGED, CONVERTED. |
+| `firstName`<br/>_string_             | The first name of the person that requested the trial.                                                         |
+| `lastName`<br/>_string_              | The last name of the person that requested the trial.                                                          |
+| `email`<br/>_string_                 | The email address of the person that requested the trial.                                                      |
+| `phoneNumber`<br/>_string_           | The phone number of the person that requested the trial.                                                       |
+| `organizationName`<br/>_string_      | The name of the organization for which the requester is doing the trial for.                                   |
+| `createdDate`<br/>_string_           | The creation date of the trial.                                                                                |
+| `expiryDate`<br/>_string_            | The expiration date of the trial.                                                                              |
+| `persistedOrganizationId`<br/>_UUID_ | The id of the organization created in the system once the trial is approved.                                   |
+| `organization`<br/>_Object_          | The organization object created in the system for this organization once the trial is approved.                |
+| `username`<br/>_string_              | The username associated to the creator of the trial.                                                           |
+| `approvalDate`<br/>_string_          | The approval date of the trial.                                                                                |
+| `denialDate`<br/>_string_            | The denial date of the trial.                                                                                  |
+| `denialReason`<br/>_string_          | The reason the trial is denied.                                                                                |
+| `extensionCount`<br/>_integer_       | The number of times the trial was extended.                                                                    |
+| `language`<br/>_string_              | The language used when creating the trial.                                                                     |
+| `manuallyApproved`<br/>_boolean_     | If the trial is manually approved.                                                                             |
+| `extensionEmailDate`<br/>_string_    | The date the extension email notification was sent.                                                            |
+| `extensionDate`<br/>_string_         | The date the trial was extended.                                                                               |
+| `shutdownDate`<br/>_string_          | The date the trial was shutdown.                                                                               |
+| `purgeDate`<br/>_string_             | The date the trial was purged.                                                                                 |
+| `conversionDate`<br/>_string_        | The date the trial was converted to an active organization.                                                    |
+| `blurb`<br/>_string_                 | The cloud requirements entered in the trial registration.                                                      |
 
-
-
-      
 <!-------------------- REMAINING SLOTS TRIAL -------------------->
 
-#### Trial remaining slots 
+#### Trial remaining slots
 
 `POST /trials/:id/remaining`
 
 ```shell
 # Get trial remaining slots
-curl -X GET "https://cloudmc_endpoint/api/v2/trials/remaining" \
+curl -X GET "https://portal.coxedge.com/api/v2/trials/remaining" \
    -H "MC-Api-Key: your_api_key"
 ```
 
@@ -439,12 +429,12 @@ curl -X GET "https://cloudmc_endpoint/api/v2/trials/remaining" \
   "data": 10
 }
 ```
+
 Indicates how many organizations can concurrently have an active trial with automatic approval.
 
-Query Params | &nbsp;
----- | -----------
-`organization_id`<br/>*UUID* | Return only settings for the provided organization id. If not provided, it will default to the reseller configuration matching the url.
-
+| Query Params                 | &nbsp;                                                                                                                                  |
+| ---------------------------- | --------------------------------------------------------------------------------------------------------------------------------------- |
+| `organization_id`<br/>_UUID_ | Return only settings for the provided organization id. If not provided, it will default to the reseller configuration matching the url. |
 
 <!-------------------- ACTIVATE TRIAL -------------------->
 
@@ -454,7 +444,7 @@ Query Params | &nbsp;
 
 ```shell
 # Activate a trial
-curl -X PUT "https://cloudmc_endpoint/api/v2/trials/:id/activate" \
+curl -X PUT "https://portal.coxedge.com/api/v2/trials/:id/activate" \
    -H "MC-Api-Key: your_api_key"
 ```
 
@@ -468,16 +458,15 @@ Activate the trial for the provided id.
 
 ```shell
 # Extend a trial
-curl -X PUT "https://cloudmc_endpoint/api/v2/trials/:id/extend" \
+curl -X PUT "https://portal.coxedge.com/api/v2/trials/:id/extend" \
    -H "MC-Api-Key: your_api_key"
 ```
 
 Extend the trial for the provided id.
 
-Query Params | &nbsp;
----- | -----------
-`extendDate`<br/>*long* | The date in a long format to which the trial will be extend to. Default value is the expired date adding with the number of days for an extension defined in the trial settings.
-
+| Query Params            | &nbsp;                                                                                                                                                                           |
+| ----------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `extendDate`<br/>_long_ | The date in a long format to which the trial will be extend to. Default value is the expired date adding with the number of days for an extension defined in the trial settings. |
 
 <!-------------------- TERMINATE TRIAL -------------------->
 
@@ -487,16 +476,15 @@ Query Params | &nbsp;
 
 ```shell
 # Extend a trial
-curl -X PUT "https://cloudmc_endpoint/api/v2/trials/:id/terminate" \
+curl -X PUT "https://portal.coxedge.com/api/v2/trials/:id/terminate" \
    -H "MC-Api-Key: your_api_key"
 ```
 
 Terminate the trial for the provided id.
 
-Query Params | &nbsp;
----- | -----------
-`purge`<br/>*boolean* | Indicate if the trial needs to be purge as well. Default is false.
-
+| Query Params          | &nbsp;                                                             |
+| --------------------- | ------------------------------------------------------------------ |
+| `purge`<br/>_boolean_ | Indicate if the trial needs to be purge as well. Default is false. |
 
 <!-------------------- DENY TRIAL -------------------->
 
@@ -506,7 +494,7 @@ Query Params | &nbsp;
 
 ```shell
 # Deny a trial
-curl -X PUT "https://cloudmc_endpoint/api/v2/trials/:id/deny" \
+curl -X PUT "https://portal.coxedge.com/api/v2/trials/:id/deny" \
    -H "MC-Api-Key: your_api_key"
 ```
 
@@ -514,9 +502,9 @@ curl -X PUT "https://cloudmc_endpoint/api/v2/trials/:id/deny" \
 
 ```
 As per client request
-``` 
-Deny the trial for the provided id. The body of the request is the reason for being denied.
+```
 
+Deny the trial for the provided id. The body of the request is the reason for being denied.
 
 <!-------------------- CONVERT TO BILLABLE -------------------->
 
@@ -526,17 +514,15 @@ Deny the trial for the provided id. The body of the request is the reason for be
 
 ```shell
 # Cnvert to billable a trial
-curl -X PUT "https://cloudmc_endpoint/api/v2/trials/:id/convertToBillable" \
+curl -X PUT "https://portal.coxedge.com/api/v2/trials/:id/convertToBillable" \
    -H "MC-Api-Key: your_api_key"
 ```
 
 Convert to billable the trial for the provided id.
 
-Query Params | &nbsp;
----- | -----------
-`billableStartDate`<br/>*long* | The date time in a long format for which the trial will be converted. It is mandatory.
-
-
+| Query Params                   | &nbsp;                                                                                 |
+| ------------------------------ | -------------------------------------------------------------------------------------- |
+| `billableStartDate`<br/>_long_ | The date time in a long format for which the trial will be converted. It is mandatory. |
 
 <!-------------------- GET TRIAL ACTIVITIES -------------------->
 
@@ -546,9 +532,10 @@ Query Params | &nbsp;
 
 ```shell
 # Retrieve trial activities
-curl "https://cloudmc_endpoint/api/v2/trials/b41f2aa3-e2d1-48d8-9760-8b874c20e8ae/activity" \
+curl "https://portal.coxedge.com/api/v2/trials/b41f2aa3-e2d1-48d8-9760-8b874c20e8ae/activity" \
    -H "MC-Api-Key: your_api_key"
 ```
+
 > The above command returns JSON structured like this:
 
 ```json
@@ -579,35 +566,33 @@ curl "https://cloudmc_endpoint/api/v2/trials/b41f2aa3-e2d1-48d8-9760-8b874c20e8a
 
 Retrieve the activities related to the trial associated to the id on the system.
 
-Attributes | &nbsp;
----------- | -----------
-`id`<br/>*UUID* | The activity Id.
-`organizationId`<br/>*UUID* | The id of the organization impacted by the activity.
-`organizationName`<br/>*UUID* | The name of the organization impacted by the activity.
-`userId`<br/>*UUID* | The id of the person that made the activity.
-`username`<br/>*string* | The username of the person that made the activity.
-`userOrganizationId`<br/>*UUID* | The organization id of the user that made the activity.
-`userOrganizationName`<br/>*string* | The organization name of the user that made the activity.
-`userFirstName`<br/>*string* | The last name of the person that made the activity.
-`userLastName`<br/>*string* | The last name of the person that made the activity.
-`userEmail`<br/>*string* | The email address of the person that made the activity.
-`createdDate`<br/>*string* | The creation date of the activity.
-`updatedDate`<br/>*string* | The update date of the activity.
-`requesterIp`<br/>*string* | The requester ip address
-`parentId`<br/>*UUID* | The organization object created in the system for this organization once the trial is approved.
-`environmentId`<br/>*UUID* | The id of the impacted environment.
-`environmentName`<br/>*string* | The name of the impacted environment.
-`serviceConnectionId`<br/>*UUID* | The id of the impacted service connection.
-`serviceConnectionName`<br/>*string* | The name of the impacted service connection.
-`serviceConnectionType`<br/>*string* | The type of the impacted service connection.
-`category`<br/>*string* | The category of the activity. Possible values: SYSTEM, SERVICE_OPERATION.
-`status`<br/>*string* | The status of the activity. Possible values: PENDING, SUCCESS, FAILURE, PARTIAL_SUCCESS.
-`eventContext`<br/>*string* | Information link to the context of the activity in a JSON format.
-`serviceError`<br/>*string* | Description of an error in the service operation activities.
-`apiKeyId`<br/>*UUID* | The ID of the api key used to make this activity.
-`apiKeyName`<br/>*string* | The name of the api key used to make this activity.
-         
-
+| Attributes                           | &nbsp;                                                                                          |
+| ------------------------------------ | ----------------------------------------------------------------------------------------------- |
+| `id`<br/>_UUID_                      | The activity Id.                                                                                |
+| `organizationId`<br/>_UUID_          | The id of the organization impacted by the activity.                                            |
+| `organizationName`<br/>_UUID_        | The name of the organization impacted by the activity.                                          |
+| `userId`<br/>_UUID_                  | The id of the person that made the activity.                                                    |
+| `username`<br/>_string_              | The username of the person that made the activity.                                              |
+| `userOrganizationId`<br/>_UUID_      | The organization id of the user that made the activity.                                         |
+| `userOrganizationName`<br/>_string_  | The organization name of the user that made the activity.                                       |
+| `userFirstName`<br/>_string_         | The last name of the person that made the activity.                                             |
+| `userLastName`<br/>_string_          | The last name of the person that made the activity.                                             |
+| `userEmail`<br/>_string_             | The email address of the person that made the activity.                                         |
+| `createdDate`<br/>_string_           | The creation date of the activity.                                                              |
+| `updatedDate`<br/>_string_           | The update date of the activity.                                                                |
+| `requesterIp`<br/>_string_           | The requester ip address                                                                        |
+| `parentId`<br/>_UUID_                | The organization object created in the system for this organization once the trial is approved. |
+| `environmentId`<br/>_UUID_           | The id of the impacted environment.                                                             |
+| `environmentName`<br/>_string_       | The name of the impacted environment.                                                           |
+| `serviceConnectionId`<br/>_UUID_     | The id of the impacted service connection.                                                      |
+| `serviceConnectionName`<br/>_string_ | The name of the impacted service connection.                                                    |
+| `serviceConnectionType`<br/>_string_ | The type of the impacted service connection.                                                    |
+| `category`<br/>_string_              | The category of the activity. Possible values: SYSTEM, SERVICE_OPERATION.                       |
+| `status`<br/>_string_                | The status of the activity. Possible values: PENDING, SUCCESS, FAILURE, PARTIAL_SUCCESS.        |
+| `eventContext`<br/>_string_          | Information link to the context of the activity in a JSON format.                               |
+| `serviceError`<br/>_string_          | Description of an error in the service operation activities.                                    |
+| `apiKeyId`<br/>_UUID_                | The ID of the api key used to make this activity.                                               |
+| `apiKeyName`<br/>_string_            | The name of the api key used to make this activity.                                             |
 
 <!-------------------- GET TRIAL USERS-------------------->
 
@@ -617,9 +602,10 @@ Attributes | &nbsp;
 
 ```shell
 # Retrieve trial users
-curl "https://cloudmc_endpoint/api/v2/trials/b41f2aa3-e2d1-48d8-9760-8b874c20e8ae/users" \
+curl "https://portal.coxedge.com/api/v2/trials/b41f2aa3-e2d1-48d8-9760-8b874c20e8ae/users" \
    -H "MC-Api-Key: your_api_key"
 ```
+
 > The above command returns JSON structured like this:
 
 ```json
@@ -639,20 +625,17 @@ curl "https://cloudmc_endpoint/api/v2/trials/b41f2aa3-e2d1-48d8-9760-8b874c20e8a
 
 Retrieve the users related to the trial associated to the id on the system.
 
-Attributes | &nbsp;
----------- | -----------
-`id`<br/>*UUID* | The id of the trial.
-`firstName`<br/>*string* | The first name of the user.
-`lastName`<br/>*string* | The last name of the user.
-`username`<br/>*string* | The username of the user.
-`failedLoginCount`<br/>*integer* | The count of failed login for that user.
-`loginCount`<br/>*integer* | The count of successful login for that user.
-`failedLoginCount`<br/>*integer* | The count of failed login for that user.
-`lastLogin`<br/>*string* | The date of the last login
-`lastFailedLogin`<br/>*string* | The date of the last failed login
-
-
-
+| Attributes                       | &nbsp;                                       |
+| -------------------------------- | -------------------------------------------- |
+| `id`<br/>_UUID_                  | The id of the trial.                         |
+| `firstName`<br/>_string_         | The first name of the user.                  |
+| `lastName`<br/>_string_          | The last name of the user.                   |
+| `username`<br/>_string_          | The username of the user.                    |
+| `failedLoginCount`<br/>_integer_ | The count of failed login for that user.     |
+| `loginCount`<br/>_integer_       | The count of successful login for that user. |
+| `failedLoginCount`<br/>_integer_ | The count of failed login for that user.     |
+| `lastLogin`<br/>_string_         | The date of the last login                   |
+| `lastFailedLogin`<br/>_string_   | The date of the last failed login            |
 
 <!-------------------- RESEND EMAIL -------------------->
 
@@ -662,9 +645,10 @@ Attributes | &nbsp;
 
 ```shell
 # Resend trial email
-curl "https://cloudmc_endpoint/api/v2/trials/b41f2aa3-e2d1-48d8-9760-8b874c20e8ae/resend_email" \
+curl "https://portal.coxedge.com/api/v2/trials/b41f2aa3-e2d1-48d8-9760-8b874c20e8ae/resend_email" \
    -H "MC-Api-Key: your_api_key"
 ```
+
 > The above command returns JSON structured like this:
 
 ```json
@@ -675,10 +659,9 @@ curl "https://cloudmc_endpoint/api/v2/trials/b41f2aa3-e2d1-48d8-9760-8b874c20e8a
 
 Resend a trial email based on the status and type provided. If no email is send, it returns false.
 
-Query Param | &nbsp;
----------- | -----------
-`email`<br/>*UUID* | The type of email to resend. Possible values: validation, user_activation.
-
+| Query Param        | &nbsp;                                                                     |
+| ------------------ | -------------------------------------------------------------------------- |
+| `email`<br/>_UUID_ | The type of email to resend. Possible values: validation, user_activation. |
 
 <!-------------------- GET TRIAL STATUSES -------------------->
 
@@ -688,9 +671,10 @@ Query Param | &nbsp;
 
 ```shell
 # Retrieve trial statuses
-curl "https://cloudmc_endpoint/api/v2/trials/statuses" \
+curl "https://portal.coxedge.com/api/v2/trials/statuses" \
    -H "MC-Api-Key: your_api_key"
 ```
+
 > The above command returns JSON structured like this:
 
 ```json

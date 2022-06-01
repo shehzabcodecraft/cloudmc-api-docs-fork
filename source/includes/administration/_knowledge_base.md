@@ -1,16 +1,19 @@
 ## Knowledge Base
+
 Manage knowledge base.
 
 <!-------------------- LIST KNOWLEDGE BASES -------------------->
+
 ### List knowledge base
 
 `GET /content/kb`
 
 ```shell
 # Retrieve branding
-curl "https://cloudmc_endpoint/api/v2/content/kb" \
+curl "https://portal.coxedge.com/api/v2/content/kb" \
    -H "MC-Api-Key: your_api_key"
 ```
+
 > The above command returns JSON structured like this:
 
 ```json
@@ -110,50 +113,50 @@ curl "https://cloudmc_endpoint/api/v2/content/kb" \
 
 List the knowledge base configured for the organization.
 
-Query Params | &nbsp;
----- | -----------
-`organization_id`<br/>*UUID* | Return only the knowledge base for the provided organization id. If not provided, will default to the user's organization.
+| Query Params                 | &nbsp;                                                                                                                     |
+| ---------------------------- | -------------------------------------------------------------------------------------------------------------------------- |
+| `organization_id`<br/>_UUID_ | Return only the knowledge base for the provided organization id. If not provided, will default to the user's organization. |
 
-Attributes | &nbsp;
----------- | -----------
-`id`<br/>*UUID* | The id of the knowledge base.
-`organization.id`<br/>*UUID* | The organization id that the knowledge base is linked to.
-`state`<br/>*string* | The source state. Possible values:  IMPORTING, SYNCHING, READY, ERROR.
-`sources`<br/>*Array[Object]* | List of sources associated to the knowledge base
-`sources.id`<br/>*UUID* | The source id.
-`sources.url`<br/>*string* | The source URL.
-`sources.branch`<br/>*string* | The source branch.
-`sources.createdDate`<br/>*string* | The date the source was created.
-`sources.lastSyncDate`<br/>*string* | The last date the source was synchronized.
-`categories.id`<br/>*UUID* | The category id.
-`categories.gitKey`<br/>*string* | The category git key.
-`categories.rank`<br/>*integer* | The category rank.
-`categories.icon`<br/>*string* | The category icon.
-`categories.createdAt`<br/>*string* | The creation date.
-`categories.updatedAt`<br/>*string* | The update date.
-`categories.featured`<br/>*boolean* | If the category needs to be displayed.
-`categories.externalDocumentation`<br/>*Array[Object]* | List of URL and language objects. Only either 1) articles, or, 2) external documentation, will be provided for a category (example above shows both only as an example for the object structure).
-`categories.externalDocumentation.language`<br/>*string* | Language of the external documentation. This indicates which URL to use based on the help center selected language.
-`categories.externalDocumentation.url`<br/>*string* | URL link to the external documentation.
-`categories.translations`<br/>*Array[Object]* | The translation objects for the category.
-`categories.translations.id`<br/>*UUID* | The id of the translation.
-`categories.translations.language`<br/>*string* | The language of the translation.
-`categories.translations.text`<br/>*string* | The content of the translation.
-`categories.translations.type`<br/>*string* | The type of translation. Possible values are: title or url_slug.
-`categories.translations.version`<br/>*integer* | The version of the translation.
-`categories.articles`<br/>*Array[Object]* | The list of articles in the category.
-`categories.articles.id`<br/>*UUID* | The id of the article.
-`categories.articles.published`<br/>*boolean* | If the article is published.
-`categories.articles.rank`<br/>*integer* | The article rank.
-`categories.articles.gitKey`<br/>*string* | The article git key.
-`categories.articles.createdAt`<br/>*string* | The creation date.
-`categories.articles.updatedAt`<br/>*string* | The update date.
-`categories.articles.translations`<br/>*Array[Object]* | The translation objects for the article.
-`categories.articles.translations.id`<br/>*UUID* | The id of the translation.
-`categories.articles.translations.language`<br/>*string* | The language of the translation.
-`categories.articles.translations.text`<br/>*string* | The content of the translation.
-`categories.articles.translations.type`<br/>*string* | The type of translation. Possible values are: title, body or url_slug.
-`categories.articles.translations.version`<br/>*integer* | The version of the translation.
+| Attributes                                               | &nbsp;                                                                                                                                                                                            |
+| -------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `id`<br/>_UUID_                                          | The id of the knowledge base.                                                                                                                                                                     |
+| `organization.id`<br/>_UUID_                             | The organization id that the knowledge base is linked to.                                                                                                                                         |
+| `state`<br/>_string_                                     | The source state. Possible values: IMPORTING, SYNCHING, READY, ERROR.                                                                                                                             |
+| `sources`<br/>_Array[Object]_                            | List of sources associated to the knowledge base                                                                                                                                                  |
+| `sources.id`<br/>_UUID_                                  | The source id.                                                                                                                                                                                    |
+| `sources.url`<br/>_string_                               | The source URL.                                                                                                                                                                                   |
+| `sources.branch`<br/>_string_                            | The source branch.                                                                                                                                                                                |
+| `sources.createdDate`<br/>_string_                       | The date the source was created.                                                                                                                                                                  |
+| `sources.lastSyncDate`<br/>_string_                      | The last date the source was synchronized.                                                                                                                                                        |
+| `categories.id`<br/>_UUID_                               | The category id.                                                                                                                                                                                  |
+| `categories.gitKey`<br/>_string_                         | The category git key.                                                                                                                                                                             |
+| `categories.rank`<br/>_integer_                          | The category rank.                                                                                                                                                                                |
+| `categories.icon`<br/>_string_                           | The category icon.                                                                                                                                                                                |
+| `categories.createdAt`<br/>_string_                      | The creation date.                                                                                                                                                                                |
+| `categories.updatedAt`<br/>_string_                      | The update date.                                                                                                                                                                                  |
+| `categories.featured`<br/>_boolean_                      | If the category needs to be displayed.                                                                                                                                                            |
+| `categories.externalDocumentation`<br/>_Array[Object]_   | List of URL and language objects. Only either 1) articles, or, 2) external documentation, will be provided for a category (example above shows both only as an example for the object structure). |
+| `categories.externalDocumentation.language`<br/>_string_ | Language of the external documentation. This indicates which URL to use based on the help center selected language.                                                                               |
+| `categories.externalDocumentation.url`<br/>_string_      | URL link to the external documentation.                                                                                                                                                           |
+| `categories.translations`<br/>_Array[Object]_            | The translation objects for the category.                                                                                                                                                         |
+| `categories.translations.id`<br/>_UUID_                  | The id of the translation.                                                                                                                                                                        |
+| `categories.translations.language`<br/>_string_          | The language of the translation.                                                                                                                                                                  |
+| `categories.translations.text`<br/>_string_              | The content of the translation.                                                                                                                                                                   |
+| `categories.translations.type`<br/>_string_              | The type of translation. Possible values are: title or url_slug.                                                                                                                                  |
+| `categories.translations.version`<br/>_integer_          | The version of the translation.                                                                                                                                                                   |
+| `categories.articles`<br/>_Array[Object]_                | The list of articles in the category.                                                                                                                                                             |
+| `categories.articles.id`<br/>_UUID_                      | The id of the article.                                                                                                                                                                            |
+| `categories.articles.published`<br/>_boolean_            | If the article is published.                                                                                                                                                                      |
+| `categories.articles.rank`<br/>_integer_                 | The article rank.                                                                                                                                                                                 |
+| `categories.articles.gitKey`<br/>_string_                | The article git key.                                                                                                                                                                              |
+| `categories.articles.createdAt`<br/>_string_             | The creation date.                                                                                                                                                                                |
+| `categories.articles.updatedAt`<br/>_string_             | The update date.                                                                                                                                                                                  |
+| `categories.articles.translations`<br/>_Array[Object]_   | The translation objects for the article.                                                                                                                                                          |
+| `categories.articles.translations.id`<br/>_UUID_         | The id of the translation.                                                                                                                                                                        |
+| `categories.articles.translations.language`<br/>_string_ | The language of the translation.                                                                                                                                                                  |
+| `categories.articles.translations.text`<br/>_string_     | The content of the translation.                                                                                                                                                                   |
+| `categories.articles.translations.type`<br/>_string_     | The type of translation. Possible values are: title, body or url_slug.                                                                                                                            |
+| `categories.articles.translations.version`<br/>_integer_ | The version of the translation.                                                                                                                                                                   |
 
 <!-------------------- GET KNOWLEDGE BASES -------------------->
 
@@ -163,9 +166,10 @@ Attributes | &nbsp;
 
 ```shell
 # Retrieve trial settings
-curl "https://cloudmc_endpoint/api/v2/content/kb/671f113c-dbbb-4478-be9c-90765b3259e5" \
+curl "https://portal.coxedge.com/api/v2/content/kb/671f113c-dbbb-4478-be9c-90765b3259e5" \
    -H "MC-Api-Key: your_api_key"
 ```
+
 > The above command returns JSON structured like this:
 
 ```json
@@ -188,26 +192,26 @@ curl "https://cloudmc_endpoint/api/v2/content/kb/671f113c-dbbb-4478-be9c-90765b3
         "createdAt": "2020-07-27T15:46:59.000Z",
         "featured": false,
         "externalDocumentation": [
-            {
-              "language": "en",
-              "url": "http://docs.cloudstack.apache.org/en/latest/"
-            },
-            {
-              "language": "es",
-              "url": "http://docs.cloudstack.apache.org/en/latest/"
-            },
-            {
-              "language": "fr",
-              "url": "http://docs.cloudstack.apache.org/en/latest/"
-            }
-          ],
+          {
+            "language": "en",
+            "url": "http://docs.cloudstack.apache.org/en/latest/"
+          },
+          {
+            "language": "es",
+            "url": "http://docs.cloudstack.apache.org/en/latest/"
+          },
+          {
+            "language": "fr",
+            "url": "http://docs.cloudstack.apache.org/en/latest/"
+          }
+        ],
         "translations": [
           {
-           "language": "en",
-           "id": "35b2b5e0-4944-4f92-9ddb-68eb980a31b2",
-           "text": "CloudStack Service",
-           "type": "title",
-           "version": 1
+            "language": "en",
+            "id": "35b2b5e0-4944-4f92-9ddb-68eb980a31b2",
+            "text": "CloudStack Service",
+            "type": "title",
+            "version": 1
           },
           {
             "language": "en",
@@ -260,45 +264,46 @@ curl "https://cloudmc_endpoint/api/v2/content/kb/671f113c-dbbb-4478-be9c-90765b3
   }
 }
 ```
+
 Retrieve the branding associated to the id.
 
-Attributes | &nbsp;
----------- | -----------
-`id`<br/>*UUID* | The id of the knowledge base.
-`organization.id`<br/>*UUID* | The organization id that the knowledge base is linked to.
-`state`<br/>*string* | The source state. Possible values:  IMPORTING, SYNCHING, READY, ERROR.
-`sources`<br/>*Array[Object]* | List of sources associated to the knowledge base
-`sources.id`<br/>*UUID* | The source id.
-`sources.url`<br/>*string* | The source URL.
-`sources.branch`<br/>*string* | The source branch.
-`sources.createdDate`<br/>*string* | The date the source was created.
-`sources.lastSyncDate`<br/>*string* | The last date the source was synchronized.
-`categories.id`<br/>*UUID* | The category id.
-`categories.gitKey`<br/>*string* | The category git key.
-`categories.rank`<br/>*integer* | The category rank.
-`categories.icon`<br/>*string* | The category icon.
-`categories.createdAt`<br/>*string* | The creation date.
-`categories.updatedAt`<br/>*string* | The update date.
-`categories.featured`<br/>*boolean* | If the category needs to be displayed.
-`categories.externalDocumentation`<br/>*Array[Object]* | List of URL and language objects. Only either 1) articles, or, 2) external documentation, will be provided for a category (example above shows both only as an example for the object structure).
-`categories.externalDocumentation.language`<br/>*string* | Language of the external documentation. This indicates which URL to use based on the help center selected language.
-`categories.externalDocumentation.url`<br/>*string* | URL link to the external documentation.
-`categories.translations`<br/>*Array[Object]* | The translation objects for the category.
-`categories.translations.id`<br/>*UUID* | The id of the translation.
-`categories.translations.language`<br/>*string* | The language of the translation.
-`categories.translations.text`<br/>*string* | The content of the translation.
-`categories.translations.type`<br/>*string* | The type of translation. Possible values are: title or url_slug.
-`categories.translations.version`<br/>*integer* | The version of the translation.
-`categories.articles`<br/>*Array[Object]* | The list of articles in the category.
-`categories.articles.id`<br/>*UUID* | The id of the article.
-`categories.articles.published`<br/>*boolean* | If the article is published.
-`categories.articles.rank`<br/>*integer* | The article rank.
-`categories.articles.gitKey`<br/>*string* | The article git key.
-`categories.articles.createdAt`<br/>*string* | The creation date.
-`categories.articles.updatedAt`<br/>*string* | The update date.
-`categories.articles.translations`<br/>*Array[Object]* | The translation objects for the article.
-`categories.articles.translations.id`<br/>*UUID* | The id of the translation.
-`categories.articles.translations.language`<br/>*string* | The language of the translation.
-`categories.articles.translations.text`<br/>*string* | The content of the translation.
-`categories.articles.translations.type`<br/>*string* | The type of translation. Possible values are: title, body or url_slug.
-`categories.articles.translations.version`<br/>*integer* | The version of the translation.
+| Attributes                                               | &nbsp;                                                                                                                                                                                            |
+| -------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `id`<br/>_UUID_                                          | The id of the knowledge base.                                                                                                                                                                     |
+| `organization.id`<br/>_UUID_                             | The organization id that the knowledge base is linked to.                                                                                                                                         |
+| `state`<br/>_string_                                     | The source state. Possible values: IMPORTING, SYNCHING, READY, ERROR.                                                                                                                             |
+| `sources`<br/>_Array[Object]_                            | List of sources associated to the knowledge base                                                                                                                                                  |
+| `sources.id`<br/>_UUID_                                  | The source id.                                                                                                                                                                                    |
+| `sources.url`<br/>_string_                               | The source URL.                                                                                                                                                                                   |
+| `sources.branch`<br/>_string_                            | The source branch.                                                                                                                                                                                |
+| `sources.createdDate`<br/>_string_                       | The date the source was created.                                                                                                                                                                  |
+| `sources.lastSyncDate`<br/>_string_                      | The last date the source was synchronized.                                                                                                                                                        |
+| `categories.id`<br/>_UUID_                               | The category id.                                                                                                                                                                                  |
+| `categories.gitKey`<br/>_string_                         | The category git key.                                                                                                                                                                             |
+| `categories.rank`<br/>_integer_                          | The category rank.                                                                                                                                                                                |
+| `categories.icon`<br/>_string_                           | The category icon.                                                                                                                                                                                |
+| `categories.createdAt`<br/>_string_                      | The creation date.                                                                                                                                                                                |
+| `categories.updatedAt`<br/>_string_                      | The update date.                                                                                                                                                                                  |
+| `categories.featured`<br/>_boolean_                      | If the category needs to be displayed.                                                                                                                                                            |
+| `categories.externalDocumentation`<br/>_Array[Object]_   | List of URL and language objects. Only either 1) articles, or, 2) external documentation, will be provided for a category (example above shows both only as an example for the object structure). |
+| `categories.externalDocumentation.language`<br/>_string_ | Language of the external documentation. This indicates which URL to use based on the help center selected language.                                                                               |
+| `categories.externalDocumentation.url`<br/>_string_      | URL link to the external documentation.                                                                                                                                                           |
+| `categories.translations`<br/>_Array[Object]_            | The translation objects for the category.                                                                                                                                                         |
+| `categories.translations.id`<br/>_UUID_                  | The id of the translation.                                                                                                                                                                        |
+| `categories.translations.language`<br/>_string_          | The language of the translation.                                                                                                                                                                  |
+| `categories.translations.text`<br/>_string_              | The content of the translation.                                                                                                                                                                   |
+| `categories.translations.type`<br/>_string_              | The type of translation. Possible values are: title or url_slug.                                                                                                                                  |
+| `categories.translations.version`<br/>_integer_          | The version of the translation.                                                                                                                                                                   |
+| `categories.articles`<br/>_Array[Object]_                | The list of articles in the category.                                                                                                                                                             |
+| `categories.articles.id`<br/>_UUID_                      | The id of the article.                                                                                                                                                                            |
+| `categories.articles.published`<br/>_boolean_            | If the article is published.                                                                                                                                                                      |
+| `categories.articles.rank`<br/>_integer_                 | The article rank.                                                                                                                                                                                 |
+| `categories.articles.gitKey`<br/>_string_                | The article git key.                                                                                                                                                                              |
+| `categories.articles.createdAt`<br/>_string_             | The creation date.                                                                                                                                                                                |
+| `categories.articles.updatedAt`<br/>_string_             | The update date.                                                                                                                                                                                  |
+| `categories.articles.translations`<br/>_Array[Object]_   | The translation objects for the article.                                                                                                                                                          |
+| `categories.articles.translations.id`<br/>_UUID_         | The id of the translation.                                                                                                                                                                        |
+| `categories.articles.translations.language`<br/>_string_ | The language of the translation.                                                                                                                                                                  |
+| `categories.articles.translations.text`<br/>_string_     | The content of the translation.                                                                                                                                                                   |
+| `categories.articles.translations.type`<br/>_string_     | The type of translation. Possible values are: title, body or url_slug.                                                                                                                            |
+| `categories.articles.translations.version`<br/>_integer_ | The version of the translation.                                                                                                                                                                   |

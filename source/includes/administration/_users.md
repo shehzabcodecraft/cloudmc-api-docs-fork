@@ -11,85 +11,88 @@ A user account allows users to authenticate to an [organization](#administration
 ```shell
 # Retrieve visible users
 
-curl "https://cloudmc_endpoint/api/v2/users" \
+curl "https://portal.coxedge.com/api/v2/users" \
    -H "MC-Api-Key: your_api_key"
 ```
+
 > The above command returns a JSON structured like this:
 
 ```json
 {
-  "data":[{
-    "id": "e83540c7-75a0-4715-96dc-c10a364e0390",
-    "userName": "habsgoalie123",
-    "firstName": "Carey",
-    "lastName": "Price",
-    "email": "gohabsgo@cloud.mc",
-    "creationDate": "2017-08-15T12:00:00.000Z",
-    "status": "ACTIVE",
-    "locale": "en",
-    "organization": {
-      "id": "8e3393ce-ee63-4f32-9e0f-7b0200fa655a",
-      "name": "Canadiens"
-    },
-    "serviceConnections": [
-      {
-        "id": "5d841eb6-5913-4244-b001-917228e7aa64",
-        "name": "Microsoft Azure"
+  "data": [
+    {
+      "id": "e83540c7-75a0-4715-96dc-c10a364e0390",
+      "userName": "habsgoalie123",
+      "firstName": "Carey",
+      "lastName": "Price",
+      "email": "gohabsgo@cloud.mc",
+      "creationDate": "2017-08-15T12:00:00.000Z",
+      "status": "ACTIVE",
+      "locale": "en",
+      "organization": {
+        "id": "8e3393ce-ee63-4f32-9e0f-7b0200fa655a",
+        "name": "Canadiens"
       },
-      {
-        "id": "61e5dc38-441b-4c7d-8ac4-087ebaab23da",
-        "name": "swifttest"
-      }
-    ],
-    "lastLogin": "2022-05-20T15:56:27.000Z",
-    "lastFailedLogin": "2022-04-16T18:50:21.000Z",
-    "loginCount": 76,
-    "failedLoginCount": 10,
-    "isBusinessContact": false,
-    "isTechnicalContact": false,
-    "tfaEnabled": false,
-    "deleted": false,
-    "receivesEmailNotifications": false,
-    "canResendUserCreationEmail": true,
-    "backupCodesRemaining": 0,
-    "primaryRoleBinding": {
-      "id": "013b40ca-9837-4233-b28e-09f5828958e5",
-      "role": {
-        "isSystem": true,
-        "name": "guest",
-        "id": "ad6b03cc-b9f3-48ae-9406-2ad168afbe01",
-        "isFixed": true
+      "serviceConnections": [
+        {
+          "id": "5d841eb6-5913-4244-b001-917228e7aa64",
+          "name": "Microsoft Azure"
+        },
+        {
+          "id": "61e5dc38-441b-4c7d-8ac4-087ebaab23da",
+          "name": "swifttest"
+        }
+      ],
+      "lastLogin": "2022-05-20T15:56:27.000Z",
+      "lastFailedLogin": "2022-04-16T18:50:21.000Z",
+      "loginCount": 76,
+      "failedLoginCount": 10,
+      "isBusinessContact": false,
+      "isTechnicalContact": false,
+      "tfaEnabled": false,
+      "deleted": false,
+      "receivesEmailNotifications": false,
+      "canResendUserCreationEmail": true,
+      "backupCodesRemaining": 0,
+      "primaryRoleBinding": {
+        "id": "013b40ca-9837-4233-b28e-09f5828958e5",
+        "role": {
+          "isSystem": true,
+          "name": "guest",
+          "id": "ad6b03cc-b9f3-48ae-9406-2ad168afbe01",
+          "isFixed": true
+        }
       }
     }
-  }]
+  ]
 }
 ```
 
 Retrieve information about users you have access to. If you want access to other users in your [organization or sub-organizations](#administration-organizations), you will need to be assigned the `Users read` permission. Without this permission, you will only see your own user in the list.
 
-Attributes | &nbsp;
----------- | -----------
-`id`<br/>*UUID* | The id of the user.
-`creationDate`<br/>*string* | The date in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) that the user was created.
-`email`<br/>*string* | The email of the user.
-`firstName`<br/>*string* | The first name of the user.
-`lastName`<br/>*string* | The last name of the user.
-`organization`<br/>*[Organization](#administration-organization)* | The organization to which the user belongs.
-`primaryRoleBinding`<br/>*RoleBinding* | The primary role assigned to this user. This role will always be a fixed role.
-`serviceConnections`<br/>*Array[[ServiceConnection](#administration-service-connections)]* | The service connection of the user<br/>*includes*: `id`, `name`, `serviceCode`, `type`, and `state`
-`status`<br/>*string* | The current status of the user.
-`userName`<br/>*string* | The username of the user
-`timezone`<br/>*string* | The timezone of the user.
-`locale`<br/>*string* | The language set for the user.
-`lastLogin`<br/>*string* | The date in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) of the last login by the user.
-`lastFailedLogin`<br/>*string* | The date in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) of the last failed login by the user.
-`loginCount`<br/>*integer* | The count of successful logins for that user.
-`failedLoginCount`<br/>*integer* | The count of failed logins attempted by the user.
-`isBusinessContact`<br/>*boolean* | Indicates whether the user is a business contact.
-`isTechnicalContact`<br/>*boolean* | Indicates whether the user is a technical contact.
-`receivesEmailNotifications`<br/>*boolean* | Indicates whether the user email notifications.
-`canResendUserCreationEmail`<br/>*boolean* | Indicates whether the user creation email can be sent to the user.
-`backupCodesRemaining`<br/>*integer* | The number of backup codes remaining for the user.
+| Attributes                                                                                 | &nbsp;                                                                                               |
+| ------------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------------- |
+| `id`<br/>_UUID_                                                                            | The id of the user.                                                                                  |
+| `creationDate`<br/>_string_                                                                | The date in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) that the user was created.            |
+| `email`<br/>_string_                                                                       | The email of the user.                                                                               |
+| `firstName`<br/>_string_                                                                   | The first name of the user.                                                                          |
+| `lastName`<br/>_string_                                                                    | The last name of the user.                                                                           |
+| `organization`<br/>_[Organization](#administration-organization)_                          | The organization to which the user belongs.                                                          |
+| `primaryRoleBinding`<br/>_RoleBinding_                                                     | The primary role assigned to this user. This role will always be a fixed role.                       |
+| `serviceConnections`<br/>_Array[[ServiceConnection](#administration-service-connections)]_ | The service connection of the user<br/>_includes_: `id`, `name`, `serviceCode`, `type`, and `state`  |
+| `status`<br/>_string_                                                                      | The current status of the user.                                                                      |
+| `userName`<br/>_string_                                                                    | The username of the user                                                                             |
+| `timezone`<br/>_string_                                                                    | The timezone of the user.                                                                            |
+| `locale`<br/>_string_                                                                      | The language set for the user.                                                                       |
+| `lastLogin`<br/>_string_                                                                   | The date in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) of the last login by the user.        |
+| `lastFailedLogin`<br/>_string_                                                             | The date in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) of the last failed login by the user. |
+| `loginCount`<br/>_integer_                                                                 | The count of successful logins for that user.                                                        |
+| `failedLoginCount`<br/>_integer_                                                           | The count of failed logins attempted by the user.                                                    |
+| `isBusinessContact`<br/>_boolean_                                                          | Indicates whether the user is a business contact.                                                    |
+| `isTechnicalContact`<br/>_boolean_                                                         | Indicates whether the user is a technical contact.                                                   |
+| `receivesEmailNotifications`<br/>_boolean_                                                 | Indicates whether the user email notifications.                                                      |
+| `canResendUserCreationEmail`<br/>_boolean_                                                 | Indicates whether the user creation email can be sent to the user.                                   |
+| `backupCodesRemaining`<br/>_integer_                                                       | The number of backup codes remaining for the user.                                                   |
 
 <!-------------------- GET USER -------------------->
 
@@ -99,14 +102,15 @@ Attributes | &nbsp;
 
 ```shell
 # Retrieve visible user
-curl "https://cloudmc_endpoint/api/v2/users/fdf60a19-980d-4380-acab-914485111305" \
+curl "https://portal.coxedge.com/api/v2/users/fdf60a19-980d-4380-acab-914485111305" \
    -H "MC-Api-Key: your_api_key"
 ```
+
 > The above command returns a JSON structured like this:
 
 ```json
 {
-  "data":{
+  "data": {
     "id": "fdf60a19-980d-4380-acab-914485111305",
     "userName": "frodo",
     "firstName": "Frodo",
@@ -135,7 +139,7 @@ curl "https://cloudmc_endpoint/api/v2/users/fdf60a19-980d-4380-acab-914485111305
         "type": "cloudstack"
       }
     ],
-     "lastLogin": "2022-05-20T15:56:27.000Z",
+    "lastLogin": "2022-05-20T15:56:27.000Z",
     "lastFailedLogin": "2022-04-16T18:50:21.000Z",
     "loginCount": 76,
     "failedLoginCount": 10,
@@ -161,31 +165,30 @@ curl "https://cloudmc_endpoint/api/v2/users/fdf60a19-980d-4380-acab-914485111305
 
 Retrieve information about a specific user. If you want access to other users in your [organization or sub-organizations](#administration-organizations), you will need to be assigned the `Users Read` permission.
 
-Attributes | &nbsp;
----------- | -----------
-`id`<br/>*UUID* | The id of the user.
-`creationDate`<br/>*string* | The date in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) that the user was created.
-`email`<br/>*string* | The email of the user.
-`firstName`<br/>*string* | The first name of the user.
-`lastName`<br/>*string* | The last name of the user.
-`organization`<br/>*[Organization](#administration-organization)* | The organization to which the user belongs.
-`primaryRoleBinding`<br/>*RoleBinding* | The primary role assigned to this user. This role will always be a fixed role.
-`serviceConnections`<br/>*Array[[ServiceConnection](#administration-service-connections)]* | The service connection of the user<br/>*includes*: `id`, `name`, `serviceCode`, `type`, and `state`
-`status`<br/>*string* | The current status of the user.
-`userName`<br/>*string* | The username of the user
-`timezone`<br/>*string* | The timezone of the user.
-`locale`<br/>*string* | The language set for the user.
-`lastLogin`<br/>*string* | The date in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) of the last login by the user.
-`lastFailedLogin`<br/>*string* | The date in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) of the last failed login by the user.
-`loginCount`<br/>*integer* | The count of successful logins for that user.
-`failedLoginCount`<br/>*integer* | The count of failed logins attempted by the user.
-`isBusinessContact`<br/>*boolean* | Indicates whether the user is a business contact.
-`isTechnicalContact`<br/>*boolean* | Indicates whether the user is a technical contact.
-`receivesEmailNotifications`<br/>*boolean* | Indicates whether the user email notifications.
-`canResendUserCreationEmail`<br/>*boolean* | Indicates whether the user creation email can be sent to the user.
-`backupCodesRemaining`<br/>*integer* | The number of backup codes remaining for the user.
-`identityProviderUsers`<br/>*Array* | A list of objects containing the ids of users associated with the identity provider, and their subject ids.
-
+| Attributes                                                                                 | &nbsp;                                                                                                      |
+| ------------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------- |
+| `id`<br/>_UUID_                                                                            | The id of the user.                                                                                         |
+| `creationDate`<br/>_string_                                                                | The date in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) that the user was created.                   |
+| `email`<br/>_string_                                                                       | The email of the user.                                                                                      |
+| `firstName`<br/>_string_                                                                   | The first name of the user.                                                                                 |
+| `lastName`<br/>_string_                                                                    | The last name of the user.                                                                                  |
+| `organization`<br/>_[Organization](#administration-organization)_                          | The organization to which the user belongs.                                                                 |
+| `primaryRoleBinding`<br/>_RoleBinding_                                                     | The primary role assigned to this user. This role will always be a fixed role.                              |
+| `serviceConnections`<br/>_Array[[ServiceConnection](#administration-service-connections)]_ | The service connection of the user<br/>_includes_: `id`, `name`, `serviceCode`, `type`, and `state`         |
+| `status`<br/>_string_                                                                      | The current status of the user.                                                                             |
+| `userName`<br/>_string_                                                                    | The username of the user                                                                                    |
+| `timezone`<br/>_string_                                                                    | The timezone of the user.                                                                                   |
+| `locale`<br/>_string_                                                                      | The language set for the user.                                                                              |
+| `lastLogin`<br/>_string_                                                                   | The date in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) of the last login by the user.               |
+| `lastFailedLogin`<br/>_string_                                                             | The date in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) of the last failed login by the user.        |
+| `loginCount`<br/>_integer_                                                                 | The count of successful logins for that user.                                                               |
+| `failedLoginCount`<br/>_integer_                                                           | The count of failed logins attempted by the user.                                                           |
+| `isBusinessContact`<br/>_boolean_                                                          | Indicates whether the user is a business contact.                                                           |
+| `isTechnicalContact`<br/>_boolean_                                                         | Indicates whether the user is a technical contact.                                                          |
+| `receivesEmailNotifications`<br/>_boolean_                                                 | Indicates whether the user email notifications.                                                             |
+| `canResendUserCreationEmail`<br/>_boolean_                                                 | Indicates whether the user creation email can be sent to the user.                                          |
+| `backupCodesRemaining`<br/>_integer_                                                       | The number of backup codes remaining for the user.                                                          |
+| `identityProviderUsers`<br/>_Array_                                                        | A list of objects containing the ids of users associated with the identity provider, and their subject ids. |
 
 <!-------------------- CREATE USER -------------------->
 
@@ -196,11 +199,12 @@ Attributes | &nbsp;
 ```shell
 # Create a user
 
-curl -X POST "https://cloudmc_endpoint/api/v2/users" \
+curl -X POST "https://portal.coxedge.com/api/v2/users" \
    -H "MC-Api-Key: your_api_key" \
    -H "Content-Type: application/json" \
    -d "request-body"
 ```
+
 > Request body example:
 
 ```json
@@ -211,12 +215,12 @@ curl -X POST "https://cloudmc_endpoint/api/v2/users" \
   "email": "vader42@cloud.mc",
   "primaryRoleBinding": {
     "role": {
-      "id": "4a1a44f3-ea74-4952-b9ef-ff3163c329d9",
-    },
+      "id": "4a1a44f3-ea74-4952-b9ef-ff3163c329d9"
+    }
   },
   "organization": {
     "id": "645cf4ce-3699-40c5-a1a8-0b3e945f49ee"
-  },
+  }
 }
 ```
 
@@ -226,27 +230,28 @@ Users are created asynchronously on the underlying service(s) and progress is re
 
 You will need the `Create a new user` permission to execute this operation.
 
-Required | &nbsp;
--------- | -----------
-`userName`<br/>*string* | Username of the new user. Should be unique across the organization.
-`firstName`<br/>*string* | First name of the user.
-`lastName`<br/>*string* | Last name of the user.
-`email`<br/>*string* | Email of the user. Should be unique across the organization.
-`primaryRoleBinding.role.id`<br/>*UUID* | The id of the primary role to assign to this user
+| Required                                | &nbsp;                                                              |
+| --------------------------------------- | ------------------------------------------------------------------- |
+| `userName`<br/>_string_                 | Username of the new user. Should be unique across the organization. |
+| `firstName`<br/>_string_                | First name of the user.                                             |
+| `lastName`<br/>_string_                 | Last name of the user.                                              |
+| `email`<br/>_string_                    | Email of the user. Should be unique across the organization.        |
+| `primaryRoleBinding.role.id`<br/>_UUID_ | The id of the primary role to assign to this user                   |
 
-Optional | &nbsp;
--------- | -----------
-`organization`</br>*[Organization](#administration-organization)* | Organization in which the user will be created. *Defaults to your organization*.<br/>*required:* `id`
+| Optional                                                          | &nbsp;                                                                                                |
+| ----------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------- |
+| `organization`</br>_[Organization](#administration-organization)_ | Organization in which the user will be created. _Defaults to your organization_.<br/>_required:_ `id` |
 
-Response | &nbsp;
----------- | -----------
-`taskId`<br/>*UUID* | The id of the task
-`taskStatus`<br/>*string* | The status of the task
-`data`<br/>*[user](#administration-users)* | The information about the created user
+| Response                                   | &nbsp;                                 |
+| ------------------------------------------ | -------------------------------------- |
+| `taskId`<br/>_UUID_                        | The id of the task                     |
+| `taskStatus`<br/>_string_                  | The status of the task                 |
+| `data`<br/>_[user](#administration-users)_ | The information about the created user |
 
 ```shell
 # Response body example
 ```
+
 The responses' `data` field contains the created [user](#administration-users) with its `id`.
 
 ```json
@@ -295,11 +300,12 @@ The responses' `data` field contains the created [user](#administration-users) w
 
 ```shell
 # Update a user
-curl -X PUT "https://cloudmc_endpoint/api/v2/users/fdf60a19-980d-4380-acab-914485111305" \
+curl -X PUT "https://portal.coxedge.com/api/v2/users/fdf60a19-980d-4380-acab-914485111305" \
    -H "MC-Api-Key: your_api_key" \
    -H "Content-Type: application/json" \
    -d "request-body"
 ```
+
 > Request body example:
 
 ```json
@@ -310,21 +316,21 @@ curl -X PUT "https://cloudmc_endpoint/api/v2/users/fdf60a19-980d-4380-acab-91448
   "email": "spidey1@cloud.mc",
   "primaryRoleBinding": {
     "role": {
-      "id": "4a1a44f3-ea74-4952-b9ef-ff3163c329d9",
-    },
-  },
+      "id": "4a1a44f3-ea74-4952-b9ef-ff3163c329d9"
+    }
+  }
 }
 ```
 
 Update a specific user. You will need the `Users update` permission to execute this operation.
 
-Optional | &nbsp;
--------- | -----------
-`userName`<br/>*string* | The new username of the user. Should be unique across the organization.
-`firstName`<br/>*string* | The new first name of the user
-`lastName`<br/>*string* | The new last name of the user
-`primaryRoleBinding.role.id`<br/>*UUID* | The id of the primary role to assign to this user
-`email`<br/>*string* | The new email of the user. Should be unique across the organization.
+| Optional                                | &nbsp;                                                                  |
+| --------------------------------------- | ----------------------------------------------------------------------- |
+| `userName`<br/>_string_                 | The new username of the user. Should be unique across the organization. |
+| `firstName`<br/>_string_                | The new first name of the user                                          |
+| `lastName`<br/>_string_                 | The new last name of the user                                           |
+| `primaryRoleBinding.role.id`<br/>_UUID_ | The id of the primary role to assign to this user                       |
+| `email`<br/>_string_                    | The new email of the user. Should be unique across the organization.    |
 
 ##### Returns
 
@@ -350,14 +356,14 @@ Delete a specific user. You will need the `Delete an existing user` permission t
 
 ```shell
 # Delete a user
-curl "https://cloudmc_endpoint/api/v2/users/dd01c908-371c-4ec5-9fd7-80b1bfac8975" \
+curl "https://portal.coxedge.com/api/v2/users/dd01c908-371c-4ec5-9fd7-80b1bfac8975" \
    -X DELETE -H "MC-Api-Key: your_api_key"
 ```
 
-Response                  | &nbsp;
---------------------------|-----------------------
-`taskId`<br/>*UUID*       | The id of the task
-`taskStatus`<br/>*string* | The status of the task
+| Response                  | &nbsp;                 |
+| ------------------------- | ---------------------- |
+| `taskId`<br/>_UUID_       | The id of the task     |
+| `taskStatus`<br/>_string_ | The status of the task |
 
 ```shell
 # Response body example
@@ -372,16 +378,14 @@ Response                  | &nbsp;
 
 <!-------------------- UNLOCK USER -------------------->
 
-
 ### Unlock user
 
 `POST /users/:id/unlock`
 
-
 ```shell
 # Unlock a user that was locked from the system
 
-curl "https://cloudmc_endpoint/api/v2/users/dd01c908-371c-4ec5-9fd7-80b1bfac8975/unlock" \
+curl "https://portal.coxedge.com/api/v2/users/dd01c908-371c-4ec5-9fd7-80b1bfac8975/unlock" \
    -X POST -H "MC-Api-Key: your_api_key"
 
 ```

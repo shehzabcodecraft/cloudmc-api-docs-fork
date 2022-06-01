@@ -7,7 +7,7 @@
 ```shell
 curl -X GET \
    -H "MC-Api-Key: your_api_key" \
-   "https://cloudmc_endpoint/api/v2/services/a_service/an_environment/ingressesv1"
+   "https://portal.coxedge.com/api/v2/services/a_service/an_environment/ingressesv1"
 ```
 
 > The above command returns a JSON structured like this:
@@ -100,7 +100,7 @@ Note that the list is not complete, since it is referring to the [kubernetes api
 ```shell
 curl -X GET \
    -H "MC-Api-Key: your_api_key" \
-   "https://cloudmc_endpoint/api/v2/services/a_service/an_environment/ingressesv1/cloudmc/cmc-stg"
+   "https://portal.coxedge.com/api/v2/services/a_service/an_environment/ingressesv1/cloudmc/cmc-stg"
 ```
 
 > The above command returns a JSON structured like this:
@@ -161,10 +161,10 @@ Note that the list is not complete, since it is referring to the [kubernetes api
 ```shell
 curl -X POST \
   -H "MC-Api-Key: your_api_key" \
-   "https://cloudmc_endpoint/api/v2/services/a_service/an_environment/ingressesv1"
+   "https://portal.coxedge.com/api/v2/services/a_service/an_environment/ingressesv1"
   Content-Type: application/json
   {
-  "apiVersion": "networking.k8s.io/v1",
+  "apiVersion": "networking.k8s.io/api/v2",
   "kind": "Ingress",
   "metadata": {
     "name": "ingress-name",
@@ -186,7 +186,7 @@ curl -X POST \
                 "service": {
                   "name": "test",
                   "port": {
-                    "number": 80 
+                    "number": 80
                   }
                 }
               }
@@ -211,9 +211,9 @@ Create an ingress V1 in a given [environment](#administration-environments).
 | `spec`<br/>_object_           | The specification used to create and run the ingress. |
 | `spec.rules`<br/>_object_     | The list of host rules used to configure the ingress. |
 
-| Optional Attributes                | &nbsp;                                                             |
-| ---------------------------------- | ------------------------------------------------------------------ |
-| `metadata.namespace` <br/>_string_ | The namespace in which the ingress is created.                     |
+| Optional Attributes                | &nbsp;                                         |
+| ---------------------------------- | ---------------------------------------------- |
+| `metadata.namespace` <br/>_string_ | The namespace in which the ingress is created. |
 
 Return value:
 
@@ -229,8 +229,9 @@ Return value:
 ```shell
 curl -X PUT \
    -H "MC-Api-Key: your_api_key" \
-   "https://cloudmc_endpoint/api/v2/services/a_service/an_environment/ingressesv1/ingress-name/default"
+   "https://portal.coxedge.com/api/v2/services/a_service/an_environment/ingressesv1/ingress-name/default"
 ```
+
 > Request body example:
 
 ```json
@@ -240,7 +241,7 @@ curl -X PUT \
     "port": "6556",
     "name": "test"
   },
-  "apiVersion": "networking.k8s.io/v1",
+  "apiVersion": "networking.k8s.io/api/v2",
   "kind": "Ingress",
   "metadata": {
     "creationTimestamp": "2020-08-13T14:13:42.000-04:00",
@@ -297,12 +298,12 @@ curl -X PUT \
 
 Replace an ingress V1 in a given [environment](#administration-environments).
 
-| Required Attributes           | &nbsp;                                                             |
-| ----------------------------- | ------------------------------------------------------------------ |
-| `apiVersion` <br/> _string_   | The api version (versioned schema) of the ingress.                 |
-| `metadata` <br/>_object_      | The metadata of the ingress.                                       |
-| `metadata.name` <br/>_string_ | The name of the ingress.                                           |
-| `spec`<br/>_object_           | The specification used to create and run the ingress.              |
+| Required Attributes           | &nbsp;                                                |
+| ----------------------------- | ----------------------------------------------------- |
+| `apiVersion` <br/> _string_   | The api version (versioned schema) of the ingress.    |
+| `metadata` <br/>_object_      | The metadata of the ingress.                          |
+| `metadata.name` <br/>_string_ | The name of the ingress.                              |
+| `spec`<br/>_object_           | The specification used to create and run the ingress. |
 
 Return value:
 
@@ -318,7 +319,7 @@ Return value:
 ```shell
 curl -X DELETE \
    -H "MC-Api-Key: your_api_key" \
-   "https://cloudmc_endpoint/api/v2/services/a_service/an_environment/ingressesv1/test-ingress/default"
+   "https://portal.coxedge.com/api/v2/services/a_service/an_environment/ingressesv1/test-ingress/default"
 ```
 
 > The above command returns a JSON structured like this:

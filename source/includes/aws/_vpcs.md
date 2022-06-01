@@ -9,7 +9,7 @@ View and manage vpcs.
 ```shell
 curl -X GET \
    -H "MC-Api-Key: your_api_key" \
-   "https://cloudmc_endpoint/v1/services/aws/test-env/vpcs"
+   "https://portal.coxedge.com/api/v2/services/aws/test-env/vpcs"
 ```
 
 > The above command returns a JSON structured like this:
@@ -56,7 +56,7 @@ Retrieve a list of all vpcs in a given [environment](#administration-environment
 ```shell
 curl -X GET \
    -H "MC-Api-Key: your_api_key" \
-   "https://cloudmc_endpoint/v1/services/aws/test-env/vpcs/vpc_id"
+   "https://portal.coxedge.com/api/v2/services/aws/test-env/vpcs/vpc_id"
 ```
 
 > The above command returns a JSON structured like this:
@@ -91,8 +91,6 @@ Retrieve a vpc in a given [environment](#administration-environments).
 | `state`<br/>_string_           | The state of VPC access (pending, available).                                                                 |
 | `isDefault`<br/>_boolean_      | Whether or not the VPC is the default environment VPC.                                                        |
 
-
-
 <!-------------------- CREATE A VPC -------------------->
 
 #### Create a VPC
@@ -100,7 +98,7 @@ Retrieve a vpc in a given [environment](#administration-environments).
 ```shell
 curl -X POST \
    -H "MC-Api-Key: your_api_key" \
-   "https://cloudmc_endpoint/v1/services/aws/test-env/vpcs"
+   "https://portal.coxedge.com/api/v2/services/aws/test-env/vpcs"
 ```
 
 > Request body example for a named VPC:
@@ -129,8 +127,8 @@ Create a VPC in a given [environment](#administration-environments).
 | ----------------- | ------------------ |
 | `id`<br/>_string_ | The ID of the VPC. |
 
-| Optional            | &nbsp;                                                                       |
-| ------------------- | ---------------------------------------------------------------------------- |
+| Optional            | &nbsp;                                                                    |
+| ------------------- | ------------------------------------------------------------------------- |
 | `name`<br/>_string_ | The VPC name. A default name will be created if there isn't one provided. |
 
 <!-------------------- DELETE A VPC -------------------->
@@ -140,7 +138,7 @@ Create a VPC in a given [environment](#administration-environments).
 ```shell
 curl -X DELETE \
    -H "MC-Api-Key: your_api_key" \
-   "https://cloudmc_endpoint/v1/services/aws/test-env/vpcs/vpc-05a6af2e6a6360915"
+   "https://portal.coxedge.com/api/v2/services/aws/test-env/vpcs/vpc-05a6af2e6a6360915"
 ```
 
 > The above commands return a JSON structured like this:
@@ -156,7 +154,7 @@ curl -X DELETE \
 
 Delete a VPC in a given [environment](#administration-environments).
 
-| Attributes                 | &nbsp;                                        |
-|----------------------------|-----------------------------------------------|
-| `taskId` <br/>*string*     | The task id related to the VPC deletion. |
-| `taskStatus` <br/>*string* | The status of the operation.                  |
+| Attributes                 | &nbsp;                                   |
+| -------------------------- | ---------------------------------------- |
+| `taskId` <br/>_string_     | The task id related to the VPC deletion. |
+| `taskStatus` <br/>_string_ | The status of the operation.             |

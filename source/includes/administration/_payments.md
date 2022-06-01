@@ -9,8 +9,9 @@ Retreive the history of payment transactions for an organization.
 ```shell
 curl -X GET \
    -H "MC-Api-Key: your_api_key" \
-   "https://cloudmc_endpoint/api/v2/payments?organizationId=07d88499-a17f-4a68-8888-bbec953xxx1d"
+   "https://portal.coxedge.com/api/v2/payments?organizationId=07d88499-a17f-4a68-8888-bbec953xxx1d"
 ```
+
 > The above command returns a JSON structured like this:
 
 ```json
@@ -65,28 +66,27 @@ curl -X GET \
 
 Retrieve a list of payment processed for an organization.
 
-Query Params | &nbsp;
----- | -----------
-`organizationId`<br/>*UUID* | The ID of the organization for which we want to see the payments.
+| Query Params                | &nbsp;                                                            |
+| --------------------------- | ----------------------------------------------------------------- |
+| `organizationId`<br/>_UUID_ | The ID of the organization for which we want to see the payments. |
 
-Attributes | &nbsp;
-------- | -----------
-`id`<br/>*UUID* | A payment's unique identifier.
-`invoice`<br/>*Object* | The invoice associated to the payment.
-`invoice.id`<br/>*UUID* | The UUID of the invoice.
-`invoice.invoiceId`<br/>*String* | The human readable invoice id.
-`invoice.createdDate`<br/>*date* | The created date of the invoice.
-`paymentReference`<br/>*String* | Payment reference sent to the payment provider to indentify the transaction.
-`paymentTraceReference`<br/>*String* | Additional reference used to find a payment on the payment provider side.
-`errorMsg`<br/>*String* | The error message returned by the payment provider if the payment failed.
-`totalAmount`<br/>*BigDecimal* | The total amount of the invoice charged on the card.
-`taxAmount`<br/>*BigDecimal* | The tax amount that was included in the charge.
-`confirmationNumber`<br/>*String* | Confirmation number returned from the payment provider.
-`paymentDate`<br/>*date* | The date on which the payment was sent to the provider.
-`currencyCode`<br/>*String* | The currency of the payment.
-`status`<br/>*String* | Status of the payment. One of `SUCCESS`, `PENDING`, `FAIL`.
-`extraInfo`</br>*String*| Additional information set in the payment transaction.
-
+| Attributes                           | &nbsp;                                                                       |
+| ------------------------------------ | ---------------------------------------------------------------------------- |
+| `id`<br/>_UUID_                      | A payment's unique identifier.                                               |
+| `invoice`<br/>_Object_               | The invoice associated to the payment.                                       |
+| `invoice.id`<br/>_UUID_              | The UUID of the invoice.                                                     |
+| `invoice.invoiceId`<br/>_String_     | The human readable invoice id.                                               |
+| `invoice.createdDate`<br/>_date_     | The created date of the invoice.                                             |
+| `paymentReference`<br/>_String_      | Payment reference sent to the payment provider to indentify the transaction. |
+| `paymentTraceReference`<br/>_String_ | Additional reference used to find a payment on the payment provider side.    |
+| `errorMsg`<br/>_String_              | The error message returned by the payment provider if the payment failed.    |
+| `totalAmount`<br/>_BigDecimal_       | The total amount of the invoice charged on the card.                         |
+| `taxAmount`<br/>_BigDecimal_         | The tax amount that was included in the charge.                              |
+| `confirmationNumber`<br/>_String_    | Confirmation number returned from the payment provider.                      |
+| `paymentDate`<br/>_date_             | The date on which the payment was sent to the provider.                      |
+| `currencyCode`<br/>_String_          | The currency of the payment.                                                 |
+| `status`<br/>_String_                | Status of the payment. One of `SUCCESS`, `PENDING`, `FAIL`.                  |
+| `extraInfo`</br>_String_             | Additional information set in the payment transaction.                       |
 
 <!-------------------- RETRIEVE A PAYMENT -------------------->
 
@@ -95,8 +95,9 @@ Attributes | &nbsp;
 ```shell
 curl -X GET \
    -H "MC-Api-Key: your_api_key" \
-   "https://cloudmc_endpoint/api/v2/payments/07d88499-a17f-4a68-8560-bbec953ert1d"
+   "https://portal.coxedge.com/api/v2/payments/07d88499-a17f-4a68-8560-bbec953ert1d"
 ```
+
 > The above command returns a JSON structured like this:
 
 ```json
@@ -131,20 +132,20 @@ curl -X GET \
 
 Retrieve a payment.
 
-Attributes | &nbsp;
-------- | -----------
-`id`<br/>*UUID* | A payment's unique identifier.
-`invoice`<br/>*Object* | The invoice associated to the payment.
-`invoice.id`<br/>*UUID* | The UUID of the invoice.
-`invoice.invoiceId`<br/>*String* | The human readable invoice id.
-`invoice.createdDate`<br/>*date* | The created date of the invoice.
-`paymentReference`<br/>*String* | Payment reference sent to the payment provider to indentify the transaction.
-`paymentTraceReference`<br/>*String* | Additional reference used to find a payment on the payment provider side.
-`errorMsg`<br/>*String* | The error message returned by the payment provider if the payment failed.
-`totalAmount`<br/>*BigDecimal* | The total amount of the invoice charged on the card.
-`taxAmount`<br/>*BigDecimal* | The tax amount that was included in the charge.
-`confirmationNumber`<br/>*String* | Confirmation number returned from the payment provider.
-`paymentDate`<br/>*date* | The date on which the payment was sent to the provider.
-`currencyCode`<br/>*String* | The currency of the payment.
-`status`<br/>*String* | Status of the payment. One of `SUCCESS`, `PENDING`, `FAIL`.
-`extraInfo`</br>*String*| Additional information set in the payment transaction.
+| Attributes                           | &nbsp;                                                                       |
+| ------------------------------------ | ---------------------------------------------------------------------------- |
+| `id`<br/>_UUID_                      | A payment's unique identifier.                                               |
+| `invoice`<br/>_Object_               | The invoice associated to the payment.                                       |
+| `invoice.id`<br/>_UUID_              | The UUID of the invoice.                                                     |
+| `invoice.invoiceId`<br/>_String_     | The human readable invoice id.                                               |
+| `invoice.createdDate`<br/>_date_     | The created date of the invoice.                                             |
+| `paymentReference`<br/>_String_      | Payment reference sent to the payment provider to indentify the transaction. |
+| `paymentTraceReference`<br/>_String_ | Additional reference used to find a payment on the payment provider side.    |
+| `errorMsg`<br/>_String_              | The error message returned by the payment provider if the payment failed.    |
+| `totalAmount`<br/>_BigDecimal_       | The total amount of the invoice charged on the card.                         |
+| `taxAmount`<br/>_BigDecimal_         | The tax amount that was included in the charge.                              |
+| `confirmationNumber`<br/>_String_    | Confirmation number returned from the payment provider.                      |
+| `paymentDate`<br/>_date_             | The date on which the payment was sent to the provider.                      |
+| `currencyCode`<br/>_String_          | The currency of the payment.                                                 |
+| `status`<br/>_String_                | Status of the payment. One of `SUCCESS`, `PENDING`, `FAIL`.                  |
+| `extraInfo`</br>_String_             | Additional information set in the payment transaction.                       |

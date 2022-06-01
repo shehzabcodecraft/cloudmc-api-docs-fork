@@ -10,10 +10,11 @@ The target is the internet gateway that's attached to your VPC.
 <!-------------------- DELETE ROUTES -------------------->
 
 #### Delete a Route
+
 ```shell
 curl -X POST \
    -H "MC-Api-Key: your_api_key" \
-   "https://cloudmc_endpoint/v1/services/aws/aws-tesv/routes/0.0.0.0/0?operation=delete&routeTableId=rtb-04703a509a773f41b"
+   "https://portal.coxedge.com/api/v2/services/aws/aws-tesv/routes/0.0.0.0/0?operation=delete&routeTableId=rtb-04703a509a773f41b"
 ```
 
 > The above commands return a JSON structured like this:
@@ -29,15 +30,14 @@ curl -X POST \
 
 Delete a route defined by its IPv4 CIDR block within the provided route table in a given [environment](#administration-environments).
 
-| Attributes                 | &nbsp;                                        |
-|----------------------------|-----------------------------------------------|
-| `taskId` <br/>*string*     | The [task ID](#tasks) for the delete route operation. |
-| `taskStatus` <br/>*string* | The status of the operation.                  |
+| Attributes                 | &nbsp;                                                |
+| -------------------------- | ----------------------------------------------------- |
+| `taskId` <br/>_string_     | The [task ID](#tasks) for the delete route operation. |
+| `taskStatus` <br/>_string_ | The status of the operation.                          |
 
-| Required Query Parameters     | &nbsp;                                        |
-|-------------------------------|-----------------------------------------------|
-| `routeTableId` <br/>*string*  | The ID of the Route Table for this route.     |
-
+| Required Query Parameters    | &nbsp;                                    |
+| ---------------------------- | ----------------------------------------- |
+| `routeTableId` <br/>_string_ | The ID of the Route Table for this route. |
 
 <aside class="notice">
 The local route within the Route table cannot be deleted as it is the default route for communication within the VPC.
