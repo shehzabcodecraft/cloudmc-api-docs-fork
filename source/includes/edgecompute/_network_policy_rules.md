@@ -1,6 +1,6 @@
 ## Network policy rules
 
-Network policy rules allows you to control inbound and outbound traffic to your [workload](#stackpath-workloads).
+Network policy rules allows you to control inbound and outbound traffic to your workload.
 
 
 <!-------------------- LIST NETWORK POLICY RULES -------------------->
