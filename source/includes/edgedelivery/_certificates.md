@@ -12,6 +12,7 @@ curl -X GET \
    "https://portal.coxedge.com/api/v2/services/stackpath/test-area/certificates?siteId=0a57855b-26d8-4e8f-8b77-429997c7c5fb"
 ```
 > The above command returns a JSON structured like this:
+
 ```json
 {
   "data": [
@@ -76,6 +77,7 @@ curl -X GET \
    "https://portal.coxedge.com/api/v2/services/stackpath/test-area/certificates/2a12237d-c388-4c19-bff1-b019b837e8f1?siteId=0a57855b-26d8-4e8f-8b77-429997c7c5fb"
 ```
 > The above command returns a JSON structured like this:
+
 ```json
 {
   "data": {
