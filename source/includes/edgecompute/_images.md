@@ -1,6 +1,6 @@
 ## Images
 
-StackPath Edge Computing makes use of images to deploy virtual machines within a workload. The image can be from StackPath default images or
+Cox Edge makes use of images to deploy virtual machines within a workload. The image can be from Cox Edge default images or
 a custom one. Only non-deprecated images are returned by default.
 
 Deploy and manage your images.

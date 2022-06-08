@@ -1,10 +1,10 @@
-### Predefined EdgeRules
+### Predefined Edge Logic
 
-The predefined EdgeRules let you configure how StackPath responds to requests to your website. These predefined EdgeRules only work with domains that resolve to StackPath.
+The predefined Edge Logic let you configure how Cox Edge responds to requests to your website. These predefined Edge Logic only work with domains that resolve to Cox Edge.
 
-<!-------------------- LIST PREDEFINED EDGERULES -------------------->
+<!-------------------- LIST PREDEFINED EDGE LOGIC -------------------->
 
-#### List predefined EdgeRules
+#### List predefined Edge Logic
 
 ```shell
 curl -X GET \
@@ -34,15 +34,15 @@ curl -X GET \
 }
 ```
 
-<code>GET /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/predefinededgerules/<a href="#stackpath-sites">:siteId</a></code>
+<code>GET /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/predefinededgerules/<a href="#edgedelivery-sites">:siteId</a></code>
 
-Retrieve the configuration of all predefined EdgeRules in a given [environment](#administration-environments) within a site.
+Retrieve the configuration of all predefined Edge Logic in a given [environment](#administration-environments) within a site.
 
 Attributes | &nbsp;
 ------- | -----------
 `allowEmptyReferrer`<br/>*boolean* | Whether or not empty referrer is allowed.
 `forceWwwEnabled`<br/>*boolean* | Whether or not redirecting every request to a www subdomain is enabled.
-`id`<br/>*UUID* | This ID is same as the siteId to which the predefined EdgeRules belong.
+`id`<br/>*UUID* | This ID is same as the siteId to which the predefined Edge Logic belong.
 `pseudoStreamingEnabled`<br/>*boolean* | Whether or not seeking random locations within MP4 or FLV files without downloading the entire video is enabled.
 `referrerList`<br/>*Array[string]* | The list of domains authorized to access content from the site's root scope. Wildcards can be used to specify multiple websites hosted on the same domain.
 `referrerProtectionEnabled`<br/>*boolean* | Whether or not referrer protection is enabled. This rule is used to allow only requests whose referrer header matches a URL that you specified.
@@ -51,9 +51,9 @@ Attributes | &nbsp;
 `scopeId`<br/>*UUID* | The ID of the CDN site's root scope that the predefined rules belongs to.
 `stackId`<br/>*UUID* | The ID of the stack that the predefined rules belong to.
 
-<!-------------------- EDIT PREDEFINED EDGERULES  -------------------->
+<!-------------------- EDIT PREDEFINED EDGE LOGIC  -------------------->
 
-#### Edit a predefined EdgeRules
+#### Edit a predefined Edge Logic
 
 ```shell
 curl -X PATCH \

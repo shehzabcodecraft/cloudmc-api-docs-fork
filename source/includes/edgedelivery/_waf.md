@@ -90,7 +90,7 @@ curl -X GET \
 }
 ```
 
-<code>GET /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/wafsettings/<a href="#stackpath-sites">:siteId</a></code>
+<code>GET /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/wafsettings/<a href="#edgedelivery-sites">:siteId</a></code>
 
 Retrieve WAF Settings for a site in a given [environment](#administration-environments).
 
@@ -188,7 +188,7 @@ curl -X PATCH \
 }
 ```
 
-<code>PATCH /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/wafsettings/<a href="#stackpath-sites">:siteId</a></code>
+<code>PATCH /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/wafsettings/<a href="#edgedelivery-sites">:siteId</a></code>
 
 Edit the WAF settings for a site in a given [environment](#administration-environments).
 

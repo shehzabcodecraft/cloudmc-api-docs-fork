@@ -1,6 +1,6 @@
 ## Workloads
 
-StackPath Edge Computing uses the concept of workloads to organize different applications. A workload can consist of one container or virtual machine image that is deployed to one or many locations.
+Cox Edge uses the concept of workloads to organize different applications. A workload can consist of one container or virtual machine image that is deployed to one or many locations.
 
 Deploy and manage your workloads.
 

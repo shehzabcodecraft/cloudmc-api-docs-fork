@@ -54,7 +54,7 @@ Retrieve a list of all sites in a given [environment](#administration-environmen
 
 Optional | &nbsp;
 ------ | -----------
-`status`<br/>*string* | Setting the status parameter will return only the **stackpath sites** with that particular status. The site's status can either be `ACTIVE`, `PENDING`, or `PROVISIONING`.
+`status`<br/>*string* | Setting the status parameter will return only the **sites** with that particular status. The site's status can either be `ACTIVE`, `PENDING`, or `PROVISIONING`.
 
 Attributes | &nbsp;
 ------- | -----------
