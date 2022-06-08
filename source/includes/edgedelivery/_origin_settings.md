@@ -1,8 +1,8 @@
-### Origin Settings
+## Origin Settings
 
 <!-------------------- RETRIEVE ORIGIN SETTINGS -------------------->
 
-#### Retrieve origin settings
+### Retrieve origin settings
 
 ```shell
 curl -X GET \
@@ -74,7 +74,7 @@ Attributes | &nbsp;
 
 <!-------------------- EDIT ORIGIN SETTINGS -------------------->
 
-#### Edit origin settings
+### Edit origin settings
 
 ```shell
 curl -X PATCH \

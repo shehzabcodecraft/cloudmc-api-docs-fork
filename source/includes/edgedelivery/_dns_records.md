@@ -1,10 +1,10 @@
-### DNS Records
+## DNS Records
 
 Create and manage your DNS records associated to your zones.
 
 <!-------------------- LIST DNS RECORDS -------------------->
 
-#### List DNS Records
+### List DNS Records
 
 ```shell
 curl -X GET \
@@ -73,7 +73,7 @@ Attributes | &nbsp;
 
 <!-------------------- RETRIEVE A DNS RECORD -------------------->
 
-#### Retrieve a DNS record
+### Retrieve a DNS record
 
 ```shell
 curl -X GET \
@@ -124,7 +124,7 @@ Attributes | &nbsp;
 
 <!-------------------- CREATE A DNS RECORD -------------------->
 
-#### Create a DNS record
+### Create a DNS record
 
 ```shell
 curl -X POST \
@@ -174,7 +174,7 @@ Optional | &nbsp;
 
 <!-------------------- UPDATE A DNS RECORD -------------------->
 
-#### Update a DNS record
+### Update a DNS record
 
 ```shell
 curl -X PUT \
@@ -224,7 +224,7 @@ Optional | &nbsp;
 
 <!-------------------- DELETE A DNS RECORD -------------------->
 
-#### Delete a DNS record
+### Delete a DNS record
 
 ```shell
 curl -X DELETE \

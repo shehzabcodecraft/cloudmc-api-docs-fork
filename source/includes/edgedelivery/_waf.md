@@ -1,7 +1,7 @@
-### WAF
+## WAF
 <!-------------------- List WAF Settings -------------------->
 
-#### Retrieve WAF Settings
+### Retrieve WAF Settings
 
 ```shell
 curl -X GET \
@@ -161,7 +161,7 @@ Attributes | &nbsp;
 
 <!-------------------- Edit WAF Settings -------------------->
 
-#### Edit WAF Settings
+### Edit WAF Settings
 
 ```shell
 curl -X PATCH \

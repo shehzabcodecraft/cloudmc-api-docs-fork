@@ -4,7 +4,7 @@ Create and manage your DNS zones.
 
 <!-------------------- LIST DNS ZONES -------------------->
 
-### List DNS Zones
+## List DNS Zones
 
 ```shell
 curl -X GET \
@@ -59,7 +59,7 @@ Attributes | &nbsp;
 
 <!-------------------- RETRIEVE A DNS ZONE -------------------->
 
-### Retrieve a DNS zone
+## Retrieve a DNS zone
 
 ```shell
 curl -X GET \
@@ -111,7 +111,7 @@ Attributes | &nbsp;
 
 <!-------------------- CREATE A DNS ZONE -------------------->
 
-### Create a DNS zone
+## Create a DNS zone
 
 ```shell
 curl -X POST \
@@ -171,7 +171,7 @@ Optional | &nbsp;
 
 <!-------------------- DELETE A DNS ZONE -------------------->
 
-#### Delete a DNS zone
+### Delete a DNS zone
 
 ```shell
 curl -X DELETE \
@@ -202,7 +202,7 @@ Attributes | &nbsp;
 
 <!-------------------- IMPORT DNS ZONE RECORDS -------------------->
 
-### Import DNS zone records
+## Import DNS zone records
 
 ```shell
 curl -X POST \

@@ -1,8 +1,8 @@
-### CDN
+## CDN
 
 <!-------------------- RETRIEVE CDN SETTINGS -------------------->
 
-#### Retrieve CDN settings
+### Retrieve CDN settings
 
 ```shell
 curl -X GET \
@@ -80,7 +80,7 @@ Attributes | &nbsp;
 
 <!-------------------- EDIT CDN SETTINGS -------------------->
 
-#### Edit CDN settings
+### Edit CDN settings
 
 ```shell
 curl -X PATCH \
@@ -142,7 +142,7 @@ Optional | &nbsp;
 
 <!-------------------- PURGE ALL CDN CACHED CONTENT -------------------->
 
-#### Purge all CDN cached content
+### Purge all CDN cached content
 
 ```shell
 curl -X POST \
@@ -170,7 +170,7 @@ Attributes | &nbsp;
 
 <!-------------------- PURGE CUSTOM CDN CACHED CONTENT -------------------->
 
-#### Purge custom CDN cached content
+### Purge custom CDN cached content
 
 ```shell
 curl -X POST \

@@ -33,15 +33,6 @@ When using the API in an organization other than your own, make sure to specify 
 
 <code>https://portal.coxedge.com/api/v2/users&<strong>org_id=:org_id</strong></code>
 
-
-## Working with sub-organizations
-
-*If you don't know what a sub-organization is, you can safely skip this section.*
-
-When using the API in an organization other than your own, make sure to specify the `org_id` query parameter in your request. This looks like:
-
-<code>https://portal.coxedge.com/api/v2/users&<strong>org_id=:org_id</strong></code>
-
 ## HTTP verbs
 The Cox Edge API can be used by any tool that is fluent in HTTP. The appropriate HTTP method should be used depending on the desired action.
 

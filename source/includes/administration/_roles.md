@@ -60,12 +60,13 @@ curl "https://portal.coxedge.com/api/v2/roles?environment_id=4865a023-1dd5-45a3-
 
 Query Params | &nbsp;
 ---- | -----------
-`filter_scope`<br/>*[ScopeQualifier](#administration-scopequalifier)* | Return only roles with this as the default scope.
+`filter_scope`<br/>*ScopeQualifier* | Return only roles with this as the default scope.
 `system_only`<br/>*boolean* | Return only system roles.
 `organization_id`<br/>*UUID* | Return only roles requesting user can assign on this organization.
 `environment_id`<br/>*UUID* | Filters out env-scoped roles applicated to this environment. If an environment is of a plugin type that has custom plugin roles it only returns the plugin's roles, if the environment has no plugin defined roles it returns only the default environment-scoped roles.
 
-### ScopeQualifier 
+ScopeQualifiers :
+
 * `ENV`
 * `ORG_BASE` 
 * `ORG_TREE` 

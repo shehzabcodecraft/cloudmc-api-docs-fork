@@ -228,7 +228,7 @@ Attributes | &nbsp;
 `customDomain`<br/>*[VerifiedDomain](#administration-get-verified-domains)* | The custom domain for the organization.
 
 <!-------------------- CREATE ORGANIZATION -------------------->
-### Create organization
+<!-- ### Create organization
 
 `POST /organizations`
 
@@ -285,7 +285,7 @@ Response | &nbsp;
 ```shell
 # Response body example
 ```
-```json
+```json 
 {
   "taskId": "aee1862d-c187-43eb-be12-754c24022dfc",
   "taskStatus": "PENDING",
@@ -321,6 +321,7 @@ Response | &nbsp;
   }
 }
 ```
+-->
 
 <!-------------------- UPDATE ORGANIZATION -------------------->
 ### Update organization
@@ -373,8 +374,8 @@ The responses' `data` field contains the updated [organization](#administration-
 - The organization owns the service connection _(i.e. the organizationId of the service connection is this organization's id)_
 - If the organization is a sub-organization in some organization hierachy, then the service connection must be either **owned by** or **assigned to** its immediate parent organization
 
-
 Response | &nbsp;
+---- | ----
 `data`<br/>*[Organization](#administration-organizations)* | The information about the updated organization
 
 
@@ -414,7 +415,7 @@ Response | &nbsp;
 ```
 
 <!-------------------- DELETE ORGANIZATION -------------------->
-### Delete organization
+<!-- ### Delete organization
 
 `DELETE /organizations/:id`
 
@@ -455,7 +456,7 @@ Response                  | &nbsp;
   "taskId": "cd921b44-ca9f-4f6b-b184-f952e5ab010a",
   "taskStatus": "PENDING"
 }
-```
+``` -->
 
 Returns an HTTP status code 204, with an empty response body.
 
@@ -662,7 +663,7 @@ Attributes | &nbsp;
 
 
 <!-------------------- UPDATE SECURITY SETTINGS -------------------->
-### Update security settings
+<!-- ### Update security settings
 `PUT /organizations/:organization_id/security_settings`
 
 ```shell
@@ -744,7 +745,7 @@ Returns an HTTP status code 200, with an empty response body.
 - If `passwordPolicy` is passed in the request:
    - The system will create a new or update the existing password policy for the organization.
 - If `autoCreationEnabled` and/or `verifiedDomains` is passed in the request:
-   - The system will create a new or update the existing security settings for the organization.
+   - The system will create a new or update the existing security settings for the organization. -->
 
 
 <!-------------------- GET ORGANIZATION PASSWORD POLICY -------------------->
@@ -800,7 +801,7 @@ Attributes | &nbsp;
 `isMandatory`<br/>*boolean* | Flag to indicate if the constraint is mandatory or not.
 
 <!-------------------- DELETE PASSWORD POLICY FOR ORGANIZATION -------------------->
-### Delete password policy
+<!-- ### Delete password policy
 `DELETE /organizations/:id/password_policy`
 
 Delete a password policy for an organization. Root reseller organization will not be able to delete its password policy. A reseller sub-organization can delete its password policy.
@@ -811,10 +812,10 @@ curl -X DELETE "https://portal.coxedge.com/api/v2/organizations/e8d95716-26a9-40
    -H "MC-Api-Key: your_api_key"
 ```
 
-Returns an HTTP status code 200, with an empty response body.
+Returns an HTTP status code 200, with an empty response body. -->
 
 <!-------------------- GET MANAGEABLE CONNECTIONS OF ORGANIZATION -------------------->
-### Get manageable connections of an organization
+<!-- ### Get manageable connections of an organization
 `GET /organizations/:id/manageable_connections`
 
 Get a list of Service connections that can be managed by the current user on the given organization.
@@ -883,10 +884,10 @@ The user should have `Connections reseller` permission on the organization. This
 - If the API user is from any organization between this organization's immediate parent organization and the root organization:
    - Service connections `assigned to` this organization
    - Service connections `owned by` the user's organization **and** is `assigned to` this organization's immediate parent organization
-   - Service connections `assigned to` the user's organization **and** is `assigned to` this organization's immediate parent organization
+   - Service connections `assigned to` the user's organization **and** is `assigned to` this organization's immediate parent organization -->
 
 <!-------------------- MARK AS RESELLER -------------------->
-### Mark organization as reseller
+<!-- ### Mark organization as reseller
 `POST /organizations/:organization_id/mark_reseller`
 
 ```shell
@@ -895,11 +896,11 @@ curl -X POST "https://portal.coxedge.com/api/v2/organizations/03bc22bd-adc4-46b8
    -H "MC-Api-Key: your_api_key" \
 ```
 
-Mark the organization as a reseller. Returns an HTTP status code 200, with an empty response body.
+Mark the organization as a reseller. Returns an HTTP status code 200, with an empty response body. -->
 
 
 <!-------------------- GET IDENTITY PROVIDERS -------------------->
-### Get identity providers
+<!-- ### Get identity providers
 `GET /organizations/:organization_id/identity_providers`
 
 Retrieve the identity providers for the organization.
@@ -940,7 +941,7 @@ Attributes | &nbsp;
 `provider`<br/>*string* | The name of the provider. Possible values include the default providers (e.g GOOGLE), or CUSTOM for a custom user-defined provider.
 `displayName`<br/>*string* | The display name of the identity provider that will appear on the login screen.
 `logo`<br/>*string* | A base64 encoded data URL or URL to an image for the logo to display on the login screen.
-`rank`<br/>*int* | If provided, this integer sorts identity providers on the Login page in ascending order.
+`rank`<br/>*int* | If provided, this integer sorts identity providers on the Login page in ascending order. -->
 
 
 
@@ -1025,7 +1026,7 @@ curl -X DELETE "https://portal.coxedge.com/api/v2/organizations/87895f43-51c1-43
 
 
 <!-------------------- UPDATE BILLABLE ORGANIZATION INFORMATION -------------------->
-### Set billable organization information
+<!-- ### Set billable organization information
 `PUT /organizations/:organization_id/billable`
 
 Set the organization to billable and update the billable organization information.
@@ -1062,10 +1063,10 @@ Optional | &nbsp;
 ---- | ----
 `billableEnd`<br/>*string*  | The date the organization stops being billable, in YYYY-MM-DD format.
 
-The response's `data` field contains the updated billable organization info with it's `id`, the `billableStart`, as well as the pricing package and it's`id`.
+The response's `data` field contains the updated billable organization info with it's `id`, the `billableStart`, as well as the pricing package and it's`id`. -->
 
 <!-------------------- LIST APPLICABLE PRICING PACKAGES TO ORG -------------------->
-### List applicable pricing packages to an organization
+<!-- ### List applicable pricing packages to an organization
 
 `GET /organizations/:organization_id/pricing_packages`
 
@@ -1113,7 +1114,7 @@ Attributes | &nbsp;
 `startDate`<br/>*date* | The start date of the pricing package.
 `endDate`<br/>*date* | The end date of the pricing package. If it is not present, there is no end date defined.
 `creationDate`<br/>*Object* | The date the pricing package was created.
-`name` <br/>*Map[String, String]* | The name translations of the pricing package.
+`name` <br/>*Map[String, String]* | The name translations of the pricing package. -->
 
 <!-------------------- LIST ORG BILLING EMAILS -------------------->
 ### List billing emails
@@ -1251,7 +1252,7 @@ Attributes | &nbsp;
 
 
 <!-------------------- UPDATE BILLABLEORGINFO PACKAGE & DISCOUNTS FOR BILLING CYCLE -------------------->
-### Update the pricing package and discounts starting at a billing cycle
+<!-- ### Update the pricing package and discounts starting at a billing cycle
 
 `PUT /organizations/:organization_id/billable_info`
 
@@ -1313,5 +1314,5 @@ curl "https://portal.coxedge.com/api/v2/organizations/c01e2bd4-50c4-4ef4-b756-f7
 | `id`<br/>*UUID*                     | The id of billing information.                                                        |
 | `pricingPackage`<br/>*Object*       | The pricing package currently applied to the organization.                            |
 | `billableStart`<br/>*String*        | The the start date when the application start generating billing cycles and invoices. |
-| `applicableDiscounts`<br/>*Array[Object]* | The discounts applicable to the billable org .                                  |
+| `applicableDiscounts`<br/>*Array[Object]* | The discounts applicable to the billable org .                                  | -->
 

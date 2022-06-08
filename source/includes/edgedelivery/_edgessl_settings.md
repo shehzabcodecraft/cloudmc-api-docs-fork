@@ -1,10 +1,10 @@
-#### EdgeSSL Settings
+### EdgeSSL Settings
 
 View and manage SSL settings.
 
 <!-------------------- RETRIEVE EDGESSL SETTINGS -------------------->
 
-##### Retrieve EdgeSSL settings
+#### Retrieve EdgeSSL settings
 
 ```shell
 curl -X GET \
@@ -35,7 +35,7 @@ Attributes | &nbsp;
 `minTlsVersion`<br/>*string*  | The minimum TLS version clients must have to access the application. 
 
 
-##### Edit EdgeSSL settings
+#### Edit EdgeSSL settings
 
 ```shell
 curl -X PATCH \

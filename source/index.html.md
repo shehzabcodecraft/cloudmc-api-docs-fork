@@ -8,46 +8,45 @@ language_tabs: # must be one of https://git.io/vQNgJ
 includes:
   - getting_started
   - administration
-  - administration/service_connections
+# - administration/service_connections
   - administration/organizations
   - administration/users
   - administration/roles
-  - administration/additional_roles
   - administration/environments 
-  - administration/resource_commitments 
-  - administration/usage
-  - administration/monetization
+#   - administration/resource_commitments 
+#  - administration/usage
+#   - administration/monetization
   - administration/reports_pricing_v2 # Reporting section
-  - administration/notification_categories
-  - administration/notifications
-  - administration/products
-  - administration/pricings
-  - administration/applied_pricings
-  - administration/rollbacks
-  - administration/invoices
-  - administration/payments
-  - administration/package_discounts
-  - administration/organization_discounts
-  - administration/authentication
-  - administration/identity_providers
-  - administration/service_providers
-  - administration/saml_settings
-  - administration/branding
-  - administration/knowledge_base
-  - administration/trials
-  - administration/email_settings
-  - administration/feedback_settings
-  - administration/workspace_settings
-  - administration/custom_fields
+#   - administration/notification_categories
+#  - administration/notifications
+#  - administration/products
+#  - administration/pricings
+  # - administration/applied_pricings
+  # - administration/rollbacks
+  # - administration/invoices
+  # - administration/payments
+  # - administration/package_discounts
+  # - administration/organization_discounts
+  # - administration/authentication
+  # - administration/identity_providers
+  # - administration/service_providers
+  # - administration/saml_settings
+  # - administration/branding
+  # - administration/knowledge_base
+  # - administration/trials
+  # - administration/email_settings
+  # - administration/feedback_settings
+  # - administration/workspace_settings
+  # - administration/custom_fields
   - administration/quotas
   - administration/activity_log
-  - administration/billing
-  - administration/billing_settings
-  - administration/billing_providers
-  - administration/tax_providers
-  - administration/custom_navigation
-  - administration/metrics
-  - administration/caches
+  # - administration/billing
+  # - administration/billing_settings
+  # - administration/billing_providers
+  # - administration/tax_providers
+  # - administration/custom_navigation
+  # - administration/metrics
+  # - administration/caches
   - edge_compute
   - edgecompute/workloads
   - edgecompute/instances

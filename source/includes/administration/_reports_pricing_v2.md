@@ -120,7 +120,7 @@ Organization Report Attributes | &nbsp;
 Retrieves a flat list of product with usage and cost along with other details in a csv format.
 
 ```shell
-# Retrieve organizatio usage
+# Retrieve organization usage
 curl  --request GET \
   --url "https://portal.coxedge.com/api/v2/reports/organization_pricing?start_date=2021-07-01T00%3A00%3A00.000Z&end_date=2021-07-31T23%3A59%3A59.999Z&organization_id=a01716d0-f748-447d-94e9-60ba46753d1a&language=en&currency=CAD" \
   -H 'Accept: text/csv ' \
@@ -167,7 +167,7 @@ Report Attributes | &nbsp;
 
 
 <!------------------- GET CUSTOMER REPORT --------------------->
-
+<!-- 
 ### Get a customer's report
 
 `GET /reports/customers?start_date:=end_date=&end_date=:end_date`
@@ -246,10 +246,10 @@ Customer Report Attributes | &nbsp;
 `organizations.appliedPricing.name`<br/>*Object* | A map of short language codes to their translated name for the applied pricing.
 `startDate`<br/>*string* | An ISO-8601 instant format string representing the start of the report.
 `endDate`<br/>*string* | An ISO-8601 instant format string representing the end of the report.
-`reportGenerated`<br/>*boolean* | Whether or not a report could be generated for this time period.
+`reportGenerated`<br/>*boolean* | Whether or not a report could be generated for this time period. -->
 
 <!------------------- GET REVENUE TAXATION REPORT --------------------->
-
+<!-- 
 ### Get a revenue taxation report
 
 `GET /reports/revenue_tax_report?billing_cycle=:billing_cycle&organization_id=:organization_id&language=:language`
@@ -297,4 +297,4 @@ Report Attributes | &nbsp;
 `due_date`<br/>*String* | The date the invoice is due.
 `credit_card_transaction_id`<br/>*String* | The confirmation number returned from the payment provider for the invoice.
 `billing_start_date`<br/>*String* | The billing start date of the invoice.
-`billing_end_date`<br/>*String* | The billing end date of the invoice.
+`billing_end_date`<br/>*String* | The billing end date of the invoice. -->

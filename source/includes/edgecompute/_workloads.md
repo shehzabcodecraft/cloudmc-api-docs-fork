@@ -1,4 +1,4 @@
-### Workloads
+## Workloads
 
 StackPath Edge Computing uses the concept of workloads to organize different applications. A workload can consist of one container or virtual machine image that is deployed to one or many locations.
 
@@ -6,7 +6,7 @@ Deploy and manage your workloads.
 
 <!-------------------- LIST WORKLOADS -------------------->
 
-#### List workloads
+### List workloads
 
 ```shell
 curl -X GET \
@@ -165,7 +165,7 @@ Attributes | &nbsp;
 
 <!-------------------- RETRIEVE A WORKLOAD -------------------->
 
-#### Retrieve a workload
+### Retrieve a workload
 
 ```shell
 curl -X GET \
@@ -289,7 +289,7 @@ Attributes | &nbsp;
 
 <!-------------------- CREATE A WORKLOAD -------------------->
 
-#### Create a workload
+### Create a workload
 
 ```shell
 curl -X POST \
@@ -455,7 +455,7 @@ A workload can be added without any `ports`. However, `ports.publicPort` and `po
 
 <!-------------------- EDIT A WORKLOAD -------------------->
 
-#### Edit a workload
+### Edit a workload
 
 ```shell
 curl -X PUT \
@@ -566,7 +566,7 @@ Optional | &nbsp;
 
 <!-------------------- DELETE A WORKLOAD -------------------->
 
-#### Delete a workload
+### Delete a workload
 
 ```shell
 curl -X DELETE \
@@ -591,7 +591,7 @@ Attributes | &nbsp;
 `taskId` <br/>*string* | The task id related to the workload deletion.
 `taskStatus` <br/>*string* | The status of the operation.
 
-#### Edit workload settings
+### Edit workload settings
 
 Change a workload specific settings in a given [environment](#administration-environments). At the moment, only `isRemoteManagementEnabled` is supported for this operation. Any other attributes will be ignored.
 

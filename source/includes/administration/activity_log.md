@@ -1,38 +1,3 @@
-## Activity
-
-Whenever there is an event that occurs under the Administration panel for an organization (e.g: a user added to the organization, a role assigned to a user, etc.) an activity event is created.
-
-The activity chart display 
-the activity per day over the last 30 days. 
-
-<!------------------- LIST ACTIVITIES --------------------->
-
-### List activity per organization
-
-`GET /activity`
-
-Retrieve activity count grouped by organization.
-
-
-```shell
-# Retrieve activity per organization
-curl "https://portal.coxedge.com/api/v2/organizations/activity" \
-   -H "MC-Api-Key: your_api_key"
-```
-> The above command returns a JSON structured like this:
-
-```json
-{
-    "data": {
-        "afd011d5-c7dd-4763-9892-ccbdafcd273b":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,21,23,27,0,0,3],
-        "37088fe3-b266-4283-a8d0-7ff78e476760":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,7],
-        "3c733655-c520-49e8-97f1-150d78d07fa5":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,16,0,0,0,0,0]
-    }
-}
-```
-
-where the key is the organization UUID and the value is an array of integer representing daily activity. The size of the array of integer represents each day over a period of 30 days, relative to today.
-
 ## Activity Logs
 
 Activity logs are used to view the different audited operations on a given organization.
@@ -230,3 +195,31 @@ Activity Summary Attributes | &nbsp;
 `serviceConnectionId`<br/>*UUID* | The id of the service connection the activity belongs to.
 `serviceConnectionName`<br/>*string* | The name of the service connection the activity belongs to.
 `serviceConnectionType`<br/>*string* | The type of the service connection the activity belongs to.
+
+<!------------------- LIST ACTIVITIES PER ORG--------------------->
+
+### List activity per organization
+
+`GET /organizations/activity`
+
+Retrieve activity count grouped by organization.
+
+
+```shell
+# Retrieve activity per organization
+curl "https://portal.coxedge.com/api/v2/organizations/activity" \
+   -H "MC-Api-Key: your_api_key"
+```
+> The above command returns a JSON structured like this:
+
+```json
+{
+    "data": {
+        "afd011d5-c7dd-4763-9892-ccbdafcd273b":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,21,23,27,0,0,3],
+        "37088fe3-b266-4283-a8d0-7ff78e476760":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,7],
+        "3c733655-c520-49e8-97f1-150d78d07fa5":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,16,0,0,0,0,0]
+    }
+}
+```
+
+where the key is the organization UUID and the value is an array of integer representing daily activity. The size of the array of integer represents each day over a period of 30 days, relative to today.

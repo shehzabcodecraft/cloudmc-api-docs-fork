@@ -1,10 +1,10 @@
-### Sites
+## Sites
 
 Create and manage your CDN, WAF, and/or Serverless Scripting Delivery sites. 
 
 <!-------------------- LIST SITES -------------------->
 
-#### List sites
+### List sites
 
 ```shell
 curl -X GET \
@@ -68,7 +68,7 @@ Attributes | &nbsp;
 
 <!-------------------- RETRIEVE A SITE -------------------->
 
-#### Retrieve a site
+### Retrieve a site
 
 ```shell
 curl -X GET \
@@ -126,7 +126,7 @@ Attributes | &nbsp;
 
 <!-------------------- CREATE A SITE -------------------->
 
-#### Create a site
+### Create a site
 
 ```shell
 curl -X POST \
@@ -195,7 +195,7 @@ Required | &nbsp;
 
 <!-------------------- DELETE A SITE -------------------->
 
-#### Delete a site
+### Delete a site
 
 ```shell
 curl -X DELETE \
@@ -222,7 +222,7 @@ Attributes | &nbsp;
 
 <!-------------------- ENABLE CDN -------------------->
 
-#### Enable CDN
+### Enable CDN
 
 ```shell
 curl -X POST \
@@ -249,7 +249,7 @@ Attributes | &nbsp;
 
 <!-------------------- Disable CDN -------------------->
 
-#### Disable CDN
+### Disable CDN
 
 ```shell
 curl -X POST \
@@ -276,7 +276,7 @@ Attributes | &nbsp;
 
 <!-------------------- ENABLE WAF -------------------->
 
-#### Enable WAF
+### Enable WAF
 
 ```shell
 curl -X POST \
@@ -303,7 +303,7 @@ Attributes | &nbsp;
 
 <!-------------------- Disable WAF -------------------->
 
-#### Disable WAF
+### Disable WAF
 
 ```shell
 curl -X POST \
@@ -330,7 +330,7 @@ Attributes | &nbsp;
 
 <!-------------------- ENABLE Serverless Scripts -------------------->
 
-#### Enable Serverless Scripts
+### Enable Serverless Scripts
 
 ```shell
 curl -X POST \
@@ -357,7 +357,7 @@ Attributes | &nbsp;
 
 <!-------------------- Disable Serverless Scripts -------------------->
 
-#### Disable Serverless Scripts
+### Disable Serverless Scripts
 
 ```shell
 curl -X POST \
