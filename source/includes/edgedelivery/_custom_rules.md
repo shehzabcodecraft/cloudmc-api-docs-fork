@@ -9,7 +9,7 @@ Manage custom rules used to control and limit access to your sites.
 ```shell
 curl -X GET \
    -H "MC-Api-Key: your_api_key" \
-   "https://portal.coxedge.com/api/v2/services/stackpath/test-area/customrules?siteId=0a57855b-26d8-4e8f-8b77-429997c7c5fb"
+   "https://portal.coxedge.com/api/v2/services/edge-services/test-area/customrules?siteId=0a57855b-26d8-4e8f-8b77-429997c7c5fb"
 ```
 > The above command returns a JSON structured like this:
 
@@ -97,7 +97,7 @@ Attributes | &nbsp;
 ```shell
 curl -X GET \
    -H "MC-Api-Key: your_api_key" \
-   "https://portal.coxedge.com/api/v2/services/stackpath/test-area/customrules/1580676?siteId=0a57855b-26d8-4e8f-8b77-429997c7c5fb"
+   "https://portal.coxedge.com/api/v2/services/edge-services/test-area/customrules/1580676?siteId=0a57855b-26d8-4e8f-8b77-429997c7c5fb"
 ```
 > The above command returns a JSON structured like this:
 
@@ -165,7 +165,7 @@ Attributes | &nbsp;
 curl -X POST \
     -H "MC-Api-Key: your_api_key" \
     -d "request_body" \
-    "https://portal.coxedge.com/api/v2/services/stackpath/test-area/customrules?siteId=0a57855b-26d8-4e8f-8b77-429997c7c5fb"
+    "https://portal.coxedge.com/api/v2/services/edge-services/test-area/customrules?siteId=0a57855b-26d8-4e8f-8b77-429997c7c5fb"
 ```
 > Request body example for a custom rule with conditions:
 
@@ -301,7 +301,7 @@ Required | &nbsp;
 curl -X PUT \
   -H "MC-Api-Key: your_api_key" \
   -d "request_body" \
-  "https://portal.coxedge.com/api/v2/services/stackpath/test-area/customrules/1576836?siteId=1c6c127a-bfa4-4c85-a329-13c0581b41eb"
+  "https://portal.coxedge.com/api/v2/services/edge-services/test-area/customrules/1576836?siteId=1c6c127a-bfa4-4c85-a329-13c0581b41eb"
 ```
 > Request body example for a custom rule with conditions:
 
@@ -388,7 +388,7 @@ Optional | &nbsp;
 ```shell
 curl -X DELETE \
    -H "MC-Api-Key: your_api_key" \
-   "https://portal.coxedge.com/api/v2/services/stackpath/test-area/customrules/1585477?siteId=1b1cd7e6-41ab-4e0f-a59a-5c4b89da1b36"
+   "https://portal.coxedge.com/api/v2/services/edge-services/test-area/customrules/1585477?siteId=1b1cd7e6-41ab-4e0f-a59a-5c4b89da1b36"
 ```
 > The above command returns a JSON structured like this:
 
@@ -422,7 +422,7 @@ Attributes | &nbsp;
 ```shell
 curl -X POST \
    -H "MC-Api-Key: your_api_key" \
-   "https://portal.coxedge.com/api/v2/services/stackpath/test-area/customrules/1585477?siteId=1b1cd7e6-41ab-4e0f-a59a-5c4b89da1b36&operation=enable"
+   "https://portal.coxedge.com/api/v2/services/edge-services/test-area/customrules/1585477?siteId=1b1cd7e6-41ab-4e0f-a59a-5c4b89da1b36&operation=enable"
 ```
 > The above command returns a JSON structured like this:
 
@@ -454,7 +454,7 @@ Attributes | &nbsp;
 ```shell
 curl -X POST \
    -H "MC-Api-Key: your_api_key" \
-   "https://portal.coxedge.com/api/v2/services/stackpath/test-area/customrules/1585477?siteId=1b1cd7e6-41ab-4e0f-a59a-5c4b89da1b36&operation=disable"
+   "https://portal.coxedge.com/api/v2/services/edge-services/test-area/customrules/1585477?siteId=1b1cd7e6-41ab-4e0f-a59a-5c4b89da1b36&operation=disable"
 ```
 > The above command returns a JSON structured like this:
 ```json

@@ -7,7 +7,7 @@
 ```shell
 curl -X GET \
    -H "MC-Api-Key: your_api_key" \
-   "https://portal.coxedge.com/api/v2/services/stackpath/test-area/cdnsettings/9f236f19-55db-411f-9f05-bd79dc91a69b"
+   "https://portal.coxedge.com/api/v2/services/edge-services/test-area/cdnsettings/9f236f19-55db-411f-9f05-bd79dc91a69b"
 ```
 
 > The above command returns a JSON structured like this:
@@ -85,7 +85,7 @@ Attributes | &nbsp;
 ```shell
 curl -X PATCH \
    -H "MC-Api-Key: your_api_key" \
-   "https://portal.coxedge.com/api/v2/services/stackpath/test-area/cdnsettings/9f236f19-55db-411f-9f05-bd79dc91a69b"
+   "https://portal.coxedge.com/api/v2/services/edge-services/test-area/cdnsettings/9f236f19-55db-411f-9f05-bd79dc91a69b"
 ```
 
 > Request body example:
@@ -147,7 +147,7 @@ Optional | &nbsp;
 ```shell
 curl -X POST \
    -H "MC-Api-Key: your_api_key" \
-   "https://portal.coxedge.com/api/v2/services/stackpath/test-area/cdnsettings/9f236f19-55db-411f-9f05-bd79dc91a69b?operation=purgeAll"
+   "https://portal.coxedge.com/api/v2/services/edge-services/test-area/cdnsettings/9f236f19-55db-411f-9f05-bd79dc91a69b?operation=purgeAll"
 ```
 
 > The above command returns a JSON structured like this:
@@ -176,7 +176,7 @@ Attributes | &nbsp;
 curl -X POST \
    -H "MC-Api-Key: your_api_key" \
    -d "request_body" \
-   "https://portal.coxedge.com/api/v2/services/stackpath/test-area/cdnsettings/9f236f19-55db-411f-9f05-bd79dc91a69b?operation=purge"
+   "https://portal.coxedge.com/api/v2/services/edge-services/test-area/cdnsettings/9f236f19-55db-411f-9f05-bd79dc91a69b?operation=purge"
 ```
 
 > Request body example for URL purge type:

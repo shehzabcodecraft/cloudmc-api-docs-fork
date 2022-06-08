@@ -9,7 +9,7 @@ Add Secure Socket Layer (SSL) features to a site.
 ```shell
 curl -X GET \
    -H "MC-Api-Key: your_api_key" \
-   "https://portal.coxedge.com/api/v2/services/stackpath/test-area/certificates?siteId=0a57855b-26d8-4e8f-8b77-429997c7c5fb"
+   "https://portal.coxedge.com/api/v2/services/edge-services/test-area/certificates?siteId=0a57855b-26d8-4e8f-8b77-429997c7c5fb"
 ```
 > The above command returns a JSON structured like this:
 
@@ -74,7 +74,7 @@ List of possible values for the `status` attribute:
 ```shell
 curl -X GET \
    -H "MC-Api-Key: your_api_key" \
-   "https://portal.coxedge.com/api/v2/services/stackpath/test-area/certificates/2a12237d-c388-4c19-bff1-b019b837e8f1?siteId=0a57855b-26d8-4e8f-8b77-429997c7c5fb"
+   "https://portal.coxedge.com/api/v2/services/edge-services/test-area/certificates/2a12237d-c388-4c19-bff1-b019b837e8f1?siteId=0a57855b-26d8-4e8f-8b77-429997c7c5fb"
 ```
 > The above command returns a JSON structured like this:
 
@@ -135,7 +135,7 @@ List of possible values for the `status` attribute:
 curl -X POST \
    -H "MC-Api-Key: your_api_key" \
    -d "request_body" \
-   "https://portal.coxedge.com/api/v2/services/stackpath/test-area/certificates?siteId=f9dea588-d7ab-4f42-b6e6-4b85f273f3db"
+   "https://portal.coxedge.com/api/v2/services/edge-services/test-area/certificates?siteId=f9dea588-d7ab-4f42-b6e6-4b85f273f3db"
 ```
 > Request body example for creating a certificate:
 
@@ -186,7 +186,7 @@ Attributes | &nbsp;
 curl -X POST \
    -H "MC-Api-Key: your_api_key" \
    -d "request_body" \
-   "https://portal.coxedge.com/api/v2/services/stackpath/test-area/certificates?operation=request&siteId=f9dea588-d7ab-4f42-b6e6-4b85f273f3db"
+   "https://portal.coxedge.com/api/v2/services/edge-services/test-area/certificates?operation=request&siteId=f9dea588-d7ab-4f42-b6e6-4b85f273f3db"
 ```
 > Request body example for requesting a certificate:
 
@@ -237,7 +237,7 @@ Attributes | &nbsp;
 ```shell
 curl -X DELETE \
    -H "MC-Api-Key: your_api_key" \
-   "https://portal.coxedge.com/api/v2/services/stackpath/test-area/certificates/2318483?siteId=6f6c1724-c306-433c-9e09-95227edc7c6c"
+   "https://portal.coxedge.com/api/v2/services/edge-services/test-area/certificates/2318483?siteId=6f6c1724-c306-433c-9e09-95227edc7c6c"
 ```
 > The above command returns a JSON structured like this:
 
