@@ -12,16 +12,16 @@ Retrieves a list of usage grouped by currency and containing categories and thei
 
 **Query Parameters**
 
-Required | &nbsp;
----------- | -----------
-`start_date`<br/>*String* | An ISO-8601 instant format string representing the start of the usage. This will included any usage who's usage start date is greater than, inclusively, the provided instant.
-`end_date`<br/>*String* | An ISO-8601 instant format string representing the end of the usage. This will include any usage who's usage end date is less than, non-inclusively, the provided instant.
+| Required                  | &nbsp;                                                                                                                                                                         |
+|---------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `start_date`<br/>*String* | An ISO-8601 instant format string representing the start of the usage. This will included any usage who's usage start date is greater than, inclusively, the provided instant. |
+| `end_date`<br/>*String*   | An ISO-8601 instant format string representing the end of the usage. This will include any usage who's usage end date is less than, non-inclusively, the provided instant.     |
 
-Optional | &nbsp;
----------- | -----------
-`organization_id`<br/>*UUID* | The organization for which you're building the report. If not passed will default to the calling user's organization.
-`service_connection_id`<br/>*UUID* | Only return usage for the selected service connection id.
-`environment_id`<br/>*UUID* | Only return usage for the selected environment id. Needs to be provided along with the `service_connection_id`.
+| Optional                           | &nbsp;                                                                                                                |
+|------------------------------------|-----------------------------------------------------------------------------------------------------------------------|
+| `organization_id`<br/>*UUID*       | The organization for which you're building the report. If not passed will default to the calling user's organization. |
+| `service_connection_id`<br/>*UUID* | Only return usage for the selected service connection id.                                                             |
+| `environment_id`<br/>*UUID*        | Only return usage for the selected environment id. Needs to be provided along with the `service_connection_id`.       |
 
 ```shell
 curl --request GET \
@@ -73,6 +73,32 @@ curl --request GET \
             ],
             "subTotal": "432.00"
           }
+        ],
+        "commitmentReports": [
+          {
+            "name": "Contract 2 years - Compute",
+            "subTotal": "500.00",
+            "currency": "CAD",
+            "commitmentId": "489197f8-7af5-4766-aa8b-b19d59ace61e",
+            "organizationId": "f0f76536-649a-44df-8e51-e234c6a7c682",
+            "products": [
+              {
+                "sku": "PUBLIC_IP",
+                "name": {
+                  "en": "Public IP",
+                  "fr": "Public IP"
+                },
+                "cost": "432.00",
+                "usage": "465.0000",
+                "period": "HOUR",
+                "unit": {
+                  "unit": "HOUR",
+                  "name": {}
+                },
+                "commitmentId": "489197f8-7af5-4766-aa8b-b19d59ace61e"
+              }
+            ]
+          }
         ]
       }
     ],
@@ -84,32 +110,39 @@ curl --request GET \
 
 ```
 
-Organization Report Attributes | &nbsp;
----------- | -----------
-`currencies`<br/>*Array[Object]* | Returns an array of currencies for the usage.
-`currencies.currency`<br/>*string* | The short-name of the currency.
-`currencies.total`<br/>*string* | A string containing the total of all usage.
-`currencies.categories`<br/>*Array[Object]* | An array of category objects. Contains all categories that had usage for the period. 
-`currencies.categories.name`<br/>*Object* | A map of short language codes to their translated category names. 
-`currencies.categories.subTotal`<br/>*string* | A string with the subtotal of usage for the category. It is the summed up product usage.
-`currencies.categories.products`<br/>*Object* | A map of short language codes to their translated category names. 
-`currencies.categories.products.sku`<br/>*string* | A unique string representing the sku for a product.
-`currencies.categories.products.name`<br/>*Object* | The name object in each language for the product name.
-`currencies.categories.products.cost`<br/>*string* | A string of the summed up total cost for the product.
-`currencies.categories.products.usage`<br/>*Object* | A string of the summed up total usage for the product.
-`currencies.categories.products.price`<br/>*Object* | A string representing the *average* unit price over the preriod.
-`currencies.categories.products.period`<br/>*string* | The period for the product capture. Possible values: HOURS, MONTH.
-`currencies.categories.products.unit`<br/>*Object* | The unit object of the product.
-`currencies.categories.products.unit.unit`<br/>*Object* | The unit value of the product.
-`currencies.categories.products.unit.name`<br/>*Object* | The name of the unit of the product in the required language. Only present when defining custom units.
-`currencies.categories.products.pricingTiers` <br/> *Array[Object]* | The cost and usage breakdown per pricing tier configured on the product. Only pricing tiers with usage for the period are shown.
-`currencies.categories.products.pricingTiers.usage` <br/> *string* | The total usage gathered for the given pricing tier configured on the product.
-`currencies.categories.products.pricingTiers.cost` <br/> *string* | The total cost incurred for the given pricing tier configured on the product.
-`currencies.categories.products.pricingTiers.price` <br/> *string* | The unit price charged per usage unit for the given pricing tier configured on the product.
-`startDate`<br/>*string* | An ISO-8601 instant format string representing the start of the report.
-`endDate`<br/>*string* | An ISO-8601 instant format string representing the end of the report.
-`reportGenerated`<br/>*boolean* | Whether or not a report could be generated for this time period.
-
+| Organization Report Attributes                                          | &nbsp;                                                                                                                           |
+|-------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------|
+| `currencies`<br/>*Array[Object]*                                        | Returns an array of currencies for the usage.                                                                                    |
+| `currencies.currency`<br/>*string*                                      | The short-name of the currency.                                                                                                  |
+| `currencies.total`<br/>*string*                                         | A string containing the total of all usage.                                                                                      |
+| `currencies.categories`<br/>*Array[Object]*                             | An array of category objects. Contains all categories that had usage for the period.                                             |
+| `currencies.categories.name`<br/>*Object*                               | A map of short language codes to their translated category names.                                                                |
+| `currencies.categories.subTotal`<br/>*string*                           | A string with the subtotal of usage for the category. It is the summed up product usage.                                         |
+| `currencies.categories.products`<br/>*Object*                           | A map of short language codes to their translated category names.                                                                |
+| `currencies.categories.products.sku`<br/>*string*                       | A unique string representing the sku for a product.                                                                              |
+| `currencies.categories.products.name`<br/>*Object*                      | The name object in each language for the product name.                                                                           |
+| `currencies.categories.products.cost`<br/>*string*                      | A string of the summed up total cost for the product.                                                                            |
+| `currencies.categories.products.usage`<br/>*Object*                     | A string of the summed up total usage for the product.                                                                           |
+| `currencies.categories.products.price`<br/>*Object*                     | A string representing the *average* unit price over the preriod.                                                                 |
+| `currencies.categories.products.period`<br/>*string*                    | The period for the product capture. Possible values: HOURS, MONTH.                                                               |
+| `currencies.categories.products.unit`<br/>*Object*                      | The unit object of the product.                                                                                                  |
+| `currencies.categories.products.unit.unit`<br/>*Object*                 | The unit value of the product.                                                                                                   |
+| `currencies.categories.products.unit.name`<br/>*Object*                 | The name of the unit of the product in the required language. Only present when defining custom units.                           |
+| `currencies.categories.products.pricingTiers` <br/> *Array[Object]*     | The cost and usage breakdown per pricing tier configured on the product. Only pricing tiers with usage for the period are shown. |
+| `currencies.categories.products.pricingTiers.usage` <br/> *string*      | The total usage gathered for the given pricing tier configured on the product.                                                   |
+| `currencies.categories.products.pricingTiers.cost` <br/> *string*       | The total cost incurred for the given pricing tier configured on the product.                                                    |
+| `currencies.categories.products.pricingTiers.price` <br/> *string*      | The unit price charged per usage unit for the given pricing tier configured on the product.                                      |
+| `currencies.categories.commitmentReports`<br/>*Array[Object]*           | An array of commitment report objects. Contains all commitments that had usage for the period.                                   |
+| `currencies.categories.commitmentReports.name` <br/> *string*           | The name of the commitment                                                                                                       |
+| `currencies.categories.commitmentReports.subTotal` <br/> *string*       | The sub-total of the commitment for the period                                                                                   |
+| `currencies.categories.commitmentReports.currency` <br/> *string*       | The currency used in the commitment                                                                                              |
+| `currencies.categories.commitmentReports.commitmentId` <br/> *string*   | The ID of the commitment used in this report                                                                                     |
+| `currencies.categories.commitmentReports.organizationId` <br/> *string* | The organization ID of the commitment                                                                                            |
+| `currencies.categories.commitmentReports.pricingMethod` <br/> *string*  | The pricing method used for this commitment. Possible values: FIXED_PRICE, UTILITY_DISCOUNT.                                     |
+| `currencies.categories.commitmentReports.products`<br/>*Array[Object]*  | An array of committed product items                                                                                              |
+| `startDate`<br/>*string*                                                | An ISO-8601 instant format string representing the start of the report.                                                          |
+| `endDate`<br/>*string*                                                  | An ISO-8601 instant format string representing the end of the report.                                                            |
+| `reportGenerated`<br/>*boolean*                                         | Whether or not a report could be generated for this time period.                                                                 |
 
 <!------------------- GET ORGANIZATION REPORT AS CSV--------------------->
 
@@ -132,39 +165,39 @@ The response is a list of products with their usage and cost, with the first lin
 The format of the response is a CSV with `,` used as the delimiter.
 
 ```csv
-organization,account_id,category,sku,product_name,usage,unit,currency,cost,start_date,end_date
-organizationName,12345,Compute,container_memory,Container memory,1097.272800,HOUR,CAD,2194.55,2021-07-01T00:00:00Z,2021-07-31T23:59:59.999Z       
+organization,account_id,category,commitment,sku,product_name,usage,unit,currency,cost,start_date,end_date
+organizationName,12345,Compute,Contract 2 years - Compute,container_memory,Container memory,1097.272800,HOUR,CAD,2194.55,2021-07-01T00:00:00Z,2021-07-31T23:59:59.999Z       
 ```
 
 **Query Parameters**
 
-Required | &nbsp;
----------- | -----------
-`start_date`<br/>*String* | An ISO-8601 instant format string representing the start of the usage. This will included any usage who's usage start date is greater than the provided instant inclusively.
-`end_date`<br/>*String* | An ISO-8601 instant format string representing the end of the usage. This will include any usage who's usage end date is less than, non-inclusively, the provided instant.
-`language`<br/>*UUID* | Language to use for the report fields (but not the headers). Expected values are "en" (English), "fr" (French) or "es" (Spanish).
+| Required                  | &nbsp;                                                                                                                                                                       |
+|---------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `start_date`<br/>*String* | An ISO-8601 instant format string representing the start of the usage. This will included any usage who's usage start date is greater than the provided instant inclusively. |
+| `end_date`<br/>*String*   | An ISO-8601 instant format string representing the end of the usage. This will include any usage who's usage end date is less than, non-inclusively, the provided instant.   |
+| `language`<br/>*UUID*     | Language to use for the report fields (but not the headers). Expected values are "en" (English), "fr" (French) or "es" (Spanish).                                            |
 
-Optional | &nbsp;
----------- | -----------
-`organization_id`<br/>*UUID* | The organization for which the report will be built. If not passed will default to the calling user's organization.
-`service_connection_id`<br/>*UUID* | Only return usage for the selected service connection id.
-`environment_id`<br/>*UUID* | Only return usage for the selected environment id. Needs to be provided along with the `service_connection_id`.
-`currency`<br/>*String* | The currency of usage.
+| Optional                           | &nbsp;                                                                                                              |
+|------------------------------------|---------------------------------------------------------------------------------------------------------------------|
+| `organization_id`<br/>*UUID*       | The organization for which the report will be built. If not passed will default to the calling user's organization. |
+| `service_connection_id`<br/>*UUID* | Only return usage for the selected service connection id.                                                           |
+| `environment_id`<br/>*UUID*        | Only return usage for the selected environment id. Needs to be provided along with the `service_connection_id`.     |
+| `currency`<br/>*String*            | The currency of usage.                                                                                              |
 
-Report Attributes | &nbsp;
------------------ | ------
-`organization`<br/>*String* | The organization name.
-`custom_field_1`<br/>*String* | The organization custom field (ex: account ID). Configured in the reseller billing settings. <b>There can be more than one custom field<b>.
-`category`<br/>*String* | The product category.
-`sku`<br/>*String* | The SKU of the product.
-`product_name`<br/>*Object* | The name object in each language for the product name.
-`usage`<br/>*String* | The total usage of the product.
-`unit`<br/>*String* | The name of the unit of the product.
-`currency`<br/>*String* | The short-name of the currency.
-`cost` <br/> *string* | The total cost of the product.
-`startDate`<br/>*string* | An ISO-8601 instant format string representing the start of the report.
-`endDate`<br/>*string* | An ISO-8601 instant format string representing the end of the report.
-
+| Report Attributes             | &nbsp;                                                                                                                                      |
+|-------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------|
+| `organization`<br/>*String*   | The organization name.                                                                                                                      |
+| `custom_field_1`<br/>*String* | The organization custom field (ex: account ID). Configured in the reseller billing settings. <b>There can be more than one custom field<b>. |
+| `category`<br/>*String*       | The product category.                                                                                                                       |
+| `commitment`<br/>*String*     | The commitment.                                                                                                                             |
+| `sku`<br/>*String*            | The SKU of the product.                                                                                                                     |
+| `product_name`<br/>*Object*   | The name object in each language for the product name.                                                                                      |
+| `usage`<br/>*String*          | The total usage of the product.                                                                                                             |
+| `unit`<br/>*String*           | The name of the unit of the product.                                                                                                        |
+| `currency`<br/>*String*       | The short-name of the currency.                                                                                                             |
+| `cost` <br/> *string*         | The total cost of the product.                                                                                                              |
+| `startDate`<br/>*string*      | An ISO-8601 instant format string representing the start of the report.                                                                     |
+| `endDate`<br/>*string*        | An ISO-8601 instant format string representing the end of the report.                                                                       |
 
 <!------------------- GET CUSTOMER REPORT --------------------->
 
@@ -176,15 +209,15 @@ Retrieves a list of all usage for the provided reseller organization and all of 
 
 **Query Parameters**
 
-Required | &nbsp;
----------- | -----------
-`start_date`<br/>*String* | An ISO-8601 instant format string representing the start of the usage. This will included any usage who's usage start date is greater than, inclusively, the provided instant.
-`end_date`<br/>*String* | An ISO-8601 instant format string representing the end of the usage. This will include any usage who's usage end date is less than, non-inclusively, the provided instant.
+| Required                  | &nbsp;                                                                                                                                                                         |
+|---------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `start_date`<br/>*String* | An ISO-8601 instant format string representing the start of the usage. This will included any usage who's usage start date is greater than, inclusively, the provided instant. |
+| `end_date`<br/>*String*   | An ISO-8601 instant format string representing the end of the usage. This will include any usage who's usage end date is less than, non-inclusively, the provided instant.     |
 
-Optional | &nbsp;
----------- | -----------
-`organization_id`<br/>*UUID* | The reseller for which you're building the report. If not passed will default to the calling user's organization. This organization must be a reseller.
-`service_connection_id`<br/>*UUID* | Only return usage for the selected service connection id.
+| Optional                           | &nbsp;                                                                                                                                                  |
+|------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `organization_id`<br/>*UUID*       | The reseller for which you're building the report. If not passed will default to the calling user's organization. This organization must be a reseller. |
+| `service_connection_id`<br/>*UUID* | Only return usage for the selected service connection id.                                                                                               |
 
 ```shell
 curl --request GET \
@@ -234,22 +267,22 @@ curl --request GET \
 }
 ```
 
-Customer Report Attributes | &nbsp;
----------- | -----------
-`organizations`<br/>*Array[Object]* | Returns an array of organizations for the usage. There will be one entry per organization and pricing package combination found for the time period.
-`organizations.currency`<br/>*string* | The short-name of the currency.
-`organizations.total`<br/>*string* | A string containing the total of all usage.
-`organizations.categories`<br/>*Array[Object]* | An array of category objects. Contains all categories that had usage for the period.
-`organizations.categories.name`<br/>*Object* | A map of short language codes to their translated category names.
-`organizations.categories.subTotal`<br/>*string* | A string with the subtotal of usage for the category. It is the summed up product usage.
-`organizations.appliedPricing`<br/>*Object* | The pricing package for this organization entry.
-`organizations.appliedPricing.id`<br/>*UUID* | The pricing package for this organization entry.
-`organizations.appliedPricing.name`<br/>*Object* | A map of short language codes to their translated name for the pricing package.
-`startDate`<br/>*string* | An ISO-8601 instant format string representing the start of the report.
-`endDate`<br/>*string* | An ISO-8601 instant format string representing the end of the report.
-`orgDeleted`<br/>*boolean* | Whether or not the organization is deleted.
-`metadata`<br/>*object* | Additional information about the deletion event of the organization.
-`reportGenerated`<br/>*boolean* | Whether or not a report could be generated for this time period.
+| Customer Report Attributes                       | &nbsp;                                                                                                                                               |
+|--------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `organizations`<br/>*Array[Object]*              | Returns an array of organizations for the usage. There will be one entry per organization and pricing package combination found for the time period. |
+| `organizations.currency`<br/>*string*            | The short-name of the currency.                                                                                                                      |
+| `organizations.total`<br/>*string*               | A string containing the total of all usage.                                                                                                          |
+| `organizations.categories`<br/>*Array[Object]*   | An array of category objects. Contains all categories that had usage for the period.                                                                 |
+| `organizations.categories.name`<br/>*Object*     | A map of short language codes to their translated category names.                                                                                    |
+| `organizations.categories.subTotal`<br/>*string* | A string with the subtotal of usage for the category. It is the summed up product usage.                                                             |
+| `organizations.appliedPricing`<br/>*Object*      | The pricing package for this organization entry.                                                                                                     |
+| `organizations.appliedPricing.id`<br/>*UUID*     | The pricing package for this organization entry.                                                                                                     |
+| `organizations.appliedPricing.name`<br/>*Object* | A map of short language codes to their translated name for the pricing package.                                                                      |
+| `startDate`<br/>*string*                         | An ISO-8601 instant format string representing the start of the report.                                                                              |
+| `endDate`<br/>*string*                           | An ISO-8601 instant format string representing the end of the report.                                                                                |
+| `orgDeleted`<br/>*boolean*                       | Whether or not the organization is deleted.                                                                                                          |
+| `metadata`<br/>*object*                          | Additional information about the deletion event of the organization.                                                                                 |
+| `reportGenerated`<br/>*boolean*                  | Whether or not a report could be generated for this time period.                                                                                     |
 
 <!------------------- GET REVENUE TAXATION REPORT --------------------->
 
@@ -263,11 +296,11 @@ The format of the response is a CSV with `,` used as the delimiter.
 
 **Query Parameters**
 
-Optional | &nbsp;
----------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------
-`billingCycle`<br/>*String*  | The cycle which the invoice belongs to. Format is `MM-YYYY`. Defaults to the latest billing cycle.
-`organization_id`<br/>*UUID* | The reseller for which you're building the report. If not passed will default to the calling user's organization. This organization must be a reseller.
-`language`<br/>*UUID*        | Language to use for the report fields (but not the headers). Expected values are "en" (English), "fr" (French) or "es" (Spanish). Defaults to "en".
+| Optional                     | &nbsp;                                                                                                                                                  |
+|------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `billingCycle`<br/>*String*  | The cycle which the invoice belongs to. Format is `MM-YYYY`. Defaults to the latest billing cycle.                                                      |
+| `organization_id`<br/>*UUID* | The reseller for which you're building the report. If not passed will default to the calling user's organization. This organization must be a reseller. |
+| `language`<br/>*UUID*        | Language to use for the report fields (but not the headers). Expected values are "en" (English), "fr" (French) or "es" (Spanish). Defaults to "en".     |
 
 ```shell
 curl -X GET \
@@ -281,23 +314,23 @@ AcmeCorp,null,null,Networking,BANDWIDTH,0.0043,GIGABYTE,USD,$0.00,SW056003,$0.00
 AcmeCorp,null,null,Compute,CCM-1M02,295.935,GIGABYTE,USD,$21.90,SW056003,$3.28,QUEBEC QST/TVQ,$2.18,CANADA GST/TPS,$1.10,NFROFNGWHU,DRAFT,null,null,9/20/21,10/20/21,%         
 ```
 
-Report Attributes | &nbsp;
------------------ | ------
-`organization`<br/>*String* | The organization name.
-`custom_field_1`<br/>*String* | The organization custom field (ex: account ID). Configured in the reseller billing settings. <b>There can be more than one custom field<b>.
-`category`<br/>*String* | The product category.
-`sku`<br/>*String* | The SKU of the product.
-`usage`<br/>*String* | The total usage of the product.
-`unit`<br/>*String* | The name of the unit of the product.
-`currency`<br/>*String* | The short-name of the currency.
-`total_before_tax`<br/>*String* | The total cost before taxes are applied.
-`tax_code`<br/>*String* | The code of the tax.
-`total_tax`<br/>*String* | The total tax.
-`tax_name1`<br/>*String* | The name of the tax. Depends on the `tax_code`, reseller billing address and customer billing address. <b>There can be more than one tax name<b>.
-`tax_amount1`<br/>*String* | The amount of the tax. Depends on the `tax_code`, reseller billing address and customer billing address. <b>There can be more than one tax amount<b>.
-`invoice_number`<br/>*String* | The human-readable number of the invoice.
-`status`<br/>*String* | The status of the invoice. Possible values are: IN_PROGRESS, IN_REVIEW, ISSUED, OVERDUE, PAID, VOID, ERROR.
-`due_date`<br/>*String* | The date the invoice is due.
-`credit_card_transaction_id`<br/>*String* | The confirmation number returned from the payment provider for the invoice.
-`billing_start_date`<br/>*String* | The billing start date of the invoice.
-`billing_end_date`<br/>*String* | The billing end date of the invoice.
+| Report Attributes                         | &nbsp;                                                                                                                                                |
+|-------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `organization`<br/>*String*               | The organization name.                                                                                                                                |
+| `custom_field_1`<br/>*String*             | The organization custom field (ex: account ID). Configured in the reseller billing settings. <b>There can be more than one custom field<b>.           |
+| `category`<br/>*String*                   | The product category.                                                                                                                                 |
+| `sku`<br/>*String*                        | The SKU of the product.                                                                                                                               |
+| `usage`<br/>*String*                      | The total usage of the product.                                                                                                                       |
+| `unit`<br/>*String*                       | The name of the unit of the product.                                                                                                                  |
+| `currency`<br/>*String*                   | The short-name of the currency.                                                                                                                       |
+| `total_before_tax`<br/>*String*           | The total cost before taxes are applied.                                                                                                              |
+| `tax_code`<br/>*String*                   | The code of the tax.                                                                                                                                  |
+| `total_tax`<br/>*String*                  | The total tax.                                                                                                                                        |
+| `tax_name1`<br/>*String*                  | The name of the tax. Depends on the `tax_code`, reseller billing address and customer billing address. <b>There can be more than one tax name<b>.     |
+| `tax_amount1`<br/>*String*                | The amount of the tax. Depends on the `tax_code`, reseller billing address and customer billing address. <b>There can be more than one tax amount<b>. |
+| `invoice_number`<br/>*String*             | The human-readable number of the invoice.                                                                                                             |
+| `status`<br/>*String*                     | The status of the invoice. Possible values are: IN_PROGRESS, IN_REVIEW, ISSUED, OVERDUE, PAID, VOID, ERROR.                                           |
+| `due_date`<br/>*String*                   | The date the invoice is due.                                                                                                                          |
+| `credit_card_transaction_id`<br/>*String* | The confirmation number returned from the payment provider for the invoice.                                                                           |
+| `billing_start_date`<br/>*String*         | The billing start date of the invoice.                                                                                                                |
+| `billing_end_date`<br/>*String*           | The billing end date of the invoice.                                                                                                                  |
