@@ -163,7 +163,6 @@ Create a new disk
 
 Required | &nbsp;
 ------- | -----------
-`name`<br/>*string* | The display name of the instance.
 `shortRegion`<br/>*string* | A short version of the region name.
 `shortZone`<br/>*string* | A short version of the zone name.
 `shortType`<br/>*string* | The disk type. Choices are 'pd-standard' or 'pd-ssd'.
@@ -171,6 +170,7 @@ Required | &nbsp;
 
 Optional | &nbsp;
 ------- | -----------
+`name`<br/>*string* | The display name of the disk. A default name will be created if there isn't one provided.
 `physicalBlockSizeBytes`<br/>*string* | Physical block size of the persistent disk, in bytes. Currently supported sizes are 4096 and 16384. Defaults to 4096.
 
 <!-------------------- DELETE A DISK -------------------->
