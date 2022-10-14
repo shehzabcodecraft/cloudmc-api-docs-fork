@@ -138,12 +138,9 @@ curl -X POST \
 
 Create a new health check
 
-Required | &nbsp;
-------- | -----------
-`name`<br/>*string* | The display name of the health check.
-
 Optional | &nbsp;
 ------- | -----------
+`name`<br/>*string* | The display name of the health check. A default name will be created if there isn't one provided.
 `type`<br/>*string* | Specifies the type of the health check, either HTTP or HTTPS. If not specified, the default is HTTP.
 `portNumber`<br/>*string* | The port number for the health check. The default is 80 for HTTP, 443 for HTTPS.
 `description`<br/>*string* | Description of the health check.

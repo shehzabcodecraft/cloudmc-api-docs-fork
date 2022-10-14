@@ -157,12 +157,12 @@ Create a new forwarding rule.
 
 Required | &nbsp;
 ------- | -----------
-`name`<br/>*string* | The display name of the forwarding rule.
 `portRange`<br/>*string* | The port which will be allocated to the forwarding rule. Supported ports are: 80 or 8080 (HTTP) and 443 (HTTPS).
 `shortTarget`<br/>*string* | The name of the target resource.
 
 Optional | &nbsp;
 ------- | -----------
+`name`<br/>*string* | The display name of the forwarding rule. A default name will be created if there isn't one provided.
 `description`<br/>*string* | Description of the forwarding rule.
 `reserveStaticIP`<br/>*boolean* | If the value is false and if no shortIPAddress is provided, an ephemeral external IP address will be assigned. 
 `shortIPAddress`<br/>*string* | The name of an existing global external IP address assigned to the rule. This argument is only valid in conjunction with reserveStaticIP being false. If the value is false and shortIPAddress is provided, then the existing external IP address will be assigned. If the value is true, a new external static IP will be reserved and assigned.

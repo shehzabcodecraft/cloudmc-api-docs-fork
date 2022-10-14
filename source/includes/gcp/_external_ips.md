@@ -166,11 +166,11 @@ If `shortInstance` is provided, the IP will be reserved and attached to this ins
 
 Required | &nbsp;
 ------- | -----------
-`name`<br/>*string* | The display name of the external ip.
 `shortRegion`<br/>*string* | A short version of the region name.
 
 Optional | &nbsp;
 ------- | -----------
+`name`<br/>*string* | The display name of the external ip. A default name will be created if there isn't one provided.
 `shortInstance`<br/>*string* | The instance name to attach the new external ip address to.
 
 <!-------------------- RELEASE AN EXTERNAL IP -------------------->

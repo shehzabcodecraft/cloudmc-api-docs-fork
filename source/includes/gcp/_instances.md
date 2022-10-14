@@ -366,7 +366,6 @@ Create a new instance.
 
 Required | &nbsp;
 ------- | -----------
-`name`<br/>*string* | The display name of the instance.
 `shortRegion`<br/>*string* | A short version of the region name.
 `shortZone`<br/>*string* | A short version of the zone name.
 `bootDiskType`<br/>*string* | The boot disk type. Choices are 'pd-standard' or 'pd-ssd'.
@@ -378,6 +377,7 @@ Required | &nbsp;
 
 Optional | &nbsp;
 ------- | -----------
+`name`<br/>*string* | The display name of the instance. A default name will be created if there isn't one provided.
 `reserveStaticIP`<br/>*boolean* | If the value is true, a new static IP would be reserved and provided to the resource.
 `shortIP`<br/>*string* | The name of an existing regional external IP address assigned to this instance in the same region. This argument is only valid in conjunction with reserveStaticIP and ephemeral IP being false.
 `ephemeralIP`<br/>*boolean* | If the value is false, reserve static IP is false and if no shortIP is provided the instance won't have an external IP. If the value is true, an ephemeral external IP address will be assigned.

@@ -129,17 +129,20 @@ curl -X POST \
 ```
 
 
-<code>POST /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/targetProxies</code>
+<code>POST /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/targetproxies</code>
 
 Create a new target proxy.
 
 | Required                         | &nbsp; |
 | -------------------------------- | ------ |
-| `name`<br/>*string*              | Name of the resource. |
 | `type`<br/>*enum*                | A short version of the kind of resource. |
 | `shortBackend`<br/>*string*      | A short version of the backend service name. The `shortBackend` and `shortUrlMap` attributes are mutually exclusive. |
 | `shortCertificates`<br/>*string* | A short version of the SSL certificate name. Specifying an SSL certificate is only required when creating an HTTPS target proxy.|
 | `shortUrlMap`<br/>*string*       | A short version of the URL map name. The `shortBackend` and `shortUrlMap` attributes are mutually exclusive. |
+
+| Optional            | &nbsp;|
+| ------------------- | ----- |
+| `name`<br/>*string* | The display name of the resource. A default name will be created if there isn't one provided. |
 
 <!-------------------- DELETE A TARGET PROXY -------------------->
 

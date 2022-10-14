@@ -176,13 +176,13 @@ Required | &nbsp;
 ------- | -----------
 `action`<br/>*string* | The firewall rule type: 'allow' (allow traffic) or 'deny' (deny traffic).
 `direction`<br/>*string* | Direction of traffic to which this firewall applies, either INGRESS or EGRESS. The default is INGRESS.
-`name`<br/>*string* | The display name of the firewall rule.
 `priority`<br/>*string* | Priority for this rule. This is an integer between 0 and 65535, both inclusive. The default value is 1000.
 `range`<br/>*Array[string]* | The source or destination range depending on the `direction` specified. The firewall rule applies only to traffic that has a source/destination IP address in these ranges. These ranges must be expressed in CIDR format.
 
 
 Optional | &nbsp;
 ------- | -----------
+`name`<br/>*string* | The display name of the firewall rule. A default name will be created if there isn't one provided.
 `all`<br/>*boolean* | Specifies if the firewall rule is an allow all or deny all rule.
 `tcpPorts`<br/>*Array[string]* | The tcp ports on which to apply the rule. These must be in the range [0, 65535).
 `udpPorts`<br/>*Array[string]* | The udp ports on which to apply the rule. These must be in the range [0, 65535).

@@ -182,7 +182,6 @@ Create a new cluster.
 
 Required | &nbsp;
 ------- | -----------
-`name`<br/>*string* | The display name of the cluster.
 `shortRegion`<br/>*string* | A short version of the region name.
 `shortZone`<br/>*string* | A short version of the zone name.
 `currentMasterVersion`<br/>*string* | The version of GKE used for this cluster.
@@ -190,6 +189,10 @@ Required | &nbsp;
 `nodeType`<br/>*string* | The machine types of the nodes in the default node pool of this cluster.
 `networkName`<br/>*string* | The network that the Kubernetes cluster is in.
 `subnetName`<br/>*string* | Subnetwork to which the cluster will belong. The subnetwork specified must belong the network specified.
+
+Optional | &nbsp;
+------- | -----------
+`name`<br/>*string* | The display name of the cluster. A default name will be created if there isn't one provided.
 
 <!-------------------- DELETE A CLUSTER -------------------->
 

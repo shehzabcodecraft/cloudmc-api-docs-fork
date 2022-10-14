@@ -150,11 +150,11 @@ Create a new Classic VPN gateway in a given [environment](#administration-enviro
 
 Required | &nbsp;
 ------- | -----------
-`name`<br/>*string* | The display name of the VPN gateway.
 `shortRegion`<br/>*string* | A short version of the region name.
 
 Optional | &nbsp;
 ------- | -----------
+`name`<br/>*string* | The display name of the VPN gateway. A default name will be created if there isn't one provided.
 `description`<br/>*string* | An optional description.
 `shortIP`<br/>*string* | The name of the external static IP to use for the VPN gateway.
 `reserveStaticIP`<br/>*string* | A flag to indicate if a new external static IP needs to be reserved for the VPN gateway. This option is mutually exclusive with `shortIP`.

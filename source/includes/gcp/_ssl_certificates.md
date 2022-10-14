@@ -162,8 +162,11 @@ Create a new ssl certificate.
 | `certificate`<br/>*string* | Public key certificate in PEM format. |
 | `chainCertificate`<br/>*string* | Chain certificates in PEM format, if there are any. Also total number of certificates, including main certificate cannot be more than 5. |
 | `description`<br/>*string* | A short description of this certificate. |
-| `name`<br/>*string* | The display name of the ssl certificate. |
 | `privateKey`<br/>*string* | The privateKey associated to certificate in PEM format. |
+
+| Optional | &nbsp;|
+| --- | --- |
+| `name`<br/>*string* | The display name of the ssl certificate. A default name will be created if there isn't one provided. |
 
 <!-------------------- DELETE A SSL CERTIFICATE -------------------->
 

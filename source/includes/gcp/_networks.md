@@ -156,18 +156,17 @@ Create a new network and attach subnet
 
 Required in auto mode | &nbsp;
 --------------------- | -----------
-`name`<br/>*string* | The display name of the network.
 `autoCreateSubnetworks`<br/>*boolean* | Whether subnets will be automatically created for each region.
 
 Required in custom mode | &nbsp;
 ----------------------- | -----------
-`name`<br/>*string* | The display name of the network.
 `subnetName`<br/>*string* | The display name of the subnet.
 `subnetShortRegion`<br/>*string* | A short version of the region name of the subnet.
 `subnetIpCidrRange`<br/>*string* | The CIDR IP range of the subnet.
 
 Optional | &nbsp;
 ------- | -----------
+`name`<br/>*string* | The display name of the network. A default name will be created if there isn't one provided.
 `description`<br/>*string* | Description of the network.
 
 <!-------------------- DELETE A NETWORK -------------------->

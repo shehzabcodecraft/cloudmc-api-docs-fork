@@ -181,7 +181,6 @@ Create a new Classic VPN tunnel in a given [environment](#administration-environ
 
 Required | &nbsp;
 ------- | -----------
-`name`<br/>*string* | The display name of the VPN tunnel.
 `ikeVersion`<br/>*string* | KE protocol version to use when establishing the VPN tunnel with the peer VPN gateway. Acceptable IKE versions are 1 or 2. The default version is 2.
 `peerIP`<br/>*string* | The IP address of the Virtual Private Cloud (VPC) the tunnel will connect to.
 `remoteTrafficSelector`<br/>*string* | Remote traffic selectors to use when establishing the VPN tunnel with the peer VPN gateway. The value should be a CIDR formatted string.
@@ -190,6 +189,7 @@ Required | &nbsp;
 
 Optional | &nbsp;
 ------- | -----------
+`name`<br/>*string* | The display name of the VPN tunnel. A default name will be created if there isn't one provided.
 `description`<br/>*string* | An optional description.
 `localTrafficSelector`<br/>*string* | Local traffic selector to use when establishing the VPN tunnel with the peer VPN gateway. The value should be a CIDR formatted string.
 

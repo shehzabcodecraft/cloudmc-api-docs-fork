@@ -141,13 +141,13 @@ Create a new subnet
 
 Required | &nbsp;
 ------- | -----------
-`name`<br/>*string* | The display name of the subnet.
 `shortRegion`<br/>*string* | A short version of the region name.
 `network`<br/>*string* | The selflink of the network.
 `ipCidrRange`<br/>*string* | The CIDR IP range of the subnet.
 
 Optional | &nbsp;
 ------- | -----------
+`name`<br/>*string* | The display name of the subnet. A default name will be created if there isn't one provided.
 `description`<br/>*string* | Description of the subnet.
 
 <!-------------------- DELETE A SUBNET -------------------->

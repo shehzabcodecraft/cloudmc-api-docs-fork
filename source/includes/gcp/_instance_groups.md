@@ -153,11 +153,11 @@ Create a new instance group.
 
 Required | &nbsp;
 ------- | -----------
-`name`<br/>*string* | The display name of the instance group.
 `shortZone`<br/>*string* | A short version of the zone name.
 
 Optional | &nbsp;
 ------- | -----------
+`name`<br/>*string* | The display name of the instance group. A default name will be created if there isn't one provided.
 `shortInstances`<br/>*array[string]* | Array of instance names to add to the instance group upon creation. All these instances should belong to the zone provided and should be in the same subnet.
 `shortNetwork`<br/>*string* | The network to which the instance group is connected to.
 `shortRegion`<br/>*string* | A short version of the region name.
