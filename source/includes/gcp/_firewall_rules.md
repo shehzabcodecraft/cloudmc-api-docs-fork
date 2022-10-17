@@ -153,41 +153,50 @@ Retrieve a firewall rules in a given [environment](#administration-environments)
 curl -X POST \
   -H "MC-Api-Key: your_api_key" \
   -d "request_body" \
-  "https://cloudmc_endpoint/api/v2/services/gcp/test-area/firewallrule"
+  "https://cloudmc_endpoint/api/v2/services/gcp/test-area/firewallrules"
 ```
 > Request body example:
 
 ```json
 {
   "action": "allow",
+  "network": "https://www.googleapis.com/compute/v1/projects/testAreaName/global/networks/networkName",
   "all": true,
   "direction": "INGRESS",
   "name": "fw-rd-tuv",
   "priority": 1000,
-  "range": "0.0.0.0/0",
+  "range": ["0.0.0.0/0"]
 }
 ```
 
-<code>POST /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/firewallrule</code>
+```json
+{
+  "network": "https://www.googleapis.com/compute/v1/projects/testAreaName/global/networks/networkName",
+  "tcpPorts": [0],
+  "udpPorts": [35533],
+  "range": ["0.0.0.0/0"]
+}
+```
+
+<code>POST /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/firewallrules</code>
 
 Create a new firewall rule.
 
 Required | &nbsp;
 ------- | -----------
-`action`<br/>*string* | The firewall rule type: 'allow' (allow traffic) or 'deny' (deny traffic).
-`direction`<br/>*string* | Direction of traffic to which this firewall applies, either INGRESS or EGRESS. The default is INGRESS.
-`priority`<br/>*string* | Priority for this rule. This is an integer between 0 and 65535, both inclusive. The default value is 1000.
+`network`<br/>*string* | URL of the network resource for this firewall rule.
 `range`<br/>*Array[string]* | The source or destination range depending on the `direction` specified. The firewall rule applies only to traffic that has a source/destination IP address in these ranges. These ranges must be expressed in CIDR format.
-
-
-Optional | &nbsp;
-------- | -----------
-`name`<br/>*string* | The display name of the firewall rule. A default name will be created if there isn't one provided.
-`all`<br/>*boolean* | Specifies if the firewall rule is an allow all or deny all rule.
+`all`<br/>*boolean* | Specifies if the firewall rule should allow all or some protocols and ports. This parameter overwrites the `tcpPorts`, `udpPorts` and `protocols` parameters.
 `tcpPorts`<br/>*Array[string]* | The tcp ports on which to apply the rule. These must be in the range [0, 65535).
 `udpPorts`<br/>*Array[string]* | The udp ports on which to apply the rule. These must be in the range [0, 65535).
 `protocols`<br/>*Array[string]* | Supported protocols are: icmp, esp, ah, sctp, ipip or a valid [decimal IP protocol number](https://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml).
 
+Optional | &nbsp;
+------- | -----------
+`name`<br/>*string* | The display name of the firewall rule. A default name will be created if there isn't one provided.
+`action`<br/>*string* | The firewall rule type: 'allow' (allow traffic) or 'deny' (deny traffic). The default value is 'allow'.
+`priority`<br/>*string* | Priority for this rule. This is an integer between 0 and 65535, both inclusive. The default value is 1000.
+`direction`<br/>*string* | Direction of traffic to which this firewall applies, either INGRESS or EGRESS. The default is INGRESS.
 
 <!-------------------- DELETE A FIREWALL RULE -------------------->
 
@@ -196,9 +205,9 @@ Optional | &nbsp;
 ```shell
 curl -X DELETE \
    -H "MC-Api-Key: your_api_key" \
-   "https://cloudmc_endpoint/api/v2/services/gcp/test-area/firewallrule/4890726785951782638"
+   "https://cloudmc_endpoint/api/v2/services/gcp/test-area/firewallrules/4890726785951782638"
 ```
 
-<code>DELETE /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/firewallrule/:id</code>
+<code>DELETE /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/firewallrules/:id</code>
 
 Delete an existing firewall rule.
