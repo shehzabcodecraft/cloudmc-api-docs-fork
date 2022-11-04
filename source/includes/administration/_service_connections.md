@@ -31,6 +31,7 @@ Service connections are the services that you can create resources for (e.g. com
     "supportsUsage": true,
     "supportsInfra": true,
     "lastUsageRecord": "2022-03-28T18:59:59.000Z",
+    "brownfield": false,
     "quotas": [{
       "name": "DefaultQuota",
       "id": "081b1ebb-16c4-49e0-8120-a5b8b356b269"
@@ -55,6 +56,7 @@ Attributes | &nbsp;
 `status`<br/>*Object* | Status of the service connection. Tells you if the service is up.<br/>*includes*: `lastUpdated`, `reachable`.
 `organization`<br/>*Object* | Organization that owns this service connection.<br/>*includes*: `id`, `name`
 `metricsEnabled`<br/>*boolean* | Is metric collection allowed on this service connection.
+`brownfield`<br/>*boolean* | If the connection is brownfield enabled.
 `supportsQuotas`<br/>*boolean* | Are quotas supported on this service connection.
 `supportsPricingV2`<br/>*boolean* | Is the V2 pricing engine supported on this service connection.
 `supportsPolicies`<br/>*boolean* | Are policies supported on this service connection.
@@ -92,6 +94,7 @@ Optional query parameters | &nbsp;
       "id": "5d841eb6-5913-4244-b001-917228e7aa64"
     },
     "metricsEnabled": true,
+    "brownfield": false,
     "supportsQuotas": true,
     "supportsPricingV2": true,
     "supportsPolicies": true,
@@ -123,6 +126,7 @@ Attributes | &nbsp;
 `status`<br/>*Object* | Status of the service connection. Tells you if the service is up.<br/>*includes*: `lastUpdated`, `reachable`.
 `organization`<br/>*Object* | Organization that owns this service connection.<br/>*includes*: `id`, `name`
 `metricsEnabled`<br/>*boolean* | Is metric collection allowed on this service connection.
+`brownfield`<br/>*boolean* | If the connection is brownfield enabled.
 `supportsQuotas`<br/>*boolean* | Are quotas supported on this service connection.
 `supportsPricingV2`<br/>*boolean* | Is the V2 pricing engine supported on this service connection.
 `supportsPolicies`<br/>*boolean* | Are policies supported on this service connection.
@@ -275,6 +279,7 @@ curl -X GET \
         ],
         "infraEntityDescriptors": [],
         "supportsInfra": false,
+        "supportsBrownfield": true,
         "supportedWidgets": [],
         "hasPluginEnvironmentRoles": false,
         "quotaMetricIdentifiers": [
@@ -332,6 +337,7 @@ Attributes                                  | &nbsp;
 `supportsApiCredentials`<br/>*boolean*      | Whether or not this service descriptor supports API credentials.
 `supportsPolicies`<br/>*boolean*            | Whether or not this service descriptor supports policies.
 `supportsUsage`<br/>*boolean*               | Whether or not this service descriptor supports usage.
+`supportsBrownfield`<br/>*boolean*          | Whether or not this service descriptor supports brownfield connections.
 `supportsPricingV2`<br/>*boolean*           | Whether or not this service descriptor supports pricing (V2).
 `supportsCaching`<br/>*boolean*             | Whether or not this service descriptor supports caching.
 
@@ -495,6 +501,7 @@ Optional query parameters | &nbsp;
 `trialEnabled`<br/>*string* | Are trials allowed on this service connection.
 `usageEnabled`<br/>*string* | Is usage collection enabled on this service connection.
 `metricsEnabled`<br/>*string* | Is metric collection enabled on this service connection.
+`brownfield`<br/>*boolean* | True if connecting to an existing service connection from which environments can be linked. Can only be enabled if the service supports brownfield, see [retrieve descriptor](#administration-retrieve-descriptor). If enabled, `trialEnabled` and `usageEnabled` must be false since they are not supported on brownfield connections.
 `commitmentTrackingEnabled`<br/>*string* | Is commitment tracking enabled on this service connection.
 `dependentConnection`<br/>*object* | The dependent connection if there is one.
 `locations`<br/>*Array[object]* | Locations of a service connection region.<br/>*includes*: `name`, `lat` and `lng`
