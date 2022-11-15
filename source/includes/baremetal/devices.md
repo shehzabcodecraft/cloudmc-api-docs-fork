@@ -483,6 +483,10 @@ curl -X GET \
 
 Get device charts in a given [environment](#administration-environments).
 
+| Query Params      | &nbsp;                  |
+| ----------------- | ----------------------- |
+| `id`<br/>_string_ | The unique ID of device |
+
 ### Get device custom charts
 
 ```shell
@@ -574,6 +578,10 @@ curl -X GET \
 <code>POST /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/device-sensors-list?id=:id</code>
 
 Get device custom charts in a given [environment](#administration-environments).
+
+| Query Params      | &nbsp;                  |
+| ----------------- | ----------------------- |
+| `id`<br/>_string_ | The unique ID of device |
 
 ### Connect to IPMI
 
@@ -676,3 +684,7 @@ curl -X GET \
 <code>POST /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/device-ips-list?id=:id</code>
 
 Get device IPs in a given [environment](#administration-environments).
+
+| Query Params      | &nbsp;                  |
+| ----------------- | ----------------------- |
+| `id`<br/>_string_ | The unique ID of device |
