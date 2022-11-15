@@ -94,6 +94,11 @@ curl -X POST \
 
 Create SSH key in a given [environment](#administration-environments).
 
+| Attributes                | &nbsp;         |
+| ------------------------- | -------------- |
+| `name`<br/>_string_       | SSH key name   |
+| `publicKey` <br/>_string_ | SSH public key |
+
 ### Delete SSH Key
 
 ```shell

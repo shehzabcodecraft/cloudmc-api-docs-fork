@@ -265,11 +265,11 @@ Create a new device in a given [environment](#administration-environments).
 | `server`<br/>_Array[object]_   |                                                                                                                      |
 | `server.hostname`<br/>_string_ | A FQDN for the device. For example: example.coxedge.com                                                              |
 
-| Optional                       | &nbsp;                       |
-| ------------------------------ | ---------------------------- |
-| `sshKey`<br/>_boolean_         | SSH key value                |
-| `sshKeyName` <br/>_boolean_    | Name for newy adding SSH key |
-| `sshKeyId`<br/>_Array[string]_ | The unique ID of the SSH key |
+| Optional                   | &nbsp;                       |
+| -------------------------- | ---------------------------- |
+| `sshKey`<br/>_string_      | SSH key value                |
+| `sshKeyName` <br/>_string_ | Name for newy adding SSH key |
+| `sshKeyId`<br/>_string_    | The unique ID of the SSH key |
 
 <!-------------------- DELETE A DEVICE -------------------->
 
