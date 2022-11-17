@@ -268,6 +268,9 @@ includes:
   - edgedelivery/predefined_edgelogic
   - edgedelivery/custom_rules
   - edgedelivery/delivery_rules
+  - baremetal
+  - baremetal/devices
+  - baremetal/sshkey
 
 search: true
 ---
