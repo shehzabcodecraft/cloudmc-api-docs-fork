@@ -74,14 +74,14 @@ Retrieve a list of all devices in a given [environment](#administration-environm
 | `deviceType` <br/>_string_             | Generic description of device. Usually type and rack unit size.                              |
 | `primaryIp` <br/>_string_              | The first assigned public IP for accessing this device.                                      |
 | `status` <br/>_string_                 | active/inactive                                                                              |
-| `monitorsTotal`<br>_int_               | Total # device monitors                                                                      |
-| `monitorsUp`<br/>_int_                 | Of passing device monitors.                                                                  |
+| `monitorsTotal`<br>_int_               | Total # device monitors.                                                                     |
+| `monitorsUp`<br/>_int_                 | Number of passing device monitors.                                                           |
 | `ipmiAddress` <br/>_string_            | IP address for IPMI connection. Requires you to whitelist your current IP or be on IPMI VPN. |
 | `powerStatus` <br/>_string_            | ON/OFF                                                                                       |
 | `tags`<br/>_Array[string]_             | List of all user set device tags.                                                            |
-| `hostname` <br/>_string_               | A FQDN for the device. for example: example.hivelocity.net.                                  |
+| `hostname` <br/>_string_               | A FQDN for the device. For example: example.hivelocity.net.                                  |
 | `location.facility` <br/>_string_      | A facility code. For example NYC1.                                                           |
-| `location.facility_title`<br/>_string_ | A facility name                                                                              |
+| `location.facility_title`<br/>_string_ | A facility name.                                                                             |
 
 <!-------------------- RETRIEVE A DEVICE -------------------->
 
@@ -174,13 +174,13 @@ Retrieve a device in a given [environment](#administration-environments).
 | `deviceType` <br/>_string_                                   | Generic description of device. Usually type and rack unit size.                                                                          |
 | `primaryIp` <br/>_string_                                    | The first assigned public IP for accessing this device.                                                                                  |
 | `status` <br/>_string_                                       | active/inactive                                                                                                                          |
-| `monitorsTotal`<br>_int_                                     | Total # device monitors                                                                                                                  |
-| `monitorsUp`<br/>_int_                                       | Of passing device monitors.                                                                                                              |
+| `monitorsTotal`<br>_int_                                     | Total # device monitors.                                                                                                                 |
+| `monitorsUp`<br/>_int_                                       | Number of passing device monitors.                                                                                                       |
 | `monitors`<br/>_string_                                      | monitors.                                                                                                                                |
 | `ipmiAddress` <br/>_string_                                  | IP address for IPMI connection. Requires you to whitelist your current IP or be on IPMI VPN.                                             |
 | `powerStatus` <br/>_string_                                  | ON/OFF                                                                                                                                   |
 | `tags`<br/>_Array[string]_                                   | List of all user set device tags.                                                                                                        |
-| `hostname` <br/>_string_                                     | A FQDN for the device. for example: example.hivelocity.net.                                                                              |
+| `hostname` <br/>_string_                                     | A FQDN for the device. For example: example.hivelocity.net.                                                                              |
 | `location.facility` <br/>_string_                            | A facility code. For example NYC1.                                                                                                       |
 | `deviceDetail.processor` <br/>_string_                       |                                                                                                                                          |
 | `deviceDetail.memory` <br/>_string_                          |                                                                                                                                          |
@@ -255,21 +255,21 @@ Create a new device in a given [environment](#administration-environments).
 
 | Required                       | &nbsp;                                                                                                               |
 | ------------------------------ | -------------------------------------------------------------------------------------------------------------------- |
-| `quantity` <br/>_int_          | Number of device creating                                                                                            |
+| `quantity` <br/>_int_          | Number of device creating.                                                                                           |
 | `locationName`<br/>_string_    | A facility code. For example NYC1.                                                                                   |
 | `hasUserData`<br/>_boolean_    | True if we passing user data.                                                                                        |
 | `hasSshData`<br/>_boolean_     | True if we passing SSH key.                                                                                          |
 | `productOptionId`<br/>_int_    | The unique ID of the desired product option.                                                                         |
 | `productId`<br/>_string_       | The unique ID of the desired product to provision.                                                                   |
 | `osName`<br/>_string_          | The name of the Operating System to provision on this device. Must match name of an operating system product option. |
-| `server`<br/>_Array[object]_   |                                                                                                                      |
+| `server`<br/>_Array[object]_   | List of servers.                                                                                                     |
 | `server.hostname`<br/>_string_ | A FQDN for the device. For example: example.coxedge.com                                                              |
 
-| Optional                   | &nbsp;                       |
-| -------------------------- | ---------------------------- |
-| `sshKey`<br/>_string_      | SSH key value                |
-| `sshKeyName` <br/>_string_ | Name for newy adding SSH key |
-| `sshKeyId`<br/>_string_    | The unique ID of the SSH key |
+| Optional                   | &nbsp;                        |
+| -------------------------- | ----------------------------- |
+| `sshKey`<br/>_string_      | SSH key value.                |
+| `sshKeyName` <br/>_string_ | Name for newy adding SSH key. |
+| `sshKeyId`<br/>_string_    | The unique ID of the SSH key. |
 
 <!-------------------- DELETE A DEVICE -------------------->
 

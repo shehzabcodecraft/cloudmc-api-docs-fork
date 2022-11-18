@@ -1,7 +1,5 @@
 ## SSH Keys
 
-Allows you to create, delete, and manage your SSH keys.
-
 Create and manage your SSH keys.
 
 <!-------------------- LIST SSH Keys -------------------->
