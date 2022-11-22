@@ -94,7 +94,7 @@ curl -X GET \
     "sourceIps": ["192.168.0.1/32"],
     "action": "ALLOW",
     "protocol": "TCP",
-    "ports": "80"
+    "ports": ["80"]
   }
 }
 ```
