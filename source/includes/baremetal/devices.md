@@ -398,7 +398,7 @@ Edit device tag in a given [environment](#administration-environments).
 | -------------------------- | ---------------------- |
 | `tags`<br/>_Array[string]_ | User specified values. |
 
-### Edit device power on
+### Device power on
 
 ```shell
 curl -X POST \
@@ -419,7 +419,7 @@ curl -X POST \
 
 Edit device power on in a given [environment](#administration-environments).
 
-### Edit device power off
+### Device power off
 
 ```shell
 curl -X POST \
