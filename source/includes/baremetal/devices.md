@@ -774,6 +774,11 @@ curl -X GET \
 
 Get available products in a given [environment](#administration-environments).
 
+| Query Params      | &nbsp;                  |
+| ----------------- | ----------------------- |
+| `id`<br/>_string_ | The unique ID of location |
+| `code`<br/>_string_|The code of locations|
+
 ### Get Operating Systems by Product
 
 ```shell
@@ -805,3 +810,8 @@ curl -X GET \
 <code>GET /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/operating-system?vendorProductId=:vendorProductId</code>
 
 Get available operating system in products in a given [environment](#administration-environments).
+
+| Query Params      | &nbsp;                  |
+| ----------------- | ----------------------- |
+| `vendorProductId`<br/>_string_ | The unique ID of product |
+|
