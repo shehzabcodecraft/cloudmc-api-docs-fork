@@ -681,10 +681,127 @@ curl -X GET \
 }
 ```
 
-<code>POST /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/device-ips-list?id=:id</code>
+<code>GET /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/device-ips-list?id=:id</code>
 
 Get device IPs in a given [environment](#administration-environments).
 
 | Query Params      | &nbsp;                  |
 | ----------------- | ----------------------- |
 | `id`<br/>_string_ | The unique ID of device |
+
+### Get Locations
+
+```shell
+curl -X GET \
+   -H "MC-Api-Key: your_api_key" \
+   "https://portal.coxedge.com/api/v2/services/baremetal/baremetal-test-env/locations"
+```
+
+> The above commands return a JSON structured like this:
+
+```json
+{
+    "data": [
+        {
+            "id": "HV_3",
+            "locationId": "3",
+            "code": "TPA1",
+            "name": "Tampa(US) - TPA1",
+            "vendor": "HIVELOCITY"
+        },
+        {
+            "id": "HV_8",
+            "locationId": "8",
+            "code": "TPA2",
+            "name": "Tampa(US) - TPA2",
+            "vendor": "HIVELOCITY"
+        }
+    ],
+    "metadata": {
+        "recordCount": 2
+    }
+}
+```
+
+<code>GET /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/locations</code>
+
+Get available locations in a given [environment](#administration-environments).
+
+### Get Products Ids by Locations
+
+```shell
+curl -X GET \
+   -H "MC-Api-Key: your_api_key" \
+   "https://portal.coxedge.com/api/v2/services/baremetal/baremetal-test-env/products?id=HV_3&code=TPA2"
+```
+
+> The above commands return a JSON structured like this:
+
+```json
+{
+    "data": [
+        {
+            "id": "598",
+            "drive": "480GB SSD",
+            "cpu": "2 x E5-2630 v3 2.4GHz Haswell",
+            "subTitle": "$246.15/month ($0.51/hour)\n100TB / 1Gbps\n128GB",
+            "memory": "128GB",
+            "bandwidth": "100TB / 1Gbps",
+            "monthlyPrice": "160.0",
+            "monthlyPremium": "0.0",
+            "stock": "limited",
+            "processorInfo": {
+                "cores": 8,
+                "sockets": 2,
+                "threads": 16,
+                "vcpus": 256
+            },
+            "cpuCores": "<br/>(16 cores/32 threads)",
+            "gpu": "None",
+            "hourlyPrice": "0.33",
+            "hourlyPremium": "0.0",
+            "vendorProductId": "HV_598",
+            "vendor": "HIVELOCITY"
+        }
+    ],
+    "metadata": {
+        "recordCount": 1
+    }
+}
+```
+
+<code>GET /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/products?id=:id&code=:code</code>
+
+Get available products in a given [environment](#administration-environments).
+
+### Get Operating Systems by Product
+
+```shell
+curl -X GET \
+   -H "MC-Api-Key: your_api_key" \
+   "https://portal.coxedge.com/api/v2/services/baremetal/baremetal-test-env/operating-system?vendorProductId=HV_598"
+```
+
+> The above commands return a JSON structured like this:
+
+```json
+{
+    "data": [
+        {
+            "name": "CentOS 7.x",
+            "id": "142921"
+        },
+        {
+            "name": "Ubuntu 18.x",
+            "id": "144178"
+        }
+    ],
+    "metadata": {
+        "recordCount": 2
+    }
+}
+```
+
+<code>GET /services/<a href="#administration-service-connections">:service_code</a>/<a href="#administration-environments">:environment_name</a>/operating-system?vendorProductId=:vendorProductId</code>
+
+Get available operating system in products in a given [environment](#administration-environments).
